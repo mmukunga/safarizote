@@ -7,7 +7,7 @@ const Safaris = () => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-           const result = await axios.get('/api/customers');
+           const result = await axios.get('/api/customers', { crossdomain: true });
            console.log(result);
            setCustomers(result.data);
         } catch (e) {
