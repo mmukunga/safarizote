@@ -1,10 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import Main from './pages/Main';
 
 function App() {
-  console.log('Hei');
-  
   return (
     <div className="App">
       <header className="App-header">
@@ -21,7 +18,6 @@ function App() {
           Learn React
         </a>
       </header>
-      <Main />
     </div>
   );
 }
