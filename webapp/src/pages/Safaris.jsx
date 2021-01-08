@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const Safaris = () => {
     const  [customers, setCustomers] =  useState([]);
-
+    console.log('Safaris.jsx');
     useEffect(() => {
       const fetchData = async () => {
         try {

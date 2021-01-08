@@ -1,6 +1,8 @@
 import React from "react";
 
-const AboutUs = () => (
+const AboutUs = () => {
+  console.log('AboutUs.jsx');
+  return (
   <div>
     <h1 className="title is-1">This is the About Page</h1>
     <p>
@@ -11,5 +13,5 @@ const AboutUs = () => (
     </p>
   </div>
 );
-
+}
 export default AboutUs;
