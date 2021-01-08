@@ -22,7 +22,6 @@
     "clean-old-build": "rm -rf ../main/resources/static/* ",
     "clean-new-build": "rm -rf build"
   },
-  "proxy": "http://localhost:8080",
   "eslintConfig": {
     "extends": [
       "react-app",

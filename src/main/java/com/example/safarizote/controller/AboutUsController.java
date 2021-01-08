@@ -24,7 +24,7 @@ public class AboutUsController {
   @Autowired
   private CustomerRepository repository;
 
-  @CrossOrigin(origins = "http://localhost:3000")
+  @CrossOrigin(origins = "*")
   @RequestMapping(value = "/api/customers",  method={RequestMethod.GET})
   public ResponseEntity<List<Customer>> customers(){
     System.out.println("1. findAll()");
