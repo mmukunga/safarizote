@@ -7,18 +7,18 @@ import AboutUs from './AboutUs';
 const Main = () => {
     console.log('Main.jsx');
   return (  
-    <Router>
-        <div>
+    <div>
         <ul>
             <li><Link to="/safaris">Safaris</Link></li>
             <li><Link to="/about">About Us</Link></li>
         </ul>
 
         <hr />
-        <Route exact path="/safaris" component={Safaris} />
-        <Route path="/about" component={AboutUs} />
-        </div>
-    </Router>
+        <Switch>
+            <Route exact path="/safaris" component={Safaris} />
+            <Route path="/about" component={AboutUs} />
+        </Switch>
+    </div>
     );
 }
 export default Main;
