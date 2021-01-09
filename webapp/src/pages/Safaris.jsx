@@ -16,7 +16,7 @@ const Safaris = () => {
     }
 
     useEffect(() => {
-        axios.get('/api/safaris').then(res => {
+        axios.get('/api/safaris').then(response => {
           console.log(response);
           setSafaris(response.data);
           var headers=[];
