@@ -24,6 +24,10 @@ const Safaris = () => {
             console.log(data);
             headers.push(data.title);
           });
+          response.data.forEach((data) => {
+            console.log(data);
+            console.log(data[0]);
+          });
           console.log(headers);
           setHeaders(headers);
         }
