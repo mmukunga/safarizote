@@ -36,7 +36,7 @@ const Safaris = () => {
          <h1>{message}</h1> 
          <h1>Hello StackBlitz!</h1>
 
-         <Table data={data}/>
+         <Table data={safaris}/>
 
          <div className="List">
           <List listName="Safaris" list={safaris} handleCheck={handleChecked}/>
