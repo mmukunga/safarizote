@@ -2,7 +2,7 @@
 import React from "react";
 
 function Table({ children, ...props }) {
-    const firstRow = props.data[0];
+    const firstRow = []||props.data[0];
     const headers = Object.keys(firstRow);
     const headerRow = headers.map(el => <Table.TH>{el}</Table.TH>);
 
