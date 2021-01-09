@@ -1,7 +1,9 @@
 import React, { useState, useEffect} from 'react';
+import { Route, Link, BrowserRouter as Router } from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
+import Safaris from './pages/Safaris';
 
 function App() {
   const [message, setMessage] = useState("");
@@ -45,6 +47,14 @@ function App() {
           Learn React
         </a>
       </header>
+      <Router>
+        <div>
+          <ul>
+            <li><Link to="/safaris">Safaris</Link></li>
+          </ul>
+          <Route path="/safaris" component={Safaris} />
+        </div>
+      </Router>
       <ul>
           {customers.map(customer => 
              <li key={customer.name}>{customer.name}</li>)
