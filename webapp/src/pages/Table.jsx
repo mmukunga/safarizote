@@ -5,7 +5,7 @@ function Table({ children, ...props }) {
     const firstRow = []||props.data[0];
     const headers = Object.keys(firstRow);
     console.log('1.response..');
-    const headerRow = headers.map(el => <Table.TH>'el'</Table.TH>);
+    const headerRow = headers.map(el => <Table.TH>{el}</Table.TH>);
     console.log('2.response..');
     const rows = props.data.map(el => (
         <Table.TR>
