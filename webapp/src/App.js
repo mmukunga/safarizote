@@ -5,14 +5,28 @@ import axios from 'axios';
 
 function App() {
   const [message, setMessage] = useState("");
-
+  const [customers, setCustomers] =  useState([]);
+ 
   useEffect(() => {
     axios.get('/api/hello')
       .then(response => {
          console.log(response);
-          setMessage(response.data);
+         setMessage(response.data);
       });
   },[])
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+          const result = await axios.get('/api/customers');
+          console.log(result);
+          setCustomers(result.data);
+      } catch (e) {
+          console.log(e);
+      }
+    }
+    fetchData();
+  },[]);
 
   return (
     <div className="App">
@@ -31,6 +45,11 @@ function App() {
           Learn React
         </a>
       </header>
+      <ul>
+          {customers.map(customer => 
+             <li key={customer.name}>{customer.name}</li>)
+          } 
+          </ul>
     </div>
   );
 }
