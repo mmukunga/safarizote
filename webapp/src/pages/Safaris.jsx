@@ -19,7 +19,8 @@ const Safaris = () => {
         axios.get('/api/safaris').then(res => {
           console.log(res);
           setSafaris(res.data);
-          setHeaders(Object.keys(res.data[0]));
+          console.logs(res.data[0]);
+          console.logs(Object.keys(res.data[0]));
         }
       ).catch(err => {
         console.log(err);
@@ -30,7 +31,6 @@ const Safaris = () => {
       <div className="Safaris">
          <h1>{message}</h1> 
          <h1>Hello StackBlitz!</h1>
-         <Table headers={headers} data={safaris} />
          <div className="List">
           <List listName="Safaris" list={safaris} handleCheck={handleChecked}/>
         </div>
