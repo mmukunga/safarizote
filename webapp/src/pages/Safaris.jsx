@@ -37,7 +37,22 @@ const Safaris = () => {
       <div className="Safaris">
          <h1>{message}</h1> 
          <h1>Hello StackBlitz!</h1>
-         <Table headers={headers} data={safaris} />
+         
+         <Table>
+        <thead>
+           <Table.TR>
+             <Table.TH>Name</Table.TH>
+             <Table.TH>Age</Table.TH>
+           </Table.TR>
+        </thead>
+        <tbody>
+           <Table.TR>
+             <Table.TD>Anssam</Table.TD>
+             <Table.TD>20</Table.TD>
+           </Table.TR>
+        </tbody>
+      </Table>
+
          <div className="List">
           <List listName="Safaris" list={safaris} handleCheck={handleChecked}/>
         </div>
