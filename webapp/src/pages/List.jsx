@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useState } from 'react';
 
-  const List = ({ listName, list = [] })  => {
+  const List = ({ listName, list = [], handleCheck })  => {
     const [isChecked, setIsChecked] = useState({});
 
-    const handleCheck = e => {
+    const handleChecked = e => {
         setIsChecked({ ...isChecked, [e.target.name]: e.target.checked });
-        props.handleCheck(isChecked);
+        handleCheck(isChecked);
     }
     const ListItem = ({ item = {} }) => {
         return (
           <li>
             <label>{item.title}</label>
-            <input type="checkbox" name={item.title} checked={allChecked ? true : isChecked[item.title]} onChange={e => handleCheck(e)}/>
+            <input type="checkbox" name={item.title} checked={allChecked ? true : isChecked[item.title]} onChange={e => handleChecked(e)}/>
           </li>
         );
     };
