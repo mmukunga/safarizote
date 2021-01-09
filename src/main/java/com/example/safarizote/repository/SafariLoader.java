@@ -75,6 +75,12 @@ public class SafariLoader implements CommandLineRunner {
             .description("Kenya has so much to offer the visitor - from the vast plains of the iconic Masai Mara and Amboseli teeming with wildlife to the white sand beaches of the Indian Ocean.")
             .dateCreated(Instant.now())
             .build());
+        
+
+        List<Booking> bookings = createBookings();
+        for (int i = 0; i < bookings.size(); i++) {
+            System.out.println("New Booking:= " + bookings.get(i));
+        }
 
         repository.findAll().forEach((Safari) -> {
             logger.info("{}", Safari);
@@ -102,6 +108,8 @@ public class SafariLoader implements CommandLineRunner {
         }
  
         System.out.println("Bookings inserted OK!");
+
+        return bookings;
     }
 
 }
