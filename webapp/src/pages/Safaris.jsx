@@ -20,13 +20,10 @@ const Safaris = () => {
           console.log(response);
           setSafaris(response.data);
           var headers=[];
-          Object.keys(response.data).forEach((data) => {
-            console.log(data);
-            headers.push(data.title);
-          });
           response.data.forEach((data) => {
             console.log(data);
-            console.log(data[0]);
+            console.log(data.title);
+            headers.push(data.title);
           });
           console.log(headers);
           setHeaders(headers);
