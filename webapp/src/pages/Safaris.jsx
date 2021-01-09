@@ -17,8 +17,8 @@ const Safaris = () => {
 
     useEffect(() => {
         axios.get('/api/safaris').then(res => {
-          console.log(res);
-          setSafaris(res.data);
+          console.log(response);
+          setSafaris(response.data);
           var headers=[];
           Object.keys(response.data).forEach((data) => {
                 names.push(data[0]);
@@ -35,6 +35,7 @@ const Safaris = () => {
       <div className="Safaris">
          <h1>{message}</h1> 
          <h1>Hello StackBlitz!</h1>
+         <Table headers={headers} data={safaris} />
          <div className="List">
           <List listName="Safaris" list={safaris} handleCheck={handleChecked}/>
         </div>
