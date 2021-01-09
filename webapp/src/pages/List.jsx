@@ -7,10 +7,10 @@ import React, { useState } from 'react';
         setIsChecked({ ...isChecked, [e.target.name]: e.target.checked });
         handleCheck(isChecked);
     }
-    const ListItem = ({ item = {} }) => {
+    const ListItem = ({key, item = {}, handleChecked }) => {
         return (
           <li>
-            <label>{item.title}</label>
+            <label>{key} {item.title}</label>
             <input type="checkbox" name={item.title} onChange={e => handleChecked(e)}/>
           </li>
         );
@@ -21,7 +21,7 @@ import React, { useState } from 'react';
         {listName}
         <ul className="myList">
             {list.map((item, index) => (
-            <ListItem key={index} item={item.title} handleClick={props.handleClick}/>
+            <ListItem key={index} item={item.title} handleChecked={handleChecked}/>
             ))}
         </ul>
       </div>  
