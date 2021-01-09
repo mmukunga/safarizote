@@ -19,8 +19,8 @@ const Safaris = () => {
         axios.get('/api/safaris').then(res => {
           console.log(res);
           setSafaris(res.data);
-          console.logs(res.data[0]);
-          console.logs(Object.keys(res.data[0]));
+          console.log(res.data[0]);
+          console.log(Object.keys(res.data[0]));
         }
       ).catch(err => {
         console.log(err);
