@@ -10,10 +10,18 @@ const Safaris = () => {
     const [checked, setChecked] = useState(false);
     
     const data = [
-      {
-        Name: "Anssam",
-        Age: "20"
-      }
+        {
+          Name: "Anssam",
+          Age: "20"
+        },
+        {
+          Name: "Rihab",
+          Age: "12"
+        },
+        {
+          Name: "Amir",
+          Age: "3"
+        }
     ];
 
     const handleChecked = (e) => {
@@ -25,8 +33,7 @@ const Safaris = () => {
         axios.get('/api/safaris').then(response => {
           console.log(response);
           setSafaris(response.data);
-        }
-      ).catch(err => {
+        }).catch(err => {
         console.log(err);
       });
     }, []);
@@ -36,7 +43,7 @@ const Safaris = () => {
          <h1>{message}</h1> 
          <h1>Hello StackBlitz!</h1>
 
-         <Table data={safaris}/>
+         <Table data={data}/>
 
          <div className="List">
           <List listName="Safaris" list={safaris} handleCheck={handleChecked}/>
