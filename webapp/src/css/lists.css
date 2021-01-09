@@ -1,9 +1,12 @@
-.List {
+div.List {
     border: 2px solid red;
+    text-align: center;
 }
 
 ul.myList {
     list-style-type: none;
+    display: inline-block; 
+    text-align: left; 
   }
 
 ul.myList > li { 
