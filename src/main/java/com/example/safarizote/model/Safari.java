@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
+import javax.persistence.FetchType;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -18,6 +19,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+import com.example.safarizote.model.Booking;
+
 @Data
 @Entity
 @NoArgsConstructor
@@ -26,7 +29,7 @@ import lombok.NonNull;
 public class Safari {
   @Id @GeneratedValue Long id;
   @NonNull String title;
-  @NonNull Bouble price;
+  @NonNull Double price;
   @Column(columnDefinition="TEXT")
   @NonNull String description;
   @NonNull Instant dateCreated;

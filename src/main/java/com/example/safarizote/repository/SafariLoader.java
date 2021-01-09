@@ -1,12 +1,16 @@
 package com.example.safarizote.repository;
 
+import java.util.List;
+
 import java.time.Instant;
-import com.example.demo.model.Safari;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import com.example.safarizote.model.Booking;
+import com.example.safarizote.model.Safari;
 
 @Component
 public class SafariLoader implements CommandLineRunner {
