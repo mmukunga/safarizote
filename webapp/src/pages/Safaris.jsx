@@ -22,7 +22,7 @@ const Safaris = () => {
           var headers=[];
           Object.keys(response.data).forEach((data) => {
             console.log(data);
-            headers.push(data[0]);
+            headers.push(data.title);
           });
           console.log(headers);
           setHeaders(headers);
