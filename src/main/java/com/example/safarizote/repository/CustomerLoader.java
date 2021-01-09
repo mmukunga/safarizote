@@ -1,7 +1,5 @@
 package com.example.safarizote.repository;
 
-import com.example.safarizote.model.Customer;
-
 import java.time.Instant;
 import java.util.Set;
 
@@ -11,9 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import com.example.safarizote.model.Customer;
+
 @Component
 public class CustomerLoader implements CommandLineRunner {
-
     private static final Logger logger = LoggerFactory.getLogger(CustomerLoader.class);
 
     @Autowired
