@@ -2,7 +2,7 @@
 import React from "react";
 
 function Table({ children, ...props }) {
-    const firstRow = []||props.data[0];
+    const firstRow = props.data[0];
     console.log('1.firstRow..');
     console.log(firstRow);
     console.log('2.firstRow..');
