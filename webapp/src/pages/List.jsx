@@ -11,7 +11,7 @@ import React, { useState } from 'react';
         return (
           <li>
             <label>{item.title}</label>
-            <input type="checkbox" name={item.title} checked={allChecked ? true : isChecked[item.title]} onChange={e => handleChecked(e)}/>
+            <input type="checkbox" name={item.title} onChange={e => handleChecked(e)}/>
           </li>
         );
     };
