@@ -19,8 +19,12 @@ const Safaris = () => {
         axios.get('/api/safaris').then(res => {
           console.log(res);
           setSafaris(res.data);
-          console.log(res.data[0]);
-          console.log(Object.keys(res.data[0]));
+          var headers=[];
+          Object.keys(response.data).forEach((data) => {
+                names.push(data[0]);
+          });
+          console.log(headers);
+          setHeaders(headers);
         }
       ).catch(err => {
         console.log(err);
