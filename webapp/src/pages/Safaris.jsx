@@ -10,17 +10,19 @@ const Safaris = () => {
     const [checked, setChecked] = useState(false);
     
     const data = [
-        {
-          Name: "Anssam",
-          Age: "20"
+        { Id: 1, 
+          Title: "Anssam",
+          Description: "20"
         },
         {
-          Name: "Rihab",
-          Age: "12"
+          Id: 2, 
+          Title: "Rihab",
+          Description: "12"
         },
         {
-          Name: "Amir",
-          Age: "3"
+          Id: 3, 
+          Title: "Amir",
+          Description: "3"
         }
     ];
 
