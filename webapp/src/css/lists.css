@@ -1,0 +1,19 @@
+.List {
+    border: 2px solid red;
+}
+
+ul.myList {
+    list-style-type: none;
+  }
+
+ul.myList > li { 
+    display: block; 
+    color: green; 
+}
+
+ul.myList > li:before
+  {
+    content:"@  ";
+    color: red;
+    font-size: 25px;
+  }

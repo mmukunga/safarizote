@@ -15,6 +15,9 @@ const Safaris = () => {
     return (
       <div className="Safaris">
          <h1>{message}</h1> 
+         <div className="listContainer">
+          <List listName="Psychiatrists" list={safaris} />
+        </div>
          <ul>
          { safaris.map(item => <li key={item._id}>{item.title}</li>) }
          </ul>
