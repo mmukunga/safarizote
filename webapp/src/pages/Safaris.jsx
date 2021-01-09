@@ -12,11 +12,15 @@ const Safaris = () => {
       setChecked(!checked);
       console.log(e);
     }
-    
+
     useEffect(() => {
-        axios.get('/api/safaris')
-            .then(res => setSafaris(res.data))
-            .catch(err => console.log(err))
+        axios.get('/api/safaris').then(res => {
+          console.log(res);
+          setSafaris(res.data);
+        }
+      ).catch(err => {
+        console.log(err);
+      });
     }, []);
 
     return (
