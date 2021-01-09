@@ -10,20 +10,11 @@ const Safaris = () => {
     const [checked, setChecked] = useState(false);
     
     const data = [
-        { Id: 1, 
-          Title: "Anssam",
-          Description: "20"
-        },
-        {
-          Id: 2, 
-          Title: "Rihab",
-          Description: "12"
-        },
-        {
-          Id: 3, 
-          Title: "Amir",
-          Description: "3"
-        }
+     {id: 6, name: "Jack Maji Moto Smith", email: "m@gmail.com", phone: "415 22 386", address: "21 Jump street", dateCreated: "2021-01-08T12:48:27.001123Z"},
+     {id: 7, name: "Adam Moto Wake", email: "maji@gmail.com", phone: "915 22 111", address: "Grefsen Platåen", dateCreated: "2021-01-08T12:48:27.001123Z"},
+     {id: 8, name: "Johnson Katana Ndovu", email: "moto@hotmail.com", phone: "222 22 222", address: "Maridalsveien", dateCreated: "2021-01-08T12:48:27.001123Z"},
+     {id: 9, name: "Peter Ngara Mwendwa", email: "kazi@online.no", phone: "911 22 911", address: "Number 10", dateCreated: "2021-01-08T12:48:27.001123Z"},
+     {id: 10, name: "Masinde Murilo David", email: "sverige@kora.se", phone: "+44 510 22 777", address: "Downings Street", dateCreated: "2021-01-08T12:48:27.001123Z"}
     ];
 
     const handleChecked = (e) => {
