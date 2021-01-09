@@ -21,7 +21,7 @@ import React, { useState } from 'react';
         {listName}
         <ul className="myList">
             {list.map((item, index) => (
-            <ListItem key={index} item={item.title} handleChecked={handleChecked}/>
+            <ListItem key={index} item={item} handleChecked={handleChecked}/>
             ))}
         </ul>
       </div>  

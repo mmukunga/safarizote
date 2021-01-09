@@ -30,7 +30,7 @@ const Safaris = () => {
           <List listName="Safaris" list={safaris} handleCheck={handleChecked}/>
         </div>
          <ul>
-         { safaris.map(item => <li key={item._id}>{item.title}</li>) }
+         { safaris.map(item => <li key={item.id}>{item.title}</li>) }
          </ul>
       </div>
     );
