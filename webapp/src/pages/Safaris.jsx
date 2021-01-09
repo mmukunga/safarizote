@@ -8,8 +8,14 @@ const Safaris = () => {
     const [message, setMessage] = useState('Hi there, how are you?');
     const [safaris, setSafaris] = useState([]);
     const [checked, setChecked] = useState(false);
-    const [headers, setHeaders] = useState([]);
     
+    const data = [
+      {
+        Name: "Anssam",
+        Age: "20"
+      }
+    ];
+
     const handleChecked = (e) => {
       setChecked(!checked);
       console.log(e);
@@ -37,21 +43,8 @@ const Safaris = () => {
       <div className="Safaris">
          <h1>{message}</h1> 
          <h1>Hello StackBlitz!</h1>
-         
-         <Table>
-        <thead>
-           <Table.TR>
-             <Table.TH>Name</Table.TH>
-             <Table.TH>Age</Table.TH>
-           </Table.TR>
-        </thead>
-        <tbody>
-           <Table.TR>
-             <Table.TD>Anssam</Table.TD>
-             <Table.TD>20</Table.TD>
-           </Table.TR>
-        </tbody>
-      </Table>
+
+         <Table data={data}/>
 
          <div className="List">
           <List listName="Safaris" list={safaris} handleCheck={handleChecked}/>
