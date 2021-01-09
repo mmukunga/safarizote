@@ -1,12 +1,22 @@
 package com.example.safarizote.controller;
 
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+
+import org.springframework.web.bind.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Date;
+import com.example.safarizote.model.Customer;
+import com.example.safarizote.repository.CustomerRepository;
 
 @RestController
-public class HelloController { @Autowired
+public class HelloController { 
+    @Autowired
     private CustomerRepository repository;
 
     @GetMapping("/api/hello")
@@ -25,6 +35,4 @@ public class HelloController { @Autowired
     }
     return new ResponseEntity<>(sourceSet, HttpStatus.OK);
   }
-  
-
 }
