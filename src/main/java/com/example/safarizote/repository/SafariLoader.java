@@ -1,6 +1,9 @@
 package com.example.safarizote.repository;
 
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
 
 import java.time.Instant;
 import org.slf4j.Logger;
@@ -88,7 +91,7 @@ public class SafariLoader implements CommandLineRunner {
         bookings.add(Booking.builder().name("Masinde Murilo David").email("sverige@kora.se").phone("+44 510 22 777").address("Downings Street").dateCreated(Instant.now()).build());
 
         List<Safari> safaris = repository.findAll();
-        Set<Safari> hSet = new HashSet<String>(safaris); 
+        Set<Safari> hSet = new HashSet<Safari>(safaris); 
 
         System.out.println("Add Bookings");
         for (int i = 0; i < safaris.size(); i++) {
