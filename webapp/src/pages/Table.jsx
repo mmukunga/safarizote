@@ -1,6 +1,9 @@
 import React from "react";
 
 const Table = ({ headers, data }) => {
+    console.log('Table');
+    console.log(headers);
+    console.log(data);
   return (
     <div>
       <table>
@@ -15,7 +18,7 @@ const Table = ({ headers, data }) => {
           {data.map(row => (
             <tr>
               {headers.map(head => (
-                <td>{row[head]}</td>
+                <td>SMS{head} {row[head]}</td>
               ))}
             </tr>
           ))}

@@ -21,6 +21,7 @@ const Safaris = () => {
           setSafaris(response.data);
           var headers=[];
           Object.keys(response.data).forEach((data) => {
+            console.log(data);
             headers.push(data[0]);
           });
           console.log(headers);
