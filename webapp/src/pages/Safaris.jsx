@@ -25,14 +25,6 @@ const Safaris = () => {
         axios.get('/api/safaris').then(response => {
           console.log(response);
           setSafaris(response.data);
-          var headers=[];
-          response.data.forEach((data) => {
-            console.log(data);
-            console.log(data.title);
-            headers.push(data.title);
-          });
-          console.log(headers);
-          setHeaders(headers);
         }
       ).catch(err => {
         console.log(err);
