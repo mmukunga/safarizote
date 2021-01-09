@@ -87,13 +87,14 @@ public class SafariLoader implements CommandLineRunner {
         bookings.add(Booking.builder().name("Peter Ngara Mwendwa").email("kazi@online.no").phone("911 22 911").address("Number 10").dateCreated(Instant.now()).build());
         bookings.add(Booking.builder().name("Masinde Murilo David").email("sverige@kora.se").phone("+44 510 22 777").address("Downings Street").dateCreated(Instant.now()).build());
 
-        List<Booking> safaris = repository.findAll();
+        List<Safari> safaris = repository.findAll();
+        Set<Safari> hSet = new HashSet<String>(safaris); 
 
         System.out.println("Add Bookings");
         for (int i = 0; i < safaris.size(); i++) {
             System.out.println(safaris.get(i));
             Safari safari = safaris.get(i);
-            safari.setBookings(bookings);
+            safari.setBookings(hSet);
             repository.save(safari);
         }
  
