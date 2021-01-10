@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react';
-import { Route, Switch, Link, useHistory, BrowserRouter as Router } from "react-router-dom";
+import { Route, Switch, Link, BrowserRouter as Router } from "react-router-dom";
+import {browserHistory} from 'react-router';
 
 import logo from './logo.svg';
 import './App.css';
@@ -11,7 +12,13 @@ import Customer from './pages/Customer';
 
 function App() {
   const [message, setMessage] = useState("");
-  const history = useHistory();
+
+  useEffect(() => {
+      return browserHistory.listen((location, action) => {
+          console.log(`You changed the page to: ${location.pathname}`);
+          console.log(`You changed the page to: ${action}`)
+      })
+  },[history]);
 
   useEffect(() => {
     axios.get('/api/hello')
@@ -20,15 +27,7 @@ function App() {
          setMessage(response.data);
       });
   },[])
-  
-  useEffect(() => {
-      return history.listen((location, action) => { 
-        console.log(`You changed the page to: ${location.pathname}`); 
-        console.log(`The last navigation action was: ${action}`); 
-      }) 
-  },[history]); 
-
-
+ 
   return (
     <div className="App">
       <header className="App-header">
