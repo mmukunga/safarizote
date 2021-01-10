@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { Route, Switch, Link, useLocation, BrowserRouter as Router } from "react-router-dom";
+import { Route, Switch, Link, BrowserRouter as Router } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 
 import logo from './logo.svg';
@@ -13,7 +13,6 @@ import Customer from './pages/Customer';
 function App() {
   const [message, setMessage] = useState("");
   const history = useHistory();
-  const location = useLocation();
 
   useEffect(() => {
     axios.get('/api/hello')
