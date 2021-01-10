@@ -19,7 +19,7 @@ function Table({ children, ...props }) {
           {Object.values(el).map(el => {
               console.log('MyEl:=' + el);
               return (
-                <Table.TD>'el'</Table.TD>
+                <Table.TD>{el}</Table.TD>
               )}  
           )}
         </Table.TR>
