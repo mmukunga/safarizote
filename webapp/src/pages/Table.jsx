@@ -15,7 +15,7 @@ function Table({ children, ...props }) {
     const rows = props.data.map(el => (
         <Table.TR>
           {Object.values(el).map(el => (
-            <Table.TD>el</Table.TD>
+            <Table.TD>{el}</Table.TD>
           ))}
         </Table.TR>
       ));
