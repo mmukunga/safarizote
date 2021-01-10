@@ -25,13 +25,13 @@ const Safaris = () => {
     useEffect(() => {
         axios.get('/api/safaris').then(response => {
           console.log(response);
-          setSafaris([...data, ...response.data]);
+          setSafaris(response.data);
         }).catch(err => {
         console.log(err);
       });
     }, []);
 
-    console.log([].concat(safaris));
+    console.log(safaris);
 
     return (
       <div className="Safaris">
