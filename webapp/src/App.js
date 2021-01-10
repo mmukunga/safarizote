@@ -1,6 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { Route, Switch, Link, BrowserRouter as Router } from "react-router-dom";
-import { useHistory } from 'react-router-dom';
+import { Route, Switch, Link, useHistory, BrowserRouter as Router } from "react-router-dom";
 
 import logo from './logo.svg';
 import './App.css';
@@ -23,8 +22,9 @@ function App() {
   },[])
   
   useEffect(() => {
-      return history.list((location) => { 
+      return history.listen((location, action) => { 
         console.log(`You changed the page to: ${location.pathname}`); 
+        console.log(`The last navigation action was: ${action}`); 
       }) 
   },[history]); 
 
