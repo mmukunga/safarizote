@@ -16,10 +16,14 @@ function Table({ children, ...props }) {
         console.log(el);
         return (
         <Table.TR>
-          {Object.values(el).map(el => (
-            <Table.TD>'el'</Table.TD>
-          ))}
+          {Object.values(el).map(el => {
+              console.log('MyEl:=' + el);
+              return (
+                <Table.TD>'el'</Table.TD>
+              )}  
+          )}
         </Table.TR>
+
       );
     });
 
