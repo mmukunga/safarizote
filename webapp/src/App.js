@@ -25,7 +25,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <h3 className="App-title">{message}</h3>
+        <h3 className="App-title">{message.url}</h3>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
