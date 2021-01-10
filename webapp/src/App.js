@@ -27,8 +27,7 @@ function App() {
         console.log(`You changed the page to: ${location.pathname}`); 
       }) 
   },[history]); 
-
-  console.log(location);
+  
 
   return (
     <div className="App">
