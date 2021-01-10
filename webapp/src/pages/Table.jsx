@@ -12,13 +12,16 @@ function Table({ children, ...props }) {
     console.log('1.response..');
     const headerRow = headers.map(el => <Table.TH>{el}</Table.TH>);
     console.log('2.response..');
-    const rows = props.data.map(el => (
+    const rows = props.data.map(el => { 
+        console.log(el);
+        return (
         <Table.TR>
           {Object.values(el).map(el => (
-            <Table.TD>{el}</Table.TD>
+            <Table.TD>'el'</Table.TD>
           ))}
         </Table.TR>
-      ));
+      );
+    });
 
       return (
         <table {...props}>
