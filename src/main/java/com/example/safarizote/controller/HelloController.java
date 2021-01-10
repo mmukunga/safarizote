@@ -14,28 +14,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.safarizote.model.Customer;
-import com.example.safarizote.repository.CustomerRepository;
+import com.example.safarizote.model.Tracker;
+import com.example.safarizote.repository.TrackerRepository;
 
 @RestController
 public class HelloController { 
-    @Autowired
-    private CustomerRepository repository;
+  @Autowired
+  private TrackerRepository repository;
 
-    @GetMapping("/api/hello")
-    public String hello() {
-        return "Hello, the time at the server is now " + new Date() + "\n";
+    @RequestMapping(value = "/api/hello",  method={RequestMethod.GET})
+    public ResponseEntity<List<Tracker>> getAllVisits(HttpServletRequest request) {
+        System.out.println("Hello, the time at the server is now " + new Date() + "\n");
+        String requestUrl = request.getRequestURI();
+        System.out.println("Test Request URL:= " + requestUrl);
+        Tracker visit = Tracker.builder().url(requestUrl).browser("gECKO kENYA").dateCreated(Instant.now()).build();
+        System.out.println(request.getHeaders());
+        repository.save(visit);
+        List<Tracker> visits = repository.findAll();
+        return ResponseEntity.ok(visits);
     }
 
-  @RequestMapping(value = "/api/customers",  method={RequestMethod.GET})
-  public ResponseEntity<List<Customer>> customers(){
-    System.out.println("1. findAll()");
-    List<Customer> sourceSet = repository.findAll();
-    System.out.println("2. findAll()");
-    System.out.println("==============> 1. Simple For loop Example.");
-    for (int i = 0; i < sourceSet.size(); i++) {
-        System.out.println(sourceSet.get(i));
+    @RequestMapping(value = "/api/saveVisit",  method={RequestMethod.POST})
+    public void save(@RequestBody Tracker visit) {
+        repository.save(visit);
     }
-    return new ResponseEntity<>(sourceSet, HttpStatus.OK);
-  }
+
 }

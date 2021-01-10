@@ -1,24 +1,17 @@
 import React, { useState, useEffect} from 'react';
 import { Route, Switch, Link, BrowserRouter as Router } from "react-router-dom";
-import {browserHistory} from 'react-router';
 
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 
+import Home     from './pages/Home';
 import AboutUs  from './pages/AboutUs';
 import Safaris  from './pages/Safaris';
 import Customer from './pages/Customer';
 
 function App() {
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-      return browserHistory.listen((location, action) => {
-          console.log(`You changed the page to: ${location.pathname}`);
-          console.log(`You changed the page to: ${action}`)
-      })
-  },[history]);
+  const [message, setMessage] = useState({});
 
   useEffect(() => {
     axios.get('/api/hello')
@@ -47,12 +40,14 @@ function App() {
       </header>
       <Router>
         <ul>
-          <li><Link to="/">About Us</Link></li>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/aboutUs">About Us</Link></li>
           <li><Link to="/customers">Users</Link></li>
           <li><Link to="/safaris">Safaris</Link></li>
         </ul>
         <Switch>
-            <Route path="/" component={AboutUs} />
+            <Route exact path="/" component={Home} />
+            <Route path="/aboutUs" component={AboutUs} />
             <Route path="/customers" component={Customer} />
             <Route path="/safaris" component={Safaris} />
         </Switch>
