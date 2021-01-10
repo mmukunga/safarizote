@@ -33,12 +33,26 @@ const Safaris = () => {
 
     console.log(safaris);
 
+    var array_nodes = [];
+
+    safaris.forEach(function(safari) {
+      array_nodes.push({
+        id: safari.id,
+        title: safari.title,
+        price: safari.price,
+        description: safari.description,
+        dateCreated: safari.dateCreated
+      });
+  });
+  
+  console.log(array_nodes);
+
     return (
       <div className="Safaris">
          <h1>{message}</h1> 
          <h1>Hello StackBlitz!</h1>
 
-          {safaris && safaris.length > 0 ? <Table data={safaris}/> : <div>fUCK!!</div>}
+          {array_nodes && array_nodes.length > 0 ? <Table data={array_nodes}/> : <div>fUCK!!</div>}
 
          <div className="List">
           <List listName="Safaris" list={safaris} handleCheck={handleChecked}/>
