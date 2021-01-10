@@ -1,14 +1,20 @@
 import React, { useState, useEffect} from 'react';
-import { Route, Link, BrowserRouter as Router } from "react-router-dom";
+import { Route, Switch, Link, useLocation } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
+
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
-import Safaris from './pages/Safaris';
+
+import AboutUs  from './pages/AboutUs';
+import Safaris  from './pages/Safaris';
+import Customer from './pages/Customer';
 
 function App() {
   const [message, setMessage] = useState("");
-  const [customers, setCustomers] =  useState([]);
- 
+  const history = useHistory();
+  const location = useLocation();
+
   useEffect(() => {
     axios.get('/api/hello')
       .then(response => {
@@ -18,17 +24,12 @@ function App() {
   },[])
   
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-          const result = await axios.get('/api/customers');
-          console.log(result);
-          setCustomers(result.data);
-      } catch (e) {
-          console.log(e);
-      }
-    }
-    fetchData();
-  },[]);
+      return history.listen((location) => { 
+        console.log(`You changed the page to: ${location.pathname}`); 
+      }) 
+  },[history]); 
+
+  console.log(location);
 
   return (
     <div className="App">
@@ -47,19 +48,16 @@ function App() {
           Learn React
         </a>
       </header>
-      <Router>
-        <div>
-          <ul>
-            <li><Link to="/safaris">Safaris</Link></li>
-          </ul>
-          <Route path="/safaris" component={Safaris} />
-        </div>
-      </Router>
       <ul>
-          {customers.map(customer => 
-             <li key={customer.name}>{customer.name}</li>)
-          } 
-          </ul>
+        <li><Link to="/">About Us</Link></li>
+        <li><Link to="/customers">Users</Link></li>
+        <li><Link to="/safaris">Safaris</Link></li>
+      </ul>
+      <Switch>
+          <Route path="/" component={AboutUs} />
+          <Route path="/customers" component={Customer} />
+          <Route path="/safaris" component={Safaris} />
+      </Switch>
     </div>
   );
 }
