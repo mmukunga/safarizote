@@ -32,6 +32,7 @@ public class HelloController {
         System.out.println("Test Request URL:= " + requestUrl);
         Tracker visit = Tracker.builder().url(requestUrl).browser("gECKO kENYA").dateCreated(Instant.now()).build();
         System.out.println(request.getHeaders());
+        System.out.println(request.getContextPath());
         repository.save(visit);
         List<Tracker> visits = repository.findAll();
         return ResponseEntity.ok(visits);
