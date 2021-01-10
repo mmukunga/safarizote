@@ -23,11 +23,11 @@ function App() {
   },[])
   
   useEffect(() => {
-      return history.listen((location) => { 
+      return history.list((location) => { 
         console.log(`You changed the page to: ${location.pathname}`); 
       }) 
   },[history]); 
-  
+
 
   return (
     <div className="App">
