@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { Route, Switch, Link, useLocation } from "react-router-dom";
+import { Route, Switch, Link, useLocation, BrowserRouter as Router } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 
 import logo from './logo.svg';
@@ -48,16 +48,18 @@ function App() {
           Learn React
         </a>
       </header>
-      <ul>
-        <li><Link to="/">About Us</Link></li>
-        <li><Link to="/customers">Users</Link></li>
-        <li><Link to="/safaris">Safaris</Link></li>
-      </ul>
-      <Switch>
-          <Route path="/" component={AboutUs} />
-          <Route path="/customers" component={Customer} />
-          <Route path="/safaris" component={Safaris} />
-      </Switch>
+      <Router>
+        <ul>
+          <li><Link to="/">About Us</Link></li>
+          <li><Link to="/customers">Users</Link></li>
+          <li><Link to="/safaris">Safaris</Link></li>
+        </ul>
+        <Switch>
+            <Route path="/" component={AboutUs} />
+            <Route path="/customers" component={Customer} />
+            <Route path="/safaris" component={Safaris} />
+        </Switch>
+      </Router>
     </div>
   );
 }

@@ -18,11 +18,14 @@ const Customer = () => {
   },[]);
 
     return (
+        <div className="Costomer">
+            Customers!!!
           <ul>
             { 
               data.map(item => <li key={item.id}>{item.name}</li>) 
             }
           </ul>
+          </div> 
     )
 }
 

@@ -5,6 +5,7 @@ const AboutUs = () => {
 
     return (
         <div>
+            About Us!!
             <div>
                 { names.map((name, i) => <h1 key={i}>{name}</h1>) }
             </div>
