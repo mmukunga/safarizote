@@ -38,7 +38,7 @@ const Safaris = () => {
          <h1>{message}</h1> 
          <h1>Hello StackBlitz!</h1>
 
-         <Table data={safaris}/>
+          {safaris && safaris.length > 0 ? <Table data={safaris}/> : <div>fUCK!!</div>}
 
          <div className="List">
           <List listName="Safaris" list={safaris} handleCheck={handleChecked}/>
