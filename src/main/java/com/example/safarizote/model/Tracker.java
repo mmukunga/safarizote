@@ -1,3 +1,5 @@
+package com.example.safarizote.model;
+
 import java.time.Instant;
 
 import javax.persistence.Entity;
