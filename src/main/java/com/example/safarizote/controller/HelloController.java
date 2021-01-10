@@ -31,15 +31,15 @@ public class HelloController {
         String requestUrl = request.getRequestURI();
         System.out.println("Test Request URL:= " + requestUrl);
         Tracker visit = Tracker.builder().url(requestUrl).browser("gECKO kENYA").dateCreated(Instant.now()).build();
-        
+
         Enumeration<String> headerNames = request.getHeaderNames();
         while(headerNames.hasMoreElements()) {
             String paramName = (String)headerNames.nextElement();
-            out.print("<tr><td>" + paramName + "</td>\n");
+            System.out.print("<tr><td>" + paramName + "</td>\n");
             String paramValue = request.getHeader(paramName);
-            out.println("<td> " + paramValue + "</td></tr>\n");
+            System.out.println("<td> " + paramValue + "</td></tr>\n");
         }
-        out.println("</table>\n</body></html>");
+        System.out.println("</table>\n</body></html>");
 
         System.out.println(request.getContextPath());
         repository.save(visit);
