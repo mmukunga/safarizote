@@ -2,7 +2,7 @@ package com.example.safarizote.controller;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Instant;
+import java.time.Instant;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
