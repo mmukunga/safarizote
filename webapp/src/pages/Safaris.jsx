@@ -25,7 +25,7 @@ const Safaris = () => {
     useEffect(() => {
         axios.get('/api/safaris').then(response => {
           console.log(response);
-          setSafaris([...safaris, ...response.data]);
+          setSafaris([...data, ...response.data]);
         }).catch(err => {
         console.log(err);
       });
