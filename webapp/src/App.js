@@ -23,6 +23,7 @@ function App() {
  
   return (
     <div className="App">
+      <Router>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h3 className="App-title">{message.url}</h3>
@@ -36,22 +37,22 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
-        <Router>
+        </a>     
         <ul>
           <li><Link to="/">Home</Link></li>
           <li><Link to="/aboutUs">About Us</Link></li>
           <li><Link to="/customers">Users</Link></li>
           <li><Link to="/safaris">Safaris</Link></li>
         </ul>
-          <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/aboutUs" component={AboutUs} />
-              <Route path="/customers" component={Customer} />
-              <Route path="/safaris" component={Safaris} />
-          </Switch>
-        </Router>
       </header>
+      
+      <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/aboutUs" component={AboutUs} />
+          <Route path="/customers" component={Customer} />
+          <Route path="/safaris" component={Safaris} />
+      </Switch>
+      </Router>
     </div>
   );
 }
