@@ -36,10 +36,7 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-        </a>  
-        <div className="container">   
-          Simon
-        </div>
+        </a>
       </header>
       <nav>
         <Link to="/">Home</Link>
