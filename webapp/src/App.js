@@ -37,13 +37,15 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-        </a>     
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/aboutUs">About Us</Link></li>
-          <li><Link to="/customers">Users</Link></li>
-          <li><Link to="/safaris">Safaris</Link></li>
-        </ul>
+        </a>  
+        <div className="container">   
+          <ul className="nav">
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/aboutUs">About Us</Link></li>
+            <li><Link to="/customers">Users</Link></li>
+            <li><Link to="/safaris">Safaris</Link></li>
+          </ul>
+        </div>
       </header>
       
       <Switch>
