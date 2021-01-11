@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { Route, Switch, Link, BrowserRouter as Router } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 
 import logo from './logo.svg';
 import './App.css';
