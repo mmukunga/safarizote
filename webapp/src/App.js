@@ -37,21 +37,21 @@ function App() {
         >
           Learn React
         </a>
+        <Router>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/aboutUs">About Us</Link></li>
+          <li><Link to="/customers">Users</Link></li>
+          <li><Link to="/safaris">Safaris</Link></li>
+        </ul>
+          <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/aboutUs" component={AboutUs} />
+              <Route path="/customers" component={Customer} />
+              <Route path="/safaris" component={Safaris} />
+          </Switch>
+        </Router>
       </header>
-      <Router>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/aboutUs">About Us</Link></li>
-        <li><Link to="/customers">Users</Link></li>
-        <li><Link to="/safaris">Safaris</Link></li>
-       </ul>
-        <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/aboutUs" component={AboutUs} />
-            <Route path="/customers" component={Customer} />
-            <Route path="/safaris" component={Safaris} />
-        </Switch>
-      </Router>
     </div>
   );
 }
