@@ -14,7 +14,7 @@ function App() {
   const [message, setMessage] = useState({});
 
   useEffect(() => {
-    axios.get('/api/hello')
+    axios.get('/api/allHits')
       .then(response => {
          console.log(response);
          setMessage(response.data);

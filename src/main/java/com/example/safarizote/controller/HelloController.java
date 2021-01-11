@@ -26,9 +26,9 @@ public class HelloController {
   @Autowired
   private TrackerRepository repository;
 
-    @RequestMapping(value = "/api/hello",  method={RequestMethod.GET})
-    public ResponseEntity<List<Tracker>> getAllVisits(HttpServletRequest request) {
-        System.out.println("Hello, the time at the server is now " + new Date() + "\n");
+    @RequestMapping(value = "/api/allHits",  method={RequestMethod.GET})
+    public ResponseEntity<List<Tracker>> findAll(HttpServletRequest request) {
+        System.out.println("Hello, the time at the server is now " + new Date());
         String requestUrl = request.getRequestURI();
         System.out.println("Test Request URL:= " + requestUrl);
         Tracker visit = Tracker.builder().url(requestUrl).browser("gECKO kENYA").dateCreated(Instant.now()).build();

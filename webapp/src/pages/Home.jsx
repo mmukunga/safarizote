@@ -6,7 +6,7 @@ const Home = () => {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        axios.get('/api/hello')
+        axios.get('/api/allHits')
             .then(res => setData(res.data))
             .catch(err => console.log(err))
     }, [])
