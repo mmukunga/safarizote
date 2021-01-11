@@ -4,7 +4,7 @@ const Card = (props) => {
     const style = {
         width: '100%',
         margin:'5px',
-        padding: '5px';
+        padding: '5px',
         background: 'lightgrey',
         border: '2px solid red'
     }
