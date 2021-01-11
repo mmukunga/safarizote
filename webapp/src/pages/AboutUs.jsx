@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import Card from './Card';
 
 const AboutUs = () => {
     const [names, setNames] = useState(["joe", "steve", "carol"])
