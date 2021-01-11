@@ -5,8 +5,7 @@
 
 
 .Card {
-  max-width: 340px;
-  margin: auto;
+  margin: 0 auto;
   overflow-y: auto;
   position: relative;
   z-index: 1;
