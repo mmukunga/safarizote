@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Table from './Table';
+import Card from './Card';
 
 const Safaris = () => {
     const [message, setMessage] = useState('Hi there, how are you?');
@@ -38,11 +39,13 @@ const Safaris = () => {
   console.log(array_nodes);
 
     return (
-      <div className="Safaris">
-         <h3>Hello StackBlitz!</h3>
-         <p>{message}</p> 
-          {array_nodes && array_nodes.length > 0 ? <Table data={array_nodes}/> : <p>fUCK!!</p>}
-      </div>
+      <Card title="Safaris" text="Safari Zote">
+          <div className="Safaris">
+            <h3>Hello StackBlitz!</h3>
+            <p>{message}</p> 
+              {array_nodes && array_nodes.length > 0 ? <Table data={array_nodes}/> : <p>fUCK!!</p>}
+          </div>
+      </Card>
     );
   };
 

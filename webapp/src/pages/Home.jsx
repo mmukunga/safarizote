@@ -11,10 +11,11 @@ const Home = () => {
     }, [])
 
     return (
-        <div>
-            Home
-            { data.map(item => <p key={item.id}>Link: {item.url} Browser: {item.browser}</p>) }
-        </div>
+        <Card title="Home" text="The Home - Sipili!!">
+            <div>          
+                { data.map(item => <p key={item.id}>Link: {item.url} Browser: {item.browser}</p>) }
+            </div>
+        </Card>
     )
 }
 

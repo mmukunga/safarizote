@@ -4,13 +4,12 @@ const AboutUs = () => {
     const [names, setNames] = useState(["joe", "steve", "carol"])
 
     return (
-        <div>
-            About Us!!
-            <div>
-                { names.map((name, i) => <h1 key={i}>{name}</h1>) }
-            </div>
+        <Card title="About Us!!" text="We do Go-Downs">
+            <ul>
+                { names.map((name, i) => <li key={i}>{name}</li>) }
+            </ul>
             <button onClick={() => setNames(prev => [...prev, "frank"])}>Add Frank</button>
-        </div>
+        </Card>
     )
 }
 
