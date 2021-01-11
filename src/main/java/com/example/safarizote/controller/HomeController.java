@@ -22,35 +22,21 @@ import com.example.safarizote.model.Tracker;
 import com.example.safarizote.repository.TrackerRepository;
 
 @RestController
-public class HelloController { 
+public class HomeController { 
   @Autowired
   private TrackerRepository repository;
 
     @RequestMapping(value = "/api/allHits",  method={RequestMethod.GET})
-    public ResponseEntity<List<Tracker>> findAll(HttpServletRequest request) {
+    public ResponseEntity<List<Tracker>> findAll() {
         System.out.println("Hello, the time at the server is now " + new Date());
-        String requestUrl = request.getRequestURI();
-        System.out.println("Test Request URL:= " + requestUrl);
-        Tracker visit = Tracker.builder().url(requestUrl).browser("gECKO kENYA").dateCreated(Instant.now()).build();
-
-        Enumeration<String> headerNames = request.getHeaderNames();
-        while(headerNames.hasMoreElements()) {
-            String paramName = (String)headerNames.nextElement();
-            System.out.print("<tr><td>" + paramName + "</td>\n");
-            String paramValue = request.getHeader(paramName);
-            System.out.println("<td> " + paramValue + "</td></tr>\n");
-        }
-        System.out.println("</table>\n</body></html>");
-
-        System.out.println(request.getContextPath());
-        repository.save(visit);
         List<Tracker> visits = repository.findAll();
-        return ResponseEntity.ok(visits);
+        System.out.println("Hello, the time at the server is now " + new Date());
+        System.out.println("findSafaris() End OK!");
+        return new ResponseEntity<>(visits, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/api/saveVisit",  method={RequestMethod.POST})
     public void save(@RequestBody Tracker visit) {
         repository.save(visit);
     }
-
 }

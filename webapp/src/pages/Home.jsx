@@ -6,10 +6,15 @@ const Home = () => {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        axios.get('/api/allHits')
-            .then(res => setData(res.data))
-            .catch(err => console.log(err))
-    }, [])
+        axios.get('/api/allHits').then(response => {
+          console.log(response);
+          setData(response.data);
+        }).catch(err => {
+        console.log(err);
+      });
+    }, []);
+
+    console.log(data);
 
     return (
         <Card title="Home" text="The Home - Sipili!!">
