@@ -23,7 +23,6 @@ function App() {
  
   return (
     <div className="App">
-      <Router>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h3 className="App-title">{message.url}</h3>
@@ -42,19 +41,18 @@ function App() {
           Simon
         </div>
       </header>
-      <ul className="nav">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/aboutUs">About Us</Link></li>
-            <li><Link to="/customers">Users</Link></li>
-            <li><Link to="/safaris">Safaris</Link></li>
-          </ul>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/aboutUs">About Us</Link>
+        <Link to="/customers">Users</Link>
+        <Link to="/safaris">Safaris</Link>
+      </nav>
       <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/aboutUs" component={AboutUs} />
           <Route path="/customers" component={Customer} />
           <Route path="/safaris" component={Safaris} />
       </Switch>
-      </Router>
     </div>
   );
 }
