@@ -3,7 +3,18 @@ import axios from 'axios';
 import Card from './Card';
 
 const Home = () => {
-    const [data, setData] = useState([])
+    const [data, setData] = useState([]);
+    const [clientInfo, setClientInfo] = useState({})
+    
+   useEffect(() => {
+      axios.get('https://extreme-ip-lookup.com/json/')
+        .then(response => {
+            console.log(response);
+            setClientInfo(response.data);
+        }).catch(e => {
+            console.log(e);
+        })
+    }, []);
 
     useEffect(() => {
         axios.get('/api/allHits').then(response => {
@@ -12,9 +23,7 @@ const Home = () => {
         }).catch(err => {
         console.log(err);
       });
-    }, []);
-
-    console.log(data);
+    }, [clientInfo]);
 
     return (
         <Card title="Home" text="The Home - Sipili!!">
