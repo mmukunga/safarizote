@@ -38,14 +38,14 @@ function App() {
         >
           Learn React
         </a>  
-        <div className="container">   
+        <p className="container">   
           <ul className="nav">
             <li><Link to="/">Home</Link></li>
             <li><Link to="/aboutUs">About Us</Link></li>
             <li><Link to="/customers">Users</Link></li>
             <li><Link to="/safaris">Safaris</Link></li>
           </ul>
-        </div>
+        </p>
       </header>
       
       <Switch>
