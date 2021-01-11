@@ -9,12 +9,13 @@ import Home     from './pages/Home';
 import AboutUs  from './pages/AboutUs';
 import Safaris  from './pages/Safaris';
 import Customer from './pages/Customer';
+import Lotto from './pages/Lotto';
 
 function App() {
   const [message, setMessage] = useState({});
 
   useEffect(() => {
-    axios.get('/api/allHits')
+    axios.get('/api/tipping')
       .then(response => {
          console.log(response);
          setMessage(response.data);
@@ -42,6 +43,7 @@ function App() {
           <Link to="/aboutUs">About Us</Link>
           <Link to="/customers">Users</Link>
           <Link to="/safaris">Safaris</Link>
+          <Link to="/tipping">Tipping</Link>
         </nav>  
       </header>
       <Switch>
@@ -49,6 +51,7 @@ function App() {
           <Route path="/aboutUs" component={AboutUs} />
           <Route path="/customers" component={Customer} />
           <Route path="/safaris" component={Safaris} />
+          <Route path="/tipping" component={Lotto} />
       </Switch>
     </div>
   );

@@ -19,8 +19,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
-import com.example.safarizote.model.Booking;
-
 @Data
 @Entity
 @NoArgsConstructor
