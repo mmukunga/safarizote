@@ -20,11 +20,9 @@ const Customer = () => {
 
     return (
       <Card title="Customers" text="Our Customers">
-        <div className="Customer">
-            <ul>
-                {data.map(item => <li key={item.id}>{item.name}</li>)}
-            </ul>
-          </div> 
+        <ul>
+            {data.map(item => <li key={item.id}>{item.name}</li>)}
+        </ul>
       </Card>    
     )
 }

@@ -40,11 +40,9 @@ const Safaris = () => {
 
     return (
       <Card title="Safaris" text="Safari Zote">
-          <div className="Safaris">
             <h3>Hello StackBlitz!</h3>
             <p>{message}</p> 
               {array_nodes && array_nodes.length > 0 ? <Table data={array_nodes}/> : <p>fUCK!!</p>}
-          </div>
       </Card>
     );
   };

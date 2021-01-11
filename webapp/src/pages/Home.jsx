@@ -27,9 +27,9 @@ const Home = () => {
 
     return (
         <Card title="Home" text="The Home - Sipili!!">
-            <div>          
-                { data.map(item => <p key={item.id}>Link: {item.url} Browser: {item.browser}</p>) }
-            </div>
+            <ul>          
+                { data.map(item => <li key={item.id}>Link: {item.url} Browser: {item.browser}</li>) }
+            </ul>
         </Card>
     )
 }
