@@ -38,16 +38,16 @@ function App() {
         >
           Learn React
         </a>  
-        <p className="container">   
-          <ul className="nav">
+        <div className="container">   
+          Simon
+        </div>
+      </header>
+      <ul className="nav">
             <li><Link to="/">Home</Link></li>
             <li><Link to="/aboutUs">About Us</Link></li>
             <li><Link to="/customers">Users</Link></li>
             <li><Link to="/safaris">Safaris</Link></li>
           </ul>
-        </p>
-      </header>
-      
       <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/aboutUs" component={AboutUs} />
