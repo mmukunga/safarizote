@@ -37,15 +37,14 @@ function App() {
         >
           Learn React
         </a>
-        <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/aboutUs">About Us</Link></li>
-            <li><Link to="/customers">Users</Link></li>
-            <li><Link to="/safaris">Safaris</Link></li>
-        </ul>
-        <hr/>
       </header>
       <Router>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/aboutUs">About Us</Link></li>
+        <li><Link to="/customers">Users</Link></li>
+        <li><Link to="/safaris">Safaris</Link></li>
+       </ul>
         <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/aboutUs" component={AboutUs} />
