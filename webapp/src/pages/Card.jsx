@@ -2,7 +2,9 @@ import React from 'react';
  
 const Card = (props) => {
     const style = {
-        width: '500px',
+        width: '100%',
+        margin:'5px',
+        padding: '5px';
         background: 'lightgrey',
         border: '2px solid red'
     }
