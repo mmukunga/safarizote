@@ -7,12 +7,16 @@
 
 }
 .Rekke ul, .Rekke ul li {
-    display:inline-block;
+    display:block;
     padding:5px;
     margin:5px;
-    width: 100px;
+    width: 50px;
     background-color: silver;
     border:2px solid red;
+}
+
+.Rekke > li{
+    border: 2px solid black;
 }
 
 .RadTall {
