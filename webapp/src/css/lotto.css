@@ -8,8 +8,10 @@
 .Rekke ul, .Rekke ul li {
     display:inline;
     padding:5px;
+    margin:5px;
     width: 100px;
     background-color: silver;
+    border:2px solid red;
 }
 
 .RadTall {
