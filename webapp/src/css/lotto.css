@@ -5,7 +5,7 @@
     margin:0;
 }
 .Rekke ul, .Rekke ul li {
-    display:inline-block;
+    display:inline;
     padding:5px;
     width: 100px;
     background-color: silver;
