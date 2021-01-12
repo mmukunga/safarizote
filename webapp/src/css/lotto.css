@@ -37,6 +37,7 @@ ul.Lotto {
     width: 50px;
     padding: 16px;
     text-decoration: none;
+    border:2px solid orange;
   }
   
   li a:hover {
