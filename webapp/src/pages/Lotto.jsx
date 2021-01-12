@@ -20,15 +20,15 @@ const Customer = () => {
 
     return (
       <Card title="Lotto Kupong" text="Tipping i Lotto">
-        <ul className="Rekke">
+        <div className="Rekke">
           {data.map(rekke => 
-            <li key={rekke.id}>{rekke.pos}
-              <ul className="RadTall">
-                   {rekke.rad.map((trekk, idx) => <li key={idx}>{trekk}</li>)}
+            <div key={rekke.id}>
+              <ul className="menu">
+                 <li>{rekke.pos}</li>{rekke.rad.map((trekk, idx) => <li key={idx}>{trekk}</li>)}
               </ul>
-            </li>
+            </div>
           )}
-        </ul>
+        </div>
       </Card>    
     )
 }

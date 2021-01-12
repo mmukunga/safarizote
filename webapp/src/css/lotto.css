@@ -5,7 +5,20 @@
     margin:0;
     border:2px solid green;
 
+
+    border: 1px solid #000;
+    margin: 2em;
+    width: 80%;
+    padding: 5px;
+    font-family: Verdana, sans-serif;
+
 }
+
+ul.menu li {
+    display:inline;
+  }
+/*
+
 .Rekke ul, .Rekke ul li {
     display:block;
     padding:5px;
@@ -22,3 +35,5 @@
 .RadTall {
     color:red;
 }
+
+*/
