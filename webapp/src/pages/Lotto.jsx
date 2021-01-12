@@ -8,7 +8,7 @@ const Customer = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-          const result = await axios.get('/api/getKupong');
+          const result = await axios.get('/api/tipping');
           console.log(result);
           setData(result.data);
       } catch (e) {
