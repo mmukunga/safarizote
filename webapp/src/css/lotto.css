@@ -1,18 +1,50 @@
 .Rekke {
-    width: 100%;
-    list-style: none;
-    padding:0;
-    margin:0;
+   /* width: 100%;
+    list-style: none;*/
+    padding: 5px;
+    margin: 2em;
     border:2px solid green;
 
-
+/*
     border: 1px solid #000;
     margin: 2em;
     width: 80%;
     padding: 5px;
     font-family: Verdana, sans-serif;
+    */
 
 }
+
+
+
+ul.Lotto {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+  }
+/*  
+  li {
+    float: left;
+  }
+  */
+
+  ul.Lotto li {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: #111111;
+  }
+
+
+
+
 
 ul.menu li {
     display:inline;

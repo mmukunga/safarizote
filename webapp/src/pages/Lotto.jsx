@@ -23,7 +23,7 @@ const Customer = () => {
         <div className="Rekke">
           {data.map(rekke => 
             <div key={rekke.id}>
-              <ul className="menu">
+              <ul className="Lott0">
                  <li>{rekke.pos}</li>{rekke.rad.map((trekk, idx) => <li key={idx}>{trekk}</li>)}
               </ul>
             </div>
