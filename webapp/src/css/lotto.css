@@ -30,12 +30,13 @@ ul.Lotto {
   }
   */
 
-  ul.Lotto li {
-    display: block;
+  ul.Lotto > li {
+    display: inline-block;
     color: white;
     text-align: center;
     width: 50px;
     padding: 16px;
+    margin: 0 10px;
     text-decoration: none;
     border:2px solid orange;
   }
