@@ -16,8 +16,11 @@ import com.example.safarizote.model.Rekke;
 
 @RestController
 public class LottoController { 
+    // Antall rekker
+    // 10 rekker a 7 tall
     int antallRekker = 10;
     int antallTrekk  =  7;
+
     @RequestMapping(value = "/api/tipping",  method={RequestMethod.GET})
     public ResponseEntity<Set<Rekke>> tipping() {
         Random random = new Random();
@@ -25,19 +28,19 @@ public class LottoController {
         Kupong kupong = new Kupong(kupongId);
 
         for (int i = 0; i < antallRekker; i++) {
-            Rekke rekke = trekkRekke(i, 34);    
-            Set<Rekke> rekker = kupong.getRekker();
-            boolean fraFør;
-            do {
-              fraFør = false;  
-              for (Rekke r : rekker) {
-                if (r.equals(rekke)) {
-                   fraFør = true;
-                }
+          Rekke rekke = trekkRekke(i, 34);    
+          Set<Rekke> rekker = kupong.getRekker();
+          boolean fraFoer;
+          do {
+            fraFoer = false;  
+            for (Rekke r : rekker) {
+              if (r.equals(rekke)) {
+                fraFoer = true;
               }
-            } while ( fraFør );
-           
-            kupong.add(rekke);          
+            }
+          } while ( fraFoer );
+          
+          kupong.add(rekke);          
         }
     
         return new ResponseEntity<>(kupong.getRekker(), HttpStatus.OK);

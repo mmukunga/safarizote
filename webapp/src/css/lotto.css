@@ -1,0 +1,30 @@
+.Rekke {
+    width: 100%;
+    list-style-type: none;
+    padding:0;
+    margin:0;
+}
+.Rekke ul, .Rekke ul li {
+    display:inline;
+    padding:0;
+}
+
+.RadTall {
+    color:red;
+}
+
+/*
+ul.Lotto {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  ul.Lotto > li {
+    margin: 0 20px;
+  }
+  */
