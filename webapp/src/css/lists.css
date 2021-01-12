@@ -32,3 +32,17 @@
   border-radius: 10px;
   box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
 }
+
+ul.Lotto {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.Lotto > li {
+  margin: 0 20px;
+}

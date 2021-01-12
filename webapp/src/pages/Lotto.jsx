@@ -22,7 +22,7 @@ const Customer = () => {
       <Card title="Lotto Kupong" text="Tipping i Lotto">
         <ul>
             {data.map(rekke => <li key={rekke.id}>{rekke.pos}
-              <ul>
+              <ul className="Lotto">
                    {rekke.rad.map((trekk, idx) => <li key={idx}>{trekk}</li>)}
               </ul>
             </li>)}
