@@ -55,10 +55,9 @@ export const Input = ({text,
     );
 }
   
-
 export const Button = ({clicked, buttonType, children }) => {
     return (
-      <button type={buttonType} onClick={clicked}>
+      <button type={buttonType} onClick={clicked} className="Button">
         {children}
       </button>
     );
@@ -86,6 +85,20 @@ export const Select = (props) => {
             <option>Select Item</option>
             {options}
       </select>
+    );
+}
+
+export const TextArea = props => {
+    let formControl = "form-control";
+
+    if (props.touched && !props.valid) {
+        formControl = 'form-control control-error';
+    }
+
+    return (
+        <div className="form-group">
+            <textarea {...props} className={formControl} />
+        </div>
     );
 }
 
