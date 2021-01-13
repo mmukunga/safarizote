@@ -10,6 +10,7 @@ import AboutUs  from './pages/AboutUs';
 import Safaris  from './pages/Safaris';
 import Customer from './pages/Customer';
 import Lotto from './pages/Lotto';
+import SignIn from './pages/SignIn';
 
 function App() {
   const [message, setMessage] = useState({});
@@ -44,6 +45,7 @@ function App() {
           <Link to="/customers">Users</Link>
           <Link to="/safaris">Safaris</Link>
           <Link to="/tipping">Tipping</Link>
+          <Link to="/signIn">Login</Link>
         </nav>  
       </header>
       <Switch>
@@ -52,6 +54,7 @@ function App() {
           <Route path="/customers" component={Customer} />
           <Route path="/safaris" component={Safaris} />
           <Route path="/tipping" component={Lotto} />
+          <Route path="/signIn" component={SignIn} />
       </Switch>
     </div>
   );
