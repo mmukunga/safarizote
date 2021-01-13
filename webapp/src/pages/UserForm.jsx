@@ -22,11 +22,11 @@ const UserForm =
     return (
         <React.Fragment>
             {errors}
-            <Form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 {elements()}
                 <Button buttonType='primary'  type="submit">Submit</Button>
                 <Button buttonType="secondary" clicked={handleCancel}>Reset</Button>
-            </Form>
+            </form>
         </React.Fragment>
     );
  };
@@ -65,7 +65,7 @@ export const Button = ({clicked, buttonType, children }) => {
 }
 
 export const Select = (props) => {
-    const [data] = useState(props.data);
+    const [data] = React.useState(props.data);
     const [selectedData, setSelectedData] = useState("");
 
     function handleInputChange(event) {
