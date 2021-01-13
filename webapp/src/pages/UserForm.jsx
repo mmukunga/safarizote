@@ -44,7 +44,7 @@ export const Input = ({text,
         <>
            <label htmlFor={id}>{text}</label>
            <input
-            className={classes.input}
+            className="Input"
             required={required}
             name={name}
             id={id}
@@ -66,7 +66,7 @@ export const Button = ({clicked, buttonType, children }) => {
 
 export const Select = (props) => {
     const [data] = React.useState(props.data);
-    const [selectedData, setSelectedData] = useState("");
+    const [selectedData, setSelectedData] = React.useState("");
 
     function handleInputChange(event) {
         setSelectedData(event.target.value);
