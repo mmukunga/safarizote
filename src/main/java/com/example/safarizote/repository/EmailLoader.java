@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import javax.mail.MessagingException;
 
-import com.example.utils.EmailClient;
+import com.example.utils.EmailService;
 
 import java.io.IOException;
 
@@ -14,7 +14,7 @@ import java.io.IOException;
 public class EmailLoader implements CommandLineRunner {
 
     @Autowired
-    private EmailClient emailClient;
+    private EmailService emailClient;
 
     @Override
     public void run(String... args) {

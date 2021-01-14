@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.safarizote.model.Email;
 import com.example.safarizote.repository.EmailRepository;
-import com.example.utils.EmailClient;
+import com.example.utils.EmailService;
 
 @RestController
 public class EmailController { 
@@ -23,7 +23,7 @@ public class EmailController {
   private EmailRepository repository;
 
   @Autowired
-  private EmailClient emailClient;
+    private EmailService emailService;
 
     @RequestMapping(value="/api/email",  method={RequestMethod.GET})
     public ResponseEntity<List<Email>> findAll() {
@@ -31,12 +31,14 @@ public class EmailController {
         List<Email> visits = repository.findAll();
         System.out.println("Hello, the time at the server is now " + new Date());
         System.out.println("findSafaris() End OK!");
-        emailClient.sendEmail();
         return new ResponseEntity<>(visits, HttpStatus.OK);
     }
 
     @RequestMapping(value="/api/sendMessage",  method={RequestMethod.POST})
     public void sendEmail(@RequestBody Email visit) {
+        System.out.println("Hello, the time at the server is now " + new Date());
+        emailService.sendEmail();
+        System.out.println("findSafaris() End OK!");
         repository.save(visit);
     }
 }

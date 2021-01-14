@@ -18,12 +18,12 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
 @Service
-public class EmailClient {
+public class EmailService {
 
-    //@Autowired
+    @Autowired
     private JavaMailSender javaMailSender;
     
-    public EmailClient(JavaMailSender javaMailSender) {
+    public EmailService(JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
       }
 
@@ -34,7 +34,7 @@ public class EmailClient {
         msg.setSubject("Testing from Spring Boot");
         msg.setText("Hello World \n Spring Boot Email");
 
-        javaMailSender().send(msg);
+        javaMailSender.send(msg);
 
     }
 
@@ -55,23 +55,4 @@ public class EmailClient {
 
         javaMailSender.send(msg);
     }
-
-    @Bean
-    public JavaMailSender javaMailSender() {
-        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-        mailSender.setHost("smtp.gmail.com");
-        mailSender.setPort(587);
-
-        mailSender.setUsername("username.gmail.com");
-        mailSender.setPassword("password");
-
-        Properties props = mailSender.getJavaMailProperties();
-        props.put("mail.transport.protocol", "smtp");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.debug", "true");
-
-        return mailSender;
-    }
-
 }
