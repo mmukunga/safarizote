@@ -1,5 +1,5 @@
 import React, { useState, useReducer } from "react";
-import UserForm, { Input, Button, Select } from "./UserForm";
+import UserForm, { InputField } from "./UserForm";
 
 const initialState = {
   email: "",
@@ -28,7 +28,7 @@ const SignIn = () => {
     dispatch({ type: "reset" });
 };
 
-const handleChange = e => {
+const onChange = e => {
   const { name, value } = e.target;
   dispatch({ type: name, value });
 };
@@ -43,8 +43,8 @@ const handleChange = e => {
         <>
           <div controlId="ControlId">
             Please Sign In!
-            <Input handleChange={handleChange}/>
-            <Input handleChange={handleChange}/>
+            <InputField handleChange={onChange}/>
+            <InputField handleChange={onChange}/>
           </div>
         </>
       )}
