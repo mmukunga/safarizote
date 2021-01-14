@@ -14,14 +14,14 @@ import java.io.IOException;
 public class EmailLoader implements CommandLineRunner {
 
     @Autowired
-    private EmailService emailClient;
+    private EmailService emailService;
 
     @Override
     public void run(String... args) {
         System.out.println("Sending Email...");
         try {
-            emailClient.sendEmail();
-            emailClient.sendEmailWithAttachment();
+            emailService.sendEmail();
+            emailService.sendEmailWithAttachment();
 
         } catch (MessagingException e) {
             e.printStackTrace();
