@@ -32,7 +32,7 @@ const UserForm =
  };
 
 
-export const Input = ({text,
+export const InputField = ({text,
     type,
     placeholder = text,
     onChange,
