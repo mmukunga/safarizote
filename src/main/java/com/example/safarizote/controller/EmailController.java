@@ -22,8 +22,12 @@ public class EmailController {
   @Autowired
   private EmailRepository repository;
 
-  @Autowired
-    private EmailService emailService;
+    private final EmailService emailService;
+
+    @Autowired
+    EmailController(EmailService emailService) {
+        this.emailService = emailService;
+    }
 
     @RequestMapping(value="/api/email",  method={RequestMethod.GET})
     public ResponseEntity<List<Email>> findAll() {
