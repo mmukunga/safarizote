@@ -15,20 +15,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.safarizote.model.Email;
 import com.example.safarizote.repository.EmailRepository;
-import com.example.utils.EmailService;
+import com.example.safarizote.utils.EmailService;
 
 @RestController
 public class EmailController { 
   @Autowired
   private EmailRepository repository;
 
-    private EmailService emailService;
-
-    @Autowired
-    @Qualifier("emailService")
-    public void setService(EmailService service) {
-        this.emailService = service;
-    }
+  @Autowired
+	private EmailService emailService;
 
     @RequestMapping(value="/api/email",  method={RequestMethod.GET})
     public ResponseEntity<List<Email>> findAll() {
