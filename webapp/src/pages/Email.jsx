@@ -40,7 +40,7 @@ const Email = () => {
     <UserForm
       cancel={() => {console.log('cancel')}}
       errors={[]}
-      onChange={handleChange}
+      onChange={onChange}
       submit={handleSubmit}
       elements={() => (
         <>
