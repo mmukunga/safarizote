@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,11 +22,12 @@ public class EmailController {
   @Autowired
   private EmailRepository repository;
 
-    private final EmailService emailService;
+    private EmailService emailService;
 
     @Autowired
-    EmailController(EmailService emailService) {
-        this.emailService = emailService;
+    @Qualifier("emailService")
+    public void setService(EmailService service) {
+        this.emailService = service;
     }
 
     @RequestMapping(value="/api/email",  method={RequestMethod.GET})
