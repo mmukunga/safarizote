@@ -13,25 +13,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.safarizote.model.ContactUs;
-import com.example.safarizote.repository.ContactUsRepository;
+import com.example.safarizote.model.Email;
+import com.example.safarizote.repository.EmailRepository;
+import com.example.utils.EmailClient;
 
 @RestController
-public class ContactUsController { 
+public class EmailController { 
   @Autowired
-  private ContactUsRepository repository;
+  private EmailRepository repository;
 
-    @RequestMapping(value = "/api/contactUs",  method={RequestMethod.GET})
-    public ResponseEntity<List<ContactUs>> findAll() {
+  @Autowired
+  private EmailClient emailClient;
+
+    @RequestMapping(value="/api/email",  method={RequestMethod.GET})
+    public ResponseEntity<List<Email>> findAll() {
         System.out.println("Hello, the time at the server is now " + new Date());
-        List<ContactUs> visits = repository.findAll();
+        List<Email> visits = repository.findAll();
         System.out.println("Hello, the time at the server is now " + new Date());
         System.out.println("findSafaris() End OK!");
+        emailClient.sendEmail();
         return new ResponseEntity<>(visits, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/api/sendMessage",  method={RequestMethod.POST})
-    public void save(@RequestBody ContactUs visit) {
+    @RequestMapping(value="/api/sendMessage",  method={RequestMethod.POST})
+    public void sendEmail(@RequestBody Email visit) {
         repository.save(visit);
     }
 }

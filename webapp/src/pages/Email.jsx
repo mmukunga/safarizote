@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import UserForm, { Input, Button, TextArea } from "./UserForm";
 import axios from 'axios';
 
-const ContactUs = () => {
+const Email = () => {
   const [status, setStatus] = useState("Submit");
 
   const handleSubmit = async (e) => {
@@ -52,4 +52,4 @@ const ContactUs = () => {
   );
 };
 
-export default ContactUs;
+export default Email;

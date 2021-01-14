@@ -17,7 +17,7 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ContactUs {
+public class Email {
     @Id @GeneratedValue Long id;
     @NonNull  String name;
     @NonNull String email;
