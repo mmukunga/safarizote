@@ -1,14 +1,18 @@
 package com.example.utils;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -16,9 +20,13 @@ import javax.mail.internet.MimeMessage;
 @Service
 public class EmailClient {
 
-    @Autowired
+    //@Autowired
     private JavaMailSender javaMailSender;
     
+    public EmailClient(JavaMailSender javaMailSender) {
+        this.javaMailSender = javaMailSender;
+      }
+
     public void sendEmail() throws MailException {
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setTo("to_1@gmail.com", "to_2@gmail.com", "to_3@yahoo.com");
@@ -26,7 +34,7 @@ public class EmailClient {
         msg.setSubject("Testing from Spring Boot");
         msg.setText("Hello World \n Spring Boot Email");
 
-        javaMailSender.send(msg);
+        javaMailSender().send(msg);
 
     }
 
@@ -47,4 +55,23 @@ public class EmailClient {
 
         javaMailSender.send(msg);
     }
+
+    @Bean
+    public JavaMailSender javaMailSender() {
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+        mailSender.setHost("smtp.gmail.com");
+        mailSender.setPort(587);
+
+        mailSender.setUsername("username.gmail.com");
+        mailSender.setPassword("password");
+
+        Properties props = mailSender.getJavaMailProperties();
+        props.put("mail.transport.protocol", "smtp");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.debug", "true");
+
+        return mailSender;
+    }
+
 }
