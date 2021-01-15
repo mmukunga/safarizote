@@ -26,7 +26,15 @@ const Email = () => {
   const handleSubmit = async (e) => {
     console.log('Send Email');
     console.log(e);
-    axios.post("/api/sendEmail", form)
+
+    const formData = {
+      name: "Simon Mukunga",
+      email: "mkunsim@gmail.com",
+      message: "Email- Just Testing!! Great Stuff!!",
+      dateCreated: new Date()
+    };
+
+    axios.post("/api/sendEmail", formData)
       .then(response => {
           alert.success('Customer has been created');
           console.log(response);

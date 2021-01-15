@@ -11,7 +11,7 @@ const UserForm =
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        submit();
+        submit(event);
     }
 
     const handleCancel = (event) => {
