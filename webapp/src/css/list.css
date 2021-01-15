@@ -2,3 +2,20 @@
 .Safaris {
   border: 2px solid orange;
 }
+
+
+.Nav_link:link {
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  text-decoration: none;
+}
+.Nav_link:visited {
+  color: #fff;
+}
+.Nav_link:hover {
+  color: yellow;
+}
+.Nav_link:active {
+  color: teal;
+}

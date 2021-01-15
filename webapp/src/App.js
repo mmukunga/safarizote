@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { Route, Switch, Link } from "react-router-dom";
+import { Route, Switch, NavLink } from "react-router-dom";
 
 import logo from './logo.svg';
 import './App.css';
@@ -42,13 +42,13 @@ function App() {
           Learn React
         </a>
         <nav>
-          <Link to="/">Home</Link>
-          <Link to="/aboutUs">About Us</Link>
-          <Link to="/customers">Users</Link>
-          <Link to="/safaris">Safaris</Link>
-          <Link to="/tipping">Tipping</Link>
-          <Link to="/signIn">Login</Link>
-          <Link to="/email">Contact Us</Link>
+          <NavLink to="/" className="Nav_link">Home</NavLink>
+          <NavLink to="/aboutUs" className="Nav_link">About Us</NavLink>
+          <NavLink to="/customers" className="Nav_link">Users</NavLink>
+          <NavLink to="/safaris" className="Nav_link">Safaris</NavLink>
+          <NavLink to="/tipping" className="Nav_link">Tipping</NavLink>
+          <NavLink to="/signIn" className="Nav_link">Login</NavLink>
+          <NavLink to="/email" className="Nav_link">Contact Us</NavLink>
         </nav>  
       </header>
       <Switch>

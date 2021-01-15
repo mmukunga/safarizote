@@ -81,7 +81,7 @@ export const Select = (props) => {
     return (
       <div className="form-control">
         <label className="field-label">Select</label>   
-        <label htmlFor={id}>Select..</label> 
+        <label htmlFor={props.id}>Select..</label> 
         <select
          name={props.name} 
          id={props.id} type={props.type}
