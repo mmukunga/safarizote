@@ -41,7 +41,7 @@ export const InputField = ({text,
     required = false}) => {
   
     return (
-        <>
+        <div className="form-control">
            <label htmlFor={id}>{text}</label>
            <input
             className="Input"
@@ -51,7 +51,7 @@ export const InputField = ({text,
             type={type}
             placeholder={placeholder}
             onChange={onChange}/>
-        </>
+        </div>
     );
 }
   
@@ -79,12 +79,15 @@ export const Select = (props) => {
     ));
 
     return (
-      <select name="customSearch"
-        className="custom-search-select"
-        onChange={handleInputChange}>
-            <option>Select Item</option>
-            {options}
-      </select>
+      <div className="form-control">
+        <label>Select</label>    
+        <select name="customSearch"
+            className="custom-search-select"
+            onChange={handleInputChange}>
+                <option>Select Item</option>
+                {options}
+        </select>
+      </div>
     );
 }
 
@@ -92,7 +95,7 @@ export const TextArea = props => {
     let formControl = "form-control";
 
     return (
-        <div className="form-group">
+        <div className="form-control">
              <label className="form-label">{props.text}</label>
             <textarea {...props} className="form-input" />
         </div>

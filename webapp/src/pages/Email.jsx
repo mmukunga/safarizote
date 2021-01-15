@@ -12,14 +12,16 @@ const initialState = {
 const Email = () => {
   const [email, setEmail] = useState(initialState);
 
-  const handleChange=(e)=>{
-    const { name, value } = e.target;
-    setEmail(prevState => ({ ...prevState, [name]: value }));
-    };
+  const handleChange = (event) => {
+    setEmail((prevProps) => ({
+      ...prevProps,
+      [event.target.name]: event.target.value
+    }));
+  };
   
-    const clearState = () => {
-      setEmail({ ...initialState });
-    };
+  const clearState = () => {
+    setEmail({ ...initialState });
+  };
 
   const handleSubmit = async (e) => {
     console.log('Send Email');
@@ -46,7 +48,7 @@ const Email = () => {
       elements={() => (
         <>
           <div className="Email">
-            Please send us a Message..
+            <p>Please send us a Message..</p>
             <InputField name="name" text="Name" type="text" onChange={handleChange}/>
             <InputField name="email" text="Email" type="email" onChange={handleChange}/>
             <TextArea name="message" text="Message" rows="4" cols="50" placeholder="Write here.."  onChange={handleChange}/>
