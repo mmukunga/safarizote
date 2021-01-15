@@ -10,28 +10,32 @@ const initialState = {
 };
 
 const Email = () => {
-  const [email, setEmail] = useState(initialState);
+  const [form, setForm] = useState(initialState);
 
   const handleChange = (event) => {
-    setEmail((prevProps) => ({
+    setForm((prevProps) => ({
       ...prevProps,
       [event.target.name]: event.target.value
     }));
   };
   
   const clearState = () => {
-    setEmail({ ...initialState });
+    setForm({ ...initialState });
   };
 
   const handleSubmit = async (e) => {
     console.log('Send Email');
     console.log(e);
-    console.log('Send Email OK!');
-    let response = await axios.post("/api/sendEmail", email);
-
-    clearState();
-
-    console.log(response);
+    axios.post("/api/sendEmail", form)
+      .then(response => {
+          alert.success('Customer has been created');
+          console.log(response);
+          clearState();
+          console.log('Send Email OK!');
+      }).catch(error => {
+          alert.error('Error: Could not save the customer');
+          console.log(error);
+      });  
   };
 
   return (
@@ -43,11 +47,10 @@ const Email = () => {
       onChange={handleChange}
       submit={handleSubmit}
       elements={() => (
-        <>
-          
-            <InputField name="name" text="Name" type="text" onChange={handleChange}/>
-            <InputField name="email" text="Email" type="email" onChange={handleChange}/>
-            <TextArea name="message" text="Message" rows="4" cols="50" placeholder="Write here.."  onChange={handleChange}/>
+        <>        
+          <InputField name="name" text="Name" type="text" onChange={handleChange}/>
+          <InputField name="email" text="Email" type="email" onChange={handleChange}/>
+          <TextArea name="message" text="Message" rows="4" cols="50" placeholder="Write here.."  onChange={handleChange}/>
         </>
       )}
     >    
