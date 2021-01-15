@@ -59,11 +59,12 @@ public class EmailServiceImpl implements IEmailService {
         javaMailSender.setUsername("mkunsim@gmail.com");
         javaMailSender.setPassword("Thufili002");
 
-    //Get email properties and set
+        //Get email properties and set
         Properties props = javaMailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");
         props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "false");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("spring.mail.properties.mail.smtp.starttls.enable", "true");
         props.put("mail.debug", "true");
 
         javaMailSender.setJavaMailProperties(props);
