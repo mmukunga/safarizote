@@ -35,14 +35,17 @@
   }
   
   .form-control label {
-    width: 20%;
+    width: 100px;
     padding-right: 20px;
     margin-bottom: 5px;
   }
   
   .form-control input[type="text"],
+  .form-control input[type="email"],
+  .form-control input[type="phone"],
+  .form-control input[type="message"],
   .form-control input[type="password"] {
-    width: 40%;
+    width: 200px;
     padding: 5px;
   }
   

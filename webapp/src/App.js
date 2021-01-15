@@ -72,7 +72,7 @@ const Card = props => {
     backgroundColor: backgroundColor,
     color: fontColor,
     borderRadius: 10,
-    margin: 10
+    margin: '10px auto'
   };
   const labelStyles = { color: fontColor };
 
