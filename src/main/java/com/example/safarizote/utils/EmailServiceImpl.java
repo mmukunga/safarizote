@@ -14,22 +14,46 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
-@Service
+
+import java.io.UnsupportedEncodingException;
+ 
+import javax.mail.MessagingException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+ 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
+
+
+
+@Service("mailService")
 public class EmailServiceImpl implements IEmailService {
     private static final Logger logger = LoggerFactory.getLogger(EmailServiceImpl.class);
     @Autowired
-    private JavaMailSender javaMailSender;
-    
+    JavaMailSender mailSender;
+ 
     @Override
     public void sendEmail(Email email) {
-        SimpleMailMessage msg = new SimpleMailMessage();
-        System.out.println("EmailServiceImpl Email Data " + email);
-        //msg.setTo("to_1@gmail.com", "to_2@gmail.com", "to_3@yahoo.com");
-        msg.setTo("mkunsim@gmail.com");
-        msg.setSubject("Testing from Spring Boot");
-        msg.setText("Hello World \n Spring Boot Email");
-
-        javaMailSender.send(msg);
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+ 
+        try {
+ 
+            MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
+ 
+            mimeMessageHelper.setSubject("Matusi");
+            mimeMessageHelper.setFrom(new InternetAddress(email.getEmail(), "technicalkeeda.com"));
+            mimeMessageHelper.setTo("mkunsim@gmail.com");
+            mimeMessageHelper.setText(email.getMessage());
+ 
+            mailSender.send(mimeMessageHelper.getMimeMessage());
+ 
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -37,7 +61,7 @@ public class EmailServiceImpl implements IEmailService {
     public void sendEmailWithAttachment() throws MessagingException {
         logger.info("Sending email with attachment start");
 
-		MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+		MimeMessage mimeMessage = mailSender.createMimeMessage();
 
         // Set multipart mime message true
         MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage,
@@ -53,7 +77,7 @@ public class EmailServiceImpl implements IEmailService {
         mimeMessageHelper.addAttachment("logo.png",
                 new ClassPathResource("logo-100.png"));
 
-        javaMailSender.send(mimeMessage);
+        mailSender.send(mimeMessage);
 
 
 		logger.info("Email with attachment sent");
@@ -63,6 +87,6 @@ public class EmailServiceImpl implements IEmailService {
     @Override
     public void sendHTMLEmail() {
         logger.info("HTML email sending start");
-		MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+		MimeMessage mimeMessage = mailSender.createMimeMessage();
     }
 }

@@ -20,7 +20,7 @@ public class EmailController {
   @Autowired
   private EmailRepository repository;
 
-  @Autowired
+    @Autowired
 	private IEmailService emailService;
 
     @RequestMapping(value="/api/email",  method={RequestMethod.GET})
