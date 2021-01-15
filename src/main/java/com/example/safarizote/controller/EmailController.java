@@ -33,11 +33,12 @@ public class EmailController {
     }
 
     @RequestMapping(value="/api/sendEmail",  method={RequestMethod.POST})
-    public void sendEmail(@RequestBody Email email) {
+    public ResponseEntity<Email> sendEmail(@RequestBody Email email) {
         System.out.println("Email, the time at the server is now " + new Date());
         System.out.println("Email " + email);
         emailService.sendEmail(email);
         System.out.println("Emails() Send End OK!");
         repository.save(email);
+        return new ResponseEntity<>(email, HttpStatus.OK);
     }
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import UserForm, { InputField, TextArea } from "./UserForm";
 import axios from 'axios';
 
@@ -11,6 +11,17 @@ const initialState = {
 
 const Email = () => {
   const [form, setForm] = useState(initialState);
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    axios.get("/api/email")
+        .then(response => {
+          setUsers(response.data)
+        })
+  }, []);
+
+  console.log(users);
+  console.log(form);
 
   const handleChange = (event) => {
     setForm((prevProps) => ({
@@ -36,7 +47,7 @@ const Email = () => {
 
     axios.post("/api/sendEmail", formData)
       .then(response => {
-          alert.success('Customer has been created');
+        console.log('User has been created');
           console.log(response);
           clearState();
           console.log('Send Email OK!');
