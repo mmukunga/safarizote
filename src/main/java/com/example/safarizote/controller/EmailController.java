@@ -24,20 +24,20 @@ public class EmailController {
 	private IEmailService emailService;
 
     @RequestMapping(value="/api/email",  method={RequestMethod.GET})
-    public ResponseEntity<List<Email>> findAll() {
-        System.out.println("Hello, the time at the server is now " + new Date());
-        List<Email> visits = repository.findAll();
-        System.out.println("Hello, the time at the server is now " + new Date());
-        System.out.println("findSafaris() End OK!");
-        return new ResponseEntity<>(visits, HttpStatus.OK);
+    public ResponseEntity<List<Email>> emails() {
+        System.out.println("Email, the time at the server is now " + new Date());
+        List<Email> emails = repository.findAll();
+        System.out.println("Email, the time at the server is now " + new Date());
+        System.out.println("Emails() End OK!");
+        return new ResponseEntity<>(emails, HttpStatus.OK);
     }
 
-    @RequestMapping(value="/api/sendMessage",  method={RequestMethod.POST})
+    @RequestMapping(value="/api/sendEmail",  method={RequestMethod.POST})
     public void sendEmail(@RequestBody Email email) {
-        System.out.println("Hello, the time at the server is now " + new Date());
+        System.out.println("Email, the time at the server is now " + new Date());
         System.out.println("Email " + email);
         emailService.sendEmail(email);
-        System.out.println("findSafaris() End OK!");
+        System.out.println("Emails() Send End OK!");
         repository.save(email);
     }
 }
