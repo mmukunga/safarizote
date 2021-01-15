@@ -91,13 +91,10 @@ export const Select = (props) => {
 export const TextArea = props => {
     let formControl = "form-control";
 
-    if (props.touched && !props.valid) {
-        formControl = 'form-control control-error';
-    }
-
     return (
         <div className="form-group">
-            <textarea {...props} className={formControl} />
+             <label className="form-label">{props.text}</label>
+            <textarea {...props} className="form-input" />
         </div>
     );
 }

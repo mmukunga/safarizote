@@ -12,7 +12,7 @@ const initialState = {
 const Email = () => {
   const [email, setEmail] = useState(initialState);
 
-  const onChange=(e)=>{
+  const handleChange=(e)=>{
     const { name, value } = e.target;
     setEmail(prevState => ({ ...prevState, [name]: value }));
     };
@@ -45,10 +45,10 @@ const Email = () => {
       elements={() => (
         <>
           <div controlId="ControlId">
-            Please Sign In!
-            <InputField id="name" handleChange={onChange}/>
-            <InputField id="email" handleChange={onChange}/>
-            <TextArea id="message" handleChange={onChange}/>
+            Please send us a Message..
+            <InputField name="name" text="Name" type="text" onChange={handleChange}/>
+            <InputField name="email" text="Email" type="email" onChange={handleChange}/>
+            <TextArea name="message" text="Message" rows="4" cols="50" placeholder="Write here.."  onChange={handleChange}/>
           </div>
         </>
       )}
