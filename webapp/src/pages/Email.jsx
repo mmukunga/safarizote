@@ -52,7 +52,6 @@ const Email = () => {
           clearState();
           console.log('Send Email OK!');
       }).catch(error => {
-          alert.error('Error: Could not save the customer');
           console.log(error);
       });  
   };

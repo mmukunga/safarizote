@@ -7,48 +7,38 @@ import com.example.safarizote.model.Email;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.mail.SimpleMailMessage;
+import org.springframework.context.annotation.Bean;
+import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-
 
 import java.io.UnsupportedEncodingException;
- 
-import javax.mail.MessagingException;
+import java.net.UnknownHostException;
+import java.util.Properties;
+
 import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
- 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.stereotype.Service;
-
-
 
 @Service("mailService")
 public class EmailServiceImpl implements IEmailService {
     private static final Logger logger = LoggerFactory.getLogger(EmailServiceImpl.class);
-    @Autowired
-    JavaMailSender mailSender;
- 
+
     @Override
-    public void sendEmail(Email email) {
-        MimeMessage mimeMessage = mailSender.createMimeMessage();
- 
+    public void sendEmail(Email email) throws MailException, UnknownHostException {
+        MimeMessage mimeMessage = getJavaMailSender().createMimeMessage();
+
         try {
- 
+
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
- 
+
             mimeMessageHelper.setSubject("Matusi");
             mimeMessageHelper.setFrom(new InternetAddress(email.getEmail(), "technicalkeeda.com"));
             mimeMessageHelper.setTo("mkunsim@gmail.com");
             mimeMessageHelper.setText(email.getMessage());
- 
-            mailSender.send(mimeMessageHelper.getMimeMessage());
- 
+
+            getJavaMailSender().send(mimeMessageHelper.getMimeMessage());
+
         } catch (MessagingException e) {
             e.printStackTrace();
         } catch (UnsupportedEncodingException e) {
@@ -57,36 +47,27 @@ public class EmailServiceImpl implements IEmailService {
 
     }
 
-    @Override
-    public void sendEmailWithAttachment() throws MessagingException {
-        logger.info("Sending email with attachment start");
+    /*
+    Configure javamail sender with details.
+    */
+    @Bean
+    public JavaMailSender getJavaMailSender() throws UnknownHostException{
+        JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
+        javaMailSender.setProtocol("smtp");
+        javaMailSender.setHost("smtp.gmail.com");
+        javaMailSender.setPort(587);
+        javaMailSender.setUsername("mkunsim@gmail.com");
+        javaMailSender.setPassword("Thufili002");
 
-		MimeMessage mimeMessage = mailSender.createMimeMessage();
+    //Get email properties and set
+        Properties props = javaMailSender.getJavaMailProperties();
+        props.put("mail.transport.protocol", "smtp");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "false");
+        props.put("mail.debug", "true");
 
-        // Set multipart mime message true
-        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage,
-                true);
-
-        mimeMessageHelper.setTo("mkunsim@gmail.com");
-        mimeMessageHelper
-                .setSubject("Spring Boot=> Sending email with attachment");
-        mimeMessageHelper.setText(
-                "Dear Santosh, I have sent you Websparrow.org new logo. PFA.");
-
-        // Attach the attachment
-        mimeMessageHelper.addAttachment("logo.png",
-                new ClassPathResource("logo-100.png"));
-
-        mailSender.send(mimeMessage);
-
-
-		logger.info("Email with attachment sent");
-
-    }
-
-    @Override
-    public void sendHTMLEmail() {
-        logger.info("HTML email sending start");
-		MimeMessage mimeMessage = mailSender.createMimeMessage();
+        javaMailSender.setJavaMailProperties(props);
+        
+        return javaMailSender;
     }
 }

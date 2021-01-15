@@ -1,11 +1,9 @@
 package com.example.safarizote.utils;
 
-import javax.mail.MessagingException;
-
+import java.net.UnknownHostException;
 import com.example.safarizote.model.Email;
+import org.springframework.mail.MailException;
 
 public interface IEmailService {
-    void sendEmail(Email email);
-	void sendEmailWithAttachment() throws MessagingException;
-	void sendHTMLEmail();
+    void sendEmail(Email email) throws MailException, UnknownHostException;
 }

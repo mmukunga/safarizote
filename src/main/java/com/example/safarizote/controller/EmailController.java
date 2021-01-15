@@ -1,5 +1,6 @@
 package com.example.safarizote.controller;
 
+import java.net.UnknownHostException;
 import java.util.Date;
 import java.util.List;
 
@@ -36,7 +37,12 @@ public class EmailController {
     public ResponseEntity<Email> sendEmail(@RequestBody Email email) {
         System.out.println("Email, the time at the server is now " + new Date());
         System.out.println("Email " + email);
-        emailService.sendEmail(email);
+        try {
+            emailService.sendEmail(email);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         System.out.println("Emails() Send End OK!");
         repository.save(email);
         return new ResponseEntity<>(email, HttpStatus.OK);
