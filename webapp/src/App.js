@@ -48,7 +48,7 @@ function App() {
           <NavLink to="/safaris" className="Nav_link">Safaris</NavLink>
           <NavLink to="/tipping" className="Nav_link">Tipping</NavLink>
           <NavLink to="/signIn" className="Nav_link">Login</NavLink>
-          <NavLink to="/email" className="Nav_link">Contact Us</NavLink>
+          <NavLink to="/email" className="Nav_link">Email</NavLink>
         </nav>  
       </header>
       <Switch>

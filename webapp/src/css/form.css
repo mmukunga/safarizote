@@ -82,6 +82,7 @@
       width: auto;
       float: none;
       text-align: left;
+      width: 100%;
     }
 
     .form-control input[type="text"],
@@ -91,5 +92,6 @@
     .form-control input[type="password"] {
       display: block;
       width: 100%;
+      margin-left: 1px;
     }
   }
