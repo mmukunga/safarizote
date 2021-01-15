@@ -39,7 +39,8 @@ const Email = () => {
   };
 
   return (
-    
+    <div className="Email">
+    <p>Please send us a Message..</p>
     <UserForm
       cancel={() => {console.log('cancel')}}
       errors={[]}
@@ -47,16 +48,15 @@ const Email = () => {
       submit={handleSubmit}
       elements={() => (
         <>
-          <div className="Email">
-            <p>Please send us a Message..</p>
+          
             <InputField name="name" text="Name" type="text" onChange={handleChange}/>
             <InputField name="email" text="Email" type="email" onChange={handleChange}/>
             <TextArea name="message" text="Message" rows="4" cols="50" placeholder="Write here.."  onChange={handleChange}/>
-          </div>
         </>
       )}
     >    
     </UserForm>
+    </div>
   );
 };
 
