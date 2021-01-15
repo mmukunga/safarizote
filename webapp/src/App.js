@@ -26,7 +26,7 @@ function App() {
  
   return (
     <div className="App">
-       <Card fontColor="white" backgroundColor="grey" title="Safari Zote">
+       <Card fontColor="black" backgroundColor="grey" title="Safari Zote">
        <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p className="App-title">{message.url}</p>
