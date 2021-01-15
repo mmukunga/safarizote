@@ -57,6 +57,10 @@
     margin-left: 25px;
   }
   
+  .form-input {
+    border: 1px solid red;
+  }
+
   button {
     max-width: 150px;
     padding: 5px 10px;
@@ -69,11 +73,23 @@
   
     .form-control {
       /*flex-direction: column;*/
-      width:100%;
+      display: block;
+      width: 100%;
     }
   
+    .form-control .field-label {
+      display: inline-block;
+      width: auto;
+      float: none;
+      text-align: left;
+    }
+
     .form-control input[type="text"],
+    .form-control input[type="email"],
+    .form-control input[type="phone"],
+    .form-control input[type="message"],
     .form-control input[type="password"] {
-      width: inherit;
+      display: block;
+      width: 100%;
     }
   }

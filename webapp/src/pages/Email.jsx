@@ -3,14 +3,14 @@ import UserForm, { InputField, TextArea } from "./UserForm";
 import axios from 'axios';
 
 const initialState = {
-  username: "",
-  email: "",
-  message: "",
+  name: "Simon Mukunga",
+  email: "mkunsim@gmail.com",
+  message: "Email- Just Testing!! Great Stuff!!",
   dateCreated: new Date()
 };
 
 const Email = () => {
-  const [form, setForm] = useState(initialState);
+  const [formData, setFormData] = useState(initialState);
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -21,33 +21,25 @@ const Email = () => {
   }, []);
 
   console.log(users);
-  console.log(form);
+  console.log(formData);
 
   const handleChange = (event) => {
-    setForm((prevProps) => ({
+    setFormData((prevProps) => ({
       ...prevProps,
       [event.target.name]: event.target.value
     }));
   };
   
   const clearState = () => {
-    setForm({ ...initialState });
+    setFormData({ ...initialState });
   };
 
   const handleSubmit = async (e) => {
     console.log('Send Email');
     console.log(e);
-
-    const formData = {
-      name: "Simon Mukunga",
-      email: "mkunsim@gmail.com",
-      message: "Email- Just Testing!! Great Stuff!!",
-      dateCreated: new Date()
-    };
-
     axios.post("/api/sendEmail", formData)
       .then(response => {
-        console.log('User has been created');
+          console.log('User has been created');
           console.log(response);
           clearState();
           console.log('Send Email OK!');
@@ -68,7 +60,7 @@ const Email = () => {
         <>        
           <InputField name="name" text="Name" type="text" onChange={handleChange}/>
           <InputField name="email" text="Email" type="email" onChange={handleChange}/>
-          <TextArea name="message" text="Message" rows="4" cols="50" placeholder="Write here.."  onChange={handleChange}/>
+          <TextArea name="message" text="Message" rows="4" cols="50" onChange={handleChange} placeholder="Write here.."/>
         </>
       )}
     >    

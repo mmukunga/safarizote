@@ -32,8 +32,8 @@ public class EmailServiceImpl implements IEmailService {
 
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
 
-            mimeMessageHelper.setSubject("Matusi");
-            mimeMessageHelper.setFrom(new InternetAddress(email.getEmail(), "technicalkeeda.com"));
+            mimeMessageHelper.setSubject(email.getName());
+            mimeMessageHelper.setFrom(new InternetAddress(email.getEmail(), "safarizote.heroku.com"));
             mimeMessageHelper.setTo("mkunsim@gmail.com");
             mimeMessageHelper.setText(email.getMessage());
 
@@ -48,7 +48,7 @@ public class EmailServiceImpl implements IEmailService {
     }
 
     /*
-    Configure javamail sender with details.
+     * Configure javamail sender with details.
     */
     @Bean
     public JavaMailSender getJavaMailSender() throws UnknownHostException{

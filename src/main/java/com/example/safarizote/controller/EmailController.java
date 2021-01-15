@@ -45,6 +45,7 @@ public class EmailController {
 
         System.out.println("Emails() Send End OK!");
         repository.save(email);
+        System.out.println("Emails() Saved End OK!");
         return new ResponseEntity<>(email, HttpStatus.OK);
     }
 }
