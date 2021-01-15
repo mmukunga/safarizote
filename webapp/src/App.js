@@ -26,7 +26,8 @@ function App() {
  
   return (
     <div className="App">
-      <header className="App-header">
+       <Card fontColor="white" backgroundColor="grey" title="Safari Zote">
+       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p className="App-title">{message.url}</p>
         <p>
@@ -59,8 +60,26 @@ function App() {
           <Route path="/signIn" component={SignIn} />
           <Route path="/email" component={Email} />
       </Switch>
+      </Card>  
     </div>
   );
 }
 
+const Card = props => {
+  const { fontColor, backgroundColor, children } = props;
+  const containerStyles = {
+    width: 700,
+    backgroundColor: backgroundColor,
+    color: fontColor,
+    borderRadius: 10,
+    margin: 10
+  };
+  const labelStyles = { color: fontColor };
+
+  return (
+    <div style={containerStyles}>
+      <div style={labelStyles}>{ children }</div>
+    </div>
+  );
+};
 export default App;

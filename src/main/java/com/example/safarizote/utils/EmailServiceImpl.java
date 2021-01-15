@@ -3,6 +3,8 @@ package com.example.safarizote.utils;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
+import com.example.safarizote.model.Email;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +21,11 @@ public class EmailServiceImpl implements IEmailService {
     private JavaMailSender javaMailSender;
     
     @Override
-    public void sendEmail() {
+    public void sendEmail(Email email) {
         SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setTo("to_1@gmail.com", "to_2@gmail.com", "to_3@yahoo.com");
-
+        System.out.println("EmailServiceImpl Email Data " + email);
+        //msg.setTo("to_1@gmail.com", "to_2@gmail.com", "to_3@yahoo.com");
+        msg.setTo("mkunsim@gmail.com");
         msg.setSubject("Testing from Spring Boot");
         msg.setText("Hello World \n Spring Boot Email");
 
@@ -40,7 +43,7 @@ public class EmailServiceImpl implements IEmailService {
         MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage,
                 true);
 
-        mimeMessageHelper.setTo("santosh@example.com");
+        mimeMessageHelper.setTo("mkunsim@gmail.com");
         mimeMessageHelper
                 .setSubject("Spring Boot=> Sending email with attachment");
         mimeMessageHelper.setText(

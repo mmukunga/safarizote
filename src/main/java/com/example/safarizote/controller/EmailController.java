@@ -33,10 +33,11 @@ public class EmailController {
     }
 
     @RequestMapping(value="/api/sendMessage",  method={RequestMethod.POST})
-    public void sendEmail(@RequestBody Email visit) {
+    public void sendEmail(@RequestBody Email email) {
         System.out.println("Hello, the time at the server is now " + new Date());
-        emailService.sendEmail();
+        System.out.println("Email " + email);
+        emailService.sendEmail(email);
         System.out.println("findSafaris() End OK!");
-        repository.save(visit);
+        repository.save(email);
     }
 }
