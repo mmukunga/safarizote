@@ -1,4 +1,5 @@
 .Card {
+    max-width: 600px;
     margin: auto;
     overflow-y: auto;
     position: relative;

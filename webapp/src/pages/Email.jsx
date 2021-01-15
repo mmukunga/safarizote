@@ -44,7 +44,7 @@ const Email = () => {
       submit={handleSubmit}
       elements={() => (
         <>
-          <div controlId="ControlId">
+          <div className="Email">
             Please send us a Message..
             <InputField name="name" text="Name" type="text" onChange={handleChange}/>
             <InputField name="email" text="Email" type="email" onChange={handleChange}/>
