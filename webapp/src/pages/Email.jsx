@@ -27,11 +27,7 @@ const Email = () => {
     console.log('Send Email');
     console.log(e);
     console.log('Send Email OK!');
-    let response = await axios.post("/api/sendEmail", email, {
-        headers: {
-            "Content-Type": "application/json;charset=utf-8",
-        }
-    });
+    let response = await axios.post("/api/sendEmail", email);
 
     clearState();
 
