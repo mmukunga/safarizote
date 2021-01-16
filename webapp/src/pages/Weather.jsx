@@ -42,18 +42,36 @@ const Weather = () => {
 
     useEffect(() => {
         axios.get('/api/countries')
-            .then(res => setCountries(res.data))
-            .catch(err => console.log(err))
+            .then(res => {
+                var array_nodes = [];
+                res.data.forEach(function(d) {
+                   array_nodes.push({
+                     name: d.name,
+                     code: d.code
+                   });
+                 });    
+                 console.log(array_nodes);
+                setCountries(array_nodes);
+            }).catch(err => console.log(err))
     }, []);
 
     useEffect(() => {
         axios.get('/api/cities', state.country)
-            .then(res => setCities(res.data))
-            .catch(err => console.log(err))
+            .then(res => {
+                var array_nodes = [];
+                res.data.forEach(function(d) {
+                   array_nodes.push({  
+                     country: d.country,
+                     name: d.name
+                   });
+                 });    
+                 console.log(array_nodes);
+                 setCities(array_nodes);
+            }).catch(err => console.log(err))
     }, [state.country]);
 
     console.log(state.country.name);
-    
+
     return (
         <div className="Weather">
             Weather!
