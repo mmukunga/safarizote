@@ -24,45 +24,52 @@ public class CountryLoader implements CommandLineRunner {
 
     @Autowired
     private CountryRepository repository;
-    
+
+    @Autowired
+    private CountryRepository cityRepository;
+
     @Override
     public void run(String... args) throws Exception {
+/*
         if (repository.count() > 0) {
             return;
         }
-
-        String fileName = "countries.json";
-        ClassLoader classLoader = getClass().getClassLoader();
-        try (InputStream is = classLoader.getResourceAsStream(fileName);
-        Reader reader = new InputStreamReader(is, StandardCharsets.UTF_8)) {
-            Gson gson = new Gson();
-            Country[] countries = gson.fromJson(reader, Country[].class);   
-            Arrays.stream(countries).forEach( e -> {
-                List<City> cities = new ArrayList<>();
-                repository.save(Country.builder()
-                  .name(e.getName()).code(e.getCode())
-                  .cities(cities).build());                
-                System.out.println(e);  
-            });
-        } 
-
+*/
+        if (repository.count() == 0) {
+            String fileName = "countries.json";
+            ClassLoader classLoader = getClass().getClassLoader();
+            try (InputStream is = classLoader.getResourceAsStream(fileName);
+            Reader reader = new InputStreamReader(is, StandardCharsets.UTF_8)) {
+                Gson gson = new Gson();
+                Country[] countries = gson.fromJson(reader, Country[].class);   
+                Arrays.stream(countries).forEach( e -> {
+                    List<City> cities = new ArrayList<>();
+                    repository.save(Country.builder()
+                    .name(e.getName()).code(e.getCode())
+                    .cities(cities).build());                
+                    System.out.println(e);  
+                });
+            } 
+        }
         
-        String fileCityName = "cities.json";
-        ClassLoader classCityLoader = getClass().getClassLoader();
-        try (InputStream is = classCityLoader.getResourceAsStream(fileCityName);
-        Reader reader = new InputStreamReader(is, StandardCharsets.UTF_8)) {
-            Gson gson = new Gson();
-            City[] cities = gson.fromJson(reader, City[].class);   
-            Arrays.stream(cities).forEach( e -> {
-              Country country = repository.findByName(e.getCountry());
-              country.getCities().add(e);
-              repository.save(country);                
-              System.out.println(e);   
-            });
+        if (cityRepository.count() == 0) {
+            String fileCityName = "cities.json";
+            ClassLoader classCityLoader = getClass().getClassLoader();
+            try (InputStream is = classCityLoader.getResourceAsStream(fileCityName);
+            Reader reader = new InputStreamReader(is, StandardCharsets.UTF_8)) {
+                Gson gson = new Gson();
+                City[] cities = gson.fromJson(reader, City[].class);   
+                Arrays.stream(cities).forEach( city -> {
+                    Country country = repository.findByCode(city.getCountry());
+                    country.getCities().add(city);
+                    repository.save(country);                
+                    System.out.println(city);   
+                });
+            }
         }
 
         repository.findAll().forEach((country) -> {
-            logger.info("{}", country);
+            logger.info("{}", country.getName());
         });
     }
 }

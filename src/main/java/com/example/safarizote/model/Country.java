@@ -14,6 +14,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import lombok.Singular;
 
 @Data
 @Entity
@@ -24,6 +25,6 @@ public class Country {
     @Id @GeneratedValue Long id;
     @NonNull String name;
     @NonNull String code;
-    @OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
+    @Singular @OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
     List<City> cities;
 }
