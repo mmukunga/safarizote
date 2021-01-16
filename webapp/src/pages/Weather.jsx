@@ -37,15 +37,23 @@ const Weather = () => {
     };
 
     useEffect(() => {
-        axios.get('/api/countries')
-            .then(res => setCountries(res.data))
-            .catch(err => console.log(err))
+        axios.get('/api/countries').then(response => {
+            console.log(response);
+            setCountries(response.data);
+            console.log('Countries OK!!');
+        }).catch(err => {
+            console.log(err);
+        });
     }, []);
 
     useEffect(() => {
-        axios.get('/api/cities')
-            .then(res => setCountries(res.data))
-            .catch(err => console.log(err))
+        axios.get('/api/cities').then(response => {
+            console.log(response);
+            setCities(response.data);
+            console.log('Cities OK!!');
+        }).catch(err => {
+            console.log(err);
+        });
     }, [country]);
 
     return (       
