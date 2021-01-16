@@ -3,8 +3,8 @@ import UserForm, { Select } from "./UserForm";
 import axios from 'axios';
 
 const initialState = {
-    country: "AF",
-    city: "Kabul"
+    country: {},
+    city: {}
   };
   
   const reducer = (state, action) => {
@@ -46,7 +46,7 @@ const Weather = () => {
     }, []);
 
     useEffect(() => {
-        axios.post('/api/cities', country).then(response => {
+        axios.post('/api/cities', state.country).then(response => {
             console.log(response);
             setCities(response.data);
             console.log('Cities OK!!');
