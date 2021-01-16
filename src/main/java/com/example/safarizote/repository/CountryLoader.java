@@ -1,9 +1,7 @@
 package com.example.safarizote.repository;
 
-import java.io.File;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +15,6 @@ import com.example.safarizote.model.City;
 import com.example.safarizote.model.Country;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 
@@ -34,15 +31,12 @@ public class CountryLoader implements CommandLineRunner {
             return;
         }
 
-        Gson gson = new GsonBuilder().create();
-        
+        String fileName = "countries.json";
         ClassLoader classLoader = getClass().getClassLoader();
-        URL resource = classLoader.getResource("countries.json");
-        Path path = new File(resource.getFile()).toPath();
-
-        try (Reader reader = Files.newBufferedReader(path, 
-        StandardCharsets.UTF_8)) {
-            Country[] countries = gson.fromJson(reader, Country[].class);            
+        try (InputStream is = classLoader.getResourceAsStream(fileName);
+        Reader reader = new InputStreamReader(is, StandardCharsets.UTF_8)) {
+            Gson gson = new Gson();
+            Country[] countries = gson.fromJson(reader, Country[].class);   
             Arrays.stream(countries).forEach( e -> {
                 List<City> cities = new ArrayList<>();
                 repository.save(Country.builder()
@@ -50,20 +44,20 @@ public class CountryLoader implements CommandLineRunner {
                   .cities(cities).build());                
                 System.out.println(e);  
             });
-        }
+        } 
 
-        ClassLoader classLoader2 = getClass().getClassLoader();
-        URL resource2 = classLoader2.getResource("cities.json");
-        Path path2 = new File(resource2.getFile()).toPath();
-
-        try (Reader reader = Files.newBufferedReader(path2, 
-        StandardCharsets.UTF_8)) {
-            City[] cities = gson.fromJson(reader, City[].class);            
+        
+        String fileCityName = "cities.json";
+        ClassLoader classCityLoader = getClass().getClassLoader();
+        try (InputStream is = classCityLoader.getResourceAsStream(fileCityName);
+        Reader reader = new InputStreamReader(is, StandardCharsets.UTF_8)) {
+            Gson gson = new Gson();
+            City[] cities = gson.fromJson(reader, City[].class);   
             Arrays.stream(cities).forEach( e -> {
-                Country country = repository.findByName(e.getCountry());
-                  country.getCities().add(e);
-                repository.save(country);                
-                System.out.println(e);  
+              Country country = repository.findByName(e.getCountry());
+              country.getCities().add(e);
+              repository.save(country);                
+              System.out.println(e);   
             });
         }
 
