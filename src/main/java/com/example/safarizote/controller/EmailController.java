@@ -1,6 +1,5 @@
 package com.example.safarizote.controller;
 
-import java.net.UnknownHostException;
 import java.util.Date;
 import java.util.List;
 

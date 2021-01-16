@@ -34,22 +34,22 @@ const onChange = e => {
 };
 
   return (
-    <UserForm
-      cancel={() => {console.log('cancel')}}
-      errors={[]}
-      onChange={onChange}
-      submit={handleSubmit}
-      elements={() => (
-        <>
-          <div controlId="ControlId">
-            Please Sign In!
+    <div controlId="ControlId">
+      Please Sign In!
+      <UserForm
+        cancel={() => {console.log('cancel')}}
+        errors={[]}
+        onChange={onChange}
+        submit={handleSubmit}
+        elements={() => (
+          <>       
             <InputField handleChange={onChange}/>
             <InputField handleChange={onChange}/>
-          </div>
-        </>
-      )}
-    >    
-    </UserForm>
+          </>
+        )}
+      >    
+      </UserForm>
+    </div>
     );
 } 
 

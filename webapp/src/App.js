@@ -12,6 +12,7 @@ import Customer from './pages/Customer';
 import Lotto from './pages/Lotto';
 import SignIn from './pages/SignIn';
 import Email from './pages/Email';
+import Weather from './pages/Weather';
 
 function App() {
   const [message, setMessage] = useState({});
@@ -49,6 +50,7 @@ function App() {
           <NavLink to="/tipping" className="Nav_link">Tipping</NavLink>
           <NavLink to="/signIn" className="Nav_link">Login</NavLink>
           <NavLink to="/email" className="Nav_link">Email</NavLink>
+          <NavLink to="/weather" className="Nav_link">Weather</NavLink>
         </nav>  
       </header>
       <Switch>
@@ -59,6 +61,7 @@ function App() {
           <Route path="/tipping" component={Lotto} />
           <Route path="/signIn" component={SignIn} />
           <Route path="/email" component={Email} />
+          <Route path="/weather" component={Weather} />
       </Switch>
       </Card>  
     </div>
