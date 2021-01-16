@@ -2,9 +2,15 @@ import React, { useState, useEffect, useReducer } from 'react';
 import UserForm, { Select } from "./UserForm";
 import axios from 'axios';
 
-const initialState = {
-    country: {},
-    city: {}
+   const initialState = {
+       country: {
+           name:'Afghanistan', 
+           code:'AF'
+       },
+       city: {
+           country: 'AF', 
+           name: 'Kabul'
+       }
   };
   
   const reducer = (state, action) => {
@@ -46,8 +52,8 @@ const Weather = () => {
             .catch(err => console.log(err))
     }, [state.country]);
 
-    console.log(state.county);
-
+    console.log(state.country.name);
+    
     return (
         <div className="Weather">
             Weather!
