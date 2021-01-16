@@ -43,7 +43,8 @@ const Weather = () => {
     useEffect(() => {
         axios.get('/api/countries')
             .then(res => {
-                var array_nodes = [];
+                console.log(res);
+                let array_nodes = [];
                 res.data.forEach(function(d) {
                    array_nodes.push({
                      name: d.name,
@@ -51,14 +52,15 @@ const Weather = () => {
                    });
                  });    
                  console.log(array_nodes);
-                setCountries(array_nodes);
+                //setCountries(array_nodes);
             }).catch(err => console.log(err))
     }, []);
 
     useEffect(() => {
         axios.get('/api/cities', state.country)
             .then(res => {
-                var array_nodes = [];
+                console.log(res);
+                let array_nodes = [];
                 res.data.forEach(function(d) {
                    array_nodes.push({ 
                      country: d.country, 
@@ -67,30 +69,17 @@ const Weather = () => {
                    });
                  });    
                  console.log(array_nodes);
-                 setCities(array_nodes);
+                 //setCities(array_nodes);
             }).catch(err => console.log(err))
     }, [state.country]);
 
-    console.log(countries);
-    console.log(cities);
+    //console.log(countries);
+    //console.log(cities);
 
     return (
         <div className="Weather">
             Weather!
             Country: {state.country} City: {state.city}
-            <UserForm
-                cancel={() => {console.log('cancel')}}
-                errors={[]}
-                onChange={onChange}
-                submit={handleSubmit}
-                elements={() => (
-                    <>
-                        <Select id="country" name="country" data={countries} text="Country" onChange={onChange}/>
-                        <Select id="city" name="country" data={cities} text="City" onChange={onChange}/>                    
-                    </>
-                )}
-                >    
-                </UserForm>
         </div>
     );
 }
