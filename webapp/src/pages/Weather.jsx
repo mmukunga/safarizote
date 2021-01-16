@@ -47,7 +47,7 @@ const Weather = () => {
                 res.data.forEach(function(d) {
                    array_nodes.push({
                      name: d.name,
-                     code: d.code
+                     id: d.code
                    });
                  });    
                  console.log(array_nodes);
@@ -60,8 +60,9 @@ const Weather = () => {
             .then(res => {
                 var array_nodes = [];
                 res.data.forEach(function(d) {
-                   array_nodes.push({  
-                     country: d.country,
+                   array_nodes.push({ 
+                     country: d.country, 
+                     id: d.id,  
                      name: d.name
                    });
                  });    
@@ -70,7 +71,8 @@ const Weather = () => {
             }).catch(err => console.log(err))
     }, [state.country]);
 
-    console.log(state.country.name);
+    console.log(countries);
+    console.log(cities);
 
     return (
         <div className="Weather">
