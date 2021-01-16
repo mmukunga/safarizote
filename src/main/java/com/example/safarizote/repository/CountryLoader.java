@@ -24,7 +24,7 @@ public class CountryLoader implements CommandLineRunner {
 
     @Autowired
     private CountryRepository repository;
-
+    
     @Override
     public void run(String... args) throws Exception {
         if (repository.count() > 0) {

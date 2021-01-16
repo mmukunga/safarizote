@@ -46,7 +46,7 @@ const Weather = () => {
             .catch(err => console.log(err))
     }, [state.country]);
 
-    console.log(state);
+    console.log(state.county);
 
     return (
         <div className="Weather">
