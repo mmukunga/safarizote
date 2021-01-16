@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Weather = () => {
-    const [names, setNames] = useState(["joe", "steve", "carol"])
-    const [data, setData] = useState([])
+    const [names, setNames] = useState(["joe", "steve", "carol"]);
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         axios.get('/api/countries')
@@ -19,7 +20,7 @@ const Weather = () => {
             </div>
             <button onClick={() => setNames(prev => [...prev, "frank"])}>Add Frank</button>
         </div>
-    )
+    );
 }
 
 export default Weather
