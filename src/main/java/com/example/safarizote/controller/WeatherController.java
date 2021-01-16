@@ -35,12 +35,12 @@ public class WeatherController {
     @RequestMapping(value="/api/cities",  method={RequestMethod.POST})       
     public ResponseEntity<List<City>> getCities(@RequestBody Country country) { 
         System.out.println("Cities..");       
-        System.out.println("Country:=" + country);
+        System.out.println("Cities - Country:=" + country);
         List<Country> countries = repository.findAll();
         Country dbCountry = repository.findByCode(country.getCode());
-        System.out.println("DBCountry:=" + dbCountry);    
+        System.out.println("Cities - DBCountry:=" + dbCountry);    
         List<City> cities = countries.get(0).getCities(); 
-        System.out.println("Cities Size:= " + cities.size()); 
+        System.out.println("Cities - Size:= " + cities.size()); 
         System.out.println("==============> 1. Simple For loop Example.");
         for (int i = 0; i < cities.size(); i++) {
             System.out.println(cities.get(i));

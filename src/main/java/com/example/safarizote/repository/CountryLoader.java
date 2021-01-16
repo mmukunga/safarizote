@@ -30,6 +30,7 @@ public class CountryLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        System.out.println("CountryLoader Countries.. START!!!!");  
 /*
         if (repository.count() > 0) {
             return;
@@ -37,17 +38,17 @@ public class CountryLoader implements CommandLineRunner {
 */
         if (repository.count() == 0) {
             String fileName = "countries.json";
-            System.out.println("Countries..1");  
+            System.out.println("CountryLoader Countries..1");  
             ClassLoader classLoader = getClass().getClassLoader();
-            System.out.println("Countries..2");  
+            System.out.println("CountryLoader Countries..2");  
             try (InputStream is = classLoader.getResourceAsStream(fileName);
             Reader reader = new InputStreamReader(is, StandardCharsets.UTF_8)) {
                 Gson gson = new Gson();
-                System.out.println("Countries..3");  
+                System.out.println("CountryLoader Countries..3");  
                 Country[] countries = gson.fromJson(reader, Country[].class);   
                 Arrays.stream(countries).forEach( e -> {
                     List<City> cities = new ArrayList<>();
-                    System.out.println("Countries..4");  
+                    System.out.println("CountryLoader Countries..4");  
                     repository.save(Country.builder()
                     .name(e.getName()).code(e.getCode())
                     .cities(cities).build());                
@@ -55,24 +56,25 @@ public class CountryLoader implements CommandLineRunner {
                 });
             } 
         } else {
-            System.out.println("Countries..NOT EMPTY!!!");  
+            System.out.println("CountryLoader Countries..NOT EMPTY!!!");  
         }
         
-        System.out.println("Cities..SIZE!!!" + cityRepository.count()); 
-         
+        System.out.println("CountryLoader Countries.. CONT!!!!");  
+        System.out.println("CountryLoader Cities..SIZE!!!" + cityRepository.count()); 
+
         if (cityRepository.count() == 0) {
             String fileCityName = "cities.json";
-            System.out.println("Cities..1");  
+            System.out.println("CountryLoader Cities..1");  
             ClassLoader classCityLoader = getClass().getClassLoader();
-            System.out.println("Cities..2"); 
+            System.out.println("CountryLoader Cities..2"); 
             try (InputStream is = classCityLoader.getResourceAsStream(fileCityName);
             Reader reader = new InputStreamReader(is, StandardCharsets.UTF_8)) {
                 Gson gson = new Gson();
                 City[] cities = gson.fromJson(reader, City[].class);   
-                System.out.println("Cities..3"); 
+                System.out.println("CountryLoader Cities..3"); 
                 Arrays.stream(cities).forEach( city -> {
                     Country country = repository.findByCode(city.getCountry());
-                    System.out.println("Cities..4"); 
+                    System.out.println("CountryLoader Cities..4"); 
                     country.getCities().add(city);
                     repository.save(country);                
                     System.out.println(city);   
@@ -85,5 +87,9 @@ public class CountryLoader implements CommandLineRunner {
         repository.findAll().forEach((country) -> {
             logger.info("{}", country.getName());
         });
+
+
+        System.out.println("CountryLoader Countries.. END OK!!!!");  
+
     }
 }
