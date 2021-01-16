@@ -22,8 +22,12 @@ public class WeatherController {
     @RequestMapping(value = "/api/countries",  method={RequestMethod.GET})       
     public ResponseEntity<List<Country>> getCountries() { 
         System.out.println("Countries..");    
-        //List<Country> countries = repository.findAll();  
-        List<Country> countries = new ArrayList<>();   
+        List<Country> countries = repository.findAll();  
+        //List<Country> countries = new ArrayList<>();  
+        System.out.println("==============> 1. Simple For loop Example.");
+        for (int i = 0; i < countries.size(); i++) {
+            System.out.println(countries.get(i));
+        } 
         Country temp = Country.builder()
         .name("kENYA").code("KE")
         .cities(new ArrayList<City>()).build();
