@@ -60,7 +60,7 @@ const Weather = () => {
                 response.data.forEach(function(d) {
                    array_nodes.push({  
                      id: d.id,  
-                     title: d.country,
+                     title: d.name,
                      value: d.name
                    });
                  });    
