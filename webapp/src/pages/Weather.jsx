@@ -36,10 +36,10 @@ const Weather = () => {
 
     useEffect(() => {
         axios.get('/api/countries')
-            .then(res => {
-                console.log(res);
+            .then(response => {
+                console.log(response);
                 let array_nodes = [];
-                res.data.forEach(function(d) {
+                response.data.forEach(function(d) {
                    array_nodes.push({
                      id: d.id,   
                      title: d.name,
@@ -57,7 +57,7 @@ const Weather = () => {
             .then(response => {
                 console.log(response);
                 let array_nodes = [];
-                res.data.forEach(function(d) {
+                response.data.forEach(function(d) {
                    array_nodes.push({  
                      id: d.id,  
                      title: d.country,
