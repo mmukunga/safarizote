@@ -30,12 +30,13 @@ public class CountryLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("CountryLoader Countries.. START!!!!");  
+    //    System.out.println("CountryLoader Countries.. START!!!!");  
 /*
         if (repository.count() > 0) {
             return;
         }
 */
+/*
         if (repository.count() == 0) {
             String fileName = "countries.json";
             System.out.println("CountryLoader Countries..1");  
@@ -58,11 +59,11 @@ public class CountryLoader implements CommandLineRunner {
         } else {
             System.out.println("CountryLoader Countries..NOT EMPTY!!!");  
         }
-        
-        System.out.println("CountryLoader Countries.. CONT!!!!");  
-        System.out.println("CountryLoader Cities..SIZE!!!" + cityRepository.count()); 
-
-        if (cityRepository.count() == 0) {
+*/
+ //       System.out.println("CountryLoader Countries.. CONT!!!!");  
+ //       System.out.println("CountryLoader Cities..SIZE!!!" + cityRepository.count()); 
+          System.out.println("!!!CountryLoader Countries.. CONT!!!!  "  + cityRepository.count());  
+ //       if (cityRepository.count() == 0) {
             String fileCityName = "cities.json";
             System.out.println("CountryLoader Cities..1");  
             ClassLoader classCityLoader = getClass().getClassLoader();
@@ -80,10 +81,10 @@ public class CountryLoader implements CommandLineRunner {
                     System.out.println(city);   
                 });
             }
-        } else {
+    /*    } else {
             System.out.println("Cities..ONT EMPTY!!!"); 
         }
-
+    */
         repository.findAll().forEach((country) -> {
             logger.info("{}", country.getName());
         });
