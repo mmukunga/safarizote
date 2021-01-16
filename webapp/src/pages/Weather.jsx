@@ -44,15 +44,16 @@ const Weather = () => {
         axios.get('/api/countries')
             .then(res => {
                 console.log(res);
-            /*    let array_nodes = [];
+                let array_nodes = [];
                 res.data.forEach(function(d) {
                    array_nodes.push({
+                     id: d.id,   
                      name: d.name,
-                     id: d.code
+                     code: d.code
                    });
                  });    
-                 console.log(array_nodes);*/
-                //setCountries(array_nodes);
+                 console.log(array_nodes);
+                setCountries(array_nodes);
             }).catch(err => console.log(err))
     }, []);
 
