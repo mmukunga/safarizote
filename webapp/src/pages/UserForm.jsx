@@ -73,8 +73,8 @@ export const Select = (props) => {
     }
 
     let options = data.map(data => (
-      <option key={data.id} value={data.id}>
-          {data.name}
+      <option key={data.id} value={data.value}>
+          {data.value}
       </option>
     ));
 

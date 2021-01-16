@@ -3,15 +3,9 @@ import UserForm, { Select } from "./UserForm";
 import axios from 'axios';
 
    const initialState = {
-       country: {
-           name:'Afghanistan', 
-           code:'AF'
-       },
-       city: {
-           country: 'AF', 
-           name: 'Kabul'
-       }
-  };
+       country: 'AF',
+       city: 'Kabul'
+    };
   
   const reducer = (state, action) => {
     if (action.type === "reset") {
@@ -48,8 +42,8 @@ const Weather = () => {
                 res.data.forEach(function(d) {
                    array_nodes.push({
                      id: d.id,   
-                     name: d.name,
-                     code: d.code
+                     title: d.name,
+                     value: d.code
                    });
                  });    
                  console.log(array_nodes);
@@ -60,27 +54,38 @@ const Weather = () => {
     useEffect(() => {
         let country = {name: 'Afghanistan', code: 'AF', cities: null};
         axios.post('/api/cities', country)
-            .then(res => {
-                console.log(res);
-                /*let array_nodes = [];
+            .then(response => {
+                console.log(response);
+                let array_nodes = [];
                 res.data.forEach(function(d) {
-                   array_nodes.push({ 
-                     country: d.country, 
+                   array_nodes.push({  
                      id: d.id,  
-                     name: d.name
+                     title: d.country,
+                     value: d.name
                    });
                  });    
-                 console.log(array_nodes);*/
-                 //setCities(array_nodes);
+                console.log(array_nodes);
+                setCities(array_nodes);
             }).catch(err => console.log(err))
     }, [state.country]);
-
-    //console.log(countries);
-    //console.log(cities);
 
     return (
         <div className="Weather">
             Weather!
+            <UserForm
+                cancel={() => {console.log('cancel')}}
+                errors={[]}
+                onChange={onChange}
+                submit={handleSubmit}
+                elements={() => (
+                   <>
+                      <Select id="country" name="country" data={countries} text="Country" onChange={onChange}/>
+                      <Select id="city" name="country" data={cities} text="City" onChange={onChange}/>                    
+                   </>
+                )}
+                >    
+            </UserForm>
+
         </div>
     );
 }
