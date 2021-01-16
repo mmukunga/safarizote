@@ -19,7 +19,7 @@ public class WeatherController {
     @Autowired
     private CountryRepository repository;
     
-    @RequestMapping(value="/api/getCountries",  method={RequestMethod.GET})       
+    @RequestMapping(value = "/api/countries",  method={RequestMethod.GET})       
     public ResponseEntity<List<Country>> getCountries() { 
         System.out.println("Countries..");    
         //List<Country> countries = repository.findAll();  
