@@ -20,6 +20,7 @@ import com.google.gson.reflect.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,15 +39,21 @@ public class WeatherController {
     private CountryRepository repository;
 
     @RequestMapping(value="/api/getCountries", method=RequestMethod.GET)       
-    public ResponseEntity<List<Country>> getCountries() {    
-        List<Country> countries = repository.findAll();    
+    public ResponseEntity<List<Country>> getCountries() { 
+        System.out.println("Countries..");    
+        List<Country> countries = repository.findAll();   
+        System.out.println("Countries:=" + countries.size());    
         return new ResponseEntity<>(countries, HttpStatus.OK);
     }
 
-    @RequestMapping(value="/api/getCities", method=RequestMethod.GET)       
-    public List<City> getCities(@RequestParam String country) {    
-        Country temp = repository.findByName(country);
-        return temp.getCities();    
+    @RequestMapping(value="/api/getCities", method=RequestMethod.POST)       
+    public ResponseEntity<List<City>> getCities(@RequestBody Country country) { 
+        System.out.println("Cities..");       
+        System.out.println("Country:=" + country);
+        Country temp = repository.findByName(country.getName());
+        System.out.println("DBCountry.." + temp);    
+        System.out.println("Cities Size:= " + temp.getCities().size()); 
+        return new ResponseEntity<>(temp.getCities(), HttpStatus.OK);   
     }
 
     @RequestMapping(value = "/api/current",  method={RequestMethod.GET})

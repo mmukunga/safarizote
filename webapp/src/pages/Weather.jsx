@@ -21,7 +21,6 @@ const Weather = () => {
     const [countries, setCountries] = useState([]);
     const [cities, setCities] = useState([]);
     const [state, dispatch] = useReducer(reducer, initialState);
-    const { country, city } = state;
     const [weather, setWeather] = useState({});
     const [forecast, setForecast] = useState([]);
 
@@ -47,14 +46,14 @@ const Weather = () => {
     }, []);
 
     useEffect(() => {
-        axios.get('/api/cities').then(response => {
+        axios.post('/api/cities', country).then(response => {
             console.log(response);
             setCities(response.data);
             console.log('Cities OK!!');
         }).catch(err => {
             console.log(err);
         });
-    }, [country]);
+    }, [state.country]);
 
     return (       
         <div className="Weather">
