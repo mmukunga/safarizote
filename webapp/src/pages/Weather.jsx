@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import UserForm, { Select } from "./UserForm";
 import axios from 'axios';
 
 const initialState = {
@@ -18,8 +19,11 @@ const initialState = {
 
 const Weather = () => {
     const [countries, setCountries] = useState([]);
+    const [cities, setCities] = useState([]);
     const [state, dispatch] = useReducer(reducer, initialState);
     const { country, city } = state;
+    const [weather, setWeather] = useState({});
+    const [forecast, setForecast] = useState([]);
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -60,7 +64,6 @@ const Weather = () => {
                 )}
                 >    
                 </UserForm>
-            { data.map(item => <h1 key={item._id}>{item.title}</h1>) }
         </div>
     )
 }
