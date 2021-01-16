@@ -58,7 +58,7 @@ const Weather = () => {
 
     useEffect(() => {
         let country = {name: 'Afghanistan', code: 'AF', cities: null};
-        axios.get('/api/cities', country)
+        axios.post('/api/cities', country)
             .then(res => {
                 console.log(res);
                 /*let array_nodes = [];

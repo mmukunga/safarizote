@@ -39,7 +39,7 @@ public class WeatherController {
         Country temp = repository.findByName(country.getName());
         System.out.println("DBCountry.." + temp);    
         System.out.println("Cities Size:= " + temp.getCities().size()); 
-        return new ResponseEntity<>(temp.getCities(), HttpStatus.OK);   
+        return new ResponseEntity<>(null, HttpStatus.OK);   
     }
 
 
