@@ -37,9 +37,14 @@ public class WeatherController {
         System.out.println("Cities..");       
         System.out.println("Country:=" + country);
         Country temp = repository.findByName(country.getName());
-        System.out.println("DBCountry.." + temp);    
-        System.out.println("Cities Size:= " + temp.getCities().size()); 
-        return new ResponseEntity<>(null, HttpStatus.OK);   
+        System.out.println("DBCountry:=" + temp);    
+        List<City> cities = temp.getCities(); 
+        System.out.println("Cities Size:= " + cities.size()); 
+        System.out.println("==============> 1. Simple For loop Example.");
+        for (int i = 0; i < cities.size(); i++) {
+            System.out.println(cities.get(i));
+        }
+        return new ResponseEntity<>(cities, HttpStatus.OK);   
     }
 
 
