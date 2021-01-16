@@ -18,6 +18,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,12 +35,13 @@ public class WeatherController {
     @Autowired
     private CountryRepository repository;
 
-    @RequestMapping(value = "/getCountries", method = RequestMethod.GET)       
-    public List<Country> getCountries() {    
-        return repository.findAll();    
+    @RequestMapping(value="/api/getCountries", method=RequestMethod.GET)       
+    public ResponseEntity<List<Country>> getCountries() {    
+        List<Country> countries = repository.findAll();    
+        return new ResponseEntity<>(countries, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/getCities", method = RequestMethod.GET)       
+    @RequestMapping(value="/api/getCities", method=RequestMethod.GET)       
     public List<City> getCities(@RequestParam String country) {    
         Country temp = repository.findByName(country);
         return temp.getCities();    
