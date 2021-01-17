@@ -2,17 +2,7 @@
   * {
     box-sizing: border-box;
   }
-  
-  textarea {
-    width:100%;
-    resize: vertical;
-    padding:15px;
-    border-radius:15px;
-    border:0;
-    box-shadow:4px 4px 10px rgba(0,0,0,0.06);
-    height:150px;
-  }
-
+ 
   .Button {
     background-color: #fafafa;
     border:0;
@@ -33,6 +23,17 @@
     font-weight: 300;
   }
   
+  /* 
+  textarea {
+    width:100%;
+    resize: vertical;
+    padding:15px;
+    border-radius:15px;
+    border:0;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.06);
+    height:150px;
+  }
+
   .cssform {
     margin-bottom: 10px;
     text-align: left;
@@ -92,7 +93,7 @@
     }
   }
 
-
+*/
 
 
 
@@ -100,15 +101,13 @@
   
 #form-wrap form {
   background: #fff;
-  height: auto;
-  min-height:400px;
 }
 
 #form-wrap #form-inner {
   margin: 0 auto;
   padding-top: 35px;
   padding-bottom: 80px;
-  width: 77%;
+  width: 100%;
 }
 
 #form-wrap label {
@@ -124,7 +123,7 @@
   padding: 5px;
   margin: 0 0 20px 0;
   border: 1px solid #b9bdc1;
-  width: 75%;
+  width: 300px;
   color: #797979;
   -moz-box-shadow: 0 2px 4px #bbb inset;
   -webkit-box-shadow: 0 2px 4px #bbb inset;
@@ -141,6 +140,5 @@
 
 #form-wrap .textarea {
   height:auto;
-  min-height:100px;
   max-width:75%;
 }
