@@ -22,20 +22,17 @@ const Safaris = () => {
     }, []);
 
     console.log(safaris);
-
     var array_nodes = [];
-
     safaris.forEach(function(safari) {
-      array_nodes.push({
-        id: safari.id,
-        title: safari.title,
-        price: safari.price,
-        description: safari.description,
-        dateCreated: safari.dateCreated
-      });
-  });
-  
-  console.log(array_nodes);
+        array_nodes.push({
+          id: safari.id,
+          title: safari.title,
+          description: safari.description,
+          price: safari.price
+        });
+    });
+    
+    console.log(array_nodes);
 
     return (
       <Card title="Safaris" text="Safari Zote">
