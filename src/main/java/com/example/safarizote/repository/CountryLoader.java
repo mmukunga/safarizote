@@ -25,9 +25,14 @@ public class CountryLoader implements CommandLineRunner {
     @Autowired
     private CountryRepository repository;
 
+    @Autowired
+    private CityRepository cityRepository;
+
     @Override
     public void run(String... args) throws Exception {
-
+        cityRepository.deleteAll();
+        repository.deleteAll();
+/*
         if (repository.count() > 0) {
             return;
         }
@@ -63,5 +68,7 @@ public class CountryLoader implements CommandLineRunner {
         repository.findAll().forEach((country) -> {
             logger.info("{}", country.getName());
         });  
+
+        */
     }
 }
