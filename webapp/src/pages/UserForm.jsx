@@ -41,10 +41,10 @@ export const InputField = ({text,
     required = false}) => {
   
     return (
-        <div className="form-control">
-           <label className="field-label" htmlFor={id}>{text}</label>
+        <div className="cssform">
+           <label className="csslabel" htmlFor={id}>{text}</label>
            <input
-            className="form-input"
+            className="cssinput"
             required={required}
             name={name}
             id={id}
@@ -77,12 +77,12 @@ export const Select = (props) => {
     ));
 
     return (
-      <div className="form-control">   
-        <label htmlFor={props.id} className="field-label">{props.text}</label> 
+      <div className="cssform">   
+        <label htmlFor={props.id} className="csslabel">{props.text}</label> 
         <select
          name={props.name} 
          id={props.id}
-         className="form-input"
+         className="cssinput"
          onChange={e => handleInputChange(e)}>
            <option>Select Item</option>
            {options}
@@ -92,11 +92,11 @@ export const Select = (props) => {
 }
  
 export const TextArea = props => {
-    let formControl = "form-control";
+    let formControl = "cssform";
     return (
         <div className={formControl}>
-             <label className="field-label">{props.text}</label>
-            <textarea {...props} className="form-input" />
+             <label className="csslabel">{props.text}</label>
+            <textarea {...props} className="cssinput" />
         </div>
     );
 }

@@ -33,28 +33,28 @@
     font-weight: 300;
   }
   
-  .form-control {
+  .cssform {
     margin-bottom: 10px;
     text-align: left;
   }
   
-  .form-control label {
+  .cssform label {
     width: 100px;
     padding-right: 20px;
     margin-bottom: 5px;
   }
   
-  .form-control input[type="text"],
-  .form-control input[type="email"],
-  .form-control input[type="phone"],
-  .form-control input[type="message"],
-  .form-control input[type="password"] {
+  .cssform input[type="text"],
+  .cssform input[type="email"],
+  .cssform input[type="phone"],
+  .cssform input[type="message"],
+  .cssform input[type="password"] {
     width: 200px;
     padding: 5px;
     margin-left: 25px;
   }
   
-  .form-input {
+  .cssinput {
     border: 1px solid red;
   }
 
@@ -68,13 +68,12 @@
       max-width: 100%;
     }
   
-    .form-control {
-      /*flex-direction: column;*/
+    .cssform {
       display: block;
       width: 100%;
     }
   
-    .form-control .field-label {
+    .cssform .csslabel {
       display: inline-block;
       width: auto;
       float: none;
@@ -82,11 +81,11 @@
       width: 100%;
     }
 
-    .form-control input[type="text"],
-    .form-control input[type="email"],
-    .form-control input[type="phone"],
-    .form-control input[type="message"],
-    .form-control input[type="password"] {
+    .cssform input[type="text"],
+    .cssform input[type="email"],
+    .cssform input[type="phone"],
+    .cssform input[type="message"],
+    .cssform input[type="password"] {
       display: block;
       width: 100%;
       margin-left: 1px;
