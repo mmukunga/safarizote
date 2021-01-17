@@ -23,7 +23,8 @@ const Weather = () => {
     const [countries, setCountries] = useState([]);
     const [cities, setCities] = useState([]);
     const [weather, setWeather] = useState({});
-    
+    const [forecast, setForecast] = useState({});
+
     const handleSubmit = e => {
         e.preventDefault();
         console.log('Weather Forecast!!');
@@ -46,6 +47,15 @@ const Weather = () => {
         }).catch(err => {
             console.log(err);
         });
+
+        axios.post('/api/forecast', country, headers).then(response => {
+            console.log(response);
+            setForecast(response.data);
+            console.log('Weather Forecast Data OK!!');
+        }).catch(err => {
+            console.log(err);
+        });
+
         dispatch({ type: "reset" });
     };
     
