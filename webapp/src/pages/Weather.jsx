@@ -43,7 +43,7 @@ const Weather = () => {
         dispatch({ type: "reset" });
     };
     
-    const onChange = e => {
+    const handleChange = e => {
       console.log(e);
       const { name, value } = e.target;
       dispatch({ type: name, value });
@@ -93,12 +93,12 @@ const Weather = () => {
             <UserForm
                 cancel={() => {console.log('cancel')}}
                 errors={[]}
-                onChange={onChange}
+                onChange={handleChange}
                 submit={handleSubmit}
                 elements={() => (
                    <>
-                      <Select id="country" name="country" data={countries} text="Country" onChange={onChange}/>
-                      <Select id="city" name="country" data={cities} text="City" onChange={onChange}/>                    
+                      <Select id="country" name="country" data={countries} text="Country" onChange={handleChange}/>
+                      <Select id="city" name="country" data={cities} text="City" onChange={handleChange}/>                    
                    </>
                 )}
                 >    

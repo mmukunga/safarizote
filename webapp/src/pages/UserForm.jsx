@@ -67,7 +67,7 @@ export const Select = (props) => {
     const [selectedData, setSelectedData] = React.useState("");
     function handleInputChange(event) {
         setSelectedData(event.target.value);
-        props.onChange(selectedData);
+        props.onChange(event);
     }
     
     const { data } = props;
@@ -86,7 +86,7 @@ export const Select = (props) => {
          name={props.name} 
          id={props.id}
          className="form-input"
-         onChange={handleInputChange}>
+         onChange={e => handleInputChange(e)}>
            <option>Select Item</option>
            {options}
         </select>
