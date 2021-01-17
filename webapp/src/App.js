@@ -8,7 +8,7 @@ import axios from 'axios';
 import Home     from './pages/Home';
 import AboutUs  from './pages/AboutUs';
 import Safaris  from './pages/Safaris';
-import Customer from './pages/Customer';
+import Shopping from './pages/Shopping';
 import Lotto from './pages/Lotto';
 import SignIn from './pages/SignIn';
 import Email from './pages/Email';
@@ -45,7 +45,7 @@ function App() {
         <nav>
           <NavLink to="/" className="Nav_link">Home</NavLink>
           <NavLink to="/aboutUs" className="Nav_link">About Us</NavLink>
-          <NavLink to="/customers" className="Nav_link">Users</NavLink>
+          <NavLink to="/shopping" className="Nav_link">Users</NavLink>
           <NavLink to="/safaris" className="Nav_link">Safaris</NavLink>
           <NavLink to="/tipping" className="Nav_link">Tipping</NavLink>
           <NavLink to="/signIn" className="Nav_link">Login</NavLink>
@@ -56,7 +56,7 @@ function App() {
       <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/aboutUs" component={AboutUs} />
-          <Route path="/customers" component={Customer} />
+          <Route path="/shopping" component={Shopping} />
           <Route path="/safaris" component={Safaris} />
           <Route path="/tipping" component={Lotto} />
           <Route path="/signIn" component={SignIn} />

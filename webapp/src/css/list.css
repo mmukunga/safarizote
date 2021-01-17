@@ -23,3 +23,8 @@
 .Nav_link:active {
   color: teal;
 }
+
+.vList{
+  margin: 0 auto;
+  display:table;
+}

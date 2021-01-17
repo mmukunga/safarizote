@@ -27,7 +27,7 @@ import java.net.URL;
 public class WeatherController {
     private static final String API_KEY = "6ab73f3655f1a0db55237e9f5b00bff9";
     private static String BASE_URL = "http://api.openweathermap.org/data/2.5/weather?q=";
-    private static String FORECAST_URL = "http://api.openweathermap.org/data/2.5/forecast?q=";
+    private static String FORECAST_URL = "http://api.openweathermap.org/data/2.5/forecast/daily?q=";
     private static String IMG_URL = "http://openweathermap.org/img/w/";
 
     @Autowired
@@ -53,7 +53,7 @@ public class WeatherController {
         InputStream is = null;
         String location = "Kabul, AF";
         try {
-            con = (HttpURLConnection) ( new URL(BASE_URL + location + "&APPID="+API_KEY)).openConnection();
+            con = (HttpURLConnection) ( new URL(BASE_URL + location + "&cnt=7" + "&APPID="+API_KEY)).openConnection();
             con.setRequestMethod("GET");
             con.setDoInput(true);
             con.setDoOutput(true);

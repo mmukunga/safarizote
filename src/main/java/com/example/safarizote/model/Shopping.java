@@ -5,6 +5,7 @@ import java.time.Instant;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,11 +18,17 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Customer {
+public class Shopping {
   @Id @GeneratedValue Long id;
+  @NonNull String store;
+  @NonNull String product;
+  @NonNull Double price;
+  @NonNull Double quantity;
   @NonNull String name;
-  @NonNull String email;
-  @NonNull String phone;
-  @NonNull String address;
   @NonNull Instant dateCreated;
+
+  @PrePersist
+  private void setDate(){
+    this.dateCreated = Instant.now();
+  }
 }

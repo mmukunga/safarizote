@@ -27,7 +27,7 @@ const Home = () => {
 
     return (
         <Card title="Home" text="The Home - Sipili!!">
-            <ul>          
+            <ul className="vList">          
                 { data.map(item => <li key={item.id}>Link: {item.url} Browser: {item.browser}</li>) }
             </ul>
         </Card>

@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Card from './Card';
 
-const Customer = () => {
+const Shopping = () => {
     const [data, setData] = useState([]);
     
   useEffect(() => {
     const fetchData = async () => {
       try {
-          const result = await axios.get('/api/customers');
+          const result = await axios.get('/api/shopping');
           console.log(result);
           setData(result.data);
       } catch (e) {
@@ -19,7 +19,7 @@ const Customer = () => {
   },[]);
 
     return (
-      <Card title="Customers" text="Our Customers">
+      <Card title="Shoppings" text="Our Shoppings">
         <ul>
             {data.map(item => <li key={item.id}>{item.name}</li>)}
         </ul>
@@ -27,4 +27,4 @@ const Customer = () => {
     )
 }
 
-export default Customer
+export default Shopping
