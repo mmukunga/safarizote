@@ -32,7 +32,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 public class WeatherController {
-    private static final String API_KEY = "081cfe3b3ff156db70e355a1ab2abb17";
+    //private static final String API_KEY = "081cfe3b3ff156db70e355a1ab2abb17";
+    private static final String API_KEY = "6ab73f3655f1a0db55237e9f5b00bff9";
+    private static final Boolean openweathermap_sample = false;
 
     @Autowired
     private CountryRepository repository;
