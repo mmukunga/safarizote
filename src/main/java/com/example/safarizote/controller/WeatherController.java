@@ -52,8 +52,8 @@ public class WeatherController {
         return new ResponseEntity<>(cities, HttpStatus.OK);   
     }
 
-    @RequestMapping(value = "/api/current",  method={RequestMethod.POST})
-    public ResponseEntity<Map<String, Object>> currentWEather(@RequestBody Country country) throws IOException {
+    @RequestMapping(value = "/api/weather",  method={RequestMethod.POST})
+    public ResponseEntity<Map<String, Object>> currentWeather(@RequestBody Country country) throws IOException {
         System.out.println("Current WEather - COUNTRY:= " + country); 
         String location = "Kabul, AF";
         String url = "http://api.openweathermap.org/data/2.5/weather?q="+location+"&APPID="+API_KEY;

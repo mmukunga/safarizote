@@ -27,19 +27,20 @@ const Weather = () => {
         e.preventDefault();
         console.log('Weather Forecast!!');
         const { country, city } = state;
-        const location = `${city},${country}`;
-        
+
         const form = new FormData();
-        form.append(country, 'AF');
-        form.append(city, 'Kabul');
-        form.append(cities, null);
-        console.log('LOCATION!! ' + location);
+          form.append(country, 'AF');
+          form.append(city, 'Kabul');
+          form.append(cities, null);
 
-        const params = {
-          location: location,
-        };
+          const config = { 
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json' 
+              } 
+          }
 
-        axios.post('/api/current', form).then(response => {
+        axios.post('/api/weather', form, config).then(response => {
             console.log(response);
             setCities(response.data);
             console.log('Cities OK!!');
