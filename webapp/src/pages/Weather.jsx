@@ -22,6 +22,7 @@ const Weather = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const [countries, setCountries] = useState([]);
     const [cities, setCities] = useState([]);
+    const [weather, setWeather] = useState({});
     
     const handleSubmit = e => {
         e.preventDefault();
@@ -33,15 +34,15 @@ const Weather = () => {
       };
 
       const country = {
-            country: 'AF',
-            city: 'Kabul',
+            name: 'Afghanistan',
+            code: 'AF',
             cities: null
         };
 
         axios.post('/api/weather', country, headers).then(response => {
             console.log(response);
-            setCities(response.data);
-            console.log('Cities OK!!');
+            setWeather(response.data);
+            console.log('Weather Data OK!!');
         }).catch(err => {
             console.log(err);
         });
