@@ -51,6 +51,43 @@ const Email = () => {
   return (
     <div className="Email">
     <p>Please send us a Message..</p>
+
+
+
+    <div class="contact" id="contact">
+    <div class="container">
+        <div class="contact-grid1">
+            <div class="contact-top1">
+                <form action="" method="post" enctype="multipart/form-data" name="contactus">
+                    <div class="form-group">
+                        <label>Name <span class="required">*</span></label>
+                        <input type="text" name="name" placeholder="Name" required=""/>
+                    </div>
+                    <div class="form-group">
+                        <label>E-mail <span class="required">*</span></label>
+                        <input type="email" name="email" placeholder="E-mail" required=""/>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number <span class="required">*</span></label>
+                        <input type="text" name="number" placeholder="Phone Number" required=""/>
+                    </div>
+                    <div class="form-group">
+                        <label>Message <span class="required">*</span></label>
+                            <textarea placeholder name="message"required=""></textarea>
+                    </div>
+                        <input type="submit" name="contactus" value="Submit"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
     <UserForm
       cancel={() => {console.log('cancel')}}
       errors={[]}
