@@ -24,6 +24,14 @@
   color: teal;
 }
 
+
+.vlContainer {
+   padding: 2em;
+   background: #eee;
+   text-align: left;
+   border: 1px solid orange;
+} 
+
 .vList{
   margin: 0 auto;
   display:table;
