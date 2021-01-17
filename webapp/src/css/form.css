@@ -97,61 +97,50 @@
 
 
 
-  .contact-grid1 input[type="text"], 
-  .contact-grid1 input[type="email"],
-  .contact-grid1 textarea{
-    width: 98%;
-    padding: 12px 1%;
-    font-size: 1em;
-    border: none;
-    outline: none;
-}
-.contact-grid1 textarea{
-    height:140px;
-    resize:none;
-}
-.contact-top1 label {
-    font-size: 16px;
-    font-weight: 600;
-    color: #fff;
-    text-align: left;
-    display: inherit;
-    margin-top: 14px;
-}
-.required{color:#FF0000;}
-.contact-top1 {
-    background: rgba(0, 0, 0, 0.85);
-    padding: 3em 3em 4em;
-}
-.contact-grid1 input[type="submit"] {
-    font-size: 1.1em;
-    outline: none;
-    border: none;
-    text-transform: uppercase;
-    background: #ff4c4c;
-    padding: 0.7em 0;
-    letter-spacing: 1px;
-    color: #fff;
-    display: block;
-    width: 300px;
-    cursor:pointer;
-    margin: 15px auto 0;
-    transition: 0.5s all;
-    -webkit-transition: .5s all;
-    -moz-transition: .5s all;
-    -o-transition: .5s all;
-    -ms-transition: .5s all;
-}
-.contact-grid1 input[type="submit"]:hover{
-    background:#0099e5;
-     -webkit-transition: .5s all;
-    -moz-transition: .5s all;
-    -o-transition: .5s all;
-    -ms-transition: .5s all;
+  
+#custom-form-wrap form {
+  background: #fff;
+  height: auto;
+  min-height:400px;
 }
 
-@media(max-width: 500px){
-    .contact-grid1 input[type="submit"]{
-        width:100%;
-    }
+#custom-form-wrap #custom-form-inner {
+  margin: 0 auto;
+  padding-top: 35px;
+  padding-bottom: 80px;
+  width: 77%;
+}
+
+#custom-form-wrap label {
+  font: bold 18px/25px Corbel, Arial, Helvetica;
+  text-shadow: 0 1px 0 #fff, 0 2px 0 #ccc;
+  float: left;
+  margin-right: 10px;
+  width: 120px;
+}
+
+#custom-form-wrap .input {
+  font: 15px Arial, Helvetica;
+  padding: 5px;
+  margin: 0 0 20px 0;
+  border: 1px solid #b9bdc1;
+  width: 75%;
+  color: #797979;
+  -moz-box-shadow: 0 2px 4px #bbb inset;
+  -webkit-box-shadow: 0 2px 4px #bbb inset;
+  box-shadow: 0 2px 4px #bbb inset;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+
+#custom-form-wrap .input:focus {
+  background-color: #F6F5F4;
+  outline: 0;
+}
+
+#custom-form-wrap .textarea {
+  height:auto;
+  min-height:100px;
+  max-width:75%;
 }

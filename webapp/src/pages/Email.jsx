@@ -54,35 +54,22 @@ const Email = () => {
 
 
 
-    <div class="contact" id="contact">
-    <div class="container">
-        <div class="contact-grid1">
-            <div class="contact-top1">
-                <form action="" method="post" enctype="multipart/form-data" name="contactus">
-                    <div class="form-group">
-                        <label>Name <span class="required">*</span></label>
-                        <input type="text" name="name" placeholder="Name" required=""/>
-                    </div>
-                    <div class="form-group">
-                        <label>E-mail <span class="required">*</span></label>
-                        <input type="email" name="email" placeholder="E-mail" required=""/>
-                    </div>
-                    <div class="form-group">
-                        <label>Phone Number <span class="required">*</span></label>
-                        <input type="text" name="number" placeholder="Phone Number" required=""/>
-                    </div>
-                    <div class="form-group">
-                        <label>Message <span class="required">*</span></label>
-                            <textarea placeholder name="message"required=""></textarea>
-                    </div>
-                        <input type="submit" name="contactus" value="Submit"/>
-                </form>
-            </div>
-        </div>
+    
+<div id="form-wrap">
+  <form>
+    <div id="form-inner">
+      <label for="name">Name:</label>
+      <input type="text" class="input" id="name" placeholder="Enter your name here"/>
+      <label for="email">Email:</label>
+      <input type="email" class="input" id="email" placeholder="Enter a valid email address"/>
+      <label for="message">Message:</label>
+      <textarea class="input textarea" id="message" placeholder="Type in your message here"></textarea>
+      <br />
+      <input type="reset" class="button" value=" Reset"/>
+      <input type="submit" class="button" value="Submit"/>
     </div>
+  </form>
 </div>
-
-
 
 
 
