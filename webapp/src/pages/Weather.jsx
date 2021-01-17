@@ -27,20 +27,18 @@ const Weather = () => {
         e.preventDefault();
         console.log('Weather Forecast!!');
         const { country, city } = state;
+         
+        var headers = {
+          'Content-Type': 'application/json' 
+      };
 
-        const form = new FormData();
-          form.append(country, 'AF');
-          form.append(city, 'Kabul');
-          form.append(cities, null);
+      const country = {
+            country: 'AF',
+            city: 'Kabul',
+            cities: null
+        };
 
-          const config = { 
-              headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json' 
-              } 
-          }
-
-        axios.post('/api/weather', form, config).then(response => {
+        axios.post('/api/weather', country, headers).then(response => {
             console.log(response);
             setCities(response.data);
             console.log('Cities OK!!');
