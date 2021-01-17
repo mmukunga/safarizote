@@ -26,7 +26,7 @@ const Weather = () => {
     const handleSubmit = e => {
         e.preventDefault();
         console.log('Weather Forecast!!');
-        const { country, city } = state;
+        //const { country, city } = state;
          
         var headers = {
           'Content-Type': 'application/json' 
