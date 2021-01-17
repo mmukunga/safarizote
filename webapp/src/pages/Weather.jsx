@@ -26,10 +26,25 @@ const Weather = () => {
     const handleSubmit = e => {
         e.preventDefault();
         console.log('Weather Forecast!!');
+        const { country, city } = state;
+        const location = `${city},${country}`;
+        console.log('LOCATION!! ' + location);
+        axios.post('/api/current', {
+            params: {
+              location: location
+            }
+        }).then(response => {
+            console.log(response);
+            setCities(response.data);
+            console.log('Cities OK!!');
+        }).catch(err => {
+            console.log(err);
+        });
         dispatch({ type: "reset" });
     };
     
     const onChange = e => {
+      console.log(e);
       const { name, value } = e.target;
       dispatch({ type: name, value });
     };
@@ -68,23 +83,6 @@ const Weather = () => {
                 setCities(array_nodes);
             }).catch(err => console.log(err))
     }, [state.country]);
-
-    useEffect(() => {
-        const { country, city } = state;
-        const location = `${city},${country}`;
-        axios.post('/api/current', {
-            params: {
-              location: location
-            }
-        }).then(response => {
-            console.log(response);
-            setCities(response.data);
-            console.log('Cities OK!!');
-        }).catch(err => {
-            console.log(err);
-        });
-    }, [state.city]);
-
 
     return (
         <div className="Weather">
