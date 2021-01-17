@@ -14,13 +14,13 @@ ul.Lotto {
 
   ul.Lotto > li {
     display: inline-block;
-    color:pink;
+    color:brown;
     text-align: center;
     width: 50px;
-    padding: 16px;
-    margin: 0 10px;
+    padding: 5px;
+    margin: 0 1px;
     text-decoration: none;
-    border:2px solid brown;
+    border:2px solid #f0ffff;
   }
   
   li a:hover {
