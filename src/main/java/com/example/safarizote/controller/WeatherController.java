@@ -53,8 +53,9 @@ public class WeatherController {
     }
 
     @RequestMapping(value = "/api/current",  method={RequestMethod.POST})
-    public Weather current(@RequestParam(value = "location") final String location) throws IOException {
-        System.out.println("Current WEather - LOCATION:= " + location); 
+    public ResponseEntity<Map<String, Object>> currentWEather(@RequestBody Country country) throws IOException {
+        System.out.println("Current WEather - COUNTRY:= " + country); 
+        String location = "Kabul, AF";
         String url = "http://api.openweathermap.org/data/2.5/weather?q="+location+"&APPID="+API_KEY;
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -90,7 +91,7 @@ public class WeatherController {
         System.out.println("Wind Angle: " + windMap.get("deg"));
 
 
-        return null;
+        return new ResponseEntity<>(weatherMap, HttpStatus.OK);
 
     }
 

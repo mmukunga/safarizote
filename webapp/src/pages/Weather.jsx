@@ -28,13 +28,18 @@ const Weather = () => {
         console.log('Weather Forecast!!');
         const { country, city } = state;
         const location = `${city},${country}`;
+        
+        const form = new FormData();
+        form.append(country, 'AF');
+        form.append(city, 'Kabul');
+        form.append(cities, null);
         console.log('LOCATION!! ' + location);
 
         const params = {
           location: location,
         };
 
-        axios.post('/api/current', { location: location }).then(response => {
+        axios.post('/api/current', form).then(response => {
             console.log(response);
             setCities(response.data);
             console.log('Cities OK!!');
