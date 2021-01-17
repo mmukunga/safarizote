@@ -26,13 +26,13 @@
 
 
 .vlContainer {
-   padding: 2em;
-   background: #eee;
+   padding: 1em;
    text-align: left;
-   border: 1px solid orange;
+   border: 1px solid #eee;
 } 
 
 .vList{
   margin: 0 auto;
-  display:table;
+  display: table;
+  text-align: left;
 }
