@@ -9,7 +9,7 @@ ul.Lotto {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    border:4px solid #333333;
+    border:4px solid #fff6f0;
   }
 
   ul.Lotto > li {
@@ -20,7 +20,7 @@ ul.Lotto {
     padding: 5px;
     margin: 0 1px;
     text-decoration: none;
-    border:2px solid #f0ffff;
+    border:2px solid brown;
   }
   
   li a:hover {

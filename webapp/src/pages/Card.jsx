@@ -9,8 +9,8 @@ const Card = (props) => {
  
     return (
       <div style={style} className="Card">
-          <h3>{props.title}</h3>
-          <p>{props.text}</p>
+          <p>{props.text}</p>         
+          <span>{props.title}</span>
           {props.children}
       </div>
     )

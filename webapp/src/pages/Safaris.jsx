@@ -4,7 +4,6 @@ import Table from './Table';
 import Card from './Card';
 
 const Safaris = () => {
-    const [message, setMessage] = useState('Hi there, how are you?');
     const [safaris, setSafaris] = useState([]);
     const [checked, setChecked] = useState(false);
 
@@ -40,9 +39,11 @@ const Safaris = () => {
 
     return (
       <Card title="Safaris" text="Safari Zote">
-        <h3>Hello StackBlitz!</h3>
-        <p>{message}</p> 
-        {array_nodes && array_nodes.length > 0 ? <Table data={array_nodes}/> : <p>fUCK!!</p>}
+        <div className ="sTable">
+          {array_nodes && array_nodes.length > 0 
+          ? <Table data={array_nodes}/> 
+          : <p>fUCK!!</p>}
+        </div>
       </Card>
     );
   };
