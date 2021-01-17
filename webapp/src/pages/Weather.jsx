@@ -34,7 +34,7 @@ const Weather = () => {
           location: location,
         };
 
-        axios.post('/api/current', params).then(response => {
+        axios.post('/api/current', { location: location }).then(response => {
             console.log(response);
             setCities(response.data);
             console.log('Cities OK!!');
