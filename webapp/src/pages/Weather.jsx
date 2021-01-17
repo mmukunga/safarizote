@@ -29,11 +29,12 @@ const Weather = () => {
         const { country, city } = state;
         const location = `${city},${country}`;
         console.log('LOCATION!! ' + location);
-        axios.post('/api/current', {
-            params: {
-              location: location
-            }
-        }).then(response => {
+
+        const params = {
+          location: location,
+        };
+
+        axios.post('/api/current', params).then(response => {
             console.log(response);
             setCities(response.data);
             console.log('Cities OK!!');

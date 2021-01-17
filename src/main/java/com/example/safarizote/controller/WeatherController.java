@@ -53,7 +53,7 @@ public class WeatherController {
     }
 
     @RequestMapping(value = "/api/current",  method={RequestMethod.POST})
-    public Weather current(@RequestParam(value = "location") String location) throws IOException {
+    public Weather current(@RequestParam("location") String location) throws IOException {
         System.out.println("Current WEather - LOCATION:= " + location); 
         String url = "http://api.openweathermap.org/data/2.5/weather?q="+location+"&APPID="+API_KEY;
         URL obj = new URL(url);

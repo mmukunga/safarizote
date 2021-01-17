@@ -64,14 +64,11 @@ export const Button = ({clicked, buttonType, children }) => {
 }
 
 export const Select = (props) => {
-    const [selectedData, setSelectedData] = React.useState("");
     function handleInputChange(event) {
-        setSelectedData(event.target.value);
         props.onChange(event);
     }
     
     const { data } = props;
-    console.log(data);
 
     let options = data.map(data => (
       <option key={data.id} value={data.value}>
