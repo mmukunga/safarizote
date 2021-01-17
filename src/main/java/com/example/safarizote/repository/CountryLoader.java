@@ -25,14 +25,11 @@ public class CountryLoader implements CommandLineRunner {
     @Autowired
     private CountryRepository repository;
 
-    @Autowired
-    private CityRepository cityRepository;
-
     @Override
     public void run(String... args) throws Exception {
-        cityRepository.deleteAll();
-        repository.deleteAll();
-/*
+        
+        List<String> temp = new ArrayList<>(Arrays.asList("AF", "AL", "DZ", "KE", "NO", "SE", "DK", "AU", "TZ", "UG", "ZA", "US", "GB", "DE", "FR", "ES"));
+
         if (repository.count() > 0) {
             return;
         }
@@ -44,10 +41,12 @@ public class CountryLoader implements CommandLineRunner {
             Gson gson = new Gson();
             Country[] countries = gson.fromJson(reader, Country[].class);   
             Arrays.stream(countries).forEach( e -> {
-                List<City> cities = new ArrayList<>(); 
-                repository.save(Country.builder()
-                .name(e.getName()).code(e.getCode())
-                .cities(cities).build()); 
+                if (temp.contains(e.getCode())) {
+                    List<City> cities = new ArrayList<>(); 
+                    repository.save(Country.builder()
+                    .name(e.getName()).code(e.getCode())
+                    .cities(cities).build()); 
+                }
             });
         } 
         
@@ -59,9 +58,11 @@ public class CountryLoader implements CommandLineRunner {
             Gson gson = new Gson();
             City[] cities = gson.fromJson(reader, City[].class); 
             Arrays.stream(cities).forEach( city -> {
-                Country country = repository.findByCode(city.getCountry());
-                country.getCities().add(city);
-                repository.save(country); 
+                if (temp.contains(city.getCountry())) {
+                    Country country = repository.findByCode(city.getCountry());
+                    country.getCities().add(city);
+                    repository.save(country); 
+                }
             });
         }
     
@@ -69,6 +70,5 @@ public class CountryLoader implements CommandLineRunner {
             logger.info("{}", country.getName());
         });  
 
-        */
     }
 }

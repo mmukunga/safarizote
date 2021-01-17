@@ -21,24 +21,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 
-import com.example.safarizote.model.Forecast;
-import com.example.safarizote.model.Weather;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 public class WeatherController {
-    //private static final String API_KEY = "081cfe3b3ff156db70e355a1ab2abb17";
     private static final String API_KEY = "6ab73f3655f1a0db55237e9f5b00bff9";
     private static String BASE_URL = "http://api.openweathermap.org/data/2.5/weather?q=";
     private static String FORECAST_URL = "http://api.openweathermap.org/data/2.5/forecast?q=";
     private static String IMG_URL = "http://openweathermap.org/img/w/";
-
-    private static final Boolean openweathermap_sample = false;
 
     @Autowired
     private CountryRepository repository;
