@@ -42,10 +42,7 @@ public class CountryLoader implements CommandLineRunner {
                 List<City> cities = new ArrayList<>(); 
                 repository.save(Country.builder()
                 .name(e.getName()).code(e.getCode())
-                .cities(cities).build());  
-                System.out.println("!!!CountryLoader Country.. 1");              
-                System.out.println(e);  
-                System.out.println("!!!CountryLoader Country.. 2");
+                .cities(cities).build()); 
             });
         } 
         
@@ -60,18 +57,11 @@ public class CountryLoader implements CommandLineRunner {
                 Country country = repository.findByCode(city.getCountry());
                 country.getCities().add(city);
                 repository.save(country); 
-                System.out.println("!!!CountryLoader City.. 1");                 
-                System.out.println(city);  
-                System.out.println("!!!CountryLoader City.. 2");   
             });
         }
     
         repository.findAll().forEach((country) -> {
             logger.info("{}", country.getName());
-        });
-
-
-        System.out.println("CountryLoader Countries.. END OK!!!!");  
-
+        });  
     }
 }

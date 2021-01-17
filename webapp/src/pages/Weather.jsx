@@ -37,7 +37,6 @@ const Weather = () => {
     useEffect(() => {
         axios.get('/api/countries')
             .then(response => {
-                console.log(response);
                 let array_nodes = [];
                 response.data.forEach(function(d) {
                    array_nodes.push({
@@ -45,17 +44,19 @@ const Weather = () => {
                      title: d.name,
                      value: d.code
                    });
-                 });    
-                 console.log(array_nodes);
+                 }); 
                 setCountries(array_nodes);
             }).catch(err => console.log(err))
     }, []);
 
     useEffect(() => {
-        let country = {name: 'Afghanistan', code: 'AF', cities: null};
+        let country = {
+              name: state.country,
+              code: state.code,
+              cities: null
+        };
         axios.post('/api/cities', country)
             .then(response => {
-                console.log(response);
                 let array_nodes = [];
                 response.data.forEach(function(d) {
                    array_nodes.push({  
@@ -63,11 +64,27 @@ const Weather = () => {
                      title: d.name,
                      value: d.name
                    });
-                 });    
-                console.log(array_nodes);
+                 }); 
                 setCities(array_nodes);
             }).catch(err => console.log(err))
     }, [state.country]);
+
+    useEffect(() => {
+        const { country, city } = state;
+        const location = `${city},${country}`;
+        axios.post('/api/current', {
+            params: {
+              location: location
+            }
+        }).then(response => {
+            console.log(response);
+            setCities(response.data);
+            console.log('Cities OK!!');
+        }).catch(err => {
+            console.log(err);
+        });
+    }, [state.city]);
+
 
     return (
         <div className="Weather">

@@ -39,32 +39,30 @@ public class WeatherController {
     
     @RequestMapping(value = "/api/countries",  method={RequestMethod.GET})       
     public ResponseEntity<List<Country>> getCountries() { 
-        System.out.println("Countries..");    
         List<Country> countries = repository.findAll();  
         return new ResponseEntity<>(countries, HttpStatus.OK);
     }
 
     @RequestMapping(value="/api/cities",  method={RequestMethod.POST})       
     public ResponseEntity<List<City>> getCities(@RequestBody Country country) { 
-        System.out.println("Cities - Country:=" + country);
         Country dbCountry = repository.findByCode(country.getCode());
-        System.out.println("Cities - DBCountry:=" + dbCountry);    
-        List<City> cities = dbCountry.getCities(); 
-        System.out.println("Cities - Size:= " + cities.size()); 
+        List<City> cities = dbCountry.getCities();
         return new ResponseEntity<>(cities, HttpStatus.OK);   
     }
 
     @RequestMapping(value = "/api/current",  method={RequestMethod.GET})
     public Weather current(@RequestParam(value = "location") String location) throws IOException {
-        String inputLine;
-        String url = "http://api.openweathermap.org/data/2.5/weather?q=city,country&APPID="+API_KEY;
+        System.out.println("Current WEather - LOCATION:= " + location); 
+        String url = "http://api.openweathermap.org/data/2.5/weather?q="+location+"&APPID="+API_KEY;
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         int responseCode = con.getResponseCode();
+
         System.out.println("Current WEather - responseCode:= " + responseCode); 
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-
         StringBuffer response = new StringBuffer();
+
+        String inputLine;
         while ((inputLine = in.readLine()) != null) {
             response.append(inputLine);
         }
@@ -76,10 +74,11 @@ public class WeatherController {
         Map<String, Object> mainMap = jsonToMap(respMap.get("main").toString());
         Map<String, Object> windMap = jsonToMap(respMap.get("sys").toString());
         Map<String, Object> weatherMap = jsonToMap(respMap.get("weather").toString()); //ARRAY
-        System.out.println("Current WEather - weatherMap:= " + weatherMap); 
+
+        System.out.println("Current Weather weatherMap:= " + weatherMap); 
         String LOCATION = "delhi,india";
 
-        System.out.println("Location: " + LOCATION);
+        System.out.println("Location:: " + LOCATION);
         System.out.println("Current Temperature: " + mainMap.get("temp"));
         System.out.println("Current Humidity: " + mainMap.get("humidity"));
         System.out.println("Max: " + mainMap.get("temp_min"));
