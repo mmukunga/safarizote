@@ -6,12 +6,10 @@
 
 .Nav_link:link {
   color: #fff;
-  /*font-size: 1.6rem;
-  line-height: 1.6rem;*/
   margin: 2px;
   padding:2px;
   border: 1px solid red;
-  
+  border-radius: 10px;
   text-decoration: none;
 }
 .Nav_link:visited {
