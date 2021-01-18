@@ -91,7 +91,7 @@ export const Select = (props) => {
  
 export const TextArea = props => {
     return (
-        <div className={formControl}>
+        <div>
              <label>{props.text}</label>
             <textarea {...props}/>
         </div>
