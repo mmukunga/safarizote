@@ -53,20 +53,24 @@ const Email = () => {
     <p>Please send us a Message..</p>
 
 
-    <form>
-      <div className="cssform">
-        <label for="name">Your name:</label>
-        <input id="name" name="username" type="text" autofocus />
-      </div>
-      <div className="cssform">
-        <label for="lastname">Your Last name:</label>
-        <input id="lastname" name="lastname" type="text" />
-      </div>
-      <div className="cssform">
-        <label for="message">Your Message:</label>
-        <textarea id="message" name="message" type="text" />
-      </div>
-      <input type="submit" value="Submit" />
+    <form className="cssForm">
+        <fieldset>
+        <div className="block">
+            <label for="title" >title:</label>
+            <input type="text" id="title" name="title" align="left"/>
+        </div>
+        <div className="block">
+            <label for="username">username:</label>
+            <input type="text" id="username" name="username" align="left"/>
+        </div>
+        <div className="block">
+            <label for="messageContent">message content:</label>
+            <textarea id="messageContent" name="messageContent" cols="40" rows="5" align="left"></textarea>
+        </div>
+        <div className="block">
+            <input type="submit"/>
+        </div>
+        </fieldset>
     </form>
   
 
