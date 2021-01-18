@@ -51,28 +51,26 @@ const Email = () => {
   return (
     <div className="Email">
     <p>Please send us a Message..</p>
+    <form action="/my-handling-form-page" method="post">
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="user_name"/>
+      </div>
 
+      <div>
+        <label for="mail">E-mail:</label>
+        <input type="email" id="mail" name="user_email"/>
+      </div>
 
-    <form className="cssForm">
-        <fieldset>
-        <div className="block">
-            <label for="title" >title:</label>
-            <input type="text" id="title" name="title" align="left"/>
-        </div>
-        <div className="block">
-            <label for="username">username:</label>
-            <input type="text" id="username" name="username" align="left"/>
-        </div>
-        <div className="block">
-            <label for="messageContent">message content:</label>
-            <textarea id="messageContent" name="messageContent" cols="40" rows="5" align="left"></textarea>
-        </div>
-        <div className="block">
-            <input type="submit"/>
-        </div>
-        </fieldset>
+      <div>
+        <label for="msg">Message:</label>
+        <textarea id="msg" name="user_message"></textarea>
+      </div>
+
+      <div class="button">
+        <button type="submit">Send your message</button>
+      </div>
     </form>
-  
 
 
 
