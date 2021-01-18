@@ -45,11 +45,11 @@ function App() {
         <nav>
           <NavLink to="/" className="Nav_link">Home</NavLink>
           <NavLink to="/aboutUs" className="Nav_link">About Us</NavLink>
-          <NavLink to="/shopping" className="Nav_link">Users</NavLink>
           <NavLink to="/safaris" className="Nav_link">Safaris</NavLink>
           <NavLink to="/tipping" className="Nav_link">Tipping</NavLink>
           <NavLink to="/signIn" className="Nav_link">Login</NavLink>
           <NavLink to="/email" className="Nav_link">Email</NavLink>
+          <NavLink to="/shopping" className="Nav_link">Shopping</NavLink>
           <NavLink to="/weather" className="Nav_link">Weather</NavLink>
         </nav>  
       </header>
