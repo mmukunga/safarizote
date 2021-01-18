@@ -23,8 +23,6 @@
     font-weight: 300;
   }
 
-
-
   form {
     margin: 0 auto;
     width: 400px;
@@ -48,6 +46,9 @@
     -moz-box-sizing: border-box;
          box-sizing: border-box;
     border: 1px solid #999;
+    border-radius: 3px;
+    color: #797979;
+    box-shadow: 0 2px 4px #bbb inset;
   }
   
   input:focus, textarea:focus {
@@ -58,6 +59,8 @@
     vertical-align: top;
     height: 5em;
     resize: vertical;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.06);
+    border-radius:15px;
   }
   
   .button {

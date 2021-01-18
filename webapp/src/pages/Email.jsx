@@ -81,9 +81,9 @@ const Email = () => {
       submit={handleSubmit}
       elements={() => (
         <>        
-          <InputField name="name"  text="Name"  type="text" onChange={handleChange}/>
-          <InputField name="email" text="Email" type="text" onChange={handleChange}/>
-          <TextArea name="message" text="Message" rows="4" cols="50" onChange={handleChange} placeholder="Write here.."/>
+          <InputField name="name" text="Name:" type="text" onChange={handleChange} placeholder="Write here.."/>
+          <InputField name="email" text="E-mail:" type="text" onChange={handleChange} placeholder="Write here.."/>
+          <TextArea name="message" text="Message:" rows="4" cols="50" onChange={handleChange} placeholder="Write here.."/>
         </>
       )}
     >    
