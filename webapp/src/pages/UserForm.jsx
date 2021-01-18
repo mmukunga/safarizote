@@ -41,10 +41,9 @@ export const InputField = ({text,
     required = false}) => {
   
     return (
-        <div className="cssform">
-           <label className="csslabel" htmlFor={id}>{text}</label>
+        <div>
+           <label htmlFor={id}>{text}</label>
            <input
-            className="cssinput"
             required={required}
             name={name}
             id={id}
@@ -57,7 +56,7 @@ export const InputField = ({text,
   
 export const Button = ({clicked, buttonType, children }) => {
     return (
-      <button type={buttonType} onClick={clicked} className="Button">
+      <button type={buttonType} onClick={clicked}>
         {children}
       </button>
     );
@@ -77,12 +76,11 @@ export const Select = (props) => {
     ));
 
     return (
-      <div className="cssform">   
-        <label htmlFor={props.id} className="csslabel">{props.text}</label> 
+      <div>   
+        <label htmlFor={props.id}>{props.text}</label> 
         <select
          name={props.name} 
          id={props.id}
-         className="cssinput"
          onChange={e => handleInputChange(e)}>
            <option>Select Item</option>
            {options}
@@ -92,11 +90,10 @@ export const Select = (props) => {
 }
  
 export const TextArea = props => {
-    let formControl = "cssform";
     return (
         <div className={formControl}>
-             <label className="csslabel">{props.text}</label>
-            <textarea {...props} className="cssinput" />
+             <label>{props.text}</label>
+            <textarea {...props}/>
         </div>
     );
 }
