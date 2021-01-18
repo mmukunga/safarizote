@@ -62,6 +62,10 @@ const Email = () => {
         <label for="lastname">Your Last name:</label>
         <input id="lastname" name="lastname" type="text" />
       </div>
+      <div className="cssform">
+        <label for="message">Your Message:</label>
+        <textarea id="message" name="message" type="text" />
+      </div>
       <input type="submit" value="Submit" />
     </form>
   
