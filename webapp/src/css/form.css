@@ -95,9 +95,9 @@
 
 */
 
-
-
-
+.form-div {
+  border: 2px solid red;
+}
   
 #form-wrap form {
   background: #fff;
@@ -140,12 +140,10 @@
 
 #form-wrap .textarea {
   height:auto;
-  max-width:75%;
-  width:100%;
+  width: 300px;
   resize: vertical;
   padding:15px;
   border-radius:15px;
-  border:0;
   box-shadow:4px 4px 10px rgba(0,0,0,0.06);
   height:150px;
 }

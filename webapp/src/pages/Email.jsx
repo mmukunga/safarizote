@@ -58,15 +58,22 @@ const Email = () => {
 <div id="form-wrap">
   <form>
     <div id="form-inner">
-      <label for="name">Name:</label>
-      <input type="text" class="input" id="name" placeholder="Enter your name here"/>
-      <label for="email">Email:</label>
-      <input type="email" class="input" id="email" placeholder="Enter a valid email address"/>
-      <label for="message">Message:</label>
-      <textarea class="input textarea" id="message" placeholder="Type in your message here"></textarea>
-      <br />
-      <input type="reset" class="button" value=" Reset"/>
-      <input type="submit" class="button" value="Submit"/>
+      <div className="form-div">
+        <label for="name">Name:</label>
+        <input type="text" class="input" id="name" placeholder="Enter your name here"/>
+      </div>
+      <div className="form-div">
+        <label for="email">Email:</label>
+        <input type="email" class="input" id="email" placeholder="Enter a valid email address"/>
+      </div>
+      <div>
+        <label for="message">Message:</label>
+        <textarea class="input textarea" id="message" placeholder="Type in your message here"></textarea>
+      </div>
+      <div className="form-div">
+        <input type="reset" class="button" value=" Reset"/>
+        <input type="submit" class="button" value="Submit"/>
+      </div>
     </div>
   </form>
 </div>
