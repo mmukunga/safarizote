@@ -54,12 +54,12 @@ const Email = () => {
 
 
     <form>
-      <div className="form">
-        <label htmlFor="name">Your name:</label>
+      <div className="cssform">
+        <label for="name">Your name:</label>
         <input id="name" name="username" type="text" autofocus />
       </div>
-      <div className="form">
-        <label htmlFor="lastname">Your Last name:</label>
+      <div className="cssform">
+        <label for="lastname">Your Last name:</label>
         <input id="lastname" name="lastname" type="text" />
       </div>
       <input type="submit" value="Submit" />
