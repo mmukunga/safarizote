@@ -22,128 +22,17 @@
     font-size: 14px;
     font-weight: 300;
   }
-  
-  /* 
-  textarea {
-    width:100%;
-    resize: vertical;
-    padding:15px;
-    border-radius:15px;
-    border:0;
-    box-shadow:4px 4px 10px rgba(0,0,0,0.06);
-    height:150px;
-  }
 
-  .cssform {
+
+  div.form {
     margin-bottom: 10px;
-    text-align: left;
+    margin: 0 auto;
   }
-  
-  .cssform label {
-    width: 100px;
-    padding-right: 20px;
-    margin-bottom: 5px;
+  div.form label {
+    display: inline-block;
+    width: 110px;
+    color: #777777;
   }
-  
-  .cssform input[type="text"],
-  .cssform input[type="email"],
-  .cssform input[type="phone"],
-  .cssform input[type="message"],
-  .cssform input[type="password"] {
-    width: 200px;
-    padding: 5px;
-    margin-left: 25px;
-  }
-  
-  .cssinput {
-    border: 1px solid red;
-  }
-
-  button {
-    max-width: 150px;
+  div.form input {
     padding: 5px 10px;
   }
-  
-  @media screen and (max-width: 600px) {
-    .errorMsg {
-      max-width: 100%;
-    }
-  
-    .cssform {
-      display: block;
-      width: 100%;
-    }
-  
-    .cssform .csslabel {
-      display: inline-block;
-      width: auto;
-      float: none;
-      text-align: left;
-      width: 100%;
-    }
-
-    .cssform input[type="text"],
-    .cssform input[type="email"],
-    .cssform input[type="phone"],
-    .cssform input[type="message"],
-    .cssform input[type="password"] {
-      display: block;
-      width: 100%;
-      margin-left: 1px;
-    }
-  }
-
-*/
-
-.form-div {
-  border: 2px solid #fff6f0;
-}
-  
-#form-wrap form {
-  background: #fff;
-}
-
-#form-wrap #form-inner {
-  margin: 0 auto;
-  padding-top: 35px;
-  padding-bottom: 80px;
-  width: 100%;
-}
-
-#form-wrap label {
-  font: bold 18px/25px Corbel, Arial, Helvetica;
-  text-shadow: 0 1px 0 #fff, 0 2px 0 #ccc;
-  float: left;
-  margin-right: 10px;
-  width: 120px;
-}
-
-#form-wrap .input {
-  font: 15px Arial, Helvetica;
-  padding: 5px;
-  margin: 0 10px 20px 0;
-  border: 1px solid #b9bdc1;
-  width: 300px;
-  color: #797979;
-  -moz-box-shadow: 0 2px 4px #bbb inset;
-  -webkit-box-shadow: 0 2px 4px #bbb inset;
-  box-shadow: 0 2px 4px #bbb inset;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-}
-
-#form-wrap .input:focus {
-  background-color: #F6F5F4;
-  outline: 0;
-}
-
-#form-wrap .textarea {
-  height:auto;
-  width: 300px;
-  resize: vertical;
-  padding:15px;
-  border-radius:15px;
-  box-shadow:4px 4px 10px rgba(0,0,0,0.06);
-  height:150px;
-}
