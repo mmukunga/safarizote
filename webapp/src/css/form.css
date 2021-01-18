@@ -27,10 +27,12 @@
   div.cssform {
     margin-bottom: 10px;
   }
+
   div.cssform label {
     display: inline-block;
-    width: 210px;
+    width: 120px;
     color: #777777;
+    text-align: right;
   }
   div.cssform input {
     padding: 5px 10px;
