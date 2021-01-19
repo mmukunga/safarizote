@@ -71,7 +71,7 @@ function App() {
 const Card = props => {
   const { fontColor, backgroundColor, children } = props;
   const containerStyles = {
-    width: 700,
+    width: 650,
     backgroundColor: backgroundColor,
     color: fontColor,
     borderRadius: 10,
@@ -80,8 +80,8 @@ const Card = props => {
     margin: '10px',
     padding: '10px',
     border: '4px solid darkred'
-
   };
+
   const labelStyles = { color: fontColor };
 
   return (
@@ -90,4 +90,5 @@ const Card = props => {
     </div>
   );
 };
+
 export default App;
