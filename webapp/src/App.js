@@ -58,7 +58,8 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
+        </a>        
+        <Menu/>
         <nav>
           <NavLink to="/" className="Nav_link">Home</NavLink>
           <NavLink to="/aboutUs" className="Nav_link">About Us</NavLink>
@@ -78,7 +79,6 @@ function App() {
           <Route path="/email" component={Email} />
           <Route path="/weather" component={Weather} />
       </Switch>
-      <Menu/>
       </Card>  
     </div>
   );
