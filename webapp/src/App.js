@@ -25,6 +25,22 @@ function App() {
       });
   },[])
  
+
+  const DropDown = ({ history }) => {
+    const onChange = (e) => {
+      history.push(`${e.target.value}`);
+    };
+
+    return (
+      <select onChange={onChange}>
+        <option value="/tipping">Tipping</option>
+        <option value="/shopping">Shopping</option>
+      </select>
+    );
+  };
+  
+  const Menu = withRouter(DropDown);
+
   return (
     <div className="App">
        <Card fontColor="black" backgroundColor="white" title="Safari Zote">
@@ -46,10 +62,8 @@ function App() {
           <NavLink to="/" className="Nav_link">Home</NavLink>
           <NavLink to="/aboutUs" className="Nav_link">About Us</NavLink>
           <NavLink to="/safaris" className="Nav_link">Safaris</NavLink>
-          <NavLink to="/tipping" className="Nav_link">Tipping</NavLink>
           <NavLink to="/signIn" className="Nav_link">Login</NavLink>
           <NavLink to="/email" className="Nav_link">Email</NavLink>
-          <NavLink to="/shopping" className="Nav_link">Shopping</NavLink>
           <NavLink to="/weather" className="Nav_link">Weather</NavLink>
         </nav>  
       </header>
@@ -63,6 +77,7 @@ function App() {
           <Route path="/email" component={Email} />
           <Route path="/weather" component={Weather} />
       </Switch>
+      <Menu/>
       </Card>  
     </div>
   );
