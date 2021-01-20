@@ -49,7 +49,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p className="App-title">{message.url}</p>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit <code>src/App.js</code> and save to reload. <Menu/>
         </p>
         <a
           className="App-link"
@@ -59,7 +59,6 @@ function App() {
         >
           Learn React
         </a>        
-        <Menu/>
         <nav>
           <NavLink to="/" className="Nav_link">Home</NavLink>
           <NavLink to="/aboutUs" className="Nav_link">About Us</NavLink>
