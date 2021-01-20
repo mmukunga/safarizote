@@ -26,14 +26,20 @@ function App() {
       });
   },[])
  
-
+  const selectStyle = {
+    border:'1px solid red', 
+    width:'80px', 
+    padding:'2px', 
+    background:'silver'
+  };
+  
   const DropDown = ({ history }) => {
     const onChange = (e) => {
       history.push(`${e.target.value}`);
     };
 
     return (
-      <select onChange={onChange} style={{width:'80px', padding:'2px'}}>
+      <select onChange={onChange} style={selectStyle}>
         <option value="/tipping">Tipping</option>
         <option value="/shopping">Shopping</option>
       </select>
