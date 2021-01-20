@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Card from './Card';
-import Progress from './Progress';
 
 const Home = () => {
     const [data, setData] = useState([]);
-    const [start, setStart] = useState(true);
     const [clientInfo, setClientInfo] = useState({});
 
 
