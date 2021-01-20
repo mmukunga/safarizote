@@ -33,7 +33,7 @@ function App() {
     };
 
     return (
-      <select onChange={onChange}>
+      <select onChange={onChange} style={{width:'100px', padding:'2px'}}>
         <option value="/tipping">Tipping</option>
         <option value="/shopping">Shopping</option>
       </select>
