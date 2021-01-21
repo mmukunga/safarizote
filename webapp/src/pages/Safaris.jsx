@@ -66,17 +66,7 @@ const Safaris = () => {
 
         {data && data.length > 0 
           ? <> 
-            <Table fullWidth data={displayedData} columns={columns} />
-            <Pagination
-              currentPage={currentPage}
-              onPageChange={page => {
-                const index = (page - 1) * pageSize;
-                setDisplayedData([...data].splice(index, pageSize));
-                setCurrentPage(page);
-              }}
-              total={data.length}
-              pageSize={pageSize}
-            /> 
+          Simn
           </>
           : <p>fUCK!!</p>}
         </div>;
