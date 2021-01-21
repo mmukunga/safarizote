@@ -43,7 +43,7 @@ const Safaris = () => {
 
     console.log(safaris);
     var data = [];
-    safaris.forEach(function(safari) {
+    {safaris && safaris.forEach(function(safari) {
         data.push({
           id: safari.id,
           title: safari.title,
@@ -51,7 +51,7 @@ const Safaris = () => {
           price: safari.price
         });
     });
-    
+  }
     console.log(data);
 
 
@@ -63,17 +63,22 @@ const Safaris = () => {
       <Card title="Safaris" text="Safari Zote">
 
         <div>
-          <Table fullWidth data={displayedData} columns={columns} />
-          <Pagination
-            currentPage={currentPage}
-            onPageChange={page => {
-              const index = (page - 1) * pageSize;
-              setDisplayedData([...data].splice(index, pageSize));
-              setCurrentPage(page);
-            }}
-            total={data.length}
-            pageSize={pageSize}
-          />
+
+        {data && data.length > 0 
+          ? <> 
+            <Table fullWidth data={displayedData} columns={columns} />
+            <Pagination
+              currentPage={currentPage}
+              onPageChange={page => {
+                const index = (page - 1) * pageSize;
+                setDisplayedData([...data].splice(index, pageSize));
+                setCurrentPage(page);
+              }}
+              total={data.length}
+              pageSize={pageSize}
+            /> 
+          </>
+          : <p>fUCK!!</p>}
         </div>;
 
 
