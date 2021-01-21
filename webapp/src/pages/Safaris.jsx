@@ -42,9 +42,9 @@ const Safaris = () => {
     }, []);
 
     console.log(safaris);
-    var array_nodes = [];
+    var data = [];
     safaris.forEach(function(safari) {
-        array_nodes.push({
+        data.push({
           id: safari.id,
           title: safari.title,
           description: safari.description,
@@ -52,11 +52,11 @@ const Safaris = () => {
         });
     });
     
-    console.log(array_nodes);
+    console.log(data);
 
 
     const pageSize = 4;
-    const [displayedData, setDisplayedData] = React.useState([...array_nodes].splice(0, pageSize));
+    const [displayedData, setDisplayedData] = React.useState([...data].splice(0, pageSize));
     const [currentPage, setCurrentPage] = React.useState(1);
 
     return (
