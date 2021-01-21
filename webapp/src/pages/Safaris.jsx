@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import Table from '@skatteetaten/frontend-components/Table';
+import Pagination from '@skatteetaten/frontend-components/Pagination';
+
 import axios from 'axios';
 import Table from './Table';
 import Card from './Card';
@@ -6,6 +9,25 @@ import Card from './Card';
 const Safaris = () => {
     const [safaris, setSafaris] = useState([]);
     const [checked, setChecked] = useState(false);
+    
+    const columns = [
+      {
+        name: 'Id',
+        fieldName: 'id'
+      },
+      {
+        name: 'Title',
+        fieldName: 'title'
+      },
+      {
+        name: 'Description',
+        fieldName: 'description'
+      },
+      {
+        name: 'Price',
+        fieldName: 'price'
+      }
+    ];
 
     const handleChecked = (e) => {
       setChecked(!checked);
@@ -34,6 +56,11 @@ const Safaris = () => {
     
     console.log(array_nodes);
 
+
+    const pageSize = 4;
+    const [displayedData, setDisplayedData] = React.useState([...array_nodes].splice(0, pageSize));
+    const [currentPage, setCurrentPage] = React.useState(1);
+
     return (
       <Card title="Safaris" text="Safari Zote">
         <div className ="sTable">
@@ -41,6 +68,23 @@ const Safaris = () => {
           ? <Table data={array_nodes}/> 
           : <p>fUCK!!</p>}
         </div>
+
+        <div>
+          <Table fullWidth data={displayedData} columns={columns} />
+          <Pagination
+            currentPage={currentPage}
+            onPageChange={page => {
+              const index = (page - 1) * pageSize;
+              setDisplayedData([...data].splice(index, pageSize));
+              setCurrentPage(page);
+            }}
+            total={data.length}
+            pageSize={pageSize}
+          />
+        </div>;
+
+
+
       </Card>
     );
   };
