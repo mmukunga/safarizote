@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { Suspense, useState, useEffect} from 'react';
 import { Route, Switch, NavLink } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
@@ -6,14 +6,18 @@ import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 
-import Home     from './pages/Home';
-import AboutUs  from './pages/AboutUs';
-import Safaris  from './pages/Safaris';
-import Shopping from './pages/Shopping';
-import Lotto from './pages/Lotto';
-import SignIn from './pages/SignIn';
-import Email from './pages/Email';
-import Weather from './pages/Weather';
+import Spinner from './pages/Spinner';
+
+const Loading = () => <div>Loading</div>;
+
+const Home = React.lazy(() => import('./pages/Home'));
+const AboutUs = React.lazy(() => import('./pages/AboutUs'));
+const Safaris = React.lazy(() => import('./pages/Safaris'));
+const Shopping = React.lazy(() => import('./pages/Shopping'));
+const Lotto = React.lazy(() => import('./pages/Lotto'));
+const SignIn = React.lazy(() => import('./pages/SignIn'));
+const Email = React.lazy(() => import('./pages/Email'));
+const Weather = React.lazy(() => import('./pages/Weather'));
 
 function App() {
   const [message, setMessage] = useState({});
@@ -26,6 +30,10 @@ function App() {
       });
   },[])
  
+  const spinner = () => (
+    <div className={classes.Loader}>Loading...</div>
+);
+
   const selectStyle = {
     border:'1px solid red', 
     width:'80px', 
@@ -50,6 +58,7 @@ function App() {
 
   return (
     <div className="App">
+       <Suspense fallback={<Spinner />}>
        <Card fontColor="black" backgroundColor="white" title="Safari Zote">
        <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -85,6 +94,7 @@ function App() {
           <Route path="/weather" component={Weather} />
       </Switch>
       </Card>  
+      </Suspense>
     </div>
   );
 }
