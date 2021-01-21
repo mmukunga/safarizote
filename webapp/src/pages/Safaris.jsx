@@ -58,6 +58,8 @@ const Safaris = () => {
     const pageSize = 4;
     const [displayedData, setDisplayedData] = React.useState([...data].splice(0, pageSize));
     const [currentPage, setCurrentPage] = React.useState(1);
+    
+    console.log(displayedData);
 
     return (
       <Card title="Safaris" text="Safari Zote">
@@ -66,7 +68,7 @@ const Safaris = () => {
 
         {data && data.length > 0 
           ? <> 
-          Simn
+          <Table fullWidth data={displayedData} columns={columns} />
           </>
           : <p>fUCK!!</p>}
         </div>;
