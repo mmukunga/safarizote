@@ -77,7 +77,7 @@ const Safaris = () => {
           <ul>
             {renderPageNumbers}
           </ul>
-          {array_nodes && array_nodes.length > 0 
+          {currentItems && currentItems.length > 0 
           ? <Table data={currentItems}/> 
           : <p>fUCK!!</p>}
         </div>
