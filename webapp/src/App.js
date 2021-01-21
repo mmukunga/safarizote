@@ -6,29 +6,20 @@ import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 
-import Loader from './pages/Loader';
-
 const Loading = () => <div>Loading</div>
+
 const Home = React.lazy(() => import('./pages/Home'));
 const AboutUs = React.lazy(() => import('./pages/AboutUs'));
 const Safaris = React.lazy(() => import('./pages/Safaris'));
 const Shopping = React.lazy(() => import('./pages/Shopping'));
-const Lotto = React.lazy(() => import('./pages/Lotto'));
+const Lotto  = React.lazy(() => import('./pages/Lotto'));
 const SignIn = React.lazy(() => import('./pages/SignIn'));
 const Email = React.lazy(() => import('./pages/Email'));
 const Weather = React.lazy(() => import('./pages/Weather'));
 
 function App() {
   const [message, setMessage] = useState({});
-  /*
-    useEffect(() => {
-      axios.get('/api/tipping')
-        .then(response => {
-          console.log(response);
-          setMessage(response.data);
-        });
-    },[]);
-  */
+ 
   const selectStyle = {
     border:'1px solid red', 
     width:'80px', 
@@ -88,8 +79,8 @@ function App() {
           <Route path="/email" component={Email} />
           <Route path="/weather" component={Weather} />
       </Switch>
-      </Card>  
-      </Suspense>
+      </Card> 
+      </Suspense> 
     </div>
   );
 }

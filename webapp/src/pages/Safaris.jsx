@@ -1,31 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Pagination } from '@skatteetaten/frontend-components';
-
 import axios from 'axios';
+import Table from './Table';
 import Card from './Card';
 
 const Safaris = () => {
     const [safaris, setSafaris] = useState([]);
     const [checked, setChecked] = useState(false);
-    
-    const columns = [
-      {
-        name: 'Id',
-        fieldName: 'id'
-      },
-      {
-        name: 'Title',
-        fieldName: 'title'
-      },
-      {
-        name: 'Description',
-        fieldName: 'description'
-      },
-      {
-        name: 'Price',
-        fieldName: 'price'
-      }
-    ];
 
     const handleChecked = (e) => {
       setChecked(!checked);
@@ -42,39 +22,25 @@ const Safaris = () => {
     }, []);
 
     console.log(safaris);
-    var data = [];
-    {safaris && safaris.forEach(function(safari) {
-        data.push({
+    var array_nodes = [];
+    safaris.forEach(function(safari) {
+        array_nodes.push({
           id: safari.id,
           title: safari.title,
           description: safari.description,
           price: safari.price
         });
     });
-  }
-    console.log(data);
-
-
-    const pageSize = 4;
-    const [displayedData, setDisplayedData] = React.useState([...data].splice(0, pageSize));
-    const [currentPage, setCurrentPage] = React.useState(1);
     
-    console.log(displayedData);
+    console.log(array_nodes);
 
     return (
       <Card title="Safaris" text="Safari Zote">
-
-        <div>
-
-        {data && data.length > 0 
-          ? <> 
-          <Table fullWidth data={displayedData} columns={columns} />
-          </>
+        <div className ="sTable">
+          {array_nodes && array_nodes.length > 0 
+          ? <Table data={array_nodes}/> 
           : <p>fUCK!!</p>}
-        </div>;
-
-
-
+        </div>
       </Card>
     );
   };
