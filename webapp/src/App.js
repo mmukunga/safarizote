@@ -6,7 +6,7 @@ import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 
-const Loading = () => <div>Loading</div>
+const Loading = () => <div className="Spinner" style={{ textAlign: 'center' }}><p>Loading...</p></div>
 
 const Home = React.lazy(() => import('./pages/Home'));
 const AboutUs = React.lazy(() => import('./pages/AboutUs'));
