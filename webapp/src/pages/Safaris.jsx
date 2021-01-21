@@ -3,7 +3,6 @@ import Table from '@skatteetaten/frontend-components/Table';
 import Pagination from '@skatteetaten/frontend-components/Pagination';
 
 import axios from 'axios';
-import Table from './Table';
 import Card from './Card';
 
 const Safaris = () => {
@@ -63,11 +62,6 @@ const Safaris = () => {
 
     return (
       <Card title="Safaris" text="Safari Zote">
-        <div className ="sTable">
-          {array_nodes && array_nodes.length > 0 
-          ? <Table data={array_nodes}/> 
-          : <p>fUCK!!</p>}
-        </div>
 
         <div>
           <Table fullWidth data={displayedData} columns={columns} />
