@@ -6,9 +6,7 @@ import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 
-import Spinner from './pages/Spinner';
-
-const Loading = () => <div>Loading</div>;
+import Loader from './pages/Loader';
 
 const Home = React.lazy(() => import('./pages/Home'));
 const AboutUs = React.lazy(() => import('./pages/AboutUs'));
@@ -54,7 +52,7 @@ function App() {
 
   return (
     <div className="App">
-       <Suspense fallback={<Spinner />}>
+       <Suspense fallback={<Loader />}>
        <Card fontColor="black" backgroundColor="white" title="Safari Zote">
        <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
