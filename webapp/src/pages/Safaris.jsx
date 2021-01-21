@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Table from '@skatteetaten/frontend-components/Table';
-import Pagination from '@skatteetaten/frontend-components/Pagination';
+import { Table, Pagination } from '@skatteetaten/frontend-components';
 
 import axios from 'axios';
 import Card from './Card';

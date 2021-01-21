@@ -1,5 +1,5 @@
 import React from 'react';
-import Spinner from '@skatteetaten/frontend-components/Spinner';
+import { Spinner } from '@skatteetaten/frontend-components';
 
 const Spinner = () => (
 <div className="Spinner"  style={{ textAlign: 'center' }}>
