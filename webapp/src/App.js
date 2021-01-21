@@ -21,19 +21,15 @@ const Weather = React.lazy(() => import('./pages/Weather'));
 
 function App() {
   const [message, setMessage] = useState({});
-
-  useEffect(() => {
-    axios.get('/api/tipping')
-      .then(response => {
-         console.log(response);
-         setMessage(response.data);
-      });
-  },[])
- 
-  const spinner = () => (
-    <div className={classes.Loader}>Loading...</div>
-);
-
+  /*
+    useEffect(() => {
+      axios.get('/api/tipping')
+        .then(response => {
+          console.log(response);
+          setMessage(response.data);
+        });
+    },[]);
+  */
   const selectStyle = {
     border:'1px solid red', 
     width:'80px', 
