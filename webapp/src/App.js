@@ -8,6 +8,8 @@ import axios from 'axios';
 
 import Loader from './pages/Loader';
 
+const Loading = () => <div>Loading</div>
+
 const Home = React.lazy(() => import('./pages/Home'));
 const AboutUs = React.lazy(() => import('./pages/AboutUs'));
 const Safaris = React.lazy(() => import('./pages/Safaris'));
@@ -52,7 +54,7 @@ function App() {
 
   return (
     <div className="App">
-       <Suspense fallback={<Loader />}>
+       <Suspense fallback={<Loading />}>
        <Card fontColor="black" backgroundColor="white" title="Safari Zote">
        <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
