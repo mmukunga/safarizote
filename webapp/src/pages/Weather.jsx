@@ -37,7 +37,7 @@ const Weather = () => {
       var headers = {
         'Content-Type': 'application/json' 
       };
-      
+
       const fetchData = async () => {
         axios.post('/api/weather', country, headers).then(response => {
           console.log(response);
@@ -174,26 +174,6 @@ const Weather = () => {
                 )}
                 >    
             </UserForm>
-            
-            <div>
-                Current Weather
-                <strong className="pt-3 text-light">Current Local Weather</strong>
-                <div className="day-container">
-                <Card 
-                    date={weather.when.split(',')}
-                    loc={weather.location}
-                    detail={weather.detail}
-                    icon={weather.icon}
-                    high={weather.temp_max}
-                    current={weather.temp}
-                    low={weather.temp_min}
-                />
-                </div>
-            </div>
-            <div>
-                Weather Forecast
-                <CardList cards={cards} />
-            </div>
         </div>
     );
 }
