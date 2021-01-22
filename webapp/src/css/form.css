@@ -80,7 +80,8 @@
 
   .Buttons {
     border:1px solid red;
-    width: 250px;
+    width:50%;
+    margin:0 auto";
   }
 
   .Button {
