@@ -22,7 +22,7 @@ const UserForm =
     return (
         <React.Fragment>
             {errors}
-            <form onSubmit={handleSubmit}>
+            <form className="formContainer" onSubmit={handleSubmit}>
                 {elements()}
                 <Button buttonType='primary'  type="submit">Send your message</Button>
                 <Button buttonType="secondary" clicked={handleCancel}>Reset</Button>
