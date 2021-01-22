@@ -69,11 +69,42 @@ function App() {
       : <p>You are not logged in.</p>
   }
 
+  
+  const Toolbar = (props) => (
+    <header className="App-header">   
+      <nav>
+          <ul>
+              <li style={{display: props.displayHome}}>Home</li>
+              <li>About Us</li>
+              <li>Contact</li>
+          </ul>
+      </nav>   
+      Simon
+    </header>
+  );
 
+  const Layout = (props) => {
+      return (
+        <div>
+          <Toolbar displayHome={props.displayHome}/>
+          <main>
+            {this.props.children}
+          </main>
+        </div>
+      );
+  }
+  
   return (
     <div className="App">
        <Suspense fallback={<Loading />}>
        <Card fontColor="black" backgroundColor="white" title="Safari Zote">
+         
+       <div class="Zcontainer">
+          <div class="Zsmall-box">Venstre Div</div>
+          <div class="Zbig-box">Høyre Div</div>
+        </div>
+
+
        <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p className="App-title">{message.url}</p>

@@ -111,3 +111,23 @@
     cursor: pointer;
     float: right;
   }*/
+
+
+  .Zcontainer {
+    border: 1px solid #666666;
+    width: 350px;
+    height: 150px;
+  }
+  .Zcontainer div {
+    display: inline-block;
+    border: 1px solid #666666;
+    width: 40%;
+  }
+  .Zsmall-box {
+    height: 30%;
+    background: #1c87c9;
+  }
+  .Zbig-box {
+    height: 50%;
+    background: #8ebf42;
+  }
