@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
+import fakeAuth from './pages/Auth';
 
 const Loading = () => <div className="Spinner" style={{ textAlign: 'center' }}><p>Loading...</p></div>
 

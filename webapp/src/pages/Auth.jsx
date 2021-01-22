@@ -1,3 +1,6 @@
+
+import React from 'react';
+
 const fakeAuth = {
     isAuthenticated: false,
     authenticate(cb) {
@@ -9,5 +12,5 @@ const fakeAuth = {
       setTimeout(cb, 100) // fake async
     }
   }
-  
-  export { fakeAuth }  
+
+  export default fakeAuth;
