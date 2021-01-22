@@ -97,8 +97,10 @@ const Weather = () => {
     const Card = props => {
         return (
           <div style={{ margin: '1em', width: '100%' }}>
-             <h2 id="current-city">{props.loc}</h2>
-             <span className="date">{props.date}</span>
+            <h2 id="current-city">{props.loc}</h2>
+            Current Weather
+            <strong className="pt-3 text-light">Current Local Weather</strong>
+            <span className="date">{props.date}</span>
             <img alt="avatar" style={{ width: '70px' }} src={props.icon} />
             <div className="pt-3 text-center">{props.condition}</div>
             <div>{props.icon}</div>
@@ -192,8 +194,6 @@ const Weather = () => {
             </UserForm>
 
             <div className="day-container">
-                Current Weather
-                <strong className="pt-3 text-light">Current Local Weather</strong>
                 {weather != null && weather.main
                  ?  <Card 
                     date={new Date((weather.dt)*1000).toLocaleDateString("en-US")}
