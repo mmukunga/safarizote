@@ -26,6 +26,36 @@ const Weather = () => {
     const [forecast, setForecast] = useState({});
     const [cards, setCards] = useState([])
 
+
+    React.useEffect(() => {
+      const country = {
+          name: 'Afghanistan',
+          code: 'AF',
+          cities: null
+      };
+      
+      const fetchData = async () => {
+        axios.post('/api/weather', country, headers).then(response => {
+          console.log(response);
+          setWeather(response.data);
+          console.log('Weather Data OK!!');
+      }).catch(err => {
+          console.log(err);
+      });
+
+      axios.post('/api/forecast', country, headers).then(response => {
+          console.log(response);
+          setForecast(response.data);
+          console.log('Weather Forecast Data OK!!');
+      }).catch(err => {
+          console.log(err);
+      });
+      };
+
+      fetchData();
+
+  }, []);
+
     const handleSubmit = e => {
         e.preventDefault();
         console.log('Weather Forecast!!');
