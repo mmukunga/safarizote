@@ -54,7 +54,7 @@ const Safaris = () => {
     for (let i = 1; i <= Math.ceil(array_nodes.length / pageSize); i++) {
       pageNumbers.push(i);
     }
-
+    console.log(currentItems);
     const renderPageNumbers = pageNumbers.map(number => {
       return (
         <li
@@ -65,7 +65,7 @@ const Safaris = () => {
         </li>
       );
     });
-
+    console.log(currentItems);
     return (
       <Card title="Safaris" text="Safari Zote">
         <div className ="sTable">
