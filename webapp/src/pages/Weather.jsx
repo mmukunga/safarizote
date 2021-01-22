@@ -174,6 +174,23 @@ const Weather = () => {
                 )}
                 >    
             </UserForm>
+
+            <div className="day-container">
+                Current Weather
+                <strong className="pt-3 text-light">Current Local Weather</strong>
+                {weather != null 
+                 ? <Card 
+                    date={new Date((weather.dt)*1000).toLocaleDateString("en-US")}
+                    loc={weather.name}
+                    high={weather.main.temp_max}
+                    current={weather.main.temp}
+                    low={weather.main.temp_min}
+                    detail={weather.main}
+                    icon={weather.icon}
+                    />     
+                  : <div>No Weather</div>   
+              }
+            </div>
         </div>
     );
 }
