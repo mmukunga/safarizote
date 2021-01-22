@@ -24,6 +24,7 @@ const Weather = () => {
     const [cities, setCities] = useState([]);
     const [weather, setWeather] = useState({});
     const [forecast, setForecast] = useState({});
+    const [cards, setCards] = useState([])
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -59,6 +60,27 @@ const Weather = () => {
         dispatch({ type: "reset" });
     };
     
+
+    const Card = props => {
+        return (
+          <div style={{ margin: '1em' }}>
+            <img alt="avatar" style={{ width: '70px' }} src={props.icon} />
+            <div>
+              <div style={{ fontWeight: 'bold' }}>{props.loation}</div>
+              <div>{props.date}</div>
+            </div>
+          </div>
+        )
+      }
+
+    const CardList = props => (
+    <div>
+        {props.cards.map(card => (
+        <Card {...card} />
+        ))}
+    </div>
+    )
+
     const handleChange = e => {
       console.log(e);
       const { name, value } = e.target;
@@ -119,7 +141,26 @@ const Weather = () => {
                 )}
                 >    
             </UserForm>
-
+            
+            <div>
+                Current Weather
+                <strong className="pt-3 text-light">Current Local Weather</strong>
+                <div className="day-container">
+                <Card 
+                    date={weather.when.split(',')}
+                    loc={weather.location}
+                    detail={weather.detail}
+                    icon={weather.icon}
+                    high={weather.temp_max}
+                    current={weather.temp}
+                    low={weather.temp_min}
+                />
+                </div>
+            </div>
+            <div>
+                Weather Forecast
+                <CardList cards={cards} />
+            </div>
         </div>
     );
 }

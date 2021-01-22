@@ -2,24 +2,8 @@ import React, { useState, useReducer } from "react";
 import {Redirect, useLocation } from "react-router-dom";
 import UserForm, { InputField } from "./UserForm";
 
-const initialState = {
-  email: "",
-  password: ""
-};
-
-const reducer = (state, action) => {
-  if (action.type === "reset") {
-      return initialState;
-  }
-
-  const result = { ...state };
-  result[action.type] = action.value;
-  return result;
-};
-
 const SignIn = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const { email, password } = state;
+  const [user, setUser] = React.useState({email:'', password:''});
   const [redirectToReferrer, setRedirectToReferrer] = React.useState(false);
 
   const { state } = useLocation();
@@ -34,7 +18,7 @@ const SignIn = () => {
 
   const onChange = e => {
     const { name, value } = e.target;
-    dispatch({ type: name, value });
+    setUser({ ...user, [name]: value });
   };
 
   const login = () => fakeAuth.authenticate(() => {
