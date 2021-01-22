@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect, useLocation } from "react-router-dom";
 import UserForm, { InputField } from "./UserForm";
-import fakeAuth from './pages/Auth';
+import fakeAuth from './Auth';
 
 const SignIn = () => {
   const [user, setUser] = React.useState({email:'', password:''});
