@@ -15,9 +15,8 @@ const Safaris = () => {
     }
 
     const handleClick = (event) => {
-      setCurrentPage({
-        currentPage: Number(event.target.id)
-      });
+      console.log(event.target.id);
+      setCurrentPage(event.target.id);
     }
 
 
@@ -48,17 +47,13 @@ const Safaris = () => {
     const indexOfFirstItem = indexOfLastItem - pageSize;
     const currentItems = array_nodes.slice(indexOfFirstItem, indexOfLastItem);
 
-
-    const renderItems = currentItems.map((todo, index) => {
-      return <li key={index}>{todo}</li>;
-    });
+    console.log(currentItems);
 
     // Logic for displaying page numbers
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(array_nodes.length / pageSize); i++) {
       pageNumbers.push(i);
     }
-
 
     const renderPageNumbers = pageNumbers.map(number => {
       return (
@@ -74,7 +69,7 @@ const Safaris = () => {
     return (
       <Card title="Safaris" text="Safari Zote">
         <div className ="sTable">
-          <ul>
+          <ul id="page-numbers">
             {renderPageNumbers}
           </ul>
           {currentItems && currentItems.length > 0 
