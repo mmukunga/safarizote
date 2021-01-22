@@ -178,8 +178,8 @@ const Weather = () => {
             <div className="day-container">
                 Current Weather
                 <strong className="pt-3 text-light">Current Local Weather</strong>
-                {weather != null 
-                 ? <Card 
+                {weather != null && weather.main
+                 ?  <Card 
                     date={new Date((weather.dt)*1000).toLocaleDateString("en-US")}
                     loc={weather.name}
                     high={weather.main.temp_max}
