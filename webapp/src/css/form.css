@@ -78,14 +78,20 @@
     box-shadow:4px 4px 10px rgba(0,0,0,0.06);
   }
 
+  .Buttons {
+    border:1px solid red;
+    width: 250px;
+  }
+
   .Button {
     background-color: #4CAF50;
     color: white;
     border-radius: 4px;
     cursor: pointer;
-    width: 150px;
+    width: 70px;
     padding: 3px 5px;
     text-align: center;
+    border:1px solid blue;
   }
 
   /*
