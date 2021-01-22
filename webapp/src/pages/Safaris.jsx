@@ -15,22 +15,19 @@ const Safaris = () => {
     }
 
     const handleClick = (event) => {
-      console.log(event.target.id);
       setCurrentPage(event.target.id);
     }
 
-
     useEffect(() => {
         axios.get('/api/safaris').then(response => {
-          console.log(response);
           setSafaris(response.data);
         }).catch(err => {
         console.log(err);
       });
     }, []);
 
-    console.log(safaris);
     var array_nodes = [];
+
     safaris.forEach(function(safari) {
         array_nodes.push({
           id: safari.id,
@@ -40,21 +37,16 @@ const Safaris = () => {
         });
     });
     
-    console.log(array_nodes);
-
-
     const indexOfLastItem = currentPage * pageSize;
     const indexOfFirstItem = indexOfLastItem - pageSize;
     const currentItems = array_nodes.slice(indexOfFirstItem, indexOfLastItem);
-
-    console.log(currentItems);
 
     // Logic for displaying page numbers
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(array_nodes.length / pageSize); i++) {
       pageNumbers.push(i);
     }
-    console.log(currentItems);
+    
     const renderPageNumbers = pageNumbers.map(number => {
       return (
         <li

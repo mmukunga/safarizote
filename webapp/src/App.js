@@ -1,5 +1,5 @@
-import React, { Suspense, useState, useEffect} from 'react';
-import { Route, Switch, NavLink } from "react-router-dom";
+import React, { Component, Suspense, useState, useEffect} from 'react';
+import { Route, Switch, NavLink, Redirect, useLocation, useHistory } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
 import logo from './logo.svg';
@@ -41,6 +41,33 @@ function App() {
   };
   
   const Menu = withRouter(DropDown);
+  
+  function Private ({ children, ...rest }) {
+    return (
+      <Route {...rest} render={({ location }) => {
+        return fakeAuth.isAuthenticated === true
+          ? children
+          : <Redirect to={{ 
+              pathname: '/signIn', 
+              state: { from: location }
+            }}/>
+      }} />
+    )
+  }
+ 
+
+  function AuthButton () {
+    const history = useHistory()
+  
+    return fakeAuth.isAuthenticated === true
+      ? <p>
+          Welcome! <button onClick={() => {
+            fakeAuth.signout(() => history.push('/'))
+          }}>Sign out</button>
+        </p>
+      : <p>You are not logged in.</p>
+  }
+
 
   return (
     <div className="App">
@@ -51,6 +78,7 @@ function App() {
         <p className="App-title">{message.url}</p>
         <p>
           Edit <code>src/App.js</code> and save to reload. <Menu/>
+          <AuthButton />
         </p>
         <a
           className="App-link"
@@ -72,9 +100,9 @@ function App() {
       <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/aboutUs" component={AboutUs} />
-          <Route path="/shopping" component={Shopping} />
+          <Private path="/shopping" component={Shopping} />
           <Route path="/safaris" component={Safaris} />
-          <Route path="/tipping" component={Lotto} />
+          <Private path="/tipping" component={Lotto} />
           <Route path="/signIn" component={SignIn} />
           <Route path="/email" component={Email} />
           <Route path="/weather" component={Weather} />

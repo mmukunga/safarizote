@@ -9,7 +9,6 @@ const Shopping = () => {
     const fetchData = async () => {
       try {
           const result = await axios.get('/api/shopping');
-          console.log(result);
           setData(result.data);
       } catch (e) {
           console.log(e);

@@ -20,9 +20,6 @@ const Email = () => {
         })
   }, []);
 
-  console.log(users);
-  console.log(formData);
-
   const handleChange = (event) => {
     setFormData((prevProps) => ({
       ...prevProps,
@@ -35,12 +32,8 @@ const Email = () => {
   };
 
   const handleSubmit = async (e) => {
-    console.log('Send Email');
-    console.log(e);
     axios.post("/api/sendEmail", formData)
       .then(response => {
-          console.log('User has been created');
-          console.log(response);
           clearState();
           console.log('Send Email OK!');
       }).catch(error => {

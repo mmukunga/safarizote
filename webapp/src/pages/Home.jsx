@@ -10,7 +10,6 @@ const Home = () => {
    useEffect(() => {
       axios.get('https://extreme-ip-lookup.com/json/')
         .then(response => {
-            console.log(response);
             setClientInfo(response.data);
         }).catch(e => {
             console.log(e);
@@ -19,7 +18,6 @@ const Home = () => {
 
     useEffect(() => {
         axios.get('/api/allHits').then(response => {
-          console.log(response);
           setData(response.data);
         }).catch(err => {
         console.log(err);
