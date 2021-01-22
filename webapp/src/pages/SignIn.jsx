@@ -1,6 +1,7 @@
-import React, { useState, useReducer } from "react";
-import {Redirect, useLocation } from "react-router-dom";
+import React from "react";
+import { Redirect, useLocation } from "react-router-dom";
 import UserForm, { InputField } from "./UserForm";
+import fakeAuth from './pages/Auth';
 
 const SignIn = () => {
   const [user, setUser] = React.useState({email:'', password:''});
@@ -13,7 +14,7 @@ const SignIn = () => {
     /* fetch api */
     console.log('Sign In!!');
     /* clear state */
-    dispatch({ type: "reset" });
+    // dispatch({ type: "reset" });
   };
 
   const onChange = e => {
