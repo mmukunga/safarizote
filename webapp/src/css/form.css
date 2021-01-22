@@ -85,9 +85,9 @@
     cursor: pointer;
     width: 150px;
     padding: 3px 5px;
-    float: right;
+    text-align: center;
   }
-  
+
   /*
   .button {
     padding-left: 90px; 
