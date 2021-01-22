@@ -33,6 +33,10 @@ const Weather = () => {
           code: 'AF',
           cities: null
       };
+        
+      var headers = {
+        'Content-Type': 'application/json' 
+      };
       
       const fetchData = async () => {
         axios.post('/api/weather', country, headers).then(response => {
@@ -59,13 +63,12 @@ const Weather = () => {
     const handleSubmit = e => {
         e.preventDefault();
         console.log('Weather Forecast!!');
-        //const { country, city } = state;
-         
+        //const { country, city } = state;         
         var headers = {
           'Content-Type': 'application/json' 
-      };
+        };
 
-      const country = {
+        const country = {
             name: 'Afghanistan',
             code: 'AF',
             cities: null
