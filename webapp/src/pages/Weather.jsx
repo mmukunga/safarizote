@@ -96,11 +96,27 @@ const Weather = () => {
 
     const Card = props => {
         return (
-          <div style={{ margin: '1em' }}>
+          <div style={{ margin: '1em', width: '100%' }}>
+             <h2 id="current-city">{props.loc}</h2>
+             <span className="date">{props.date}</span>
             <img alt="avatar" style={{ width: '70px' }} src={props.icon} />
+            <div className="pt-3 text-center">{props.condition}</div>
+            <div>{props.icon}</div>
             <div>
-              <div style={{ fontWeight: 'bold' }}>{props.loation}</div>
-              <div>{props.date}</div>
+                <div className="Temperature">
+                    <div className="Cell">
+                      <small>High</small>
+                      <div>{props.high}°</div>
+                    </div>
+                    <div className="Cell">
+                      <small>Now</small>
+                      <div>{props.current}°</div>
+                    </div>
+                    <div className="Cell">
+                      <small>Low</small>
+                      <div>{props.low}°</div>
+                    </div>
+                  </div>
             </div>
           </div>
         )
