@@ -56,7 +56,7 @@ export const InputField = ({text,
   
 export const Button = ({clicked, buttonType, children }) => {
     return (
-      <button type={buttonType} onClick={clicked} className="button">
+      <button type={buttonType} onClick={clicked} className="Button">
         {children}
       </button>
     );
