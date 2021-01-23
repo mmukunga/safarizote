@@ -52,6 +52,11 @@ const Weather = () => {
           console.log('1.FORECAST..');
           response.data.list.map(forecast => {
             console.log(forecast);
+            console.log(forecast.weather[0].icon);
+            icon: "01d"
+            console.log(`http://openweathermap.org/img/w/${forecast.weather[0].icon}.png`);
+            console.log(`http://openweathermap.org/img/w/01d.png`);
+            console.log(forecast);
             const cardInfo = {
                 loc: response.data.city.name, 
                 cod:  response.data.cod, 
@@ -123,7 +128,7 @@ const Weather = () => {
             Current Weather
             <strong className="pt-3 text-light">Current Local Weather</strong>
             <span className="date">{props.date}</span>
-            <img alt="avatar" style={{ width: '70px' }} src={`http://openweathermap.org/img/w/${props.icon}.png`} />
+            <img src={`http://openweathermap.org/img/w/${props.icon}.png`} alt="wthr img" style={{ width: '70px' }}/>
             <div className="pt-3 text-center">{props.condition}</div>
             <div>{props.icon}</div>
             <div>
