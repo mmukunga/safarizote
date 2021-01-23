@@ -93,39 +93,25 @@
     padding: 3px 5px;
     text-align: center;
     border:1px solid blue;
-  }
-
-  /*
-  .button {
-    padding-left: 90px; 
-  }
-  
-  button {
-    margin-left: .2em;
-
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
     cursor: pointer;
-    float: right;
-  }*/
-
+  }
 
   .Zcontainer {
     border: 1px solid #666666;
     margin: 10px;
-    font-size: 10px;
+    font-size: 11px;
   }
+
   .Zcontainer div {
     display: inline-block;
     border: 1px solid #666666;
   }
+
   .Zsmall-box {
     margin: 10px;
     border: 1px solid #1c87c9;
   }
+  
   .Zbig-box {
     margin: 10px;
     border: 1px solid #8ebf42;

@@ -85,13 +85,12 @@ function App() {
               <NavLink to="/email" className="Nav_link">Email</NavLink>
               <NavLink to="/weather" className="Nav_link">Weather</NavLink>
               <Menu/> 
-              <AuthButton />
             </nav>  
           </div>
         </div>
         <p className="App-title">{message.url}</p>
         <p>
-          Edit <code>src/App.js</code> and save to reload. 
+          Edit <code>src/App.js</code> and save to reload. <AuthButton />
         </p>
         <a
           className="App-link"
@@ -117,21 +116,20 @@ function App() {
   
   return (
     <div className="App">
-       <Suspense fallback={<Loading />}>
-       <Card fontColor="black" backgroundColor="white" title="Safari Zote">
-      <Layout>
-      <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/aboutUs" component={AboutUs} />
-          <Private path="/shopping" component={Shopping} />
-          <Route path="/safaris" component={Safaris} />
-          <Private path="/tipping" component={Lotto} />
-          <Route path="/signIn" component={SignIn} />
-          <Route path="/email" component={Email} />
-          <Route path="/weather" component={Weather} />
-      </Switch>
-      </Layout>
-
+      <Suspense fallback={<Loading />}>
+      <Card fontColor="black" backgroundColor="white" title="Safari Zote">
+        <Layout>
+          <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/aboutUs" component={AboutUs} />
+              <Private path="/shopping" component={Shopping} />
+              <Route path="/safaris" component={Safaris} />
+              <Private path="/tipping" component={Lotto} />
+              <Route path="/signIn" component={SignIn} />
+              <Route path="/email" component={Email} />
+              <Route path="/weather" component={Weather} />
+          </Switch>
+        </Layout>
       </Card> 
       </Suspense> 
     </div>
