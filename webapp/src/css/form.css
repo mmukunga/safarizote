@@ -83,7 +83,6 @@
   .btnLabel {
     width: 100px;
     text-align: right;
-    vertical-align: top;
     display: inline-block;
     border: 1px solid #999;
   }
@@ -91,9 +90,7 @@
   .btnInput {
     width: 250px;
     display: inline-block;
-    vertical-align: top;
     border: 1px solid #999;
-    resize: vertical;
   }
 
 
