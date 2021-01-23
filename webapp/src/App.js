@@ -7,7 +7,18 @@ import './App.css';
 import axios from 'axios';
 import fakeAuth from './pages/Auth';
 
-const Loading = () => <div className="Spinner" style={{ textAlign: 'center' }}><p>Loading...</p></div>
+const Loading = () => {
+  const [message, setMessage] = useState('');
+  useEffect(() => {
+    let newMessage = message.length < 4 ? message.concat('.') : '';
+    setMessage(newMessage);
+  }, [message]);
+  return (
+    <div className="Spinner" style={{ textAlign: 'center' }}>
+      <p>Loading{message}</p>
+    </div>
+  )
+};
 
 const Home = React.lazy(() => import('./pages/Home'));
 const AboutUs = React.lazy(() => import('./pages/AboutUs'));
@@ -74,7 +85,9 @@ function App() {
     <header style={{display: props.displayHome}} className="App-header">  
         <div class="ToolBar">                 
             <nav className="Navigation">
-              <div style={{border:'2px solid red'}}><img src={logo} className="App-logo" alt="logo" /></div>
+              <div style={{border:'2px solid red'}}>
+                <img src={logo} className="App-logo" alt="logo" />
+              </div>
               <NavLink to="/" className="Nav_link">Home</NavLink>
               <NavLink to="/aboutUs" className="Nav_link">About Us</NavLink>
               <NavLink to="/safaris" className="Nav_link">Safaris</NavLink>
