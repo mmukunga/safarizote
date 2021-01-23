@@ -57,7 +57,7 @@ const Weather = () => {
                 cod:  response.data.cod, 
                 date: response.headers.date, 
                 clouds: forecast.clouds,
-                current: forecast.temp,
+                current: forecast.temp.day,
                 dt: forecast.dt,
                 high: forecast.temp.max,
                 low: forecast.temp.min,
