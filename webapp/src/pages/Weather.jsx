@@ -55,7 +55,7 @@ const Weather = () => {
             const cardInfo = {
                 loc: response.data.city.name, 
                 cod:  response.data.cod, 
-                date: forecast.headers.date, 
+                date: response.headers.date, 
                 clouds: forecast.clouds,
                 current: forecast.temp,
                 dt: forecast.dt,
