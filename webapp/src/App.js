@@ -85,8 +85,8 @@ function App() {
     <header style={{display: props.displayHome}} className="App-header">  
         <div class="ToolBar">                 
             <nav className="Navigation">
-              <div style={{border:'2px solid red'}}>
-                <img src={logo} className="App-logo" alt="logo" />
+              <div style={{border:'2px solid red', width:'200px'}}>
+                <img src={logo} className="App-logo" alt="logo"/>
               </div>
               <NavLink to="/" className="Nav_link">Home</NavLink>
               <NavLink to="/aboutUs" className="Nav_link">About Us</NavLink>
