@@ -72,8 +72,7 @@ function App() {
   
   const Toolbar = (props) => (
     <header style={{display: props.displayHome}} className="App-header">  
-        <div class="Zcontainer">
-          <div class="Zbig-box">                   
+        <div class="Zcontainer">                 
             <nav className="Navigation">
               <div style={{border:'2px solid red'}}><img src={logo} className="App-logo" alt="logo" /></div>
               <NavLink to="/" className="Nav_link">Home</NavLink>
@@ -83,8 +82,7 @@ function App() {
               <NavLink to="/email" className="Nav_link">Email</NavLink>
               <NavLink to="/weather" className="Nav_link">Weather</NavLink>
               <AuthButton /> <Menu/>
-            </nav>  
-          </div>
+            </nav> 
         </div>
         <p className="App-title">
           Edit <code>src/App.js</code> and save to reload.         
