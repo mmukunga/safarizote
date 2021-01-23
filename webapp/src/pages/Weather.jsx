@@ -49,20 +49,27 @@ const Weather = () => {
 
       axios.post('/api/forecast', country, headers).then(response => {
           console.log(response);
-          const city = response.data.city; 
-          console.log(city);
-          const cnt = response.data.cnt; 
-          console.log(cnt);
-          const cod = response.data.cod; 
-          console.log(cod);
-          const list = response.data.list; 
-          console.log(list);
-
-          console.log('1.WEATHER..');
-          list.map(weather => {
-            console.log(weather);
+          console.log('1.FORECAST..');
+          response.data.list.map(forecast => {
+            console.log(forecast);
+            const cardInfo = {
+                loc: response.data.city, 
+                cod:  response.data.cod, 
+                date: forecast.dt, 
+                clouds: forecast.clouds,
+                current: forecast.temp,
+                dt: forecast.dt,
+                high: forecast.max,
+                low: forecast.min,
+                morn: forecast.morn,
+                id: forecast.weather[0].id,
+                description: forecast.weather[0].description,
+                icon: forecast.weather[0].icon,
+                condition: forecast.weather[0].main
+            };
+            setCards(cards.concat(cardInfo));
           });
-          console.log('2.WEATHER..');
+          console.log('2.FORECAST..');
 
           setForecast(response.data);
           console.log('Weather Forecast Data OK!!');

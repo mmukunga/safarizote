@@ -53,7 +53,7 @@ public class WeatherController {
         InputStream is = null;
         String location = "Kabul, AF";
         try {
-            con = (HttpURLConnection) ( new URL(BASE_URL + location + "&cnt=7" + "&APPID="+API_KEY)).openConnection();
+            con = (HttpURLConnection) ( new URL(BASE_URL + location + "&cnt=7" + "&units=metric" + "&APPID="+API_KEY)).openConnection();
             con.setRequestMethod("GET");
             con.setDoInput(true);
             con.setDoOutput(true);
@@ -94,7 +94,7 @@ public class WeatherController {
         InputStream is = null;
         String location = "Kabul, AF";
         try {
-            con = (HttpURLConnection) ( new URL(FORECAST_URL + location + "&APPID="+API_KEY)).openConnection();
+            con = (HttpURLConnection) ( new URL(FORECAST_URL + location + "&units=metric" + "&APPID="+API_KEY)).openConnection();
             con.setRequestMethod("GET");
             con.setDoInput(true);
             con.setDoOutput(true);
