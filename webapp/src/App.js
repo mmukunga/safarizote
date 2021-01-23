@@ -77,14 +77,14 @@ function App() {
               <img src={logo} className="App-logo" alt="logo" />
           </div>
           <div class="Zbig-box">                   
-            <nav>
+            <nav className="Navigation">
               <NavLink to="/" className="Nav_link">Home</NavLink>
               <NavLink to="/aboutUs" className="Nav_link">About Us</NavLink>
               <NavLink to="/safaris" className="Nav_link">Safaris</NavLink>
               <NavLink to="/signIn" className="Nav_link">Login</NavLink>
               <NavLink to="/email" className="Nav_link">Email</NavLink>
               <NavLink to="/weather" className="Nav_link">Weather</NavLink>
-              <Menu/> <AuthButton />
+              <AuthButton /> <Menu/>
             </nav>  
           </div>
         </div>
