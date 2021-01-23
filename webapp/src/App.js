@@ -66,7 +66,7 @@ function App() {
             fakeAuth.signout(() => history.push('/'))
           }}>Sign out</button>
         </span>
-      : <span>You are not logged in.</span>
+      : <span>Not logged in.</span>
   }
 
   
@@ -88,15 +88,17 @@ function App() {
             </nav>  
           </div>
         </div>
-        <p className="App-title">Edit <code>src/App.js</code> and save to reload.</p>         
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p className="App-title">
+          Edit <code>src/App.js</code> and save to reload.         
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a>
+        </p>
     </header>
   );
 

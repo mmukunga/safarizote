@@ -3,12 +3,13 @@
 }
 
 .App-title{
-  font-size: 1.3em;
+  /*font-size: 1.3em;*/
+  font-size: 1em;
 }
 
 .App-logo {
   /*height: 40vmin;*/
-  height: 10vmin;
+  height: 8vmin;
   pointer-events: none;
 }
 
