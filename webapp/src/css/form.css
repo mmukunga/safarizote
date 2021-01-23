@@ -115,7 +115,6 @@
 
   .Zcontainer {
     border: 1px solid #666666;
-    width: 100%;
     margin: 10px;
   }
   .Zcontainer div {
@@ -125,9 +124,9 @@
   }
   .Zsmall-box {
     margin: 10px;
-    background: #1c87c9;
+    border: 1px solid #1c87c9;
   }
   .Zbig-box {
     margin: 10px;
-    background: #8ebf42;
+    border: 1px solid #8ebf42;
   }

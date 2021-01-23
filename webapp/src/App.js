@@ -98,10 +98,16 @@ function App() {
     <div className="App">
        <Suspense fallback={<Loading />}>
        <Card fontColor="black" backgroundColor="white" title="Safari Zote">
-         
+
        <div class="Zcontainer">
-          <div class="Zsmall-box">Venstre Div</div>
-          <div class="Zbig-box">Høyre Div</div>
+          <div class="Zsmall-box">
+            Venstre Div
+          </div>
+          <div class="Zbig-box">
+            <Layout displayHome="inline-block">
+               Right Menu!!
+            </Layout>
+          </div>
         </div>
 
 
