@@ -78,7 +78,7 @@ function App() {
           </div>
           <div class="Zbig-box">                   
             <nav className="Navigation">
-              <div style={{border:'2px solid red'}}>Logo</div>
+              <div style={{border:'2px solid red'}}><img src={logo} className="App-logo" alt="logo" /></div>
               <NavLink to="/" className="Nav_link">Home</NavLink>
               <NavLink to="/aboutUs" className="Nav_link">About Us</NavLink>
               <NavLink to="/safaris" className="Nav_link">Safaris</NavLink>
