@@ -78,6 +78,26 @@
     border: 2px solid white;
   }
 
+
+
+  .btnLabel {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    padding: 12px 12px 12px 0;
+  }
+  
+  .btnInput {
+    width: 250px;
+    border: 1px solid #999;
+    border-radius: 3px;
+    color: #797979;
+    padding: 12px;
+    resize: vertical;
+  }
+
+
+
   .Buttons {
     border:1px solid red;
     width:100%;
