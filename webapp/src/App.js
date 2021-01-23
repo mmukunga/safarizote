@@ -73,9 +73,6 @@ function App() {
   const Toolbar = (props) => (
     <header style={{display: props.displayHome}} className="App-header">  
         <div class="Zcontainer">
-          <div class="Zsmall-box">
-              <img src={logo} className="App-logo" alt="logo" />
-          </div>
           <div class="Zbig-box">                   
             <nav className="Navigation">
               <div style={{border:'2px solid red'}}><img src={logo} className="App-logo" alt="logo" /></div>

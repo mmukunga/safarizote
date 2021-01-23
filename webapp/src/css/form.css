@@ -118,16 +118,7 @@
     border: 1px solid #666666;
 
     display:inline-block;
-    vertical-align:top;
-    font-size:11px;
-  }
-
-  .Zsmall-box {
-    margin: 10px;
-    border: 1px solid #1c87c9;
-
-    display:inline-block;
-    vertical-align:top;
+    vertical-align:middle;
     font-size:11px;
   }
 
