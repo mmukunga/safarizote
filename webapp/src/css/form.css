@@ -116,6 +116,7 @@
   .Zcontainer {
     border: 1px solid #666666;
     margin: 10px;
+    font-size: 10px;
   }
   .Zcontainer div {
     display: inline-block;
