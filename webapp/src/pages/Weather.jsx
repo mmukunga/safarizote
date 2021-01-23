@@ -23,8 +23,8 @@ const Weather = () => {
     const [countries, setCountries] = useState([]);
     const [cities, setCities] = useState([]);
     const [weather, setWeather] = useState({});
-    const [forecast, setForecast] = useState({});
-    const [cards, setCards] = useState([])
+    const [forecast, setForecast] = useState([]);
+    const [cards, setCards] = useState([]);
 
 
     React.useEffect(() => {
@@ -49,6 +49,21 @@ const Weather = () => {
 
       axios.post('/api/forecast', country, headers).then(response => {
           console.log(response);
+          const city = response.data.city; 
+          console.log(city);
+          const cnt = response.data.cnt; 
+          console.log(cnt);
+          const cod = response.data.cod; 
+          console.log(cod);
+          const list = response.data.list; 
+          console.log(list);
+
+          console.log('1.WEATHER..');
+          list.map(weather => {
+            console.log(weather);
+          });
+          console.log('2.WEATHER..');
+
           setForecast(response.data);
           console.log('Weather Forecast Data OK!!');
       }).catch(err => {
@@ -207,6 +222,15 @@ const Weather = () => {
                   : <div>No Weather</div>   
               }
             </div>
+
+            <div className="5days-container">
+                {forecast != null 
+                  ? <CardList cards={cards} />
+                  : <div>No Forecast</div>   
+              }
+            </div>
+
+
         </div>
     );
 }

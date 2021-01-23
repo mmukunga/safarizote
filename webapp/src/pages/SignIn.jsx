@@ -40,8 +40,8 @@ const SignIn = () => {
         submit={handleSubmit}
         elements={() => (
           <>       
-            <InputField handleChange={onChange}/>
-            <InputField handleChange={onChange}/>
+            <InputField name="name" text="Name:" type="text" handleChange={onChange} placeholder="Write here.."/>
+            <InputField name="password" text="Password:" type="text" handleChange={onChange} placeholder="Write here.."/>
           </>
         )}
       >    
