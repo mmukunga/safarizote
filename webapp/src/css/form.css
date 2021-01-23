@@ -81,19 +81,19 @@
 
 
   .btnLabel {
-    display: inline-block;
-    border: 1px solid #999;
     width: 100px;
     text-align: right;
-    padding: 12px 12px 12px 0;
+
+    display: inline-block;
+    border: 1px solid #999;
+    padding: 12px;
   }
   
   .btnInput {
     width: 250px;
     display: inline-block;
+
     border: 1px solid #999;
-    border-radius: 3px;
-    color: #797979;
     padding: 12px;
     resize: vertical;
   }
