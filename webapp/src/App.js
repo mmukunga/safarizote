@@ -72,11 +72,26 @@ function App() {
   
   const Toolbar = (props) => (
     <header style={{display: props.displayHome}} className="App-header">  
-        <img src={logo} className="App-logo" alt="logo" />
+        <div class="Zcontainer">
+          <div class="Zsmall-box">
+              <img src={logo} className="App-logo" alt="logo" />
+          </div>
+          <div class="Zbig-box">                   
+            <nav>
+              <NavLink to="/" className="Nav_link">Home</NavLink>
+              <NavLink to="/aboutUs" className="Nav_link">About Us</NavLink>
+              <NavLink to="/safaris" className="Nav_link">Safaris</NavLink>
+              <NavLink to="/signIn" className="Nav_link">Login</NavLink>
+              <NavLink to="/email" className="Nav_link">Email</NavLink>
+              <NavLink to="/weather" className="Nav_link">Weather</NavLink>
+              <Menu/> 
+              <AuthButton />
+            </nav>  
+          </div>
+        </div>
         <p className="App-title">{message.url}</p>
         <p>
-          Edit <code>src/App.js</code> and save to reload. <Menu/>
-          <AuthButton />
+          Edit <code>src/App.js</code> and save to reload. 
         </p>
         <a
           className="App-link"
@@ -85,15 +100,7 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-        </a>        
-        <nav>
-          <NavLink to="/" className="Nav_link">Home</NavLink>
-          <NavLink to="/aboutUs" className="Nav_link">About Us</NavLink>
-          <NavLink to="/safaris" className="Nav_link">Safaris</NavLink>
-          <NavLink to="/signIn" className="Nav_link">Login</NavLink>
-          <NavLink to="/email" className="Nav_link">Email</NavLink>
-          <NavLink to="/weather" className="Nav_link">Weather</NavLink>
-        </nav>  
+        </a>
     </header>
   );
 
