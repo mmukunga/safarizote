@@ -101,16 +101,32 @@
     margin: 10px;
     font-size: 11px;
     vertical-align: top; 
+
+    display:table-cell;
+    vertical-align:middle;
+    text-align:center;
+    margin:auto;
+    background:red;
+    border:1px solid #f00;
+
   }
 
   .Zcontainer div {
     display: inline-block;
     border: 1px solid #666666;
+
+    display:inline-block;
+    vertical-align:middle;
+    font-size:11px;
   }
 
   .Zsmall-box {
     margin: 10px;
     border: 1px solid #1c87c9;
+
+    display:inline-block;
+    vertical-align:middle;
+    font-size:11px;
   }
 
   .Zbig-box {
