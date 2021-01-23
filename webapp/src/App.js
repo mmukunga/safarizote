@@ -71,47 +71,7 @@ function App() {
 
   
   const Toolbar = (props) => (
-    <header className="App-header">   
-      <nav>
-          <ul>
-              <li style={{display: props.displayHome}}>Home</li>
-              <li>About Us</li>
-              <li>Contact</li>
-          </ul>
-      </nav>   
-      Simon
-    </header>
-  );
-
-  const Layout = (props) => {
-      return (
-        <div>
-          <Toolbar displayHome={props.displayHome}/>
-          <main>
-            {props.children}
-          </main>
-        </div>
-      );
-  }
-  
-  return (
-    <div className="App">
-       <Suspense fallback={<Loading />}>
-       <Card fontColor="black" backgroundColor="white" title="Safari Zote">
-
-       <div class="Zcontainer">
-          <div class="Zsmall-box">
-            Venstre Div
-          </div>
-          <div class="Zbig-box">
-            <Layout displayHome="inline-block">
-               Right Menu!!
-            </Layout>
-          </div>
-        </div>
-
-
-       <header className="App-header">
+    <header style={{display: props.displayHome}} className="App-header">  
         <img src={logo} className="App-logo" alt="logo" />
         <p className="App-title">{message.url}</p>
         <p>
@@ -134,7 +94,25 @@ function App() {
           <NavLink to="/email" className="Nav_link">Email</NavLink>
           <NavLink to="/weather" className="Nav_link">Weather</NavLink>
         </nav>  
-      </header>
+    </header>
+  );
+
+  const Layout = (props) => {
+      return (
+        <div>
+          <Toolbar displayHome={props.displayHome}/>
+          <main>
+            {props.children}
+          </main>
+        </div>
+      );
+  }
+  
+  return (
+    <div className="App">
+       <Suspense fallback={<Loading />}>
+       <Card fontColor="black" backgroundColor="white" title="Safari Zote">
+      <Layout>
       <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/aboutUs" component={AboutUs} />
@@ -145,6 +123,8 @@ function App() {
           <Route path="/email" component={Email} />
           <Route path="/weather" component={Weather} />
       </Switch>
+      </Layout>
+
       </Card> 
       </Suspense> 
     </div>
