@@ -24,7 +24,7 @@ const UserForm =
             {errors}
             <form className="formContainer" onSubmit={handleSubmit}>
                 {elements()}
-                <div>
+                <div style={{border: '1px solid red'}}>
                     <div className="btnLabel">Labels</div>    
                     <div className="btnInput">
                         <Button buttonType='primary'  type="submit">Submit</Button>

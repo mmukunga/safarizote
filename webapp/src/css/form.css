@@ -82,6 +82,7 @@
 
   .btnLabel {
     display: inline-block;
+    border: 1px solid #999;
     width: 100px;
     text-align: right;
     padding: 12px 12px 12px 0;
@@ -89,6 +90,7 @@
   
   .btnInput {
     width: 250px;
+    display: inline-block;
     border: 1px solid #999;
     border-radius: 3px;
     color: #797979;
