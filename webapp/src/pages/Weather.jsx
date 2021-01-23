@@ -123,7 +123,7 @@ const Weather = () => {
             Current Weather
             <strong className="pt-3 text-light">Current Local Weather</strong>
             <span className="date">{props.date}</span>
-            <img alt="avatar" style={{ width: '70px' }} src={props.icon} />
+            <img alt="avatar" style={{ width: '70px' }} src={`http://openweathermap.org/img/w/${props.icon}.png`} />
             <div className="pt-3 text-center">{props.condition}</div>
             <div>{props.icon}</div>
             <div>
