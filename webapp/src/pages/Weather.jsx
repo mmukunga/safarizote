@@ -53,9 +53,9 @@ const Weather = () => {
           response.data.list.map(forecast => {
             console.log(forecast);
             const cardInfo = {
-                loc: response.data.city, 
+                loc: response.data.city.name, 
                 cod:  response.data.cod, 
-                date: forecast.dt, 
+                date: forecast.data.headers.date, 
                 clouds: forecast.clouds,
                 current: forecast.temp,
                 dt: forecast.dt,
