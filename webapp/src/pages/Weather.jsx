@@ -231,7 +231,7 @@ const Weather = () => {
                     current={weather.main.temp}
                     low={weather.main.temp_min}
                     detail={weather.main}
-                    icon={weather.icon}
+                    icon={weather.weather[0].icon}
                     />     
                   : <div>No Weather</div>   
               }
