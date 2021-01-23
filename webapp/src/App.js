@@ -61,12 +61,12 @@ function App() {
     const history = useHistory()
   
     return fakeAuth.isAuthenticated === true
-      ? <p>
+      ? <span>
           Welcome! <button onClick={() => {
             fakeAuth.signout(() => history.push('/'))
           }}>Sign out</button>
-        </p>
-      : <p>You are not logged in.</p>
+        </span>
+      : <span>You are not logged in.</span>
   }
 
   
@@ -84,14 +84,11 @@ function App() {
               <NavLink to="/signIn" className="Nav_link">Login</NavLink>
               <NavLink to="/email" className="Nav_link">Email</NavLink>
               <NavLink to="/weather" className="Nav_link">Weather</NavLink>
-              <Menu/> 
+              <Menu/> <AuthButton />
             </nav>  
           </div>
         </div>
-        <p className="App-title">{message.url}</p>
-        <p>
-          Edit <code>src/App.js</code> and save to reload. <AuthButton />
-        </p>
+        <p className="App-title">Edit <code>src/App.js</code> and save to reload.</p>         
         <a
           className="App-link"
           href="https://reactjs.org"
