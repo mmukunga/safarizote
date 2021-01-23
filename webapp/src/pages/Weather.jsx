@@ -53,7 +53,6 @@ const Weather = () => {
           response.data.list.map(forecast => {
             console.log(forecast);
             console.log(forecast.weather[0].icon);
-            icon: "01d"
             console.log(`http://openweathermap.org/img/w/${forecast.weather[0].icon}.png`);
             console.log(`http://openweathermap.org/img/w/01d.png`);
             console.log(forecast);
