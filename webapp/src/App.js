@@ -88,7 +88,7 @@ function App() {
         <div>
           <Toolbar displayHome={props.displayHome}/>
           <main>
-            {this.props.children}
+            {props.children}
           </main>
         </div>
       );
