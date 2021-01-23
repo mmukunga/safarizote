@@ -146,13 +146,15 @@ const Weather = () => {
         )
       }
 
-    const CardList = props => (
-    <div>
-        {props.cards.map(card => (
-        <Card {...card} />
-        ))}
-    </div>
-    )
+    const CardList = props => {
+      return (
+      <div>
+          {props.cards.map(card => (
+              <Card {...card} />
+          ))}
+      </div>
+      )
+    };
 
     const handleChange = e => {
       console.log(e);
