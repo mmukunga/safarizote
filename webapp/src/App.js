@@ -85,16 +85,18 @@ function App() {
     <header style={{display: props.displayHome}} className="App-header">  
         <div class="ToolBar">                 
             <nav className="Navigation">
-              <div style={{border:'2px solid red', width:'200px'}}>
+              <div style={{border:'2px solid red', width:'200px', display:'inline-block'}}>
                 <img src={logo} className="App-logo" alt="logo"/>
               </div>
-              <NavLink to="/" className="Nav_link">Home</NavLink>
-              <NavLink to="/aboutUs" className="Nav_link">About Us</NavLink>
-              <NavLink to="/safaris" className="Nav_link">Safaris</NavLink>
-              <NavLink to="/signIn" className="Nav_link">Login</NavLink>
-              <NavLink to="/email" className="Nav_link">Email</NavLink>
-              <NavLink to="/weather" className="Nav_link">Weather</NavLink>
-              <AuthButton /> <Menu/>
+              <div style={{border:'2px solid red', display:'inline-block'}}>
+                <NavLink to="/" className="Nav_link">Home</NavLink>
+                <NavLink to="/aboutUs" className="Nav_link">About Us</NavLink>
+                <NavLink to="/safaris" className="Nav_link">Safaris</NavLink>
+                <NavLink to="/signIn" className="Nav_link">Login</NavLink>
+                <NavLink to="/email" className="Nav_link">Email</NavLink>
+                <NavLink to="/weather" className="Nav_link">Weather</NavLink>
+                <AuthButton /> <Menu/>
+              </div>
             </nav> 
         </div>
         <p className="App-title">
