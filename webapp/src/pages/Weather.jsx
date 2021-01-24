@@ -171,7 +171,6 @@ import axios from 'axios';
           countryCode = temp.value;
         }
 
-        console.log(newCountry);
         dispatch({ type: 'SET_COUNTRY', payload: countryCode});
         console.log('1.SET_COUNTRY...');
         console.log(state);
