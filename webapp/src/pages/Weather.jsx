@@ -2,10 +2,10 @@ import React, { useState, useEffect, useReducer } from 'react';
 import UserForm, { Select } from "./UserForm";
 import axios from 'axios';
 
-   const initialState = {
-       country: 'AF',
-       city: 'Kabul'
-    };
+  const initialState = {
+      country: 'AF',
+      city: 'Kabul'
+  };
   
   const reducer = (state, action) => {
     if (action.type === "reset") {
@@ -17,8 +17,9 @@ import axios from 'axios';
     return result;
   };
 
-
-const Weather = () => {
+  const IMG_URL = 'https://openweathermap.org/img/w';
+  
+  const Weather = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const [countries, setCountries] = useState([]);
     const [cities, setCities] = useState([]);
@@ -98,67 +99,59 @@ const Weather = () => {
     
 
     const WeatherCard = (props) => {
-        return (
-          <div style={{ border:'1px solid green', margin: '1em', width: '500px' }}>
-            <span className="pt-3 text-center">{props.weather.loc} {props.weather.date}</span>
-            <img src={`https://openweathermap.org/img/w/${props.weather.weather[0].icon}.png`} alt="wthr img" style={{ width: '70px' }}/>
-            <div> 
-                { props.weather != null && props.weather.main
-                ?<div className="Temperature">
-                    <div className="Cell">
-                      <small>Current</small>
-                      <div>{props.weather.main.temp}°</div>
-                    </div>
-                    <div className="Cell">
-                      <small>Main</small>
-                      <div>{props.weather.weather[0].main}</div>
-                    </div>
-                    <div className="Cell">
-                      <small>Description</small>
-                      <div>{props.weather.weather[0].description}</div>
-                    </div>
-                  </div>
-                : <div>No Data Found!! </div>
-                 }
-            </div>
+        return ( props.weather.main &&
+          <div className="WeatherCard"> 
+              <span>{props.weather.loc} {props.weather.date}</span>
+              <img src={`${IMG_URL}/${props.weather.weather[0].icon}.png`} alt="wthr img" className="wthrImg"/>
+              <div className="Cells">
+                <div className="Cell">
+                  <small>Current</small>
+                  <div>{props.weather.main.temp}°</div>
+                </div>
+                <div className="Cell">
+                  <small>Main</small>
+                  <div>{props.weather.weather[0].main}</div>
+                </div>
+                <div className="Cell">
+                  <small>Description</small>
+                  <div>{props.weather.weather[0].description}</div>
+                </div>
+              </div>
           </div>
         )
       }
 
       const ForecastCard = (props) => {
         return (
-          <div style={{ border:'1px solid green', margin: '1em', width: '100px'}}>
-            { props.temp != null  
-           ?  <div className="Temperature">
-                  <span className="pt-3 text-center">{props.temp.day} {props.date} {props.weather[0].description}</span>
-                  <img src={`https://openweathermap.org/img/w/${props.weather[0].icon}.png`} alt="wthr img" style={{ width: '70px' }}/>
-                    <div className="Cell">
-                      <small>High</small>
-                      <div>{props.temp.day}°</div>
-                    </div>
-                    <div className="Cell">
-                      <small>Now</small>
-                      <div>{props.temp.min}°</div>
-                    </div>
-                    <div className="Cell">
-                      <small>Main</small>
-                      <div>{props.weather[0].main}</div>
-                    </div>
-                    <div className="Cell">
-                      <small>Description</small>
-                      <div>{props.weather[0].description}</div>
-                    </div>
-                 </div>   
-            : <div> No  data </div>
-            }
-          </div>
+            props.temp != null &&
+            <div className="ForecastCard">
+              <span>{props.date}</span>
+              <img src={`${IMG_URL}/${props.weather[0].icon}.png`} alt="wthr img" className="wthrImg"/>
+              <div className="Cells">
+                <div className="Cell">
+                  <small>High</small>
+                  <div>{props.temp.day}°</div>
+                </div>
+                <div className="Cell">
+                  <small>Now</small>
+                  <div>{props.temp.min}°</div>
+                </div>
+                <div className="Cell">
+                  <small>Main</small>
+                  <div>{props.weather[0].main}</div>
+                </div>
+                <div className="Cell">
+                  <small>Description</small>
+                  <div>{props.weather[0].description}</div>
+                </div>
+              </div>
+            </div>
         )
       }
      
-
     const ForecastList = props => {
       return (
-      <div>
+      <div className="ForecastList">
           {props.cards.map(card => (
               <ForecastCard {...card} />
           ))}
@@ -187,7 +180,7 @@ const Weather = () => {
             }).catch(err => console.log(err))
     }, []);
 
-    useEffect(() => {
+    React.useEffect(() => {
         let country = {
               name: 'Afghanistan',
               code: 'AF',
@@ -234,12 +227,6 @@ const Weather = () => {
                     width='500px'
                     date={new Date((weather.dt)*1000).toLocaleDateString("en-US")}
                     weather={weather}
-                    /*high={weather.main.temp_max}
-                    current={weather.main.temp}
-                    low={weather.main.temp_min}
-                    main={weather.main}*/
-                    /*detail={weather.main}
-                    icon={weather.weather[0].icon}*/
                     />     
                   : <div>No Weather</div>   
               }
