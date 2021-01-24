@@ -26,7 +26,7 @@ import axios from 'axios';
     const [weather, setWeather] = useState({});
     const [forecast, setForecast] = useState([]);
     const [list, setList] = useState([]);
-
+    
 
     React.useEffect(() => {
       const country = {
@@ -41,20 +41,14 @@ import axios from 'axios';
 
       const fetchData = async () => {
         axios.post('/api/weather', country, headers).then(response => {
-          console.log(response);
           setWeather(response.data);
-          console.log('Weather Data OK!!');
       }).catch(err => {
           console.log(err);
       });
 
       axios.post('/api/forecast', country, headers).then(response => {
-          console.log('1.FORECAST..');
-          console.log(response);
           setList(response.data.list);
-          console.log('2.FORECAST..');
           setForecast(response.data);
-          console.log('Weather Forecast Data OK!!');
       }).catch(err => {
           console.log(err);
       });
@@ -62,7 +56,15 @@ import axios from 'axios';
 
       fetchData();
 
-  }, []);
+    }, []);
+
+    /*
+    React.useEffect(() => {
+      axios.get('/api/cities')
+          .then(res => setCities(res.data))
+          .catch(err => console.log(err))
+    }, [state.country])
+    */
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -79,17 +81,13 @@ import axios from 'axios';
         };
 
         axios.post('/api/weather', country, headers).then(response => {
-            console.log(response);
             setWeather(response.data);
-            console.log('Weather Data OK!!');
         }).catch(err => {
             console.log(err);
         });
 
         axios.post('/api/forecast', country, headers).then(response => {
-            console.log(response);
             setForecast(response.data);
-            console.log('Weather Forecast Data OK!!');
         }).catch(err => {
             console.log(err);
         });
@@ -139,6 +137,7 @@ import axios from 'axios';
                   <div>{props.weather[0].main}</div>
                 </div>
                 <div className="Cell">
+                  <small>&nbsp;</small>
                   <div>{props.weather[0].description}</div>
                 </div>
               </div>
@@ -178,6 +177,7 @@ import axios from 'axios';
     }, []);
 
     React.useEffect(() => {
+      alert('get cities');
         let country = {
               name: 'Afghanistan',
               code: 'AF',
