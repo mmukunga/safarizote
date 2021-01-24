@@ -109,11 +109,10 @@ import axios from 'axios';
                   <div>{props.weather.main.temp}°</div>
                 </div>
                 <div className="Cell">
-                  <small>Main</small>
+                  <small>Sky</small>
                   <div>{props.weather.weather[0].main}</div>
                 </div>
                 <div className="Cell">
-                  <small>Description</small>
                   <div>{props.weather.weather[0].description}</div>
                 </div>
               </div>
@@ -140,7 +139,6 @@ import axios from 'axios';
                   <div>{props.weather[0].main}</div>
                 </div>
                 <div className="Cell">
-                  <small>Description</small>
                   <div>{props.weather[0].description}</div>
                 </div>
               </div>
