@@ -50,26 +50,8 @@ const Weather = () => {
       axios.post('/api/forecast', country, headers).then(response => {
           console.log('1.FORECAST..');
           console.log(response);
-          response.data.list.map(forecast => {
-            console.log(forecast);
-            console.log(forecast.weather[0].icon);
-            console.log(`http://openweathermap.org/img/w/${forecast.weather[0].icon}.png`);
-            console.log(`http://openweathermap.org/img/w/01d.png`);
-            console.log(forecast);
-            const newItem = {
-                width: '200px',
-                loc: response.data.city.name, 
-                date: response.headers.date, 
-                forecast: forecast
-                /*
-                main: forecast.main,
-                weather: forecast.weather[0]
-                */
-            };
-            setList([...list, newItem]);
-          });
+          setList(response.data.list);
           console.log('2.FORECAST..');
-
           setForecast(response.data);
           console.log('Weather Forecast Data OK!!');
       }).catch(err => {
