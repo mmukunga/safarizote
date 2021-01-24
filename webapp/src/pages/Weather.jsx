@@ -3,17 +3,24 @@ import UserForm, { Select } from "./UserForm";
 import axios from 'axios';
 
   const initialState = {
-      name: 'Afgahnistan',
-      code: 'AF',
+      id: '',
+      title: 'Afgahnistan',
+      value: 'AF',
       city: 'Kabul'
   };
   
   const reducer = (state, action) => {
-    if (action.type === "reset") {
+    if (action.type === "RESET") {
         return initialState;
-    }
+    } 
   
-    const result = { ...state };
+    if (action.type === "UPDATE") {
+        const result = { ...state, ...action.payload };
+        result[action.type] = action.value;
+        return result;
+    } 
+
+    const result = { ...state, city: action.payload };
     result[action.type] = action.value;
     return result;
   };
@@ -93,7 +100,7 @@ import axios from 'axios';
             console.log(err);
         });
 
-        dispatch({ type: "reset" });
+        dispatch({ type: "RESET" });
     };
     
 
@@ -161,10 +168,14 @@ import axios from 'axios';
       const { name, value } = e.target;
       console.log(e.target.name + ',' + e.target.value);
       console.log(name + ',' + value);
-      console.log(countries);
-      let selectedCountry = countries.find(country => country.code === value);
-      console.log(selectedCountry);
-      dispatch({ type: name, value });
+      if (name ==='country') {
+        console.log(countries);
+        let selectedCountry = countries.find(country => country.value === value);
+        console.log(selectedCountry);
+        dispatch({ type: 'UPDATE', payload: selectedCountry });
+      } else {
+        dispatch({ type: 'CITY', payload: value });
+      }
     };
 
     useEffect(() => {
