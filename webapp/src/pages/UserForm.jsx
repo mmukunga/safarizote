@@ -25,7 +25,7 @@ const UserForm =
             <form className="formContainer" onSubmit={handleSubmit}>
                 {elements()}
                 <div style={{border: '1px solid red'}}>
-                    <div className="btnLabel">Labels</div>    
+                    <div className="btnLabel">&nbsp;</div>    
                     <div className="btnInput">
                         <Button buttonType='primary'  type="submit">Submit</Button>
                         <Button buttonType="secondary" clicked={handleCancel}>Reset</Button>
