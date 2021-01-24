@@ -57,15 +57,18 @@ const Weather = () => {
             console.log(`http://openweathermap.org/img/w/01d.png`);
             console.log(forecast);
             const cardInfo = {
+                title:'Weather Forecast',
+                width: '200px',
                 loc: response.data.city.name, 
                 cod:  response.data.cod, 
                 date: response.headers.date, 
                 clouds: forecast.clouds,
                 current: forecast.temp.day,
                 dt: forecast.dt,
-                high: forecast.temp.max,
+                /*high: forecast.temp.max,
                 low: forecast.temp.min,
-                morn: forecast.temp.morn,
+                morn: forecast.temp.morn,*/
+                temp: forecast.temp,
                 id: forecast.weather[0].id,
                 description: forecast.weather[0].description,
                 icon: forecast.weather[0].icon,
@@ -120,29 +123,24 @@ const Weather = () => {
     };
     
 
-    const Card = props => {
+    const Card = (props) => {
         return (
-          <div style={{ margin: '1em', width: '100%' }}>
-            <h2 id="current-city">{props.loc}</h2>
-            Current Weather
-            <strong className="pt-3 text-light">Current Local Weather</strong>
-            <span className="date">{props.date}</span>
+          <div style={{ border:'1px solid green', margin: '1em', width: props.width }}>
+            <span className="pt-3 text-center">{props.condition} {props.loc} {props.date}</span>
             <img src={`http://openweathermap.org/img/w/${props.icon}.png`} alt="wthr img" style={{ width: '70px' }}/>
-            <div className="pt-3 text-center">{props.condition}</div>
-            <div>{props.icon}</div>
             <div>
                 <div className="Temperature">
                     <div className="Cell">
                       <small>High</small>
-                      <div>{props.high}°</div>
+                      <div>{props.temp.high}°</div>
                     </div>
                     <div className="Cell">
                       <small>Now</small>
-                      <div>{props.current}°</div>
+                      <div>{props.temp.current}°</div>
                     </div>
                     <div className="Cell">
                       <small>Low</small>
-                      <div>{props.low}°</div>
+                      <div>{props.temp.low}°</div>
                     </div>
                   </div>
             </div>
@@ -224,11 +222,14 @@ const Weather = () => {
             <div className="day-container">
                 {weather != null && weather.main
                  ?  <Card 
+                    title='Current Local Weather'
+                    width='500px'
                     date={new Date((weather.dt)*1000).toLocaleDateString("en-US")}
                     loc={weather.name}
-                    high={weather.main.temp_max}
+                    /*high={weather.main.temp_max}
                     current={weather.main.temp}
-                    low={weather.main.temp_min}
+                    low={weather.main.temp_min}*/
+                    temp={weather.main}
                     detail={weather.main}
                     icon={weather.weather[0].icon}
                     />     
