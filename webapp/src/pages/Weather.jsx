@@ -163,7 +163,10 @@ import axios from 'axios';
       console.log(name + ',' + value);
       if (name ==='country') {
         console.log(countries);
-        const newCountry = countries.find(country => country.value === value);
+        let newCountry = { ...initialState };
+        console.log(newCountry);
+        const temp = countries.find(country => country.value === value);
+        newCountry = {newCountry, ...temp};
         console.log(newCountry);
         dispatch({ type: 'SET_COUNTRY', payload: newCountry.value });
         console.log('1.SET_COUNTRY...');
