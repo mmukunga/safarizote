@@ -18,7 +18,7 @@ const Loading = () => {
       <p>Loading{message}</p>
       <div class="divLoader">
         <svg class="svgLoader" viewBox="0 0 1024 1024" width="10em" height="10em">
-          <path fill="lightblue" d="./logo.svg"/>
+          <path fill="lightblue" d="M 94.5 50 A 44.5 44.5 0 0 0 50 5.5"/>
         </svg>
       </div>  
     </div>
