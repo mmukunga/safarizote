@@ -99,23 +99,23 @@ const Weather = () => {
 
     const WeatherCard = (props) => {
         return (
-          <div style={{ border:'1px solid green', margin: '1em', width: props.width }}>
-            <span className="pt-3 text-center">{props.loc} {props.date}</span>
-            <img src={`https://openweathermap.org/img/w/${props.icon}.png`} alt="wthr img" style={{ width: '70px' }}/>
+          <div style={{ border:'1px solid green', margin: '1em', width: '500px' }}>
+            <span className="pt-3 text-center">{props.weather.loc} {props.weather.date}</span>
+            <img src={`https://openweathermap.org/img/w/${props.weather.weather[0].icon}.png`} alt="wthr img" style={{ width: '70px' }}/>
             <div> 
-                { props.forecast != null && props.forecast.main
+                { props.weather != null && props.weather.main
                 ?<div className="Temperature">
                     <div className="Cell">
-                      <small>High</small>
-                      <div>{props.forecast.main.high}°</div>
+                      <small>Current</small>
+                      <div>{props.weather.main.temp}°</div>
                     </div>
                     <div className="Cell">
-                      <small>Now</small>
-                      <div>{props.forecast.main.current}°</div>
+                      <small>Main</small>
+                      <div>{props.weather.weather[0].main}</div>
                     </div>
                     <div className="Cell">
-                      <small>Low</small>
-                      <div>{props.forecast.main.low}°</div>
+                      <small>Description</small>
+                      <div>{props.weather.weather[0].description}</div>
                     </div>
                   </div>
                 : <div>No Data Found!! </div>
@@ -127,7 +127,7 @@ const Weather = () => {
 
       const ForecastCard = (props) => {
         return (
-          <div style={{ border:'1px solid green', margin: '1em', width: props.width }}>
+          <div style={{ border:'1px solid green', margin: '1em', width: '100px'}}>
             <span className="pt-3 text-center">{props.forecast.temp.day} {props.date} {props.forecast.weather[0].description}</span>
             <img src={`https://openweathermap.org/img/w/${props.forecast.weather[0].icon}.png`} alt="wthr img" style={{ width: '70px' }}/>
             <div>
@@ -141,8 +141,12 @@ const Weather = () => {
                       <div>{props.forecast.temp.min}°</div>
                     </div>
                     <div className="Cell">
-                      <small>Low</small>
-                      <div>{props.forecast.temp.night}°</div>
+                      <small>Main</small>
+                      <div>{props.forecast.weather[0].main}</div>
+                    </div>
+                    <div className="Cell">
+                      <small>Description</small>
+                      <div>{props.forecast.weather[0].description}</div>
                     </div>
                   </div>
             </div>
