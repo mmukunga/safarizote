@@ -57,24 +57,14 @@ const Weather = () => {
             console.log(`http://openweathermap.org/img/w/01d.png`);
             console.log(forecast);
             const cardInfo = {
-                title:'Weather Forecast',
                 width: '200px',
                 loc: response.data.city.name, 
-                cod:  response.data.cod, 
                 date: response.headers.date, 
-                clouds: forecast.clouds,
-                current: forecast.temp.day,
-                dt: forecast.dt,
-                /*high: forecast.temp.max,
-                low: forecast.temp.min,
-                morn: forecast.temp.morn,*/
-                temp: forecast.temp,
-                id: forecast.weather[0].id,
-                description: forecast.weather[0].description,
-                icon: forecast.weather[0].icon,
-                condition: forecast.weather[0].main
+                main: forecast.main,
+                weather: forecast.weather[0]
             };
-            setCards(cards.concat(cardInfo));
+            setCards([...cards, cardInfo]);
+            console.log(this.state.buyItems);  
           });
           console.log('2.FORECAST..');
 
@@ -126,21 +116,21 @@ const Weather = () => {
     const Card = (props) => {
         return (
           <div style={{ border:'1px solid green', margin: '1em', width: props.width }}>
-            <span className="pt-3 text-center">{props.condition} {props.loc} {props.date}</span>
+            <span className="pt-3 text-center">{props.loc} {props.date}</span>
             <img src={`http://openweathermap.org/img/w/${props.icon}.png`} alt="wthr img" style={{ width: '70px' }}/>
             <div>
                 <div className="Temperature">
                     <div className="Cell">
                       <small>High</small>
-                      <div>{props.temp.high}°</div>
+                      <div>{props.main.high}°</div>
                     </div>
                     <div className="Cell">
                       <small>Now</small>
-                      <div>{props.temp.current}°</div>
+                      <div>{props.main.current}°</div>
                     </div>
                     <div className="Cell">
                       <small>Low</small>
-                      <div>{props.temp.low}°</div>
+                      <div>{props.main.low}°</div>
                     </div>
                   </div>
             </div>
@@ -229,8 +219,8 @@ const Weather = () => {
                     /*high={weather.main.temp_max}
                     current={weather.main.temp}
                     low={weather.main.temp_min}*/
-                    temp={weather.main}
-                    detail={weather.main}
+                    main={weather.main}
+                    /*detail={weather.main}*/
                     icon={weather.weather[0].icon}
                     />     
                   : <div>No Weather</div>   
