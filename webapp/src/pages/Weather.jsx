@@ -128,10 +128,10 @@ const Weather = () => {
       const ForecastCard = (props) => {
         return (
           <div style={{ border:'1px solid green', margin: '1em', width: '100px'}}>
-            <span className="pt-3 text-center">{props.forecast.temp.day} {props.date} {props.forecast.weather[0].description}</span>
-            <img src={`https://openweathermap.org/img/w/${props.forecast.weather[0].icon}.png`} alt="wthr img" style={{ width: '70px' }}/>
-            <div>
-                <div className="Temperature">
+            { props.forecast != null  
+           ?  <div className="Temperature">
+                  <span className="pt-3 text-center">{props.forecast.temp.day} {props.date} {props.forecast.weather[0].description}</span>
+                  <img src={`https://openweathermap.org/img/w/${props.forecast.weather[0].icon}.png`} alt="wthr img" style={{ width: '70px' }}/>
                     <div className="Cell">
                       <small>High</small>
                       <div>{props.forecast.temp.day}°</div>
@@ -148,8 +148,9 @@ const Weather = () => {
                       <small>Description</small>
                       <div>{props.forecast.weather[0].description}</div>
                     </div>
-                  </div>
-            </div>
+                 </div>   
+            : <div> No  data </div>
+            }
           </div>
         )
       }

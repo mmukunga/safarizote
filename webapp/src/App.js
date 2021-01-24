@@ -28,6 +28,7 @@ const Lotto  = React.lazy(() => import('./pages/Lotto'));
 const SignIn = React.lazy(() => import('./pages/SignIn'));
 const Email = React.lazy(() => import('./pages/Email'));
 const Weather = React.lazy(() => import('./pages/Weather'));
+const Stock = React.lazy(() => import('./pages/Stock'));
 
 function App() {
   const [message, setMessage] = useState({});
@@ -48,6 +49,7 @@ function App() {
       <select onChange={onChange} style={selectStyle}>
         <option value="/tipping">Tipping</option>
         <option value="/shopping">Shopping</option>
+        <option value="/stock">Stock Market</option>
       </select>
     );
   };
@@ -138,6 +140,7 @@ function App() {
               <Route path="/signIn" component={SignIn} />
               <Route path="/email" component={Email} />
               <Route path="/weather" component={Weather} />
+              <Private path="/stock" component={Stock} />
           </Switch>
         </Layout>
       </Card> 
