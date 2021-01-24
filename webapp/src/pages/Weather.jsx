@@ -157,6 +157,7 @@ import axios from 'axios';
     };
 
     const handleChange = e => {
+      e.preventDefault();
       console.log(e);
       const { name, value } = e.target;
       console.log(e.target.name + ',' + e.target.value);
@@ -212,9 +213,11 @@ import axios from 'axios';
         };
         
         console.log(country);
-
         axios.post('/api/cities', country)
             .then(response => {
+                console.log('1.CITIES..');
+                console.log(response);
+                console.log('2.CITIES..');
                 let array_nodes = [];
                 response.data.forEach(function(d) {
                    array_nodes.push({  
