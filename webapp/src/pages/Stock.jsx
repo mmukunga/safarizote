@@ -10,6 +10,11 @@ const Stock = () => {
       setSelectedItems({ ...selectedItems, [name]: value });
     }
 
+    const handleSubmit = (event) => {
+      alert('A Ticker was Submitted: ' + event.target.value);
+      event.preventDefault();
+    }
+
     useEffect(() => {
         axios.get('/api/tickers')
             .then(res => setTickers(res.data))
@@ -17,6 +22,7 @@ const Stock = () => {
     }, []);
 
     return (
+        <form> onSubmit={handleSubmit}
         <ul className="StockList">
             { tickers.map(ticker =>
               <li key={ticker.id}>              
@@ -30,6 +36,8 @@ const Stock = () => {
                 <label htmlFor={`item-${ticker.id}`}>{ticker.description}</label>
               </li>) }
         </ul>
+        <input type="submit" value="Submit"/>
+        </form>
     )
 }
 
