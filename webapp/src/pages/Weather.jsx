@@ -173,8 +173,12 @@ import axios from 'axios';
         let selectedCountry = countries.find(country => country.value === value);
         console.log(selectedCountry);
         dispatch({ type: 'UPDATE', payload: selectedCountry });
+        console.log('...COUNTRY...');
+        console.log(state);
       } else {
         dispatch({ type: 'CITY', payload: value });
+        console.log('...CITY...');
+        console.log(state);
       }
     };
 
