@@ -257,7 +257,7 @@ const Weather = () => {
 
             <div className="5days-container">
                 {forecast != null 
-                  ? <ForecastList cards={cards} />
+                  ? <ForecastList cards={list} />
                   : <div>No Forecast</div>   
               }
             </div>
