@@ -163,12 +163,16 @@ import axios from 'axios';
       console.log(name + ',' + value);
       if (name ==='country') {
         console.log(countries);
-        let newCountry = { ...initialState };
-        console.log(newCountry);
+
+        let countryCode = state.country;
+        console.log(countryCode);
         const temp = countries.find(country => country.value === value);
-        newCountry = {newCountry, ...temp};
+        if (temp !== undefined) {
+          countryCode = temp.value;
+        }
+
         console.log(newCountry);
-        dispatch({ type: 'SET_COUNTRY', payload: newCountry.value });
+        dispatch({ type: 'SET_COUNTRY', payload: countryCode});
         console.log('1.SET_COUNTRY...');
         console.log(state);
       } else {
@@ -196,14 +200,15 @@ import axios from 'axios';
     React.useEffect(() => {
         alert('get cities');
         console.log(state);
-        let newCountry = countries.find(country => country.value ===  state.country);
-        if( newCountry === undefined ) { 
-           newCountry.title = initialState.country; 
-           newCountry.value = initialState.code;
-        }
+
+        console.log(countries);
+        const temp = countries.find(country => country.value ===  state.country);
+        const newCountry = temp ? temp.title : state.country;
+        console.log(newCountry);
+
         let country = {
-              name: newCountry.title,
-              code: newCountry.value,
+              name: newCountry,
+              code: state.country,
               cities: null
         };
         
