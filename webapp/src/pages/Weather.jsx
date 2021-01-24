@@ -99,7 +99,7 @@ import axios from 'axios';
     
 
     const WeatherCard = (props) => {
-        return ( props.weather.main &&
+        return ( 
           <div className="WeatherCard"> 
               <span>{props.weather.loc} {props.weather.date}</span>
               <img src={`${IMG_URL}/${props.weather.weather[0].icon}.png`} alt="wthr img" className="wthrImg"/>
@@ -123,7 +123,6 @@ import axios from 'axios';
 
       const ForecastCard = (props) => {
         return (
-            props.temp != null &&
             <div className="ForecastCard">
               <span>{props.date}</span>
               <img src={`${IMG_URL}/${props.weather[0].icon}.png`} alt="wthr img" className="wthrImg"/>
@@ -153,7 +152,7 @@ import axios from 'axios';
       return (
       <div className="ForecastList">
           {props.cards.map(card => (
-              <ForecastCard {...card} />
+              card.temp !=null && <ForecastCard {...card} />
           ))}
       </div>
       )
