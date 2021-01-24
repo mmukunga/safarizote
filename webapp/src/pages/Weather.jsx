@@ -3,7 +3,8 @@ import UserForm, { Select } from "./UserForm";
 import axios from 'axios';
 
   const initialState = {
-      country: 'AF',
+      name: 'Afgahnistan',
+      code: 'AF',
       city: 'Kabul'
   };
   
@@ -158,6 +159,8 @@ import axios from 'axios';
     const handleChange = e => {
       console.log(e);
       const { name, value } = e.target;
+      let selectedCountry = countries.find(country => country.code === value);
+      console.log(selectedCountry);
       dispatch({ type: name, value });
     };
 
@@ -177,7 +180,9 @@ import axios from 'axios';
     }, []);
 
     React.useEffect(() => {
-      alert('get cities');
+        alert('get cities');
+        console.log(state);
+
         let country = {
               name: 'Afghanistan',
               code: 'AF',
