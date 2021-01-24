@@ -24,7 +24,7 @@ const Weather = () => {
     const [cities, setCities] = useState([]);
     const [weather, setWeather] = useState({});
     const [forecast, setForecast] = useState([]);
-    const [cards, setCards] = useState([]);
+    const [list, setList] = useState([]);
 
 
     React.useEffect(() => {
@@ -48,23 +48,25 @@ const Weather = () => {
       });
 
       axios.post('/api/forecast', country, headers).then(response => {
-          console.log(response);
           console.log('1.FORECAST..');
+          console.log(response);
           response.data.list.map(forecast => {
             console.log(forecast);
             console.log(forecast.weather[0].icon);
             console.log(`http://openweathermap.org/img/w/${forecast.weather[0].icon}.png`);
             console.log(`http://openweathermap.org/img/w/01d.png`);
             console.log(forecast);
-            const cardInfo = {
+            const newItem = {
                 width: '200px',
                 loc: response.data.city.name, 
                 date: response.headers.date, 
+                forecast: forecast
+                /*
                 main: forecast.main,
                 weather: forecast.weather[0]
+                */
             };
-            setCards([...cards, cardInfo]);
-            console.log(this.state.buyItems);  
+            setList([...list, newItem]);
           });
           console.log('2.FORECAST..');
 
@@ -113,7 +115,7 @@ const Weather = () => {
     };
     
 
-    const Card = (props) => {
+    const WeatherCard = (props) => {
         return (
           <div style={{ border:'1px solid green', margin: '1em', width: props.width }}>
             <span className="pt-3 text-center">{props.loc} {props.date}</span>
@@ -122,15 +124,15 @@ const Weather = () => {
                 <div className="Temperature">
                     <div className="Cell">
                       <small>High</small>
-                      <div>{props.main.high}°</div>
+                      <div>{props.forecast.main.high}°</div>
                     </div>
                     <div className="Cell">
                       <small>Now</small>
-                      <div>{props.main.current}°</div>
+                      <div>{props.forecast.main.current}°</div>
                     </div>
                     <div className="Cell">
                       <small>Low</small>
-                      <div>{props.main.low}°</div>
+                      <div>{props.forecast.main.low}°</div>
                     </div>
                   </div>
             </div>
@@ -138,11 +140,37 @@ const Weather = () => {
         )
       }
 
-    const CardList = props => {
+      const ForecastCard = (props) => {
+        return (
+          <div style={{ border:'1px solid green', margin: '1em', width: props.width }}>
+            <span className="pt-3 text-center">{props.forecast.temp.day} {props.date} {props.forecast.weather[0].description}</span>
+            <img src={`http://openweathermap.org/img/w/${props.forecast.weather[0].icon}.png`} alt="wthr img" style={{ width: '70px' }}/>
+            <div>
+                <div className="Temperature">
+                    <div className="Cell">
+                      <small>High</small>
+                      <div>{props.forecast.temp.day}°</div>
+                    </div>
+                    <div className="Cell">
+                      <small>Now</small>
+                      <div>{props.forecast.temp.min}°</div>
+                    </div>
+                    <div className="Cell">
+                      <small>Low</small>
+                      <div>{props.forecast.temp.night}°</div>
+                    </div>
+                  </div>
+            </div>
+          </div>
+        )
+      }
+     
+
+    const ForecastList = props => {
       return (
       <div>
           {props.cards.map(card => (
-              <Card {...card} />
+              <ForecastCard {...card} />
           ))}
       </div>
       )
@@ -211,17 +239,17 @@ const Weather = () => {
 
             <div className="day-container">
                 {weather != null && weather.main
-                 ?  <Card 
+                 ?  <WeatherCard 
                     title='Current Local Weather'
                     width='500px'
                     date={new Date((weather.dt)*1000).toLocaleDateString("en-US")}
-                    loc={weather.name}
+                    weather={weather}
                     /*high={weather.main.temp_max}
                     current={weather.main.temp}
-                    low={weather.main.temp_min}*/
-                    main={weather.main}
-                    /*detail={weather.main}*/
-                    icon={weather.weather[0].icon}
+                    low={weather.main.temp_min}
+                    main={weather.main}*/
+                    /*detail={weather.main}
+                    icon={weather.weather[0].icon}*/
                     />     
                   : <div>No Weather</div>   
               }
@@ -229,7 +257,7 @@ const Weather = () => {
 
             <div className="5days-container">
                 {forecast != null 
-                  ? <CardList cards={cards} />
+                  ? <ForecastList cards={cards} />
                   : <div>No Forecast</div>   
               }
             </div>
