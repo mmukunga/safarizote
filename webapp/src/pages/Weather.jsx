@@ -3,27 +3,20 @@ import UserForm, { Select } from "./UserForm";
 import axios from 'axios';
 
   const initialState = {
-      id: '',
-      title: 'Afgahnistan',
-      value: 'AF',
+      country: 'AF',
       city: 'Kabul'
   };
   
-  const reducer = (state, action) => {
-    if (action.type === "RESET") {
-        return initialState;
-    } 
-  
-    if (action.type === "UPDATE") {
-        const result = { ...state, ...action.payload };
-        result[action.type] = action.value;
-        return result;
-    } 
-
-    const result = { ...state, city: action.payload };
-    result[action.type] = action.value;
-    return result;
-  };
+  const reducer = (state=initialState, action) => {
+    switch(action.type) {
+      case 'SET_COUNTRY':
+        return { ...state, country: action.payload };
+      case 'SET_CITY':
+        return { ...state, city: action.payload };  
+      default:
+        return state;
+    }
+  }
 
   const IMG_URL = 'https://openweathermap.org/img/w';
   
@@ -170,14 +163,14 @@ import axios from 'axios';
       console.log(name + ',' + value);
       if (name ==='country') {
         console.log(countries);
-        let selectedCountry = countries.find(country => country.value === value);
-        console.log(selectedCountry);
-        dispatch({ type: 'UPDATE', payload: selectedCountry });
-        console.log('...COUNTRY...');
+        const newCountry = countries.find(country => country.value === value);
+        console.log(newCountry);
+        dispatch({ type: 'SET_COUNTRY', payload: newCountry.value });
+        console.log('1.SET_COUNTRY...');
         console.log(state);
       } else {
-        dispatch({ type: 'CITY', payload: value });
-        console.log('...CITY...');
+        dispatch({ type: 'SET_CITY', payload: value });
+        console.log('1.SET_CITY...');
         console.log(state);
       }
     };
@@ -200,10 +193,10 @@ import axios from 'axios';
     React.useEffect(() => {
         alert('get cities');
         console.log(state);
-
+        const newCountry = countries.find(country => country.value ===  state.country);
         let country = {
-              name: 'Afghanistan',
-              code: 'AF',
+              name: newCountry.title,
+              code: newCountry.value,
               cities: null
         };
         
