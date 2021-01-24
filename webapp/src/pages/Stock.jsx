@@ -3,11 +3,11 @@ import axios from 'axios'
 
 const Stock = () => {
     const [tickers, setTickers] = useState([]);
-    const { items, selectedItems } = useState('');
+    const { selectedItems, setSelectedItems } = useState('');
 
     const handleSelectItem = (e) => {
       const { name, value } = e.target;
-      selectedItems({ ...items, [name]: value });
+      setSelectedItems({ ...selectedItems, [name]: value });
     }
 
     useEffect(() => {
