@@ -16,6 +16,11 @@ const Loading = () => {
   return (
     <div className="Spinner" style={{ textAlign: 'center' }}>
       <p>Loading{message}</p>
+      <div class="divLoader">
+        <svg class="svgLoader" viewBox="0 0 1024 1024" width="10em" height="10em">
+          <path fill="lightblue" d="./logo.svg"/>
+        </svg>
+      </div>  
     </div>
   )
 };
