@@ -161,6 +161,7 @@ import axios from 'axios';
       const { name, value } = e.target;
       console.log(e.target.name + ',' + e.target.value);
       console.log(name + ',' + value);
+      console.log(countries);
       let selectedCountry = countries.find(country => country.code === value);
       console.log(selectedCountry);
       dispatch({ type: name, value });
