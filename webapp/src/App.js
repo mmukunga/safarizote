@@ -39,10 +39,10 @@ function App() {
   const [message, setMessage] = useState({});
  
   const selectStyle = {
-    border:'1px solid red', 
-    width:'80px', 
+    border:'4px solid #b37a4c', 
+    width:'100px', 
     padding:'2px', 
-    background:'silver'
+    background: '#2a9df4'
   };
   
   const DropDown = ({ history }) => {
@@ -92,10 +92,10 @@ function App() {
     <header style={{display: props.displayHome}} className="App-header">  
         <div class="ToolBar">                 
             <nav className="Navigation">
-              <div style={{border:'2px solid red', width:'70px', display:'inline-block', verticalAlign: 'top'}}>
+              <div style={{border:'2px solid #9c6137', width:'70px', display:'inline-block', verticalAlign: 'top'}}>
                 <img src={logo} className="App-logo" alt="logo"/>
               </div>
-              <div style={{border:'2px solid red', display:'inline-block', verticalAlign: 'top'}}>
+              <div style={{border:'2px solid #9c6137', display:'inline-block', verticalAlign: 'top'}}>
                 <NavLink to="/" className="Nav_link">Home</NavLink>
                 <NavLink to="/aboutUs" className="Nav_link">About Us</NavLink>
                 <NavLink to="/safaris" className="Nav_link">Safaris</NavLink>

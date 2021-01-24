@@ -1,6 +1,7 @@
 form.StockWrapper {
     text-align: center;
     border:4px solid green;
+    font-size: 10px;
 }
 
 ul.StockList {
@@ -10,12 +11,11 @@ ul.StockList {
     margin-bottom: 20px;
     border:4px solid red;
     display: inline-block; 
-	text-align: left; 
 }
 
 ul.StockList li::before {
     content: "•"; color: red;
     display: inline-block; 
     width: 1em;
-    margin-left: -1em
+    padding: 5px;
 }

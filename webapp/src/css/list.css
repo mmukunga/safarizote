@@ -7,7 +7,7 @@
 .Nav_link:link {
   margin: 2px;
   padding:2px;
-  border: 1px solid red;
+  border: 1px solid #9c6137;
   border-radius: 2px;
   text-decoration: none;
 }
