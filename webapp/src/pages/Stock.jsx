@@ -22,7 +22,7 @@ const Stock = () => {
     }, []);
 
     return (
-        <form> onSubmit={handleSubmit}
+        <form onSubmit={handleSubmit} className="StockWrapper">
         <ul className="StockList">
             { tickers.map(ticker =>
               <li key={ticker.id}>              
