@@ -162,10 +162,8 @@ const Card = props => {
     color: fontColor,
     borderRadius: 10,
     margin: '10px auto',
-    
-    margin: '10px',
     padding: '10px',
-    border: '4px solid darkred'
+    border: '4px solid #9c6137'
   };
 
   const labelStyles = { color: fontColor };
