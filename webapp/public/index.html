@@ -26,41 +26,32 @@
     -->
     <title>React App</title>
     <style media="screen" type="text/css">
-      .loading {
-        -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
-        animation: sk-scaleout 1.0s infinite ease-in-out;
-        background-color: black;
-        border-radius: 100%;
-        height: 6em;
-        width: 6em;
+      .svgLoader {
+        animation: spin 0.5s linear infinite;
+        margin: auto;
       }
-      .container {
-        align-items: center;
-        background-color: white;
-        display: flex;
-        height: 100vh;
-        justify-content: center;
+      .divLoader {
         width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
-      @keyframes sk-scaleout {
-        0% {
-          -webkit-transform: scale(0);
-          transform: scale(0);
-        }
-        100% {
-          -webkit-transform: scale(1.0);
-          opacity: 0;
-          transform: scale(1.0);
-        }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
       }
-      </style>
+  </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root">
-        <div id="spinner" class="container">
-          <div class="loading"></div>
-        </div>
+      <div class="divLoader">
+        <svg class="svgLoader" viewBox="0 0 1024 1024" width="10em" height="10em">
+          <path fill="lightblue"
+            d="PATH FOR THE LOADER ICON"
+          />
+        </svg>
     </div>
     <!--
       This HTML file is a template.
