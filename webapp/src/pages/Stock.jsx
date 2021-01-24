@@ -17,7 +17,7 @@ const Stock = () => {
 
     useEffect(() => {
         axios.get('/api/tickers')
-            .then(res => setTickers(res.data))
+            .then(res => {console.log(res);setTickers(res.data)})
             .catch(err => console.log(err))
     }, []);
 
@@ -29,7 +29,7 @@ const Stock = () => {
                 <input
                   onChange={handleSelectItem}
                   type="checkbox"
-                  checked={selectedItems.includes(ticker.id)}
+                  checked={selectedItems && selectedItems.includes(ticker.id)}
                   value={ticker.name}
                   id={`item-${ticker.id}`}
                 />
