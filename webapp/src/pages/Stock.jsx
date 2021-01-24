@@ -17,7 +17,7 @@ const Stock = () => {
     }, []);
 
     return (
-        <ul>
+        <ul className="StockList">
             { tickers.map(ticker =>
               <li key={ticker.id}>              
                 <input
