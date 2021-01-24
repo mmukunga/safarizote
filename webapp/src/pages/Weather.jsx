@@ -193,7 +193,11 @@ import axios from 'axios';
     React.useEffect(() => {
         alert('get cities');
         console.log(state);
-        const newCountry = countries.find(country => country.value ===  state.country);
+        let newCountry = countries.find(country => country.value ===  state.country);
+        if( newCountry === undefined ) { 
+           newCountry.title = initialState.country; 
+           newCountry.value = initialState.code;
+        }
         let country = {
               name: newCountry.title,
               code: newCountry.value,
