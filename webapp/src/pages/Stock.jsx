@@ -35,8 +35,8 @@ const Stock = () => {
                 />
                 <label htmlFor={`item-${ticker.id}`}>{ticker.description}</label>
               </li>) }
+              <li><input type="submit" value="Submit"/></li>
         </ul>
-        <input type="submit" value="Submit"/>
         </form>
     )
 }
