@@ -119,9 +119,10 @@ const Weather = () => {
         return (
           <div style={{ border:'1px solid green', margin: '1em', width: props.width }}>
             <span className="pt-3 text-center">{props.loc} {props.date}</span>
-            <img src={`http://openweathermap.org/img/w/${props.icon}.png`} alt="wthr img" style={{ width: '70px' }}/>
-            <div>
-                <div className="Temperature">
+            <img src={`https://openweathermap.org/img/w/${props.icon}.png`} alt="wthr img" style={{ width: '70px' }}/>
+            <div> 
+                { props.forecast != null && props.forecast.main
+                ?<div className="Temperature">
                     <div className="Cell">
                       <small>High</small>
                       <div>{props.forecast.main.high}°</div>
@@ -135,6 +136,8 @@ const Weather = () => {
                       <div>{props.forecast.main.low}°</div>
                     </div>
                   </div>
+                : <div>No Data Found!! </div>
+                 }
             </div>
           </div>
         )
@@ -144,7 +147,7 @@ const Weather = () => {
         return (
           <div style={{ border:'1px solid green', margin: '1em', width: props.width }}>
             <span className="pt-3 text-center">{props.forecast.temp.day} {props.date} {props.forecast.weather[0].description}</span>
-            <img src={`http://openweathermap.org/img/w/${props.forecast.weather[0].icon}.png`} alt="wthr img" style={{ width: '70px' }}/>
+            <img src={`https://openweathermap.org/img/w/${props.forecast.weather[0].icon}.png`} alt="wthr img" style={{ width: '70px' }}/>
             <div>
                 <div className="Temperature">
                     <div className="Cell">
