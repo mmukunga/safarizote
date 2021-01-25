@@ -1,9 +1,11 @@
 package com.example.safarizote.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import com.example.safarizote.model.City;
 import com.example.safarizote.model.Country;
+import com.example.safarizote.repository.CityRepository;
 import com.example.safarizote.repository.CountryRepository;
 
 import org.springframework.http.HttpStatus;
@@ -32,6 +34,9 @@ public class WeatherController {
 
     @Autowired
     private CountryRepository repository;
+
+    @Autowired
+    private CityRepository cityReository;
     
     @RequestMapping(value = "/api/countries",  method={RequestMethod.GET})       
     public ResponseEntity<List<Country>> getCountries() { 
@@ -47,6 +52,8 @@ public class WeatherController {
         System.out.println("2.getCities - dbCountry:= " + dbCountry); 
         List<City> cities = dbCountry.getCities();
         System.out.println("3.getCities - cities:= " + cities); 
+        Set<City> cities2 = cityReository.findByCountry(country.getCode());
+        System.out.println("3.getCities - cities2:= " + cities2); 
         return new ResponseEntity<>(cities, HttpStatus.OK);   
     }
 
