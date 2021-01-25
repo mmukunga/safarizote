@@ -25,6 +25,7 @@ public class Country {
     @Id @GeneratedValue Long id;
     @NonNull String name;
     @NonNull String code;
-    @Singular @OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
+    @Singular 
+    @OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
     List<City> cities;
 }

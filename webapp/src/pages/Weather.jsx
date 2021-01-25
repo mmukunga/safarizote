@@ -157,9 +157,10 @@ import axios from 'axios';
     
 
     const WeatherCard = (props) => {
+      console.log(props);
         return ( 
           <div className="WeatherCard"> 
-              <span>{props.weather.loc} {props.weather.date}</span>
+              <span>loc: {props.weather.loc} date: {props.weather.date}</span>
               <img src={`${IMG_URL}/${props.weather.weather[0].icon}.png`} alt="wthr img" className="wthrImg"/>
               <div className="Cells">
                 <div className="Cell">
@@ -179,6 +180,7 @@ import axios from 'axios';
       }
 
       const ForecastCard = (props) => {
+        console.log(props);
         return (
             <div className="ForecastCard">
               <span>{props.date}</span>
@@ -217,7 +219,7 @@ import axios from 'axios';
 
     return (
         <div className="Weather">
-            Weather!
+            Weather! {state.cityName} - {state.countryName}, {state.countryCode} 
             <UserForm
                 cancel={() => {console.log('cancel')}}
                 errors={[]}

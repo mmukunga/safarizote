@@ -28,44 +28,49 @@ public class CountryLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         
-        List<String> temp = new ArrayList<>(Arrays.asList("AF", "AL", "DZ", "KE", "NO", "SE", "DK", "AU", "TZ", "UG", "ZA", "US", "GB", "DE", "FR", "ES"));
+        List<String> aList = new ArrayList<>();
+            aList.add("AF");
+            aList.add("AL");
+            aList.add("DZ");
+            aList.add("KE");
+            aList.add("NO");
+            aList.add("SE");
+            aList.add("DK");
 
         if (repository.count() > 0) {
             return;
         }
 
-        String fileName = "countries.json";  
+        String fileCountryName = "countries.json";  
         ClassLoader classLoader = getClass().getClassLoader();
-        try (InputStream is = classLoader.getResourceAsStream(fileName);
-        Reader reader = new InputStreamReader(is, StandardCharsets.UTF_8)) {
-            Gson gson = new Gson();
-            Country[] countries = gson.fromJson(reader, Country[].class);   
-            Arrays.stream(countries).forEach( e -> {
-                if (temp.contains(e.getCode())) {
-                    List<City> cities = new ArrayList<>(); 
-                    repository.save(Country.builder()
-                    .name(e.getName()).code(e.getCode())
-                    .cities(cities).build()); 
-                }
-            });
-        } 
+        InputStream isCountry = classLoader.getResourceAsStream(fileCountryName);     
+        Reader countryReader = new InputStreamReader(isCountry, StandardCharsets.UTF_8);
+        Gson gsonCountry = new Gson();
+        
+        Country[] countries = gsonCountry.fromJson(countryReader, Country[].class);   
+        Arrays.stream(countries).forEach(country -> {
+            if (aList.contains(country.getCode())) {
+                repository.save(Country.builder().name(country.getName())
+                .code(country.getCode()).build()); 
+            }
+        });
+       
         
         String fileCityName = "cities.json"; 
         ClassLoader classCityLoader = getClass().getClassLoader();
+        InputStream is = classCityLoader.getResourceAsStream(fileCityName);
+        Reader reader = new InputStreamReader(is, StandardCharsets.UTF_8);
+        Gson gson = new Gson();
 
-        try (InputStream is = classCityLoader.getResourceAsStream(fileCityName);
-        Reader reader = new InputStreamReader(is, StandardCharsets.UTF_8)) {
-            Gson gson = new Gson();
-            City[] cities = gson.fromJson(reader, City[].class); 
-            Arrays.stream(cities).forEach( city -> {
-                if (temp.contains(city.getCountry())) {
-                    Country country = repository.findByCode(city.getCountry());
-                    country.getCities().add(city);
-                    repository.save(country); 
-                }
-            });
-        }
-    
+        City[] cities = gson.fromJson(reader, City[].class); 
+        Arrays.stream(cities).forEach(city -> {
+            Country country = repository.findByCode(city.getCountry());
+            if (aList.contains(country.getCode())) {
+                country.getCities().add(city);
+                repository.save(country); 
+            }
+        });
+ 
         repository.findAll().forEach((country) -> {
             logger.info("{}", country.getName());
         });  
