@@ -41,8 +41,12 @@ public class WeatherController {
 
     @RequestMapping(value="/api/cities",  method={RequestMethod.POST})       
     public ResponseEntity<List<City>> getCities(@RequestBody Country country) { 
+        System.out.println("1.getCities country:= " + country); 
+        System.out.println("1.getCities countryCode:= " + country.getCode()); 
         Country dbCountry = repository.findByCode(country.getCode());
+        System.out.println("2.getCities - dbCountry:= " + dbCountry); 
         List<City> cities = dbCountry.getCities();
+        System.out.println("3.getCities - cities:= " + cities); 
         return new ResponseEntity<>(cities, HttpStatus.OK);   
     }
 

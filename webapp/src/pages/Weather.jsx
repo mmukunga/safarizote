@@ -219,11 +219,11 @@ import axios from 'axios';
                 console.log(response);
                 console.log('2.CITIES..');
                 let array_nodes = [];
-                response.data.forEach(function(d) {
+                response.data.forEach(function(city) {
                    array_nodes.push({  
-                     id: d.id,  
-                     title: d.name,
-                     value: d.name
+                     id: city.id,  
+                     title: city.name,
+                     value: city.name
                    });
                  }); 
                 setCities(array_nodes);
