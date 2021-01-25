@@ -38,7 +38,7 @@ public class CountryLoader implements CommandLineRunner {
             aList.add("DK");
 
         if (repository.count() > 0) {
-            return;
+            repository.deleteAll();
         }
 
         String fileCountryName = "countries.json";  
