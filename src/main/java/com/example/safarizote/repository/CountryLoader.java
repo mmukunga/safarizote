@@ -63,8 +63,11 @@ public class CountryLoader implements CommandLineRunner {
         Gson gson = new Gson();
         System.out.println("CountryLoader..6");
         City[] cities = gson.fromJson(cityReader, City[].class); 
+        System.out.println("CountryLoader..7 cities.size():= " + cities.length);
         Arrays.stream(cities).forEach(city -> {
             Country country = repository.findByCode(city.getCountry());
+            System.out.println("CountryLoader..7A country:= " + country.getCode());
+            System.out.println("CountryLoader..7A country:= " + city.getCountry());
             if (aList.contains(country.getCode())) {
                 System.out.println("NEW City: " + city);
                 country.getCities().add(city);
