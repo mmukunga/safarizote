@@ -46,7 +46,7 @@ public class CountryLoader implements CommandLineRunner {
         InputStream isCountry = classLoader.getResourceAsStream(fileCountryName);     
         Reader countryReader = new InputStreamReader(isCountry, StandardCharsets.UTF_8);
         Gson gsonCountry = new Gson();
-        
+
         Country[] countries = gsonCountry.fromJson(countryReader, Country[].class);   
         Arrays.stream(countries).forEach(country -> {
             if (aList.contains(country.getCode())) {
@@ -58,14 +58,15 @@ public class CountryLoader implements CommandLineRunner {
         
         String fileCityName = "cities.json"; 
         ClassLoader classCityLoader = getClass().getClassLoader();
-        InputStream is = classCityLoader.getResourceAsStream(fileCityName);
-        Reader reader = new InputStreamReader(is, StandardCharsets.UTF_8);
+        InputStream isCity = classCityLoader.getResourceAsStream(fileCityName);
+        Reader cityReader = new InputStreamReader(isCity, StandardCharsets.UTF_8);
         Gson gson = new Gson();
 
-        City[] cities = gson.fromJson(reader, City[].class); 
+        City[] cities = gson.fromJson(cityReader, City[].class); 
         Arrays.stream(cities).forEach(city -> {
             Country country = repository.findByCode(city.getCountry());
             if (aList.contains(country.getCode())) {
+                System.out.println("NEW City: " + city);
                 country.getCities().add(city);
                 repository.save(country); 
             }
