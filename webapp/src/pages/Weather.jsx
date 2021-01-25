@@ -3,16 +3,22 @@ import UserForm, { Select } from "./UserForm";
 import axios from 'axios';
 
   const initialState = {
-      country: 'AF',
-      city: 'Kabul'
+      id: '',
+      countryCode: 'AF',
+      countryName: 'Afghanistan',
+      cityName: 'Kabul'
   };
   
   const reducer = (state=initialState, action) => {
     switch(action.type) {
       case 'SET_COUNTRY':
-        return { ...state, country: action.payload };
+        return {
+          ...state, ...action.payload
+        };
       case 'SET_CITY':
-        return { ...state, city: action.payload };  
+        return { 
+          ...state, cityName: action.payload
+        };  
       default:
         return state;
     }
@@ -29,10 +35,71 @@ import axios from 'axios';
     const [list, setList] = useState([]);
     
 
+    function handleChange(evt) {
+      
+      if (evt.target.name === "countryCode") {
+        const filteredCountry = countries.find(country => country.code === evt.target.value);
+        const newCountry = {
+          id: filteredCountry.id,
+          countryCode: filteredCountry.code,
+          countryName: filteredCountry.name,
+          cityName: state.cityName
+        };
+        dispatch({ type: 'SET_COUNTRY', payload: newCountry});
+        console.log('1.SET_COUNTRY...');
+      } else {
+        dispatch({ type: 'SET_CITY', payload: evt.target.value });
+        console.log('1.SET_CITY...');
+      }
+    }
+
+    useEffect(() => {
+      axios.get('/api/countries')
+          .then(response => {
+              let filteredCountries = [];
+              response.data.forEach(function(d) {
+                filteredCountries.push({
+                   id: d.id,   
+                   name: d.name,
+                   code: d.code
+                 });
+               }); 
+              setCountries(filteredCountries);
+          }).catch(err => console.log(err))
+  }, []);
+
+  React.useEffect(() => {
+      alert('get cities');
+      console.log(state);
+
+      let country = {
+            name: state.countryName,
+            code: state.countryCode,
+            cities: null
+      };
+      
+      console.log(country);
+      axios.post('/api/cities', country)
+          .then(response => {
+              console.log('1.CITIES..');
+              console.log(response);
+              console.log('2.CITIES..');
+              let filteredCity = [];
+              response.data.forEach(function(city) {
+                filteredCity.push({  
+                   id: city.id,  
+                   country: city.country,
+                   name: city.name
+                 });
+               }); 
+              setCities(filteredCity);
+          }).catch(err => console.log(err))
+  }, [state.countryCode]);
+
     React.useEffect(() => {
       const country = {
-          name: 'Afghanistan',
-          code: 'AF',
+          name: state.countryName,
+          code: state.countryCode,
           cities: null
       };
         
@@ -59,14 +126,6 @@ import axios from 'axios';
 
     }, []);
 
-    /*
-    React.useEffect(() => {
-      axios.get('/api/cities')
-          .then(res => setCities(res.data))
-          .catch(err => console.log(err))
-    }, [state.country])
-    */
-
     const handleSubmit = e => {
         e.preventDefault();
         console.log('Weather Forecast!!');
@@ -76,8 +135,8 @@ import axios from 'axios';
         };
 
         const country = {
-            name: 'Afghanistan',
-            code: 'AF',
+            name: state.countryName,
+            code: state.countryCode,
             cities: null
         };
 
@@ -156,80 +215,6 @@ import axios from 'axios';
       )
     };
 
-    const handleChange = e => {
-      e.preventDefault();
-      console.log(e);
-      const { name, value } = e.target;
-      console.log(e.target.name + ',' + e.target.value);
-      console.log(name + ',' + value);
-      if (name ==='country') {
-        console.log(countries);
-
-        let countryCode = state.country;
-        console.log(countryCode);
-        const temp = countries.find(country => country.value === value);
-        if (temp !== undefined) {
-          countryCode = temp.value;
-        }
-
-        dispatch({ type: 'SET_COUNTRY', payload: countryCode});
-        console.log('1.SET_COUNTRY...');
-        console.log(state);
-      } else {
-        dispatch({ type: 'SET_CITY', payload: value });
-        console.log('1.SET_CITY...');
-        console.log(state);
-      }
-    };
-
-    useEffect(() => {
-        axios.get('/api/countries')
-            .then(response => {
-                let array_nodes = [];
-                response.data.forEach(function(d) {
-                   array_nodes.push({
-                     id: d.id,   
-                     title: d.name,
-                     value: d.code
-                   });
-                 }); 
-                setCountries(array_nodes);
-            }).catch(err => console.log(err))
-    }, []);
-
-    React.useEffect(() => {
-        alert('get cities');
-        console.log(state);
-
-        console.log(countries);
-        const temp = countries.find(country => country.value ===  state.country);
-        const newCountry = temp ? temp.title : state.country;
-        console.log(newCountry);
-
-        let country = {
-              name: newCountry,
-              code: state.country,
-              cities: null
-        };
-        
-        console.log(country);
-        axios.post('/api/cities', country)
-            .then(response => {
-                console.log('1.CITIES..');
-                console.log(response);
-                console.log('2.CITIES..');
-                let array_nodes = [];
-                response.data.forEach(function(city) {
-                   array_nodes.push({  
-                     id: city.id,  
-                     title: city.name,
-                     value: city.name
-                   });
-                 }); 
-                setCities(array_nodes);
-            }).catch(err => console.log(err))
-    }, [state.country]);
-
     return (
         <div className="Weather">
             Weather!
@@ -240,8 +225,8 @@ import axios from 'axios';
                 submit={handleSubmit}
                 elements={() => (
                    <>
-                      <Select id="country" name="country" data={countries} text="Country" onChange={handleChange}/>
-                      <Select id="city" name="country" data={cities} text="City" onChange={handleChange}/>                    
+                      <Select id="countryCode" name="countryCode" data={countries} text="Country" onChange={handleChange}/>
+                      <Select id="cityName" name="cityName" data={cities} text="City" onChange={handleChange}/>                    
                    </>
                 )}
                 >    
