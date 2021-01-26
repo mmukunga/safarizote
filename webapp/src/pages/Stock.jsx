@@ -33,10 +33,11 @@ const Stock = () => {
     const [ selectedItem, setSelectedItem ] = useState('');
 
     const handleSelectItem = (event) => {
+      alert('1.A Ticker was Submitted: ' + event.target.value);
       const { name, value } = event.target;
       setSelectedItem({ ...selectedItems, [name]: value });
       setSelectedItems(value);
-
+      console.log('2.A Ticker was Submitted: ' + event.target.value);
       let tickers = state.tickers;
       for (var i = 0; i < tickers.length; i++) { 
         if (event.target.name==tickers[i].name){
@@ -45,7 +46,9 @@ const Stock = () => {
             tickers[i].selected=false;
         }
       }
+      console.log('3.A Ticker was Submitted: ' + event.target.value);
       dispatch({ type: 'SET_DATA', payload: tickers });
+      console.log('4.A Ticker was Submitted: ' + event.target.value);
     }
 
     const handleSubmit = (event) => {
