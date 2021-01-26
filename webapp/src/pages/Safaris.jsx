@@ -57,7 +57,7 @@ const Safaris = () => {
         </li>
       );
     });
-    console.log(currentItems);
+    
     return (
       <Card title="Safaris" text="Safari Zote">
         <div className ="sTable">
@@ -66,7 +66,7 @@ const Safaris = () => {
           </ul>
           {currentItems && currentItems.length > 0 
           ? <Table data={currentItems}/> 
-          : <p>fUCK!!</p>}
+          : <p>No Data Found!!</p>}
         </div>
       </Card>
     );

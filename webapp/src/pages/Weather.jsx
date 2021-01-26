@@ -12,12 +12,10 @@ import axios from 'axios';
   const reducer = (state, action) => {
     switch(action.type) {
       case 'SET_COUNTRY':
-        console.log(action.payload);
         return {
           ...state, ...action.payload
         };
       case 'SET_CITY':
-        console.log(action.payload);
         return { 
           ...state, cityName: action.payload
         };  
@@ -39,24 +37,15 @@ import axios from 'axios';
 
     function handleChange(evt) {
       if (evt.target.name === "countryCode") {
-        alert('country');
-        console.log(evt.target.value);
         const filteredCountry = countries.find(country => country.value === evt.target.value);
-        console.log(filteredCountry);
         let newCountry = { ...state };
-        console.log(newCountry);
         newCountry = { ...state, 
           countryCode: filteredCountry.value, 
           countryName: filteredCountry.title
         };
-        console.log(newCountry);
         dispatch({ type: 'SET_COUNTRY', payload: newCountry});
-        console.log('1.SET_COUNTRY...');
       } else {
-        alert('City');
-        console.log(evt.target.value);
         dispatch({ type: 'SET_CITY', payload: evt.target.value });
-        console.log('1.SET_CITY...');
       }
     }
     
@@ -76,21 +65,15 @@ import axios from 'axios';
   }, []);
 
   React.useEffect(() => {
-      alert('get cities');
-      console.log(state);
 
       let country = {
             name: state.countryName,
             code: state.countryCode,
             cities: null
       };
-      
-      console.log(country);
+
       axios.post('/api/cities', country)
           .then(response => {
-              console.log('1.CITIES..');
-              console.log(response);
-              console.log('2.CITIES..');
               let filteredCity = [];
               response.data.forEach(function(city) {
                 filteredCity.push({  
@@ -134,10 +117,7 @@ import axios from 'axios';
     }, []);
 
     const handleSubmit = e => {
-        e.preventDefault();
-        alert('SUBMIT');
-        console.log('Weather Forecast!!');
-        //const { country, city } = state;         
+        e.preventDefault();    
         var headers = {
           'Content-Type': 'application/json' 
         };
@@ -147,20 +127,14 @@ import axios from 'axios';
             code: state.countryCode,
             cities: null
         };
-        
-        console.log('1.SUBMIT');
-        console.log(country);
-        console.log('2.SUBMIT');
 
         axios.post('/api/weather', country, headers).then(response => {
-          console.log(response);
             setWeather(response.data);
         }).catch(err => {
             console.log(err);
         });
 
         axios.post('/api/forecast', country, headers).then(response => {
-            console.log(response);
             setList(response.data.list);
             setForecast(response.data);
         }).catch(err => {
@@ -171,7 +145,6 @@ import axios from 'axios';
     
 
     const WeatherCard = (props) => {
-      console.log(props);
         return ( 
           <div className="WeatherCard"> 
               <span>loc: {props.weather.loc} date: {props.weather.date}</span>
@@ -194,7 +167,6 @@ import axios from 'axios';
       }
 
       const ForecastCard = (props) => {
-        console.log(props);
         return (
             <div className="ForecastCard">
               <span>{props.date}</span>

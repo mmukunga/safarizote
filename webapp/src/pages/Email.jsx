@@ -35,7 +35,6 @@ const Email = () => {
     axios.post("/api/sendEmail", formData)
       .then(response => {
           clearState();
-          console.log('Send Email OK!');
       }).catch(error => {
           console.log(error);
       });  
