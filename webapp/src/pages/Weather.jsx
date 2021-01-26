@@ -135,6 +135,7 @@ import axios from 'axios';
 
     const handleSubmit = e => {
         e.preventDefault();
+        alert('SUBMIT');
         console.log('Weather Forecast!!');
         //const { country, city } = state;         
         var headers = {
@@ -146,20 +147,25 @@ import axios from 'axios';
             code: state.countryCode,
             cities: null
         };
+        
+        console.log('1.SUBMIT');
+        console.log(country);
+        console.log('2.SUBMIT');
 
         axios.post('/api/weather', country, headers).then(response => {
+          console.log(response);
             setWeather(response.data);
         }).catch(err => {
             console.log(err);
         });
 
         axios.post('/api/forecast', country, headers).then(response => {
+            console.log(response);
             setForecast(response.data);
         }).catch(err => {
             console.log(err);
         });
 
-        dispatch({ type: "RESET" });
     };
     
 
