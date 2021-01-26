@@ -68,15 +68,15 @@ public class CountryLoader implements CommandLineRunner {
         Arrays.stream(cities).forEach(city -> {
             System.out.println("CountryLoader..7A country:= " + city);
             System.out.println("CountryLoader..7B country:= " + city.getCountry());
-            Optional<Country> country = repository.findByCode(city.getCountry());
+            Country country = repository.findByCode(city.getCountry());
             System.out.println("CountryLoader..7C country:= " + country);
-            if (country.isPresent()) {
-                System.out.println("CountryLoader..7D country:= " + country.get().getCode());
+            if (country != null) {
+                System.out.println("CountryLoader..7D country:= " + country.getCode());
                 System.out.println("CountryLoader..7D country:= " + city.getCountry());
-                if (aList.contains(country.get().getCode())) {
+                if (aList.contains(country.getCode())) {
                     System.out.println("NEW City: " + city);
-                    country.get().getCities().add(city);
-                    repository.save(country.get()); 
+                    country.getCities().add(city);
+                    repository.save(country); 
                 }
             }
         });
