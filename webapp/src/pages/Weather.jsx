@@ -17,6 +17,7 @@ import axios from 'axios';
           ...state, ...action.payload
         };
       case 'SET_CITY':
+        console.log(action.payload);
         return { 
           ...state, cityName: action.payload
         };  
@@ -53,6 +54,7 @@ import axios from 'axios';
         console.log('1.SET_COUNTRY...');
       } else {
         alert('City');
+        console.log(evt.target.value);
         dispatch({ type: 'SET_CITY', payload: evt.target.value });
         console.log('1.SET_CITY...');
       }
