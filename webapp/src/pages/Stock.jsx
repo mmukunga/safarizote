@@ -53,7 +53,7 @@ const Stock = () => {
       event.preventDefault();
       console.log('SelectedItem:= ' + selectedItem);
 
-      const { value } = e.target.value;
+      const { value } = event.target.value;
       
       let ticker = '';
       const tickers = state.tickers;
