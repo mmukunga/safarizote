@@ -9,9 +9,10 @@ import axios from 'axios';
       cityName: 'Kabul'
   };
   
-  const reducer = (state=initialState, action) => {
+  const reducer = (state, action) => {
     switch(action.type) {
       case 'SET_COUNTRY':
+        console.log(action.payload);
         return {
           ...state, ...action.payload
         };
@@ -36,19 +37,22 @@ import axios from 'axios';
     
 
     function handleChange(evt) {
-      
       if (evt.target.name === "countryCode") {
+        alert('country');
         const filteredCountry = countries.find(country => country.code === evt.target.value);
         let newCountry = { ...state };
+        console.log(newCountry);
         newCountry = { ...state, ...filteredCountry };
+        console.log(newCountry);
         dispatch({ type: 'SET_COUNTRY', payload: newCountry});
         console.log('1.SET_COUNTRY...');
       } else {
+        alert('City');
         dispatch({ type: 'SET_CITY', payload: evt.target.value });
         console.log('1.SET_CITY...');
       }
     }
-
+    
     useEffect(() => {
       axios.get('/api/countries')
           .then(response => {
