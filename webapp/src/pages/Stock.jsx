@@ -62,15 +62,18 @@ const Stock = () => {
       const tickers = state.tickers;
       for (var i = 0; i < tickers.length; i++) { 
           if (tickers[i].selected==true){
+            console.log('4.A Ticker was FOUND: ' + event.target.value);
               ticker = tickers[i];
           }
       }
-
+      console.log('5.A Ticker TO SUBMIT..');
        axios.post('/api/current', ticker).then((response) => {
+        console.log('4.A Ticker was SUBMITED..');
           console.log(response);
        }).catch(function (error) {
           console.log(error);
        }) 
+
     }
 
     useEffect(() => {
