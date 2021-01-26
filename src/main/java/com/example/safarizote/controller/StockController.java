@@ -40,21 +40,21 @@ public class StockController {
     }
 
     @RequestMapping(value="/api/current", method = RequestMethod.POST)
-    public ResponseEntity<JsonObject> getCurrentStock(@RequestBody Ticker ticker) throws Exception {
+    public ResponseEntity<String> getCurrentStock(@RequestBody Ticker ticker) throws Exception {
         System.out.println("Current Stock, the time at the server is now " + new Date() + "\n");
         System.out.println("Current Stock:" + ticker); 
         // Validate Sticker
         if (repository.findById(ticker.getId()).isEmpty()) {
             throw new Exception();
         }
-        JsonObject jsonObject = stockClient.yahooCurrent(ticker.getSymbol());
+        String jsonObject = stockClient.yahooCurrent(ticker.getSymbol());
         System.out.println("Current Stock, the time at the server is now " + new Date() + "\n");
         System.out.println("******Current Stock******:" + jsonObject );
         return new ResponseEntity<>(jsonObject, HttpStatus.OK);
     }
 
     @RequestMapping(value="/api/history", method = RequestMethod.POST)
-    public ResponseEntity<JsonObject> getStockHistory(@RequestBody Ticker ticker) throws Exception {
+    public ResponseEntity<String> getStockHistory(@RequestBody Ticker ticker) throws Exception {
         System.out.println("Stock History, the time at the server is now " + new Date() + "\n");
         System.out.println("******Stock History*******:" + ticker); 
         // Validate Sticker
@@ -77,18 +77,18 @@ public class StockController {
         System.out.println("**TO:= " + toTime);
         System.out.println("**FROM:= " + fromTime);
 
-        JsonObject jsonObject = stockClient.yahooHistory(ticker.getSymbol(), from, to);
+        String jsonObject = stockClient.yahooHistory(ticker.getSymbol(), from, to);
 
         System.out.println("Stock History, the time at the server is now " + new Date() + "\n");
         System.out.println("Stock History:" + jsonObject ) ;
         
 
-        JsonObject jsonChart = (JsonObject) jsonObject.get("chart");
-        JsonArray results = (JsonArray) jsonChart.get("result");
+        //JsonObject jsonChart = (JsonObject) jsonObject.get("chart");
+        //JsonArray results = (JsonArray) jsonChart.get("result");
 
-        if (results == null || results.size() != 1) {
-            System.out.println("NO CHART!!");
-        }
+        //if (results == null || results.size() != 1) {
+         //   System.out.println("NO CHART!!");
+      //  }
 
         return new ResponseEntity<>(jsonObject, HttpStatus.OK);
     }
