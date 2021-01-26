@@ -74,6 +74,20 @@
   .Navigation {
     padding:4px;
     border: 2px solid white;
+    vertical-align: baseline;
+  }
+
+  .leftDiv, .rightDiv {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    background: #ce8888;
+  
+  }
+
+  .rightDiv {
+    width: calc(100% - 200px);
+    border: 2px solid #9c6137 ;
   }
 
    .xLogo {
@@ -94,19 +108,6 @@
     width: 250px;
     display: inline-block;
     border: 1px solid #999;
-  }
-
-  .leftDiv, .rightDiv {
-    display: inline-block;
-    width: 200px;
-    height: 200px;
-    background: #ce8888;
-  
-  }
-
-  .rightDiv {
-    width: calc(100% - 200px);
-    border: 2px solid #9c6137 ;
   }
 
   .Buttons {
