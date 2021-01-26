@@ -143,7 +143,7 @@ import axios from 'axios';
         };
 
         const country = {
-            name: state.countryName,
+            name: state.cityName,
             code: state.countryCode,
             cities: null
         };

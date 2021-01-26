@@ -62,39 +62,27 @@ public class WeatherController {
         System.out.println("1.Current Weather - COUNTRY1:= " + country); 
         HttpURLConnection con = null ;
         InputStream is = null;
-        String location = "Kabul, AF";
-        try {
-            con = (HttpURLConnection) ( new URL(BASE_URL + location + "&cnt=7" + "&units=metric" + "&APPID="+API_KEY)).openConnection();
-            con.setRequestMethod("GET");
-            con.setDoInput(true);
-            con.setDoOutput(true);
-            con.connect();
-            System.out.println("2.Current Weather - COUNTRY2:= " + country); 
-            // Let's read the response
-            StringBuffer buffer = new StringBuffer();
-            is = con.getInputStream();
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-            String line = null;
-            while (  (line = br.readLine()) != null )
-                buffer.append(line + "\r\n");
+        String location = country.getName() + "," + country.getCode();
+        
+        con = (HttpURLConnection) ( new URL(BASE_URL + location + "&cnt=7" + "&units=metric" + "&APPID="+API_KEY)).openConnection();
+        con.setRequestMethod("GET");
+        con.setDoInput(true);
+        con.setDoOutput(true);
+        con.connect();
+        System.out.println("2.Current Weather - COUNTRY2:= " + country); 
+        // Let's read the response
+        StringBuffer buffer = new StringBuffer();
+        is = con.getInputStream();
+        BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        String line = null;
+        while (  (line = br.readLine()) != null )
+            buffer.append(line + "\r\n");
 
-            System.out.println("3.Current Weather - COUNTRY3:= " + country); 
-            is.close();
-            con.disconnect();
-            System.out.println("4.Current Weather - COUNTRY4:= " + country); 
-            return new ResponseEntity<>(buffer.toString(), HttpStatus.OK);
-        } catch(Throwable t) {
-            t.printStackTrace();
-        } finally {
-            try { 
-                is.close(); 
-            } catch(Throwable t) {}
-            try { 
-                con.disconnect(); 
-            } catch(Throwable t) {}
-        }
-
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        System.out.println("3.Current Weather - COUNTRY3:= " + country); 
+        is.close();
+        con.disconnect();
+        System.out.println("4.Current Weather - COUNTRY4:= " + country); 
+        return new ResponseEntity<>(buffer.toString(), HttpStatus.OK);
 
     }
 
@@ -103,7 +91,7 @@ public class WeatherController {
         System.out.println("1.Forecast Weather - COUNTRY1:= " + country); 
         HttpURLConnection con = null ;
         InputStream is = null;
-        String location = "Kabul, AF";
+        String location = country.getName()+","+country.getCode();
         try {
             con = (HttpURLConnection) ( new URL(FORECAST_URL + location + "&units=metric" + "&APPID="+API_KEY)).openConnection();
             con.setRequestMethod("GET");
@@ -124,19 +112,6 @@ public class WeatherController {
             con.disconnect();
             System.out.println("4.Forecast Weather - COUNTRY4:= " + country); 
             return new ResponseEntity<>(buffer.toString(), HttpStatus.OK);
-        } catch(Throwable t) {
-            t.printStackTrace();
-        } finally {
-            try { 
-                is.close(); 
-            } catch(Throwable t) {}
-            try { 
-                con.disconnect(); 
-            } catch(Throwable t) {}
-        }
-
-        return new ResponseEntity<>(null, HttpStatus.OK);
-
     }
 
     public byte[] getImage(String code) {
