@@ -39,12 +39,8 @@ import axios from 'axios';
       
       if (evt.target.name === "countryCode") {
         const filteredCountry = countries.find(country => country.code === evt.target.value);
-        const newCountry = {
-          id: filteredCountry.id,
-          countryCode: filteredCountry.code,
-          countryName: filteredCountry.name,
-          cityName: state.cityName
-        };
+        let newCountry = { ...state };
+        newCountry = { ...state, ...filteredCountry };
         dispatch({ type: 'SET_COUNTRY', payload: newCountry});
         console.log('1.SET_COUNTRY...');
       } else {

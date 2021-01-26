@@ -28,19 +28,34 @@ public class CountryLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        List<String> aList = new ArrayList<>();
-            aList.add("AF");
-            aList.add("AL");
-            aList.add("DZ");
-            aList.add("KE");
-            aList.add("NO");
-            aList.add("SE");
-            aList.add("DK");
-           
+        List<String> cList = new ArrayList<>();
+            cList.add("AF");
+            cList.add("AL");
+            cList.add("DZ");
+            cList.add("KE");
+            cList.add("NO");
+            cList.add("SE");
+            cList.add("DK");
+        
+            List<String> aList = new ArrayList<>();
         if (repository.count() > 0) {
-            repository.deleteAll();
+           //getNew countries
+           List<Country> lst = repository.findAll();
+           System.out.println("\n==============> 2. New Enhanced For loop Example..");
+           for (Country temp : lst) {
+              if (!cList.contains(temp.getCode())){ 
+                  aList.add(temp.getCode());
+                 System.out.println(temp);
+              }
+           }
+        } else {
+            aList.addAll(cList);
         }
         
+        if (aList.isEmpty()) {
+            return;
+        }
+
         String fileCountryName = "countries.json";  
         ClassLoader classLoader = getClass().getClassLoader();
         InputStream isCountry = classLoader.getResourceAsStream(fileCountryName);     
