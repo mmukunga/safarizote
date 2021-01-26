@@ -56,8 +56,8 @@ import axios from 'axios';
               response.data.forEach(function(d) {
                 filteredCountries.push({
                    id: d.id,   
-                   name: d.name,
-                   code: d.code
+                   title: d.name,
+                   value: d.code
                  });
                }); 
               setCountries(filteredCountries);
@@ -84,8 +84,8 @@ import axios from 'axios';
               response.data.forEach(function(city) {
                 filteredCity.push({  
                    id: city.id,  
-                   country: city.country,
-                   name: city.name
+                   value: city.name,
+                   title: city.name
                  });
                }); 
               setCities(filteredCity);
@@ -223,8 +223,8 @@ import axios from 'axios';
                 submit={handleSubmit}
                 elements={() => (
                    <>
-                      <Select id="countryCode" name="countryCode" data={countries} text="Country" onChange={handleChange}/>
-                      <Select id="cityName" name="cityName" data={cities} text="City" onChange={handleChange}/>                    
+                      <Select id="countryCode" name="countryCode" text="Country"  data={countries} onChange={handleChange}/>
+                      <Select id="cityName" name="cityName" text="City" data={cities} onChange={handleChange}/>                    
                    </>
                 )}
                 >    
