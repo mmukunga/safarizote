@@ -92,10 +92,10 @@ function App() {
     <header style={{display: props.displayHome}} className="App-header">  
         <div class="ToolBar">                 
             <nav className="Navigation">
-              <div style={{border:'2px solid #9c6137', width:'70px', display:'inline-block', verticalAlign: 'top'}}>
+              <div className="leftDiv"> 
                 <img src={logo} className="App-logo" alt="logo"/>
               </div>
-              <div style={{border:'2px solid #9c6137', display:'inline-block', verticalAlign: 'top'}}>
+              <div className="rightDiv">
                 <NavLink to="/" className="Nav_link">Home</NavLink>
                 <NavLink to="/aboutUs" className="Nav_link">About Us</NavLink>
                 <NavLink to="/safaris" className="Nav_link">Safaris</NavLink>
