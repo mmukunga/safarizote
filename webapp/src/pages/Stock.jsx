@@ -29,18 +29,19 @@ const reducer = (state, action) => {
 const Stock = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const [tickers, setTickers] = useState([]);
-    const [ selectedItems, setSelectedItems ] = useState('');
-    const [ selectedItem, setSelectedItem ] = useState('');
+    //const [ selectedItems, setSelectedItems ] = useState('');
+    //const [ selectedItem, setSelectedItem ] = useState('');
 
     const handleSelectItem = (event) => {
       alert('1.A Ticker was Submitted: ' + event.target.value);
       const { name, value } = event.target;
-      setSelectedItem({ ...selectedItems, [name]: value });
-      setSelectedItems(value);
+      //setSelectedItem({ ...selectedItems, [name]: value });
+      //setSelectedItems(value);
       console.log('2.A Ticker was Submitted: ' + event.target.value);
       let tickers = state.tickers;
       for (var i = 0; i < tickers.length; i++) { 
         if (event.target.name==tickers[i].name){
+          alert('HOOKED..');
             tickers[i].selected=true;
         } else {
             tickers[i].selected=false;
@@ -52,14 +53,15 @@ const Stock = () => {
     }
 
     const handleSubmit = (event) => {
-      alert('A Ticker was Submitted: ' + event.target.value);
       event.preventDefault();
-      console.log('SelectedItem:= ' + selectedItem);
-
-      const { value } = event.target.value;
+      //console.log('SelectedItem:= ' + selectedItem);
+      alert('A Ticker was Submitted..');
+      //const { value } = state.tickers;
       
       let ticker = '';
       const tickers = state.tickers;
+      console.log(tickers);
+
       for (var i = 0; i < tickers.length; i++) { 
           if (tickers[i].selected==true){
             console.log('4.A Ticker was FOUND: ' + event.target.value);
