@@ -64,24 +64,29 @@
   }
 
   .ToolBar {
-    font-size: 11px;
-    vertical-align:top;
-    text-align:center;
+    font-weight: 300;
+    font-size: 12px;
+    vertical-align: top;
+    text-align: center;
     background:#cc9966;
-    border:1px solid #f00;
+    border: 1px solid #f00;
   }  
 
   .Navigation {
-    padding:4px;
+    padding: 4px;
     border: 2px solid white;
+  }
+  
+  .Navigation:after {
+    content: "";
+    clear: both;
   }
 
   .leftDiv, .rightDiv {
     display: inline-block;
-    vertical-align:top;
+    vertical-align: top;
     width: 80px;
     background: #ce8888;
-  
   }
 
   .rightDiv {
