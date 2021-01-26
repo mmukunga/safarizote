@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -67,13 +68,16 @@ public class CountryLoader implements CommandLineRunner {
         Arrays.stream(cities).forEach(city -> {
             System.out.println("CountryLoader..7A country:= " + city);
             System.out.println("CountryLoader..7B country:= " + city.getCountry());
-            Country country = repository.findByCode(city.getCountry());
-            System.out.println("CountryLoader..7C country:= " + country.getCode());
-            System.out.println("CountryLoader..7D country:= " + city.getCountry());
-            if (aList.contains(country.getCode())) {
-                System.out.println("NEW City: " + city);
-                country.getCities().add(city);
-                repository.save(country); 
+            Optional<Country> country = repository.findByCode(city.getCountry());
+            System.out.println("CountryLoader..7C country:= " + country);
+            if (country.isPresent()) {
+                System.out.println("CountryLoader..7D country:= " + country.get().getCode());
+                System.out.println("CountryLoader..7D country:= " + city.getCountry());
+                if (aList.contains(country.get().getCode())) {
+                    System.out.println("NEW City: " + city);
+                    country.get().getCities().add(city);
+                    repository.save(country.get()); 
+                }
             }
         });
         System.out.println("CountryLoader..6");
