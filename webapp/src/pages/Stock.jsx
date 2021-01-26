@@ -88,9 +88,9 @@ const Stock = () => {
         <ul className="StockList">
             { tickers.map(ticker =>
               <li key={ticker.id}>              
-                <input id="selectedItem" name="selectedItem"
-                  onChange={handleSelectItem}
+                <input id={ticker.id} name={ticker.name}
                   type="checkbox"
+                  onChange={handleSelectItem}
                   checked={selectedItems && selectedItems.includes(ticker.id)}
                   value={ticker.name}
                 />
