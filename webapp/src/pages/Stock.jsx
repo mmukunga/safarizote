@@ -91,10 +91,9 @@ const Stock = () => {
                 <input id={ticker.id} name={ticker.name}
                   type="checkbox"
                   onChange={handleSelectItem}
-                  checked={selectedItems && selectedItems.includes(ticker.id)}
-                  value={ticker.name}
+                  checked={ticker.selected} 
                 />
-                <label htmlFor={`item-${ticker.id}`}>{ticker.description} {`item-${ticker.id}`}</label>
+                <label htmlFor={`item-${ticker.id}`}>{ticker.description}</label>
               </li>) }
               <li><input type="submit" value="Submit"/></li>
         </ul>
