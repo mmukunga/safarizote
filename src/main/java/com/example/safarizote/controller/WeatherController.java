@@ -92,57 +92,47 @@ public class WeatherController {
         HttpURLConnection con = null ;
         InputStream is = null;
         String location = country.getName()+","+country.getCode();
-        try {
-            con = (HttpURLConnection) ( new URL(FORECAST_URL + location + "&units=metric" + "&APPID="+API_KEY)).openConnection();
-            con.setRequestMethod("GET");
-            con.setDoInput(true);
-            con.setDoOutput(true);
-            con.connect();
-            System.out.println("2.Forecast Weather - COUNTRY2:= " + country); 
-            // Let's read the response
-            StringBuffer buffer = new StringBuffer();
-            is = con.getInputStream();
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-            String line = null;
-            while (  (line = br.readLine()) != null )
-                buffer.append(line + "\r\n");
+        
+        con = (HttpURLConnection) ( new URL(FORECAST_URL + location + "&units=metric" + "&APPID="+API_KEY)).openConnection();
+        con.setRequestMethod("GET");
+        con.setDoInput(true);
+        con.setDoOutput(true);
+        con.connect();
+        System.out.println("2.Forecast Weather - COUNTRY2:= " + country); 
+        // Let's read the response
+        StringBuffer buffer = new StringBuffer();
+        is = con.getInputStream();
+        BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        String line = null;
+        while (  (line = br.readLine()) != null )
+            buffer.append(line + "\r\n");
 
-            System.out.println("3.Forecast Weather - COUNTRY3:= " + country); 
-            is.close();
-            con.disconnect();
-            System.out.println("4.Forecast Weather - COUNTRY4:= " + country); 
-            return new ResponseEntity<>(buffer.toString(), HttpStatus.OK);
+        System.out.println("3.Forecast Weather - COUNTRY3:= " + country); 
+        is.close();
+        con.disconnect();
+        System.out.println("4.Forecast Weather - COUNTRY4:= " + country); 
+        return new ResponseEntity<>(buffer.toString(), HttpStatus.OK);
     }
 
-    public byte[] getImage(String code) {
+    public byte[] getImage(String code) throws IOException {
         HttpURLConnection con = null ;
         InputStream is = null;
-        try {
-            con = (HttpURLConnection) ( new URL(IMG_URL + code)).openConnection();
-            con.setRequestMethod("GET");
-            con.setDoInput(true);
-            con.setDoOutput(true);
-            con.connect();
- 
-            // Let's read the response
-            is = con.getInputStream();
-            byte[] buffer = new byte[1024];
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
- 
-            while ( is.read(buffer) != -1)
-                baos.write(buffer);
- 
-            return baos.toByteArray();
-        }
-        catch(Throwable t) {
-            t.printStackTrace();
-        }
-        finally {
-            try { is.close(); } catch(Throwable t) {}
-            try { con.disconnect(); } catch(Throwable t) {}
-        }
- 
-        return null;
- 
+       
+        con = (HttpURLConnection) ( new URL(IMG_URL + code)).openConnection();
+        con.setRequestMethod("GET");
+        con.setDoInput(true);
+        con.setDoOutput(true);
+        con.connect();
+
+        // Let's read the response
+        is = con.getInputStream();
+        byte[] buffer = new byte[1024];
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+        while ( is.read(buffer) != -1)
+            baos.write(buffer);
+
+        return baos.toByteArray();
+      
     }
 }    
