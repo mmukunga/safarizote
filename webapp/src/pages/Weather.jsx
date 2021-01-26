@@ -39,7 +39,9 @@ import axios from 'axios';
     function handleChange(evt) {
       if (evt.target.name === "countryCode") {
         alert('country');
+        console.log(evt.target.value);
         const filteredCountry = countries.find(country => country.code === evt.target.value);
+        console.log(filteredCountry);
         let newCountry = { ...state };
         console.log(newCountry);
         newCountry = { ...state, ...filteredCountry };
