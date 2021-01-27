@@ -5,14 +5,15 @@ import { withRouter } from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
-import fakeAuth from './pages/Auth';
 
 const Loading = () => {
   const [message, setMessage] = useState('');
+
   useEffect(() => {
     let newMessage = message.length < 4 ? message.concat('.') : '';
     setMessage(newMessage);
   }, [message]);
+
   return (
     <div className="Spinner" style={{ textAlign: 'center' }}>
       <p>Loading{message}</p>
@@ -36,8 +37,21 @@ const Weather = React.lazy(() => import('./pages/Weather'));
 const Stock = React.lazy(() => import('./pages/Stock'));
 
 function App() {
-  const [message, setMessage] = useState({});
- 
+
+  const isAuthenticated = () => { 
+    const token = localStorage.getItem('token');
+    try {
+      if(token){
+        return true;
+      }
+      else{
+        return false;
+      }
+    } catch (error) {
+      return false;
+    }
+  }
+
   const selectStyle = {
     border:'4px solid #b37a4c', 
     width:'100px', 
@@ -64,7 +78,7 @@ function App() {
   function Private ({ children, ...rest }) {
     return (
       <Route {...rest} render={({ location }) => {
-        return fakeAuth.isAuthenticated === true
+        return isAuthenticated()
           ? children
           : <Redirect to={{ 
               pathname: '/signIn', 
@@ -74,11 +88,10 @@ function App() {
     )
   }
  
-
   function AuthButton () {
     const history = useHistory()
   
-    return fakeAuth.isAuthenticated === true
+    return isAuthenticated()
       ? <span>
           Welcome! <button onClick={() => {
             fakeAuth.signout(() => history.push('/'))
