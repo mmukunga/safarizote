@@ -4,18 +4,18 @@ import { Redirect, useLocation } from "react-router-dom";
 import UserForm, { InputField } from "./UserForm";
 
 const SignIn = () => {
-  const [user, setUser] = React.useState({email:'', password:''});
+  const [userAuth, setUserAuth] = React.useState({email:'', password:''});
   const [isLogedIn, setIsLogedIn] = React.useState(false);
   const { state } = useLocation();
 
   const onChange = e => {
     const { name, value } = e.target;
-    setUser({ ...user, [name]: value });
+    setUserAuth({ ...user, [name]: value });
   };
 
   const login = () => {
     console.log('Sign In!!');
-    axios.post('/api/login', user).then(response => {
+    axios.post('/api/login', userAuth).then(response => {
       console.log(response);
       setIsLogedIn(true);
       localStorage.setItem('token', response.data);

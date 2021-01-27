@@ -13,25 +13,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.safarizote.model.Tracker;
-import com.example.safarizote.repository.TrackerRepository;
+import com.example.safarizote.model.UserAuth;
+import com.example.safarizote.repository.SignInRepository;
 
 @RestController
 public class SignInController { 
   @Autowired
-  private TrackerRepository repository;
+  private SignInRepository repository;
 
-    @RequestMapping(value = "/api/allHits",  method={RequestMethod.GET})
-    public ResponseEntity<List<Tracker>> findAll() {
-        System.out.println("Hello, the time at the server is now " + new Date());
-        List<Tracker> visits = repository.findAll();
-        System.out.println("Hello, the time at the server is now " + new Date());
-        System.out.println("findSafaris() End OK!");
-        return new ResponseEntity<>(visits, HttpStatus.OK);
+    @RequestMapping(value = "/api/findAll",  method={RequestMethod.GET})
+    public ResponseEntity<List<UserAuth>> findAll() {
+        System.out.println("Login, the time at the server is now " + new Date());
+        List<UserAuth> users = repository.findAll();
+        System.out.println("Login, the time at the server is now " + new Date());
+        System.out.println("findAll() End OK!");
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/api/saveVisit",  method={RequestMethod.POST})
-    public void save(@RequestBody Tracker visit) {
-        repository.save(visit);
+    @RequestMapping(value = "/api/login",  method={RequestMethod.POST})
+    public ResponseEntity<UserAuth> logIn(@RequestBody UserAuth userAuth) {
+        UserAuth result = null;
+        System.out.println("\n==============> 1. New Enhanced For loop Example..");
+        List<UserAuth> users = repository.findAll();
+        System.out.println("\n==============> 2. New Enhanced For loop Example..");
+        for (UserAuth temp : users) {
+            System.out.println("SignInRepository logIn:= " + temp);
+            if (temp.getEmail().equals(userAuth.getEmail()) &&
+               (temp.getPassword().equals(userAuth.getPassword())) ){
+                   result = temp;
+               }
+        }
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
