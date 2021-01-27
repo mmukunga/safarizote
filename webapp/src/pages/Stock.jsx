@@ -132,24 +132,12 @@ const Stock = () => {
 
         <div className="StockTable">
           <div className="StockRow">
-            <div id="timestamp">
               <Quote name="Timestamp" list={timestamp}/>
-            </div>
-            <div id="close">
               <Quote name="Close" list={close}/>
-            </div>
-            <div id="low">
               <Quote name="Low" list={low}/>
-            </div>
-            <div id="high">
               <Quote name="High" list={high}/>
-            </div>
-            <div id="open">
               <Quote name="Open" list={open}/>
-            </div>
-            <div id="volume">
               <Quote name="Volume" list={volume}/>
-            </div>
           </div>
         </div>
       </div>
