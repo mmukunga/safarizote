@@ -3,7 +3,8 @@ import axios from 'axios'
 
 const initialState = {
   error: "",
-  tickers: []
+  tickers: [],
+  ticker: ''
 };
 
 const reducer = (state, action) => {
@@ -11,13 +12,18 @@ const reducer = (state, action) => {
       case 'SET_DATA':
         return {
             ...state,
-            loading: false,
+            error: '',
             tickers: [...action.payload],
         }
+        case 'SET_TICKER':
+          return {
+              ...state,
+              error: '',
+              ticker:action.payload,
+          }  
       case 'SET_ERROR':
         return {
             ...state,
-            loading: false,
             error: "There are some errors",
             tickers: [],
         }
@@ -37,7 +43,7 @@ const Stock = () => {
     const [volume, setVolume] = useState([]);
     const [dateTime, setDateTime] = useState('');
     const [stockCompany, setStockCompany] = useState('');
-    const [ticker, setTicker] = useState('');
+    //const [ticker, setTicker] = useState('');
 
     const handleSelectItem = (event) => {
       const { name, value } = event.target;
@@ -64,6 +70,7 @@ const Stock = () => {
               ticker = tickers[i];
           }
       }
+
       setTicker(tickers[i]);
       axios.post('/api/current', ticker).then((response) => {
         console.log(response);
@@ -110,7 +117,7 @@ const Stock = () => {
         <div className="Stock">
         <form onSubmit={handleSubmit} className="StockWrapper">
         <ul className="StockList">
-            { tickers.map(ticker =>
+            { tickers && tickers.map(ticker =>
               <li key={ticker.id}>              
                 <input id={ticker.id} name={ticker.name}
                   type="checkbox"
