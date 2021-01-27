@@ -1,10 +1,11 @@
 import React from "react";
+import axios from 'axios';
 import { Redirect, useLocation } from "react-router-dom";
 import UserForm, { InputField } from "./UserForm";
 
 const SignIn = () => {
   const [user, setUser] = React.useState({email:'', password:''});
-
+  const [isLogedIn, setIsLogedIn] = React.useState(false);
   const { state } = useLocation();
 
   const onChange = e => {
@@ -16,11 +17,12 @@ const SignIn = () => {
     console.log('Sign In!!');
     axios.post('/api/login', user).then(response => {
       console.log(response);
+      setIsLogedIn(true);
       localStorage.setItem('token', response.data);
     });
   }
 
-  if (redirectToReferrer === true) {
+  if (isLogedIn === true) {
     return <Redirect to={state?.from || '/'} />
   }
 

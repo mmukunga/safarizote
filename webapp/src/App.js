@@ -38,16 +38,19 @@ const Stock = React.lazy(() => import('./pages/Stock'));
 
 function App() {
 
-  const isAuthenticated = () => { 
-    const token = localStorage.getItem('token');
-    try {
-      if(token){
-        return true;
-      }
-      else{
-        return false;
-      }
-    } catch (error) {
+
+  const useAuth = {
+    isAuthenticated() { 
+      const token = localStorage.getItem('token');
+        if(token){
+          return true;
+        }
+        else{
+          return false;
+        }
+    },
+    signout() {
+      localStorage.clear();
       return false;
     }
   }
@@ -78,7 +81,7 @@ function App() {
   function Private ({ children, ...rest }) {
     return (
       <Route {...rest} render={({ location }) => {
-        return isAuthenticated()
+        return useAuth.isAuthenticated()
           ? children
           : <Redirect to={{ 
               pathname: '/signIn', 
@@ -91,10 +94,10 @@ function App() {
   function AuthButton () {
     const history = useHistory()
   
-    return isAuthenticated()
+    return useAuth.isAuthenticated()
       ? <span>
           Welcome! <button onClick={() => {
-            fakeAuth.signout(() => history.push('/'))
+            useAuth.signout(() => history.push('/'))
           }}>Sign out</button>
         </span>
       : <span>Not logged in.</span>

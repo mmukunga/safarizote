@@ -11,11 +11,11 @@ import org.springframework.stereotype.Component;
 import com.example.safarizote.model.UserAuth;
 
 @Component
-public class UserAuthLoader implements CommandLineRunner {
-    private static final Logger logger = LoggerFactory.getLogger(UserAuthLoader.class);
+public class SignInLoader implements CommandLineRunner {
+    private static final Logger logger = LoggerFactory.getLogger(SignInLoader.class);
 
     @Autowired
-    private UserAuthRepository repository;
+    private SignInRepository repository;
 
     @Override
     public void run(String... args) throws Exception {
