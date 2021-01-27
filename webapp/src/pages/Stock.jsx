@@ -40,10 +40,8 @@ const Stock = () => {
     const [ticker, setTicker] = useState('');
 
     const handleSelectItem = (event) => {
-      alert('1.A Ticker was Submitted: ' + event.target.value);
       const { name, value } = event.target;
 
-      console.log('2.A Ticker was Submitted: ' + event.target.value);
       let tickers = state.tickers;
       for (var i = 0; i < tickers.length; i++) { 
         if (event.target.name==tickers[i].name){
@@ -53,29 +51,21 @@ const Stock = () => {
             tickers[i].selected=false;
         }
       }
-      console.log('3.A Ticker was Submitted: ' + event.target.value);
       dispatch({ type: 'SET_DATA', payload: tickers });
-      console.log('4.A Ticker was Submitted: ' + event.target.value);
     }
 
     const handleSubmit = (event) => {
       event.preventDefault();
-      alert('A Ticker was Submitted..');
       let ticker = '';
       const tickers = state.tickers;
-      console.log(tickers);
 
       for (var i = 0; i < tickers.length; i++) { 
           if (tickers[i].selected==true){
-              console.log('4.A Ticker was FOUND: ' + event.target.value);
               ticker = tickers[i];
           }
       }
       setTicker(tickers[i]);
-      console.log('5.A Ticker TO SUBMIT..');
       axios.post('/api/current', ticker).then((response) => {
-        console.log('4.A Ticker was SUBMITED..');
-        console.log(response);
         setDateTime(response.headers.date);
         setStockCompany(response.request.response[0].description);
         setTimestamp(response.data.chart.result[0].timestamp);
@@ -93,7 +83,6 @@ const Stock = () => {
     useEffect(() => {
         axios.get('/api/tickers')
             .then(res => {
-              console.log(res);
               setTickers(res.data);
               dispatch({ type: 'SET_DATA', payload: res.data });
             })
