@@ -132,7 +132,7 @@ const Stock = () => {
               <li><input type="submit" value="Submit"/></li>
         </ul>
         </form>
-        <p>{ticker.description} {dateTime}</p>
+        <p>{ticker && ticker.description} {dateTime}</p>
         <div className="StockTable">
           <div className="StockRow">
               <Quote name="Timestamp" list={timestamp}/>
