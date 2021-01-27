@@ -37,6 +37,7 @@ const Stock = () => {
     const [volume, setVolume] = useState([]);
     const [dateTime, setDateTime] = useState('');
     const [stockCompany, setStockCompany] = useState('');
+    const [ticker, setTicker] = useState('');
 
     const handleSelectItem = (event) => {
       alert('1.A Ticker was Submitted: ' + event.target.value);
@@ -66,11 +67,11 @@ const Stock = () => {
 
       for (var i = 0; i < tickers.length; i++) { 
           if (tickers[i].selected==true){
-            console.log('4.A Ticker was FOUND: ' + event.target.value);
+              console.log('4.A Ticker was FOUND: ' + event.target.value);
               ticker = tickers[i];
           }
       }
-
+      setTicker(tickers[i]);
       console.log('5.A Ticker TO SUBMIT..');
       axios.post('/api/current', ticker).then((response) => {
         console.log('4.A Ticker was SUBMITED..');
@@ -131,7 +132,7 @@ const Stock = () => {
               <li><input type="submit" value="Submit"/></li>
         </ul>
         </form>
-        <p>{stockCompany} {dateTime}</p>
+        <p>{ticker.description} {dateTime}</p>
         <div className="StockTable">
           <div className="StockRow">
               <Quote name="Timestamp" list={timestamp}/>
