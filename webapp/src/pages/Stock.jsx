@@ -45,7 +45,7 @@ const Stock = () => {
       let tickers = state.tickers;
       for (var i = 0; i < tickers.length; i++) { 
         if (event.target.name==tickers[i].name){
-          alert('HOOKED..');
+          console.log('HOOKED..');
             tickers[i].selected=true;
         } else {
             tickers[i].selected=false;
@@ -66,6 +66,7 @@ const Stock = () => {
       }
       setTicker(tickers[i]);
       axios.post('/api/current', ticker).then((response) => {
+        console.log(response);
         setDateTime(response.headers.date);
         setStockCompany(response.request.response[0].description);
         setTimestamp(response.data.chart.result[0].timestamp);
