@@ -73,12 +73,12 @@ const Stock = () => {
       axios.post('/api/current', ticker).then((response) => {
         console.log('4.A Ticker was SUBMITED..');
         console.log(response);
-        setTimestamp(response.data.result[0].timestamp);
-        setClose(response.data.result[0].indicators.quote[0].close);
-        setHigh(response.data.result[0].indicators.quote[0].high);
-        setLow(response.data.result[0].indicators.quote[0].low);
-        setOpen(response.data.result[0].indicators.quote[0].open);
-        setVolume(response.data.result[0].indicators.quote[0].volume);
+        setTimestamp(response.data.chart.result[0].timestamp);
+        setClose(response.data.chart.result[0].indicators.quote[0].close);
+        setHigh(response.data.chart.result[0].indicators.quote[0].high);
+        setLow(response.data.chart.result[0].indicators.quote[0].low);
+        setOpen(response.data.chart.result[0].indicators.quote[0].open);
+        setVolume(response.data.chart.result[0].indicators.quote[0].volume);
       }).catch(function (error) {
         console.log(error);
       }) 
