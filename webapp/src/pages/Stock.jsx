@@ -29,14 +29,17 @@ const reducer = (state, action) => {
 const Stock = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const [tickers, setTickers] = useState([]);
-    //const [ selectedItems, setSelectedItems ] = useState('');
-    //const [ selectedItem, setSelectedItem ] = useState('');
+    const [timestamp, setTimestamp] = useState([]);
+    const [close, setClose] = useState([]);
+    const [high, setHigh] = useState([]);
+    const [low, setLow] = useState([]);
+    const [open, setOpen] = useState([]);
+    const [volume, setVolume] = useState([]);
 
     const handleSelectItem = (event) => {
       alert('1.A Ticker was Submitted: ' + event.target.value);
       const { name, value } = event.target;
-      //setSelectedItem({ ...selectedItems, [name]: value });
-      //setSelectedItems(value);
+
       console.log('2.A Ticker was Submitted: ' + event.target.value);
       let tickers = state.tickers;
       for (var i = 0; i < tickers.length; i++) { 
@@ -54,10 +57,7 @@ const Stock = () => {
 
     const handleSubmit = (event) => {
       event.preventDefault();
-      //console.log('SelectedItem:= ' + selectedItem);
       alert('A Ticker was Submitted..');
-      //const { value } = state.tickers;
-      
       let ticker = '';
       const tickers = state.tickers;
       console.log(tickers);
@@ -68,13 +68,20 @@ const Stock = () => {
               ticker = tickers[i];
           }
       }
+
       console.log('5.A Ticker TO SUBMIT..');
-       axios.post('/api/current', ticker).then((response) => {
+      axios.post('/api/current', ticker).then((response) => {
         console.log('4.A Ticker was SUBMITED..');
-          console.log(response);
-       }).catch(function (error) {
-          console.log(error);
-       }) 
+        console.log(response);
+        setTimestamp(response.data.result[0].timestamp);
+        setClose(response.data.result[0].indicators.quote[0].close);
+        setHigh(response.data.result[0].indicators.quote[0].high);
+        setLow(response.data.result[0].indicators.quote[0].low);
+        setOpen(response.data.result[0].indicators.quote[0].open);
+        setVolume(response.data.result[0].indicators.quote[0].volume);
+      }).catch(function (error) {
+        console.log(error);
+      }) 
 
     }
 
@@ -91,7 +98,23 @@ const Stock = () => {
             });
     }, []);
 
+
+    const Quote = ({name, list}) => {
+      return (
+        <div className="Quote">
+          <p>{name}</p>
+          <ul>
+            {list.map((item, idx) => (
+              <li key={idx}>{ name === 'Timestamp' ? new Date(item) : item}</li>
+            ))}
+          </ul>
+        </div>
+      );
+    };
+
+
     return (
+        <div className="Stock">
         <form onSubmit={handleSubmit} className="StockWrapper">
         <ul className="StockList">
             { tickers.map(ticker =>
@@ -106,6 +129,30 @@ const Stock = () => {
               <li><input type="submit" value="Submit"/></li>
         </ul>
         </form>
+
+        <div id="container">
+          <div id="row">
+            <div id="timestamp">
+              <Quote name="Timestamp" list={timestamp}/>
+            </div>
+            <div id="close">
+              <Quote name="Close" list={close}/>
+            </div>
+            <div id="low">
+              <Quote name="Low" list={low}/>
+            </div>
+            <div id="high">
+              <Quote name="High" list={high}/>
+            </div>
+            <div id="open">
+              <Quote name="Open" list={open}/>
+            </div>
+            <div id="volume">
+              <Quote name="Volume" list={volume}/>
+            </div>
+          </div>
+        </div>
+      </div>
     )
 }
 

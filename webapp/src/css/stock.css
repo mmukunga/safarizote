@@ -12,6 +12,7 @@ ul.StockList {
     margin-bottom: 20px;
     border: 4px solid red;
     display: inline-block; 
+    text-align: left;
 }
 
 ul.StockList li::before {
@@ -19,4 +20,9 @@ ul.StockList li::before {
     display: inline-block; 
     width: 1em;
     padding: 5px;
+}
+
+.Quote {
+    border: 4px solid green;
+    width: 100px;
 }
