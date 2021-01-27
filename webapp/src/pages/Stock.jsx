@@ -105,7 +105,7 @@ const Stock = () => {
           <p>{name}</p>
           <ul>
             {list.map((item, idx) => (
-              <li key={idx}>{ name === 'Timestamp' ? new Date(item) : item}</li>
+              <li key={idx}>{ name === 'Timestamp' ? (new Date(item)).toLocaleDateString() : item}</li>
             ))}
           </ul>
         </div>
