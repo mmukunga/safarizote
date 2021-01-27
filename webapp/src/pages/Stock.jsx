@@ -34,7 +34,7 @@ const reducer = (state, action) => {
 
 const Stock = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
-    const [tickers, setTickers] = useState([]);
+    //const [tickers, setTickers] = useState([]);
     const [timestamp, setTimestamp] = useState([]);
     const [close, setClose] = useState([]);
     const [high, setHigh] = useState([]);
@@ -70,8 +70,9 @@ const Stock = () => {
               ticker = tickers[i];
           }
       }
+      //setTicker(tickers[i]);
+      dispatch({ type: 'SET_TICKER', payload: tickers[i] });
 
-      setTicker(tickers[i]);
       axios.post('/api/current', ticker).then((response) => {
         console.log(response);
         setDateTime(response.headers.date);
@@ -117,7 +118,7 @@ const Stock = () => {
         <div className="Stock">
         <form onSubmit={handleSubmit} className="StockWrapper">
         <ul className="StockList">
-            { tickers && tickers.map(ticker =>
+            { state.tickers && state.tickers.map(ticker =>
               <li key={ticker.id}>              
                 <input id={ticker.id} name={ticker.name}
                   type="checkbox"
@@ -129,7 +130,7 @@ const Stock = () => {
               <li><input type="submit" value="Submit"/></li>
         </ul>
         </form>
-        <p>{ticker && ticker.description} {dateTime}</p>
+        <p>{state.ticker && state.ticker.description} {dateTime}</p>
         <div className="StockTable">
           <div className="StockRow">
               <Quote name="Timestamp" list={timestamp}/>
