@@ -10,7 +10,7 @@ const SignIn = () => {
 
   const onChange = e => {
     const { name, value } = e.target;
-    setUserAuth({ ...user, [name]: value });
+    setUserAuth({ ...userAuth, [name]: value });
   };
 
   const login = () => {
