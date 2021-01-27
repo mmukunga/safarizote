@@ -24,11 +24,13 @@ ul.StockList li::before {
 
 #StockTable {
     border: 4px solid darkblue;
+    width:100%;
 }
 
 #StockRow {
     border: 4px solid olive;
-    display:inline-block 
+    display:inline-block;
+    width:100%; 
 }
 
 .Quote {
