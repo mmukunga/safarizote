@@ -101,9 +101,9 @@ const Stock = () => {
 
     const Quote = ({name, list}) => {
       return (
-        <div className="Quote">
+        <div className="QuoteContainer">
           <p>{name}</p>
-          <ul style={{listStyle: 'none'}}>
+          <ul className="QuoteItems">
             {list.map((item, idx) => (
               <li key={idx}>{ name === 'Timestamp' ? (new Date(item)).toLocaleDateString() : item.toFixed(2)}</li>
             ))}
