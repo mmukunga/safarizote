@@ -92,7 +92,7 @@ const Stock = () => {
     useEffect(() => {
         axios.get('/api/tickers')
             .then(res => {
-              setTickers(res.data);
+              //setTickers(res.data);
               dispatch({ type: 'SET_DATA', payload: res.data });
             })
             .catch(err => {
