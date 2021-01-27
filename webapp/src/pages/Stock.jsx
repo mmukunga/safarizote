@@ -103,9 +103,9 @@ const Stock = () => {
       return (
         <div className="Quote">
           <p>{name}</p>
-          <ul>
+          <ul style={{listStyle: 'none'}}>
             {list.map((item, idx) => (
-              <li key={idx}>{ name === 'Timestamp' ? (new Date(item)).toLocaleDateString() : item}</li>
+              <li key={idx}>{ name === 'Timestamp' ? (new Date(item)).toLocaleDateString() : item.toFixed(2)}</li>
             ))}
           </ul>
         </div>
@@ -130,8 +130,8 @@ const Stock = () => {
         </ul>
         </form>
 
-        <div id="container">
-          <div id="row">
+        <div id="StockTable">
+          <div id="StockRow">
             <div id="timestamp">
               <Quote name="Timestamp" list={timestamp}/>
             </div>
