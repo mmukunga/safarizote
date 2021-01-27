@@ -107,7 +107,7 @@ const Stock = () => {
           <p>{name}</p>
           <ul className="QuoteItems">
             {list.map((item, idx) => (
-              <li key={idx}>{ name === 'Timestamp' ? (new Date(item)).toLocaleDateString() : item.toFixed(2)}</li>
+              <li key={idx}>{ name === 'Timestamp' ? (new Date(item*1000)).toLocaleDateString() : item.toFixed(2)}</li>
             ))}
           </ul>
         </div>
@@ -130,7 +130,7 @@ const Stock = () => {
               <li><input type="submit" value="Submit"/></li>
         </ul>
         </form>
-        <p>{state.ticker && state.ticker.description} {dateTime}</p>
+        <p>{stockCompany} {dateTime}</p>
         <div className="StockTable">
           <div className="StockRow">
               <Quote name="Timestamp" list={timestamp}/>
