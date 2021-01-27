@@ -22,11 +22,11 @@ ul.StockList li::before {
     padding: 5px;
 }
 
-.StockTable {
+#StockTable {
     border: 4px solid darkblue;
 }
 
-.StockRow {
+#StockRow {
     border: 4px solid olive;
     display:inline-block 
 }
