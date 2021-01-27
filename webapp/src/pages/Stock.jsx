@@ -130,8 +130,8 @@ const Stock = () => {
         </ul>
         </form>
 
-        <div id="StockTable">
-          <div id="StockRow">
+        <div className="StockTable">
+          <div className="StockRow">
             <div id="timestamp">
               <Quote name="Timestamp" list={timestamp}/>
             </div>
