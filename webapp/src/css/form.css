@@ -85,17 +85,18 @@
   .leftDiv, .rightDiv {
     display: inline-block;
     vertical-align: top;
+    color:blue;
     width: 80px;
-    background: #ce8888;
+    background: #f7e7ce;
   }
 
   .rightDiv {
     width: calc(100% - 100px);
-    border: 2px solid #9c6137 ;
+    border: 2px solid white ;
   }
 
   .xLogo {
-    border: 2px solid #9c6137;
+    border: 2px solid red;
     width: 70px; 
     display: inline-block;
     vertical-align: top;
