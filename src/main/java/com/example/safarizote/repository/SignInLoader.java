@@ -23,9 +23,10 @@ public class SignInLoader implements CommandLineRunner {
             return;
         }
         
-        repository.save(UserAuth.builder().email("mkunsim@gmail.com").password("12345").dateCreated(Instant.now()).build());
+        repository.save(UserAuth.builder().email("m@gmail.com").password("12345").dateCreated(Instant.now()).build());
+        repository.save(UserAuth.builder().email("mkunsim@gmail.com").password("abcde").dateCreated(Instant.now()).build());
         repository.save(UserAuth.builder().email("maji@gmail.com").password("67890").dateCreated(Instant.now()).build());
-        repository.save(UserAuth.builder().email("moto@hotmail.com").password("abcde").dateCreated(Instant.now()).build());
+        repository.save(UserAuth.builder().email("moto@hotmail.com").password("klmno").dateCreated(Instant.now()).build());
         repository.save(UserAuth.builder().email("kazi@online.no").password("fghij").dateCreated(Instant.now()).build());
         repository.save(UserAuth.builder().email("sverige@kora.se").password("a1a1a").dateCreated(Instant.now()).build());
 
