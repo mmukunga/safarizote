@@ -32,18 +32,19 @@ public class SignInController {
 
     @RequestMapping(value = "/api/login",  method={RequestMethod.POST})
     public ResponseEntity<UserAuth> logIn(@RequestBody UserAuth userAuth) {
-        UserAuth result = null;
-        System.out.println("\n==============> 1. New Enhanced For loop Example..");
+        System.out.println("\n==============> 1. .. " + userAuth);
         List<UserAuth> users = repository.findAll();
-        System.out.println("\n==============> 2. New Enhanced For loop Example..");
+        System.out.println("\n==============> 2. USERS SIZE:=.." + users.size());
         for (UserAuth temp : users) {
             System.out.println("SignInRepository logIn:= " + temp);
             if (temp.getEmail().equals(userAuth.getEmail()) &&
                (temp.getPassword().equals(userAuth.getPassword())) ){
-                   result = temp;
+                  System.out.println("SignInRepository logIn FOUND!!:= " + temp);
+                  return new ResponseEntity<>(temp, HttpStatus.OK);
                }
         }
-
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        
+        System.out.println("SignInRepository logIn NOTHING ");
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
 }
