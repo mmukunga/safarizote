@@ -53,6 +53,7 @@ const Stock = () => {
         if (event.target.name==tickers[i].name){
           console.log('HOOKED..');
             tickers[i].selected=true;
+            console.log (tickers[i]);
         } else {
             tickers[i].selected=false;
         }
@@ -113,6 +114,7 @@ const Stock = () => {
         </div>
       );
     };
+
 
     return (
         <div className="Stock">
