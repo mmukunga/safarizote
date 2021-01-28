@@ -1,140 +1,65 @@
   
-  * {
-    box-sizing: border-box;
-  }
- 
-  .Button {
-    background-color: #fafafa;
-    border:0;
-    box-shadow:0 0 4px hsla(0, 0%, 0%, 0.3);
-    transition: .3s;
-  }
-  
-  .Button:hover {
-    box-shadow:0 0 4px rgba(0,0,0,0.5);
-  }
-
-  .errorMsg {
-    max-width: 350px;
-    color: #f21e08;
-    padding: 2px 0;
-    margin-top: 2px;
-    font-size: 14px;
-    font-weight: 300;
-  }
-
-  .formContainer {
-    box-sizing: border-box;
-    margin: 0 auto;
-    background-color: #fffae7;
-    padding: 5px 20px 15px 20px;
-    border: 1px solid rgb(191, 246, 250);
-    border-radius: 3px;
-  }
- /* 
-  div + div {
-    margin-top: 1em;
-  }
-  */
-  
-  label {
-    display: inline-block;
-    width: 100px;
-    text-align: left;
-    padding: 12px 12px 12px 0;
-  }
-  
-  input[type=text], select, textarea {
-    width: 250px;
-    border: 1px solid #999;
-    border-radius: 3px;
-    color: #797979;
-    padding: 12px;
-    resize: vertical;
-  }
-  
-  input:focus, textarea:focus {
-    border-color: #000;
-  }
-  
-  textarea {
-    vertical-align: top;
-    resize: vertical;
-    box-shadow:4px 4px 10px rgba(0,0,0,0.06);
-  }
-
-  .ToolBar {
-    font-weight: 300;
-    font-size: 12px;
-    vertical-align: top;
-    text-align: center;
-    background:#f8ecd5;
-    border: 1px solid #f00;
-  }  
-
-  .Navigation {
-    padding: 4px;
-    border: 2px solid white;
-  }
-  
-  .Navigation:after {
-    content: "";
-    clear: both;
-  }
-
-  .leftDiv, .rightDiv {
-    display: inline-block;
-    vertical-align: top;
-    color:blue;
-    width: 80px;
-    background: #f7e7ce;
-  }
-
-  .rightDiv {
-    width: calc(100% - 100px);
-    border: 2px solid white ;
-  }
-
-  .xLogo {
-    border: 2px solid red;
-    width: 70px; 
-    display: inline-block;
-    vertical-align: top;
-  }
-
-  /*
-  .formButtons{
-    border: 2px solid silver;
-    width: 270px;
-    margin: 0 auto;
-  }
- */
- 
-  .btnInput {
-    width: 250px;
-  }
-
-  .btnInput, .btnLabel {
-    text-align: right;
-    display: inline-block;
-    border: 1px solid #999;
-    text-align: right
-  }
-
-  .Buttons {
-    border:1px solid red;
-    width:100%;
-    margin:0 auto;
-  }
-
-  .Button {
-    background-color: #4CAF50;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 70px;
-    padding: 3px 5px;
-    text-align: center;
-    border:1px solid blue;
-    cursor: pointer;
-  }
+ * {    
+  box-sizing: border-box;    
+}    
+    
+input[type=text], select, textarea {    
+  width: 100%;    
+ /* padding: 12px;*/  
+  border: 1px solid rgb(70, 68, 68);    
+  border-radius: 4px;    
+  resize: vertical;    
+}
+    
+input[type=email], select, textarea {    
+  width: 100%;    
+  /*padding: 12px;*/   
+  border: 1px solid rgb(70, 68, 68);    
+  border-radius: 4px;    
+  resize: vertical;    
+}    
+    
+label {    
+  /*padding: 12px 12px 12px 0;*/    
+  display: inline-block;    
+}    
+    
+input[type=submit] {    
+  background-color: rgb(37, 116, 161);    
+  color: white;    
+  /*padding: 12px 20px;*/    
+  border: none;    
+  border-radius: 4px;    
+  cursor: pointer;    
+  float: right;    
+}    
+    
+input[type=submit]:hover {    
+  background-color: #45a049;    
+}    
+    
+.container {    
+  border-radius: 5px;    
+  background-color: #f2f2f2;    
+  padding: 20px;    
+}    
+    
+.col-25 {    
+  float: left;    
+  width: 25%;    
+  margin-top: 6px;    
+}    
+    
+.col-75 {    
+  float: left;    
+  width: 75%;    
+  margin-top: 6px;    
+}    
+    
+/* Clear floats after the columns */    
+.row:after {    
+  content: "";    
+  display: table;    
+  clear: both;    
+}    
+    
