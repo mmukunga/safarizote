@@ -21,6 +21,7 @@ const SignIn = () => {
   const [isLogedIn, setIsLogedIn] = React.useState(false);
 
   console.log('!!BINGO!!');
+  let location = useLocation();
 
   const onChange = e => {
     const { name, value } = e.target;
@@ -43,7 +44,7 @@ const SignIn = () => {
   }
 
   if (isLogedIn === true) {
-    return <Redirect to={state?.from || '/'} />
+    return <Redirect to={location.state || { from: { pathname: "/" }} } />
   }
 
   return (
