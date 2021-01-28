@@ -4,7 +4,6 @@ import { withRouter } from "react-router-dom";
 
 import logo from './logo.svg';
 import './App.css';
-import axios from 'axios';
 
 const Loading = () => {
   const [message, setMessage] = useState('');
@@ -37,15 +36,17 @@ const Weather = React.lazy(() => import('./pages/Weather'));
 const Stock = React.lazy(() => import('./pages/Stock'));
 
 function App() {
-
-
   const useAuth = {
     isAuthenticated() { 
+      console.log('..AUTHENTICATED!!!..');
       const token = localStorage.getItem('token');
+      console.log('1.TOKEN:= ' + token);
         if(token){
+          console.log('1a.TOKEN:= ' + token);
           return true;
         }
         else{
+          console.log('1b.TOKEN:= ' + token);
           return false;
         }
     },
