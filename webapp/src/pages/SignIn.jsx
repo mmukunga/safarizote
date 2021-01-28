@@ -3,16 +3,30 @@ import axios from 'axios';
 import { Redirect, useLocation } from "react-router-dom";
 import UserForm, { InputField } from "./UserForm";
 
+const initialState = {
+  email: 'mkunsim@gmail.com', password:'12345'
+}
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'SET_LOGIN':
+      return {...state, ...action.payload};
+    default:
+      throw new Error();
+  }
+}
+
 const SignIn = () => {
-  const [userAuth, setUserAuth] = React.useState({email:'', password:''});
+  const [state, dispatch] = React.useReducer(reducer, initialState);
   const [isLogedIn, setIsLogedIn] = React.useState(false);
   const { state } = useLocation();
 
   console.log('!!BINGO!!');
-  
+
   const onChange = e => {
     const { name, value } = e.target;
-    setUserAuth({ ...userAuth, [name]: value });
+    const newState = { ...state, [name]: value };
+    dispatch({type: 'SET_LOGIN', payload: newState});
   };
 
   const login = () => {
@@ -38,7 +52,7 @@ const SignIn = () => {
         submit={login}
         elements={() => (
           <>       
-            <InputField name="name" text="Name:" type="text" handleChange={onChange} placeholder="Write here.."/>
+            <InputField name="email" text="Email:" type="text" handleChange={onChange} placeholder="Write here.."/>
             <InputField name="password" text="Password:" type="text" handleChange={onChange} placeholder="Write here.."/>
           </>
         )}
