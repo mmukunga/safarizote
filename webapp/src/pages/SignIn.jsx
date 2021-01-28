@@ -30,6 +30,11 @@ const SignIn = () => {
 
   const login = () => {
     console.log('Sign In!!');
+    const userAuth = {
+      email: state.email,
+      password: state.password
+    };
+    
     axios.post('/api/login', userAuth).then(response => {
       console.log(response);
       setIsLogedIn(true);
