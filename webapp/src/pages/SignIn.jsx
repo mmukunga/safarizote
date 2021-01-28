@@ -8,6 +8,8 @@ const SignIn = () => {
   const [isLogedIn, setIsLogedIn] = React.useState(false);
   const { state } = useLocation();
 
+  console.log('!!BINGO!!');
+  
   const onChange = e => {
     const { name, value } = e.target;
     setUserAuth({ ...userAuth, [name]: value });

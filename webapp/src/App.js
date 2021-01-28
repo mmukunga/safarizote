@@ -1,5 +1,5 @@
-import React, { Component, Suspense, useState, useEffect} from 'react';
-import { Route, Switch, NavLink, Redirect, useLocation, useHistory } from "react-router-dom";
+import React, { Suspense, useState, useEffect} from 'react';
+import { Route, Switch, NavLink } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
 import logo from './logo.svg';
@@ -34,27 +34,10 @@ const SignIn = React.lazy(() => import('./pages/SignIn'));
 const Email = React.lazy(() => import('./pages/Email'));
 const Weather = React.lazy(() => import('./pages/Weather'));
 const Stock = React.lazy(() => import('./pages/Stock'));
+const Private = React.lazy(() => import('./pages/Private'));
+
 
 function App() {
-  const useAuth = {
-    isAuthenticated() { 
-      console.log('..AUTHENTICATED!!!..');
-      const token = localStorage.getItem('token');
-      console.log('1.TOKEN:= ' + token);
-        if(token){
-          console.log('1a.TOKEN:= ' + token);
-          return true;
-        }
-        else{
-          console.log('1b.TOKEN:= ' + token);
-          return false;
-        }
-    },
-    signout() {
-      localStorage.clear();
-      return false;
-    }
-  }
 
   const selectStyle = {
     border:'4px solid #b37a4c', 
@@ -78,32 +61,6 @@ function App() {
   };
   
   const Menu = withRouter(DropDown);
-  
-  function Private ({ children, ...rest }) {
-    console.log('..PRIVATE!!!..useAuth.isAuthenticated():= ' + useAuth.isAuthenticated());
-    return (
-      <Route {...rest} render={({ location }) => {
-        return useAuth.isAuthenticated() === true
-          ? children
-          : <Redirect to={{ 
-              pathname: '/signIn', 
-              state: { from: location }
-            }}/>
-      }} />
-    )
-  }
- 
-  function AuthButton () {
-    const history = useHistory()
-  
-    return useAuth.isAuthenticated() === true
-      ? <span>
-          Welcome! <button onClick={() => {
-            useAuth.signout(() => history.push('/'))
-          }}>Sign out</button>
-        </span>
-      : <span>Not logged in.</span>
-  }
 
   const Toolbar = (props) => (
     <header style={{display: props.displayHome}} className="App-header">  
@@ -119,7 +76,7 @@ function App() {
                 <NavLink to="/signIn" className="Nav_link">Login</NavLink>
                 <NavLink to="/email" className="Nav_link">Email</NavLink>
                 <NavLink to="/weather" className="Nav_link">Weather</NavLink>
-                <AuthButton /> <Menu/>
+                <Menu/>
               </div>
             </nav> 
         </div>
@@ -156,13 +113,13 @@ function App() {
           <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/aboutUs" component={AboutUs} />
-              <Private path="/shopping" component={Shopping} />
+              <Private path="/shopping" component={Shopping} exact/>
               <Route path="/safaris" component={Safaris} />
-              <Private path="/tipping" component={Lotto} />
+              <Private path="/tipping" component={Lotto} exact/>
               <Route path="/signIn" component={SignIn} />
               <Route path="/email" component={Email} />
               <Route path="/weather" component={Weather} />
-              <Private path="/stock" component={Stock} />
+              <Private path="/stock" component={Stock} exact/>
           </Switch>
         </Layout>
       </Card> 
