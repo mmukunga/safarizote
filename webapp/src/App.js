@@ -83,7 +83,7 @@ function App() {
     console.log('..PRIVATE!!!..useAuth.isAuthenticated():= ' + useAuth.isAuthenticated());
     return (
       <Route {...rest} render={({ location }) => {
-        return useAuth.isAuthenticated()
+        return useAuth.isAuthenticated() === true
           ? children
           : <Redirect to={{ 
               pathname: '/signIn', 
@@ -96,7 +96,7 @@ function App() {
   function AuthButton () {
     const history = useHistory()
   
-    return useAuth.isAuthenticated()
+    return useAuth.isAuthenticated() === true
       ? <span>
           Welcome! <button onClick={() => {
             useAuth.signout(() => history.push('/'))
