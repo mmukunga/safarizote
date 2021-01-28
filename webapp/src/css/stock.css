@@ -30,15 +30,16 @@ ul.StockList li::before {
 }
 
 .StockRow {
-    border: 4px solid olive;
-    display:inline-block;
-    width:100%; 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    display: inline-block;
+    width: 100%; 
 }
 
 .QuoteContainer {
-    border: 4px solid green;
+    border: 1px solid green;
     width: 100px;
-    display:inline-block;
+    display: inline-block;
 }
 
 .QuoteItems {
