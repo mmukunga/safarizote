@@ -2,7 +2,7 @@
   .WeatherCard {
     margin: 1em;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
+    transition: 0.3s;
     width: 400px;
     margin: 0 auto;
     box-shadow: 120px 80px 40px 20px #0ff;
