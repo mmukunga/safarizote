@@ -115,7 +115,8 @@ const Stock = () => {
       );
     };
 
-
+    console.log('stockCompany:= ' + stockCompany);
+    
     return (
         <div className="Stock">
         <form onSubmit={handleSubmit} className="StockWrapper">
