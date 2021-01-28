@@ -17,6 +17,8 @@ const Email = () => {
         <div>
             <h1>Contact Us!</h1>
             <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                <label htmlFor="email">Email</label>
                 <input
                     type="email"
                     name="email"
@@ -25,6 +27,9 @@ const Email = () => {
                     onChange={e => setEmail(e.target.value)}
                     required
                 />
+                </div>
+                <div className="form-group">
+                <label htmlFor="message">Message</label>
                 <input
                     type="message"
                     name="message"
@@ -33,6 +38,7 @@ const Email = () => {
                     onChange={e => setMessage(e.target.value)}
                     required
                 />
+                </div>
                 <button type="submit">Send</button>  
             </form>
         </div>

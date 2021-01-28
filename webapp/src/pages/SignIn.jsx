@@ -17,6 +17,8 @@ const SignIn = () => {
         <div>
             <h1>Login</h1>
             <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
                 <input
                     type="email"
                     name="email"
@@ -25,6 +27,9 @@ const SignIn = () => {
                     onChange={e => setEmail(e.target.value)}
                     required
                 />
+              </div>
+              <div className="form-group">
+                <label htmlFor="password">Password</label>
                 <input
                     type="password"
                     name="password"
@@ -33,7 +38,8 @@ const SignIn = () => {
                     onChange={e => setPassword(e.target.value)}
                     required
                 />
-                <button type="submit">Login</button>  
+              </div>
+              <button type="submit">Login</button>  
             </form>
         </div>
     );

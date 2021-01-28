@@ -17,23 +17,29 @@ const Weather = (props) => {
         <div>
             <h1>Weather</h1>
             <form onSubmit={handleSubmit}>
-                <input
-                    type="country"
-                    name="country"
-                    placeholder="Country"
-                    value={country}
-                    onChange={e => setCountry(e.target.value)}
-                    required
-                />
-                <input
-                    type="city"
-                    name="city"
-                    placeholder="City"
-                    value={city}
-                    onChange={e => setCity(e.target.value)}
-                    required
-                />
-                <button type="submit">Send</button>  
+            <div className="form-group">
+              <label htmlFor="country">Country</label>
+              <input
+                  type="country"
+                  name="country"
+                  placeholder="Country"
+                  value={country}
+                  onChange={e => setCountry(e.target.value)}
+                  required
+              />
+              </div>
+              <div className="form-group">
+              <label htmlFor="city">City</label>
+              <input
+                  type="city"
+                  name="city"
+                  placeholder="City"
+                  value={city}
+                  onChange={e => setCity(e.target.value)}
+                  required
+              />
+              </div>
+              <button type="submit">Send</button>  
             </form>
         </div>
     );
