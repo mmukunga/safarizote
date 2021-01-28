@@ -19,7 +19,6 @@ const reducer = (state, action) => {
 const SignIn = () => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
   const [isLogedIn, setIsLogedIn] = React.useState(false);
-  const { state } = useLocation();
 
   console.log('!!BINGO!!');
 
