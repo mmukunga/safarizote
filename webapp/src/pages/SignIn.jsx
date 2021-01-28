@@ -1,70 +1,42 @@
-import React from "react";
+import React from 'react';
 import axios from 'axios';
-import { Redirect, useLocation } from "react-router-dom";
-import UserForm, { InputField } from "./UserForm";
-
-const initialState = {
-  email: 'mkunsim@gmail.com', password:'12345'
-}
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'SET_LOGIN':
-      return {...state, ...action.payload};
-    default:
-      throw new Error();
-  }
-}
 
 const SignIn = () => {
-  const [state, dispatch] = React.useReducer(reducer, initialState);
-  const [isLogedIn, setIsLogedIn] = React.useState(false);
-
-  console.log('!!BINGO!!');
-  let location = useLocation();
-
-  const onChange = e => {
-    const { name, value } = e.target;
-    const newState = { ...state, [name]: value };
-    dispatch({type: 'SET_LOGIN', payload: newState});
-  };
-
-  const login = () => {
-    console.log('Sign In!!');
-    const userAuth = {
-      email: state.email,
-      password: state.password
-    };
-    
-    axios.post('/api/login', userAuth).then(response => {
-      console.log(response);
-      setIsLogedIn(true);
-      localStorage.setItem('token', response.data);
-    });
-  }
-
-  if (isLogedIn === true) {
-    return <Redirect to={location.state || { from: { pathname: "/" }} } />
-  }
-
-  return (
-    <div controlId="ControlId">
-      Please Sign In!
-      <UserForm
-        cancel={() => {console.log('cancel')}}
-        errors={[]}
-        onChange={onChange}
-        submit={login}
-        elements={() => (
-          <>       
-            <InputField name="email" text="Email:" type="text" handleChange={onChange} placeholder="Write here.."/>
-            <InputField name="password" text="Password:" type="text" handleChange={onChange} placeholder="Write here.."/>
-          </>
-        )}
-      >    
-      </UserForm>
-    </div>
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axios.post('/api/login', {
+            email: email,
+            password: password
+        }).then(response => {
+            console.log(response)
+        });
+    }
+    return (
+        <div>
+            <h1>Login</h1>
+            <form onSubmit={handleSubmit}>
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                    required
+                />
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                    required
+                />
+                <button type="submit">Login</button>  
+            </form>
+        </div>
     );
-} 
+}
 
 export default SignIn;
