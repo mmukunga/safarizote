@@ -80,6 +80,7 @@ function App() {
   const Menu = withRouter(DropDown);
   
   function Private ({ children, ...rest }) {
+    console.log('..PRIVATE!!!..useAuth.isAuthenticated():= ' + useAuth.isAuthenticated());
     return (
       <Route {...rest} render={({ location }) => {
         return useAuth.isAuthenticated()
@@ -104,7 +105,6 @@ function App() {
       : <span>Not logged in.</span>
   }
 
-  
   const Toolbar = (props) => (
     <header style={{display: props.displayHome}} className="App-header">  
         <div class="ToolBar">                 
