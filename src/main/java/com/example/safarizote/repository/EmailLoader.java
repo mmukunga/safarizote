@@ -23,11 +23,11 @@ public class EmailLoader implements CommandLineRunner {
             return;
         }
         
-        repository.save(Email.builder().name("Jack Maji Moto Smith").email("mkunsim@gmail.com").message("21 Jump street").dateCreated(Instant.now()).build());
-        repository.save(Email.builder().name("Adam Moto Wake").email("maji@gmail.com").message("Grefsen Platåen").dateCreated(Instant.now()).build());
-        repository.save(Email.builder().name("Johnson Katana Ndovu").email("moto@hotmail.com").message("Maridalsveien").dateCreated(Instant.now()).build());
-        repository.save(Email.builder().name("Peter Ngara Mwendwa").email("kazi@online.no").message("Number 10").dateCreated(Instant.now()).build());
-        repository.save(Email.builder().name("Masinde Murilo David").email("sverige@kora.se").message("Downings Street").dateCreated(Instant.now()).build());
+        repository.save(Email.builder().name("Jack Maji Moto Smith").email("mkunsim@gmail.com").phone("212 212 212").message("21 Jump street").dateCreated(Instant.now()).build());
+        repository.save(Email.builder().name("Adam Moto Wake").email("maji@gmail.com").phone("212 212 213").message("Grefsen Platåen").dateCreated(Instant.now()).build());
+        repository.save(Email.builder().name("Johnson Katana Ndovu").email("moto@hotmail.com").phone("212 212 214").message("Maridalsveien").dateCreated(Instant.now()).build());
+        repository.save(Email.builder().name("Peter Ngara Mwendwa").email("kazi@online.no").phone("212 212 215").message("Number 10").dateCreated(Instant.now()).build());
+        repository.save(Email.builder().name("Masinde Murilo David").email("sverige@kora.se").phone("212 212 216").message("Downings Street").dateCreated(Instant.now()).build());
 
         repository.findAll().forEach((email) -> {
             logger.info("{}", email);

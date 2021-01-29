@@ -3,7 +3,7 @@ import axios from 'axios';
 import Card from './Card';
 
 const Shopping = () => {
-    const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
     
   useEffect(() => {
     const fetchData = async () => {

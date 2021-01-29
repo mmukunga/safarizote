@@ -1,9 +1,27 @@
 import React from 'react';
 import axios from 'axios';
 
+const initialState = {
+    email: "abc@gmail.com",
+    password: ''
+};
+
+const reducer = function (state, action) {
+    switch(action.type) {
+        case 'SET_EMAIL':
+            const {name, value} = action.payload;
+            return {...state, [name]: value};
+        default:
+            return state;
+    }
+}
+
 const SignIn = () => {
-    const [email, setEmail] = React.useState('');
-    const [password, setPassword] = React.useState('');
+    const [state, dispatch] = React.useReducer(reducer, initialState);
+    const handleChange = (event) => {
+        dispatch({type: 'SET_EMAIL', payload: event.target})
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post('/api/login', {
@@ -24,7 +42,7 @@ const SignIn = () => {
                     name="email"
                     placeholder="Email"
                     value={email}
-                    onChange={e => setEmail(e.target.value)}
+                    onChange={handleChange}
                     required
                 />
               </div>
@@ -35,7 +53,7 @@ const SignIn = () => {
                     name="password"
                     placeholder="Password"
                     value={password}
-                    onChange={e => setPassword(e.target.value)}
+                    onChange={handleChange}
                     required
                 />
               </div>

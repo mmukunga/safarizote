@@ -1,9 +1,28 @@
 import React from 'react';
 import axios from 'axios';
 
-const Weather = (props) => {
-    const [country, setCountry] = React.useState('');
-    const [city, setCity] = React.useState('');
+const initialState = {
+    cityName: 'Kabul',
+    countryCode: "AF",
+    cities: null
+};
+
+const reducer = function (state, action) {
+    switch(action.type) {
+        case 'SET_COUNTRY':
+            const {name, value} = action.payload;
+            return {...state, [name]: value};
+        default:
+            return state;
+    }
+}
+
+const Weather = () => {
+    const [state, dispatch] = React.useReducer(reducer, initialState);
+    const handleChange = (event) => {
+        dispatch({type: 'SET_COUNTRY', payload: event.target})
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post('/api/weather', {
@@ -19,25 +38,21 @@ const Weather = (props) => {
             <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="country">Country</label>
-              <input
-                  type="country"
-                  name="country"
-                  placeholder="Country"
-                  value={country}
-                  onChange={e => setCountry(e.target.value)}
-                  required
-              />
+              <select id="country" name="country" onChange={handleChange}>    
+                <option value="none">Select Country</option>    
+                <option value="AF">Afghanistan</option>    
+                <option value="AU">Australia</option>    
+                <option value="USA">USA</option>    
+              </select>  
               </div>
               <div className="form-group">
               <label htmlFor="city">City</label>
-              <input
-                  type="city"
-                  name="city"
-                  placeholder="City"
-                  value={city}
-                  onChange={e => setCity(e.target.value)}
-                  required
-              />
+              <select id="city" name="city" onChange={handleChange}>    
+                <option value="none">Select City</option>    
+                <option value="Kabul">Kabul</option>    
+                <option value="Jalalabad">Jalalabad</option>    
+                <option value="Baghdad">Baghdad</option>    
+              </select>  
               </div>
               <button type="submit">Send</button>  
             </form>

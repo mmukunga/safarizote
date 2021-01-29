@@ -21,6 +21,7 @@ public class Email {
     @Id @GeneratedValue Long id;
     @NonNull String name;
     @NonNull String email;
+    @NonNull String phone;
     @NonNull String message;
     @NonNull Instant dateCreated;
 }
