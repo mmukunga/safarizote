@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Card from './Card';
+import { Redirect, useLocation } from "react-router-dom";
 
 const initialState = {
     email: "abc@gmail.com",
@@ -23,15 +24,27 @@ const SignIn = () => {
         dispatch({type: 'SET_EMAIL', payload: event.target})
     }
 
+    console.log('!!BINGO!!');
+    let location = useLocation();
+
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post('/api/login', {
             email: state.email,
             password: state.password
         }).then(response => {
-            console.log(response)
+            console.log(response);
+            localStorage.setItem('token', response.data);
         });
     }
+
+    const userToken = localStorage.getItem('token');
+    console.log('UserToken:= ' + userToken);
+
+    if (userToken !== null) {
+        return <Redirect to={location.state || { from: { pathname: "/" }} } />
+    }
+
     return (
         <Card title="Login" text="Please Login Here!">
         <form  className="form-container" onSubmit={handleSubmit}>
