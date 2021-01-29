@@ -19,7 +19,11 @@ select,textarea {
   resize: vertical;
   box-sizing: border-box;   
 }  
-    
+
+.form-container select { 
+  width: 100px;
+}
+
 label {
   padding: 12px 0;     
   display: inline-block;    
