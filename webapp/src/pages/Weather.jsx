@@ -167,7 +167,7 @@ const Weather = () => {
                 <div class="col-25"> 
                     <select id="cityName" name="cityName" className="dropdown" onChange={handleChange}>    
                         <option value="none">Select City</option>    
-                        {state.cities.map((city) => (
+                        {state.cities && state.cities.map((city) => (
                             <option value={city.cityName}>{city.cityName}</option>
                         ))}
                     </select>  
