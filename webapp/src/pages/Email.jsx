@@ -29,8 +29,10 @@ const Email = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post('/api/email', {
-            email: email,
-            message: message
+            name: state.name,
+            email: state.email,
+            phone: state.phone,
+            message: state.message
         }).then(response => {
             console.log(response)
         });
