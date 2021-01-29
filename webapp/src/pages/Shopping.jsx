@@ -23,11 +23,25 @@ const reducer = function (state, action) {
 
 const Shopping = () => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
+  const [data, setData] = useState([]);
+
   const handleChange = (event) => {
       dispatch({type: 'SET_SHOPPING', payload: event.target})
   }
-  const [data, setData] = useState([]);
-    
+   
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post('/api/newShopping', {
+        store: state.store,
+        product: state.product,
+        price: state.price,
+        quantity: state.quatity,
+        name: state.name,
+        dateCreated: state.dateCreated
+    }).then(response => {
+        console.log(response)
+    });
+}
   useEffect(() => {
     const fetchData = async () => {
       try {
