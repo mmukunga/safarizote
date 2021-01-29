@@ -30,10 +30,10 @@ const IMG_URL = 'https://openweathermap.org/img/w';
 
 const Weather = () => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
-    const [countries, setCountries] = useState([]);
-    const [weather, setWeather] = useState({});
-    const [forecast, setForecast] = useState([]);
-    const [list, setList] = useState([]);
+    const [countries, setCountries] = React.useState([]);
+    const [weather, setWeather] = React.useState({});
+    const [forecast, setForecast] = React.useState([]);
+    const [list, setList] = React.useState([]);
 
     useEffect(() => {
         axios.get('/api/countries')
@@ -103,7 +103,7 @@ const Weather = () => {
     }, []);
 
     const handleChange = (event) => {
-        if (evt.target.name === "countryCode") {
+        if (event.target.name === "countryCode") {
             const filteredCountry = countries.find(country => {
                return (country.value === event.target.value);
             });
@@ -113,7 +113,7 @@ const Weather = () => {
             };
             dispatch({ type: 'SET_COUNTRY', payload: newCountry});
         } else {
-          dispatch({ type: 'SET_CITY', payload: evt.target.value });
+          dispatch({ type: 'SET_CITY', payload: event.target.value });
         }
 
     }
@@ -156,10 +156,7 @@ const Weather = () => {
                     <option value="none">Select Country</option>   
                     {countries.map((country) => (
                         <option value={country.title}>{country.value}</option>
-                    ))} 
-                    <option value="AF">Afghanistan</option>    
-                    <option value="AU">Australia</option>    
-                    <option value="USA">USA</option>    
+                    ))}    
                 </select> 
                 </div> 
               </div>
