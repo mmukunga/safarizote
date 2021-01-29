@@ -27,8 +27,9 @@ const Weather = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post('/api/weather', {
-            country: country,
-            city: city
+            country: state.countryCode,
+            city: state.cityName,
+            cities: state.cities 
         }).then(response => {
             console.log(response)
         });
@@ -39,7 +40,7 @@ const Weather = () => {
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="country">Country</label>
-                <select id="country" name="country" onChange={handleChange}>    
+                <select id="countryCode" name="countryCode" onChange={handleChange}>    
                     <option value="none">Select Country</option>    
                     <option value="AF">Afghanistan</option>    
                     <option value="AU">Australia</option>    
@@ -48,7 +49,7 @@ const Weather = () => {
               </div>
               <div className="form-group">
                 <label htmlFor="city">City</label>
-                <select id="city" name="city" onChange={handleChange}>    
+                <select id="cityName" name="cityName" onChange={handleChange}>    
                     <option value="none">Select City</option>    
                     <option value="Kabul">Kabul</option>    
                     <option value="Jalalabad">Jalalabad</option>    
