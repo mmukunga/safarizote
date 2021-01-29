@@ -64,7 +64,7 @@ function App() {
 
   const Toolbar = (props) => (
     <header style={{display: props.displayHome}} className="App-header">  
-        <div class="ToolBar">                 
+        <div className="ToolBar">                 
             <nav className="Navigation">
               <div className="leftDiv"> 
                 <img src={logo} className="App-logo" alt="logo"/>
