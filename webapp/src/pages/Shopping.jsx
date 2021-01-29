@@ -141,7 +141,9 @@ const Shopping = () => {
               />
             </div>
           </div>
-          <button type="submit">Send</button>  
+          <div className="form-group">
+            <button type="submit">Send</button> 
+          </div> 
         </form>
         <ul>
             {data.map(item => <li key={item.id}>{item.name}</li>)}

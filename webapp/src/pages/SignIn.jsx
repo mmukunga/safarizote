@@ -34,7 +34,6 @@ const SignIn = () => {
     }
     return (
         <Card title="Login" text="Please Login Here!">
-        <h1>Login</h1>
         <form  className="container" onSubmit={handleSubmit}>
             <div className="form-group">
             <div class="col-25">     
@@ -64,7 +63,9 @@ const SignIn = () => {
                 />
             </div> 
             </div>
-            <button type="submit">Login</button>  
+            <div className="form-group">
+              <button type="submit">Login</button>
+            </div>  
         </form>
         </Card>   
     );

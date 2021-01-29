@@ -39,7 +39,6 @@ const Email = () => {
     }
     return (
         <Card title="ContactUs" text="Contact Us">
-        <h1>Contact Us!</h1>
         <form className="container" onSubmit={handleSubmit}>
             <div className="form-group">
             <div class="col-25">      
@@ -94,7 +93,9 @@ const Email = () => {
                 />
             </div> 
             </div>
-            <button type="submit">Send</button>  
+            <div className="form-group">
+               <button type="submit">Send</button>
+            </div>  
         </form>
         </Card>   
     );
