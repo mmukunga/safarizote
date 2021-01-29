@@ -39,7 +39,7 @@ const Email = () => {
     }
     return (
         <Card title="ContactUs" text="Contact Us">
-        <form className="container" onSubmit={handleSubmit}>
+        <form className="form-container" onSubmit={handleSubmit}>
             <div className="form-group">
             <div class="col-25">      
                 <label htmlFor="name">Name</label>

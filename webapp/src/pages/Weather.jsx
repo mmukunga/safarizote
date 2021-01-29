@@ -36,7 +36,7 @@ const Weather = () => {
     }
     return (
         <Card title="Weather" text="Weather Forecast">
-            <form className="container" onSubmit={handleSubmit}>
+            <form className="form-container" onSubmit={handleSubmit}>
               <div className="form-group">
                 <div class="col-25">   
                     <label htmlFor="country">Country</label>

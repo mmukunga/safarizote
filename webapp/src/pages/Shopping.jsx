@@ -56,7 +56,7 @@ const Shopping = () => {
 
     return (
       <Card title="Shoppings" text="Our Shoppings">
-        <form className="container" onSubmit={handleSubmit}>
+        <form className="form-container" onSubmit={handleSubmit}>
           <div className="form-group">
             <div class="col-25"> 
                 <label htmlFor="store">Store</label>

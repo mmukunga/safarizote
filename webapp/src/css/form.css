@@ -1,6 +1,7 @@
-  
- * {    
-  box-sizing: border-box;    
+.form-container {    
+  border-radius: 5px;    
+  background-color: #f2f2f2;    
+  padding: 20px;    
 }    
     
 input[type=text], 
@@ -13,11 +14,14 @@ input[type=price],
 input[type=password], 
 select,textarea { 
   border: 1px solid rgb(70, 68, 68);    
-  border-radius: 4px;    
-  resize: vertical;    
+  border-radius: 4px;   
+  padding: 12px; 
+  resize: vertical;
+  box-sizing: border-box;   
 }  
     
-label {     
+label {
+  padding: 12px 0;     
   display: inline-block;    
 }    
     
@@ -32,13 +36,7 @@ input[type=submit] {
     
 input[type=submit]:hover {    
   background-color: #45a049;    
-}    
-    
-.container {    
-  border-radius: 5px;    
-  background-color: #f2f2f2;    
-  padding: 20px;    
-}    
+} 
     
 .col-25 {    
   float: left;    
