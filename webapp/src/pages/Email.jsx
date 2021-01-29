@@ -3,7 +3,7 @@ import axios from 'axios';
 import Card from './Card';
 
 const initialState = {
-    name: "Simon Mukunga",,
+    name: "Simon Mukunga",
     email: "mkunsim@gmail.com",
     phone: '212 212 212',
     message: 'Email- Just Testing!! Great Stuff!!'
