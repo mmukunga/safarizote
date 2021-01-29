@@ -39,6 +39,17 @@ const Email = () => {
                     required
                 />
                 </div>
+                <div className="form-group">
+                <label htmlFor="message">Message</label>
+                <Input
+                  type="message"
+                  className="form-control"
+                  name="message"
+                  value={message}
+                  onChange={onChangeMessage}
+                  validations={[required, vmessage]}
+                />
+              </div>
                 <button type="submit">Send</button>  
             </form>
         </div>
