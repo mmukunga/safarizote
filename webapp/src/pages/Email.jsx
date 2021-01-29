@@ -4,6 +4,11 @@ import axios from 'axios';
 const Email = () => {
     const [email, setEmail] = React.useState('');
     const [message, setMessage] = React.useState('');
+    
+    const handleChange = (event) => {
+        setMessage(event.target.value);
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post('/api/email', {
@@ -20,23 +25,23 @@ const Email = () => {
                 <div className="form-group">
                 <label htmlFor="email">Email</label>
                 <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                    required
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  required
                 />
                 </div>
                 <div className="form-group">
                 <label htmlFor="message">Message</label>
                 <input
-                    type="message"
-                    name="message"
-                    placeholder="Message"
-                    value={message}
-                    onChange={e => setMessage(e.target.value)}
-                    required
+                  type="message"
+                  name="message"
+                  placeholder="Message"
+                  value={message}
+                  onChange={e => setMessage(e.target.value)}
+                  required
                 />
                 </div>
                 <div className="form-group">
@@ -46,10 +51,19 @@ const Email = () => {
                   className="form-control"
                   name="message"
                   value={message}
-                  onChange={onChangeMessage}
-                  validations={[required, vmessage]}
+                  onChange={handleChange}
                 />
-              </div>
+                </div>
+                <div className="form-group">
+                <label htmlFor="message">Message</label>
+                <input
+                  type="message"
+                  className="form-control"
+                  name="message"
+                  value={message}
+                  onChange={handleChange}
+                />
+                </div>
                 <button type="submit">Send</button>  
             </form>
         </div>
