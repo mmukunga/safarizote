@@ -35,7 +35,7 @@ const Weather = () => {
     const [forecast, setForecast] = React.useState([]);
     const [list, setList] = React.useState([]);
 
-    useEffect(() => {
+    React.useEffect(() => {
         axios.get('/api/countries')
             .then(response => {
                 let filteredCountries = [];
