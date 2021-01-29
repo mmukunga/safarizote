@@ -3,10 +3,10 @@ import axios from 'axios';
 import Card from './Card';
 
 const initialState = {
-    name: '',
-    email: "abc@gmail.com",
-    phone: '',
-    message: ''
+    name: "Simon Mukunga",,
+    email: "mkunsim@gmail.com",
+    phone: '212 212 212',
+    message: 'Email- Just Testing!! Great Stuff!!'
 };
 
 const reducer = function (state, action) {
@@ -14,6 +14,8 @@ const reducer = function (state, action) {
         case 'SET_EMAIL':
             const {name, value} = action.payload;
             return {...state, [name]: value};
+        case 'RESET_ALL':
+            return {...state, ...action.payload};    
         default:
             return state;
     }
@@ -21,10 +23,15 @@ const reducer = function (state, action) {
 
 const Email = () => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
-    
+    const [replyMsg, setReplyMsg] = React.useState('Reply Message');
+
     const handleChange = (event) => {
-        dispatch({type: 'SET_EMAIL', payload: event.target})
+        dispatch({type: 'SET_EMAIL', payload: event.target});
     }
+
+    const clearState = () => {
+       dispatch({type: 'RESET_ALL', payload: initialState});
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -34,7 +41,9 @@ const Email = () => {
             phone: state.phone,
             message: state.message
         }).then(response => {
-            console.log(response)
+            console.log(response);
+            setReplyMsg(response.data);
+            clearState();
         });
     }
     return (
@@ -86,7 +95,7 @@ const Email = () => {
                 <label htmlFor="message">Message</label>
             </div> 
             <div class="col-25">  
-                <textarea id="message" name="message" 
+                <textarea id="message" name="message" rows="4" cols="50"
                     placeholder="Write something.." 
                     className="form-control"
                     onChange={handleChange}
