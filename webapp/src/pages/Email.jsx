@@ -41,7 +41,7 @@ const Email = () => {
                 </div>
                 <div className="form-group">
                 <label htmlFor="message">Message</label>
-                <Input
+                <input
                   type="message"
                   className="form-control"
                   name="message"
