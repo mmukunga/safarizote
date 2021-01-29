@@ -42,7 +42,6 @@ const SignIn = () => {
                 type="email"
                 name="email"
                 placeholder="Email"
-                value={email}
                 onChange={handleChange}
                 required
             />
@@ -53,7 +52,6 @@ const SignIn = () => {
                 type="password"
                 name="password"
                 placeholder="Password"
-                value={password}
                 onChange={handleChange}
                 required
             />
