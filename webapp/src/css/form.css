@@ -50,7 +50,7 @@ input[type=submit]:hover {
 }    
     
 /* Clear floats after the columns */    
-.row:after {    
+.form-group:after {    
   content: "";    
   display: table;    
   clear: both;    
