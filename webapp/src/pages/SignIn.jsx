@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Card from './Card';
 
 const initialState = {
     email: "abc@gmail.com",
@@ -32,34 +33,34 @@ const SignIn = () => {
         });
     }
     return (
-        <div>
-            <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={handleChange}
-                    required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={handleChange}
-                    required
-                />
-              </div>
-              <button type="submit">Login</button>  
-            </form>
-        </div>
+        <Card title="Login" text="Please Login Here!">
+        <h1>Login</h1>
+        <form onSubmit={handleSubmit}>
+            <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={email}
+                onChange={handleChange}
+                required
+            />
+            </div>
+            <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={password}
+                onChange={handleChange}
+                required
+            />
+            </div>
+            <button type="submit">Login</button>  
+        </form>
+        </Card>   
     );
 }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Card from './Card';
 
 const initialState = {
     name: '',
@@ -35,52 +36,49 @@ const Email = () => {
         });
     }
     return (
-        <div>
-            <h1>Contact Us!</h1>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                <label htmlFor="name">Name</label>
-                <input
-                  type="name"
-                  name="name"
-                  placeholder="Name"
-                  value={email}
-                  onChange={handleChange}
-                  required
-                />
-                </div>
-                <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={message}
-                  onChange={handleChange}
-                  required
-                />
-                </div>
-                <div className="form-group">
-                <label htmlFor="phone">Phone</label>
-                <input
-                  type="phone"
-                  className="form-control"
-                  name="phone"
-                  value={phone}
-                  onChange={handleChange}
-                />
-                </div>
-                <div className="form-group">
-                <label htmlFor="message">Message</label>
-                <textarea id="message" name="message" placeholder="Write something.." 
-                  className="form-control"
-                  value={message}
-                  onChange={handleChange}
-                />
-                </div>
-                <button type="submit">Send</button>  
-            </form>
-        </div>
+        <Card title="ContactUs" text="Contact Us">
+        <h1>Contact Us!</h1>
+        <form onSubmit={handleSubmit}>
+            <div className="form-group">
+            <label htmlFor="name">Name</label>
+            <input
+                type="name"
+                name="name"
+                placeholder="Name"
+                onChange={handleChange}
+                required
+            />
+            </div>
+            <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                onChange={handleChange}
+                required
+            />
+            </div>
+            <div className="form-group">
+            <label htmlFor="phone">Phone</label>
+            <input
+                type="phone"
+                className="form-control"
+                name="phone"
+                onChange={handleChange}
+            />
+            </div>
+            <div className="form-group">
+            <label htmlFor="message">Message</label>
+            <textarea id="message" name="message" 
+                placeholder="Write something.." 
+                className="form-control"
+                onChange={handleChange}
+            />
+            </div>
+            <button type="submit">Send</button>  
+        </form>
+        </Card>   
     );
 }
 

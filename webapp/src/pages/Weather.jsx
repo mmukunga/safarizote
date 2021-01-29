@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Card from './Card';
 
 const initialState = {
     cityName: 'Kabul',
@@ -33,30 +34,30 @@ const Weather = () => {
         });
     }
     return (
-        <div>
+        <Card title="Weather" text="Weather Forecast">
             <h1>Weather</h1>
             <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="country">Country</label>
-              <select id="country" name="country" onChange={handleChange}>    
-                <option value="none">Select Country</option>    
-                <option value="AF">Afghanistan</option>    
-                <option value="AU">Australia</option>    
-                <option value="USA">USA</option>    
-              </select>  
+              <div className="form-group">
+                <label htmlFor="country">Country</label>
+                <select id="country" name="country" onChange={handleChange}>    
+                    <option value="none">Select Country</option>    
+                    <option value="AF">Afghanistan</option>    
+                    <option value="AU">Australia</option>    
+                    <option value="USA">USA</option>    
+                </select>  
               </div>
               <div className="form-group">
-              <label htmlFor="city">City</label>
-              <select id="city" name="city" onChange={handleChange}>    
-                <option value="none">Select City</option>    
-                <option value="Kabul">Kabul</option>    
-                <option value="Jalalabad">Jalalabad</option>    
-                <option value="Baghdad">Baghdad</option>    
-              </select>  
+                <label htmlFor="city">City</label>
+                <select id="city" name="city" onChange={handleChange}>    
+                    <option value="none">Select City</option>    
+                    <option value="Kabul">Kabul</option>    
+                    <option value="Jalalabad">Jalalabad</option>    
+                    <option value="Baghdad">Baghdad</option>    
+                </select>  
               </div>
               <button type="submit">Send</button>  
             </form>
-        </div>
+       </Card>   
     );
 }
 
