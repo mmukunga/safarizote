@@ -10,6 +10,8 @@ input[type=phone],
 input[type=product],
 input[type=quantity], 
 input[type=name],
+input[type=store],
+input[type=dateCreated],
 input[type=price], 
 input[type=password], 
 select,textarea { 
@@ -59,4 +61,3 @@ input[type=submit]:hover {
   display: table;    
   clear: both;    
 }    
-    
