@@ -40,43 +40,59 @@ const Email = () => {
     return (
         <Card title="ContactUs" text="Contact Us">
         <h1>Contact Us!</h1>
-        <form onSubmit={handleSubmit}>
+        <form className="container" onSubmit={handleSubmit}>
             <div className="form-group">
-            <label htmlFor="name">Name</label>
-            <input
-                type="name"
-                name="name"
-                placeholder="Name"
-                onChange={handleChange}
-                required
-            />
+            <div class="col-25">      
+                <label htmlFor="name">Name</label>
+            </div> 
+            <div class="col-25">  
+                <input
+                    type="name"
+                    name="name"
+                    placeholder="Name"
+                    onChange={handleChange}
+                    required
+                />
+            </div> 
             </div>
             <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                onChange={handleChange}
-                required
-            />
+            <div class="col-25">      
+                <label htmlFor="email">Email</label>
+            </div> 
+            <div class="col-25">  
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    onChange={handleChange}
+                    required
+                />
+            </div> 
             </div>
             <div className="form-group">
-            <label htmlFor="phone">Phone</label>
-            <input
-                type="phone"
-                className="form-control"
-                name="phone"
-                onChange={handleChange}
-            />
+            <div class="col-25">      
+                <label htmlFor="phone">Phone</label>
+            </div> 
+            <div class="col-25"> 
+                <input
+                    type="phone"
+                    className="form-control"
+                    name="phone"
+                    onChange={handleChange}
+                />
+            </div> 
             </div>
             <div className="form-group">
-            <label htmlFor="message">Message</label>
-            <textarea id="message" name="message" 
-                placeholder="Write something.." 
-                className="form-control"
-                onChange={handleChange}
-            />
+            <div class="col-25">      
+                <label htmlFor="message">Message</label>
+            </div> 
+            <div class="col-25">  
+                <textarea id="message" name="message" 
+                    placeholder="Write something.." 
+                    className="form-control"
+                    onChange={handleChange}
+                />
+            </div> 
             </div>
             <button type="submit">Send</button>  
         </form>

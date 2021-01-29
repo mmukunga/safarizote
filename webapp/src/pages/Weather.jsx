@@ -37,24 +37,32 @@ const Weather = () => {
     return (
         <Card title="Weather" text="Weather Forecast">
             <h1>Weather</h1>
-            <form onSubmit={handleSubmit}>
+            <form className="container" onSubmit={handleSubmit}>
               <div className="form-group">
-                <label htmlFor="country">Country</label>
+                <div class="col-25">   
+                    <label htmlFor="country">Country</label>
+                </div>
+                <div class="col-25"> 
                 <select id="countryCode" name="countryCode" onChange={handleChange}>    
                     <option value="none">Select Country</option>    
                     <option value="AF">Afghanistan</option>    
                     <option value="AU">Australia</option>    
                     <option value="USA">USA</option>    
-                </select>  
+                </select> 
+                </div> 
               </div>
               <div className="form-group">
-                <label htmlFor="city">City</label>
-                <select id="cityName" name="cityName" onChange={handleChange}>    
-                    <option value="none">Select City</option>    
-                    <option value="Kabul">Kabul</option>    
-                    <option value="Jalalabad">Jalalabad</option>    
-                    <option value="Baghdad">Baghdad</option>    
-                </select>  
+                <div class="col-25">   
+                    <label htmlFor="city">City</label>
+                </div>
+                <div class="col-25"> 
+                    <select id="cityName" name="cityName" onChange={handleChange}>    
+                        <option value="none">Select City</option>    
+                        <option value="Kabul">Kabul</option>    
+                        <option value="Jalalabad">Jalalabad</option>    
+                        <option value="Baghdad">Baghdad</option>    
+                    </select>  
+                </div>
               </div>
               <button type="submit">Send</button>  
             </form>

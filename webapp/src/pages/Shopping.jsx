@@ -56,9 +56,12 @@ const Shopping = () => {
 
     return (
       <Card title="Shoppings" text="Our Shoppings">
-        <form onSubmit={handleSubmit}>
+        <form className="container" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="store">Store</label>
+            <div class="col-25"> 
+                <label htmlFor="store">Store</label>
+            </div>
+            <div class="col-25"> 
             <input
                 type="store"
                 name="store"
@@ -66,9 +69,13 @@ const Shopping = () => {
                 onChange={handleChange}
                 required
             />
+            </div>
           </div>
           <div className="form-group">
-            <label htmlFor="product">Product</label>
+            <div class="col-25"> 
+                <label htmlFor="product">Product</label>
+            </div>
+            <div class="col-25"> 
             <input
                 type="product"
                 name="product"
@@ -76,9 +83,13 @@ const Shopping = () => {
                 onChange={handleChange}
                 required
             />
+            </div>
           </div>
           <div className="form-group">
-            <label htmlFor="price">Price</label>
+            <div class="col-25"> 
+              <label htmlFor="price">Price</label>
+            </div>
+            <div class="col-25"> 
             <input
                 type="price"
                 name="price"
@@ -86,9 +97,13 @@ const Shopping = () => {
                 onChange={handleChange}
                 required
             />
+            </div>
           </div>
           <div className="form-group">
-            <label htmlFor="quantity">Quantity</label>
+            <div class="col-25"> 
+              <label htmlFor="quantity">Quantity</label>
+            </div>
+            <div class="col-25"> 
             <input
                 type="quantity"
                 name="quantity"
@@ -96,26 +111,35 @@ const Shopping = () => {
                 onChange={handleChange}
                 required
             />
+            </div>
           </div>
           <div className="form-group">
-            <label htmlFor="name">Name</label>
-            <input
-                type="name"
-                name="name"
-                placeholder="Name"
-                onChange={handleChange}
-                required
-            />
+            <div class="col-25"> 
+              <label htmlFor="name">Name</label>
+            </div>
+            <div class="col-25"> 
+              <input
+                  type="name"
+                  name="name"
+                  placeholder="Name"
+                  onChange={handleChange}
+                  required
+              />
+            </div>
           </div>
           <div className="form-group">
-            <label htmlFor="dateCreated">Date</label>
-            <input
-                type="dateCreated"
-                name="dateCreated"
-                placeholder="Date"
-                onChange={handleChange}
-                required
-            />
+            <div class="col-25"> 
+              <label htmlFor="dateCreated">Date</label>
+            </div>
+            <div class="col-25">
+              <input
+                  type="dateCreated"
+                  name="dateCreated"
+                  placeholder="Date"
+                  onChange={handleChange}
+                  required
+              />
+            </div>
           </div>
           <button type="submit">Send</button>  
         </form>

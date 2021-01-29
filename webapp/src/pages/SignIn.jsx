@@ -35,26 +35,34 @@ const SignIn = () => {
     return (
         <Card title="Login" text="Please Login Here!">
         <h1>Login</h1>
-        <form onSubmit={handleSubmit}>
+        <form  className="container" onSubmit={handleSubmit}>
             <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                onChange={handleChange}
-                required
-            />
+            <div class="col-25">     
+               <label htmlFor="email">Email</label>
+            </div> 
+            <div class="col-25"> 
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    onChange={handleChange}
+                    required
+                />
+            </div> 
             </div>
             <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                onChange={handleChange}
-                required
-            />
+            <div class="col-25">     
+                <label htmlFor="password">Password</label>
+            </div> 
+            <div class="col-25"> 
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    onChange={handleChange}
+                    required
+                />
+            </div> 
             </div>
             <button type="submit">Login</button>  
         </form>
