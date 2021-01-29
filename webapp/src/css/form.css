@@ -20,7 +20,7 @@ select,textarea {
   box-sizing: border-box;   
 }  
 
-.form-container select { 
+.dropdown { 
   width: 100px;
 }
 

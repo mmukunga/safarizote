@@ -42,7 +42,7 @@ const Weather = () => {
                     <label htmlFor="country">Country</label>
                 </div>
                 <div class="col-25"> 
-                <select id="countryCode" name="countryCode" onChange={handleChange}>    
+                <select id="countryCode" name="countryCode" className="dropdown" onChange={handleChange}>    
                     <option value="none">Select Country</option>    
                     <option value="AF">Afghanistan</option>    
                     <option value="AU">Australia</option>    
@@ -55,7 +55,7 @@ const Weather = () => {
                     <label htmlFor="city">City</label>
                 </div>
                 <div class="col-25"> 
-                    <select id="cityName" name="cityName" onChange={handleChange}>    
+                    <select id="cityName" name="cityName" className="dropdown" onChange={handleChange}>    
                         <option value="none">Select City</option>    
                         <option value="Kabul">Kabul</option>    
                         <option value="Jalalabad">Jalalabad</option>    
