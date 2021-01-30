@@ -9,10 +9,10 @@ const Card = (props) => {
     }
  
     return (
-      <div style={style} className="Card">
-          <p>{props.text}</p>         
+      <div style={style} className="Card">       
           <span>{props.title}</span>
           {props.children}
+          <span>{props.text}</span>  
       </div>
     )
 }
