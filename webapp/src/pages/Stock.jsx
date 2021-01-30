@@ -73,7 +73,7 @@ const Stock = () => {
       }
       //setTicker(tickers[i]);
       dispatch({ type: 'SET_TICKER', payload: tickers[i] });
-
+      console.log('ticker:= ' + ticker); 
       axios.post('/api/current', ticker).then((response) => {
         console.log(response);
         setDateTime(response.headers.date);
