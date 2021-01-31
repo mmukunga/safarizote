@@ -50,7 +50,7 @@ const Stock = () => {
 
       let tickers = state.tickers;
       for (var i = 0; i < tickers.length; i++) { 
-        if (event.target.name==tickers[i].name){
+        if (event.target.name===tickers[i].name) {
           console.log('HOOKED..');
             tickers[i].selected=true;
             console.log (tickers[i]);
