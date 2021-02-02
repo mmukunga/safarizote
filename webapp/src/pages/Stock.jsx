@@ -77,7 +77,7 @@ const Stock = () => {
       axios.post('/api/current', ticker).then((response) => {
         console.log(response);
         setDateTime(response.headers.date);
-        console.log('response.config.data.description:= ' + response.config.data.description);
+        console.log('response.config:= ' + response.config);
         setStockCompany(response.request.response[0].description);
         setTimestamp(response.data.chart.result[0].timestamp);
         setClose(response.data.chart.result[0].indicators.quote[0].close);
