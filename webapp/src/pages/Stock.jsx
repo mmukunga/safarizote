@@ -54,6 +54,7 @@ const Stock = () => {
           console.log('HOOKED..');
             tickers[i].selected=true;
             console.log (tickers[i]);
+            setStockCompany(tickers[i].description);
         } else {
             tickers[i].selected=false;
         }
@@ -77,7 +78,6 @@ const Stock = () => {
       axios.post('/api/current', ticker).then((response) => {
         console.log(response);
         setDateTime(response.headers.date);
-        setStockCompany(ticker.description);
         setTimestamp(response.data.chart.result[0].timestamp);
         setClose(response.data.chart.result[0].indicators.quote[0].close);
         setHigh(response.data.chart.result[0].indicators.quote[0].high);
