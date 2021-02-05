@@ -28,7 +28,7 @@ public class StockLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
         logger.info("Application has started");
 
-        //repository.deleteAll();
+        repository.deleteAll();
 
         if (repository.findAll().isEmpty()) {    
             repository.save(Ticker.builder().name("NAS").symbol("NAS.OL").costPrice(913.0625).shares(4).description("NORWEGIAN AIR SHUT").selected(false).dateCreated(Instant.now()).build());
@@ -36,7 +36,7 @@ public class StockLoader implements CommandLineRunner {
             repository.save(Ticker.builder().name("NEL").symbol("NEL.OL").costPrice(22.95).shares(100).description("Nel ASA").selected(false).dateCreated(Instant.now()).build());
             repository.save(Ticker.builder().name("XXL").symbol("XXL.OL").costPrice(23.95).shares(100).description("XXL ASA").selected(false).dateCreated(Instant.now()).build());
             repository.save(Ticker.builder().name("TEL").symbol("TEL.OL").costPrice(0.0).shares(0).description("Telenor ASA").selected(false).dateCreated(Instant.now()).build());
-            repository.save(Ticker.builder().name("SAS AB").symbol("SAS-NOKO.OL").costPrice(1.95).shares(500).description("Scandinavian Air Service").selected(false).dateCreated(Instant.now()).build());
+            repository.save(Ticker.builder().name("SAS ST").symbol("SAS.ST").costPrice(1.95).shares(500).description("Scandinavian Air Service").selected(false).dateCreated(Instant.now()).build());
             repository.save(Ticker.builder().name("TIETO").symbol("TIETO.HE").costPrice(0.0).shares(0).description("TietoEVRY Oyj Helsinki").selected(false).dateCreated(Instant.now()).build());
         }
 
