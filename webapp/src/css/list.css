@@ -5,19 +5,17 @@
 
 .Nav_link {
   vertical-align: middle;
-  border: 1px solid #f76a06;
   border-radius: 2px;
   text-decoration: none;
 }
 
 .Nav_link:link {
   vertical-align: middle;
-  border: 1px solid white;
   border-radius: 2px;
   text-decoration: none;
 }
 .Nav_link:visited {
-  border:1px solid white;
+  border:1px solid green;
 }
 .Nav_link:hover {
   color: #61dafb;
