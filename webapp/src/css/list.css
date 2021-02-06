@@ -4,18 +4,18 @@
 }
 
 .Nav_link {
-  margin: 2px;
+  margin: 5px;
   padding:2px;
-  border: 1px solid #9c6137;
+  border: 1px solid #f76a06;
   border-radius: 2px;
   color:blue;
   text-decoration: none;
 }
 
 .Nav_link:link {
-  margin: 2px;
+  margin: 5px;
   padding:2px;
-  border: 1px solid #9c6137;
+  border: 1px solid #a24503;
   border-radius: 2px;
   text-decoration: none;
   color:blue;
