@@ -7,23 +7,20 @@
   vertical-align: middle;
   border: 1px solid #f76a06;
   border-radius: 2px;
-  color:blue;
   text-decoration: none;
 }
 
 .Nav_link:link {
   vertical-align: middle;
-  border: 1px solid #a24503;
+  border: 1px solid white;
   border-radius: 2px;
   text-decoration: none;
-  color:blue;
 }
 .Nav_link:visited {
-  color: #00f;
-  border:1px solid red;
+  border:1px solid white;
 }
 .Nav_link:hover {
-  color: yellow;
+  color: #61dafb;
 }
 .Nav_link:active {
   color: teal;
@@ -48,7 +45,6 @@
 
 #page-numbers > li {
   margin-right: 0.3em;
-  color: blue;
   user-select: none;
   cursor: pointer;
 }
