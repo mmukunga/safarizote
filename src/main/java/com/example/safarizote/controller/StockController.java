@@ -15,8 +15,6 @@ import java.util.List;
 import com.example.safarizote.model.Ticker;
 import com.example.safarizote.repository.StockRepository;
 import com.example.safarizote.utils.StockClient;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 
 @RestController
 public class StockController {
@@ -49,14 +47,14 @@ public class StockController {
         }
         String jsonObject = stockClient.yahooCurrent(ticker.getSymbol());
         System.out.println("Current Stock, the time at the server is now " + new Date() + "\n");
-        System.out.println("******Current Stock******:" + jsonObject );
+        System.out.println("Current Stock:" + jsonObject );
         return new ResponseEntity<>(jsonObject, HttpStatus.OK);
     }
 
     @RequestMapping(value="/api/history", method = RequestMethod.POST)
     public ResponseEntity<String> getStockHistory(@RequestBody Ticker ticker) throws Exception {
         System.out.println("Stock History, the time at the server is now " + new Date() + "\n");
-        System.out.println("******Stock History*******:" + ticker); 
+        System.out.println("Stock History:" + ticker); 
         // Validate Sticker
         if (repository.findById(ticker.getId()).isEmpty()) {
             throw new Exception();
@@ -66,11 +64,10 @@ public class StockController {
         java.util.Date toTime = new java.util.Date((long)to*1000);
         Calendar cal = Calendar.getInstance();
 
-        //It's a good point better use cal because date-functions are deprecated
         cal.setTime(toTime);
         System.out.println(cal.get(Calendar.DAY_OF_MONTH));
         cal.add(Calendar.DATE, -24);
-        //Integer historyDAYS = 10;
+        //Integer historyDAYS = 24;
         
         long from = cal.getTime().getTime() / 1000L;
         java.util.Date fromTime = new java.util.Date((long)from*1000);
@@ -82,14 +79,6 @@ public class StockController {
         System.out.println("Stock History, the time at the server is now " + new Date() + "\n");
         System.out.println("Stock History:" + jsonObject ) ;
         
-
-        //JsonObject jsonChart = (JsonObject) jsonObject.get("chart");
-        //JsonArray results = (JsonArray) jsonChart.get("result");
-
-        //if (results == null || results.size() != 1) {
-         //   System.out.println("NO CHART!!");
-      //  }
-
         return new ResponseEntity<>(jsonObject, HttpStatus.OK);
     }
 }
