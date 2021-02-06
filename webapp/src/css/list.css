@@ -4,8 +4,7 @@
 }
 
 .Nav_link {
-  margin: 5px;
-  padding:2px;
+  vertical-align: middle;
   border: 1px solid #f76a06;
   border-radius: 2px;
   color:blue;
@@ -13,15 +12,15 @@
 }
 
 .Nav_link:link {
-  margin: 5px;
-  padding:2px;
+  vertical-align: middle;
   border: 1px solid #a24503;
   border-radius: 2px;
   text-decoration: none;
   color:blue;
 }
 .Nav_link:visited {
-  color: #f00;
+  color: #00f;
+  border:1px solid red;
 }
 .Nav_link:hover {
   color: yellow;
