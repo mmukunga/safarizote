@@ -45,7 +45,6 @@
   margin: 0 auto;
 }
 
-@import url("./css/card.css"); 
 @import url("./css/list.css"); 
 @import url("./css/lotto.css"); 
 @import url("./css/form.css");
