@@ -2,10 +2,11 @@ import React from 'react';
  
 const Card = (props) => {
     const style = {
-        margin: '10px auto',
+        margin: '10px',
         padding: '5px',
         border: '2px solid #f8ecd5',
-        boxShadow: '0 0 10px 5p' 
+        boxShadow: '0 0 10px 5p',
+        backgroundColor:'#F0FFFF' 
     }
  
     return (
