@@ -50,10 +50,10 @@ const Email = () => {
         <Card title="ContactUs" text="Contact Us">
         <form className="form-container" onSubmit={handleSubmit}>
             <div className="form-group">
-            <div class="col-25">      
+            <div className="col-25">      
                 <label htmlFor="name">Name</label>
             </div> 
-            <div class="col-25">  
+            <div className="col-25">  
                 <input
                     type="name"
                     name="name"
@@ -64,10 +64,10 @@ const Email = () => {
             </div> 
             </div>
             <div className="form-group">
-            <div class="col-25">      
+            <div className="col-25">      
                 <label htmlFor="email">Email</label>
             </div> 
-            <div class="col-25">  
+            <div className="col-25">  
                 <input
                     type="email"
                     name="email"
@@ -78,10 +78,10 @@ const Email = () => {
             </div> 
             </div>
             <div className="form-group">
-            <div class="col-25">      
+            <div className="col-25">      
                 <label htmlFor="phone">Phone</label>
             </div> 
-            <div class="col-25"> 
+            <div className="col-25"> 
                 <input
                     type="phone"
                     className="form-control"
@@ -91,10 +91,10 @@ const Email = () => {
             </div> 
             </div>
             <div className="form-group">
-            <div class="col-25">      
+            <div className="col-25">      
                 <label htmlFor="message">Message</label>
             </div> 
-            <div class="col-25">  
+            <div className="col-25">  
                 <textarea id="message" name="message"
                     placeholder="Write something.." 
                     className="form-control"

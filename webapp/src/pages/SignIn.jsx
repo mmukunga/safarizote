@@ -43,6 +43,7 @@ const SignIn = () => {
 
     if (userToken !== null) {
         console.log('!!!!userToken!!!! TO:= ' + userToken);
+        console.log(userToken);
         console.log('!!!!REDIRECT!!!! TO:= ' + location.state || { from: { pathname: "/" }});
         return <Redirect to={location.state || { from: { pathname: "/" }} } />
     }

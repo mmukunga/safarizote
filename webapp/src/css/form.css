@@ -15,6 +15,7 @@ input[type=dateCreated],
 input[type=price], 
 input[type=password], 
 select,textarea { 
+  width: 100%;
   border: 1px solid rgb(70, 68, 68);    
   border-radius: 4px;   
   padding: 12px; 
