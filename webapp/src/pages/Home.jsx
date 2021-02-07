@@ -25,7 +25,8 @@ const Home = () => {
     }, [clientInfo]);
 
     return (
-        <Card title="Home" text="The Home - Sipili!!">
+        <Card cardWidth="600" fontColor="black" backgroundColor="white">
+            <p>Landing Page!</p>
             <ul className="vList">          
                 { data.map(item => <li key={item.id}>Link: {item.url} Browser: {item.browser}</li>) }
             </ul>

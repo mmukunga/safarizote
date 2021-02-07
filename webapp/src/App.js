@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 
 import logo from './logo.svg';
 import './App.css';
+import Card from './pages/Card';
 
 const Loading = () => {
   const [message, setMessage] = useState('');
@@ -127,25 +128,5 @@ function App() {
     </div>
   );
 }
-
-const Card = props => {
-  const { cardWidth, fontColor, backgroundColor, children } = props;
-  const containerStyles = {
-    width: cardWidth,
-    backgroundColor: backgroundColor,
-    color: fontColor,
-    borderRadius: 10,
-    margin: '10px',
-    border: '4px solid #56C5F7'
-  };
-
-  const labelStyles = { color: fontColor };
-
-  return (
-    <div style={containerStyles}>
-      <div style={labelStyles}>{ children }</div>
-    </div>
-  );
-};
 
 export default App;

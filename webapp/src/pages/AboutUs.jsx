@@ -5,7 +5,8 @@ const AboutUs = () => {
     const [names, setNames] = useState(["joe", "steve", "carol"])
 
     return (
-        <Card title="About Us!!" text="We do Go-Downs">
+        <Card cardWidth="600" fontColor="black" backgroundColor="white">
+            <p>About Us!</p>
             <ul className="vList">          
                 { names.map((name, i) => <li key={i}>{name}</li>) }
             </ul>
