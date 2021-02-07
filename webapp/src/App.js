@@ -136,7 +136,6 @@ const Card = props => {
     color: fontColor,
     borderRadius: 10,
     margin: '10px auto',
-    padding: '10px',
     border: '4px solid #56C5F7'
   };
 

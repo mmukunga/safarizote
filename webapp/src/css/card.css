@@ -5,7 +5,7 @@
     position: relative;
     z-index: 1;
     overflow-x: hidden;
-    background-color: #8ed1fc;
+    background-color: #EEEEFF;
     display: flex;
     transition: 0.3s;
     flex-direction: column;
