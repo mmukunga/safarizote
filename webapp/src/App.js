@@ -62,6 +62,10 @@ function App() {
   };
   
   const Menu = withRouter(DropDown);
+  
+  const handleLogout = () => {
+      localStorage.clear();
+  };
 
   const Toolbar = (props) => (
     <header style={{display: props.displayHome}} className="App-header">  
@@ -78,6 +82,7 @@ function App() {
                 <NavLink to="/email" className="Nav_link">Email</NavLink>
                 <NavLink to="/weather" className="Nav_link">Weather</NavLink>
                 <Menu/>
+                <button onClick={handleLogout}>Logout</button>
               </div>
             </nav> 
         </div>
