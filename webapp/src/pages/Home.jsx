@@ -26,12 +26,10 @@ const Home = () => {
 
     return (
         <Card title="Home" text="The Home - Sipili!!">
-            <div className="vlContainer">
-                <ul className="vList">          
-                    { data.map(item => <li key={item.id}>Link: {item.url} Browser: {item.browser}</li>) }
-                </ul>
-                <p>Number of Hits: { data.length }</p>
-            </div>
+            <ul className="vList">          
+                { data.map(item => <li key={item.id}>Link: {item.url} Browser: {item.browser}</li>) }
+            </ul>
+            <p>Number of Hits: { data.length }</p>
         </Card>
     )
 }

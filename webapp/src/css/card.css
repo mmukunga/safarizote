@@ -5,10 +5,11 @@
     position: relative;
     z-index: 1;
     overflow-x: hidden;
-    background-color: white;
+    background-color: #E9EBDF;
     display: flex;
     transition: 0.3s;
     flex-direction: column;
+    border:2px solid blue;
     border-radius: 10px;
     box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
   }

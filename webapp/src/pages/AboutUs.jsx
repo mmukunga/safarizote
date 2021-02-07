@@ -6,12 +6,10 @@ const AboutUs = () => {
 
     return (
         <Card title="About Us!!" text="We do Go-Downs">
-            <div className="vlContainer">
-                <ul className="vList">          
-                  { names.map((name, i) => <li key={i}>{name}</li>) }
-                </ul>
-                <button onClick={() => setNames(prev => [...prev, "frank"])}>Add Frank</button>
-            </div>            
+            <ul className="vList">          
+                { names.map((name, i) => <li key={i}>{name}</li>) }
+            </ul>
+            <button onClick={() => setNames(prev => [...prev, "frank"])}>Add Frank</button>
         </Card>
     )
 }

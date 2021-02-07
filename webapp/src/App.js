@@ -108,7 +108,7 @@ function App() {
   return (
     <div className="App">
       <Suspense fallback={<Loading />}>
-      <Card fontColor="black" backgroundColor="white" title="Safari Zote">
+      <Card cardWidth="650" fontColor="black" backgroundColor="white" title="Safari Zote">
         <Layout>
           <Switch>
               <Route exact path="/" component={Home} />
@@ -129,15 +129,15 @@ function App() {
 }
 
 const Card = props => {
-  const { fontColor, backgroundColor, children } = props;
+  const { cardWidth, fontColor, backgroundColor, children } = props;
   const containerStyles = {
-    width: 650,
+    width: cardWidth,
     backgroundColor: backgroundColor,
     color: fontColor,
     borderRadius: 10,
     margin: '10px auto',
     padding: '10px',
-    border: '4px solid #9c6137'
+    border: '4px solid #56C5F7'
   };
 
   const labelStyles = { color: fontColor };
