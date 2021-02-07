@@ -11,8 +11,7 @@ const Card = (props) => {
     margin: '10px auto',
     padding: '5px',
     border: '2px solid #f8ecd5',
-    boxShadow: '0 0 10px 5p',
-    backgroundColor:'#F0FFFF' 
+    boxShadow: '0 0 10px 5p' 
   };
 
   const labelStyles = { color: fontColor };

@@ -109,7 +109,7 @@ function App() {
   return (
     <div className="App">
       <Suspense fallback={<Loading />}>
-      <Card cardWidth="650" fontColor="black" backgroundColor="white" title="Safari Zote">
+      <Card cardWidth="650px" fontColor="black" backgroundColor="white">
         <Layout>
           <Switch>
               <Route exact path="/" component={Home} />
