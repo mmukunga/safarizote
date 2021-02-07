@@ -2,7 +2,7 @@ import React from 'react';
  
 const Card = (props) => {
     const style = {
-        margin: '0 auto',
+        margin: '10px auto',
         padding: '5px',
         border: '2px solid #f8ecd5',
         boxShadow: '0 0 10px 5p' 
