@@ -242,17 +242,9 @@ import Card from './Card';
           <div className="Cell">
             <small>High</small>
             <div>{props.temp.day}°</div>
-          </div>
-          <div className="Cell">
             <small>Now</small>
             <div>{props.temp.min}°</div>
-          </div>
-          <div className="Cell">
-            <small>Main</small>
-            <div>{props.weather[0].main}</div>
-          </div>
-          <div className="Cell">
-            <small>&nbsp;</small>
+            <small>Sky</small>
             <div>{props.weather[0].description}</div>
           </div>
         </div>
