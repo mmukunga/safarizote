@@ -235,7 +235,7 @@ import Card from './Card';
 
   const ForecastCard = (props) => {
     return (
-      <div className="ForecastCell">
+      <div className="ForecastCard">
         <span>{props.date}</span>
         <img src={`${IMG_URL}/${props.weather[0].icon}.png`} alt="wthr img" className="wthrImg"/>          
         <small>High</small>
