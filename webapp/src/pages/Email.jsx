@@ -96,6 +96,9 @@ const Email = () => {
             </div> 
             <div className="col-75">  
                 <textarea id="message" name="message"
+                    className="expand" 
+                    rows="5" 
+                    cols="33" 
                     placeholder="Write something.." 
                     className="form-control"
                     onChange={handleChange}

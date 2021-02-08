@@ -23,8 +23,9 @@ select,textarea {
   box-sizing: border-box;   
 }  
 
-textarea { 
+.expand {
   min-height: 10em; 
+  padding: 3px;
 }
 
 .dropdown { 
