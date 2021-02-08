@@ -49,7 +49,8 @@ const SignIn = () => {
     }
 
     return (
-        <Card title="Login" text="Please Login Here!">
+        <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
+        <p>Please Login Here!</p>
         <form  className="form-container" onSubmit={handleSubmit}>
             <div className="row">
             <div className="col-25">     
