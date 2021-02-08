@@ -1,5 +1,6 @@
-import React, { useEffect, useReducer, useState } from 'react'
-import axios from 'axios'
+import React, { useEffect, useReducer, useState } from 'react';
+import axios from 'axios';
+import Card from './Card';
 
 const initialState = {
   error: "",
