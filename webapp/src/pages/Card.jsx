@@ -9,8 +9,8 @@ const Card = (props) => {
     color: fontColor,
     borderRadius: 10,
     margin: '10px auto',
-    padding: '5px',
-    border: '2px solid #f8ecd5',
+    padding: '1px',
+    border: '4px solid #56E7FF',
     boxShadow: '0 0 10px 5p' 
   };
 
