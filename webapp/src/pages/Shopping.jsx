@@ -57,7 +57,7 @@ const Shopping = () => {
     return (
       <Card title="Shoppings" text="Our Shoppings">
         <form className="form-container" onSubmit={handleSubmit}>
-          <div className="form-group">
+          <div className="row">
             <div class="col-25"> 
                 <label htmlFor="store">Store</label>
             </div>
@@ -71,7 +71,7 @@ const Shopping = () => {
             />
             </div>
           </div>
-          <div className="form-group">
+          <div className="row">
             <div class="col-25"> 
                 <label htmlFor="product">Product</label>
             </div>
@@ -85,7 +85,7 @@ const Shopping = () => {
             />
             </div>
           </div>
-          <div className="form-group">
+          <div className="row">
             <div class="col-25"> 
               <label htmlFor="price">Price</label>
             </div>
@@ -99,7 +99,7 @@ const Shopping = () => {
             />
             </div>
           </div>
-          <div className="form-group">
+          <div className="row">
             <div class="col-25"> 
               <label htmlFor="quantity">Quantity</label>
             </div>
@@ -113,7 +113,7 @@ const Shopping = () => {
             />
             </div>
           </div>
-          <div className="form-group">
+          <div className="row">
             <div class="col-25"> 
               <label htmlFor="name">Name</label>
             </div>
@@ -127,7 +127,7 @@ const Shopping = () => {
               />
             </div>
           </div>
-          <div className="form-group">
+          <div className="row">
             <div class="col-25"> 
               <label htmlFor="dateCreated">Date</label>
             </div>
@@ -141,7 +141,7 @@ const Shopping = () => {
               />
             </div>
           </div>
-          <div className="form-group">
+          <div className="row">
             <button type="submit">Send</button> 
           </div> 
         </form>

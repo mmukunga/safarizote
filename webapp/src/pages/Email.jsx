@@ -49,7 +49,7 @@ const Email = () => {
     return (
         <Card title="ContactUs" text="Contact Us">
         <form className="form-container" onSubmit={handleSubmit}>
-            <div className="form-group">
+            <div className="row">
             <div className="col-25">      
                 <label htmlFor="name">Name</label>
             </div> 
@@ -63,7 +63,7 @@ const Email = () => {
                 />
             </div> 
             </div>
-            <div className="form-group">
+            <div className="row">
             <div className="col-25">      
                 <label htmlFor="email">Email</label>
             </div> 
@@ -77,7 +77,7 @@ const Email = () => {
                 />
             </div> 
             </div>
-            <div className="form-group">
+            <div className="row">
             <div className="col-25">      
                 <label htmlFor="phone">Phone</label>
             </div> 
@@ -90,7 +90,7 @@ const Email = () => {
                 />
             </div> 
             </div>
-            <div className="form-group">
+            <div className="row">
             <div className="col-25">      
                 <label htmlFor="message">Message</label>
             </div> 
@@ -102,7 +102,7 @@ const Email = () => {
                 />
             </div> 
             </div>
-            <div className="form-group">
+            <div className="row">
                <button type="submit">Send</button>
             </div>  
         </form>

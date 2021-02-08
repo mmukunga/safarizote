@@ -147,7 +147,7 @@ import Card from './Card';
         <Card title="Weather" text="Weather Forecast">
         {state.cityName} - {state.countryName}, {state.countryCode} 
         <form className="form-container" onSubmit={handleSubmit}>
-          <div className="form-group">
+          <div className="row">
             <div class="col-25">   
               <label htmlFor="country">Country</label>
             </div>
@@ -160,7 +160,7 @@ import Card from './Card';
             </select> 
             </div> 
           </div>
-          <div className="form-group">
+          <div className="row">
             <div class="col-25">   
                 <label htmlFor="city">City</label>
             </div>
@@ -173,7 +173,7 @@ import Card from './Card';
                 </select>  
             </div>
           </div>
-          <div className="form-group">
+          <div className="row">
             <button type="submit">Send</button> 
           </div> 
         </form>

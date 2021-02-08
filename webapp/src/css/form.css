@@ -57,7 +57,7 @@ input[type=submit]:hover {
   margin-top: 6px;    
 }    
     
-.form-group:after {    
+.row:after {    
   content: "";    
   display: table;    
   clear: both;    
