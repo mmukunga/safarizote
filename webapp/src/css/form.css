@@ -23,6 +23,11 @@ select,textarea {
   box-sizing: border-box;   
 }  
 
+
+textarea { 
+  min-height: 10em; 
+}
+
 .dropdown { 
   width: 200px;
 }
