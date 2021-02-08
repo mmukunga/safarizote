@@ -58,10 +58,10 @@ const Shopping = () => {
       <Card title="Shoppings" text="Our Shoppings">
         <form className="form-container" onSubmit={handleSubmit}>
           <div className="row">
-            <div class="col-25"> 
+            <div className="col-25"> 
                 <label htmlFor="store">Store</label>
             </div>
-            <div class="col-25"> 
+            <div className="col-75"> 
             <input
                 type="store"
                 name="store"
@@ -72,10 +72,10 @@ const Shopping = () => {
             </div>
           </div>
           <div className="row">
-            <div class="col-25"> 
+            <div className="col-25"> 
                 <label htmlFor="product">Product</label>
             </div>
-            <div class="col-25"> 
+            <div className="col-75"> 
             <input
                 type="product"
                 name="product"
@@ -86,10 +86,10 @@ const Shopping = () => {
             </div>
           </div>
           <div className="row">
-            <div class="col-25"> 
+            <div className="col-25"> 
               <label htmlFor="price">Price</label>
             </div>
-            <div class="col-25"> 
+            <div className="col-75"> 
             <input
                 type="price"
                 name="price"
@@ -100,10 +100,10 @@ const Shopping = () => {
             </div>
           </div>
           <div className="row">
-            <div class="col-25"> 
+            <div className="col-25"> 
               <label htmlFor="quantity">Quantity</label>
             </div>
-            <div class="col-25"> 
+            <div className="col-75"> 
             <input
                 type="quantity"
                 name="quantity"
@@ -114,10 +114,10 @@ const Shopping = () => {
             </div>
           </div>
           <div className="row">
-            <div class="col-25"> 
+            <div className="col-25"> 
               <label htmlFor="name">Name</label>
             </div>
-            <div class="col-25"> 
+            <div className="col-75"> 
               <input
                   type="name"
                   name="name"
@@ -128,10 +128,10 @@ const Shopping = () => {
             </div>
           </div>
           <div className="row">
-            <div class="col-25"> 
+            <div className="col-25"> 
               <label htmlFor="dateCreated">Date</label>
             </div>
-            <div class="col-25">
+            <div className="col-75">
               <input
                   type="dateCreated"
                   name="dateCreated"

@@ -52,10 +52,10 @@ const SignIn = () => {
         <Card title="Login" text="Please Login Here!">
         <form  className="form-container" onSubmit={handleSubmit}>
             <div className="row">
-            <div class="col-25">     
+            <div className="col-25">     
                <label htmlFor="email">Email</label>
             </div> 
-            <div class="col-25"> 
+            <div className="col-75"> 
                 <input
                     type="email"
                     name="email"
@@ -66,10 +66,10 @@ const SignIn = () => {
             </div> 
             </div>
             <div className="row">
-            <div class="col-25">     
+            <div className="col-25">     
                 <label htmlFor="password">Password</label>
             </div> 
-            <div class="col-25"> 
+            <div className="col-75"> 
                 <input
                     type="password"
                     name="password"

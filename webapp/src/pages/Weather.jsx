@@ -148,10 +148,10 @@ import Card from './Card';
         {state.cityName} - {state.countryName}, {state.countryCode} 
         <form className="form-container" onSubmit={handleSubmit}>
           <div className="row">
-            <div class="col-25">   
+            <div className="col-25">   
               <label htmlFor="country">Country</label>
             </div>
-            <div class="col-25"> 
+            <div className="col-75"> 
             <select id="countryCode" name="countryCode" className="dropdown" onChange={handleChange}>    
                 <option value="none">Select Country</option>   
                 {countries.map((country) => (
@@ -161,10 +161,10 @@ import Card from './Card';
             </div> 
           </div>
           <div className="row">
-            <div class="col-25">   
+            <div className="col-25">   
                 <label htmlFor="city">City</label>
             </div>
-            <div class="col-25"> 
+            <div className="col-75"> 
                 <select id="cityName" name="cityName" className="dropdown" onChange={handleChange}>    
                   <option value="none">Select City</option>    
                   {state.cities && state.cities.map((city) => (

@@ -53,7 +53,7 @@ const Email = () => {
             <div className="col-25">      
                 <label htmlFor="name">Name</label>
             </div> 
-            <div className="col-25">  
+            <div className="col-75">  
                 <input
                     type="name"
                     name="name"
@@ -67,7 +67,7 @@ const Email = () => {
             <div className="col-25">      
                 <label htmlFor="email">Email</label>
             </div> 
-            <div className="col-25">  
+            <div className="col-75">  
                 <input
                     type="email"
                     name="email"
@@ -81,7 +81,7 @@ const Email = () => {
             <div className="col-25">      
                 <label htmlFor="phone">Phone</label>
             </div> 
-            <div className="col-25"> 
+            <div className="col-75"> 
                 <input
                     type="phone"
                     className="form-control"
@@ -94,7 +94,7 @@ const Email = () => {
             <div className="col-25">      
                 <label htmlFor="message">Message</label>
             </div> 
-            <div className="col-25">  
+            <div className="col-75">  
                 <textarea id="message" name="message"
                     placeholder="Write something.." 
                     className="form-control"
