@@ -145,7 +145,6 @@ import Card from './Card';
 
     return (
         <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
-        <p>Weather Report!!</p>
         {state.cityName} - {state.countryName}, {state.countryCode} 
         <form className="form-container" onSubmit={handleSubmit}>
           <div className="row">
@@ -178,26 +177,21 @@ import Card from './Card';
             <button type="submit">Send</button> 
           </div> 
         </form>
-
-        <div className="day-container">
-            {weather != null && weather.main
-              ? <WeatherCard 
-                title='Current Local Weather'
-                width='500px'
-                date={new Date((weather.dt)*1000).toLocaleDateString("en-US")}
-                weather={weather}
-                />     
-              : <div>No Weather</div>   
-          }
-        </div>
-
-        <div className="5days-container">
-          {forecast != null 
-            ? <ForecastList cards={list} />
-            : <div>No Forecast</div>   
-          }
-        </div>
-       </Card>   
+        <p>Weather Report!!</p>
+        {weather != null && weather.main
+          ? <WeatherCard 
+            title='Current Local Weather'
+            date={new Date((weather.dt)*1000).toLocaleDateString("en-US")}
+            weather={weather}
+            />     
+          : <div>No Weather</div>   
+        }
+        <p>Forecast</p>
+        {forecast != null 
+          ? <ForecastList cards={list} />
+          : <div>No Forecast</div>   
+        }
+        </Card>   
     );
   }
 
