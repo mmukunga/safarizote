@@ -113,7 +113,8 @@ const Stock = () => {
     console.log('stockCompany:= ' + stockCompany);
     
     return (
-        <div className="Stock">
+      <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
+        <p>Stock!!</p>
         <form onSubmit={handleSubmit} className="StockWrapper">
         <ul className="StockList">
             { state.tickers && state.tickers.map(ticker =>
@@ -139,7 +140,7 @@ const Stock = () => {
               <Quote name="Volume" list={volume}/>
           </div>
         </div>
-      </div>
+      </Card>
     )
 }
 

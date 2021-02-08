@@ -47,67 +47,68 @@ const Email = () => {
         });
     }
     return (
-        <Card title="ContactUs" text="Contact Us">
-        <form className="form-container" onSubmit={handleSubmit}>
-            <div className="row">
-            <div className="col-25">      
-                <label htmlFor="name">Name</label>
-            </div> 
-            <div className="col-75">  
-                <input
-                    type="name"
-                    name="name"
-                    placeholder="Name"
-                    onChange={handleChange}
-                    required
-                />
-            </div> 
-            </div>
-            <div className="row">
-            <div className="col-25">      
-                <label htmlFor="email">Email</label>
-            </div> 
-            <div className="col-75">  
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    onChange={handleChange}
-                    required
-                />
-            </div> 
-            </div>
-            <div className="row">
-            <div className="col-25">      
-                <label htmlFor="phone">Phone</label>
-            </div> 
-            <div className="col-75"> 
-                <input
-                    type="phone"
-                    className="form-control"
-                    name="phone"
-                    onChange={handleChange}
-                />
-            </div> 
-            </div>
-            <div className="row">
-            <div className="col-25">      
-                <label htmlFor="message">Message</label>
-            </div> 
-            <div className="col-75">  
-                <textarea id="message" name="message"
-                    className="expand" 
-                    rows="10"
-                    placeholder="Write something.." 
-                    className="form-control"
-                    onChange={handleChange}
-                />
-            </div> 
-            </div>
-            <div className="row">
-               <button type="submit">Send</button>
-            </div>  
-        </form>
+        <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
+            <p>Contact Us!!</p>
+            <form className="form-container" onSubmit={handleSubmit}>
+                <div className="row">
+                <div className="col-25">      
+                    <label htmlFor="name">Name</label>
+                </div> 
+                <div className="col-75">  
+                    <input
+                        type="name"
+                        name="name"
+                        placeholder="Name"
+                        onChange={handleChange}
+                        required
+                    />
+                </div> 
+                </div>
+                <div className="row">
+                <div className="col-25">      
+                    <label htmlFor="email">Email</label>
+                </div> 
+                <div className="col-75">  
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        onChange={handleChange}
+                        required
+                    />
+                </div> 
+                </div>
+                <div className="row">
+                <div className="col-25">      
+                    <label htmlFor="phone">Phone</label>
+                </div> 
+                <div className="col-75"> 
+                    <input
+                        type="phone"
+                        className="form-control"
+                        name="phone"
+                        onChange={handleChange}
+                    />
+                </div> 
+                </div>
+                <div className="row">
+                <div className="col-25">      
+                    <label htmlFor="message">Message</label>
+                </div> 
+                <div className="col-75">  
+                    <textarea id="message" name="message"
+                        className="expand" 
+                        rows="10"
+                        placeholder="Write something.." 
+                        className="form-control"
+                        onChange={handleChange}
+                    />
+                </div> 
+                </div>
+                <div className="row">
+                <button type="submit">Send</button>
+                </div>  
+            </form>
         </Card>   
     );
 }

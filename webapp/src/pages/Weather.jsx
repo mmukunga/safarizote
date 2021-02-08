@@ -144,7 +144,8 @@ import Card from './Card';
     }
 
     return (
-        <Card title="Weather" text="Weather Forecast">
+        <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
+        <p>Weather Report!!</p>
         {state.cityName} - {state.countryName}, {state.countryCode} 
         <form className="form-container" onSubmit={handleSubmit}>
           <div className="row">

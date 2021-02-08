@@ -59,15 +59,14 @@ const Safaris = () => {
     });
     
     return (
-      <Card title="Safaris" text="Safari Zote">
-        <div className ="sTable">
+      <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
+          <p>Safaris!!</p>
           <ul id="page-numbers">
             {renderPageNumbers}
           </ul>
           {currentItems && currentItems.length > 0 
           ? <Table data={currentItems}/> 
           : <p>No Data Found!!</p>}
-        </div>
       </Card>
     );
   };

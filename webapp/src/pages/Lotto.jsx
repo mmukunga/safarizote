@@ -18,7 +18,8 @@ const Shopping = () => {
   },[]);
 
     return (
-      <Card title="Lotto Kupong" text="Tipping i Lotto">
+      <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
+        <p>Lotto Kupong!!</p>
         <div className="Rekke">
           {data.map(rekke => 
             <div key={rekke.id}>
