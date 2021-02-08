@@ -8,6 +8,22 @@
     box-shadow: 120px 80px 40px 20px #0ff;
   }
 
+  .Cells {
+    margin: .1em;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(187, 129, 129, 0.08);
+    width:100%
+  }
+
+  .Cell {
+    float:left;
+    margin: 0 1% 1% 0;
+    width: 50px;
+    margin:5px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+  }
+  
   .ForecastList {
     margin: 1em;
     display:inline;
@@ -30,28 +46,12 @@
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   }
 
-  .Cells {
-    margin: .1em;
-    box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(187, 129, 129, 0.08);
-    width:100%
-  }
-
-  .Cell {
-    float:left;
-    margin: 0 1% 1% 0;
-    width: 50px;
-    margin:5px;
-    box-sizing: border-box;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-  }
-
   .ForecastCell:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   }
   
   .ForecastCell {
-    display: block;
+    display: inline-block;
     width: 80px;
     margin:5px;
     box-sizing: border-box;
