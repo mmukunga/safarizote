@@ -84,17 +84,18 @@ import Card from './Card';
   
         const fetchData = async () => {
           axios.post('/api/weather', country, headers).then(response => {
+            console.log(response);
             setWeather(response.data);
-        }).catch(err => {
-            console.log(err);
-        });
-  
-        axios.post('/api/forecast', country, headers).then(response => {
+          }).catch(err => {
+              console.log(err);
+          });
+    
+          axios.post('/api/forecast', country, headers).then(response => {
             setList(response.data.list);
             setForecast(response.data);
-        }).catch(err => {
+          }).catch(err => {
             console.log(err);
-        });
+          });
         };
   
         fetchData();
@@ -114,7 +115,6 @@ import Card from './Card';
         } else {
           dispatch({ type: 'SET_CITY', payload: event.target.value });
         }
-
     }
 
     const handleSubmit = (e) => {
@@ -206,8 +206,8 @@ import Card from './Card';
           </p>
 
           <div className="Current">
-              <div className="CellDiv Green"><small>Current</small> {props.weather.main.temp}°</div>
-              <div className="CellDiv Blue"><small>Sky</small>{props.weather.weather[0].description}</div>
+              <div className="CellDiv"><small>Current</small> {props.weather.main.temp}°</div>
+              <div className="CellDiv">{props.weather.weather[0].description}</div>
           </div>
       </div>
     )

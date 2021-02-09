@@ -11,14 +11,7 @@
       padding: 50px;
       text-align: center;
       width: 50px;
-  }
-
-  .Green {
-      background: lightgreen;
-  }
-
-  .Blue {
-      background: lightblue;
+      border: 2px solid green;
   }
   
   .WeatherCard {
