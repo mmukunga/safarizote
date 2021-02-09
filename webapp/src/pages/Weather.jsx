@@ -196,15 +196,13 @@ import Card from './Card';
   }
 
   const WeatherCard = (props) => {
+    const unix_tm = props.weather.dt;
     return ( 
       <div className="WeatherCard"> 
-          <p>
-            loc: {props.weather.loc} date: {props.weather.date}
-            <img src={`${IMG_URL}/${props.weather.weather[0].icon}.png`} 
-                 alt="wthr img" 
-                 className="wthrImg"/>
-          </p>
-
+          <p>Cod: {props.weather.cod} Date: {new Date(unix_tm*1000).toLocaleDateString()}</p>
+          <img src={`${IMG_URL}/${props.weather.weather[0].icon}.png`} 
+                alt="wthr img" 
+                className="wthrImg"/>
           <div className="Current">
               <div className="CellDiv"><small>Current</small> {props.weather.main.temp}°</div>
               <div className="CellDiv">{props.weather.weather[0].description}</div>
