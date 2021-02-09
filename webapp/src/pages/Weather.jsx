@@ -177,7 +177,7 @@ import Card from './Card';
             <button type="submit">Send</button> 
           </div> 
         </form>
-        <p>Weather Report!!</p>
+        
         {weather != null && weather.main
           ? <WeatherCard 
             title='Current Local Weather'
@@ -186,11 +186,13 @@ import Card from './Card';
             />     
           : <div>No Weather</div>   
         }
+
         <p>Forecast</p>
         {forecast != null 
           ? <ForecastList cards={list} />
           : <div>No Forecast</div>   
         }
+        
         </Card>   
     );
   }
