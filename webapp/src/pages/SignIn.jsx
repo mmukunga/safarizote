@@ -51,45 +51,16 @@ const SignIn = () => {
     return (
         <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
         <p>Please Login Here!</p>
-        <form class="form-inline" action="/action_page.php">
+        <form class="form-inline"  onSubmit={handleSubmit}>
           <label for="email">Email:</label>
-          <input type="email" id="email" placeholder="Enter email" name="email"/>
+          <input type="email" id="email" placeholder="Enter email" name="email"
+           onChange={handleChange}
+           required/>
           <label for="pwd">Password:</label>
-          <input type="password" id="pwd" placeholder="Enter password" name="pswd"/>
+          <input type="password" id="pwd" placeholder="Enter password" name="pswd"
+           onChange={handleChange}
+           required/>
           <button type="submit">Submit</button>
-        </form>
-        <form  className="form-container" onSubmit={handleSubmit}>
-            <div className="row">
-            <div className="col-25">     
-               <label htmlFor="email">Email</label>
-            </div> 
-            <div className="col-75"> 
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    onChange={handleChange}
-                    required
-                />
-            </div> 
-            </div>
-            <div className="row">
-            <div className="col-25">     
-                <label htmlFor="password">Password</label>
-            </div> 
-            <div className="col-75"> 
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    onChange={handleChange}
-                    required
-                />
-            </div> 
-            </div>
-            <div className="row">
-              <button type="submit">Login</button>
-            </div>  
         </form>
         </Card>   
     );

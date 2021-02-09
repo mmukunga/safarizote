@@ -8,10 +8,11 @@
     margin: 5px 10px 5px 0;
   }
   
-  .form-inline input {
+  .form-inline input, select {
     vertical-align: middle;
     margin: 5px 10px 5px 0;
     padding: 10px;
+    width: 130px;
     background-color: #fff;
     border: 1px solid #ddd;
   }
@@ -28,8 +29,8 @@
     background-color: royalblue;
   }
   
-  @media (max-width: 800px) {
-    .form-inline input {
+  @media (max-width: 400px) {
+    .form-inline input, select {
       margin: 10px 0;
     }
     

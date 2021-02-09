@@ -147,46 +147,22 @@ import Card from './Card';
         <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
         {state.cityName} - {state.countryName}, {state.countryCode} 
 
-        <form class="form-inline" action="/action_page.php">
-          <label for="email">Email:</label>
-          <input type="email" id="email" placeholder="Enter email" name="email"/>
-          <label for="pwd">Password:</label>
-          <input type="password" id="pwd" placeholder="Enter password" name="pswd"/>
-          <button type="submit">Submit</button>
-        </form>
-
-
-
-        <form className="form-container" onSubmit={handleSubmit}>
-          <div className="row">
-            <div className="col-25">   
-              <label htmlFor="country">Country</label>
-            </div>
-            <div className="col-75"> 
-            <select id="countryCode" name="countryCode" className="dropdown" onChange={handleChange}>    
+        <form class="form-inline"  onSubmit={handleSubmit}>
+          <label for="countryCode">Country:</label>
+          <select id="countryCode" name="countryCode" className="dropdown" onChange={handleChange}>    
                 <option value="none">Select Country</option>   
                 {countries.map((country) => (
                     <option value={country.title}>{country.value}</option>
                 ))}    
-            </select> 
-            </div> 
-          </div>
-          <div className="row">
-            <div className="col-25">   
-                <label htmlFor="city">City</label>
-            </div>
-            <div className="col-75"> 
-                <select id="cityName" name="cityName" className="dropdown" onChange={handleChange}>    
+            </select>
+          <label for="cityName">City:</label>
+          <select id="cityName" name="cityName" className="dropdown" onChange={handleChange}>    
                   <option value="none">Select City</option>    
                   {state.cities && state.cities.map((city) => (
                       <option value={city.cityName}>{city.cityName}</option>
                   ))}
                 </select>  
-            </div>
-          </div>
-          <div className="row">
-            <button type="submit">Send</button> 
-          </div> 
+          <button type="submit">Submit</button>
         </form>
         
         {weather != null && weather.main
