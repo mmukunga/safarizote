@@ -232,7 +232,6 @@ import Card from './Card';
         <div>{props.temp.day}°</div>
         <small>Now</small>
         <div>{props.temp.min}°</div>
-        <small>Sky</small>
         <div>{props.weather[0].description}</div>         
       </div>
     )
