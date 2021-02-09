@@ -8,20 +8,25 @@
   .CellDiv {
       display: inline-block;
       width: 50px;
-      border: 2px solid green;
+      margin: 5px;
+      /*border: 2px solid green;*/
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
   }
   
   .WeatherCard {
     transition: 0.3s;
-    border: 4px solid silver;
+    /*border: 4px solid silver;*/
     margin: 0 auto;
+    width: 200px;
     text-align: center;
+    display: block;
     box-shadow: 0 4px 8px 0 #0ff;
   }
 
   .ForecastList {
     text-align: center;
-    border: 4px solid silver;
+    /*border: 4px solid silver;*/
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
     transition: 0.3s;
   }

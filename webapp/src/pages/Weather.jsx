@@ -192,7 +192,7 @@ import Card from './Card';
           ? <ForecastList cards={list} />
           : <div>No Forecast</div>   
         }
-        
+
         </Card>   
     );
   }
@@ -206,7 +206,7 @@ import Card from './Card';
                 alt="wthr img" 
                 className="wthrImg"/>
           <div className="Current">
-              <div className="CellDiv"><small>Current</small> {props.weather.main.temp}°</div>
+              <div className="CellDiv"><small>Temp</small> {props.weather.main.temp}°</div>
               <div className="CellDiv">{props.weather.weather[0].description}</div>
           </div>
       </div>
