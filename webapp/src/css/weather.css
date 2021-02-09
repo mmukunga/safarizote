@@ -10,7 +10,7 @@
       display: inline-block;
       padding: 50px;
       text-align: center;
-      width: 50%;
+      width: 50px;
   }
 
   .Green {
@@ -46,9 +46,6 @@
   }
   
   .ForecastList {
-    /*margin: .1em;
-    width:100%;*/
-    /*border: solid 1px #aaa;*/
     text-align: center;
     border: 4px solid silver;
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
@@ -64,16 +61,6 @@
     transition: 0.3s;
   }
 
-/*
-  .ForecastCard {
-    margin: 1em;
-    box-shadow: 10px 5px 5px black;
-    width:200px;
-    display: inline-block;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-  }
-*/
   .ForecastCard:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   }
