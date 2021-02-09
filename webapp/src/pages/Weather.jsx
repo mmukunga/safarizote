@@ -198,20 +198,16 @@ import Card from './Card';
   const WeatherCard = (props) => {
     return ( 
       <div className="WeatherCard"> 
-          <span>loc: {props.weather.loc} date: {props.weather.date}</span>
-          <img src={`${IMG_URL}/${props.weather.weather[0].icon}.png`} alt="wthr img" className="wthrImg"/>
-          <div className="Cells">
-            <div className="Cell">
-              <small>Current</small>
-              <div>{props.weather.main.temp}°</div>
-            </div>
-            <div className="Cell">
-              <small>Sky</small>
-              <div>{props.weather.weather[0].main}</div>
-            </div>
-            <div className="Cell">
-              <div>{props.weather.weather[0].description}</div>
-            </div>
+          <p>
+            loc: {props.weather.loc} date: {props.weather.date}
+            <img src={`${IMG_URL}/${props.weather.weather[0].icon}.png`} 
+                 alt="wthr img" 
+                 className="wthrImg"/>
+          </p>
+
+          <div className="Current">
+              <div className="CellDiv Green"><small>Current</small> {props.weather.main.temp}°</div>
+              <div className="CellDiv Blue"><small>Sky</small>{props.weather.weather[0].description}</div>
           </div>
       </div>
     )
