@@ -1,6 +1,6 @@
 .Rekke {
     padding: 5px;
-    margin: 2em;
+    margin: 5px;
     border:4px solid green;
 }
 
@@ -20,7 +20,7 @@ ul.Lotto {
     padding: 2px;
     margin: 0 1px;
     text-decoration: none;
-    border:2px solid brown;
+    border:2px solid #f8ecd5;
   }
   
   li a:hover {
