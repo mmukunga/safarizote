@@ -9,12 +9,14 @@
       display: inline-block;
       width: 50px;
       margin: 5px;
+      /*border: 2px solid green;*/
       box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
       transition: 0.3s;
   }
   
   .WeatherCard {
     transition: 0.3s;
+    /*border: 4px solid silver;*/
     margin: 0 auto;
     text-align: center;
     display: block;
@@ -23,6 +25,7 @@
 
   .ForecastList {
     text-align: center;
+    /*border: 4px solid silver;*/
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
     transition: 0.3s;
   }
@@ -40,13 +43,6 @@
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   }
 
-  .imageWrapper {
-    width: 400px;
-    border: 4px solid yellow;
-  }
-
   .wthrImg {
     width: 70px;
-    float: left;
-    border: 4px solid red;
   }
