@@ -186,10 +186,11 @@ import Card from './Card';
     return ( 
       <div className="WeatherCard"> 
           Cod: {props.weather.cod} Date: {new Date(unix_tm*1000).toLocaleDateString()}
-          <img src={`${IMG_URL}/${props.weather.weather[0].icon}.png`} 
-                alt="wthr img" 
-                className="wthrImg"/>
-                
+          <div style={{textAlign: 'center', border: '1px solid red'}}>
+            <img src={`${IMG_URL}/${props.weather.weather[0].icon}.png`} 
+                  alt="wthr img" 
+                  className="wthrImg"/>
+          </div>      
           <div className="Current">
               <div className="CellDiv"><small>Temp</small> {props.weather.main.temp}°</div>
               <div className="CellDiv">{props.weather.weather[0].description}</div>
