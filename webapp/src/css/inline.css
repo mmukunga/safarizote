@@ -1,7 +1,9 @@
 .form-inline {  
     display: flex;
-    flex-flow: row wrap;
-    align-items: center;
+    flex-direction: row; 
+    justify-content: center; 
+    align-items: center; 
+    border: 1px solid black; 
   }
   
   .form-inline label {
