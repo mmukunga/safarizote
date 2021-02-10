@@ -4,8 +4,8 @@ import Card from './Card';
 import { Redirect, useLocation } from "react-router-dom";
 
 const initialState = {
-    email: "abc@gmail.com",
-    password: ''
+    email: "m@gmail.com",
+    password: '12345'
 };
 
 const reducer = function (state, action) {
@@ -52,10 +52,10 @@ const SignIn = () => {
         <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
         Please Login Here!!
         <form class="form-inline"  onSubmit={handleSubmit}>
-          <input type="email" id="email" placeholder="Enter email" name="email"
+          <input type="email" id="email" name="email" placeholder="Enter email"
            onChange={handleChange}
            required/>
-          <input type="password" id="pwd" placeholder="Enter password" name="pswd"
+          <input type="password" id="password" name="password" placeholder="Enter password"
            onChange={handleChange}
            required/>
           <button type="submit">Submit</button>
