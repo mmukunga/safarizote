@@ -1,15 +1,14 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
-import { Redirect } from "react-router";
+import { Redirect, Route } from 'react-router-dom';
 
-const Private = ({ component: Component, ...props }) => {
+const Private = ({ component: Component, ...rest }) => {
   console.log('PrivateRoute...');
   return (
     <Route
-      {...props}
-      render={innerProps =>
-        localStorage.getItem("token") ? (
-          <Component {...innerProps} />
+      {...rest}
+      render={(props) =>
+        localStorage.getItem('token') ? (
+          <Component {...props} />
         ) : (
           <Redirect
             to={{

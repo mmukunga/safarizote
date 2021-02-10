@@ -37,6 +37,7 @@ public class SignInController {
         System.out.println("\n==============> 2. USERS SIZE:=.." + users.size());
         for (UserAuth temp : users) {
             System.out.println("SignInRepository logIn:= " + temp);
+            System.out.println("SignInRepository userAuth:= " + userAuth);
             if (temp.getEmail().equals(userAuth.getEmail()) &&
                (temp.getPassword().equals(userAuth.getPassword())) ){
                   System.out.println("SignInRepository logIn FOUND!!:= " + temp);

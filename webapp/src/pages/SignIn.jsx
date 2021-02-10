@@ -1,14 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 import Card from './Card';
-import { Redirect, useLocation } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 const initialState = {
     email: "m@gmail.com",
     password: '12345'
 };
 
-const reducer = function (state, action) {
+const reducer = (state, action) => {
     switch(action.type) {
         case 'SET_EMAIL':
             const {name, value} = action.payload;
@@ -18,14 +18,18 @@ const reducer = function (state, action) {
     }
 }
 
-const SignIn = () => {
+const SignIn = (props) => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
+
+    const { from } = props.location.state || { from: { pathname: "/" } };
+    console.log(from);
+
+
     const handleChange = (event) => {
         dispatch({type: 'SET_EMAIL', payload: event.target})
     }
 
     console.log('!!BINGO!!');
-    let location = useLocation();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -35,6 +39,7 @@ const SignIn = () => {
         }).then(response => {
             console.log(response);
             localStorage.setItem('token', response.data);
+            console.log('XXXUserTokenXXX:= ' + localStorage.getItem('token'));
         });
     }
 
@@ -42,24 +47,24 @@ const SignIn = () => {
     console.log('UserToken:= ' + userToken);
 
     if (userToken !== null) {
-        console.log('!!!!userToken!!!! TO:= ' + userToken);
         console.log(userToken);
-        console.log('!!!!REDIRECT!!!! TO:= ' + location.state || { from: { pathname: "/" }});
-        return <Redirect to={location.state || { from: { pathname: "/" }} } />
+        console.log('!!!!REDIRECT!!!! FROM');
+        console.log(from);
+        return <Redirect to={from} />;
     }
 
     return (
         <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
-        Please Login Here!!
-        <form class="form-inline"  onSubmit={handleSubmit}>
-          <input type="email" id="email" name="email" placeholder="Enter email"
-           onChange={handleChange}
-           required/>
-          <input type="password" id="password" name="password" placeholder="Enter password"
-           onChange={handleChange}
-           required/>
-          <button type="submit">Submit</button>
-        </form>
+          Please Login Here!!
+          <form class="form-inline" onSubmit={handleSubmit}>
+             <input type="email" id="email" name="email" placeholder="Enter email"
+                onChange={handleChange}
+                required/>
+              <input type="password" id="password" name="password" placeholder="Enter password"
+                onChange={handleChange}
+                required/>
+              <button type="submit">Submit</button>
+          </form>
         </Card>   
     );
 }
