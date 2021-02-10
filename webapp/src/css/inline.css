@@ -29,7 +29,7 @@
     background-color: royalblue;
   }
   
-  @media (max-width: 400px) {
+  @media (max-width: 600px) {
     .form-inline input, select {
       margin: 10px 0;
     }

@@ -148,14 +148,12 @@ import Card from './Card';
         {state.cityName} - {state.countryName}, {state.countryCode} 
 
         <form class="form-inline"  onSubmit={handleSubmit}>
-          <label for="countryCode">Country:</label>
           <select id="countryCode" name="countryCode" onChange={handleChange}>    
                 <option value="none">Select Country</option>   
                 {countries.map((country) => (
                     <option value={country.title}>{country.value}</option>
                 ))}    
             </select>
-          <label for="cityName">City:</label>
           <select id="cityName" name="cityName" onChange={handleChange}>    
                   <option value="none">Select City</option>    
                   {state.cities && state.cities.map((city) => (

@@ -52,11 +52,9 @@ const SignIn = () => {
         <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
         <p>Please Login Here!</p>
         <form class="form-inline"  onSubmit={handleSubmit}>
-          <label for="email">Email:</label>
           <input type="email" id="email" placeholder="Enter email" name="email"
            onChange={handleChange}
            required/>
-          <label for="pwd">Password:</label>
           <input type="password" id="pwd" placeholder="Enter password" name="pswd"
            onChange={handleChange}
            required/>
