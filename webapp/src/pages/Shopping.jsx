@@ -62,7 +62,7 @@ const Shopping = () => {
             <div className="leftColumn"> 
               <input type="text" id="store" placeholder="Store" onChange={handleChange}/>
             </div>
-            <div className="col-75"> 
+            <div className="rightColumn"> 
               <input type="text" id="product" placeholder="Product" onChange={handleChange}/>
             </div>
           </div>
@@ -70,7 +70,7 @@ const Shopping = () => {
             <div className="leftColumn"> 
               <input type="text" id="price" placeholder="Price" onChange={handleChange}/>
             </div>
-            <div className="col-75"> 
+            <div className="rightColumn"> 
               <input type="text" id="quantity" placeholder="Quantity" onChange={handleChange}/>
             </div>
           </div>
@@ -78,7 +78,7 @@ const Shopping = () => {
             <div className="leftColumn"> 
               <input type="text" id="name" placeholder="Name" onChange={handleChange}/>
             </div>
-            <div className="col-75"> 
+            <div className="rightColumn"> 
               <input type="text" id="dateCreated" placeholder="Date Createdd" onChange={handleChange}/>
             </div>
           </div>
