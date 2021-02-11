@@ -86,19 +86,19 @@ const Shopping = () => {
             <button type="submit">Send</button> 
           </div>
         </form> 
-        <ul>
+        <table>
             {data.map(item => {
               return (
-              <li key={item.id}>
-                {item.product} &nbsp; 
-                {item.price} &nbsp; 
-                {item.store} &nbsp; 
-                {item.quantity} &nbsp; 
-                {item.name} &nbsp; 
-                {item.dateCreated}
-              </li> )}
+              <row key={item.id}>
+               <td>{item.product}</td> 
+               <td>{item.price}</td>  
+               <td>{item.store}</td> 
+               <td>{item.quantity}</td> 
+               <td>{item.name}</td>  
+               <td>{item.dateCreated}</td> 
+              </row>)}
               )}
-        </ul>
+        </table>
       </Card>    
     )
 }
