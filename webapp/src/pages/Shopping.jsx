@@ -86,7 +86,7 @@ const Shopping = () => {
             <button type="submit">Send</button> 
           </div>
         </form> 
-        <table>
+        <table style={{fontSize:10}}>
             {data.map(item => {
               return (
               <row key={item.id}>
