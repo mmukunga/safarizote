@@ -2,7 +2,8 @@
   .Current {
     border: 4px solid #eee;
     padding: 1px;
-    margin:5px;
+    margin: 0 auto;
+    width: 200px;
   }
 
   .CellDiv {
