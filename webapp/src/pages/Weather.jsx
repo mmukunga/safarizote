@@ -185,8 +185,8 @@ import Card from './Card';
     const unix_tm = props.weather.dt;
     return ( 
       <div className="WeatherCard"> 
+         <div  className="Current">
           Cod: {props.weather.cod} Date: {new Date(unix_tm*1000).toLocaleDateString()}
-          <div style={{textAlign: 'center', border: '1px solid red'}}>
             <img src={`${IMG_URL}/${props.weather.weather[0].icon}.png`} 
                   alt="wthr img" 
                   className="wthrImg"/>
