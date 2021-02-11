@@ -59,16 +59,28 @@ const Shopping = () => {
         <p>Shoppings!!</p>
         <form className="form-container" onSubmit={handleSubmit}>
           <div className="row">
-            <input type="text" id="store" placeholder="Store" className="leftColumn" onChange={handleChange}/>
-            <input type="text" id="product" placeholder="Product" onChange={handleChange}/>
+            <div className="leftColumn"> 
+              <input type="text" id="store" placeholder="Store" onChange={handleChange}/>
+            </div>
+            <div className="col-75"> 
+              <input type="text" id="product" placeholder="Product" onChange={handleChange}/>
+            </div>
           </div>
           <div className="row">
-            <input type="text" id="price" placeholder="Price" className="leftColumn" onChange={handleChange}/>
-            <input type="text" id="quantity" placeholder="Quantity" onChange={handleChange}/>
+            <div className="leftColumn"> 
+              <input type="text" id="price" placeholder="Price" onChange={handleChange}/>
+            </div>
+            <div className="col-75"> 
+              <input type="text" id="quantity" placeholder="Quantity" onChange={handleChange}/>
+            </div>
           </div>
           <div className="row">
-            <input type="text" id="name" placeholder="Name" className="leftColumn" onChange={handleChange}/>
-            <input type="text" id="dateCreated" placeholder="Date" onChange={handleChange}/>
+            <div className="leftColumn"> 
+              <input type="text" id="name" placeholder="Name" onChange={handleChange}/>
+            </div>
+            <div className="col-75"> 
+              <input type="text" id="dateCreated" placeholder="Date Createdd" onChange={handleChange}/>
+            </div>
           </div>
           <div className="row">
             <button type="submit">Send</button> 
