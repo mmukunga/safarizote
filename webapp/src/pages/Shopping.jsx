@@ -59,93 +59,21 @@ const Shopping = () => {
         <p>Shoppings!!</p>
         <form className="form-container" onSubmit={handleSubmit}>
           <div className="row">
-            <div className="col-25"> 
-                <label htmlFor="store">Store</label>
-            </div>
-            <div className="col-75"> 
-            <input
-                type="store"
-                name="store"
-                placeholder="Store"
-                onChange={handleChange}
-                required
-            />
-            </div>
+            <input type="text" id="store" placeholder="Store" className="leftColumn" onChange={handleChange}/>
+            <input type="text" id="product" placeholder="Product" onChange={handleChange}/>
           </div>
           <div className="row">
-            <div className="col-25"> 
-                <label htmlFor="product">Product</label>
-            </div>
-            <div className="col-75"> 
-            <input
-                type="product"
-                name="product"
-                placeholder="Product"
-                onChange={handleChange}
-                required
-            />
-            </div>
+            <input type="text" id="price" placeholder="Price" className="leftColumn" onChange={handleChange}/>
+            <input type="text" id="quantity" placeholder="Quantity" onChange={handleChange}/>
           </div>
           <div className="row">
-            <div className="col-25"> 
-              <label htmlFor="price">Price</label>
-            </div>
-            <div className="col-75"> 
-            <input
-                type="price"
-                name="price"
-                placeholder="Store"
-                onChange={handleChange}
-                required
-            />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-25"> 
-              <label htmlFor="quantity">Quantity</label>
-            </div>
-            <div className="col-75"> 
-            <input
-                type="quantity"
-                name="quantity"
-                placeholder="Quantity"
-                onChange={handleChange}
-                required
-            />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-25"> 
-              <label htmlFor="name">Name</label>
-            </div>
-            <div className="col-75"> 
-              <input
-                  type="name"
-                  name="name"
-                  placeholder="Name"
-                  onChange={handleChange}
-                  required
-              />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-25"> 
-              <label htmlFor="dateCreated">Date</label>
-            </div>
-            <div className="col-75">
-              <input
-                  type="dateCreated"
-                  name="dateCreated"
-                  placeholder="Date"
-                  onChange={handleChange}
-                  required
-              />
-            </div>
+            <input type="text" id="name" placeholder="Name" className="leftColumn" onChange={handleChange}/>
+            <input type="text" id="dateCreated" placeholder="Date" onChange={handleChange}/>
           </div>
           <div className="row">
             <button type="submit">Send</button> 
-          </div> 
-        </form>
+          </div>
+        </form> 
         <ul>
             {data.map(item => <li key={item.id}>{item.name}</li>)}
         </ul>

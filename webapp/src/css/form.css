@@ -66,4 +66,11 @@ input[type=submit]:hover {
   content: "";    
   display: table;    
   clear: both;    
-}    
+} 
+
+
+.leftColumn {
+  width: 150px;
+  padding-right: 20px;
+  display: inline-block;
+}
