@@ -70,7 +70,7 @@ input[type=submit]:hover {
 
 .leftColumn, 
 .rightColumn {
-  width: 50%;
+  width: 45%;
   display: inline-block;
 }
 

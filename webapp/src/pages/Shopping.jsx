@@ -87,7 +87,17 @@ const Shopping = () => {
           </div>
         </form> 
         <ul>
-            {data.map(item => <li key={item.id}>{item.name}</li>)}
+            {data.map(item => {
+              return (
+              <li key={item.id}>
+                {item.product} &nbsp; 
+                {item.price} &nbsp; 
+                {item.store} &nbsp; 
+                {item.quantity} &nbsp; 
+                {item.name} &nbsp; 
+                {item.dateCreated}
+              </li> )}
+              )}
         </ul>
       </Card>    
     )
