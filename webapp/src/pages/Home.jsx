@@ -3,9 +3,8 @@ import axios from 'axios';
 import Card from './Card';
 
 const Home = () => {
-    const [data, setData] = useState([]);
-    const [clientInfo, setClientInfo] = useState({});
-
+   const [data, setData] = useState([]);
+   const [clientInfo, setClientInfo] = useState({});
 
    useEffect(() => {
       axios.get('https://extreme-ip-lookup.com/json/')
@@ -20,13 +19,19 @@ const Home = () => {
         axios.get('/api/allHits').then(response => {
           setData(response.data);
         }).catch(err => {
-        console.log(err);
-      });
+            console.log(err);
+        });
     }, [clientInfo]);
 
     return (
         <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
-            <p>Landing Page!</p>
+            <p>People also ask about this:</p>
+            <ul>
+               <li>How much does a safari cost in Kenya?</li>
+               <li>What is the best safari in Kenya?</li>
+               <li>What is the best time to go on safari in Kenya?</li>
+               <li>Is Kenya safe for Safari?</li>
+            </ul>
             <ul className="vList">          
                 { data.map(item => <li key={item.id}>Link: {item.url} Browser: {item.browser}</li>) }
             </ul>
