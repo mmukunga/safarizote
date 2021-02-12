@@ -4,6 +4,7 @@ import Card from './Card';
 
 const Home = () => {
    const [data, setData] = useState([]);
+   const [counts, setCounts] = useState([]);
    const [clientInfo, setClientInfo] = useState({});
 
    useEffect(() => {
@@ -21,11 +22,13 @@ const Home = () => {
           const moviesCount = movies.length;
           console.log('moviesCount:= ' + moviesCount);
           const counts = response.data.map(dataItem => ({
+              id: dataItem.id,
               type: dataItem.url,
               count: response.data.filter(item => item.url === dataItem.url).length
           }));
           console.log(counts);
           setData(response.data);
+          setCounts(counts);
         }).catch(err => {
             console.log(err);
         });
@@ -42,6 +45,9 @@ const Home = () => {
             </ul>
             <ul className="vList">          
                 { data.map(item => <li key={item.id}>Link: {item.url} Browser: {item.browser}</li>) }
+            </ul>
+            <ul className="vList">          
+                { counts.map(item => <li key={item.id}>Link: {item.type} Browser: {item.count}</li>) }
             </ul>
             <p>Number of Hits: { data.length }</p>
         </Card>
