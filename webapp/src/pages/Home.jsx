@@ -17,22 +17,19 @@ const Home = () => {
 
     useEffect(() => {
         axios.get('/api/allHits').then(response => {
+          const movies = response.data.filter(item => item.media_type === 'www.wanja.co.ke');
+          const moviesCount = movies.length;
+          console.log('moviesCount:= ' + moviesCount);
+          const counts = response.data.map(dataItem => ({
+              type: dataItem.url,
+              count: response.data.filter(item => item.url === dataItem.url).length
+          }));
+          console.log(counts);
           setData(response.data);
         }).catch(err => {
             console.log(err);
         });
     }, [clientInfo]);
-
-    const movies = data.filter(item => item.media_type === 'www.wanja.co.ke');
-    const moviesCount = movies.length;
-    console.log('moviesCount:= ' + moviesCount);
-
-    const counts = data.map(dataItem => ({
-        type: dataItem.url,
-        count: data.filter(item => item.url === dataItem.url).length
-    }));
-
-    console.log(counts);
 
     return (
         <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
