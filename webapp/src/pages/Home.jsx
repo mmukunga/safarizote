@@ -18,17 +18,20 @@ const Home = () => {
 
     useEffect(() => {
         axios.get('/api/allHits').then(response => {
-          const movies = response.data.filter(item => item.media_type === 'www.wanja.co.ke');
-          const moviesCount = movies.length;
-          console.log('moviesCount:= ' + moviesCount);
-          const counts = response.data.map(dataItem => ({
+          const mediaTypes = data.map(dataItem => dataItem.url) // get all media types
+              .filter((mediaType, index, array) => array.indexOf(mediaType) === index); // filter out duplicates
+          console.log(mediaTypes);
+
+          const counts = mediaTypes.map(dataItem => ({
               id: dataItem.id,
               type: dataItem.url,
               count: response.data.filter(item => item.url === dataItem.url).length
           }));
+
           console.log(counts);
           setData(response.data);
           setCounts(counts);
+
         }).catch(err => {
             console.log(err);
         });
