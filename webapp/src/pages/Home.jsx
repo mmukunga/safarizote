@@ -18,8 +18,12 @@ const Home = () => {
 
     useEffect(() => {
         axios.get('/api/allHits').then(response => {
-          const mediaTypes = data.map(dataItem => dataItem.url) // get all media types
-              .filter((mediaType, index, array) => array.indexOf(mediaType) === index); // filter out duplicates
+            
+          //const array = response.data;
+
+          const mediaTypes = response.data.map(dataItem => dataItem.url) // get all media types
+          .filter((mediaType, index, array) => array.indexOf(mediaType) === index); // filter out duplicates
+  
           console.log(mediaTypes);
 
           const counts = mediaTypes.map(dataItem => ({
