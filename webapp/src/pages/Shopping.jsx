@@ -89,14 +89,14 @@ const Shopping = () => {
         <table style={{fontSize:10}}>
             {data.map(item => {
               return (
-              <row key={item.id}>
+              <tr key={item.id}>
                <td>{item.product}</td> 
                <td>{item.price}</td>  
                <td>{item.store}</td> 
                <td>{item.quantity}</td> 
                <td>{item.name}</td>  
                <td>{item.dateCreated}</td> 
-              </row>)}
+              </tr>)}
               )}
         </table>
       </Card>    
