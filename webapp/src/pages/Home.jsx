@@ -24,7 +24,7 @@ const Home = () => {
     }, [clientInfo]);
 
     const movies = data.filter(item => item.media_type === 'www.wanja.co.ke');
-    moviesCount = movies.length;
+    const moviesCount = movies.length;
     console.log('moviesCount:= ' + moviesCount);
 
     const counts = data.map(dataItem => ({
