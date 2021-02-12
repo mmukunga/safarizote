@@ -23,6 +23,9 @@ const Home = () => {
         });
     }, [clientInfo]);
 
+    const movies = data.filter(item => item.media_type === 'www.wanja.co.ke');
+    moviesCount = movies.length;
+    console.log('moviesCount:= ' + moviesCount);
 
     const counts = data.map(dataItem => ({
         type: dataItem.url,
@@ -31,11 +34,10 @@ const Home = () => {
 
     console.log(counts);
 
-
     return (
         <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
             <p>People also ask about this:</p>
-            <ul>
+            <ul className="vList">
                <li>How much does a safari cost in Kenya?</li>
                <li>What is the best safari in Kenya?</li>
                <li>What is the best time to go on safari in Kenya?</li>
