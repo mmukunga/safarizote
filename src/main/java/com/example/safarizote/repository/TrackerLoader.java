@@ -23,11 +23,24 @@ public class TrackerLoader implements CommandLineRunner {
             return;
         }
         
+        repository.save(Tracker.builder().url("www.wanja.co.ke").browser("Safari").dateCreated(Instant.now()).build());
+        repository.save(Tracker.builder().url("http://kiwani.com").browser("Microsft Explorer Edge").dateCreated(Instant.now()).build());
         repository.save(Tracker.builder().url("https://mahi.org").browser("Mozilla Firefox").dateCreated(Instant.now()).build());
         repository.save(Tracker.builder().url("www.wanja.co.ke").browser("Safari").dateCreated(Instant.now()).build());
         repository.save(Tracker.builder().url("http://kiwani.com").browser("Microsft Explorer Edge").dateCreated(Instant.now()).build());
         repository.save(Tracker.builder().url("http://1212.1212.1212:5252/saba.edu").browser("Android").dateCreated(Instant.now()).build());
         repository.save(Tracker.builder().url("https://tulinambo.congo.env").browser("TikTok").dateCreated(Instant.now()).build());
+        repository.save(Tracker.builder().url("www.wanja.co.ke").browser("Safari").dateCreated(Instant.now()).build());
+        repository.save(Tracker.builder().url("http://1212.1212.1212:5252/saba.edu").browser("Android").dateCreated(Instant.now()).build());
+        repository.save(Tracker.builder().url("https://tulinambo.congo.env").browser("TikTok").dateCreated(Instant.now()).build());
+        repository.save(Tracker.builder().url("www.wanja.co.ke").browser("Safari").dateCreated(Instant.now()).build());
+        repository.save(Tracker.builder().url("http://kiwani.com").browser("Microsft Explorer Edge").dateCreated(Instant.now()).build());
+        repository.save(Tracker.builder().url("http://1212.1212.1212:5252/saba.edu").browser("Android").dateCreated(Instant.now()).build());
+        repository.save(Tracker.builder().url("https://tulinambo.congo.env").browser("TikTok").dateCreated(Instant.now()).build());
+        repository.save(Tracker.builder().url("http://kiwani.com").browser("Microsft Explorer Edge").dateCreated(Instant.now()).build());
+        repository.save(Tracker.builder().url("http://1212.1212.1212:5252/saba.edu").browser("Android").dateCreated(Instant.now()).build());
+        repository.save(Tracker.builder().url("https://tulinambo.congo.env").browser("TikTok").dateCreated(Instant.now()).build());
+        repository.save(Tracker.builder().url("www.wanja.co.ke").browser("Safari").dateCreated(Instant.now()).build());
 
         repository.findAll().forEach((tracker) -> {
             logger.info("{}", tracker);

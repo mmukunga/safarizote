@@ -23,6 +23,15 @@ const Home = () => {
         });
     }, [clientInfo]);
 
+
+    const counts = data.map(dataItem => ({
+        type: dataItem.url,
+        count: data.filter(item => item.url === dataItem.url).length
+    }));
+
+    console.log(counts);
+
+
     return (
         <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
             <p>People also ask about this:</p>
