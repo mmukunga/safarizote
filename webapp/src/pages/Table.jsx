@@ -20,7 +20,7 @@ function Table({ children, ...props }) {
     });
 
       return (
-        <table {...props}>
+        <table {...props} style={{fontSize: 10, border: '1px solid black', borderCollapse: 'collapse'}}>
             <Table.TR>
               {headerRow}
             </Table.TR>
