@@ -27,7 +27,6 @@ const Home = () => {
           console.log(mediaTypes);
 
           const counts = mediaTypes.map(dataItem => ({
-              id: dataItem.id,
               type: dataItem.url,
               count: response.data.filter(item => item.url === dataItem.url).length
           }));
