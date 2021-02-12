@@ -87,14 +87,14 @@ const Shopping = () => {
           </div>
         </form> 
         <table style={{fontSize: 10, border: '1px solid black', borderCollapse: 'collapse'}}>
-        <tr key={item.id}>
-               <th>Product</th> 
-               <th>Price</th>  
-               <th>Store</th> 
-               <th>Quantity</th> 
-               <th>Name</th>  
-               <th>DateCreated</th> 
-              </tr>
+            <tr>
+              <th>Product</th> 
+              <th>Price</th>  
+              <th>Store</th> 
+              <th>Quantity</th> 
+              <th>Name</th>  
+              <th>DateCreated</th> 
+            </tr>
             {data.map(item => {
               return (
               <tr key={item.id}>
