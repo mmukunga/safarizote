@@ -49,15 +49,15 @@ const Home = () => {
                <li>What is the best time to go on safari in Kenya?</li>
                <li>Is Kenya safe for Safari?</li>
             </ul>
-            <table style={{ margin: '0 auto', fontSize: 12, border: '1px solid black', textAlign:'left', borderCollapse: 'collapse'}}>  
+            <table style={{ margin: '0 auto', fontSize: 14, border: '1px solid black', textAlign:'left', borderCollapse: 'collapse'}}>  
                <tr>
                  <th></th>
                  <th>Url</th>
                  <th>Hits</th>
                </tr>        
-                {counts.map(item => 
-                  <tr key={item.id}>
-                    <td>{item.id}</td>
+                {counts.map((item,idx) => 
+                  <tr key={idx}>
+                    <td>{idx}</td>
                     <td>{item.type}</td>
                     <td>{item.count}</td>
                   </tr>
