@@ -49,7 +49,8 @@ const Email = () => {
     return (
         <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
             <p>Contact Us!!</p>
-            <form className="form-container" onSubmit={handleSubmit}>
+            <div className="form-container">
+            <form onSubmit={handleSubmit}>
                 <div className="row">
                 <div className="col-25">      
                     <label htmlFor="name">Name</label>
@@ -109,6 +110,7 @@ const Email = () => {
                 <button type="submit">Send</button>
                 </div>  
             </form>
+            </div>
         </Card>   
     );
 }
