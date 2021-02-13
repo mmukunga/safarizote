@@ -84,7 +84,6 @@ import Card from './Card';
   
         const fetchData = async () => {
           axios.post('/api/weather', country, headers).then(response => {
-            console.log(response);
             setWeather(response.data);
           }).catch(err => {
               console.log(err);

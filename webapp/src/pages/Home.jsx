@@ -3,7 +3,6 @@ import axios from 'axios';
 import Card from './Card';
 
 const Home = () => {
-   const [data, setData] = useState([]);
    const [counts, setCounts] = useState([]);
    const [clientInfo, setClientInfo] = useState({});
 
@@ -18,21 +17,15 @@ const Home = () => {
 
     useEffect(() => {
         axios.get('/api/allHits').then(response => {
-            
-          //const array = response.data;
 
-          const mediaTypes = response.data.map(dataItem => dataItem.url) // get all media types
-          .filter((mediaType, index, array) => array.indexOf(mediaType) === index); // filter out duplicates
-  
-          console.log(mediaTypes);
+          const mediaTypes = response.data.map(dataItem => dataItem.url)
+          .filter((mediaType, index, array) => array.indexOf(mediaType) === index);
 
           const counts = mediaTypes.map(dataItem => ({
               type: dataItem,
               count: response.data.filter(item => item.url == dataItem).length
           }));
 
-          console.log(counts);
-          setData(response.data);
           setCounts(counts);
 
         }).catch(err => {

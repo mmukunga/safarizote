@@ -41,7 +41,6 @@ const Email = () => {
             phone: state.phone,
             message: state.message
         }).then(response => {
-            console.log(response);
             setReplyMsg(response.data);
             clearState();
         });

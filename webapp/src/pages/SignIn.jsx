@@ -20,16 +20,11 @@ const reducer = (state, action) => {
 
 const SignIn = (props) => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
-
     const { from } = props.location.state || { from: { pathname: "/" } };
-    console.log(from);
-
 
     const handleChange = (event) => {
         dispatch({type: 'SET_EMAIL', payload: event.target})
     }
-
-    console.log('!!BINGO!!');
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -37,9 +32,7 @@ const SignIn = (props) => {
             email: state.email,
             password: state.password
         }).then(response => {
-            console.log(response);
             localStorage.setItem('token', response.data);
-            console.log('XXXUserTokenXXX:= ' + localStorage.getItem('token'));
         });
     }
 
@@ -48,8 +41,6 @@ const SignIn = (props) => {
 
     if (userToken !== null) {
         console.log(userToken);
-        console.log('!!!!REDIRECT!!!! FROM');
-        console.log(from);
         return <Redirect to={from} />;
     }
 
