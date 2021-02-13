@@ -21,7 +21,7 @@ const AboutUs = () => {
            <ul className="vList">          
               {names.map((name, i) => <li key={i}>{name}</li>)}
            </ul>
-           <button className="BigButton btn-primary" onClick={() => setNames(prev => [...prev, "frank"])}>Add Frank</button>
+           <button className="lg-button btn-primary" onClick={() => setNames(prev => [...prev, "frank"])}>Add Frank</button>
         </Card>
     )
 }

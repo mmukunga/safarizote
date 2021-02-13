@@ -106,7 +106,7 @@ const Email = () => {
                 </div> 
                 </div>
                 <div className="row">
-                  <button type="submit" className="BigButton btn-primary">Send Message</button>
+                  <button type="submit" className="lg-button btn-primary">Send Message</button>
                 </div>  
             </form>
             </div>
