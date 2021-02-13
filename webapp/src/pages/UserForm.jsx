@@ -88,7 +88,7 @@ const UserForm =
                     </div>    
                 </div>    
                 <div className="row">    
-                    <input type="submit" value="Submit"/>    
+                    <input type="submit" value="Submit" className="BigButton btn-primary"/>   
                 </div>    
             </form>    
             </div>    
