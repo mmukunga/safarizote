@@ -91,7 +91,7 @@ table, th, td {
 
 .lg-button {
   background-color: #337ab7;
-  width: calc(100% - 10px);
+  width: 100%;
   padding: 10px 0 10px 0;
   color:  white;
   cursor: pointer;

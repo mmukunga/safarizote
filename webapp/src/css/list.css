@@ -14,23 +14,19 @@
   vertical-align: middle;
   border-radius: 2px;
   text-decoration: none;
+  color: #0000FF;
 }
 .Nav_link:visited {
   border:1px solid #f8ecd5;
 }
+
 .Nav_link:hover {
   color: #61dafb;
 }
+
 .Nav_link:active {
   color: teal;
 }
-
-/*
-.vlContainer {
-   padding: 1em;
-   text-align: left;
-   border: 1px solid #eee;
-} */
 
 .vList{
   margin: 0 auto;
