@@ -87,12 +87,29 @@ table, th, td {
 
 .BigButton {
   background-color: green;
-  width: inherit;
-  box-sizing:border-box;
-  margin: 0 auto;
-  padding: 10;
+  width: calc(100% - 10px);
+  padding: 10px;
   margin-top: 16;
   color:  white;
   border:  none;
   cursor: pointer;
+}
+
+.btn-primary{
+  color:#fff;
+  background-color:#337ab7;
+  border-color:#2e6da4
+}
+
+.btn-primary.focus,
+.btn-primary:focus{
+  color:#fff;
+  background-color:#286090;
+  border-color:#122b40
+}
+
+.btn-primary:hover{
+  color:#fff;
+  background-color:#286090;
+  border-color:#204d74
 }
