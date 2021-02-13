@@ -84,3 +84,14 @@ table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
 }
+
+.BigButton {
+  background-color: green;
+  width: calc(100% - 40px);
+  margin: 0 auto;
+  padding: 10;
+  margin-top: 16;
+  color:  white;
+  border:  none;
+  cursor: pointer;
+}

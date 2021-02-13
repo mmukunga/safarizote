@@ -39,14 +39,14 @@ const Home = () => {
 
     return (
         <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
-            <p>People also ask about this:</p>
+            <p style={{ margin: '20px', fontSize: 14, textAlign: 'left'}}>People also ask about this:</p>
             <ul className="vList">
                <li>How much does a safari cost in Kenya?</li>
                <li>What is the best safari in Kenya?</li>
                <li>What is the best time to go on safari in Kenya?</li>
                <li>Is Kenya safe for Safari?</li>
             </ul>
-            <table style={{ margin: '20px', fontSize: 14, border: '2px solid red', textAlign:'left', borderCollapse: 'collapse'}}>  
+            <table style={{ width: '100%',  margin: '20px', fontSize: 14, border: '2px solid red', textAlign:'left', borderCollapse: 'collapse'}}>  
                <tr>
                  <th></th>
                  <th>Url</th>
