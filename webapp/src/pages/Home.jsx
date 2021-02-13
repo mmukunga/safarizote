@@ -46,7 +46,7 @@ const Home = () => {
                <li>What is the best time to go on safari in Kenya?</li>
                <li>Is Kenya safe for Safari?</li>
             </ul>
-            <table style={{ width: '100%', boxSizing: 'border-box', fontSize: 14, border: '2px solid white', textAlign: 'left', borderCollapse: 'collapse'}}>  
+            <table style={{ width: '100%', boxSizing: 'border-box', fontSize: 14, border: '2px solid silver', textAlign: 'left', borderCollapse: 'collapse'}}>  
               <tr>
                 <th></th>
                 <th>Url</th>
