@@ -3,6 +3,7 @@ import axios from 'axios';
 import Card from './Card';
 
 const Home = () => {
+   const [data, setData] = useState([]);
    const [counts, setCounts] = useState([]);
    const [clientInfo, setClientInfo] = useState({});
 
@@ -17,15 +18,18 @@ const Home = () => {
 
     useEffect(() => {
         axios.get('/api/allHits').then(response => {
-
-          const mediaTypes = response.data.map(dataItem => dataItem.url)
-          .filter((mediaType, index, array) => array.indexOf(mediaType) === index);
+          const mediaTypes = response.data.map(dataItem => dataItem.url) 
+          .filter((mediaType, index, array) => array.indexOf(mediaType) === index); // filter out duplicates
+  
+          console.log(mediaTypes);
+          console.log('ClientInfo:= ' + clientInfo);
 
           const counts = mediaTypes.map(dataItem => ({
               type: dataItem,
               count: response.data.filter(item => item.url == dataItem).length
           }));
 
+          setData(response.data);
           setCounts(counts);
 
         }).catch(err => {
@@ -42,7 +46,7 @@ const Home = () => {
                <li>What is the best time to go on safari in Kenya?</li>
                <li>Is Kenya safe for Safari?</li>
             </ul>
-            <table style={{ margin: '0 auto', fontSize: 14, border: '1px solid black', textAlign:'left', borderCollapse: 'collapse'}}>  
+            <table style={{ margin: '20px', fontSize: 14, border: '2px solid red', textAlign:'left', borderCollapse: 'collapse'}}>  
                <tr>
                  <th></th>
                  <th>Url</th>
@@ -56,7 +60,7 @@ const Home = () => {
                   </tr>
                 )}
             </table>
-            <p>Number of Hits: { data.length }</p>
+            <p style={{ margin: '20px', fontSize: 14, textAlign:'left'}}>Number of Hits: { data.length }</p>
         </Card>
     )
 }
