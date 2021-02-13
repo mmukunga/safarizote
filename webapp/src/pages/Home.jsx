@@ -46,19 +46,19 @@ const Home = () => {
                <li>What is the best time to go on safari in Kenya?</li>
                <li>Is Kenya safe for Safari?</li>
             </ul>
-            <table style={{ width: 'inherit', boxSizing: 'border-box',  margin: '20px', fontSize: 14, border: '2px solid red', textAlign:'left', borderCollapse: 'collapse'}}>  
-               <tr>
-                 <th></th>
-                 <th>Url</th>
-                 <th>Hits</th>
-               </tr>        
-                {counts.map((item,idx) => 
-                  <tr key={idx}>
-                    <td>{idx}</td>
-                    <td>{item.type}</td>
-                    <td>{item.count}</td>
-                  </tr>
-                )}
+            <table style={{ width: '100%', boxSizing: 'border-box', fontSize: 14, border: '2px solid white', textAlign: 'left', borderCollapse: 'collapse'}}>  
+              <tr>
+                <th></th>
+                <th>Url</th>
+                <th>Hits</th>
+              </tr>        
+               {counts.map((item,idx) => 
+                 <tr key={idx}>
+                   <td>{idx}</td>
+                   <td>{item.type}</td>
+                   <td>{item.count}</td>
+                 </tr>
+               )}
             </table>
             <p style={{ margin: '20px', fontSize: 14, textAlign:'left'}}>Number of Hits: { data.length }</p>
         </Card>
