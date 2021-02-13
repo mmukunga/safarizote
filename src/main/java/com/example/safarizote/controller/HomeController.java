@@ -23,15 +23,18 @@ public class HomeController {
 
     @RequestMapping(value = "/api/allHits",  method={RequestMethod.GET})
     public ResponseEntity<List<Tracker>> findAll() {
-        System.out.println("Hello, the time at the server is now " + new Date());
+        System.out.println("Tracker.findAll() , the time at the server is now " + new Date());
         List<Tracker> visits = repository.findAll();
-        System.out.println("Hello, the time at the server is now " + new Date());
-        System.out.println("findSafaris() End OK!");
+        System.out.println("Tracker.findAll() , the time at the server is now " + new Date());
+        System.out.println("Tracker.findAll()  End OK!");
         return new ResponseEntity<>(visits, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/api/saveVisit",  method={RequestMethod.POST})
     public void save(@RequestBody Tracker visit) {
+        System.out.println("Tracker.findAll()  Start...");
+        System.out.println(visit);
         repository.save(visit);
+        System.out.println("Tracker.findAll()  End OK!");
     }
 }
