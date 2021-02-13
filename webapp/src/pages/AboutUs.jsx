@@ -16,8 +16,10 @@ const AboutUs = () => {
            <p>As you Explore our great Destinations we strive to showcase the diversity and the beauty of all 
            it offers. We will go the extra mile to ensure every area visited is met with high expectations and
            results.</p>
+           <strong>Karibu Sana</strong><br/>
+           <strong>Explore Safaris by Maji Ltd</strong>
            <ul className="vList">          
-              { names.map((name, i) => <li key={i}>{name}</li>) }
+              {names.map((name, i) => <li key={i}>{name}</li>)}
            </ul>
            <button onClick={() => setNames(prev => [...prev, "frank"])}>Add Frank</button>
         </Card>
