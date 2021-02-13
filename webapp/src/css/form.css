@@ -87,7 +87,8 @@ table, th, td {
 
 .BigButton {
   background-color: green;
-  width: inherit - 10px;
+  width: inherit;
+  box-sizing:border-box;
   margin: 0 auto;
   padding: 10;
   margin-top: 16;
