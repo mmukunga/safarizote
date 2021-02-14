@@ -36,7 +36,7 @@ const BackUp = () => {
         <div className="item">
           <checkbox name={item.name} onChange={e => onSelect(item.name, e)}/>
           <lable>Checked item name : {checkedItems["check-box-1"]} </lable>
-          <input type="checkbox" name={item.name} checked={item.checked || false} onChange={e => onSelect(e)}/>
+          <input type="checkbox" name={item.name}  onChange={e => onSelect(e)}/>
           <span onClick={() => setCollapsed(!collapsed)}>{item.name}</span>
           {!collapsed && item.nodes && 
             <div style={{paddingLeft: '1rem', border: '1px solid red'}}>
