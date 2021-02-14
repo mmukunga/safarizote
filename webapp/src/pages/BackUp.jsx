@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Card from './Card';
 
 const tree = [
-    {"name": "Root Node", "collapsed": true,
-     "nodes": [{"name": "Node 1", "collapsed": true,
-     "nodes": [{"name": "Sub node"}]}, {"name": "Node 2", "collapsed": true,
-     "nodes": [{"name": "Sub node "}]}, {"name": "Node 3", "collapsed": true, "nodes": [{"name": "Sub node"}]
+    {"name": "Root Node", "collapsed": true, "checked": false,
+     "nodes": [{"name": "Node 1", "collapsed": true, "checked": false,
+     "nodes": [{"name": "Sub node", "checked": false}]}, {"name": "Node 2", "collapsed": true, "checked": false,
+     "nodes": [{"name": "Sub node ", "checked": false}]}, {"name": "Node 3", "collapsed": true, "checked": false, "nodes": [{"name": "Sub node", "checked": false}]
      }]
     }];
 
@@ -33,7 +33,7 @@ const BackUp = () => {
         const [collapsed, setCollapsed] = useState(item.collapsed);
         return (
         <div className="item">
-          <input type="checkbox" name={item.name} checked={checkedItems.get(item.name) || false} onChange={e => onSelect(e)}/>
+          <input type="checkbox" name={item.name} checked={item.checked || false} onChange={e => onSelect(e)}/>
           <span onClick={() => setCollapsed(!collapsed)}>{item.name}</span>
           {!collapsed && item.nodes && 
             <div style={{paddingLeft: '1rem', border: '1px solid red'}}>
