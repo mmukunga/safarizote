@@ -18,8 +18,8 @@ const BackUp = () => {
         </div>;
     }
 
-    const onSelect = (target, event) => {
-      console.log('Checked item target :' + target);
+    const onSelect = ( event) => {
+      console.log('Checked item target :' + event);
       const {name, value} =  event.target;
       console.log('Checked item name :' + checkedItems[name]);
       setCheckedItems({...checkedItems, [name] : value });
