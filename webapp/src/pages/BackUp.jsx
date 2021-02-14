@@ -44,7 +44,7 @@ const BackUp = () => {
         return (
         <div className="item">
           {item.name}
-          <input type='checkbox' name={item.name} checked={checkedItems[item.name]} onChange={handleChange} />
+          <input type='checkbox' name={item.name} checked={checkedItems[item.name]} onChange={handleChange} /> <br/><br/>
           <span onClick={() => setCollapsed(!collapsed)}>{item.name}</span>
           {!collapsed && item.nodes && 
             <div style={{paddingLeft: '1rem', border: '1px solid red'}}>
