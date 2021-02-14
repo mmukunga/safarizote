@@ -9,7 +9,7 @@ const tree = [
     }];
 
 const BackUp = () => {
-    
+    const [checkedItems, setCheckedItems] = useState({});
     function TreeList(props) {
         const {list} = props;
         return <div>
@@ -17,17 +17,24 @@ const BackUp = () => {
         </div>;
     }
 
+    const onSelect = (event) => {
+      setCheckedItems({...checkedItems, [event.target.name] : event.target.checked });
+    }
+
     const TreeItem = (props) => {
         const {item} = props;
         const [collapsed, setCollapsed] = useState(item.collapsed);
-        return <div className="item">
+        return (
+        <div className="item">
+           <checkbox name="file" onChange={e => onSelect(nodes.name, e.target.checked)}/>
+           <lable>Checked item name : {checkedItems["check-box-1"]} </lable>
           <span onClick={() => setCollapsed(!collapsed)}>{item.name}</span>
           {!collapsed && item.nodes && 
-            <div style={{paddingLeft: "1rem"}}>
+            <div style={{paddingLeft: '1rem', border: '1px solid red'}}>
               <TreeList list={item.nodes}/>
             </div>
           }
-        </div>
+        </div>)
       }
 
     return (
