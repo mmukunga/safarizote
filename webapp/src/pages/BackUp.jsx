@@ -16,12 +16,9 @@ import Card from './Card';
       }]
   }; 
 
-  const BackUp = (props) => {
-    const [state, setState] = useState(initialState);
-    
-
-    const Widget = () => {
-      const [nodes, setNodes] = useState(initialState);
+  const BackUp = () => {
+    const Widget = (props) => {
+      const [nodes, setNodes] = useState(props.state);
       const [checked,  setChecked]  = useState([]);
       const [expanded, setExpanded] = useState([]);
       return (
@@ -58,7 +55,7 @@ import Card from './Card';
     return (
       <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
          <h1>Tree BackUp</h1>
-         <Widget />
+         <Widget state={initialState.nodes}/>
       </Card>
     )
 }
