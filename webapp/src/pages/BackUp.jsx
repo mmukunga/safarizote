@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const tree = [
     {"name": "Root Node", "collapsed": true,
@@ -30,7 +30,7 @@ const BackUp = () => {
         const [collapsed, setCollapsed] = useState(item.collapsed);
         return (
         <div className="item">
-           <input type="checkbox" checked={true} onChange={e => onSelect(nodes.name, e.target.checked)}/>
+           <input type="checkbox" checked={true} onChange={e => onSelect(e)}/>
            <lable>Checked item name : {checkedItems["check-box-1"]} </lable>
           <span onClick={() => setCollapsed(!collapsed)}>{item.name}</span>
           {!collapsed && item.nodes && 
