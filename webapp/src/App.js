@@ -31,6 +31,7 @@ const AboutUs = React.lazy(() => import('./pages/AboutUs'));
 const Safaris = React.lazy(() => import('./pages/Safaris'));
 const Shopping = React.lazy(() => import('./pages/Shopping'));
 const Lotto  = React.lazy(() => import('./pages/Lotto'));
+const BackUp  = React.lazy(() => import('./pages/BackUp'));
 const SignIn = React.lazy(() => import('./pages/SignIn'));
 const Email = React.lazy(() => import('./pages/Email'));
 const Weather = React.lazy(() => import('./pages/Weather'));
@@ -57,6 +58,7 @@ function App() {
         <option value="/tipping">Tipping</option>
         <option value="/shopping">Shopping</option>
         <option value="/stock">Stock Market</option>
+        <option value="/backUp">Dir BackUp</option>
       </select>
     );
   };
@@ -126,6 +128,7 @@ function App() {
               <Route path="/email" component={Email} />
               <Route path="/weather" component={Weather} />
               <Private path="/stock" component={Stock} exact/>
+              <Private path="/backUp" component={BackUp} exact/>
           </Switch>
         </Layout>
       </Card> 

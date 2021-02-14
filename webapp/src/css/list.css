@@ -8,13 +8,13 @@
   border-radius: 2px;
   border-right: 5px solid #f8ecd5;
   text-decoration: none;
+  color: #0000FF;
 }
 
 .Nav_link:link {
   vertical-align: middle;
   border-radius: 2px;
   text-decoration: none;
-  color: #0000FF;
 }
 .Nav_link:visited {
   border:1px solid #f8ecd5;
