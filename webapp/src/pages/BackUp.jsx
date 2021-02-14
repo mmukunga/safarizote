@@ -18,7 +18,8 @@ const BackUp = () => {
         </div>;
     }
 
-    const onSelect = (event) => {
+    const onSelect = (target, event) => {
+      console.log('Checked item target :' + target);
       const {name, value} =  event.target;
       console.log('Checked item name :' + checkedItems[name]);
       setCheckedItems({...checkedItems, [name] : value });
@@ -33,6 +34,8 @@ const BackUp = () => {
         const [collapsed, setCollapsed] = useState(item.collapsed);
         return (
         <div className="item">
+          <checkbox name={item.name} onChange={e => onSelect(item.name, e)}/>
+          <lable>Checked item name : {checkedItems["check-box-1"]} </lable>
           <input type="checkbox" name={item.name} checked={item.checked || false} onChange={e => onSelect(e)}/>
           <span onClick={() => setCollapsed(!collapsed)}>{item.name}</span>
           {!collapsed && item.nodes && 
