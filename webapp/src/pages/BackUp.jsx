@@ -18,6 +18,7 @@ const BackUp = () => {
     }
 
     const onSelect = (event) => {
+      console.log('Checked item name :' + checkedItems["check-box-1"]);
       setCheckedItems({...checkedItems, [event.target.name] : event.target.checked });
     }
 
@@ -30,8 +31,7 @@ const BackUp = () => {
         const [collapsed, setCollapsed] = useState(item.collapsed);
         return (
         <div className="item">
-           <input type="checkbox" checked={true} onChange={e => onSelect(e)}/>
-           <lable>Checked item name : {checkedItems["check-box-1"]} </lable>
+           <input type="checkbox" checked={false} onChange={e => onSelect(e)}/>
           <span onClick={() => setCollapsed(!collapsed)}>{item.name}</span>
           {!collapsed && item.nodes && 
             <div style={{paddingLeft: '1rem', border: '1px solid red'}}>
@@ -42,10 +42,10 @@ const BackUp = () => {
       }
 
     return (
-      <div className='BackUp' id='treeBackUp'>
+      <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
          <h1>Tree BackUp</h1>
          {<TreeList list={tree}/>}
-      </div>
+      </Card>
     )
 }
 export default BackUp;
