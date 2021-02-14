@@ -10,13 +10,22 @@ const tree = [
     }];
 
 const BackUp = () => {
-    const [checkedItems, setCheckedItems] = useState([]);
+    //const [checkedItems, setCheckedItems] = useState([]);
+    const [checkedItems, setCheckedItems] = useState({}); //plain object as state
     function TreeList(props) {
         const {list} = props;
         return <div>
           {list.map(f => <TreeItem key={f.name} item={f}/>)}
         </div>;
     }
+
+    const handleChange = (event) => {
+      setCheckedItems({...checkedItems, [event.target.name] : event.target.checked });
+    }
+
+    React.useEffect(() => {
+      console.log("checkedItems: ", checkedItems);
+    }, [checkedItems]);  
 
     const onSelect = ( event) => {
       console.log('Checked item target :' + event);
@@ -34,9 +43,8 @@ const BackUp = () => {
         const [collapsed, setCollapsed] = useState(item.collapsed);
         return (
         <div className="item">
-          <checkbox name={item.name} onChange={e => onSelect(item.name, e)}/>
-          <lable>Checked item name : {checkedItems["check-box-1"]} </lable>
-          <input type="checkbox" name={item.name}  onChange={e => onSelect(e)}/>
+          {item.name}
+          <input type='checkbox' name={item.name} checked={checkedItems[item.name]} onChange={handleChange} />
           <span onClick={() => setCollapsed(!collapsed)}>{item.name}</span>
           {!collapsed && item.nodes && 
             <div style={{paddingLeft: '1rem', border: '1px solid red'}}>
