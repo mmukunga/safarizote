@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Card from './Card';
 
 const tree = [
     {"name": "Root Node", "collapsed": true,
