@@ -3,22 +3,22 @@ import CheckboxTree from "react-checkbox-tree";
 import produce from "immer";
 import Card from './Card';
 
-  const initialState = {
+  const initNodes = {
       checked:  [],
       expanded: [],  
       nodes: [{
         value: 'mars',
         label: 'Mars',
         children: [
-            { value: 'phobos', label: 'Phobos' },
+            { value: 'phobos', label: 'Phobos', disabled: true },
             { value: 'deimos', label: 'Deimos' },
         ],
       }]
   }; 
 
   const BackUp = () => {
-    const Widget = (props) => {
-      const [nodes, setNodes] = useState(props.state);
+    const Widget = () => {
+      const [nodes, setNodes] = useState(initNodes);
       const [checked,  setChecked]  = useState([]);
       const [expanded, setExpanded] = useState([]);
       return (
@@ -55,7 +55,7 @@ import Card from './Card';
     return (
       <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
          <h1>Tree BackUp</h1>
-         <Widget state={initialState.nodes}/>
+         <Widget />
       </Card>
     )
 }
