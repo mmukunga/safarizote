@@ -26,7 +26,7 @@ const BackUp = () => {
         const [collapsed, setCollapsed] = useState(item.collapsed);
         return (
         <div className="item">
-           <checkbox name="file" onChange={e => onSelect(nodes.name, e.target.checked)}/>
+           <input type="checkbox" checked={true} onChange={e => onSelect(nodes.name, e.target.checked)}/>
            <lable>Checked item name : {checkedItems["check-box-1"]} </lable>
           <span onClick={() => setCollapsed(!collapsed)}>{item.name}</span>
           {!collapsed && item.nodes && 
