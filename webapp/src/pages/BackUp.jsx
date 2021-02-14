@@ -21,6 +21,10 @@ const BackUp = () => {
       setCheckedItems({...checkedItems, [event.target.name] : event.target.checked });
     }
 
+    useEffect(() => {
+      console.log("CheckedItems:= ", checkedItems);
+    }, [checkedItems]); 
+  
     const TreeItem = (props) => {
         const {item} = props;
         const [collapsed, setCollapsed] = useState(item.collapsed);
@@ -38,7 +42,7 @@ const BackUp = () => {
       }
 
     return (
-      <div className='someClass' id='treeBackUp'>
+      <div className='BackUp' id='treeBackUp'>
          <h1>Tree BackUp</h1>
          {<TreeList list={tree}/>}
       </div>
