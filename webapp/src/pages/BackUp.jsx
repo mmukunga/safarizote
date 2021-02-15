@@ -51,7 +51,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
             <li key={item.label} style={style.itemStyle} onClick={() => toggle(item)}>
               <input readOnly type="checkbox" checked={item.checked || false} />
               {item.label}           
-              {item.children.length > 0 &&
+              {item.children && item.children.length > 0 &&
                 <ul>
                   {item.children.map(item => {
                     return (
