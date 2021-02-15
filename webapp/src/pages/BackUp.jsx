@@ -74,7 +74,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
   return (
     <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
         <h1>Tree BackUp</h1>
-        <Widget options={options}
+        <Widget options={initNodes}
                 onChange={data => {
                   console.log(data);
                 }}/>
