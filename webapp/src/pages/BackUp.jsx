@@ -9,61 +9,64 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     { label: 'Item Two' }
   ];
 
-  const initNodes = {
-      checked:  [],
-      expanded: [],  
-      nodes: [{
+  const initNodes = [{
         value: 'mars',
         label: 'Mars',
         children: [
             { value: 'phobos', label: 'Phobos', disabled: false },
             { value: 'deimos', label: 'Deimos' },
         ],
-      }]
-  }; 
+      }];
 
   const BackUp = () => {
     console.log('ClickMeg1');
 
-    const Widget = ({ options, onChange }) => {
-      const [data, setData] = React.useState(options);
     
-      const toggle = index => {
-        const newData = [...data];
-        newData.splice(index, 1, {
-          label: data[index].label,
-          checked: !data[index].checked
-        });
-        setData(newData);
-        onChange(newData.filter(x => x.checked));
-      };
-    
-      return (
-        <div>
-          {data.map((item, index) => (
-            <label key={item.label}>
-              <input
-                readOnly
-                type="checkbox"
-                checked={item.checked || false}
-                onClick={() => toggle(index)}
-              />
-              {item.label}
-            </label>
-          ))}
-        </div>
-      );
+const style = {
+  listContainer: {
+    listStyle: 'none',
+    paddingLeft: 0
+  },
+  itemStyle: {
+    cursor: 'pointer',
+    padding: 5
+  }
+};
+
+  const Widget = ({ options, onChange }) => {
+    const [data, setData] = React.useState(options);
+
+    const toggle = item => {
+      data.forEach((_, key) => {
+        if (data[key].label === item.label) data[key].checked = !item.checked;
+      });
+      setData([...data]);
+      onChange(data);
     };
 
-    console.log('ClickMeg3');
     return (
-      <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
-         <h1>Tree BackUp</h1>
-         <Widget options={options}
-                 onChange={data => {
-                   console.log(data);
-                 }}/>
-      </Card>
-    )
+      <ul style={style.listContainer}>
+        {data.map(item => {
+          return (
+            <li key={item.label} style={style.itemStyle} onClick={() => toggle(item)}>
+              <input readOnly type="checkbox" checked={item.checked || false} />
+              {item.label}
+            </li>
+          );
+        })}
+      </ul>
+    );
+  };
+
+  console.log('ClickMeg3');
+  return (
+    <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
+        <h1>Tree BackUp</h1>
+        <Widget options={options}
+                onChange={data => {
+                  console.log(data);
+                }}/>
+    </Card>
+  )
 }
 export default BackUp;
