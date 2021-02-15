@@ -24,7 +24,9 @@ import Card from './Card';
           padding: 5
         }
     };
+
     console.log('ClickMeg 2'); 
+    
     const Widget = ({ options, onChange }) => {
       const [data, setData] = React.useState(options);
 
@@ -39,7 +41,9 @@ import Card from './Card';
         setData([...data]);
         onChange(data);
       };
+
       console.log('ClickMeg 5'); 
+
       return (
         <ul style={style.listContainer}>
         {data.map(item => {
