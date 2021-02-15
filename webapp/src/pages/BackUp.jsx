@@ -2,6 +2,12 @@ import React, { useEffect, useState } from 'react';
 import CheckboxTree from "react-checkbox-tree";
 import produce from "immer";
 import Card from './Card';
+import 'react-checkbox-tree/lib/react-checkbox-tree.css';
+
+  const options = [
+    { label: 'Item One' }, 
+    { label: 'Item Two' }
+  ];
 
   const initNodes = {
       checked:  [],
@@ -18,48 +24,45 @@ import Card from './Card';
 
   const BackUp = () => {
     console.log('ClickMeg1');
-    const Widget = () => {
-      const [nodes, setNodes] = useState(initNodes);
-      const [checked,  setChecked]  = useState([]);
-      const [expanded, setExpanded] = useState([]);
-      console.log('ClickMeg2');
+
+    const Widget = ({ options, onChange }) => {
+      const [data, setData] = React.useState(options);
+    
+      const toggle = index => {
+        const newData = [...data];
+        newData.splice(index, 1, {
+          label: data[index].label,
+          checked: !data[index].checked
+        });
+        setData(newData);
+        onChange(newData.filter(x => x.checked));
+      };
+    
       return (
-        <div className="root">
-          <button
-            onClick={() => {
-              console.log('ClickMeg2A');
-              setNodes(
-                produce(nodes.nodes, draftState => {
-                  draftState[0] = {
-                    ...draftState[0]
-                  };
-                  draftState[0].children[1].disabled = true;
-                })
-              );
-              console.log('ClickMeg2A');
-            }}
-          >
-            click to disable
-          </button>
-          <CheckboxTree
-              nodes={nodes.nodes}
-              checked={checked}
-              expanded={expanded}
-              onCheck={s => {
-                setChecked(s);
-              }}
-              onExpand={s => {
-                setExpanded(s);
-              }}
-          />
+        <div>
+          {data.map((item, index) => (
+            <label key={item.label}>
+              <input
+                readOnly
+                type="checkbox"
+                checked={item.checked || false}
+                onClick={() => toggle(index)}
+              />
+              {item.label}
+            </label>
+          ))}
         </div>
       );
     };
+
     console.log('ClickMeg3');
     return (
       <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
          <h1>Tree BackUp</h1>
-         <Widget />
+         <Widget options={options}
+                 onChange={data => {
+                   console.log(data);
+                 }}/>
       </Card>
     )
 }
