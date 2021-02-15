@@ -46,26 +46,26 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
     return (
       <ul style={style.listContainer}>
-        {data.map(item => {
-          return (
-            <li key={item.label} style={style.itemStyle} onClick={() => toggle(item)}>
-              <input readOnly type="checkbox" checked={item.checked || false} />
-              {item.label}           
-              {item.children && item.children.length > 0 &&
-                <ul>
-                  {item.children.map(item => {
-                    return (
-                      <li key={item.label} style={style.itemStyle} onClick={() => toggle(item)}>
-                        <input readOnly type="checkbox" checked={item.checked || false} />
-                        {item.label}
-                      </li>
-                    );
-                  })}
-                </ul>
-              }
-            </li>
-          );
-        })}
+      {data.map(item => {
+        return (
+          <li key={item.label} style={style.itemStyle} onClick={() => toggle(item)}>
+            <input readOnly type="checkbox" checked={item.checked || false} />
+            {item.label}           
+            {item.children && item.children.length > 0 &&
+            <ul>
+            {item.children.map(item => {
+              return (
+                <li key={item.label} style={style.itemStyle} onClick={() => toggle(item)}>
+                  <input readOnly type="checkbox" checked={item.checked || false} />
+                  {item.label}
+                </li>
+              );
+            })}
+            </ul>
+            }
+          </li>
+        );
+      })}
       </ul>
     );
   };
