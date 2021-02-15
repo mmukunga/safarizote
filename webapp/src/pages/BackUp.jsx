@@ -17,14 +17,17 @@ import Card from './Card';
   }; 
 
   const BackUp = () => {
+    console.log('ClickMeg1');
     const Widget = () => {
       const [nodes, setNodes] = useState(initNodes);
       const [checked,  setChecked]  = useState([]);
       const [expanded, setExpanded] = useState([]);
+      console.log('ClickMeg2');
       return (
         <>
           <button
             onClick={() => {
+              console.log('ClickMeg2A');
               setNodes(
                 produce(nodes, draftState => {
                   draftState[0] = {
@@ -33,6 +36,7 @@ import Card from './Card';
                   draftState[0].children[1].disabled = true;
                 })
               );
+              console.log('ClickMeg2A');
             }}
           >
             click to disable
@@ -51,7 +55,7 @@ import Card from './Card';
         </>
       );
     };
-
+    console.log('ClickMeg3');
     return (
       <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
          <h1>Tree BackUp</h1>
