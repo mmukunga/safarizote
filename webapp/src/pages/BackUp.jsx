@@ -26,7 +26,7 @@ import Card from './Card';
     };
 
     console.log('ClickMeg 2'); 
-    
+
     const Widget = ({ options, onChange }) => {
       const [data, setData] = React.useState(options);
 
@@ -35,8 +35,21 @@ import Card from './Card';
         console.log(item);
         data.forEach((_, key) => {
           console.log(data[key].label + ' === ' + item.label);
-          if (data[key].label === item.label) data[key].checked = !item.checked;
+          if (data[key].label === item.label) { 
+            data[key].checked = !item.checked; 
+
+            const children = data[key].children; 
+
+            children.forEach((_, key) => {
+              console.log(children[key].label + ' === ' + item.label);
+              if (children[key].label === item.label) { 
+                children[key].checked = !item.checked; 
+              }
+            });
+
+          }
         });
+
         console.log('ClickMeg 4'); 
         setData([...data]);
         onChange(data);
