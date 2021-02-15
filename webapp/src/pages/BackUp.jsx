@@ -29,7 +29,7 @@ import Card from './Card';
             onClick={() => {
               console.log('ClickMeg2A');
               setNodes(
-                produce(nodes, draftState => {
+                produce(nodes.nodes, draftState => {
                   draftState[0] = {
                     ...draftState[0]
                   };
@@ -42,7 +42,7 @@ import Card from './Card';
             click to disable
           </button>
           <CheckboxTree
-              nodes={nodes}
+              nodes={nodes.nodes}
               checked={checked}
               expanded={expanded}
               onCheck={s => {
