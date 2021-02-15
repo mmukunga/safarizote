@@ -22,16 +22,16 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     console.log('ClickMeg1');
 
     
-const style = {
-  listContainer: {
-    listStyle: 'none',
-    paddingLeft: 0
-  },
-  itemStyle: {
-    cursor: 'pointer',
-    padding: 5
-  }
-};
+  const style = {
+      listContainer: {
+        listStyle: 'none',
+        paddingLeft: 0
+      },
+      itemStyle: {
+        cursor: 'pointer',
+        padding: 5
+      }
+  };
 
   const Widget = ({ options, onChange }) => {
     const [data, setData] = React.useState(options);
