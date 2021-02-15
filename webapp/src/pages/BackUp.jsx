@@ -39,13 +39,14 @@ import Card from './Card';
             data[key].checked = !item.checked; 
 
             const children = data[key].children; 
-
+            console.log('CHILDREN 1..'); 
             children.forEach((_, key) => {
               console.log(children[key].label + ' === ' + item.label);
               if (children[key].label === item.label) { 
                 children[key].checked = !item.checked; 
               }
             });
+            console.log('CHILDREN 2..'); 
 
           }
         });
