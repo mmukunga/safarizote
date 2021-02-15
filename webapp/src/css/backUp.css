@@ -9,3 +9,10 @@
   border: '4 px solid green';
   text-align: left;
 }
+
+
+.root {
+  height: 110;
+  flex-grow: 1;
+  max-width: 400px;
+}

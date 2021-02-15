@@ -10,7 +10,7 @@ import Card from './Card';
         value: 'mars',
         label: 'Mars',
         children: [
-            { value: 'phobos', label: 'Phobos', disabled: true },
+            { value: 'phobos', label: 'Phobos', disabled: false },
             { value: 'deimos', label: 'Deimos' },
         ],
       }]
@@ -24,7 +24,7 @@ import Card from './Card';
       const [expanded, setExpanded] = useState([]);
       console.log('ClickMeg2');
       return (
-        <>
+        <div className="root">
           <button
             onClick={() => {
               console.log('ClickMeg2A');
@@ -52,7 +52,7 @@ import Card from './Card';
                 setExpanded(s);
               }}
           />
-        </>
+        </div>
       );
     };
     console.log('ClickMeg3');
