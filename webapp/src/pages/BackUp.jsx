@@ -21,8 +21,8 @@ import Card from './Card';
       }
 
       return <div className="item">
-        <span onClick={() => setCollapsed(!collapsed)}>{item.name}</span>  &nbsp; &nbsp; 
-          <input name={item.name}  type="checkbox" checked={state.isGoing} onChange={handleChange}/>
+        <input name={item.name} type="checkbox" checked={state.isGoing} onChange={handleChange}/> &nbsp; &nbsp;
+        <span onClick={() => setCollapsed(!collapsed)}>{item.name}</span> 
         {!collapsed && item.nodes && 
           <div style={{paddingLeft: "1rem"}}>
             <TreeList list={item.nodes}/>
