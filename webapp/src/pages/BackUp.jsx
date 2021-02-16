@@ -10,19 +10,19 @@ import Card from './Card';
     function TreeItem(props) {
       const {item} = props;
       const [collapsed, setCollapsed] = useState(item.collapsed);
-      const [checkedValue, setCheckedValue] = useState('');
+      const [state, setState] = useState({isGoing: true});
 
       const handleChange = (event) => {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name  = target.name;
         console.log(target);
-        setCheckedValue({[name]: value});
+        setState({[name]: value});
       }
 
       return <div className="item">
-        <span onClick={() => setCollapsed(!collapsed)}>{item.name}</span>  &nbsp; &nbsp; Is going:
-          <input name="isGoing"  type="checkbox" checked={this.state.isGoing} onChange={handleChange} />
+        <span onClick={() => setCollapsed(!collapsed)}>{item.name}</span>  &nbsp; &nbsp; 
+          <input name={item.name}  type="checkbox" checked={state.isGoing} onChange={handleChange}/>
         {!collapsed && item.nodes && 
           <div style={{paddingLeft: "1rem"}}>
             <TreeList list={item.nodes}/>
