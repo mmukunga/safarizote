@@ -11,7 +11,7 @@ import Card from './Card';
       const {item} = props;
       const [collapsed, setCollapsed] = useState(item.collapsed);
       return <div className="item">
-        <span onClick={() => setCollapsed(!collapsed)}>{item.name}</span>
+        <span onClick={() => setCollapsed(!collapsed)}>{item.name}</span>  &nbsp; &nbsp; A non-breaking
         {!collapsed && item.nodes && 
           <div style={{paddingLeft: "1rem"}}>
             <TreeList list={item.nodes}/>
