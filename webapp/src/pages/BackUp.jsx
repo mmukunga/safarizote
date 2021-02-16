@@ -2,112 +2,33 @@ import React, { useState } from "react";
 import { render } from "react-dom";
 import Card from './Card';
 
-  const initNodes = [
-    { label: 'Item One' }, 
-    { label: 'Item Two' },
-    { label: 'Mars',
-        children: [
-            { label: 'Phobos' },
-            { label: 'Deimos' }
-        ]
-    }
-  ];
-
+  const tree = [{"name":"Root Node","collapsed":true,"nodes":[{"name":"Node 1","collapsed":true,"nodes":[{"name":"Sub node"}]},{"name":"Node 2","collapsed":true,"nodes":[{"name":"Sub node "}]},{"name":"Node 3","collapsed":true,"nodes":[{"name":"Sub node"}]}]}];
   const BackUp = () => {
-
-    const Widget = (props) => {
-      const [state, setState] = useState({
-        Filters: [
-          {
-            name: "Vegetables",
-            options: [
-              {
-                value: "tmto",
-                name: "Tomato"
-              },
-              {
-                value: "ptato",
-                name: "Potato"
-              }
-            ]
-          },
-          {
-            name: "Fruits",
-            options: [
-              {
-                value: "ornge",
-                name: "Orange"
-              },
-              {
-                value: "grps",
-                name: "Grapes"
-              }
-            ]
-          }
-        ],
-        selected: []
-      });
     
-      const handleCheckboxChange = (value) => {
-        setState((state) => {
-          const updatedEtables = state.selected.find((obj) => obj === value);
-          const selected = updatedEtables
-            ? state.selected.filter((obj) => obj !== value)
-            : [...state.selected, value];
-    
-          return {
-            selected,
-            Filters: [
-              ...state.Filters.map((filter) => {
-                return {
-                  ...filter,
-                  options: filter.options.map((ele) => {
-                    return {
-                      ...ele,
-                      checked: selected.includes(ele.value)
-                    };
-                  })
-                };
-              })
-            ]
-          };
-        });
-      };
-    
-      return (
-        <div>
-          {state.Filters.map((ele) => {
-            return (
-              <React.Fragment>
-                <h6>{ele.name}</h6>
-                {ele.options.map((item) => {
-                  return (
-                    <div>
-                      <input
-                        checked={item.checked || false}
-                        onChange={() => handleCheckboxChange(item.value)}
-                        type="checkbox"
-                      />
-                    </div>
-                  );
-                })}
-              </React.Fragment>
-            );
-          })}
-    
-          <strong>Selected: </strong>
-          <br />
-          <span>{state.selected.join(",")}</span>
-        </div>
-      );
-    };
-
     console.log('ClickMeg6');
+
+    function TreeItem(props) {
+      const {item} = props;
+      const [collapsed, setCollapsed] = useState(item.collapsed);
+      return <div className="item">
+        <span onClick={() => setCollapsed(!collapsed)}>{item.name}</span>
+        {!collapsed && item.nodes && 
+          <div style={{paddingLeft: "1rem"}}>
+            <TreeList list={item.nodes}/>
+          </div>
+        }
+      </div>
+    }
+    
+    function TreeList(props) {
+      const {list} = props;
+      return <div>{list.map(f => <TreeItem key={f.name} item={f}/>)}</div>;
+    }
 
     return (
       <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
           <h1>Tree BackUp</h1>
-          <Widget />
+          <TreeList list={tree}/>
       </Card>
     );
   }
