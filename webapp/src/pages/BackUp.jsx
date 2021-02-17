@@ -18,7 +18,7 @@ import Card from './Card';
        },
        {"name":"C:\\FamilieAlbum","collapsed":true,
         "nodes":[
-          {"name":"D:\\FamilieAlbum"}
+          {"name":"D:\\FamilieAlbum"},
           {"name":"E:\\FamilieAlbum"}
          ]
         }
