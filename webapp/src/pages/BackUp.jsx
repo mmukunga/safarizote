@@ -22,14 +22,15 @@ import Card from './Card';
     console.log('ClickMeg6');
     
     function TreeList(props) {
-      const {list} = props.list;
-      return <div>{list.map(f => <TreeItem key={f.name} item={f} handleChange={props.handleChange} toggleItem={props.toggleItem}/>)}</div>;
+      //const {list} = props.list;
+      const {list, handleChange, collapsed,  toggleItem} = props;
+      return <div>{list.map(f => <TreeItem key={f.name} item={f} handleChange={handleChange} collapsed={collapsed} toggleItem={toggleItem}/>)}</div>;
     }
 
     function TreeItem(props) {
-      const {item} = props.item;
+      const {key, item, handleChange, collapsed, toggleItem} = props;
       //const [collapsed, setCollapsed] = useState(item.collapsed);
-      const collapsed =  item.collapsed;
+      //const collapsed =  item.collapsed;
 
       const handleChange = (event) => {
         props.handleChange(event);
@@ -45,7 +46,7 @@ import Card from './Card';
         <span onClick={toggleItem}>{item.name}</span> 
         {!collapsed && item.nodes && 
           <div style={{paddingLeft: "1rem"}}>
-            <TreeList list={item.nodes} handleChange={props.handleChange}/>
+            <TreeList list={item.nodes} handleChange={handleChange} collapsed={collapsed} toggleItem={toggleItem}/>
           </div>
         }
       </div>
