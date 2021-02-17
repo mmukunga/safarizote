@@ -13,8 +13,9 @@ import Card from './Card';
 
     function TreeItem(props) {
       const {item} = props.item;
-      const [collapsed, setCollapsed] = useState(item.collapsed);
-      
+      //const [collapsed, setCollapsed] = useState(item.collapsed);
+      const [collapsed, setCollapsed] = useState(true);
+
       const handleChange = (event) => {
        props.handleChange(event);
       }
