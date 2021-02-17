@@ -5,11 +5,16 @@ import Card from './Card';
   const tree = [{"name":"Root Node","collapsed":true,"nodes":[{"name":"Node 1","collapsed":true,"nodes":[{"name":"Sub node"}]},{"name":"Node 2","collapsed":true,"nodes":[{"name":"Sub node "}]},{"name":"Node 3","collapsed":true,"nodes":[{"name":"Sub node"}]}]}];
   const BackUp = () => {
     const [checkedItems, setCheckedItems] = useState({});
-    
+    const [collapsed, setCollapsed] = useState(true);
+
     const handleChange = (event) => {
       setCheckedItems({...checkedItems, [event.target.name] : event.target.checked });
     }
     
+    const toggleItem = (collapsed) => {
+      setCollapsed(collapsed);
+    }
+
     useEffect(() => {
       console.log("checkedItems: ", checkedItems);
     }, [checkedItems]);  
@@ -17,21 +22,27 @@ import Card from './Card';
     console.log('ClickMeg6');
     
     function TreeList(props) {
-      const {list} = props;
-      return <div>{list.map(f => <TreeItem key={f.name} item={f} handleChange={props.handleChange}/>)}</div>;
+      const {list} = props.list;
+      return <div>{list.map(f => <TreeItem key={f.name} item={f} handleChange={props.handleChange} toggleItem={props.toggleItem}/>)}</div>;
     }
 
     function TreeItem(props) {
-      const {item} = props;
-      const [collapsed, setCollapsed] = useState(item.collapsed);
+      const {item} = props.item;
+      //const [collapsed, setCollapsed] = useState(item.collapsed);
+      const collapsed =  item.collapsed;
 
       const handleChange = (event) => {
         props.handleChange(event);
       }
 
+      const toggleItem = () => {
+        //() => setCollapsed(!collapsed)
+        props.toggleItem(!collapsed);
+      }
+
       return <div className="item">
         <input name={item.name} type="checkbox" checked={checkedItems[item.name]} onChange={handleChange}/> &nbsp; &nbsp;
-        <span onClick={() => setCollapsed(!collapsed)}>{item.name}</span> 
+        <span onClick={toggleItem}>{item.name}</span> 
         {!collapsed && item.nodes && 
           <div style={{paddingLeft: "1rem"}}>
             <TreeList list={item.nodes} handleChange={props.handleChange}/>
@@ -43,7 +54,7 @@ import Card from './Card';
     return (
       <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
           <h1>Tree BackUp</h1>
-          <TreeList list={tree} handleChange={handleChange}/>
+          <TreeList list={tree} handleChange={handleChange} toggleItem={toggleItem}/>
       </Card>
     );
   }
