@@ -12,7 +12,8 @@ import Card from './Card';
     console.log('BackUp!!!');
 
     function TreeItem(props) {
-      const {item} = props.item;
+      //const {item} = props.item;
+      const item = props.item;
       //const [collapsed, setCollapsed] = useState(item.collapsed);
       const [collapsed, setCollapsed] = useState(true);
 
