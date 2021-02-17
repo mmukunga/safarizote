@@ -1,7 +1,29 @@
 import React, { useEffect, useState } from "react";
 import Card from './Card';
 
-  const tree = [{"name":"Root Node","collapsed":true,"nodes":[{"name":"Node 1","collapsed":true,"nodes":[{"name":"Sub node"}]},{"name":"Node 2","collapsed":true,"nodes":[{"name":"Sub node "}]},{"name":"Node 3","collapsed":true,"nodes":[{"name":"Sub node"}]}]}];
+  const tree = [
+    {"name":"Desktop(this PC)","collapsed":true,
+     "nodes":[
+       {"name":"C:\\SimTemps","collapsed":true,
+        "nodes":[
+          {"name":"D:\\SimTemps"},
+          {"name":"E:\\SimTemps"}
+         ]
+       },
+       {"name":"C:\\Projects","collapsed":true,
+        "nodes":[
+          {"name":"D:\\Projects"},
+          {"name":"E:\\Projects"}
+         ]
+       },
+       {"name":"C:\\FamilieAlbum","collapsed":true,
+        "nodes":[
+          {"name":"D:\\FamilieAlbum"}
+          {"name":"E:\\FamilieAlbum"}
+         ]
+        }
+      ]}
+    ];
   const BackUp = () => {
     const [checkedItems, setCheckedItems] = useState({});
     const [collapsed, setCollapsed] = useState(true);
@@ -19,8 +41,6 @@ import Card from './Card';
     function TreeItem(props) {
       //const {item} = props.item;
       const item = props.item;
-      //const [collapsed, setCollapsed] = useState(item.collapsed);
-      //const [collapsed, setCollapsed] = useState(true);
 
       const handleChange = (event) => {
        props.handleChange(event);
