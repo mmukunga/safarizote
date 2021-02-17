@@ -11,7 +11,7 @@ import Card from './Card';
     }
     
     const handleCollapsed = (collapsed) => {
-      setCollapsed({...collapsed, collapsed});
+      setCollapsed(collapsed);
     }
 
     console.log('BackUp!!!');
@@ -20,14 +20,14 @@ import Card from './Card';
       //const {item} = props.item;
       const item = props.item;
       //const [collapsed, setCollapsed] = useState(item.collapsed);
-      const [collapsed, setCollapsed] = useState(true);
+      //const [collapsed, setCollapsed] = useState(true);
 
       const handleChange = (event) => {
        props.handleChange(event);
       }
 
-      const handleCollapsed = (event) => {
-        props.handleCollapsed(event);
+      const handleCollapsed = () => {
+        props.handleCollapsed(!props.collapsed);
        }
 
       useEffect(() => {
@@ -36,7 +36,7 @@ import Card from './Card';
         
       return <div className="item">
         <input name={item.name} type="checkbox" checked={checkedItems[item.name]} onChange={handleChange}/> &nbsp; &nbsp;
-        <span onClick={() => handleCollapsed(!props.collapsed)}>{item.name}</span> 
+        <span onClick={handleCollapsed}>{item.name}</span> 
         {!props.collapsed && item.nodes && 
           <div style={{paddingLeft: "1rem"}}>
             <TreeList list={item.nodes} handleChange={handleChange} handleCollapsed={handleCollapsed}/>
