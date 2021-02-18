@@ -25,7 +25,7 @@ import Card from './Card';
       ]}
     ];
   const BackUp = () => {
-    const [checkedItems, setCheckedItems] = useState({});
+    const [checkedItems, setCheckedItems] = useState([]);
     const [collapsed, setCollapsed] = useState(true);
 
     const handleChange = (event) => {
