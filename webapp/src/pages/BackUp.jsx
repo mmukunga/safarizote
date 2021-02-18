@@ -31,14 +31,13 @@ import Card from './Card';
     const handleChange = (event) => {
       const {name, value} = event.target;
 
-      var array = [...checkedItems];
+      let checkedList = [...checkedItems];
       //var index = array.indexOf(e.target.name);
-      const itemFound= array.findIndex(x => x.name === name);
-
+      const itemFound= checkedList.findIndex(x => x.name === name);
       if (itemFound !== -1) {
-        setCheckedItems(checkedItems.filter(item => item.name !== name));
+        setCheckedItems(checkedList.filter(item => item.name !== name));
       } else {
-        setCheckedItems({...checkedItems, [name] : event.target.checked });
+        setCheckedItems({...checkedList, [name] : event.target.checked });
       }
     }
     
