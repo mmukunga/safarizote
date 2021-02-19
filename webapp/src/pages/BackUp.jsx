@@ -30,6 +30,7 @@ import Card from './Card';
 
     const handleChange = (event) => {
       //const {name, value} = event.target;
+      console.log('HandleChange...!!!');
       let filteredData = checkedItems && checkedItems.filter(item => {
         let isFiltered = false;
         for(let key in item){
