@@ -47,11 +47,11 @@ import Card from './Card';
           console.log('...HandleChange...3');
           for(let key in item){
             console.log('...HandleChange...4');
-            console.log(item[key]);
-              if(item[key].includes(event.target.name)){
+            console.log('Item:= ' + item[key] + ' Name:= ' + event.target.name);
+            /*  if(item[key].includes(event.target.name)){
                 console.log('...HandleChange...5');
                   isFiltered = true;
-              }
+              } */
           }
           return isFiltered;
         });
