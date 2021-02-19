@@ -31,7 +31,7 @@ import Card from './Card';
     const handleChange = (event) => {
       //const {name, value} = event.target;
       console.log('...HandleChange...1');
-
+      setCheckedItems({...checkedItems, [event.target.name] : event.target.checked });
       if (checkedItems && checkedItems.length > 0) {
         console.log('...HandleChange...2');
         let filteredData = checkedItems.filter(item => {
@@ -47,23 +47,10 @@ import Card from './Card';
           }
           return isFiltered;
         });
-  
+        console.log('...HandleChange...END!!');
         console.log(filteredData);
       }
 
-      //let checkedList = [...checkedItems];
-      let itemFound = -1;
-      if (checkedItems && checkedItems.length > 0) {
-        itemFound = checkedItems.indexOf(event.target.name);
-      }
-      //const itemFound= checkedItems.findIndex(x => x.name === name);
-      if (itemFound !== -1) {
-        console.log('FOUND!!! REMOVE!! ' + event.target.name);
-        setCheckedItems(checkedItems.filter(item => item.name !== event.target.name));
-      } else {
-        console.log('NOT FOUND!!! ADD!!' + event.target.name);
-        setCheckedItems({...checkedItems, [event.target.name] : event.target.checked });
-      }
     }
     
     const handleCollapsed = (collapsed) => {
