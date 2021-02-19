@@ -32,7 +32,11 @@ import Card from './Card';
       event.preventDefault();
       //const {name, value} = event.target;
       console.log('...HandleChange...1a size:= ' + checkedItems.length);
-      setCheckedItems({...checkedItems, [event.target.name] : event.target.checked });
+      //setCheckedItems({...checkedItems, [event.target.name] : event.target.checked });
+      const newElement = { 
+          [event.target.name] : event.target.checked
+      };
+      setCheckedItems([...checkedItems, newElement]);
       console.log('...HandleChange...1b size:= ' + checkedItems.length);
       if (checkedItems && checkedItems.length > 0) {
         console.log('...HandleChange...2');
