@@ -25,42 +25,16 @@ import Card from './Card';
       ]}
     ];
   const BackUp = () => {
-    const [checkedItems, setCheckedItems] = useState([
-      {'Please Select': true}
-    ]);
+    const [checkedItems, setCheckedItems] = useState({});
     const [collapsed, setCollapsed] = useState(true);
 
     const handleChange = (event) => {
       event.preventDefault();
-      //const {name, value} = event.target;
+      const {name, value} = event.target;
       console.log('...HandleChange...1a size:= ' + checkedItems.length);
-      //setCheckedItems({...checkedItems, [event.target.name] : event.target.checked });
-      const newElement = { 
-          [event.target.name] : event.target.checked
-      };
-      setCheckedItems([...checkedItems, newElement]);
-      console.log('...HandleChange...1b size:= ' + checkedItems.length);
-      if (checkedItems && checkedItems.length > 0) {
-        console.log('...HandleChange...2');
-        let filteredData = checkedItems.filter(item => {
-          let isFiltered = false;
-          console.log('...HandleChange...3a Item:= ' + item);
-          console.log(item);
-          console.log('...HandleChange...3b Item:= ' + item);
-          for(let key in item){
-            console.log('...HandleChange...4');
-            console.log('Item:= ' + item[key] + ' Name:= ' + event.target.name);
-            /*  if(item[key].includes(event.target.name)){
-                console.log('...HandleChange...5');
-                  isFiltered = true;
-              } */
-          }
-          return isFiltered;
-        });
-        console.log('...HandleChange...END!!');
-        console.log(filteredData);
-      }
-
+      setCheckedItems({...checkedItems, [event.target.name] : event.target.checked });
+      console.log('...HandleChange...1b size:= ' + checkedItems);
+      console.log('...HandleChange...1c size:= ' + checkedItems.length);
     }
     
     const handleCollapsed = (collapsed) => {
