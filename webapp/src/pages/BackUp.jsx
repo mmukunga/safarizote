@@ -29,9 +29,11 @@ import Card from './Card';
     const [collapsed, setCollapsed] = useState(true);
 
     const handleChange = (event) => {
+      event.preventDefault();
       //const {name, value} = event.target;
-      console.log('...HandleChange...1');
+      console.log('...HandleChange...1a size:= ' + checkedItems.length);
       setCheckedItems({...checkedItems, [event.target.name] : event.target.checked });
+      console.log('...HandleChange...1b size:= ' + checkedItems.length);
       if (checkedItems && checkedItems.length > 0) {
         console.log('...HandleChange...2');
         let filteredData = checkedItems.filter(item => {
