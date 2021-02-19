@@ -31,26 +31,23 @@ import Card from './Card';
     const handleChange = (event) => {
       //const {name, value} = event.target;
       console.log('...HandleChange...1');
-      const newObject = {
-        "name": event.target.name, 
-        "checked": event.target.checked
-    };
-      setCheckedItems({...checkedItems, newObject });
+      setCheckedItems({...checkedItems, [event.target.name]: event.target.checked});
       if (checkedItems && checkedItems.length > 0) {
         console.log('...HandleChange...2');
         let filteredData = checkedItems.filter(item => {
           let isFiltered = false;
-          console.log('...HandleChange...3');
-          for(let key in item){
+          console.log('...HandleChange...3');        
+          //for(let key in item){
             console.log('...HandleChange...4');
-            console.log(item[key]);
-              if(item[key].includes(event.target.name)){
-                console.log('...HandleChange...5');
-                  isFiltered = true;
-              }
-          }
+            console.log(item.name + ' ' + event.target.name);
+            if(item.name.includes(event.target.name)){
+              console.log('...HandleChange...5');
+                isFiltered = true;
+            }
+          //}
           return isFiltered;
         });
+
         console.log('...HandleChange...END!!');
         console.log(filteredData);
       }
