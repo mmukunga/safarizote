@@ -34,7 +34,7 @@ import Card from './Card';
 
       console.log('...HandleChange...1a size:= ' + checkedItems.length);
       const newObject = {
-          "name": [event.target.name], 
+          "name": event.target.name, 
           "checked": event.target.checked
       };
 
