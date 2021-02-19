@@ -31,22 +31,25 @@ import Card from './Card';
     const handleChange = (event) => {
       //const {name, value} = event.target;
       console.log('HandleChange...!!!');
-      let filteredData = checkedItems && checkedItems.filter(item => {
-        let isFiltered = false;
-        for(let key in item){
-          console.log(item[key]);
-            if(item[key].includes(event.target.name)){
-                isFiltered = true;
-            }
-        }
-        return isFiltered;
-      });
 
-      console.log(filteredData);
+      if (checkedItems && checkedItems.length > 0) {
+        let filteredData = checkedItems && checkedItems.filter(item => {
+          let isFiltered = false;
+          for(let key in item){
+            console.log(item[key]);
+              if(item[key].includes(event.target.name)){
+                  isFiltered = true;
+              }
+          }
+          return isFiltered;
+        });
+  
+        console.log(filteredData);
+      }
 
       //let checkedList = [...checkedItems];
       let itemFound = -1;
-      if (checkedItems && checkedItems.length) {
+      if (checkedItems && checkedItems.length > 0) {
         itemFound = checkedItems.indexOf(event.target.name);
       }
       //const itemFound= checkedItems.findIndex(x => x.name === name);
