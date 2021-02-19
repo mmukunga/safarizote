@@ -32,7 +32,10 @@ import Card from './Card';
       //const {name, value} = event.target;
 
       //let checkedList = [...checkedItems];
-      const itemFound = checkedItems.indexOf(event.target.name);
+      let itemFound = -1;
+      if (checkedItems && checkedItems.length) {
+        itemFound = checkedItems.indexOf(event.target.name);
+      }
       //const itemFound= checkedItems.findIndex(x => x.name === name);
       if (itemFound !== -1) {
         setCheckedItems(checkedItems.filter(item => item.name !== event.target.name));
