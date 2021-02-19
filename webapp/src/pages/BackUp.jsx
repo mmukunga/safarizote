@@ -30,6 +30,18 @@ import Card from './Card';
 
     const handleChange = (event) => {
       //const {name, value} = event.target;
+      let filteredData = checkedItems.filter(item => {
+        let isFiltered = false;
+        for(let key in item){
+          console.log(item[key]);
+            if(item[key].includes(event.target.name)){
+                isFiltered = true;
+            }
+        }
+        return isFiltered;
+      });
+
+      console.log(filteredData);
 
       //let checkedList = [...checkedItems];
       let itemFound = -1;
