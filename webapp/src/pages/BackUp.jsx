@@ -44,7 +44,9 @@ import Card from './Card';
         console.log('...HandleChange...2');
         let filteredData = checkedItems.filter(item => {
           let isFiltered = false;
-          console.log('...HandleChange...3 Item:= ' + item);
+          console.log('...HandleChange...3a Item:= ' + item);
+          console.log(item);
+          console.log('...HandleChange...3b Item:= ' + item);
           for(let key in item){
             console.log('...HandleChange...4');
             console.log('Item:= ' + item[key] + ' Name:= ' + event.target.name);
