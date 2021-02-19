@@ -31,7 +31,11 @@ import Card from './Card';
     const handleChange = (event) => {
       //const {name, value} = event.target;
       console.log('...HandleChange...1');
-      setCheckedItems({...checkedItems, [event.target.name] : event.target.checked });
+      const newObject = {
+        "name": event.target.name, 
+        "checked": event.target.checked
+    };
+      setCheckedItems({...checkedItems, newObject });
       if (checkedItems && checkedItems.length > 0) {
         console.log('...HandleChange...2');
         let filteredData = checkedItems.filter(item => {
