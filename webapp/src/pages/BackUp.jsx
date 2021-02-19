@@ -29,15 +29,15 @@ import Card from './Card';
     const [collapsed, setCollapsed] = useState(true);
 
     const handleChange = (event) => {
-      const {name, value} = event.target;
+      //const {name, value} = event.target;
 
       //let checkedList = [...checkedItems];
-      const itemFound = checkedItems.indexOf(e.target.name);
+      const itemFound = checkedItems.indexOf(event.target.name);
       //const itemFound= checkedItems.findIndex(x => x.name === name);
       if (itemFound !== -1) {
-        setCheckedItems(checkedItems.filter(item => item.name !== name));
+        setCheckedItems(checkedItems.filter(item => item.name !== event.target.name));
       } else {
-        setCheckedItems({...checkedItems, [name] : event.target.checked });
+        setCheckedItems({...checkedItems, [event.target.name] : event.target.checked });
       }
     }
     
