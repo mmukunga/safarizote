@@ -38,8 +38,10 @@ import Card from './Card';
       }
       //const itemFound= checkedItems.findIndex(x => x.name === name);
       if (itemFound !== -1) {
+        console.log('FOUND!!! REMOVE!! ' + event.target.name);
         setCheckedItems(checkedItems.filter(item => item.name !== event.target.name));
       } else {
+        console.log('NOT FOUND!!! ADD!!' + event.target.name);
         setCheckedItems({...checkedItems, [event.target.name] : event.target.checked });
       }
     }
