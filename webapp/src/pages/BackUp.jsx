@@ -25,16 +25,23 @@ import Card from './Card';
       ]}
     ];
   const BackUp = () => {
-    const [checkedItems, setCheckedItems] = useState({});
+    const [checkedItems, setCheckedItems] = useState([{}]);
     const [collapsed, setCollapsed] = useState(true);
 
     const handleChange = (event) => {
       event.preventDefault();
-      const {name, value} = event.target;
+      // const {name, value} = event.target;
+
       console.log('...HandleChange...1a size:= ' + checkedItems.length);
-      setCheckedItems({...checkedItems, [event.target.name] : event.target.checked });
+      const newObject = {
+          "name": [event.target.name], 
+          "checked": event.target.checked
+      };
+
+      setCheckedItems([ ...checkedItems, newObject ]);
       console.log('...HandleChange...1b size:= ' + checkedItems);
       console.log('...HandleChange...1c size:= ' + checkedItems.length);
+
     }
     
     const handleCollapsed = (collapsed) => {
