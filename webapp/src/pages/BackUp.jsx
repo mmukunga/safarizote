@@ -26,15 +26,18 @@ import Card from './Card';
     ];
   const BackUp = () => {
     const [checkedItems, setCheckedItems] = useState({});
+    const [checkedFolders, setCheckedFolders] = useState({});
     const [selectedItems, setSelectedItems] = useState([]);
     const [collapsed, setCollapsed] = useState(true);
 
     const handleChange = (event) => {
-      //const {name, value} = event.target;
+      const {name, value} = event.target;
       console.log('...HandleChange...1');
       let selected_list = [];
+      let selected_folders = {};
       if (selectedItems && selectedItems.length > 0) {
         selected_list = [...selectedItems];
+        selected_folders = { ...checkedFolders };
       }
       let check = event.target.checked;
       let checked_item = event.target.name;
@@ -43,21 +46,28 @@ import Card from './Card';
       if (check){
         if (selectedItems && selectedItems.length > 0) {
           selected_list = [...selectedItems, checked_item];
+          selected_folders = {...checkedFolders, [name] : value};
         } else {
           selected_list = [].concat(checked_item);
+          selected_folders = {[name] : value};
         }
         
         setSelectedItems(selected_list);
+        setCheckedFolders(selected_folders);
       } else { 
         var index = selected_list.indexOf(checked_item);
         if (index > -1) {
           selected_list.splice(index, 1);
+          delete checkedFolders[event.target.name];
           setSelectedItems([...selected_list]);
+          setCheckedFolders({...checkedFolders})
         } 
       }
 
       console.log('...HandleChange...3');
       console.log(selectedItems);
+      console.log(checkedFolders);
+      console.log('..SlettMeg..');
       console.log('...HandleChange...4');
 
       setCheckedItems({...checkedItems, [event.target.name]: event.target.checked});
