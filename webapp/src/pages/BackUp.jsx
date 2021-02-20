@@ -32,36 +32,13 @@ import Card from './Card';
       //const {name, value} = event.target;
       console.log('...HandleChange...1');
       setCheckedItems({...checkedItems, [event.target.name]: event.target.checked});
-
-      let jsonStr = '{"name":"ABC", "age":10, "phone":"1234567890"}';
-      let jsonObj = JSON.parse(jsonStr);
-
-      delete jsonObj.name;
-      console.log(JSON.stringify(jsonStr));
-
-     console.log(JSON.stringify(checkedItems));
-
-
       if (checkedItems[event.target.name] !== null) {
         console.log('...HandleChange...2');
-        let filteredData = checkedItems.filter(item => {
-          let isFiltered = false;
-          console.log('...HandleChange...3');        
-          //for(let key in item){
-            console.log('...HandleChange...4');
-            console.log(item.name + ' ' + event.target.name);
-            if(item.name.includes(event.target.name)){
-              console.log('...HandleChange...5');
-                isFiltered = true;
-            }
-          //}
-          return isFiltered;
-        });
-
-        console.log('...HandleChange...END!!');
-        console.log(filteredData);
+        let jsonObj = JSON.parse(checkedItems);
+        delete jsonObj[event.target.name];
+        console.log(JSON.stringify(jsonObj));
+        console.log(JSON.stringify(checkedItems));
       }
-
     }
     
     const handleCollapsed = (collapsed) => {
