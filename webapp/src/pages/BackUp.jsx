@@ -46,7 +46,7 @@ import Card from './Card';
       if (check){
         if (selectedItems && selectedItems.length > 0) {
           selected_list = [...selectedItems, checked_item];
-          selected_folders = {...checkedFolders, [name] : value};
+          selected_folders = {...checkedFolders, [event.target.name]: event.target.checked};
         } else {
           selected_list = [].concat(checked_item);
           selected_folders = {[name] : value};
@@ -96,12 +96,14 @@ import Card from './Card';
         props.handleCollapsed(!props.collapsed);
        }
 
+      /* 
       useEffect(() => {
         console.log("checkedItems: ", checkedItems);
       }, [checkedItems]);  
-        
+      */
+
       return <div className="item">
-        <input name={item.name} id={item.id} type="checkbox" checked={checkedItems[item.name]} onChange={handleChange}/> &nbsp; &nbsp;
+        <input name={item.name} id={item.id} type="checkbox" checked={checkedFolders[item.name]} onChange={handleChange}/> &nbsp; &nbsp;
         <span onClick={handleCollapsed}>{item.name}</span> 
         {!props.collapsed && item.nodes && 
           <div style={{paddingLeft: "1rem"}}>
