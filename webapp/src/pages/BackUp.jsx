@@ -26,14 +26,33 @@ import Card from './Card';
     ];
   const BackUp = () => {
     const [checkedItems, setCheckedItems] = useState({});
+    const [selectedItems, setSelectedItems] = useState([]);
     const [collapsed, setCollapsed] = useState(true);
 
     const handleChange = (event) => {
       //const {name, value} = event.target;
       console.log('...HandleChange...1');
+      let selected_list = [...selectedItems];
+      let check = event.target.checked;
+      let checked_item = event.target.value;
+      console.log('...HandleChange...2');
+      if (check){
+        setSelectedItems([...selectedItems, checked_item])
+      } else { 
+        var index = selected_list.indexOf(checked_item);
+        if (index > -1) {
+          selected_list.splice(index, 1);
+          setSelectedItems({ selected_list });
+        } 
+      }
+
+      console.log('...HandleChange...3');
+      console.log(selectedItems);
+      console.log('...HandleChange...4');
+
       setCheckedItems({...checkedItems, [event.target.name]: event.target.checked});
       if (checkedItems[event.target.name] !== null) {
-        console.log('...HandleChange...2');
+        console.log('...HandleChange...5');
         delete checkedItems[event.target.name];
         console.log(JSON.stringify(checkedItems));
       }
