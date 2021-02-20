@@ -37,6 +37,10 @@ import Card from './Card';
       let jsonObj = JSON.parse(jsonStr);
 
       delete jsonObj.name;
+      console.log(JSON.stringify(jsonStr));
+
+     console.log(JSON.stringify(checkedItems));
+
 
       if (checkedItems[event.target.name] !== null) {
         console.log('...HandleChange...2');
