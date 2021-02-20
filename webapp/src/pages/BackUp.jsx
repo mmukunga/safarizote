@@ -41,7 +41,13 @@ import Card from './Card';
       console.log('...HandleChange...2');
 
       if (check){
-        setSelectedItems([...selected_list, checked_item]);
+        if (selectedItems && selectedItems.length > 0) {
+          selected_list = [...selectedItems, checked_item];
+        } else {
+          selected_list = [].concat(checked_item);
+        }
+        
+        setSelectedItems(selected_list);
       } else { 
         var index = selected_list.indexOf(checked_item);
         if (index > -1) {
