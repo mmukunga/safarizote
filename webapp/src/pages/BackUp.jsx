@@ -34,9 +34,7 @@ import Card from './Card';
       setCheckedItems({...checkedItems, [event.target.name]: event.target.checked});
       if (checkedItems[event.target.name] !== null) {
         console.log('...HandleChange...2');
-        let jsonObj = JSON.parse(checkedItems);
-        delete jsonObj[event.target.name];
-        console.log(JSON.stringify(jsonObj));
+        delete checkedItems[event.target.name];
         console.log(JSON.stringify(checkedItems));
       }
     }
