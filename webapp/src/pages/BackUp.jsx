@@ -34,9 +34,9 @@ import Card from './Card';
       console.log('...HandleChange...1');
       let selected_list = [...selectedItems];
       let check = event.target.checked;
-      let checked_item = event.target.value;
+      let checked_item = event.target.name;
       console.log('...HandleChange...2');
-      
+
       if (check){
         setSelectedItems([...selectedItems, checked_item]);
       } else { 
