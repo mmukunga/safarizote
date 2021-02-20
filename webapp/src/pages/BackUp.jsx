@@ -32,7 +32,10 @@ import Card from './Card';
     const handleChange = (event) => {
       //const {name, value} = event.target;
       console.log('...HandleChange...1');
-      let selected_list = [...selectedItems];
+      let selected_list = [];
+      if (selectedItems && selectedItems.length > 0) {
+        selected_list = [...selectedItems];
+      }
       let check = event.target.checked;
       let checked_item = event.target.name;
       console.log('...HandleChange...2');
