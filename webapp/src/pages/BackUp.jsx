@@ -32,7 +32,13 @@ import Card from './Card';
       //const {name, value} = event.target;
       console.log('...HandleChange...1');
       setCheckedItems({...checkedItems, [event.target.name]: event.target.checked});
-      if (checkedItems && checkedItems.length > 0) {
+
+      let jsonStr = '{"name":"ABC", "age":10, "phone":"1234567890"}';
+      let jsonObj = JSON.parse(jsonStr);
+
+      delete jsonObj.name;
+
+      if (checkedItems[event.target.name] !== null) {
         console.log('...HandleChange...2');
         let filteredData = checkedItems.filter(item => {
           let isFiltered = false;
