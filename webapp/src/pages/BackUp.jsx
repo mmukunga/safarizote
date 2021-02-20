@@ -41,12 +41,12 @@ import Card from './Card';
       console.log('...HandleChange...2');
 
       if (check){
-        setSelectedItems([...selectedItems, checked_item]);
+        setSelectedItems([...selected_list, checked_item]);
       } else { 
         var index = selected_list.indexOf(checked_item);
         if (index > -1) {
           selected_list.splice(index, 1);
-          setSelectedItems({ selected_list });
+          setSelectedItems([...selected_list]);
         } 
       }
 
