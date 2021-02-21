@@ -29,7 +29,6 @@ import Card from './Card';
     const [collapsed, setCollapsed] = useState(true);
 
     const handleChange = (event) => {
-      console.log('...HandleChange...1');
       let selected_folders = {};
 
       if (checkedFolders !== null) {
@@ -38,7 +37,6 @@ import Card from './Card';
 
       let check = event.target.checked;
       let checked_item = event.target.name;
-      console.log('...HandleChange...2');
 
       if (check) {
         if (checkedFolders != null) {
@@ -55,9 +53,7 @@ import Card from './Card';
         } 
       }
 
-      console.log('...HandleChange...3');
       console.log(checkedFolders);
-      console.log('...HandleChange...4');
     }
     
     const handleCollapsed = (collapsed) => {
