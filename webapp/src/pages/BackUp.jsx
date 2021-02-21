@@ -46,6 +46,10 @@ import Card from './Card';
         }       
         setCheckedFolders(selected_folders);
       } else { 
+        console.log('checked_item');
+        console.log(checked_item);
+        console.log('checkedFolders');
+        console.log(checkedFolders);
         var index = checkedFolders.indexOf(checked_item);
         if (index > -1) {
           delete checkedFolders[event.target.name];
@@ -74,17 +78,11 @@ import Card from './Card';
         props.handleCollapsed(!props.collapsed);
        }
 
-      
-      useEffect(() => {
-        console.log("checkedFolders: ", checkedFolders);
-      }, [checkedFolders]);  
-      
-
-      return <div className="item">
+      return <div className="TreeRoot">
         <input name={item.name} id={item.id} type="checkbox" checked={checkedFolders[item.name]} onChange={handleChange}/> &nbsp; &nbsp;
         <span onClick={handleCollapsed}>{item.name}</span> 
         {!props.collapsed && item.nodes && 
-          <div style={{paddingLeft: "1rem"}}>
+          <div style={{paddingLeft: "1rem", border: '2px solid red'}}>
             <TreeList list={item.nodes} handleChange={handleChange} handleCollapsed={handleCollapsed}/>
           </div>
         }
@@ -93,7 +91,7 @@ import Card from './Card';
     
     function TreeList(props) {
       const {list, handleChange, collapsed, handleCollapsed} = props;
-      return <div>{list.map(f => <TreeItem key={f.name} item={f} handleChange={handleChange} collapsed={collapsed} handleCollapsed={handleCollapsed}/>)}</div>;
+      return <div className="TreeList">{list.map(f => <TreeItem key={f.name} item={f} handleChange={handleChange} collapsed={collapsed} handleCollapsed={handleCollapsed}/>)}</div>;
     }
 
     return (
