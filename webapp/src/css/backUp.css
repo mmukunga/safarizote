@@ -5,6 +5,11 @@
   max-width: 400px;
 }
 
+.TreeList {
+  border: '4 px solid darkblue';
+  text-align: left;
+}
+
 .BackUp {
     border: 4px solid red;
 }
