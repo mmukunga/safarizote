@@ -29,23 +29,23 @@ import Card from './Card';
     const [collapsed, setCollapsed] = useState(true);
 
     const handleChange = (event) => {
-      const {name, value} = event.target;
       console.log('...HandleChange...1');
       let selected_folders = {};
-      if (selectedItems && selectedItems.length > 0) {
+
+      if (checkedFolders !== null) {
         selected_folders = { ...checkedFolders };
       }
+
       let check = event.target.checked;
       let checked_item = event.target.name;
       console.log('...HandleChange...2');
 
-      if (check){
-        if (selectedItems && selectedItems.length > 0) {
+      if (check) {
+        if (checkedFolders != null) {
           selected_folders = {...checkedFolders, [event.target.name]: event.target.checked};
         } else {
-          selected_folders = {[name] : value};
-        }
-        
+          selected_folders = {[event.target.name] : event.target.checked};
+        }       
         setCheckedFolders(selected_folders);
       } else { 
         var index = checkedFolders.indexOf(checked_item);
