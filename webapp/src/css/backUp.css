@@ -10,7 +10,7 @@
   text-align: left;
 }
 
-.TreeList:nth-child(odd) {background: #e0e0e0;}
+.TreeRoot:nth-child(odd) {background: #e0e0e0;}
 
 .BackUp {
     border: 4px solid red;
