@@ -82,7 +82,7 @@ import Card from './Card';
         <input name={item.name} id={item.id} type="checkbox" checked={checkedFolders[item.name]} onChange={handleChange}/> &nbsp; &nbsp;
         <span onClick={handleCollapsed}>{item.name}</span> 
         {!props.collapsed && item.nodes && 
-          <div style={{paddingLeft: "1rem", border: '2px solid red'}}>
+          <div>
             <TreeList list={item.nodes} handleChange={handleChange} handleCollapsed={handleCollapsed}/>
           </div>
         }
