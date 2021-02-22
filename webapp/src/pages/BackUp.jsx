@@ -78,26 +78,28 @@ import Card from './Card';
         props.handleCollapsed(!props.collapsed);
        }
 
-      return <div className="TreeRoot">
+      return ( 
+      <div>
         <input name={item.name} id={item.id} type="checkbox" checked={checkedFolders[item.name]} onChange={handleChange}/> &nbsp; &nbsp;
         <span onClick={handleCollapsed}>{item.name}</span> 
         {!props.collapsed && item.nodes && 
-          <div>
-            <TreeList list={item.nodes} handleChange={handleChange} handleCollapsed={handleCollapsed}/>
-          </div>
+          <TreeList list={item.nodes} handleChange={handleChange} handleCollapsed={handleCollapsed}/>
         }
-      </div>
-    }
+      </div> 
+    )}
     
     function TreeList(props) {
       const {list, handleChange, collapsed, handleCollapsed} = props;
-      return <div className="TreeList">{list.map(f => <TreeItem key={f.name} item={f} handleChange={handleChange} collapsed={collapsed} handleCollapsed={handleCollapsed}/>)}</div>;
+      return (
+        <div className="TreeList">
+          {list.map(f => <div>{<TreeItem key={f.name} item={f} handleChange={handleChange} collapsed={collapsed} handleCollapsed={handleCollapsed}/>}</div>)}
+        </div>);
     }
 
     return (
       <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
           <h1>Tree BackUp</h1>
-          <TreeList list={tree} handleChange={handleChange}  collapsed={collapsed} handleCollapsed={handleCollapsed}/>
+          <TreeList list={tree} handleChange={handleChange} collapsed={collapsed} handleCollapsed={handleCollapsed}/>
       </Card>
     );
   }

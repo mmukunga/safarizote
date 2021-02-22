@@ -6,8 +6,9 @@
 }
 
 .TreeList {
-  border: '4 px solid darkblue';
+  border: 4 px solid darkblue;
   text-align: left;
+  margin: 5px;
 }
 
 .TreeRoot:nth-child(odd) {background: #e0e0e0;}
@@ -19,6 +20,6 @@
 .TreeItem {
   cursor: pointer;
   user-select: none;
-  border: '4 px solid green';
+  border: 4 px solid green;
   text-align: left;
 }
