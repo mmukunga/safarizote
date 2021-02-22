@@ -70,7 +70,7 @@ import Card from './Card';
       //const {item} = props.item;
       const item = props.item;
       
-      const className = (props.treeLevel == 0) ? "TreeRoot "  : "TreeItem " + " Offset";
+      const treeClassName = (props.treeLevel == 0) ? "TreeRoot "  : "TreeItem " + " Offset";
 
       const handleChange = (event) => {
        props.handleChange(event);
@@ -79,9 +79,10 @@ import Card from './Card';
       const handleCollapsed = () => {
         props.handleCollapsed(!props.collapsed);
        }
-
+      
+       console.log()
       return ( 
-      <div>
+      <div className={treeClassName}>
         <input name={item.name} id={item.id} type="checkbox" checked={checkedFolders[item.name]} onChange={handleChange}/> &nbsp; &nbsp;
         <span onClick={handleCollapsed}>{item.name}</span> 
         {!props.collapsed && item.nodes && 
@@ -92,8 +93,9 @@ import Card from './Card';
     
     function TreeList(props) {
       const {list, handleChange, collapsed, handleCollapsed} = props;
+      const treeClassName = (props.treeLevel == 0) ? "TreeRoot "  : "TreeItem " + " Offset";
       return (
-        <div className="TreeList">
+        <div className={treeClassName}>
           {list.map(f => <div>{<TreeItem key={f.name} treeLevel={props.treeLevel} item={f} handleChange={handleChange} collapsed={collapsed} handleCollapsed={handleCollapsed}/>}</div>)}
         </div>);
     }
