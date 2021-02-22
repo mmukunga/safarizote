@@ -7,7 +7,7 @@
 }
 
 .TreeList {
-  border: 4 px solid darkblue;
+  border: 4px solid darkblue;
   text-align: left;
   margin: 5px;
 }
@@ -21,10 +21,10 @@
 .TreeItem {
   cursor: pointer;
   user-select: none;
-  border: 4 px solid green;
+  border: 4px solid green;
   text-align: left;
 }
 
 .Offset {
-  border: 4 px solid pink;
+  border: 4px solid pink;
 }
