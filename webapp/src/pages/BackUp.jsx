@@ -28,6 +28,14 @@ import Card from './Card';
     const [checkedFolders, setCheckedFolders] = useState({});
     const [collapsed, setCollapsed] = useState(true);
 
+    useEffect(() => {
+      axios.get('api://backUp').then(response => {
+          console.log(response);
+      });
+    }, []);  
+
+
+
     const handleChange = (event) => {
       let selected_folders = {};
 
@@ -104,7 +112,7 @@ import Card from './Card';
 
     return (
       <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
-          <h1>Tree BackUp</h1>
+          <strong>Tree BackUp</strong>
           <TreeList list={tree} treeLevel={0} handleChange={handleChange} collapsed={collapsed} handleCollapsed={handleCollapsed}/>
       </Card>
     );
