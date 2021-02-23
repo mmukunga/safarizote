@@ -70,7 +70,8 @@ import Card from './Card';
       //const {item} = props.item;
       const item = props.item;      
       console.log('Props.TreeLevel1:= ' + props.treeLevel);
-      const treeClassName = (props.treeLevel == 0) ? "TreeRoot " : "TreeItem ";
+
+      const treeClassName = "TreeItem" + props.treeLevel;
 
       const handleChange = (event) => {
        props.handleChange(event);
@@ -94,7 +95,7 @@ import Card from './Card';
     function TreeList(props) {
       const {list, handleChange, collapsed, handleCollapsed} = props;
       console.log('Props.TreeLevel2:= ' + props.treeLevel);
-      const treeClassName = (props.treeLevel == 0) ? "TreeRoot "  : "TreeItem ";
+      const treeClassName = "TreeItem"  + props.treeLevel;
       return (
         <div className={treeClassName}>
           {list.map(f => <div>{<TreeItem key={f.name} treeLevel={props.treeLevel} item={f} handleChange={handleChange} collapsed={collapsed} handleCollapsed={handleCollapsed}/>}</div>)}
