@@ -1,8 +1,11 @@
 package com.example.safarizote.model;
 
-import java.util.List;
 import java.time.Instant;
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
+import javax.persistence.FetchType;
 
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,6 +26,7 @@ public class BackUp {
     @NonNull String name; 
     Boolean collapsed;
     Instant dateCreated;
-    List<BackUp> children;
+    @OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
+    Set<BackUp> children;
 
 }
