@@ -31,7 +31,7 @@ public class BackUpLoader implements CommandLineRunner {
             return;
         }
         
-        BackUp rootFolder = BackUp.builder().name("root").parent(null).dateCreated(Instant.now()).build();
+        BackUp rootFolder = BackUp.builder().name("root").dateCreated(Instant.now()).build();
         repository.save(rootFolder);
         BackUp rootDB = repository.findByName("root");
 
