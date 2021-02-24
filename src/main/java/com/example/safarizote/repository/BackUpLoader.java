@@ -51,7 +51,7 @@ public class BackUpLoader implements CommandLineRunner {
         BackUp a2 = BackUp.builder().name("E:\\SimTemps").parent(simTempsDB).dateCreated(Instant.now()).build();
         simTempsDB.setChildren(new HashSet<>(Arrays.asList(a1, a2)));
         repository.save(simTempsDB);
-
+/*
         BackUp projectsDB = repository.findByName("C:\\Projects");
         BackUp b1 = BackUp.builder().name("D:\\Projects").parent(projectsDB).dateCreated(Instant.now()).build();
         BackUp b2 = BackUp.builder().name("E:\\Projects").parent(projectsDB).dateCreated(Instant.now()).build();
@@ -63,7 +63,7 @@ public class BackUpLoader implements CommandLineRunner {
         BackUp c2 = BackUp.builder().name("E:\\FamilieAlbum").parent(familieAlbumDB).dateCreated(Instant.now()).build();
         familieAlbumDB.setChildren(new HashSet<>(Arrays.asList(c1, c2)));
         repository.save(familieAlbumDB);
-
+*/
         repository.findAll().forEach((backUp) -> {
             logger.info("{}", backUp);
         });
