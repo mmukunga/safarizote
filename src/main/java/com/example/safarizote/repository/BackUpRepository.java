@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BackUpRepository extends JpaRepository<BackUp,Integer> {
-    Set<BackUp> findByName(String name);
+    BackUp findByName(String name);
 }

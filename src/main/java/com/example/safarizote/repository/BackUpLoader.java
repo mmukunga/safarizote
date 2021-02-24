@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -30,18 +31,26 @@ public class BackUpLoader implements CommandLineRunner {
             return;
         }
         
-        BackUp root = BackUp.builder().name("root").dateCreated(Instant.now()).build();
-        repository.save(root);
-        BackUp myPC = BackUp.builder().name("Desktop(this PC)").collapsed(true).dateCreated(Instant.now()).build();
-        
-        repository.save(myPC);
+        BackUp rootFolder = BackUp.builder().name("root").dateCreated(Instant.now()).build();
+        repository.save(rootFolder);
+        BackUp rootDB = repository.findByName("root");
+
+        BackUp myPCFolder = BackUp.builder().name("Desktop(this PC)").collapsed(true).dateCreated(Instant.now()).build();
+        rootDB.setChildren(new HashSet<>(Arrays.asList(myPCFolder)));
+        repository.save(rootDB);
+
+        BackUp myPCFolderDB = repository.findByName("Desktop(this PC)");
         BackUp simTemps = BackUp.builder().name("C:\\SimTemps").collapsed(true).dateCreated(Instant.now()).build();
+        myPCFolderDB.setChildren(new HashSet<>(Arrays.asList(simTemps)));
+        repository.save(myPCFolderDB);
+
+        BackUp simTempsDB = repository.findByName("C:\\SimTemps");
         BackUp a1 = BackUp.builder().name("D:\\SimTemps").dateCreated(Instant.now()).build();
         BackUp a2 = BackUp.builder().name("E:\\SimTemps").dateCreated(Instant.now()).build();
-        Set<BackUp> set1 = new HashSet<>(Arrays.asList(a1, a2));
-        simTemps.setChildren(set1);
-        repository.save(simTemps);
+        simTempsDB.setChildren(new HashSet<>(Arrays.asList(a1, a2)));
+        repository.save(simTempsDB);
 
+        /*
         BackUp projects = BackUp.builder().name("C:\\Projects").collapsed(true).dateCreated(Instant.now()).build();
         BackUp b1 = BackUp.builder().name("D:\\Projects").dateCreated(Instant.now()).build();
         BackUp b2 = BackUp.builder().name("E:\\Projects").dateCreated(Instant.now()).build();
@@ -59,10 +68,13 @@ public class BackUpLoader implements CommandLineRunner {
         Set<BackUp> set4 = new HashSet<>(Arrays.asList(simTemps, projects, familieAlbum));
         myPC.setChildren(set4);
         repository.save(myPC);
+        */
         
+        /*
         Set<BackUp> set5 = new HashSet<>(Arrays.asList(myPC));
         root.setChildren(set5);
         repository.save(root);
+        */
 
         repository.findAll().forEach((backUp) -> {
             logger.info("{}", backUp);
