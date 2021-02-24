@@ -41,7 +41,9 @@ public class BackUpLoader implements CommandLineRunner {
 
         BackUp myPCFolderDB = repository.findByName("Desktop(this PC)");
         BackUp simTemps = BackUp.builder().name("C:\\SimTemps").collapsed(true).dateCreated(Instant.now()).build();
-        myPCFolderDB.setChildren(new HashSet<>(Arrays.asList(simTemps)));
+        BackUp projects = BackUp.builder().name("C:\\Projects").collapsed(true).dateCreated(Instant.now()).build();
+        BackUp familieAlbum = BackUp.builder().name("C:\\FamilieAlbum").collapsed(true).dateCreated(Instant.now()).build();
+        myPCFolderDB.setChildren(new HashSet<>(Arrays.asList(simTemps, projects, familieAlbum)));
         repository.save(myPCFolderDB);
 
         BackUp simTempsDB = repository.findByName("C:\\SimTemps");
@@ -50,32 +52,18 @@ public class BackUpLoader implements CommandLineRunner {
         simTempsDB.setChildren(new HashSet<>(Arrays.asList(a1, a2)));
         repository.save(simTempsDB);
 
-        /*
-        BackUp projects = BackUp.builder().name("C:\\Projects").collapsed(true).dateCreated(Instant.now()).build();
+        BackUp projectsDB = repository.findByName("C:\\Projects");
         BackUp b1 = BackUp.builder().name("D:\\Projects").dateCreated(Instant.now()).build();
         BackUp b2 = BackUp.builder().name("E:\\Projects").dateCreated(Instant.now()).build();
-        Set<BackUp> set2 = new HashSet<>(Arrays.asList(b1, b2));
-        projects.setChildren(set2);
-        repository.save(projects);
+        projectsDB.setChildren(new HashSet<>(Arrays.asList(b1, b2)));
+        repository.save(projectsDB);
 
-        BackUp familieAlbum = BackUp.builder().name("C:\\FamilieAlbum").collapsed(true).dateCreated(Instant.now()).build();
+        BackUp familieAlbumDB = repository.findByName("C:\\FamilieAlbum");
         BackUp c1 = BackUp.builder().name("D:\\FamilieAlbum").dateCreated(Instant.now()).build();
         BackUp c2 = BackUp.builder().name("E:\\FamilieAlbum").dateCreated(Instant.now()).build();
-        Set<BackUp> set3 = new HashSet<>(Arrays.asList(c1, c2));
-        familieAlbum.setChildren(set3);
-        repository.save(familieAlbum);
-
-        Set<BackUp> set4 = new HashSet<>(Arrays.asList(simTemps, projects, familieAlbum));
-        myPC.setChildren(set4);
-        repository.save(myPC);
-        */
+        familieAlbumDB.setChildren(new HashSet<>(Arrays.asList(c1, c2)));
+        repository.save(familieAlbumDB);
         
-        /*
-        Set<BackUp> set5 = new HashSet<>(Arrays.asList(myPC));
-        root.setChildren(set5);
-        repository.save(root);
-        */
-
         repository.findAll().forEach((backUp) -> {
             logger.info("{}", backUp);
         });

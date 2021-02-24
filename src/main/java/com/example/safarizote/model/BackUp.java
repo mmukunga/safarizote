@@ -9,6 +9,7 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,6 +26,8 @@ public class BackUp {
     @Id @GeneratedValue Long id;
     @NonNull String name; 
     Boolean collapsed;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @NonNull BackUp parent;
     Instant dateCreated;
     @OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
     Set<BackUp> children;

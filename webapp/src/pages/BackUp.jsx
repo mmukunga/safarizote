@@ -30,7 +30,7 @@ import axios from 'axios';
     const [collapsed, setCollapsed] = useState(true);
 
     useEffect(() => {
-      axios.get('api://backUp').then(response => {
+      axios.get('/api/backUp').then(response => {
           console.log(response);
       });
     }, []);  
