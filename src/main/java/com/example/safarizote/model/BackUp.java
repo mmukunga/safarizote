@@ -27,11 +27,11 @@ public class BackUp {
     @Id @GeneratedValue Long id;
     @NonNull String name; 
     Boolean collapsed;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "parent_id", referencedColumnName = "id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="parent_id")
     BackUp parent;
     Instant dateCreated;
-    @OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     Set<BackUp> children;
 
 }
