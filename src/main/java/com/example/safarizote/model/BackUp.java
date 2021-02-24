@@ -1,16 +1,19 @@
 package com.example.safarizote.model;
 
+import java.io.Serializable;
 import java.time.Instant;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.OneToMany;
 import javax.persistence.FetchType;
 
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,16 +27,17 @@ import lombok.NonNull;
 @AllArgsConstructor
 @Builder
 public class BackUp {
-    @Id @GeneratedValue Long id;
+    @Id
+    @GeneratedValue
+    Long id;
     @NonNull String name; 
     Boolean collapsed;
     Instant dateCreated;
-    @Column(name = "parent_id")
+    @ManyToOne(fetch=FetchType.LAZY, optional=true)
     BackUp parent;
-    @OneToMany(
+    @OneToMany(mappedBy = "parent", 
         cascade = CascadeType.ALL,
         fetch = FetchType.EAGER)
-    @JoinColumn(name = "parent_id")
-    Set<BackUp> children;
+    Set<BackUp> children = new HashSet<>();
 
 }
