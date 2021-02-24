@@ -9,6 +9,7 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
@@ -26,7 +27,8 @@ public class BackUp {
     @Id @GeneratedValue Long id;
     @NonNull String name; 
     Boolean collapsed;
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_id", referencedColumnName = "id")
     BackUp parent;
     Instant dateCreated;
     @OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
