@@ -27,11 +27,11 @@ public class BackUpController {
         System.out.println("BackUp.findAll() , the time at the server is now " + new Date());
 
         // New Enhanced For loop
-        System.out.println("\n==============> 2. New Enhanced For loop Example..");
+        System.out.println("\n==============> 1. New Enhanced For loop Example..");
         for (BackUp temp : backUps) {
             System.out.println(temp);
         }
-
+        System.out.println("\n==============> 2. New Enhanced For loop Example..");
         System.out.println("BackUp.findAll()  End OK!");
         return new ResponseEntity<>(backUps, HttpStatus.OK);
     }
