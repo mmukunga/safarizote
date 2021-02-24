@@ -26,7 +26,7 @@ public class BackUp {
     @Id @GeneratedValue Long id;
     @NonNull String name; 
     Boolean collapsed;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade=CascadeType.ALL)
     BackUp parent;
     Instant dateCreated;
     @OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
