@@ -12,6 +12,7 @@ const Loading = () => {
   useEffect(() => {
     let newMessage = message.length < 4 ? message.concat('.') : '';
     setMessage(newMessage);
+    /*
     const userToken = localStorage.getItem('token');
     console.log('UserToken:= ' + userToken);
 
@@ -19,7 +20,7 @@ const Loading = () => {
         console.log(userToken);
         localStorage.removeItem('token');
     }
-
+   */
   }, [message]);
 
   return (
