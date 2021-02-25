@@ -10,7 +10,6 @@ const Home = () => {
    useEffect(() => {
       axios.get('https://extreme-ip-lookup.com/json/')
         .then(response => {
-            console.log(response);
             axios.post('/api/saveVisit', {
                url: response.data.ipName,
                browser: 'Microsoft Edge',

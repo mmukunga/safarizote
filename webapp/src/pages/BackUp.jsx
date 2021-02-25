@@ -54,32 +54,21 @@ import axios from 'axios';
           selected_folders = {[event.target.name] : event.target.checked};
         }       
         setCheckedFolders(selected_folders);
-      } else { 
-        console.log('checked_item');
-        console.log(checked_item);
-        console.log('checkedFolders');
-        console.log(checkedFolders);
+      } else { ;
         var index = checkedFolders.indexOf(checked_item);
         if (index > -1) {
           delete checkedFolders[event.target.name];
           setCheckedFolders({...checkedFolders})
         } 
       }
-
-      console.log(checkedFolders);
     }
     
     const handleCollapsed = (collapsed) => {
       setCollapsed(collapsed);
     }
 
-    console.log('BackUp!!!');
-
     function TreeItem(props) {
-      //const {item} = props.item;
-      const item = props.item;      
-      console.log('Props.TreeLevel.1:= ' + props.treeLevel);
-
+      const item = props.item;
       const treeClassName = "TreeItem" + props.treeLevel;
 
       const handleChange = (event) => {
@@ -88,9 +77,8 @@ import axios from 'axios';
 
       const handleCollapsed = () => {
         props.handleCollapsed(!props.collapsed);
-       }
+      }
       
-       console.log()
       return ( 
       <div className={treeClassName}>
         <input name={item.name} id={item.id} type="checkbox" checked={checkedFolders[item.name]} onChange={handleChange}/> &nbsp; &nbsp;
@@ -103,7 +91,6 @@ import axios from 'axios';
     
     function TreeList(props) {
       const {list, handleChange, collapsed, handleCollapsed} = props;
-      console.log('Props.TreeLevel.2:= ' + props.treeLevel);
       const treeClassName = "TreeItem"  + props.treeLevel;
       return (
         <div className={treeClassName}>
