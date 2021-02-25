@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
@@ -35,6 +36,7 @@ public class BackUp {
     @ManyToOne(fetch=FetchType.LAZY, optional=true)
     @JoinColumn(name="parent_id", referencedColumnName="id")
     BackUp parent;
-    @OneToMany(mappedBy="parent", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="parent", fetch=FetchType.EAGER)
+    @EqualsAndHashCode.Exclude
     Set<BackUp> children = new HashSet<>();
 }
