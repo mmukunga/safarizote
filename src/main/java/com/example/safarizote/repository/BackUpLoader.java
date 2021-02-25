@@ -31,32 +31,32 @@ public class BackUpLoader implements CommandLineRunner {
         repository.save(rootFolder);
         BackUp rootDB = repository.findByName("root");
 
-        BackUp myPCFolder = BackUp.builder().name("Desktop(this PC)").parent(rootDB).collapsed(true).dateCreated(Instant.now()).build();
+        BackUp myPCFolder = BackUp.builder().name("MyDesktopPC)").parent(rootDB).collapsed(true).dateCreated(Instant.now()).build();
         rootDB.setChildren(new HashSet<>(Arrays.asList(myPCFolder)));
         repository.save(rootDB);
 
-        BackUp myPCFolderDB = repository.findByName("Desktop(this PC)");
-        BackUp simTemps = BackUp.builder().name("C:\\SimTemps").parent(myPCFolderDB).collapsed(true).dateCreated(Instant.now()).build();
-        BackUp projects = BackUp.builder().name("C:\\Projects").parent(myPCFolderDB).collapsed(true).dateCreated(Instant.now()).build();
-        BackUp familieAlbum = BackUp.builder().name("C:\\FamilieAlbum").parent(myPCFolderDB).collapsed(true).dateCreated(Instant.now()).build();
+        BackUp myPCFolderDB = repository.findByName("MyDesktopPC");
+        BackUp simTemps = BackUp.builder().name("CSimTemps").parent(myPCFolderDB).collapsed(true).dateCreated(Instant.now()).build();
+        BackUp projects = BackUp.builder().name("CProjects").parent(myPCFolderDB).collapsed(true).dateCreated(Instant.now()).build();
+        BackUp familieAlbum = BackUp.builder().name("CFamilieAlbum").parent(myPCFolderDB).collapsed(true).dateCreated(Instant.now()).build();
         myPCFolderDB.setChildren(new HashSet<>(Arrays.asList(simTemps, projects, familieAlbum)));
         repository.save(myPCFolderDB);
         
-        BackUp simTempsDB = repository.findByName("C:\\SimTemps");
-        BackUp a1 = BackUp.builder().name("D:\\SimTemps").parent(simTempsDB).dateCreated(Instant.now()).build();
-        BackUp a2 = BackUp.builder().name("E:\\SimTemps").parent(simTempsDB).dateCreated(Instant.now()).build();
+        BackUp simTempsDB = repository.findByName("CSimTemps");
+        BackUp a1 = BackUp.builder().name("DSimTemps").parent(simTempsDB).dateCreated(Instant.now()).build();
+        BackUp a2 = BackUp.builder().name("ESimTemps").parent(simTempsDB).dateCreated(Instant.now()).build();
         simTempsDB.setChildren(new HashSet<>(Arrays.asList(a1, a2)));
         repository.save(simTempsDB);
 
-        BackUp projectsDB = repository.findByName("C:\\Projects");
-        BackUp b1 = BackUp.builder().name("D:\\Projects").parent(projectsDB).dateCreated(Instant.now()).build();
-        BackUp b2 = BackUp.builder().name("E:\\Projects").parent(projectsDB).dateCreated(Instant.now()).build();
+        BackUp projectsDB = repository.findByName("CProjects");
+        BackUp b1 = BackUp.builder().name("DProjects").parent(projectsDB).dateCreated(Instant.now()).build();
+        BackUp b2 = BackUp.builder().name("EProjects").parent(projectsDB).dateCreated(Instant.now()).build();
         projectsDB.setChildren(new HashSet<>(Arrays.asList(b1, b2)));
         repository.save(projectsDB);
 
-        BackUp familieAlbumDB = repository.findByName("C:\\FamilieAlbum");
-        BackUp c1 = BackUp.builder().name("D:\\FamilieAlbum").parent(familieAlbumDB).dateCreated(Instant.now()).build();
-        BackUp c2 = BackUp.builder().name("E:\\FamilieAlbum").parent(familieAlbumDB).dateCreated(Instant.now()).build();
+        BackUp familieAlbumDB = repository.findByName("CFamilieAlbum");
+        BackUp c1 = BackUp.builder().name("DFamilieAlbum").parent(familieAlbumDB).dateCreated(Instant.now()).build();
+        BackUp c2 = BackUp.builder().name("EFamilieAlbum").parent(familieAlbumDB).dateCreated(Instant.now()).build();
         familieAlbumDB.setChildren(new HashSet<>(Arrays.asList(c1, c2)));
         repository.save(familieAlbumDB);
         
