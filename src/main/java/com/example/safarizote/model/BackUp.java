@@ -35,6 +35,6 @@ public class BackUp {
     @ManyToOne(fetch=FetchType.LAZY, optional=true)
     @JoinColumn(name="parent_id", referencedColumnName="id")
     BackUp parent;
-    @OneToMany(mappedBy="parent_id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="parent", cascade = CascadeType.ALL)
     Set<BackUp> children = new HashSet<>();
 }
