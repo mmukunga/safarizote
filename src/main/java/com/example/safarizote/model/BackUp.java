@@ -35,9 +35,7 @@ public class BackUp {
     Instant dateCreated;
     @ManyToOne(fetch=FetchType.LAZY, optional=true)
     BackUp parent;
-    @OneToMany(mappedBy = "parent", 
-        cascade = CascadeType.ALL,
-        fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "parent")
     Set<BackUp> children = new HashSet<>();
 
 }
