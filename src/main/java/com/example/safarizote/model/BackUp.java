@@ -38,5 +38,5 @@ public class BackUp {
     BackUp parent;
     @OneToMany(mappedBy="parent", fetch=FetchType.EAGER)
     @EqualsAndHashCode.Exclude
-    Set<BackUp> children;
+    Set<BackUp> children = new HashSet<>();
 }
