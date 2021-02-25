@@ -38,9 +38,13 @@ public class BackUpLoader implements CommandLineRunner {
         System.out.println("BackUpLoader .. 3");
         BackUp myPCFolderDB = repository.findByName("MyDesktopPC");
         BackUp simTemps = BackUp.builder().name("CSimTemps").parent(myPCFolderDB).collapsed(true).dateCreated(Instant.now()).build();
+        simTemps = repository.save(simTemps);
         BackUp projects = BackUp.builder().name("CProjects").parent(myPCFolderDB).collapsed(true).dateCreated(Instant.now()).build();
+        projects = repository.save(projects);
         BackUp familieAlbum = BackUp.builder().name("CFamilieAlbum").parent(myPCFolderDB).collapsed(true).dateCreated(Instant.now()).build();
         System.out.println("BackUpLoader .. 4");
+        familieAlbum = repository.save(familieAlbum);
+        
         myPCFolderDB.getChildren().add(simTemps);
         myPCFolderDB.getChildren().add(projects);
         myPCFolderDB.getChildren().add(familieAlbum);
