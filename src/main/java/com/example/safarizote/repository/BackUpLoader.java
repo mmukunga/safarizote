@@ -1,12 +1,8 @@
 package com.example.safarizote.repository;
 
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +22,7 @@ public class BackUpLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         repository.deleteAll();
-        
+
         if (repository.count() > 0) {
             return;
         }
