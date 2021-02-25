@@ -1,14 +1,13 @@
 package com.example.safarizote.model;
 
-import java.io.Serializable;
 import java.time.Instant;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.OneToMany;
 import javax.persistence.FetchType;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -34,8 +33,8 @@ public class BackUp {
     Boolean collapsed;
     Instant dateCreated;
     @ManyToOne(fetch=FetchType.LAZY, optional=true)
+    @JoinColumn(name="parent_id", referencedColumnName="id")
     BackUp parent;
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "parent")
+    @OneToMany(mappedBy="parent_id", cascade = CascadeType.ALL)
     Set<BackUp> children = new HashSet<>();
-
 }
