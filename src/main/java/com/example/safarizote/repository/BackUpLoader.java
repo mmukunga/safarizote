@@ -25,7 +25,7 @@ public class BackUpLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         System.out.println("BackUpLoader ..root...1 ");
-        repository.deleteAll();
+        //repository.deleteAll();
         BackUp rootFolder = BackUp.builder().name("root").parent(null).dateCreated(Instant.now()).build();
         System.out.println("BackUpLoader ..root...2 " + rootFolder);
         List<String> folders = Arrays.asList("SimTemps", "Projects", "FamilieAlbum");
