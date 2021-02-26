@@ -28,14 +28,18 @@ public class BackUpLoader implements CommandLineRunner {
         return;
         }
         */    
-        System.out.println("BackUpLoader .. 1");
-        BackUp rootFolder = BackUp.builder().name("root").parent(null).dateCreated(Instant.now()).build();
-        repository.save(rootFolder);
-        BackUp rootDB = repository.findByName("root");
-        System.out.println("BackUpLoader .. 2");
-        BackUp myPCFolder = BackUp.builder().name("MyDesktopPC)").parent(rootDB).collapsed(true).dateCreated(Instant.now()).build();
-        rootDB.getChildren().add(myPCFolder);
-        repository.save(rootDB);
+        System.out.println("BackUpLoader ..START...");
+        //BackUp rootFolder = BackUp.builder().name("root").parent(null).dateCreated(Instant.now()).build();
+        repository.save(BackUp.builder().name("root").parent(null).dateCreated(Instant.now()).build());
+        BackUp root = repository.findByName("root");
+        System.out.println("BackUpLoader .. root:= " + root);
+        //BackUp myPCFolder = BackUp.builder().name("MyDesktopPC)").parent(root).collapsed(true).dateCreated(Instant.now()).build();
+        //rootDB.getChildren().add(BackUp.builder().name("MyDesktopPC)").parent(root).collapsed(true).dateCreated(Instant.now()).build());
+        repository.save(BackUp.builder().name("MyDesktopPC)").parent(root).collapsed(true).dateCreated(Instant.now()).build());
+        BackUp myPCFolder = repository.findByName("MyDesktopPC");
+        System.out.println("BackUpLoader ..myPCFolder:= " + myPCFolder);
+        
+        /*
         System.out.println("BackUpLoader .. 3");
         BackUp myPCFolderDB = repository.findByName("MyDesktopPC");
         BackUp simTemps = BackUp.builder().name("CSimTemps").parent(myPCFolderDB).collapsed(true).dateCreated(Instant.now()).build();
@@ -50,7 +54,7 @@ public class BackUpLoader implements CommandLineRunner {
         myPCFolderDB.getChildren().add(projects);
         myPCFolderDB.getChildren().add(familieAlbum);
         repository.save(myPCFolderDB);
-        
+
         System.out.println("BackUpLoader .. 5");
         BackUp simTempsDB = repository.findByName("CSimTemps");
         BackUp a1 = BackUp.builder().name("DSimTemps").parent(simTempsDB).dateCreated(Instant.now()).build();
@@ -72,6 +76,7 @@ public class BackUpLoader implements CommandLineRunner {
         familieAlbumDB.getChildren().add(c1);
         familieAlbumDB.getChildren().add(c2);
         repository.save(familieAlbumDB);
+        */       
         System.out.println("BackUpLoader .. 8");
         repository.findAll().forEach((backUp) -> {
             logger.info("{}", backUp);
