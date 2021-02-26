@@ -22,12 +22,12 @@ public class BackUpLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         repository.deleteAll();
-    /*
+        /*
         if (repository.count() > 0) {
-            System.out.println("TABLE ONT EMPTY!!");
-            return;
+        System.out.println("TABLE ONT EMPTY!!");
+        return;
         }
-    */    
+        */    
         System.out.println("BackUpLoader .. 1");
         BackUp rootFolder = BackUp.builder().name("root").parent(null).dateCreated(Instant.now()).build();
         repository.save(rootFolder);
