@@ -24,84 +24,29 @@ public class BackUpLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("BackUpLoader ..root...1 ");
-        //repository.deleteAll();
+        System.out.println("BackUpLoader..root...");
         BackUp rootFolder = BackUp.builder().name("root").parent(null).dateCreated(Instant.now()).build();
-        System.out.println("BackUpLoader ..root...2 " + rootFolder);
+        System.out.println("BackUpLoader..root..." + rootFolder);
+
         List<String> folders = Arrays.asList("SimTemps", "Projects", "FamilieAlbum");
         Set<BackUp> children = folders.stream().map(title -> BackUp.builder()
                 .name(title)
-                // assign a reference, I know this is wrong since board here is not
-                // saved yet or fetched from db, hence the question
                 .parent(rootFolder) 
+                .collapsed(true)
+                .dateCreated(Instant.now())
                 .build())
                 .collect(Collectors.toSet());    
-        System.out.println("BackUpLoader ..root...3 ");
-        // This saves board perfectly, but in Story db, the foreign key column
-        // board_id is null, rightfully so since call to story table was not yet done.
+        System.out.println("BackUpLoader..root...");
+
         BackUp root = repository.save(BackUp.builder()
         .name(rootFolder.getName())
+        .collapsed(true)
+        .dateCreated(Instant.now())
         .children(children)
         .build());        
 
-        System.out.println("BackUpLoader ..root...4 " + root);
-        /*
-        if (repository.count() > 0) {
-        System.out.println("TABLE ONT EMPTY!!");
-        return;
-        }
-                
-        System.out.println("BackUpLoader ..START...");
-        //BackUp rootFolder = BackUp.builder().name("root").parent(null).dateCreated(Instant.now()).build();
-        repository.save(BackUp.builder().name("root").parent(null).dateCreated(Instant.now()).build());
-        BackUp root = repository.findByName("root");
-        System.out.println("BackUpLoader .. root:= " + root);
-        BackUp myPCFolder = BackUp.builder().name("MyDesktopPC)").parent(root).collapsed(true).dateCreated(Instant.now()).build();
-        //rootDB.getChildren().add(BackUp.builder().name("MyDesktopPC)").parent(root).collapsed(true).dateCreated(Instant.now()).build());
-        root.getChildren().add(myPCFolder);
-        repository.save(root);
-        BackUp myPCFolderDB = repository.findByName("MyDesktopPC");
-        System.out.println("BackUpLoader ..myPCFolder:= " + myPCFolderDB);
-    
-        System.out.println("BackUpLoader .. 3");
-        BackUp myPCFolderDB = repository.findByName("MyDesktopPC");
-        BackUp simTemps = BackUp.builder().name("CSimTemps").parent(myPCFolderDB).collapsed(true).dateCreated(Instant.now()).build();
-        simTemps = repository.save(simTemps);
-        BackUp projects = BackUp.builder().name("CProjects").parent(myPCFolderDB).collapsed(true).dateCreated(Instant.now()).build();
-        projects = repository.save(projects);
-        BackUp familieAlbum = BackUp.builder().name("CFamilieAlbum").parent(myPCFolderDB).collapsed(true).dateCreated(Instant.now()).build();
-        System.out.println("BackUpLoader .. 4");
-        familieAlbum = repository.save(familieAlbum);
-
-        myPCFolderDB.getChildren().add(simTemps);
-        myPCFolderDB.getChildren().add(projects);
-        myPCFolderDB.getChildren().add(familieAlbum);
-        repository.save(myPCFolderDB);
-
-        System.out.println("BackUpLoader .. 5");
-        BackUp simTempsDB = repository.findByName("CSimTemps");
-        BackUp a1 = BackUp.builder().name("DSimTemps").parent(simTempsDB).dateCreated(Instant.now()).build();
-        BackUp a2 = BackUp.builder().name("ESimTemps").parent(simTempsDB).dateCreated(Instant.now()).build();
-        simTempsDB.getChildren().add(a1);
-        simTempsDB.getChildren().add(a2);
-        repository.save(simTempsDB);
-        System.out.println("BackUpLoader .. 6");
-        BackUp projectsDB = repository.findByName("CProjects");
-        BackUp b1 = BackUp.builder().name("DProjects").parent(projectsDB).dateCreated(Instant.now()).build();
-        BackUp b2 = BackUp.builder().name("EProjects").parent(projectsDB).dateCreated(Instant.now()).build();
-        projectsDB.getChildren().add(b1);
-        projectsDB.getChildren().add(b2);
-        repository.save(projectsDB);
-        System.out.println("BackUpLoader .. 7");
-        BackUp familieAlbumDB = repository.findByName("CFamilieAlbum");
-        BackUp c1 = BackUp.builder().name("DFamilieAlbum").parent(familieAlbumDB).dateCreated(Instant.now()).build();
-        BackUp c2 = BackUp.builder().name("EFamilieAlbum").parent(familieAlbumDB).dateCreated(Instant.now()).build();
-        familieAlbumDB.getChildren().add(c1);
-        familieAlbumDB.getChildren().add(c2);
-        repository.save(familieAlbumDB);
-        */       
-
-        System.out.println("BackUpLoader .. 8");
+        System.out.println("BackUpLoader...root..." + root);
+        System.out.println("BackUpLoader...");
         repository.findAll().forEach((backUp) -> {
             logger.info("{}", backUp);
         });
