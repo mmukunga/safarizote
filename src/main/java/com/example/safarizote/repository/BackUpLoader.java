@@ -3,6 +3,9 @@ package com.example.safarizote.repository;
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +25,26 @@ public class BackUpLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         repository.deleteAll();
+        BackUp rootFolder = BackUp.builder().name("root").parent(null).dateCreated(Instant.now()).build();
+       
+        List<String> folders = Arrays.asList("SimTemps", "Projects", "FamilieAlbum");
+        Set<BackUp> children = folders.stream().map(title -> BackUp.builder()
+                .name(title)
+                // assign a reference, I know this is wrong since board here is not
+                // saved yet or fetched from db, hence the question
+                .parent(rootFolder) 
+                .build())
+                .collect(Collectors.toSet());
+    
+       
+        // This saves board perfectly, but in Story db, the foreign key column
+        // board_id is null, rightfully so since call to story table was not yet done.
+        BackUp root = repository.save(BackUp.builder()
+        .name(rootFolder.getName())
+        .children(children)
+        .build());        
+
+        System.out.println("BackUpLoader ..root..." + root);
         /*
         if (repository.count() > 0) {
         System.out.println("TABLE ONT EMPTY!!");
@@ -33,11 +56,12 @@ public class BackUpLoader implements CommandLineRunner {
         repository.save(BackUp.builder().name("root").parent(null).dateCreated(Instant.now()).build());
         BackUp root = repository.findByName("root");
         System.out.println("BackUpLoader .. root:= " + root);
-        //BackUp myPCFolder = BackUp.builder().name("MyDesktopPC)").parent(root).collapsed(true).dateCreated(Instant.now()).build();
+        BackUp myPCFolder = BackUp.builder().name("MyDesktopPC)").parent(root).collapsed(true).dateCreated(Instant.now()).build();
         //rootDB.getChildren().add(BackUp.builder().name("MyDesktopPC)").parent(root).collapsed(true).dateCreated(Instant.now()).build());
-        repository.save(BackUp.builder().name("MyDesktopPC)").parent(root).collapsed(true).dateCreated(Instant.now()).build());
-        BackUp myPCFolder = repository.findByName("MyDesktopPC");
-        System.out.println("BackUpLoader ..myPCFolder:= " + myPCFolder);
+        root.getChildren().add(myPCFolder);
+        repository.save(root);
+        BackUp myPCFolderDB = repository.findByName("MyDesktopPC");
+        System.out.println("BackUpLoader ..myPCFolder:= " + myPCFolderDB);
         
         /*
         System.out.println("BackUpLoader .. 3");

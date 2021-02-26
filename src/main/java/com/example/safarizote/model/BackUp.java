@@ -2,6 +2,9 @@ package com.example.safarizote.model;
 
 import java.time.Instant;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.FetchType;
 
 import java.util.HashSet;
@@ -35,10 +38,11 @@ public class BackUp {
     @NonNull String name; 
     Boolean collapsed;
     Instant dateCreated;
-    @ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-    @JoinColumn(name="parent_id")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "parent_id")
+    @JsonIgnore
     BackUp parent;
-    @OneToMany(mappedBy="parent", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy="parent", cascade=CascadeType.ALL)
     @EqualsAndHashCode.Exclude
-    Set<BackUp> children;
+    Set<BackUp> children = new HashSet<>();
 }
