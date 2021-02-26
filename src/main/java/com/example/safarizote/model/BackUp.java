@@ -38,7 +38,7 @@ public class BackUp {
     @NonNull String name; 
     Boolean collapsed;
     Instant dateCreated;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "parent_id")
     @JsonIgnore
     BackUp parent;
