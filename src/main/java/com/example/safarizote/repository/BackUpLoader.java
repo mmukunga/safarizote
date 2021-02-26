@@ -21,6 +21,7 @@ public class BackUpLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        repository.deleteAll();
     /*
         if (repository.count() > 0) {
             System.out.println("TABLE ONT EMPTY!!");
@@ -44,7 +45,7 @@ public class BackUpLoader implements CommandLineRunner {
         BackUp familieAlbum = BackUp.builder().name("CFamilieAlbum").parent(myPCFolderDB).collapsed(true).dateCreated(Instant.now()).build();
         System.out.println("BackUpLoader .. 4");
         familieAlbum = repository.save(familieAlbum);
-        
+
         myPCFolderDB.getChildren().add(simTemps);
         myPCFolderDB.getChildren().add(projects);
         myPCFolderDB.getChildren().add(familieAlbum);
