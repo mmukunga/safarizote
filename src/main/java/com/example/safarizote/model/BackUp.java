@@ -35,9 +35,10 @@ public class BackUp {
     @NonNull String name; 
     Boolean collapsed;
     Instant dateCreated;
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+    @JoinColumn(name="parent_id")
     BackUp parent;
-    @OneToMany(mappedBy="parent", fetch=FetchType.EAGER)
+    @OneToMany(mappedBy="parent", fetch = FetchType.LAZY)
     @EqualsAndHashCode.Exclude
     Set<BackUp> children;
 }
