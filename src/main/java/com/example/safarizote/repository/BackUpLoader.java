@@ -34,8 +34,7 @@ public class BackUpLoader implements CommandLineRunner {
                 // saved yet or fetched from db, hence the question
                 .parent(rootFolder) 
                 .build())
-                .collect(Collectors.toSet());
-    
+                .collect(Collectors.toSet());    
        
         // This saves board perfectly, but in Story db, the foreign key column
         // board_id is null, rightfully so since call to story table was not yet done.
@@ -50,7 +49,7 @@ public class BackUpLoader implements CommandLineRunner {
         System.out.println("TABLE ONT EMPTY!!");
         return;
         }
-        */    
+                
         System.out.println("BackUpLoader ..START...");
         //BackUp rootFolder = BackUp.builder().name("root").parent(null).dateCreated(Instant.now()).build();
         repository.save(BackUp.builder().name("root").parent(null).dateCreated(Instant.now()).build());
@@ -62,8 +61,7 @@ public class BackUpLoader implements CommandLineRunner {
         repository.save(root);
         BackUp myPCFolderDB = repository.findByName("MyDesktopPC");
         System.out.println("BackUpLoader ..myPCFolder:= " + myPCFolderDB);
-        
-        /*
+    
         System.out.println("BackUpLoader .. 3");
         BackUp myPCFolderDB = repository.findByName("MyDesktopPC");
         BackUp simTemps = BackUp.builder().name("CSimTemps").parent(myPCFolderDB).collapsed(true).dateCreated(Instant.now()).build();
@@ -101,6 +99,7 @@ public class BackUpLoader implements CommandLineRunner {
         familieAlbumDB.getChildren().add(c2);
         repository.save(familieAlbumDB);
         */       
+
         System.out.println("BackUpLoader .. 8");
         repository.findAll().forEach((backUp) -> {
             logger.info("{}", backUp);
