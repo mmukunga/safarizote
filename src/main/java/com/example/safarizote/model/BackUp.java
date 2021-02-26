@@ -35,8 +35,7 @@ public class BackUp {
     @NonNull String name; 
     Boolean collapsed;
     Instant dateCreated;
-    @ManyToOne(fetch=FetchType.LAZY, optional=true)
-    @JoinColumn(name="parent_id", referencedColumnName="id")
+    @ManyToOne(fetch=FetchType.LAZY)
     BackUp parent;
     @OneToMany(mappedBy="parent", fetch=FetchType.EAGER)
     @EqualsAndHashCode.Exclude
