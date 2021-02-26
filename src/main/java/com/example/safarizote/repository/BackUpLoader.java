@@ -24,9 +24,10 @@ public class BackUpLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        System.out.println("BackUpLoader ..root...1 ");
         repository.deleteAll();
         BackUp rootFolder = BackUp.builder().name("root").parent(null).dateCreated(Instant.now()).build();
-       
+        System.out.println("BackUpLoader ..root...2 " + rootFolder);
         List<String> folders = Arrays.asList("SimTemps", "Projects", "FamilieAlbum");
         Set<BackUp> children = folders.stream().map(title -> BackUp.builder()
                 .name(title)
@@ -35,7 +36,7 @@ public class BackUpLoader implements CommandLineRunner {
                 .parent(rootFolder) 
                 .build())
                 .collect(Collectors.toSet());    
-       
+        System.out.println("BackUpLoader ..root...3 ");
         // This saves board perfectly, but in Story db, the foreign key column
         // board_id is null, rightfully so since call to story table was not yet done.
         BackUp root = repository.save(BackUp.builder()
@@ -43,7 +44,7 @@ public class BackUpLoader implements CommandLineRunner {
         .children(children)
         .build());        
 
-        System.out.println("BackUpLoader ..root..." + root);
+        System.out.println("BackUpLoader ..root...4 " + root);
         /*
         if (repository.count() > 0) {
         System.out.println("TABLE ONT EMPTY!!");
