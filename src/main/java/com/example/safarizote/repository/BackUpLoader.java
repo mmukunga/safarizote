@@ -46,8 +46,8 @@ public class BackUpLoader implements CommandLineRunner {
         .children(children)
         .build());        
         System.out.println("BackUpLoader...root..." + root);
-        BackUp simTempsFolder = repository.findByName("SimTemps");
-        System.out.println("BackUpLoader...SimTemps..." + simTempsFolder);
+        //BackUp simTempsFolder = repository.findByName("SimTemps");
+        //System.out.println("BackUpLoader...SimTemps..." + simTempsFolder);
         /*
         List<String> simTemps = Arrays.asList("DSimTemps", "ESimTemps");
         Set<BackUp> simTempsChildren = simTemps.stream().map(title -> BackUp.builder()
