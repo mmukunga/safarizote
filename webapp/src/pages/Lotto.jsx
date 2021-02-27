@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Card from './Card';
 
-const Shopping = () => {
+const Lotto = () => {
     const [data, setData] = useState([]);
     
   useEffect(() => {
@@ -33,4 +33,4 @@ const Shopping = () => {
     )
 }
 
-export default Shopping
+export default Lotto
