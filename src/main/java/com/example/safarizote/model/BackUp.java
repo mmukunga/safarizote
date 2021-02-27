@@ -10,6 +10,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -38,7 +39,7 @@ public class BackUp {
     @JoinColumn(name = "parent_id")
     @JsonIgnore
     BackUp parent;
-    @OneToMany(mappedBy="parent", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy="parent", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     @EqualsAndHashCode.Exclude
     Set<BackUp> children = new HashSet<>();
 }
