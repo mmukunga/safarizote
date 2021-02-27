@@ -41,5 +41,5 @@ public class BackUp {
     BackUp parent;
     @OneToMany(mappedBy="parent", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
     @EqualsAndHashCode.Exclude
-    Set<BackUp> children = new HashSet<>();
+    Set<BackUp> children;
 }
