@@ -33,19 +33,30 @@ public class SignInController {
     @RequestMapping(value = "/api/login",  method={RequestMethod.POST})
     public ResponseEntity<UserAuth> logIn(@RequestBody UserAuth userAuth) {
         System.out.println("\n==============> 1. .. " + userAuth);
+        UserAuth foundUser = null;
         List<UserAuth> users = repository.findAll();
         System.out.println("\n==============> 2. USERS SIZE:=.." + users.size());
         for (UserAuth temp : users) {
-            System.out.println("SignInRepository logIn:= " + temp);
-            System.out.println("SignInRepository userAuth:= " + userAuth);
+            System.out.println("SignInRepository FROM USER:= " + temp);
+            System.out.println("SignInRepository FROM DB:= " + userAuth);
+            System.out.println("============================");
+            System.out.println("COMPARE1:= " + temp.getEmail() + " <> " + userAuth.getEmail());
+            System.out.println("COMPARE2:= " + temp.getPassword() + " <> " + userAuth.getPassword());
+            System.out.println("============================");
+            if (temp.getEmail().equals(userAuth.getEmail())) {
+                foundUser = temp;
+                System.out.println("SignInRepository USER FOUND!!:= " + temp);
+                break;
+            }
+            /*
             if (temp.getEmail().equals(userAuth.getEmail()) &&
-               (temp.getPassword().equals(userAuth.getPassword())) ){
+               (temp.getPassword().equals(userAuth.getPassword())) ) {
                   System.out.println("SignInRepository logIn FOUND!!:= " + temp);
                   return new ResponseEntity<>(temp, HttpStatus.OK);
-               }
+               }*/
         }
         
-        System.out.println("SignInRepository logIn NOTHING ");
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        System.out.println("SignInRepository END OK!!");
+        return new ResponseEntity<>(foundUser, HttpStatus.OK);
     }
 }
