@@ -3,6 +3,7 @@ package com.example.safarizote.repository;
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -107,7 +108,25 @@ public class BackUpLoader implements CommandLineRunner {
 
         System.out.println("BackUpLoader...OK!");
         repository.findAll().forEach((backUp) -> {
-            logger.info("{}", backUp);
+          displayBackUp(backUp);
         });
+    }
+
+    public void displayBackUp(BackUp parent) {  
+      if (parent.getChildren() == null || parent.getChildren().size()==0) {
+        logger.info("{}", parent); 
+        return;
+      }     
+
+      Set<BackUp> children = parent.getChildren();
+      Iterator<BackUp> itr = children.iterator();
+      while (itr.hasNext()) { 
+         BackUp backUp = itr.next();  
+         if (backUp.getChildren().size() != 0) {
+            displayBackUp(backUp);    
+         } else {
+            logger.info("{}", backUp);        
+         }   
+      }
     }
 }
