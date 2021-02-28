@@ -26,7 +26,7 @@ public class BackUpLoader implements CommandLineRunner {
         System.out.println("BackUpLoader..root...");
         if (repository.count() > 0) {
            System.out.println("..TABLE ONT EMPTY!!..");
-           return;
+           //return;
         }
         BackUp rootFolder = BackUp.builder().name("root").parent(null).dateCreated(Instant.now()).build();
         System.out.println("BackUpLoader..root..." + rootFolder);
@@ -66,7 +66,7 @@ public class BackUpLoader implements CommandLineRunner {
                 .children(simTempsChildren)
                 .build());        
         System.out.println("BackUpLoader..SimTemps..." + rootSimTemps);
-        
+
         System.out.println("BackUpLoader...OK!");
         repository.findAll().forEach((backUp) -> {
             logger.info("{}", backUp);
