@@ -33,22 +33,36 @@ public class BackUpLoader implements CommandLineRunner {
         System.out.println("BackUpLoader..rootFolder..." + rootFolder);
         List<String> folders = Arrays.asList("SimTemps", "Projects", "FamilieAlbum");
         Set<BackUp> children = folders.stream().map(title -> BackUp.builder()
-                .name(title)
-                .parent(rootFolder) 
-                .collapsed(true)
-                .dateCreated(Instant.now())
-                .build())
-                .collect(Collectors.toSet()); 
-                   
+            .name(title)
+            .parent(rootFolder) 
+            .collapsed(true)
+            .dateCreated(Instant.now())
+            .build())
+            .collect(Collectors.toSet());        
+                
+        for(BackUp backUp : children){
+          System.out.println(backUp);
+          List<String> simTemps = Arrays.asList("DSimTemps", "ESimTemps");
+          Set<BackUp> simTempsChildren = simTemps.stream().map(title -> BackUp.builder()
+            .name(title)
+            .parent(backUp) 
+            .collapsed(true)
+            .dateCreated(Instant.now())
+            .build())
+            .collect(Collectors.toSet()); 
+            backUp.getChildren().addAll(simTempsChildren);
+        }
+                     
         System.out.println("BackUpLoader..children..." + children);
         BackUp root = repository.save(BackUp.builder()
-                .name(rootFolder.getName())
-                .collapsed(true)
-                .dateCreated(Instant.now())
-                .children(children)
-                .build());        
+            .name(rootFolder.getName())
+            .collapsed(true)
+            .dateCreated(Instant.now())
+            .children(children)
+            .build());        
         System.out.println("BackUpLoader...root...4" + root);
 
+        /*
         BackUp simTempsFolder = repository.findByName("SimTemps");
         System.out.println("BackUpLoader...simTempsFolder..." + simTempsFolder);
 
@@ -65,8 +79,7 @@ public class BackUpLoader implements CommandLineRunner {
         simTempsFolder.setChildren(simTempsChildren);
         BackUp rootSimTemps = repository.save(simTempsFolder); 
         System.out.println("BackUpLoader..rootSimTemps... " + rootSimTemps);
-
-        /*
+        
         BackUp rootFamilieAlbum = repository.save(BackUp.builder()
             .name(familieAlbumFolder.getName())
             .collapsed(true)
