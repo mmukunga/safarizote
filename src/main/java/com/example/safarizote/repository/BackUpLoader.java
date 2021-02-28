@@ -38,7 +38,8 @@ public class BackUpLoader implements CommandLineRunner {
                 .collapsed(true)
                 .dateCreated(Instant.now())
                 .build())
-                .collect(Collectors.toSet());    
+                .collect(Collectors.toSet()); 
+                   
         System.out.println("BackUpLoader..root...3");
         BackUp root = repository.save(BackUp.builder()
                 .name(rootFolder.getName())
