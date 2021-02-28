@@ -32,7 +32,10 @@ const SignIn = (props) => {
             email: state.email,
             password: state.password
         }).then(response => {
+            console.log('SignIn fromDB:= ' + response);
             localStorage.setItem('token', response.data);
+        }).catch(error => {
+            console.log(error);
         });
     }
 
