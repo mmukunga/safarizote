@@ -39,7 +39,6 @@ public class BackUp {
     @JoinColumn(name = "parent_id")
     @JsonIgnore
     BackUp parent;
-    @OneToMany(mappedBy="parent", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-    @EqualsAndHashCode.Exclude
+    @OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
     Set<BackUp> children;
 }
