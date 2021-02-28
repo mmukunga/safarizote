@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.transaction.annotation.Transactional;
 import com.example.safarizote.model.BackUp;
 import com.example.safarizote.repository.BackUpRepository;
 
@@ -19,7 +19,8 @@ import com.example.safarizote.repository.BackUpRepository;
 public class BackUpController { 
   @Autowired
   private BackUpRepository repository;
-
+    
+    @Transactional
     @RequestMapping(value = "/api/backUp",  method={RequestMethod.GET})
     public ResponseEntity<List<BackUp>> findAll() {
         System.out.println("BackUp.findAll() , the time at the server is now " + new Date());
