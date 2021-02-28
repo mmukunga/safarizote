@@ -40,15 +40,16 @@ public class BackUpLoader implements CommandLineRunner {
                 .collect(Collectors.toSet());    
         System.out.println("BackUpLoader..root...");
         BackUp root = repository.save(BackUp.builder()
-        .name(rootFolder.getName())
-        .collapsed(true)
-        .dateCreated(Instant.now())
-        .children(children)
-        .build());        
+                .name(rootFolder.getName())
+                .collapsed(true)
+                .dateCreated(Instant.now())
+                .children(children)
+                .build());        
         System.out.println("BackUpLoader...root..." + root);
-        //BackUp simTempsFolder = repository.findByName("SimTemps");
-        //System.out.println("BackUpLoader...SimTemps..." + simTempsFolder);
-        /*
+
+        BackUp simTempsFolder = repository.findByName("SimTemps");
+        System.out.println("BackUpLoader...SimTemps..." + simTempsFolder);
+
         List<String> simTemps = Arrays.asList("DSimTemps", "ESimTemps");
         Set<BackUp> simTempsChildren = simTemps.stream().map(title -> BackUp.builder()
                 .name(title)
@@ -65,8 +66,7 @@ public class BackUpLoader implements CommandLineRunner {
                 .children(simTempsChildren)
                 .build());        
         System.out.println("BackUpLoader..SimTemps..." + rootSimTemps);
-        */
-
+        
         System.out.println("BackUpLoader...OK!");
         repository.findAll().forEach((backUp) -> {
             logger.info("{}", backUp);
