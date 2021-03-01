@@ -20,26 +20,31 @@ public class CategoryLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        System.out.println("CategoryLoader...1");
         Category electronics = Category.builder().name("Electronics").parent(null).dateCreated(Instant.now()).build();
+        System.out.println("CategoryLoader...2");
         Category mobilePhones = Category.builder().name("Mobile phones").parent(electronics).dateCreated(Instant.now()).build();
+        System.out.println("CategoryLoader...3");
         Category washingMachines = Category.builder().name("Washing machines").parent(electronics).dateCreated(Instant.now()).build();
-        
+        System.out.println("CategoryLoader...4");
         electronics.getChildren().add(mobilePhones);
         electronics.getChildren().add(washingMachines);
-         
+        System.out.println("CategoryLoader...5a"); 
         Category iPhone = Category.builder().name("iPhone").parent(mobilePhones).dateCreated(Instant.now()).build();
+        System.out.println("CategoryLoader...5b");
         Category samsung = Category.builder().name("Samsung").parent(mobilePhones).dateCreated(Instant.now()).build();
-         
+        System.out.println("CategoryLoader...6"); 
         mobilePhones.getChildren().add(iPhone);
         mobilePhones.getChildren().add(samsung);
-         
+        System.out.println("CategoryLoader...7"); 
         Category galaxy = Category.builder().name("Galaxy").parent(samsung).dateCreated(Instant.now()).build();
-         
+        System.out.println("CategoryLoader...8"); 
         samsung.getChildren().add(galaxy);
-         
+        System.out.println("CategoryLoader...9"); 
         repository.save(electronics);
-       
+        System.out.println("CategoryLoader...10");
         System.out.println("CategoryLoader...OK!");
+
         repository.findAll().forEach((backUp) -> {
           displayCategory(backUp);
         });
