@@ -38,5 +38,5 @@ public class Category {
     Category parent;
      
     @OneToMany(mappedBy="parent", cascade=CascadeType.ALL)
-    Set<Category> children;
+    Set<Category> children = new HashSet<>();
 }
