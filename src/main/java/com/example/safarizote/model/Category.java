@@ -25,7 +25,7 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper=true)
 public class Category {
     @Id
     @GeneratedValue
