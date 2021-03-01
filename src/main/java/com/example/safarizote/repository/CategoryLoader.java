@@ -1,6 +1,7 @@
 package com.example.safarizote.repository;
 
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -21,23 +22,23 @@ public class CategoryLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         System.out.println("CategoryLoader...1");
-        Category electronics = Category.builder().name("Electronics").parent(null).dateCreated(Instant.now()).build();
+        Category electronics = Category.builder().name("Electronics").parent(null).children(new HashSet<>()).dateCreated(Instant.now()).build();
         System.out.println("CategoryLoader...2");
-        Category mobilePhones = Category.builder().name("Mobile phones").parent(electronics).dateCreated(Instant.now()).build();
+        Category mobilePhones = Category.builder().name("Mobile phones").parent(electronics).children(new HashSet<>()).dateCreated(Instant.now()).build();
         System.out.println("CategoryLoader...3");
-        Category washingMachines = Category.builder().name("Washing machines").parent(electronics).dateCreated(Instant.now()).build();
+        Category washingMachines = Category.builder().name("Washing machines").parent(electronics).children(new HashSet<>()).dateCreated(Instant.now()).build();
         System.out.println("CategoryLoader...4 electronics.getChildren():= " + electronics.getChildren());
         electronics.getChildren().add(mobilePhones);
         electronics.getChildren().add(washingMachines);
         System.out.println("CategoryLoader...5a"); 
-        Category iPhone = Category.builder().name("iPhone").parent(mobilePhones).dateCreated(Instant.now()).build();
+        Category iPhone = Category.builder().name("iPhone").parent(mobilePhones).children(new HashSet<>()).dateCreated(Instant.now()).build();
         System.out.println("CategoryLoader...5b");
-        Category samsung = Category.builder().name("Samsung").parent(mobilePhones).dateCreated(Instant.now()).build();
+        Category samsung = Category.builder().name("Samsung").parent(mobilePhones).children(new HashSet<>()).dateCreated(Instant.now()).build();
         System.out.println("CategoryLoader...6"); 
         mobilePhones.getChildren().add(iPhone);
         mobilePhones.getChildren().add(samsung);
         System.out.println("CategoryLoader...7"); 
-        Category galaxy = Category.builder().name("Galaxy").parent(samsung).dateCreated(Instant.now()).build();
+        Category galaxy = Category.builder().name("Galaxy").parent(samsung).children(new HashSet<>()).dateCreated(Instant.now()).build();
         System.out.println("CategoryLoader...8"); 
         samsung.getChildren().add(galaxy);
         System.out.println("CategoryLoader...9"); 
