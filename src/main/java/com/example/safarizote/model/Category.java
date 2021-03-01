@@ -26,8 +26,8 @@ import lombok.NonNull;
 @Builder
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
+    @GeneratedValue
+    Long id;
 
     @Column(unique=true)
     @NonNull String name;

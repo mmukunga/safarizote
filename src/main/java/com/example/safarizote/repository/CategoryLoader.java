@@ -27,7 +27,7 @@ public class CategoryLoader implements CommandLineRunner {
         Category mobilePhones = Category.builder().name("Mobile phones").parent(electronics).children(new HashSet<>()).dateCreated(Instant.now()).build();
         System.out.println("CategoryLoader...3");
         Category washingMachines = Category.builder().name("Washing machines").parent(electronics).children(new HashSet<>()).dateCreated(Instant.now()).build();
-        System.out.println("CategoryLoader...4 electronics.getChildren():= " + electronics.getChildren());
+        System.out.println("CategoryLoader...4 electronics.getName():= " + electronics.getName());
         electronics.getChildren().add(mobilePhones);
         electronics.getChildren().add(washingMachines);
         System.out.println("CategoryLoader...5a"); 
