@@ -38,21 +38,7 @@ public class BackUpLoader implements CommandLineRunner {
             .collapsed(true)
             .dateCreated(Instant.now())
             .build())
-            .collect(Collectors.toSet());        
-                
-        for(BackUp backUp : children){
-          System.out.println(backUp);
-          List<String> simTemps = Arrays.asList("DSimTemps", "ESimTemps");
-          Set<BackUp> simTempsChildren = simTemps.stream().map(title -> BackUp.builder()
-            .name(title)
-            .parent(backUp) 
-            .collapsed(true)
-            .dateCreated(Instant.now())
-            .build())
-            .collect(Collectors.toSet()); 
-            backUp.getChildren().addAll(simTempsChildren);
-        }
-                     
+            .collect(Collectors.toSet());                             
         System.out.println("BackUpLoader..children..." + children);
         BackUp root = repository.save(BackUp.builder()
             .name(rootFolder.getName())
@@ -60,7 +46,27 @@ public class BackUpLoader implements CommandLineRunner {
             .dateCreated(Instant.now())
             .children(children)
             .build());        
-        System.out.println("BackUpLoader...root...4" + root);
+        System.out.println("BackUpLoader...root..." + root);
+
+        //BackUp simTempsFolder = BackUp.builder().name("root").parent(null).dateCreated(Instant.now()).build();
+        BackUp simTempsFolder = repository.findByName("SimTemps");
+        System.out.println("BackUpLoader..simTempsFolder..." + simTempsFolder);
+        List<String> simTempsChildren = Arrays.asList("DSimTemps", "ESimTemps");
+        Set<BackUp> simTempsChildrenSet = simTempsChildren.stream().map(title -> BackUp.builder()
+            .name(title)
+            .parent(simTempsFolder) 
+            .collapsed(true)
+            .dateCreated(Instant.now())
+            .build())
+            .collect(Collectors.toSet());                             
+        System.out.println("BackUpLoader..simTempsChildrenSet..." + simTempsChildrenSet);
+        BackUp simTempsDB = repository.save(BackUp.builder()
+            .name(simTempsFolder.getName())
+            .collapsed(true)
+            .dateCreated(Instant.now())
+            .children(simTempsChildrenSet)
+            .build());        
+        System.out.println("BackUpLoader...simTempsDB..." + simTempsDB);
 
         /*
         BackUp simTempsFolder = repository.findByName("SimTemps");
