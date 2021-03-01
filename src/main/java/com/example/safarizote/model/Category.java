@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
@@ -24,6 +25,7 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@EqualsAndHashCode
 public class Category {
     @Id
     @GeneratedValue
