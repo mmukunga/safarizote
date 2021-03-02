@@ -26,7 +26,7 @@ public class BackUpLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
         System.out.println("BackUpLoader..root...1");
         if (repository.count() > 0) {
-           System.out.println("..TABLE ONT EMPTY!!..");
+           System.out.println("..BACK_UP TABLE NOT EMPTY!!..");
            return;
         }
         BackUp rootFolder = BackUp.builder().name("root").parent(null).dateCreated(Instant.now()).build();
