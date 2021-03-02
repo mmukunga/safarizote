@@ -51,7 +51,7 @@ public class CategoryLoader implements CommandLineRunner {
           logger.info("{}", category.getName()); 
         });
     }
-/*
+    /*
     public void displayCategory(Category parent) {  
       if (parent.getChildren().size()==0) {
         logger.info("{}", parent); 
@@ -68,5 +68,6 @@ public class CategoryLoader implements CommandLineRunner {
             logger.info("{}", backUp);        
          }   
       }
-    }*/
+    }
+    */
 }
