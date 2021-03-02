@@ -46,13 +46,14 @@ public class CategoryLoader implements CommandLineRunner {
         System.out.println("CategoryLoader...10");
         System.out.println("CategoryLoader...OK!");
 
-        repository.findAll().forEach((backUp) -> {
-          displayCategory(backUp);
+        repository.findAll().forEach((category) -> {
+          //displayCategory(backUp);
+          logger.info("{}", category.getName()); 
         });
     }
-
+/*
     public void displayCategory(Category parent) {  
-      if (parent.getChildren() == null || parent.getChildren().size()==0) {
+      if (parent.getChildren().size()==0) {
         logger.info("{}", parent); 
         return;
       }     
@@ -67,5 +68,5 @@ public class CategoryLoader implements CommandLineRunner {
             logger.info("{}", backUp);        
          }   
       }
-    }
+    }*/
 }
