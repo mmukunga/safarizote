@@ -2,17 +2,17 @@ package com.example.safarizote.model;
 
 import java.time.Instant;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,15 +28,14 @@ import lombok.NonNull;
 @EqualsAndHashCode
 public class BackUp {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.TABLE)
     Long id;
     @Column(unique = true)
     @NonNull String name; 
     Boolean collapsed;
     Instant dateCreated;
-    @OneToOne(cascade = CascadeType.ALL)
-    //@JoinColumn(name = "parent_id")
-    //@JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "parent_id")
     BackUp parent;
     @OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
     Set<BackUp> children;

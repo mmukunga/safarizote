@@ -42,7 +42,7 @@ public class CategoryLoader implements CommandLineRunner {
         System.out.println("CategoryLoader...8"); 
         samsung.getChildren().add(galaxy);
         System.out.println("CategoryLoader...9"); 
-        repository.save(electronics);
+        //repository.save(electronics);
         System.out.println("CategoryLoader...10");
         System.out.println("CategoryLoader...OK!");
 
