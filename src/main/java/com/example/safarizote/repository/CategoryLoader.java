@@ -23,15 +23,13 @@ public class CategoryLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
         System.out.println("CategoryLoader...1");
         Category electronics = Category.builder().name("Electronics").parent(null).children(new HashSet<>()).dateCreated(Instant.now()).build();
-        repository.save(electronics);
-        Category category = repository.findByName("Electronics");
         System.out.println("CategoryLoader...2");
-        Category mobilePhones = Category.builder().name("Mobile phones").parent(category).children(new HashSet<>()).dateCreated(Instant.now()).build();
+        Category mobilePhones = Category.builder().name("Mobile phones").parent(electronics).children(new HashSet<>()).dateCreated(Instant.now()).build();
         System.out.println("CategoryLoader...3");
-        Category washingMachines = Category.builder().name("Washing machines").parent(category).children(new HashSet<>()).dateCreated(Instant.now()).build();
+        Category washingMachines = Category.builder().name("Washing machines").parent(electronics).children(new HashSet<>()).dateCreated(Instant.now()).build();
         System.out.println("CategoryLoader...4 electronics.getName():= " + electronics.getName());
-        category.getChildren().add(mobilePhones);
-        category.getChildren().add(washingMachines);
+        electronics.getChildren().add(mobilePhones);
+        electronics.getChildren().add(washingMachines);
         System.out.println("CategoryLoader...5a"); 
         Category iPhone = Category.builder().name("iPhone").parent(mobilePhones).children(new HashSet<>()).dateCreated(Instant.now()).build();
         System.out.println("CategoryLoader...5b");
@@ -44,7 +42,7 @@ public class CategoryLoader implements CommandLineRunner {
         System.out.println("CategoryLoader...8"); 
         samsung.getChildren().add(galaxy);
         System.out.println("CategoryLoader...9"); 
-        repository.save(category);
+        repository.save(electronics);
         System.out.println("CategoryLoader...10");
         System.out.println("CategoryLoader...OK!");
 
