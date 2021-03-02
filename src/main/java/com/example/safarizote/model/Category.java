@@ -30,8 +30,6 @@ public class Category {
     @Id
     @GeneratedValue
     Long id;
-
-    @Column(unique=true)
     @NonNull String name;
     @NonNull Instant dateCreated;
 
