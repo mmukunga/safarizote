@@ -42,7 +42,7 @@ public class Category {
     private Category parent;
      
     @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL)
-    private Set<Category> children = new HashSet<>();
+    private Set<Category> children;
 
     public void addChild(Category aSon){
         this.children.add(aSon);
