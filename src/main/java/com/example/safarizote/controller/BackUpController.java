@@ -23,16 +23,16 @@ public class BackUpController {
     @Transactional
     @RequestMapping(value = "/api/backUp",  method={RequestMethod.GET})
     public ResponseEntity<List<Category>> findAll() {
-        System.out.println("Category.findAll() , the time at the server is now " + new Date());
+        System.out.println("Category.findAll(), the time at the server is now " + new Date());
         List<Category> backUps = repository.findAll();
-        System.out.println("Category.findAll() , the time at the server is now " + new Date());
-
+        System.out.println("Category.findAll() SIZE:= " + backUps.size());
         // New Enhanced For loop
         System.out.println("\n==============> 1. New Enhanced For loop Example..");
         for (Category temp : backUps) {
-            System.out.println(temp);
+            System.out.println(temp.getName());
         }
         System.out.println("\n==============> 2. New Enhanced For loop Example..");
+        System.out.println("Category.findAll(), the time at the server is now " + new Date());
         System.out.println("Category.findAll()  End OK!");
         return new ResponseEntity<>(backUps, HttpStatus.OK);
     }
