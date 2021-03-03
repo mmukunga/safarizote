@@ -21,6 +21,11 @@ public class CategoryLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        System.out.println("CategoryLoader..root...1");
+        if (repository.count() > 0) {
+           System.out.println("..CATEGORY TABLE IS NOT EMPTY!!..");
+           return;
+        }
         System.out.println("CategoryLoader...1!");
         Category electronics = Category.builder().name("Electronics").parent(null).dateCreated(Instant.now()).build();
         Category mobilePhones = Category.builder().name("Mobile phones").parent(electronics).dateCreated(Instant.now()).build();
