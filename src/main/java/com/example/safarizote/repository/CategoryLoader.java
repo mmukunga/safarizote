@@ -21,29 +21,29 @@ public class CategoryLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("CategoryLoader..root...1");
+        System.out.println("..CategoryLoader...0!");
         if (repository.count() > 0) {
            System.out.println("..CATEGORY TABLE IS NOT EMPTY!!..");
            return;
         }
-        System.out.println("CategoryLoader...1!");
+        System.out.println("..CategoryLoader...1!");
         Category electronics = Category.builder().name("Electronics").parent(null).dateCreated(Instant.now()).build();
         Category mobilePhones = Category.builder().name("Mobile phones").parent(electronics).dateCreated(Instant.now()).build();
         Category washingMachines = Category.builder().name("Washing machines").parent(electronics).dateCreated(Instant.now()).build();
-        System.out.println("CategoryLoader...2!"); 
+        System.out.println("..CategoryLoader...2!"); 
         electronics.addChild(mobilePhones);
         electronics.addChild(washingMachines);
-        System.out.println("CategoryLoader...3!"); 
+        System.out.println("..CategoryLoader...3!"); 
         Category iPhone = Category.builder().name("iPhone").parent(mobilePhones).dateCreated(Instant.now()).build();
         Category samsung = Category.builder().name("Samsung").parent(mobilePhones).dateCreated(Instant.now()).build();
-        System.out.println("CategoryLoader...4!"); 
+        System.out.println("..CategoryLoader...4!"); 
         mobilePhones.addChild(iPhone);
         mobilePhones.addChild(samsung);
-        System.out.println("CategoryLoader...5!"); 
+        System.out.println("..CategoryLoader...5!"); 
         Category galaxy = Category.builder().name("Galaxy").parent(samsung).dateCreated(Instant.now()).build();
         samsung.addChild(galaxy);
         repository.save(electronics);
-        System.out.println("CategoryLoader...OK!");
+        System.out.println("..CategoryLoader...OK!");
 
         repository.findAll().forEach((category) -> {
           //displayCategory(backUp);
