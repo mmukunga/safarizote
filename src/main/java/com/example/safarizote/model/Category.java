@@ -46,7 +46,7 @@ public class Category {
 
     public void addChild(Category aSon){
         if (this.children == null) {
-            this.children = new HashSet<>()
+            this.children = new HashSet<>();
         }
         this.children.add(aSon);
     }
