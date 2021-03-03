@@ -32,10 +32,12 @@ import axios from 'axios';
     useEffect(() => {
       axios.get('/api/backUp').then(response => {
           console.log(response);
+      }).catch(error => {
+          console.log('error');
+          console.log(error);
+          console.log('error');
       });
     }, []);  
-
-
 
     const handleChange = (event) => {
       let selected_folders = {};
@@ -84,14 +86,14 @@ import axios from 'axios';
         <input name={item.name} id={item.id} type="checkbox" checked={checkedFolders[item.name]} onChange={handleChange}/> &nbsp; &nbsp;
         <span onClick={handleCollapsed}>{item.name}</span> 
         {!props.collapsed && item.nodes && 
-          <TreeList list={item.nodes}  treeLevel={props.treeLevel + 1} handleChange={handleChange} handleCollapsed={handleCollapsed}/>
+          <TreeList list={item.nodes} treeLevel={props.treeLevel + 1} handleChange={handleChange} handleCollapsed={handleCollapsed}/>
         }
       </div> 
     )}
     
     function TreeList(props) {
       const {list, handleChange, collapsed, handleCollapsed} = props;
-      const treeClassName = "TreeItem"  + props.treeLevel;
+      const treeClassName = "TreeItem" + props.treeLevel;
       return (
         <div className={treeClassName}>
           {list.map(f => <div>{<TreeItem key={f.name} treeLevel={props.treeLevel} item={f} handleChange={handleChange} collapsed={collapsed} handleCollapsed={handleCollapsed}/>}</div>)}
