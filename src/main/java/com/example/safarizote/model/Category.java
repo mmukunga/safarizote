@@ -2,13 +2,16 @@ package com.example.safarizote.model;
 
 import java.time.Instant;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,12 +37,12 @@ public class Category {
     @NonNull
     Instant dateCreated;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "parent_id")
     private Category parent;
      
-    @OneToMany(mappedBy="parent")
-    Set<Category> children;
+    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL)
+    private Set<Category> children = new HashSet<>();
 
     public void addChild(Category aSon){
         this.children.add(aSon);
