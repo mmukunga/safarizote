@@ -26,8 +26,10 @@ import lombok.NonNull;
 public class Category {
     @Id
     @GeneratedValue
+    @EqualsAndHashCode.Include
     Long id;
     @NonNull
+    @EqualsAndHashCode.Include
     String name;
     @NonNull
     Instant dateCreated;
@@ -38,4 +40,8 @@ public class Category {
      
     @OneToMany(mappedBy="parent")
     Set<Category> children;
+
+    public void addChild(Category aSon){
+        this.children.add(aSon);
+    }
 }

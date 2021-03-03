@@ -24,16 +24,16 @@ public class CategoryLoader implements CommandLineRunner {
         Category electronics = Category.builder().name("Electronics").parent(null).children(new HashSet<>()).dateCreated(Instant.now()).build();
         Category mobilePhones = Category.builder().name("Mobile phones").parent(electronics).children(new HashSet<>()).dateCreated(Instant.now()).build();
         Category washingMachines = Category.builder().name("Washing machines").parent(electronics).children(new HashSet<>()).dateCreated(Instant.now()).build();
-        electronics.getChildren().add(mobilePhones);
-        electronics.getChildren().add(washingMachines);
+        electronics.addChild(mobilePhones);
+        electronics.addChild(washingMachines);
         Category iPhone = Category.builder().name("iPhone").parent(mobilePhones).children(new HashSet<>()).dateCreated(Instant.now()).build();
         Category samsung = Category.builder().name("Samsung").parent(mobilePhones).children(new HashSet<>()).dateCreated(Instant.now()).build();
-        mobilePhones.getChildren().add(iPhone);
-        mobilePhones.getChildren().add(samsung);
+        mobilePhones.addChild(iPhone);
+        mobilePhones.addChild(samsung);
 
         System.out.println("CategoryLoader... electronics.getName()... " + electronics.getName());
         Category galaxy = Category.builder().name("Galaxy").parent(samsung).children(new HashSet<>()).dateCreated(Instant.now()).build();
-        samsung.getChildren().add(galaxy);
+        samsung.addChild(galaxy);
         repository.save(electronics);
         System.out.println("CategoryLoader...OK!");
 
