@@ -27,22 +27,36 @@ public class CategoryLoader implements CommandLineRunner {
            return;
         }
         System.out.println("..CategoryLoader...1!");
-        Category electronics = Category.builder().name("Electronics").parent(null).dateCreated(Instant.now()).build();
-        Category mobilePhones = Category.builder().name("Mobile phones").parent(electronics).dateCreated(Instant.now()).build();
-        Category washingMachines = Category.builder().name("Washing machines").parent(electronics).dateCreated(Instant.now()).build();
+        Category rootFolder = Category.builder().name("MyRootPC").parent(null).dateCreated(Instant.now()).build();
+        Category simTemps = Category.builder().name("SimTemps").parent(rootFolder).dateCreated(Instant.now()).build();
+        Category projects = Category.builder().name("Projects").parent(rootFolder).dateCreated(Instant.now()).build();
+        Category famileAlbum = Category.builder().name("FamilieAlbum").parent(rootFolder).dateCreated(Instant.now()).build();
         System.out.println("..CategoryLoader...2!"); 
-        electronics.addChild(mobilePhones);
-        electronics.addChild(washingMachines);
+        rootFolder.addChild(simTemps);
+        rootFolder.addChild(projects);
+        rootFolder.addChild(famileAlbum);
         System.out.println("..CategoryLoader...3!"); 
-        Category iPhone = Category.builder().name("iPhone").parent(mobilePhones).dateCreated(Instant.now()).build();
-        Category samsung = Category.builder().name("Samsung").parent(mobilePhones).dateCreated(Instant.now()).build();
+        Category dSimTemps = Category.builder().name("DSimTemps").parent(simTemps).dateCreated(Instant.now()).build();
+        Category eSimTemps = Category.builder().name("ESimTemps").parent(simTemps).dateCreated(Instant.now()).build();
+        Category dProjects = Category.builder().name("DProjects").parent(projects).dateCreated(Instant.now()).build();
+        Category eProjects = Category.builder().name("EProjects").parent(projects).dateCreated(Instant.now()).build();
+        Category dFamilieAlbum = Category.builder().name("DFamilieAlbum").parent(famileAlbum).dateCreated(Instant.now()).build();
+        Category eFamilieAlbum = Category.builder().name("EFamilieAlbum").parent(famileAlbum).dateCreated(Instant.now()).build();
         System.out.println("..CategoryLoader...4!"); 
-        mobilePhones.addChild(iPhone);
-        mobilePhones.addChild(samsung);
+        simTemps.addChild(dSimTemps);
+        simTemps.addChild(eSimTemps);
+        projects.addChild(dProjects);
+        projects.addChild(eProjects);
+        famileAlbum.addChild(dFamilieAlbum);
+        famileAlbum.addChild(eFamilieAlbum);
         System.out.println("..CategoryLoader...5!"); 
-        Category galaxy = Category.builder().name("Galaxy").parent(samsung).dateCreated(Instant.now()).build();
-        samsung.addChild(galaxy);
-        repository.save(electronics);
+        Category galaxy = Category.builder().name("Galaxy").parent(eSimTemps).dateCreated(Instant.now()).build();
+        eSimTemps.addChild(galaxy);
+        Category reactjs = Category.builder().name("ReactJS").parent(eProjects).dateCreated(Instant.now()).build();
+        eProjects.addChild(reactjs);
+        Category elias = Category.builder().name("Elias").parent(eFamilieAlbum).dateCreated(Instant.now()).build();
+        eFamilieAlbum.addChild(elias);
+        repository.save(rootFolder);
         System.out.println("..CategoryLoader...OK!");
 
         repository.findAll().forEach((category) -> {
