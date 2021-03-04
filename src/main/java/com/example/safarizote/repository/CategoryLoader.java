@@ -61,6 +61,7 @@ public class CategoryLoader implements CommandLineRunner {
 
         repository.findAll().forEach((category) -> {
           //displayCategory(backUp);
+          if (category.getChildren()!= null)
           logger.info("{}", category.getName()); 
         });
     }

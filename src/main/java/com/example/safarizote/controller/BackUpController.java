@@ -2,6 +2,7 @@ package com.example.safarizote.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,13 +28,28 @@ public class BackUpController {
         List<Category> categories = repository.findAll();
         System.out.println("Category.findAll() SIZE:= " + categories.size());
         System.out.println("\n==============> 1. New Enhanced For loop Example..");
-        for (Category temp : categories) {
-            System.out.println("NAME: " + temp.getName());
-            System.out.println("DATE: " + temp.getDateCreated());
+        StringBuffer indentation = new StringBuffer();
+        indentation.append(" ");
+        for (Category category : categories) {
+            System.out.println(indentation.toString() + category.getName() + " " + category.getDateCreated());
+            if (category.getChildren().size() > 0){
+               displayList(category, indentation);
+            }
         }
         System.out.println("\n==============> 2. New Enhanced For loop Example..");
         System.out.println("Category.findAll(), the time at the server is now " + new Date());
         System.out.println("Category.findAll()  End OK!");
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
+
+    public void displayList(Category category, StringBuffer indentation){
+        indentation.append(" ");
+        for (Category temp : category.getChildren()) {
+            System.out.println(indentation.toString() + temp.getName() + " " + temp.getDateCreated());
+            if (temp.getChildren().size() > 0){
+                displayList(temp, indentation);
+            }
+        }
+    }
+
 }

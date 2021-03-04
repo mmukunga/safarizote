@@ -14,13 +14,12 @@ const Loading = () => {
     setMessage(newMessage);
     
     const userToken = localStorage.getItem('token');
-    console.log('UserToken:= ' + userToken);
-
     if (userToken !== null) {
       console.log(userToken);
       localStorage.removeItem('token');
     } else {
-      localStorage.setItem('token', 'response.data');
+      console.log(response);
+      localStorage.setItem('token', response.data);
     }
    
   }, [message]);
