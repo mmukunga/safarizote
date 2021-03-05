@@ -2,7 +2,6 @@ package com.example.safarizote.controller;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +26,6 @@ public class BackUpController {
         System.out.println("Category.findAll(), the time at the server is now " + new Date());
         List<Category> categories = repository.findAll();
         System.out.println("Category.findAll() SIZE:= " + categories.size());
-        System.out.println("\n==============> 1. New Enhanced For loop Example..");
         StringBuffer indentation = new StringBuffer();
         indentation.append(" ");
         for (Category category : categories) {
@@ -36,7 +34,6 @@ public class BackUpController {
                displayList(category, indentation);
             }
         }
-        System.out.println("\n==============> 2. New Enhanced For loop Example..");
         System.out.println("Category.findAll(), the time at the server is now " + new Date());
         System.out.println("Category.findAll()  End OK!");
         return new ResponseEntity<>(categories, HttpStatus.OK);

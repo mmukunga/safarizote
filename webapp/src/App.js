@@ -18,7 +18,7 @@ const Loading = () => {
       console.log(userToken);
       localStorage.removeItem('token');
     } else {
-      console.log(response);
+      console.log('Init userToken');
       localStorage.setItem('token', '{name: m@gmail.com, pwd: 12345}');
     }
    
