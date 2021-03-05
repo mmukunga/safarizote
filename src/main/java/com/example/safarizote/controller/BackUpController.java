@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.transaction.annotation.Transactional;
 import com.example.safarizote.model.Category;
 import com.example.safarizote.repository.CategoryRepository;
+import com.google.gson.Gson;
 
 @RestController
 public class BackUpController { 
@@ -35,6 +36,9 @@ public class BackUpController {
             }
         }
         System.out.println("Category.findAll(), the time at the server is now " + new Date());
+        String json = new Gson().toJson(categories);
+        System.out.println("Category.findAll(), JSON!:= " + json);
+
         System.out.println("Category.findAll()  End OK!");
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
