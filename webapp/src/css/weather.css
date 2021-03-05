@@ -26,12 +26,13 @@
     text-align: center;
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
     transition: 0.3s;
+    display: flex;
   }
   
   .ForecastCard {
     display: inline-block;
-    width: 60px;
-    margin:1px;
+    width: 70px;
+    margin:10px;
     box-sizing: border-box;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
