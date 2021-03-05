@@ -19,7 +19,7 @@ const Loading = () => {
       localStorage.removeItem('token');
     } else {
       console.log(response);
-      localStorage.setItem('token', response.data);
+      localStorage.setItem('token', '{name: m@gmail.com, pwd: 12345}');
     }
    
   }, [message]);
