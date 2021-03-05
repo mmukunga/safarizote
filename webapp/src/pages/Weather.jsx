@@ -143,7 +143,7 @@ import Card from './Card';
     }
 
     return (
-        <Card cardWidth="560px" fontColor="black" backgroundColor="#F0FFFF">
+        <Card cardWidth="600px" fontColor="black" backgroundColor="#F0FFFF">
         {state.cityName} - {state.countryName}, {state.countryCode} 
         <form class="form-inline"  onSubmit={handleSubmit}>
           <select id="countryCode" name="countryCode" onChange={handleChange}>    
