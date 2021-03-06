@@ -44,7 +44,6 @@ const SignIn = (props) => {
       localStorage.setItem('token', state.email+count);
     };
     
-    console.log('HER:= ' + nameEl);   
     console.log('COUNT:= ' + count);
     console.log('FROM:= '  + from);
 
