@@ -33,17 +33,20 @@ const SignIn = (props) => {
       e.preventDefault();
       alert(nameEl.current.value);
       setCount(prevCount => prevCount + 1);
+      localStorage.setItem('token', state.email+count);
     };
     
     console.log('HER:= ' + nameEl);   
     console.log('COUNT:= ' + count);
     console.log('FROM:= '  + from);
 
-    if (count > 5) {
+    if (localStorage.getItem('token') != null) {
         const userToken = localStorage.getItem('token');
         console.log(userToken);
         console.log(state);
-        console.log('SignIn FROM:= ' + from);
+        console.log('..1.SignIn FROM..');
+        console.log(from);
+        console.log('..2.SignIn FROM..');
         return <Redirect to={from} />;
     }  
 
