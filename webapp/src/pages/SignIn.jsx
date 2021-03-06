@@ -4,8 +4,8 @@ import Card from './Card';
 import { Redirect } from "react-router-dom";
 
 const initialState = {
-    email: "m@gmail.com",
-    password: '12345'
+    email: '',
+    password: ''
 };
 
 const reducer = (state, action) => {
@@ -43,13 +43,16 @@ const SignIn = (props) => {
 
     const userToken = localStorage.getItem('token');
     console.log('UserToken:= ' + userToken);
+    console.log('STATE:= ' + state);
+    console.log('FROM:= ' + from);
 
     if (userToken !== null) {
         console.log(userToken);
         console.log('SignIn FROM:= ' + from);
         return <Redirect to={from} />;
-    }
-    alert('token NOT FOUND!!');
+    } else { 
+        console.log('token NOT FOUND!!');
+    }   
     
     return (
         <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
