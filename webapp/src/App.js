@@ -12,16 +12,6 @@ const Loading = () => {
   useEffect(() => {
     let newMessage = message.length < 4 ? message.concat('.') : '';
     setMessage(newMessage);
-    
-    const userToken = localStorage.getItem('token');
-    if (userToken !== null) {
-      console.log(userToken);
-      localStorage.removeItem('token');
-    } else {
-      console.log('Init userToken');
-      localStorage.setItem('token', '{name: m@gmail.com, pwd: 12345}');
-    }
-   
   }, [message]);
 
   return (
@@ -47,7 +37,6 @@ const Email = React.lazy(() => import('./pages/Email'));
 const Weather = React.lazy(() => import('./pages/Weather'));
 const Stock = React.lazy(() => import('./pages/Stock'));
 const Private = React.lazy(() => import('./pages/Private'));
-
 
 function App() {
 
