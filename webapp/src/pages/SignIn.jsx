@@ -43,8 +43,10 @@ const SignIn = (props) => {
 
     const userToken = localStorage.getItem('token');
     console.log('UserToken:= ' + userToken);
-    console.log('STATE:= ' + state);
-    console.log('FROM:= ' + from);
+    console.log('STATE:= '  + state);
+    console.log('1.FROM:= ' + from);
+    console.log(from);
+    console.log('2.FROM:= ' + from);
 
     if (userToken !== null) {
         console.log(userToken);
