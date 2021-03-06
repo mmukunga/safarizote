@@ -22,7 +22,6 @@ const SignIn = (props) => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
     const [count, setCount] = useState(0);
 
-    const nameEl = React.useRef(null);
     const { from } = props.location.state || { from: { pathname: "/" } };
 
     const handleChange = (event) => {
@@ -31,7 +30,6 @@ const SignIn = (props) => {
 
     const handleSubmit = e => {
       e.preventDefault();
-      alert(nameEl.current.value);
       axios.post('/api/login', {
         email: state.email,
         password: state.password
@@ -61,18 +59,17 @@ const SignIn = (props) => {
     }  
 
     return (
-       <form onSubmit={handleSubmit}>
-         <label>Name:
-           <input type="text" ref={nameEl} />
-         </label>
-         <input type="email" id="email" name="email" placeholder="Enter email"
-            onChange={handleChange} required/>
-         <input type="password" id="password" name="password" placeholder="Enter password"
-            onChange={handleChange} required/>
-         <input type="submit" name="Submit" />
-       </form>
+        <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
+         Please Login Here!!
+        <form onSubmit={handleSubmit}>
+          <input type="email" id="email" name="email" placeholder="Enter email"
+              onChange={handleChange} required/>
+          <input type="password" id="password" name="password" placeholder="Enter password"
+              onChange={handleChange} required/>
+          <input type="submit" name="Submit" />
+        </form>
+       </Card>
      );
   }
-
 
   export default SignIn;
