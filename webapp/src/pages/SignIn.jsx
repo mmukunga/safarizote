@@ -21,6 +21,7 @@ const SignIn = (props) => {
     console.log('FROM:= '  + from);
 
     if (count > 5) {
+        const userToken = localStorage.getItem('token');
         console.log(userToken);
         console.log('SignIn FROM:= ' + from);
         return <Redirect to={from} />;
