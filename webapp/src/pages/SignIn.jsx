@@ -60,7 +60,7 @@ const SignIn = (props) => {
     return (
         <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
          Please Login Here!!
-        <form onSubmit={handleSubmit}>
+        <form class="form-inline" onSubmit={handleSubmit}>
           <input type="email" id="email" name="email" placeholder="Enter email"
               onChange={handleChange} required/>
           <input type="password" id="password" name="password" placeholder="Enter password"
