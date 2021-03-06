@@ -33,7 +33,9 @@ const SignIn = (props) => {
             password: state.password
         }).then(response => {
             console.log('SignIn fromDB:= ' + response);
+            alert('adding token');
             localStorage.setItem('token', response.data);
+            alert('added token');
         }).catch(error => {
             console.log(error);
         });
@@ -44,9 +46,11 @@ const SignIn = (props) => {
 
     if (userToken !== null) {
         console.log(userToken);
+        console.log('SignIn FROM:= ' + from);
         return <Redirect to={from} />;
     }
-
+    alert('token NOT FOUND!!');
+    
     return (
         <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
           Please Login Here!!
