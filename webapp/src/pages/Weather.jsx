@@ -34,7 +34,7 @@ import Card from './Card';
     const [weather, setWeather] = React.useState({});
     const [forecast, setForecast] = React.useState([]);
     const [list, setList] = React.useState([]);
-
+    console.log('1jkhj.AboutUs');
     React.useEffect(() => {
         axios.get('/api/countries')
             .then(response => {

@@ -3,7 +3,7 @@ import Card from './Card';
 
 const AboutUs = () => {
     const [names, setNames] = useState(["Simon Mukunga", "steve", "carol"]);
-
+    console.log('1.AboutUs');
     return (
         <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
            <h4>About Us!</h4>

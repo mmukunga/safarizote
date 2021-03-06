@@ -28,7 +28,7 @@ import axios from 'axios';
   const BackUp = () => {
     const [checkedFolders, setCheckedFolders] = useState({});
     const [collapsed, setCollapsed] = useState(true);
-
+    console.log('2.AboutUs');
     useEffect(() => {
       axios.get('/api/backUp').then(response => {
           console.log(response);

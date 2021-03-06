@@ -6,7 +6,7 @@ const Home = () => {
    const [data, setData] = useState([]);
    const [counts, setCounts] = useState([]);
    const [clientInfo, setClientInfo] = useState({});
-
+   console.log('11.AboutUs');
    useEffect(() => {
       axios.get('https://extreme-ip-lookup.com/json/')
         .then(response => {

@@ -24,7 +24,7 @@ const reducer = function (state, action) {
 const Email = () => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
     const [replyMsg, setReplyMsg] = React.useState('Reply Message');
-
+    console.log('5.AboutUs');
     const handleChange = (event) => {
         dispatch({type: 'SET_EMAIL', payload: event.target});
     }

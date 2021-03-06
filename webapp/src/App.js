@@ -39,14 +39,14 @@ const Stock = React.lazy(() => import('./pages/Stock'));
 const Private = React.lazy(() => import('./pages/Private'));
 
 function App() {
-
+  
   const selectStyle = {
     border:'4px solid white', 
     width:'100px', 
     padding:'2px', 
     background: '#2a9df4'
   };
-  
+  console.log('1yryrty.AboutUs');
   const DropDown = ({ history }) => {
     const onChange = (e) => {
       history.push(`${e.target.value}`);

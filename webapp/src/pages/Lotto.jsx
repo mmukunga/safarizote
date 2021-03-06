@@ -4,7 +4,7 @@ import Card from './Card';
 
 const Lotto = () => {
     const [data, setData] = useState([]);
-    
+    console.log('51.AboutUs');
   useEffect(() => {
     const fetchData = async () => {
       try {

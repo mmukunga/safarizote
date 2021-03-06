@@ -45,7 +45,7 @@ const Stock = () => {
     const [dateTime, setDateTime] = useState('');
     const [stockCompany, setStockCompany] = useState('');
     //const [ticker, setTicker] = useState('');
-
+    console.log('1kj.AboutUs');
     const handleSelectItem = (event) => {
       const { name, value } = event.target;
 

@@ -21,7 +21,7 @@ const reducer = (state, action) => {
 const SignIn = (props) => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
     const { from } = props.location.state || { from: { pathname: "/" } };
-
+    console.log('d1.AboutUs');
     const handleChange = (event) => {
         dispatch({type: 'SET_EMAIL', payload: event.target})
     }
@@ -44,6 +44,10 @@ const SignIn = (props) => {
             console.log(error);
         });
     }
+
+    console.log('1.MAJI');
+    console.log(localStorage.getItem('token'));
+    console.log('2.MAJI');
 
     const userToken = localStorage.getItem('token');
     console.log('UserToken:= ' + userToken);
