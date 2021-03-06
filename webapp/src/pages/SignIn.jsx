@@ -32,6 +32,16 @@ const SignIn = (props) => {
     const handleSubmit = e => {
       e.preventDefault();
       alert(nameEl.current.value);
+      axios.post('/api/login', {
+        email: state.email,
+        password: state.password
+      }).then(response => {
+        console.log(response);
+        console.log(response.data);
+      }).catch(error => {
+        console.log(error);
+      }); 
+
       setCount(prevCount => prevCount + 1);
       localStorage.setItem('token', state.email+count);
     };
