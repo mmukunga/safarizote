@@ -33,9 +33,13 @@ const SignIn = (props) => {
             password: state.password
         }).then(response => {
             console.log('SignIn fromDB:= ' + response);
-            alert('adding token');
-            localStorage.setItem('token', response.data);
-            alert('added token');
+            console.log('adding token');
+            console.log(response);
+            console.log(response.data);
+            localStorage.setItem('token', state.email);
+            console.log('added token');
+            console.log(localStorage.getItem('token'));
+            console.log('added token OK');
         }).catch(error => {
             console.log(error);
         });
@@ -52,10 +56,8 @@ const SignIn = (props) => {
         console.log(userToken);
         console.log('SignIn FROM:= ' + from);
         return <Redirect to={from} />;
-    } else { 
-        console.log('token NOT FOUND!!');
-    }   
-    
+    }  
+    console.log('token NOT FOUND!!');
     return (
         <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
           Please Login Here!!
