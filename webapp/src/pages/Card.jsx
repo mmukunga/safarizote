@@ -3,7 +3,7 @@ import React from 'react';
 const Card = (props) => {
 
   const { cardWidth, fontColor, backgroundColor, children } = props;
-  console.log('3.AboutUs');
+  console.log('3.CARD');
   const style = {
     width: cardWidth,
     backgroundColor: backgroundColor,
