@@ -11,7 +11,7 @@ const Card = (props) => {
     borderRadius: 10,
     margin: '10px auto',
     padding: '1px',
-    border: cardWidth == '650px' ? '4px solid #FF0316' : '4px solid #90DFF5',
+    border: cardWidth == '650px' ? '4px solid #66000E' : '4px solid #90DFF5',
     boxShadow: '0 0 10px 5p'
   };
 
