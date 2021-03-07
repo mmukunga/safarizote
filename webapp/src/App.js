@@ -42,7 +42,7 @@ function App() {
       background: '#2a9df4'
   };
 
-  React,useEffect( () => {
+  React.useEffect( () => {
     const interval = setInterval( () => {
       updateValue(oldValue => {
          const newValue = oldValue + 10;
