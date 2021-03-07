@@ -40,7 +40,7 @@ const ProgressBar = (props) => {
       <span>{(value / max) * 100}%</span>
     </div>
   )
-};
+}
 
 const Loading = () => {
   const [message, setMessage] = useState('');
