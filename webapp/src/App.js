@@ -33,6 +33,7 @@ const Stock = React.lazy(() => import('./pages/Stock'));
 const Private = React.lazy(() => import('./pages/Private'));
 */
 function App() {
+  const [value, updateValue] = React.useState(0);
 
   const selectStyle = {
       border:'4px solid white', 
@@ -40,6 +41,30 @@ function App() {
       padding:'2px', 
       background: '#2a9df4'
   };
+
+  React,useEffect( () => {
+    const interval = setInterval( () => {
+      updateValue(oldValue => {
+         const newValue = oldValue + 10;
+         if (newValue === 100) {
+           clearInterval(interval);
+         }
+         return newValue;
+      });
+    }, 1000);
+  }, []);
+
+
+  const ProgressBar = props => {
+    const { value, max } = props;
+
+    return (
+      <div>
+        <progress value={value} max={max} />
+        <span>{(value / max) * 100}%</span>
+      </div>
+    );
+  }
 
   const DropDown = ({ history }) => {
     const onChange = (e) => {
@@ -108,6 +133,7 @@ function App() {
   
   return (
     <div className="App">
+      <ProgressBar value={value} />
       <Card cardWidth="650px" fontColor="black" backgroundColor="white">
         <Layout>
           <Switch>
