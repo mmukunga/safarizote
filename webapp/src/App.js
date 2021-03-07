@@ -31,6 +31,17 @@ const reduce = (state, action) => {
   }  
 }  
 
+
+const ProgressBar = (props) => {
+  const [value, max] = props;
+  return (
+    <div>
+      <progress value={value} max={max} />
+      <span>{(value / max) * 100}%</span>
+    </div>
+  )
+};
+
 const Loading = () => {
   const [message, setMessage] = useState('');
 
@@ -65,6 +76,7 @@ const Private = React.lazy(() => import('./pages/Private'));
 
 function App() {
   const [state, dispatch] = React.useReducer(reduce, initialState);  
+  const [value, updateValue] = React.useState(0);
 
   const selectStyle = {
     border:'4px solid white', 
@@ -72,6 +84,20 @@ function App() {
     padding:'2px', 
     background: '#2a9df4'
   };
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+        updateValue(oldValue => {
+          const newValue = oldValue + 10;
+
+          if (newValue === 100) {
+            clearInterval(interval);
+          }
+          return newValue;
+      });
+    }, 1000);
+
+  }, []);
 
   React.useEffect(() => {  
     axios.get('https://reqres.in/api/users/2')  
@@ -149,7 +175,7 @@ function App() {
   
   return (
     <div className="App">
-      <Loading />
+      <ProgressBar value={value}/>
       { state.loading 
       ? 'Loading!! Please wait...' 
       : <Card cardWidth="650px" fontColor="black" backgroundColor="white">
