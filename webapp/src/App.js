@@ -5,8 +5,20 @@ import { withRouter } from "react-router-dom";
 import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
-import Card from './pages/Card';
 
+import Home from './pages/Home';
+import AboutUs from './pages/AboutUs';
+import Safaris from './pages/Safaris';
+import Shopping from './pages/Shopping';
+import Lotto from './pages/Lotto';
+import BackUp from './pages/BackUp';
+import SignIn from './pages/SignIn';
+import Email from './pages/Email';
+import Weather from './pages/Weather';
+import Stock from './pages/Stock';
+import Private from './pages/Private';
+
+/*
 const Home = React.lazy(() => import('./pages/Home'));
 const AboutUs = React.lazy(() => import('./pages/AboutUs'));
 const Safaris = React.lazy(() => import('./pages/Safaris'));
@@ -18,7 +30,7 @@ const Email = React.lazy(() => import('./pages/Email'));
 const Weather = React.lazy(() => import('./pages/Weather'));
 const Stock = React.lazy(() => import('./pages/Stock'));
 const Private = React.lazy(() => import('./pages/Private'));
-
+*/
 function App() {
 
   const selectStyle = {
