@@ -6,6 +6,30 @@ import logo from './logo.svg';
 import './App.css';
 import Card from './pages/Card';
 
+
+const initialState = {  
+  user: {},  
+  loading: true
+}  
+
+const reduce = (state, action) => {  
+  switch (action.type) {  
+      case 'OnSuccess':  
+          return {  
+              loading: false,  
+              user: action.payload
+          }  
+      case 'OnFailure':  
+          return {  
+              loading: false,  
+              user: {} 
+          }  
+
+      default:  
+          return state  
+  }  
+}  
+
 const Loading = () => {
   const [message, setMessage] = useState('');
 
@@ -16,7 +40,7 @@ const Loading = () => {
 
   return (
     <div className="Spinner" style={{ textAlign: 'center' }}>
-      <p>Loading{message}</p>
+      <p>Loading {message} </p>
       <div class="divLoader">
         <svg class="svgLoader" viewBox="0 0 1024 1024" width="10em" height="10em">
           <path fill="lightblue" d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50"/>
@@ -39,14 +63,26 @@ const Stock = React.lazy(() => import('./pages/Stock'));
 const Private = React.lazy(() => import('./pages/Private'));
 
 function App() {
-  
+  const [state, dispatch] = useReducer(reduce, initialState);  
+  const [loading, setLoading] = React.useState(true);  
+  const [user, setUser] = React.useState({});
+
   const selectStyle = {
     border:'4px solid white', 
     width:'100px', 
     padding:'2px', 
     background: '#2a9df4'
   };
-  console.log('1yryrty.AboutUs');
+
+  React.useEffect(() => {  
+    axios.get('https://reqres.in/api/users/2')  
+    .then(response => {  
+        dispatch({ type: 'OnSuccess', payload: response.data.data })  
+    }).catch(error => {  
+        dispatch({ type: 'OnFailure' })  
+    })  
+  }, []);  
+
   const DropDown = ({ history }) => {
     const onChange = (e) => {
       history.push(`${e.target.value}`);
@@ -114,8 +150,10 @@ function App() {
   
   return (
     <div className="App">
-      <Suspense fallback={<Loading />}>
-      <Card cardWidth="650px" fontColor="black" backgroundColor="white">
+      <Loading />
+      { state.loading 
+      ? 'Loading!! Please wait...' 
+      : <Card cardWidth="650px" fontColor="black" backgroundColor="white">
         <Layout>
           <Switch>
               <Route exact path="/" component={Home} />
@@ -131,7 +169,7 @@ function App() {
           </Switch>
         </Layout>
       </Card> 
-      </Suspense> 
+      }
     </div>
   );
 }
