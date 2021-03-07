@@ -36,9 +36,9 @@ function App() {
   const [value, updateValue] = React.useState(0);
 
   const selectStyle = {
-      border:'4px solid white', 
-      width:'100px', 
-      padding:'2px', 
+      border: '4px solid white', 
+      width: '100px', 
+      padding: '2px', 
       background: '#2a9df4'
   };
 
@@ -133,7 +133,7 @@ function App() {
   
   return (
     <div className="App">
-      <ProgressBar value={value} />
+      <ProgressBar value={value} max={100} />
       <Card cardWidth="650px" fontColor="black" backgroundColor="white">
         <Layout>
           <Switch>
