@@ -2,10 +2,11 @@ import React, { Suspense, useState, useEffect} from 'react';
 import { Route, Switch, NavLink } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
+import axios from 'axios';
+
 import logo from './logo.svg';
 import './App.css';
 import Card from './pages/Card';
-
 
 const initialState = {  
   user: {},  
@@ -63,9 +64,7 @@ const Stock = React.lazy(() => import('./pages/Stock'));
 const Private = React.lazy(() => import('./pages/Private'));
 
 function App() {
-  const [state, dispatch] = useReducer(reduce, initialState);  
-  const [loading, setLoading] = React.useState(true);  
-  const [user, setUser] = React.useState({});
+  const [state, dispatch] = React.useReducer(reduce, initialState);  
 
   const selectStyle = {
     border:'4px solid white', 
