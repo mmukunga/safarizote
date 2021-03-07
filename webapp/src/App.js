@@ -6,6 +6,7 @@ import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
 
+import Card from './pages/Card';
 import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
 import Safaris from './pages/Safaris';
