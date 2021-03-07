@@ -3,64 +3,9 @@ import { Route, Switch, NavLink } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
 import axios from 'axios';
-
 import logo from './logo.svg';
 import './App.css';
 import Card from './pages/Card';
-
-const initialState = {  
-  user: {},  
-  loading: true
-}  
-
-const reduce = (state, action) => {  
-  switch (action.type) {  
-      case 'OnSuccess':  
-          return {  
-              loading: false,  
-              user: action.payload
-          }  
-      case 'OnFailure':  
-          return {  
-              loading: false,  
-              user: {} 
-          }  
-
-      default:  
-          return state  
-  }  
-}  
-
-
-const ProgressBar = (props) => {
-  const [value, max] = props;
-  return (
-    <div>
-      <progress value={value} max={max} />
-      <span>{(value / max) * 100}%</span>
-    </div>
-  )
-}
-
-const Loading = () => {
-  const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    let newMessage = message.length < 4 ? message.concat('.') : '';
-    setMessage(newMessage);
-  }, [message]);
-
-  return (
-    <div className="Spinner" style={{ textAlign: 'center' }}>
-      <p>Loading {message} </p>
-      <div class="divLoader">
-        <svg class="svgLoader" viewBox="0 0 1024 1024" width="10em" height="10em">
-          <path fill="lightblue" d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50"/>
-        </svg>
-      </div>  
-    </div>
-  )
-};
 
 const Home = React.lazy(() => import('./pages/Home'));
 const AboutUs = React.lazy(() => import('./pages/AboutUs'));
@@ -75,38 +20,13 @@ const Stock = React.lazy(() => import('./pages/Stock'));
 const Private = React.lazy(() => import('./pages/Private'));
 
 function App() {
-  const [state, dispatch] = React.useReducer(reduce, initialState);  
-  const [value, updateValue] = React.useState(0);
 
   const selectStyle = {
-    border:'4px solid white', 
-    width:'100px', 
-    padding:'2px', 
-    background: '#2a9df4'
+      border:'4px solid white', 
+      width:'100px', 
+      padding:'2px', 
+      background: '#2a9df4'
   };
-
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-        updateValue(oldValue => {
-          const newValue = oldValue + 10;
-
-          if (newValue === 100) {
-            clearInterval(interval);
-          }
-          return newValue;
-      });
-    }, 1000);
-
-  }, []);
-
-  React.useEffect(() => {  
-    axios.get('https://reqres.in/api/users/2')  
-    .then(response => {  
-        dispatch({ type: 'OnSuccess', payload: response.data.data })  
-    }).catch(error => {  
-        dispatch({ type: 'OnFailure' })  
-    })  
-  }, []);  
 
   const DropDown = ({ history }) => {
     const onChange = (e) => {
@@ -121,7 +41,7 @@ function App() {
         <option value="/backUp">Dir BackUp</option>
       </select>
     );
-  };
+  }
   
   const Menu = withRouter(DropDown);
   
@@ -175,10 +95,7 @@ function App() {
   
   return (
     <div className="App">
-      <ProgressBar value={value}/>
-      { state.loading 
-      ? 'Loading!! Please wait...' 
-      : <Card cardWidth="650px" fontColor="black" backgroundColor="white">
+      <Card cardWidth="650px" fontColor="black" backgroundColor="white">
         <Layout>
           <Switch>
               <Route exact path="/" component={Home} />
@@ -194,7 +111,6 @@ function App() {
           </Switch>
         </Layout>
       </Card> 
-      }
     </div>
   );
 }
