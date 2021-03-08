@@ -49,13 +49,13 @@ function App() {
          if (newValue === 100) {
            clearInterval(interval);
          }
-        
+         console.log('1. Loading' + new Date());
          axios.post('/api/healthCheck', config).then((response) => {
-            console.log(response);
+            console.log(response.data);
           }).catch((error) => {
             console.log(error);
           });
-
+          console.log('2. Loading' + new Date());
          return newValue;
       });
     }, 1000);
