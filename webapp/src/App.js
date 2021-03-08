@@ -21,8 +21,7 @@ import Private from './pages/Private';
 
 function App() {
   const [value, updateValue] = React.useState(0);
-  const [isLoaded, setIsLoaded] = React.useState(true);
-  const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = React.useState(0);
 
   const selectStyle = {
       border: '4px solid white', 
@@ -33,9 +32,11 @@ function App() {
 
 
   const config = {
-    onUploadProgress: function(event) {
-      var percentCompleted = Math.round((event.loaded * 100) / event.total)
+    onUploadProgress: (event) => {
+      var percentCompleted = Math.round((event.loaded * 100) / event.total);
+      console.log('1.percentCompleted');
       console.log(percentCompleted);
+      console.log('2.percentCompleted');
       setProgress(percentCompleted);
     }
   }
@@ -141,7 +142,7 @@ function App() {
   return (
     <div className="App">
       <ProgressBar value={value} max={100} />
-      {progress > 0 ? progress : null}
+      {progress > 0 ? progress : 'null'}
       <Card cardWidth="650px" fontColor="black" backgroundColor="white">
         <Layout>
           <Switch>
