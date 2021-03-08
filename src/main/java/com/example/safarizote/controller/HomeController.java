@@ -20,6 +20,12 @@ import com.example.safarizote.repository.TrackerRepository;
 public class HomeController { 
   @Autowired
   private TrackerRepository repository;
+    
+    @RequestMapping(value="/api/healthCheck", method=RequestMethod.POST)
+    public String healthCheck() {
+        System.out.println("healthCheck() , the time at the server is now " + new Date());
+        return "healthCheck: OK!!";
+    }
 
     @RequestMapping(value = "/api/allHits",  method={RequestMethod.GET})
     public ResponseEntity<List<Tracker>> findAll() {

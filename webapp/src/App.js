@@ -19,21 +19,10 @@ import Weather from './pages/Weather';
 import Stock from './pages/Stock';
 import Private from './pages/Private';
 
-/*
-const Home = React.lazy(() => import('./pages/Home'));
-const AboutUs = React.lazy(() => import('./pages/AboutUs'));
-const Safaris = React.lazy(() => import('./pages/Safaris'));
-const Shopping = React.lazy(() => import('./pages/Shopping'));
-const Lotto  = React.lazy(() => import('./pages/Lotto'));
-const BackUp  = React.lazy(() => import('./pages/BackUp'));
-const SignIn = React.lazy(() => import('./pages/SignIn'));
-const Email = React.lazy(() => import('./pages/Email'));
-const Weather = React.lazy(() => import('./pages/Weather'));
-const Stock = React.lazy(() => import('./pages/Stock'));
-const Private = React.lazy(() => import('./pages/Private'));
-*/
 function App() {
   const [value, updateValue] = React.useState(0);
+  const [isLoaded, setIsLoaded] = React.useState(true);
+  const [progress, setProgress] = useState(0);
 
   const selectStyle = {
       border: '4px solid white', 
@@ -42,6 +31,16 @@ function App() {
       background: '#2a9df4'
   };
 
+
+  const config = {
+    onUploadProgress: function(event) {
+      var percentCompleted = Math.round((event.loaded * 100) / event.total)
+      console.log(percentCompleted);
+      setProgress(percentCompleted);
+    }
+  }
+
+
   React.useEffect( () => {
     const interval = setInterval( () => {
       updateValue(oldValue => {
@@ -49,6 +48,14 @@ function App() {
          if (newValue === 100) {
            clearInterval(interval);
          }
+        
+         axios.post('/api/healthCheck', config).then((response) => {
+            console.log(response);
+            setIsLoaded(false);
+          }).catch((error) => {
+            console.log(error);
+          });
+
          return newValue;
       });
     }, 1000);
@@ -134,6 +141,7 @@ function App() {
   return (
     <div className="App">
       <ProgressBar value={value} max={100} />
+      {progress > 0 ? <Progress percent={progress} /> : null}
       <Card cardWidth="650px" fontColor="black" backgroundColor="white">
         <Layout>
           <Switch>
