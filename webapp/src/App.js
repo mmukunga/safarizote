@@ -141,7 +141,7 @@ function App() {
   return (
     <div className="App">
       <ProgressBar value={value} max={100} />
-      {progress > 0 ? <Progress percent={progress} /> : null}
+      {progress > 0 ? progress : null}
       <Card cardWidth="650px" fontColor="black" backgroundColor="white">
         <Layout>
           <Switch>
