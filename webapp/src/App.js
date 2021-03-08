@@ -43,7 +43,7 @@ function App() {
 
 
   React.useEffect( () => {
-    const interval = setInterval( () => {
+    const interval = setInterval(() => {
       updateValue(oldValue => {
          const newValue = oldValue + 10;
          if (newValue === 100) {
@@ -52,7 +52,6 @@ function App() {
         
          axios.post('/api/healthCheck', config).then((response) => {
             console.log(response);
-            setIsLoaded(false);
           }).catch((error) => {
             console.log(error);
           });
