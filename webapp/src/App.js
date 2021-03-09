@@ -37,7 +37,7 @@ function App() {
   const Loading = (props) => {
     const [dots, setDots] = React.useState(['..', '...', '....']);
     const rand = Math.floor(Math.random() * (3 - 0) + 0);
-    return (<div style={{textAlign:'center', width:'200px', color:'red', margin:'0 auto', background:'silver'}}>Loading{dots[rand]}</div>);
+    return (<div className='Spinner'>Loading{dots[rand]}</div>);
   };
 
   const loadData = async () => {

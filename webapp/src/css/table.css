@@ -1,6 +1,31 @@
 .sTable {
-   border-collapse: collapse;
-   border-spacing: 10px;
+   width: 100%;
+   box-sizing: border-box; 
+   font-size: 14px; 
+   border: 2px solid silver;
+   text-align: left; 
+   border-collapse: collapse; 
+   border-spacing: 10em 5em;
+   padding: 0 20em 10em 20em;
+   border: 1px solid orange;
+}
+
+/*
+{
+   width:'100%', 
+   boxSizing:'border-box', 
+   fontSize: 14, 
+   border:'2px solid #a30319',
+    textAlign:'left', 
+    borderCollapse:'collapse', borderSpacing:'10px'}
+*/
+
+.Spinner {
+   text-align: center;
+   width: 200px;
+   color:red;
+   margin:0 auto;
+   background:silver;
 }
 
 .sTable td, .sTable th {
