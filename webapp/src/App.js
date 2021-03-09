@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import { Route, Switch, NavLink } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
+import { usePromiseTracker, trackPromise } from "react-promise-tracker";
+
 import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
@@ -19,9 +21,11 @@ import Weather from './pages/Weather';
 import Stock from './pages/Stock';
 import Private from './pages/Private';
 
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
 function App() {
-  const [value, updateValue] = React.useState(0);
-  const [progress, setProgress] = React.useState(0);
+  const { promiseInProgress } = usePromiseTracker();
+  const [data, setData] = React.useState({});
 
   const selectStyle = {
       border: '4px solid white', 
@@ -30,48 +34,16 @@ function App() {
       background: '#2a9df4'
   };
 
-
-  const config = {
-    onUploadProgress: (event) => {
-      var percentCompleted = Math.round((event.loaded * 100) / event.total);
-      console.log('1.percentCompleted');
-      console.log(percentCompleted);
-      console.log('2.percentCompleted');
-      setProgress(percentCompleted);
-    }
-  }
-
+  const loadData = async () => {
+    await sleep(4000);
+    const res = await axios.post('/api/healthCheck');
+    setData(await res.data);
+  };
 
   React.useEffect( () => {
-    const interval = setInterval(() => {
-      updateValue(oldValue => {
-         const newValue = oldValue + 10;
-         if (newValue === 100) {
-           clearInterval(interval);
-         }
-         console.log('1. Loading' + new Date());
-         axios.post('/api/healthCheck', config).then((response) => {
-            console.log(response.data);
-          }).catch((error) => {
-            console.log(error);
-          });
-          console.log('2. Loading' + new Date());
-         return newValue;
-      });
-    }, 1000);
+    trackPromise(loadData());
+    return () => {};
   }, []);
-
-
-  const ProgressBar = props => {
-    const { value, max } = props;
-
-    return (
-      <div>
-        <progress value={value} max={max} />
-        <span>{(value / max) * 100}%</span>
-      </div>
-    );
-  }
 
   const DropDown = ({ history }) => {
     const onChange = (e) => {
@@ -140,8 +112,7 @@ function App() {
   
   return (
     <div className="App">
-      <ProgressBar value={value} max={100} />
-      {progress > 0 ? progress : 'null'}
+      {promiseInProgress ? "Loading.." : 
       <Card cardWidth="650px" fontColor="black" backgroundColor="white">
         <Layout>
           <Switch>
@@ -158,6 +129,7 @@ function App() {
           </Switch>
         </Layout>
       </Card> 
+      }
     </div>
   );
 }

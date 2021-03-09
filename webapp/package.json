@@ -14,7 +14,7 @@
     "web-vitals": "^0.2.4",
     "axios": "^0.21.1",
     "react-checkbox-tree": "^1.6.0",
-    "@skatteetaten/frontend-components": "^3.5.1"
+    "react-promise-tracker": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
