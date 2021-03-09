@@ -36,7 +36,7 @@ function App() {
 
   const Loading = (props) => {
     const [dots, setDots] = React.useState(['..', '...', '....']);
-    const rand = min + Math.random() * (3 - 0);
+    const rand = Math.floor(Math.random() * (3 - 0) + 0);
     return (<div>Loading{dots[rand]} {props} {data}</div>);
   };
 
