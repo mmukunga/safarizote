@@ -37,7 +37,7 @@ function App() {
   const Loading = (props) => {
     const [dots, setDots] = React.useState(['..', '...', '....']);
     const rand = Math.floor(Math.random() * (3 - 0) + 0);
-    return (<div>Loading{dots[rand]} {props} {data}</div>);
+    return (<div style={{color:'red', border:'4px solid green'}}>Loading{dots[rand]} {props} {data}</div>);
   };
 
   const loadData = async () => {
