@@ -34,6 +34,12 @@ function App() {
       background: '#2a9df4'
   };
 
+  const Loading = (props) => {
+    const [dots, setDots] = React.useState(['..', '...', '....']);
+    const rand = min + Math.random() * (3 - 0);
+    return (<div>Loading{dots[rand]} {props} {data}</div>);
+  };
+
   const loadData = async () => {
     await sleep(4000);
     const res = await axios.post('/api/healthCheck');
@@ -112,7 +118,7 @@ function App() {
   
   return (
     <div className="App">
-      {promiseInProgress ? "Loading.." : 
+      {promiseInProgress ? <Loading /> : 
       <Card cardWidth="650px" fontColor="black" backgroundColor="white">
         <Layout>
           <Switch>
