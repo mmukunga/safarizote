@@ -24,7 +24,7 @@ import Private from './pages/Private';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 function App() {
-  const { promiseInProgress } = usePromiseTracker();
+  const { promiseInProgress }  = usePromiseTracker({ delay: 500 });
   const [data, setData] = React.useState({});
 
   const selectStyle = {
