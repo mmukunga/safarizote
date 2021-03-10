@@ -35,9 +35,16 @@ function App() {
   };
 
   const Loading = (props) => {
-    const [dots, setDots] = React.useState(['..', '...', '....']);
-    const rand = Math.floor(Math.random() * (3 - 0) + 0);
-    return (<div className='Spinner'>Loading{dots[rand]}</div>);
+    const dots = ['..', '...', '....'];
+    const rand = Math.floor(Math.random() * (3-0) + 0);
+    const [randDots, setRandDots] = React.useState('');
+
+    while (props.data == {}) {
+      console.log(dots[rand]);
+      setRandDots(dots[rand]);
+    }
+
+    return (<div className='Spinner'>Loading{randDots}</div>);
   };
 
   const loadData = async () => {
@@ -118,7 +125,7 @@ function App() {
   
   return (
     <div className="App">
-      {promiseInProgress ? <Loading /> : 
+      {promiseInProgress ? <Loading data={data}/> : 
       <Card cardWidth="650px" fontColor="black" backgroundColor="white">
         <Layout>
           <Switch>
