@@ -26,6 +26,8 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 function App() {
   const { promiseInProgress }  = usePromiseTracker({ delay: 500 });
   const [data, setData] = React.useState({});
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [dots, setDots] = React.useState('');
 
   const selectStyle = {
       border: '4px solid white', 
@@ -35,22 +37,22 @@ function App() {
   };
 
   const Loading = (props) => {
-    const dots = ['..', '...', '....'];
-    const rand = Math.floor(Math.random() * (3-0) + 0);
-    const [randDots, setRandDots] = React.useState('');
-
-    while (props.data == {}) {
-      console.log(dots[rand]);
-      setRandDots(dots[rand]);
-    }
-
-    return (<div className='Spinner'>Loading{randDots}</div>);
+    return (<div className='Spinner'>Loading{props.dots}</div>);
   };
 
   const loadData = async () => {
     await sleep(4000);
+    const dots = ['..', '...', '....'];
+    const rand = Math.floor(Math.random() * (3-0) + 0);
+
+    while (isLoading === true) {
+      console.log(dots[rand]);
+      console.log(dots[rand]);
+      setDots(dots[rand]);
+    }
     const res = await axios.post('/api/healthCheck');
     setData(await res.data);
+    setIsLoading(false);
   };
 
   React.useEffect( () => {
