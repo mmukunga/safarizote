@@ -2,8 +2,6 @@ import React, {useState, useEffect} from 'react';
 import { Route, Switch, NavLink } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
-import { usePromiseTracker, trackPromise } from "react-promise-tracker";
-
 import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
@@ -21,13 +19,8 @@ import Weather from './pages/Weather';
 import Stock from './pages/Stock';
 import Private from './pages/Private';
 
-const sleep = ms => new Promise(r => setTimeout(r, ms));
-
 function App() {
-  const { promiseInProgress }  = usePromiseTracker({ delay: 500 });
   const [data, setData] = React.useState({});
-  const [isLoading, setIsLoading] = React.useState(true);
-  const [dots, setDots] = React.useState('');
 
   const selectStyle = {
       border: '4px solid white', 
@@ -36,27 +29,13 @@ function App() {
       background: '#2a9df4'
   };
 
-  const Loading = (props) => {
-    return (<div className='Spinner'>Loading{props.dots}</div>);
-  };
-
   const loadData = async () => {
-    await sleep(4000);
-    const dots = ['..', '...', '....'];
-    const rand = Math.floor(Math.random() * (3-0) + 0);
-
-    while (isLoading === true) {
-      console.log(dots[rand]);
-      console.log(dots[rand]);
-      setDots(dots[rand]);
-    }
     const res = await axios.post('/api/healthCheck');
     setData(await res.data);
-    setIsLoading(false);
   };
 
   React.useEffect( () => {
-    trackPromise(loadData());
+    console.log(loadData());
     return () => {};
   }, []);
 
@@ -126,8 +105,7 @@ function App() {
   }
   
   return (
-    <div className="App">
-      {promiseInProgress ? <Loading data={data}/> : 
+    <div className="App">      
       <Card cardWidth="650px" fontColor="black" backgroundColor="white">
         <Layout>
           <Switch>
@@ -144,7 +122,6 @@ function App() {
           </Switch>
         </Layout>
       </Card> 
-      }
     </div>
   );
 }
