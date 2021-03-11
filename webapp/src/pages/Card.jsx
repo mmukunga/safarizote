@@ -1,5 +1,5 @@
 import React from 'react';
-import gettyimages from './gettyimages.jpg';
+import gettyimages from '../../public/gettyimages.jpg';
 
 const Card = (props) => {
 
