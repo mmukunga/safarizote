@@ -6,7 +6,6 @@ const Home = () => {
    const [data, setData] = useState([]);
    const [counts, setCounts] = useState([]);
    const [clientInfo, setClientInfo] = useState({});
-   console.log('11.AboutUs');
    useEffect(() => {
       axios.get('https://extreme-ip-lookup.com/json/')
         .then(response => {
@@ -27,10 +26,6 @@ const Home = () => {
       axios.get('/api/allHits').then(response => {
         const mediaTypes = response.data.map(dataItem => dataItem.url) 
         .filter((mediaType, index, array) => array.indexOf(mediaType) === index); // filter out duplicates
-
-        console.log(mediaTypes);
-        console.log('ClientInfo:= ' + clientInfo);
-
         const counts = mediaTypes.map(dataItem => ({
             type: dataItem,
             count: response.data.filter(item => item.url == dataItem).length

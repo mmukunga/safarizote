@@ -3,14 +3,12 @@ import React from "react";
 
 function Table({ children, ...props }) {
     const firstRow = props.data[0];
-    console.log('1y.AboutUs');
     const headers = Object.keys(firstRow);
     const headerRow = headers.map(el => <Table.TH>{el}</Table.TH>);
     const rows = props.data.map(el => { 
         return (
         <Table.TR>
           {Object.values(el).map(el => {
-              console.log('MyEl:=' + el);
               return (
                 <Table.TD>{el}</Table.TD>
               )}  

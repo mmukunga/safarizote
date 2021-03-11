@@ -24,7 +24,6 @@ const reducer = function (state, action) {
 const Shopping = () => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
   const [data, setData] = useState([]);
-  console.log('z1.AboutUs');
 
   const handleChange = (event) => {
       dispatch({type: 'SET_SHOPPING', payload: event.target})
