@@ -55,7 +55,7 @@ const Shopping = () => {
   },[]);
 
     return (
-      <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF" imageUrl="../cheeter.jpg">
+      <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF" imageUrl="../images/cheeter.jpg">
         <p>Shoppings!!</p>
         <form className="form-container" onSubmit={handleSubmit}>
           <div className="row">

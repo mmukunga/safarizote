@@ -142,7 +142,7 @@ import Card from './Card';
     }
 
     return (
-        <Card cardWidth="600px" fontColor="black" backgroundColor="#F0FFFF" imageUrl="../gnus.jpg">
+        <Card cardWidth="600px" fontColor="black" backgroundColor="#F0FFFF" imageUrl="../images/gnus.jpg">
         {state.cityName} - {state.countryName}, {state.countryCode} 
         <form class="form-inline"  onSubmit={handleSubmit}>
           <select id="countryCode" name="countryCode" onChange={handleChange}>    

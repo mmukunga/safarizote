@@ -50,7 +50,7 @@ const SignIn = (props) => {
     }
 
     return (
-        <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF" imageUrl='../cheeter.jpg'>
+        <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF" imageUrl='../images/cheeter.jpg'>
             Please Login Here!!
             <form class="form-inline" onSubmit={handleSubmit}>
                 <input type="email" id="email" name="email" placeholder="Enter email"
