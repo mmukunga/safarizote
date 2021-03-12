@@ -8,7 +8,7 @@ const Card = (props) => {
     width: cardWidth,
     backgroundColor: backgroundColor,
     color: fontColor,
-    backgroundImage:`url(${gettyimages}) no-repeat`,
+    backgroundImage:`url(${gettyimages})`,
     backgroundSize: 'contain',
     borderRadius: 10,
     margin: '10px auto',
