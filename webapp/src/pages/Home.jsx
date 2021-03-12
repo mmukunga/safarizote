@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Card from './Card';
+import gettyimages from '../images/cheeter.jpg';
 
 const Home = () => {
    const [data, setData] = useState([]);
@@ -40,7 +41,7 @@ const Home = () => {
     }, [clientInfo]);
 
     return (
-        <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF" imageUrl="../images/cheeter.jpg">
+        <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF" imageUrl={gettyimages}>
             <h4 style={{ margin: '20px', fontSize: 16, fontStyle: 'bold', textAlign: 'left'}}>Safari Zote!</h4>
             <p style={{ margin: '20px', fontSize: 14, textAlign: 'left'}}>People also ask about this</p>
             <ul className="vList">

@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Card from './Card';
+import gettyimages from '../images/cheeter.jpg';
 
   const initialState = {
       cityName: 'Kabul',
@@ -142,7 +143,7 @@ import Card from './Card';
     }
 
     return (
-        <Card cardWidth="600px" fontColor="black" backgroundColor="#F0FFFF" imageUrl="../images/gnus.jpg">
+        <Card cardWidth="600px" fontColor="black" backgroundColor="#F0FFFF"  imageUrl={gettyimages}>
         {state.cityName} - {state.countryName}, {state.countryCode} 
         <form class="form-inline"  onSubmit={handleSubmit}>
           <select id="countryCode" name="countryCode" onChange={handleChange}>    
