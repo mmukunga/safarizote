@@ -16,17 +16,18 @@ const Card = (props) => {
   };
 
   const labelStyles = {color: fontColor};
-  const imageStyles = {backgroundImage: `url(${imageUrl})`};
+  const imageStyles = {backgroundImage: `url(${require(imageUrl)})`};
 
   console.log('1.imageUrl');
   console.log(imageUrl);
   console.log('2.imageUrl');
   console.log(imageStyles);
   console.log('3.imageStyles');
+  console.log(cardWidth);
 
   return (
     <div style={style}>
-      <div style={cardWidth=='650px' ? labelStyles : imageStyles}>
+      <div style={cardWidth === '650px' ? labelStyles : imageStyles}>
         {children}
       </div>
     </div>
