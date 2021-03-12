@@ -11,6 +11,7 @@ const Card = (props) => {
     backgroundImage:`url(${gettyimages})`,
     backgroundSize: 'contain',
     backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
     borderRadius: 10,
     margin: '10px auto',
     padding: '1px',
