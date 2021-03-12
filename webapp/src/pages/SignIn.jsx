@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Card from './Card';
 import { Redirect } from "react-router-dom";
-import gettyimages from '../cheeter.jpg';
 
 const initialState = {
     email: '',
@@ -51,7 +50,7 @@ const SignIn = (props) => {
     }
 
     return (
-        <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF" backgroundImg={gettyimages}>
+        <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF" imageUrl='../cheeter.jpg'>
             Please Login Here!!
             <form class="form-inline" onSubmit={handleSubmit}>
                 <input type="email" id="email" name="email" placeholder="Enter email"

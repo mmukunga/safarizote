@@ -3,7 +3,7 @@ import gettyimages from '../gettyimages.jpg';
 
 const Card = (props) => {
 
-  const { cardWidth, fontColor, backgroundColor, children, backgroundImage } = props;
+  const { cardWidth, fontColor, backgroundColor, children, imageUrl } = props;
   const style = {
     width: cardWidth,
     backgroundColor: backgroundColor,
@@ -16,7 +16,7 @@ const Card = (props) => {
   };
 
   const labelStyles = {color: fontColor};
-  const imageStyles = {backgroundImage: `url(${backgroundImage})`};
+  const imageStyles = {backgroundImage: `url(${imageUrl})`};
 
   return (
     <div style={style}>

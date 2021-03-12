@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Card from './Card';
-import gettyimages from '../tourists.jpg';
 
 const Lotto = () => {
     const [data, setData] = useState([]);
@@ -18,7 +17,7 @@ const Lotto = () => {
   },[]);
 
     return (
-      <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF" backgroundImg={gettyimages}>
+      <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF" imageUrl='../tourists.jpg'>
         <p>Lotto Kupong!!</p>
         <div className="Rekke">
           {data.map(rekke => 

@@ -56,7 +56,7 @@ const Shopping = () => {
   },[]);
 
     return (
-      <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF" backgroundImg={gettyimages}>
+      <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF" imageUrl='../cheeter.jpg'>
         <p>Shoppings!!</p>
         <form className="form-container" onSubmit={handleSubmit}>
           <div className="row">
