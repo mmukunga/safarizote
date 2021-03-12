@@ -1,5 +1,5 @@
 import React from 'react';
-import gettyimages from '../gettyimages.jpg';
+import gettyimages from '../images/gettyimages.jpg';
 
 const Card = (props) => {
 
@@ -16,7 +16,7 @@ const Card = (props) => {
   };
 
   const labelStyles = {color: fontColor};
-  const imageStyles = {backgroundImage: `url(${require(imageUrl)})`};
+  const imageStyles = {backgroundImage: `url(${imageUrl})`};
 
   console.log('1.imageUrl');
   console.log(imageUrl);
