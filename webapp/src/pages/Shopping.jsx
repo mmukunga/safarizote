@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Card from './Card';
+import gettyimages from '../cheeter.jpg';
 
 const initialState = {
     store: '',
@@ -55,7 +56,7 @@ const Shopping = () => {
   },[]);
 
     return (
-      <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
+      <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF" backgroundImg={gettyimages}>
         <p>Shoppings!!</p>
         <form className="form-container" onSubmit={handleSubmit}>
           <div className="row">

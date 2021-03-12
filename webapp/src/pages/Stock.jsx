@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer, useState } from 'react';
 import axios from 'axios';
 import Card from './Card';
+import gettyimages from '../drought.jpg';
 
 const initialState = {
   error: "",
@@ -111,7 +112,7 @@ const Stock = () => {
     };
     
     return (
-      <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
+      <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF" backgroundImg={gettyimages}>
         <p>Stock!!</p>
         <form onSubmit={handleSubmit} className="StockWrapper">
         <ul className="StockList">

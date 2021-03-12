@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import Card from './Card';
+import gettyimages from '../jeep.jpg';
 
 const AboutUs = () => {
     const [names, setNames] = useState(["Simon Mukunga", "steve", "carol"]);
     return (
-        <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
+        <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF" backgroundImg={gettyimages}>
            <h4>About Us!</h4>
            <p>16 years in the Safari industry offered an opportunity to gain a wealth of experience, knowledge, 
            enthusiasm and immense passion. Today Tufayn Mangal stands proud as a Professional Photographer,
