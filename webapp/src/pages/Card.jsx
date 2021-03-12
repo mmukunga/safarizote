@@ -20,7 +20,7 @@ const Card = (props) => {
 
   return (
     <div style={style}>
-      <div style={cardWidth=='650px' ? {labelStyles} : {imageStyles}}>
+      <div style={cardWidth=='650px' ? labelStyles : imageStyles}>
         {children}
       </div>
     </div>
