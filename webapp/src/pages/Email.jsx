@@ -46,7 +46,7 @@ const Email = () => {
         });
     }
     return (
-        <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF" imageUrl='../leopard.jpg'>
+        <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF" imageUrl="../leopard.jpg">
             <p>Contact Us!!</p>
             <div className="form-container">
             <form onSubmit={handleSubmit}>
