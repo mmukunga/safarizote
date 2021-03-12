@@ -8,10 +8,6 @@ const Card = (props) => {
     width: cardWidth,
     backgroundColor: backgroundColor,
     color: fontColor,
-    backgroundImage:`url(${gettyimages})`,
-    backgroundSize: 'contain',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
     borderRadius: 10,
     margin: '10px auto',
     padding: '1px',
@@ -19,7 +15,7 @@ const Card = (props) => {
     boxShadow: '0 0 10px 5p'
   };
 
-  const labelStyles = { color: fontColor };
+  const labelStyles = {backgroundImage: `url(${gettyimages})`};
 
   return (
     <div style={style}>
