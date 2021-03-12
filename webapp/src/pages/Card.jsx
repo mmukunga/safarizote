@@ -15,11 +15,12 @@ const Card = (props) => {
     boxShadow: '0 0 10px 5p'
   };
 
-  const labelStyles = {backgroundImage: `url(${gettyimages})`};
+  const labelStyles = {color: fontColor};
+  const imageStyles = {backgroundImage: `url(${gettyimages})`};
 
   return (
     <div style={style}>
-      <div style={labelStyles}>
+      <div style={cardWidth=='650px' ? {labelStyles} : {imageStyles}}>
         {children}
       </div>
     </div>
