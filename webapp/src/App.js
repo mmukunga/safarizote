@@ -21,12 +21,12 @@ import Weather from './pages/Weather';
 import Stock from './pages/Stock';
 import Private from './pages/Private';
 
+const images = [
+  "https://picsum.photos/200/300/?image=523",
+  "https://picsum.photos/200/300/?image=524"
+];
+
 function App() {
-  const [images, setImages] = React.useState([
-    "https://picsum.photos/200/300/?image=523",
-    "https://picsum.photos/200/300/?image=524"
-  ]);
-   
   const [selectedImage, setSelectedImage] = React.useState("https://picsum.photos/200/300/?image=523");
 
   const selectStyle = {
