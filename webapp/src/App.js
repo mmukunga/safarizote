@@ -22,11 +22,6 @@ import Stock from './pages/Stock';
 import Private from './pages/Private';
 
 function App() {
-  const images = [
-    "https://picsum.photos/200/300/?image=523",
-    "https://picsum.photos/200/300/?image=524"
-  ];
-  const [selectedImage, setSelectedImage] = React.useState("https://picsum.photos/200/300/?image=523");
 
   const selectStyle = {
       border: '4px solid white', 
@@ -34,24 +29,6 @@ function App() {
       padding: '2px', 
       background: '#2a9df4'
   };
-
-  React.useEffect(() => {
-      setInterval(() => {
-        setSelectedImage(prevState => {
-          if (prevState === images[0]) {
-            return {
-              selectedImage: images[1]
-            };
-          } else {
-            return {
-              selectedImage: images[0]
-            };
-          }
-        });
-      }, 1000);
-
-    return () => {};
-  }, []);
 
   const DropDown = ({ history }) => {
     const onChange = (e) => {
@@ -75,12 +52,36 @@ function App() {
   };
 
   const Toolbar = (props) => {
-    const imageStyles = {backgroundImage: `url(${props.imageUrl})`, display: props.displayHome};
-    console.log('1.imageUrl');
-    console.log(props.imageUrl);
-    console.log('2.imageUrl');
+    const images = [
+      "https://picsum.photos/200/300/?image=523",
+      "https://picsum.photos/200/300/?image=524"
+    ];
+    const [selectedImage, setSelectedImage] = React.useState("https://picsum.photos/200/300/?image=523");
+
+    const imageStyles = {backgroundImage: `url(${selectedImage})`, display: props.displayHome};
+
+    console.log('1.imageStyles');
     console.log(imageStyles);
-    console.log('3.imageStyles');
+    console.log('2.imageStyles');
+
+    React.useEffect(() => {
+        setInterval(() => {
+          setSelectedImage(prevState => {
+            if (prevState === images[0]) {
+              return {
+                selectedImage: images[1]
+              };
+            } else {
+              return {
+                selectedImage: images[0]
+              };
+            }
+          });
+        }, 30000);
+
+      return () => {};
+    }, [selectedImage]);
+
 
     return (
         <header style={imageStyles} className="App-header">  
@@ -101,6 +102,10 @@ function App() {
                   </div>
                 </nav> 
             </div>
+            
+          <div className="time">
+            {seconds}sec.
+          </div>     
             <p className="App-title">
               Edit <code>src/App.js</code> and save to reload.         
               <a
@@ -119,7 +124,7 @@ function App() {
   const Layout = (props) => {
       return (
         <div>
-          <Toolbar displayHome={props.displayHome} imageUrl={selectedImage}/>
+          <Toolbar displayHome={props.displayHome}/>
           <main>
             {props.children}
           </main>
@@ -128,7 +133,7 @@ function App() {
   }
   
   return (
-    <div className="App">      
+    <div className="App"> 
       <Card cardWidth="650px" fontColor="black" backgroundColor="white">
         <Layout>
           <Switch>
