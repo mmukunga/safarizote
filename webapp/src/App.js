@@ -30,6 +30,10 @@ function App() {
       background: '#2a9df4'
   };
 
+  const displayHome = {
+    color: 'blue'
+  }
+
   const DropDown = ({ history }) => {
     const onChange = (e) => {
       history.push(`${e.target.value}`);
@@ -56,13 +60,13 @@ function App() {
       "https://picsum.photos/200/300/?image=523",
       "https://picsum.photos/200/300/?image=524"
     ];
-    const [selectedImage, setSelectedImage] = React.useState("https://picsum.photos/200/300/?image=523");
+    const [selectedImage, setSelectedImage] = React.useState(images[0]);
 
     const imageStyles = {
       backgroundImage: `url(${selectedImage})`, 
       display: props.displayHome
     };
-
+    
     console.log('1.imageStyles');
     console.log(imageStyles);
     console.log('2.imageStyles');
@@ -70,11 +74,13 @@ function App() {
     React.useEffect(() => {
         setInterval(() => {
             if (selectedImage === images[0]) {
-              setSelectedImage(images[1])
+              console.log('ImageStyles1');
+              setSelectedImage(images[1]);
             } else {
-              setSelectedImage(images[0])
+              console.log('ImageStyles0');
+              setSelectedImage(images[0]);
             }
-        }, 30000);
+        }, 3000);
     }, []);
 
 
@@ -127,7 +133,7 @@ function App() {
   return (
     <div className="App"> 
       <Card cardWidth="650px" fontColor="black" backgroundColor="white">
-        <Layout>
+        <Layout displayHome={displayHome}>
           <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/aboutUs" component={AboutUs} />
