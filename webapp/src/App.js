@@ -61,7 +61,7 @@ function App() {
       "https://picsum.photos/200/300/?image=524"
     ];
     const [selectedImage, setSelectedImage] = React.useState(images[0]);
-
+    const [counter, setCounter] = useState(0);
     const imageStyles = {
       backgroundImage: `url(${selectedImage})`, 
       display: props.displayHome
@@ -71,18 +71,17 @@ function App() {
     console.log(imageStyles);
     console.log('2.imageStyles');
 
-    React.useEffect(() => {
-        setInterval(() => {
-            if (selectedImage === images[0]) {
-              console.log('ImageStyles1');
-              setSelectedImage(images[1]);
-            } else {
-              console.log('ImageStyles0');
-              setSelectedImage(images[0]);
-            }
-        }, 3000);
-    }, []);
 
+    React.useEffect(() => {
+      const timer = setInterval(() => {
+        setCounter(prevCount => prevCount===0? prevCount + 1 : 0); 
+        setSelectedImage(images[counter]);
+        console.log(images[counter]);
+      }, 3000);
+      return () => {
+        clearInterval(timer);
+      };
+    }, []); 
 
     return (
         <header style={imageStyles} className="App-header">  
