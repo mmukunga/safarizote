@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { Route, Switch, NavLink } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
-import gettyimages from '../images/leopard.jpg';
+import gettyimages from './images/leopard.jpg';
 
 import axios from 'axios';
 import logo from './logo.svg';
