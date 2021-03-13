@@ -58,7 +58,10 @@ function App() {
     ];
     const [selectedImage, setSelectedImage] = React.useState("https://picsum.photos/200/300/?image=523");
 
-    const imageStyles = {backgroundImage: `url(${selectedImage})`, display: props.displayHome};
+    const imageStyles = {
+      backgroundImage: `url(${selectedImage})`, 
+      display: props.displayHome
+    };
 
     console.log('1.imageStyles');
     console.log(imageStyles);
@@ -66,17 +69,11 @@ function App() {
 
     React.useEffect(() => {
         setInterval(() => {
-          setSelectedImage(prevState => {
             if (prevState === images[0]) {
-              return {
-                selectedImage: images[1]
-              };
+              setSelectedImage(images[1])
             } else {
-              return {
-                selectedImage: images[0]
-              };
+              setSelectedImage(images[0])
             }
-          });
         }, 30000);
 
       return () => {};
@@ -84,7 +81,7 @@ function App() {
 
 
     return (
-        <header style={selectedImage} className="App-header">  
+        <header style={imageStyles} className="App-header">  
             <div className="ToolBar">                 
                 <nav className="Navigation">
                   <div className="leftDiv"> 
