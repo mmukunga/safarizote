@@ -102,10 +102,7 @@ function App() {
                   </div>
                 </nav> 
             </div>
-            
-          <div className="time">
-            {seconds}sec.
-          </div>     
+              
             <p className="App-title">
               Edit <code>src/App.js</code> and save to reload.         
               <a
