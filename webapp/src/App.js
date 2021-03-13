@@ -80,7 +80,7 @@ function App() {
         }, 30000);
 
       return () => {};
-    }, [selectedImage]);
+    }, []);
 
 
     return (
