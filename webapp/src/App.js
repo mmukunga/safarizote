@@ -69,14 +69,12 @@ function App() {
 
     React.useEffect(() => {
         setInterval(() => {
-            if (prevState === images[0]) {
+            if (selectedImage === images[0]) {
               setSelectedImage(images[1])
             } else {
               setSelectedImage(images[0])
             }
         }, 30000);
-
-      return () => {};
     }, []);
 
 
