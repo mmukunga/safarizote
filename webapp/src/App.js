@@ -84,7 +84,7 @@ function App() {
 
 
     return (
-        <header style={imageStyles} className="App-header">  
+        <header style={selectedImage} className="App-header">  
             <div className="ToolBar">                 
                 <nav className="Navigation">
                   <div className="leftDiv"> 
