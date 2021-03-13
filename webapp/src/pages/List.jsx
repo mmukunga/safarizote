@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
   const List = ({ listName, list = [], handleCheck })  => {
     const [isChecked, setIsChecked] = useState({});
+    
     const handleChecked = e => {
         setIsChecked({ ...isChecked, [e.target.name]: e.target.checked });
         handleCheck(isChecked);
