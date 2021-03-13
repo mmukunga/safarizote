@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Table from './Table';
 import Card from './Card';
-import gettyimages from '../images/gnus.jpg';
 
 const Safaris = () => {
     const [safaris, setSafaris] = useState([]);
@@ -59,7 +58,7 @@ const Safaris = () => {
     });
     
     return (
-      <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF"  imageUrl={gettyimages}>
+      <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
           <p>Safaris!!</p>
           <ul id="page-numbers">
             {renderPageNumbers}

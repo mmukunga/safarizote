@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import Card from './Card';
 import axios from 'axios';
 
-import gettyimages from '../images/cheeter.jpg';
-
   const tree = [
     {"name":"Desktop(this PC)", "id": "00", "collapsed":true,
      "nodes":[
@@ -100,7 +98,7 @@ import gettyimages from '../images/cheeter.jpg';
     }
 
     return (
-      <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF" imageUrl={gettyimages}>
+      <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
           <strong>Tree BackUp</strong>
           <TreeList list={tree} treeLevel={0} handleChange={handleChange} collapsed={collapsed} handleCollapsed={handleCollapsed}/>
       </Card>

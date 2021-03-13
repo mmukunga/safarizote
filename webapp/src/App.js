@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import { Route, Switch, NavLink } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
+import gettyimages from '../images/leopard.jpg';
+
 import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
@@ -60,43 +62,52 @@ function App() {
       localStorage.clear();
   };
 
-  const Toolbar = (props) => (
-    <header style={{display: props.displayHome}} className="App-header">  
-        <div className="ToolBar">                 
-            <nav className="Navigation">
-              <div className="leftDiv"> 
-                <img src={logo} className="App-logo" alt="logo"/>
-              </div>
-              <div className="rightDiv">
-                <NavLink to="/" className="Nav_link">Home</NavLink>
-                <NavLink to="/aboutUs" className="Nav_link">About Us</NavLink>
-                <NavLink to="/safaris" className="Nav_link">Safaris</NavLink>
-                <NavLink to="/signIn" className="Nav_link">Login</NavLink>
-                <NavLink to="/email" className="Nav_link">Email</NavLink>
-                <NavLink to="/weather" className="Nav_link">Weather</NavLink>
-                <Menu/>
-                <button onClick={handleLogout}>Logout</button>
-              </div>
-            </nav> 
-        </div>
-        <p className="App-title">
-          Edit <code>src/App.js</code> and save to reload.         
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-    </header>
-  );
+  const Toolbar = (props) => {
+    const imageStyles = {backgroundImage: `url(${props.imageUrl})`, display: props.displayHome};
+    console.log('1.imageUrl');
+    console.log(props.imageUrl);
+    console.log('2.imageUrl');
+    console.log(imageStyles);
+    console.log('3.imageStyles');
+
+    return (
+        <header style={imageStyles} className="App-header">  
+            <div className="ToolBar">                 
+                <nav className="Navigation">
+                  <div className="leftDiv"> 
+                    <img src={logo} className="App-logo" alt="logo"/>
+                  </div>
+                  <div className="rightDiv">
+                    <NavLink to="/" className="Nav_link">Home</NavLink>
+                    <NavLink to="/aboutUs" className="Nav_link">About Us</NavLink>
+                    <NavLink to="/safaris" className="Nav_link">Safaris</NavLink>
+                    <NavLink to="/signIn" className="Nav_link">Login</NavLink>
+                    <NavLink to="/email" className="Nav_link">Email</NavLink>
+                    <NavLink to="/weather" className="Nav_link">Weather</NavLink>
+                    <Menu/>
+                    <button onClick={handleLogout}>Logout</button>
+                  </div>
+                </nav> 
+            </div>
+            <p className="App-title">
+              Edit <code>src/App.js</code> and save to reload.         
+              <a
+                className="App-link"
+                href="https://reactjs.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Learn React
+              </a>
+            </p>
+        </header>
+      );
+    }
 
   const Layout = (props) => {
       return (
         <div>
-          <Toolbar displayHome={props.displayHome}/>
+          <Toolbar displayHome={props.displayHome} imageUrl={gettyimages}/>
           <main>
             {props.children}
           </main>

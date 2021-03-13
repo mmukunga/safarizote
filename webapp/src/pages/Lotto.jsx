@@ -3,7 +3,6 @@ import axios from 'axios';
 import Card from './Card';
 import gettyimages from '../images/gettyimages.jpg';
 
-const Lotto = () => {
     const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -18,7 +17,7 @@ const Lotto = () => {
   },[]);
 
     return (
-      <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF" imageUrl={gettyimages}>
+      <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
         <p>Lotto Kupong!!</p>
         <div className="Rekke">
           {data.map(rekke => 
