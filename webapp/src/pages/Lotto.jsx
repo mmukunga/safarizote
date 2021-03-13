@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Card from './Card';
-import gettyimages from '../images/cheeter.jpg';
+import gettyimages from '../images/gettyimages.jpg';
 
 const Lotto = () => {
     const [data, setData] = useState([]);

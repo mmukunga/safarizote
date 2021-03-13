@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Card from './Card';
-import gettyimages from '../images/leopard.jpg';
+import gettyimages from '../images/cheeters.jpg';
 
 const initialState = {
     name: "Simon Mukunga",

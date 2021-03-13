@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer, useState } from 'react';
 import axios from 'axios';
 import Card from './Card';
-import gettyimages from '../images/cheeter.jpg';
+import gettyimages from '../images/gnus.jpg';
 
 const initialState = {
   error: "",

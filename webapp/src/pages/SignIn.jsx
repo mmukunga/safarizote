@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Card from './Card';
 import { Redirect } from "react-router-dom";
-import gettyimages from '../images/cheeter.jpg';
+import gettyimages from '../images/savannah.jpg';
 
 const initialState = {
     email: '',

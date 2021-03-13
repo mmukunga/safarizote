@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Card from './Card';
-import gettyimages from '../images/gettyimages.jpg';
+import gettyimages from '../images/jeep.jpg';
 
 const AboutUs = () => {
     const [names, setNames] = useState(["Simon Mukunga", "steve", "carol"]);

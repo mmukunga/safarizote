@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Card from './Card';
-import gettyimages from '../images/cheeter.jpg';
+import gettyimages from '../images/drought.jpg';
 
 const Home = () => {
    const [data, setData] = useState([]);

@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Card from './Card';
-import gettyimages from '../images/cheeter.jpg';
+import gettyimages from '../images/leopard.jpg';
 
   const initialState = {
       cityName: 'Kabul',
