@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Card from './Card';
-import gettyimages from '../images/tourist.jpg';
+import gettyimages from '../images/tourists.jpg';
 
 const initialState = {
     store: '',
