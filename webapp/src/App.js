@@ -21,12 +21,11 @@ import Weather from './pages/Weather';
 import Stock from './pages/Stock';
 import Private from './pages/Private';
 
-const images = [
-  "https://picsum.photos/200/300/?image=523",
-  "https://picsum.photos/200/300/?image=524"
-];
-
 function App() {
+  const images = [
+    "https://picsum.photos/200/300/?image=523",
+    "https://picsum.photos/200/300/?image=524"
+  ];
   const [selectedImage, setSelectedImage] = React.useState("https://picsum.photos/200/300/?image=523");
 
   const selectStyle = {
@@ -39,13 +38,13 @@ function App() {
   React.useEffect(() => {
       setInterval(() => {
         setSelectedImage(prevState => {
-          if (prevState === images.images[0]) {
+          if (prevState === images[0]) {
             return {
-              selectedImage: images.images[1]
+              selectedImage: images[1]
             };
           } else {
             return {
-              selectedImage: images.images[0]
+              selectedImage: images[0]
             };
           }
         });
