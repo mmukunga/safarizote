@@ -22,7 +22,6 @@ import Stock from './pages/Stock';
 import Private from './pages/Private';
 
 function App() {
-  const [counter, setCounter] = useState(0);
   const selectStyle = {
       border: '4px solid white', 
       width: '100px', 
@@ -56,13 +55,12 @@ function App() {
   };
 
   const Toolbar = (props) => {
-    var { counter } = props.counter;
-    const [inc, setInc] = useState(0);
 
     const images = [
       "https://picsum.photos/200/300/?image=523",
       "https://picsum.photos/200/300/?image=524"
     ];
+    
     const [selectedImage, setSelectedImage] = React.useState(images[0]);
     
     const imageStyles = {
@@ -74,26 +72,9 @@ function App() {
     console.log(imageStyles);
     console.log('2.imageStyles');
 
-    const incRef = useRef(inc);
-    const idRef = useRef();
-
     React.useEffect(() => {
-      idRef.current = setInterval(() => {
-        if (counter == 0) { 
-          counter = counter + 1;
-        } else { 
-          counter = 0; 
-        }
-        props.setCounter(counter);
-        setSelectedImage(images[counter]);
-        setInc(inc => (inc < 10 ? inc + 1 : inc));
-        incRef.current++;
-        console.log("Toolbar - INC:= " + inc);
-        console.log(images[counter]);
-      }, 3000);
-      return () => {
-        clearInterval(idRef.current);
-      };
+        setSelectedImage(images[1]);
+      return () => {};
     }, []); 
 
     return (
@@ -134,7 +115,7 @@ function App() {
   const Layout = (props) => {
       return (
         <div>
-          <Toolbar displayHome={props.displayHome} setCounter={setCounter} counter={props.counter}/>
+          <Toolbar displayHome={props.displayHome}/>
           <main>
             {props.children}
           </main>
@@ -145,7 +126,7 @@ function App() {
   return (
     <div className="App"> 
       <Card cardWidth="650px" fontColor="black" backgroundColor="white">
-        <Layout displayHome={displayHome} counter={counter}>
+        <Layout displayHome={displayHome}>
           <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/aboutUs" component={AboutUs} />
