@@ -2,7 +2,14 @@ import React, {useState, useEffect, useRef} from 'react';
 import { Route, Switch, NavLink } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
-import gettyimages from './images/leopard.jpg';
+import leopard from './images/leopard.jpg';
+import cheeter from './images/cheeter.jpg';
+import cheeters from './images/cheeters.jpg';
+import jeep from './images/jeep.jpg';
+import savannah from './images/savannah.jpg';
+import gnus from './images/gnus.jpg';
+import tourists from './images/tourists.jpg';
+import drought from './images/drought.jpg';
 
 import axios from 'axios';
 import logo from './logo.svg';
@@ -57,11 +64,18 @@ function App() {
   const Toolbar = (props) => {
 
     const images = [
-      "https://picsum.photos/200/300/?image=523",
-      "https://picsum.photos/200/300/?image=524"
+        './images/leopard.jpg',
+        './images/cheeter.jpg',
+        './images/cheeters.jpg',
+        './images/jeep.jpg',
+        './images/savannah.jpg',
+        './images/gnus.jpg',
+        './images/tourists.jpg',
+        './images/drought.jpg'
     ];
-    
-    const [selectedImage, setSelectedImage] = React.useState(images[0]);
+
+    const id = Math.floor(Math.random() * (7 - 0) + 0);
+    const [selectedImage, setSelectedImage] = React.useState(images[id]);
     
     const imageStyles = {
       backgroundImage: `url(${selectedImage})`, 
