@@ -74,9 +74,10 @@ function App() {
     console.log(imageStyles);
     console.log('2.imageStyles');
 
+    const incRef = useRef(inc);
 
     React.useEffect(() => {
-      const timer = setInterval(() => {
+      idRef.current = setInterval(() => {
         if (counter == 0) { 
           counter = counter + 1;
         } else { 
@@ -85,11 +86,12 @@ function App() {
         props.setCounter(counter);
         setSelectedImage(images[counter]);
         setInc(inc => (inc < 10 ? inc + 1 : inc));
+        incRef.current++;
         console.log("Toolbar - INC:= " + inc);
         console.log(images[counter]);
       }, 3000);
       return () => {
-        clearInterval(timer);
+        clearInterval(idRef.current);
       };
     }, []); 
 
