@@ -2,15 +2,6 @@ import React, {useState, useEffect, useRef} from 'react';
 import { Route, Switch, NavLink } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
-import leopard from './images/leopard.jpg';
-import cheeter from './images/cheeter.jpg';
-import cheeters from './images/cheeters.jpg';
-import jeep from './images/jeep.jpg';
-import savannah from './images/savannah.jpg';
-import gnus from './images/gnus.jpg';
-import tourists from './images/tourists.jpg';
-import drought from './images/drought.jpg';
-
 import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
