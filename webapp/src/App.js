@@ -56,7 +56,7 @@ function App() {
   };
 
   const Toolbar = (props) => {
-    const { counter } = props.counter;
+    var { counter } = props.counter;
     const images = [
       "https://picsum.photos/200/300/?image=523",
       "https://picsum.photos/200/300/?image=524"
@@ -78,7 +78,7 @@ function App() {
         if (counter == 0) { 
           counter = counter+1;
         } else { 
-          counter=0; 
+          counter = 0; 
         }
         props.setCounter(counter);
         setSelectedImage(images[counter]);
