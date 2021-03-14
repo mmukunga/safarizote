@@ -1,7 +1,7 @@
 .ToolBar {
     vertical-align: top;
     text-align: center;
-    background:#f8ecd5;
+    /*background:#f8ecd5;*/
     border: 1px solid #f00;
   }  
 
@@ -19,7 +19,7 @@
     vertical-align: top;
     color:blue;
     width: 80px;
-    background: #f7e7ce;
+    /*background: #f7e7ce;*/
   }
 
   .rightDiv {
