@@ -56,7 +56,7 @@ function App() {
   };
 
   const Toolbar = (props) => {
-    const { count } = props.count;
+    const { counter } = props.counter;
     const images = [
       "https://picsum.photos/200/300/?image=523",
       "https://picsum.photos/200/300/?image=524"
@@ -75,12 +75,12 @@ function App() {
 
     React.useEffect(() => {
       const timer = setInterval(() => {
-        if (count == 0) { 
-          count = count+1;
+        if (counter == 0) { 
+          counter = counter+1;
         } else { 
-          count=0; 
+          counter=0; 
         }
-        props.setCounter(count);
+        props.setCounter(counter);
         setSelectedImage(images[counter]);
         console.log(images[counter]);
       }, 3000);
@@ -127,7 +127,7 @@ function App() {
   const Layout = (props) => {
       return (
         <div>
-          <Toolbar displayHome={props.displayHome} setCounter={setCounter} count={count}/>
+          <Toolbar displayHome={props.displayHome} setCounter={setCounter} counter={props.counter}/>
           <main>
             {props.children}
           </main>
@@ -138,7 +138,7 @@ function App() {
   return (
     <div className="App"> 
       <Card cardWidth="650px" fontColor="black" backgroundColor="white">
-        <Layout displayHome={displayHome}>
+        <Layout displayHome={displayHome} counter={counter}>
           <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/aboutUs" component={AboutUs} />
