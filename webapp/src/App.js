@@ -75,6 +75,7 @@ function App() {
     console.log('2.imageStyles');
 
     const incRef = useRef(inc);
+    const idRef = useRef();
 
     React.useEffect(() => {
       idRef.current = setInterval(() => {
