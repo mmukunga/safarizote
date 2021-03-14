@@ -64,6 +64,8 @@ function App() {
   const Toolbar = (props) => {
 
     const images = [
+        './logo192.png',
+        './logo512.png',
         './images/leopard.jpg',
         './images/cheeter.jpg',
         './images/cheeters.jpg',
@@ -75,7 +77,7 @@ function App() {
     ];
 
     const id = Math.floor(Math.random() * (7 - 0) + 0);
-    const [selectedImage, setSelectedImage] = React.useState(images[id]);
+    const [selectedImage, setSelectedImage] = React.useState(images[0]);
     
     const imageStyles = {
       backgroundImage: `url(${selectedImage})`, 
