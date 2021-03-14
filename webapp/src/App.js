@@ -22,7 +22,7 @@ import Stock from './pages/Stock';
 import Private from './pages/Private';
 
 function App() {
-
+  const [counter, setCounter] = useState(0);
   const selectStyle = {
       border: '4px solid white', 
       width: '100px', 
@@ -56,12 +56,13 @@ function App() {
   };
 
   const Toolbar = (props) => {
+    const { count } = props.count;
     const images = [
       "https://picsum.photos/200/300/?image=523",
       "https://picsum.photos/200/300/?image=524"
     ];
     const [selectedImage, setSelectedImage] = React.useState(images[0]);
-    const [counter, setCounter] = useState(0);
+    
     const imageStyles = {
       backgroundImage: `url(${selectedImage})`, 
       display: props.displayHome
@@ -74,7 +75,12 @@ function App() {
 
     React.useEffect(() => {
       const timer = setInterval(() => {
-        setCounter(prevCount => prevCount===0? prevCount + 1 : 0); 
+        if (count == 0) { 
+          count = count+1;
+        } else { 
+          count=0; 
+        }
+        props.setCounter(count);
         setSelectedImage(images[counter]);
         console.log(images[counter]);
       }, 3000);
@@ -121,7 +127,7 @@ function App() {
   const Layout = (props) => {
       return (
         <div>
-          <Toolbar displayHome={props.displayHome}/>
+          <Toolbar displayHome={props.displayHome} setCounter={setCounter} count={count}/>
           <main>
             {props.children}
           </main>
