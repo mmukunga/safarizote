@@ -84,7 +84,7 @@ function App() {
         }
         props.setCounter(counter);
         setSelectedImage(images[counter]);
-        setInc(inc => (inc < count ? inc + 1 : inc));
+        setInc(inc => (inc < 10 ? inc + 1 : inc));
         console.log("Toolbar - INC:= " + inc);
         console.log(images[counter]);
       }, 3000);
