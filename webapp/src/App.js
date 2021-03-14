@@ -57,6 +57,8 @@ function App() {
 
   const Toolbar = (props) => {
     var { counter } = props.counter;
+    const [inc, setInc] = useState(0);
+
     const images = [
       "https://picsum.photos/200/300/?image=523",
       "https://picsum.photos/200/300/?image=524"
@@ -76,12 +78,14 @@ function App() {
     React.useEffect(() => {
       const timer = setInterval(() => {
         if (counter == 0) { 
-          counter = counter+1;
+          counter = counter + 1;
         } else { 
           counter = 0; 
         }
         props.setCounter(counter);
         setSelectedImage(images[counter]);
+        setInc(inc => (inc < count ? inc + 1 : inc));
+        console.log("Toolbar - INC:= " + inc);
         console.log(images[counter]);
       }, 3000);
       return () => {
