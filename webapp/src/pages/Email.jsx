@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import Card from './Card';
-import gettyimages from '../images/cheeters.jpg';
 
 const initialState = {
     name: "Simon Mukunga",
@@ -46,7 +45,7 @@ const Email = () => {
         });
     }
     return (
-        <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF" imageUrl={gettyimages}>
+        <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
             <p>Contact Us!!</p>
             <div className="form-container">
             <form onSubmit={handleSubmit}>
