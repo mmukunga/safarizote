@@ -1,8 +1,7 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React from 'react';
 import { Route, Switch, NavLink } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
-import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
 
@@ -65,20 +64,20 @@ function App() {
         './images/drought.jpg'
     ];
 
-    const id = Math.floor(Math.random() * (7 - 0) + 0);
-    const [selectedImage, setSelectedImage] = React.useState(images[id]);
+    const [selectedImage, setSelectedImage] = React.useState(images[0]);
     
     const imageStyles = {
       backgroundImage: `url(${selectedImage})`, 
       display: props.displayHome
     };
     
-    console.log('1.imageStyles');
+    console.log('1..imageStyles');
     console.log(imageStyles);
-    console.log('2.imageStyles');
+    console.log('2..imageStyles');
 
     React.useEffect(() => {
-        setSelectedImage(images[1]);
+        const id = Math.floor(Math.random() * (7 - 0) + 0);
+        setSelectedImage(images[id]);
       return () => {};
     }, []); 
 
