@@ -55,21 +55,21 @@ function App() {
   const Toolbar = (props) => {
 
     const images = [
-        '/images/leopard.jpg',
-        '/images/cheeter.jpg',
-        '/images/cheeters.jpg',
-        '/images/jeep.jpg',
-        '/images/savannah.jpg',
-        '/images/gnus.jpg',
-        '/images/tourists.jpg',
-        '/images/drought.jpg'
+        './images/jeep.jpg',
+        './images/leopard.jpg',
+        './images/cheeter.jpg',
+        './images/cheeters.jpg',
+        './images/savannah.jpg',
+        './images/gnus.jpg',
+        './images/tourists.jpg',
+        './images/drought.jpg'
     ];
 
     const id = Math.floor(Math.random() * (7 - 0) + 0);
     const [selectedImage, setSelectedImage] = React.useState(images[id]);
     
     const imageStyles = {
-      backgroundImage: `url(${process.env.PUBLIC_URL + selectedImage})`, 
+      backgroundImage: `url(${selectedImage})`, 
       display: props.displayHome
     };
     
