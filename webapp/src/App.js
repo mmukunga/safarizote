@@ -82,7 +82,7 @@ function App() {
         }, 3000);
     
         return () => clearInterval(intervalID);
-    }, []);
+    }, [toggle]);
 
 
     React.useEffect(() => {
@@ -99,7 +99,7 @@ function App() {
                     <img src={logo} className="App-logo" alt="logo"/>
                   </div>
                   <div className="rightDiv">
-                    <NavLink to="/" className="Nav_link">{ toggle ? 'true' : 'false' }</NavLink>
+                    <NavLink to="/" className="Nav_link"> MAJI:{ toggle ? 'true' : 'false' }</NavLink>
                     <NavLink to="/" className="Nav_link">Home</NavLink>
                     <NavLink to="/aboutUs" className="Nav_link">About Us</NavLink>
                     <NavLink to="/safaris" className="Nav_link">Safaris</NavLink>
