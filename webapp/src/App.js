@@ -78,7 +78,9 @@ function App() {
 
     React.useEffect(() => {
         const intervalID = setTimeout(() =>  {
-            setToggle((prevToggle) => !prevToggle)
+            const id = Math.floor(Math.random() * (7 - 0) + 0);
+            setToggle((prevToggle) => !prevToggle);
+            setSelectedImage(images[id]);
         }, 3000);
     
         return () => clearInterval(intervalID);
@@ -99,7 +101,7 @@ function App() {
                     <img src={logo} className="App-logo" alt="logo"/>
                   </div>
                   <div className="rightDiv">
-                    <NavLink to="/" className="Nav_link"> MAJI:{ toggle ? 'true' : 'false' }</NavLink>
+                    <NavLink to="/" className="Nav_link">{ selectedImage }</NavLink>
                     <NavLink to="/" className="Nav_link">Home</NavLink>
                     <NavLink to="/aboutUs" className="Nav_link">About Us</NavLink>
                     <NavLink to="/safaris" className="Nav_link">Safaris</NavLink>
