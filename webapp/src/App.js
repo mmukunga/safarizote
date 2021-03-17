@@ -65,7 +65,6 @@ function App() {
     ];
 
     const [selectedImage, setSelectedImage] = React.useState(images[0]);
-    const [toggle, setToggle] = React.useState(false);
 
     const imageStyles = {
       backgroundImage: `url(${selectedImage})`, 
@@ -79,19 +78,11 @@ function App() {
     React.useEffect(() => {
         const intervalID = setTimeout(() =>  {
             const id = Math.floor(Math.random() * (7 - 0) + 0);
-            setToggle((prevToggle) => !prevToggle);
             setSelectedImage(images[id]);
         }, 3000);
     
         return () => clearInterval(intervalID);
-    }, [toggle]);
-
-
-    React.useEffect(() => {
-        const id = Math.floor(Math.random() * (7 - 0) + 0);
-        setSelectedImage(images[id]);
-      return () => {};
-    }, []); 
+    }, [selectedImage]);
 
     return (
         <header style={imageStyles} className="App-header">  
@@ -101,7 +92,6 @@ function App() {
                     <img src={logo} className="App-logo" alt="logo"/>
                   </div>
                   <div className="rightDiv">
-                    <NavLink to="/" className="Nav_link">{ selectedImage }</NavLink>
                     <NavLink to="/" className="Nav_link">Home</NavLink>
                     <NavLink to="/aboutUs" className="Nav_link">About Us</NavLink>
                     <NavLink to="/safaris" className="Nav_link">Safaris</NavLink>
