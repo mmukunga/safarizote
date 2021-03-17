@@ -76,14 +76,13 @@ function App() {
     console.log(imageStyles);
     console.log('2..imageStyles');
 
-
-    useEffect(() => {
-      const intervalID = setTimeout(() =>  {
-          setToggle((prevToggle) => !prevToggle)
-      }, 3000);
-  
-      return () => clearInterval(intervalID);
-  }, []);
+    React.useEffect(() => {
+        const intervalID = setTimeout(() =>  {
+            setToggle((prevToggle) => !prevToggle)
+        }, 3000);
+    
+        return () => clearInterval(intervalID);
+    }, []);
 
 
     React.useEffect(() => {
