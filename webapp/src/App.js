@@ -65,7 +65,8 @@ function App() {
     ];
 
     const [selectedImage, setSelectedImage] = React.useState(images[0]);
-    
+    const [toggle, setToggle] = React.useState(false);
+
     const imageStyles = {
       backgroundImage: `url(${selectedImage})`, 
       display: props.displayHome
@@ -74,6 +75,16 @@ function App() {
     console.log('1..imageStyles');
     console.log(imageStyles);
     console.log('2..imageStyles');
+
+
+    useEffect(() => {
+      const intervalID = setTimeout(() =>  {
+          setToggle((prevToggle) => !prevToggle)
+      }, 3000);
+  
+      return () => clearInterval(intervalID);
+  }, []);
+
 
     React.useEffect(() => {
         const id = Math.floor(Math.random() * (7 - 0) + 0);
@@ -89,6 +100,7 @@ function App() {
                     <img src={logo} className="App-logo" alt="logo"/>
                   </div>
                   <div className="rightDiv">
+                    <NavLink to="/" className="Nav_link">{ toggle ? 'true' : 'false' }</NavLink>
                     <NavLink to="/" className="Nav_link">Home</NavLink>
                     <NavLink to="/aboutUs" className="Nav_link">About Us</NavLink>
                     <NavLink to="/safaris" className="Nav_link">Safaris</NavLink>
