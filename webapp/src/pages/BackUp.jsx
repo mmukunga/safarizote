@@ -28,6 +28,15 @@ import axios from 'axios';
   const BackUp = () => {
     const [checkedFolders, setCheckedFolders] = useState({});
     const [collapsed, setCollapsed] = useState(true);
+
+    const [fruites, setFruites] = useState([
+        {id: 1, value: "banana", isChecked: false},
+        {id: 2, value: "apple", isChecked: false},
+        {id: 3, value: "mango", isChecked: false},
+        {id: 4, value: "grap", isChecked: false}]);
+
+
+
     useEffect(() => {
       axios.get('/api/backUp').then(response => {
           console.log(response);
@@ -61,7 +70,29 @@ import axios from 'axios';
         } 
       }
     }
+
+    const handleAllChecked = (event) => {
+      fruites.forEach(fruite => fruite.isChecked = event.target.checked) 
+      this.setState({fruites: fruites})
+    }
+  
+    const handleCheckChieldElement = (event) => {
+      fruites.forEach(fruite => {
+         if (fruite.value === event.target.value)
+            fruite.isChecked =  event.target.checked
+      })
+      this.setState({fruites: fruites})
+    }
+  
     
+    const CheckBox = props => {
+      return (
+        <li>
+         <input key={props.id} onClick={props.handleCheckChieldElement} type="checkbox" checked={props.isChecked} value={props.value} /> {props.value}
+        </li>
+      )
+    }
+
     const handleCollapsed = (collapsed) => {
       setCollapsed(collapsed);
     }
@@ -100,6 +131,19 @@ import axios from 'axios';
     return (
       <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
           <strong>Tree BackUp</strong>
+
+        <h1> Check and Uncheck All Example </h1>
+        <input type="checkbox" onClick={handleAllChecked}  value="checkedall" /> Check / Uncheck All
+        <ul>
+        {
+          fruites.map((fruite) => {
+            return (<CheckBox handleCheckChieldElement={handleCheckChieldElement}  {...fruite} />)
+          })
+        }
+        </ul>
+
+
+
           <TreeList list={tree} treeLevel={0} handleChange={handleChange} collapsed={collapsed} handleCollapsed={handleCollapsed}/>
       </Card>
     );
