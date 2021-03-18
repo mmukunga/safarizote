@@ -73,7 +73,7 @@ import axios from 'axios';
 
     const handleAllChecked = (event) => {
       fruites.forEach(fruite => fruite.isChecked = event.target.checked) 
-      this.setState({fruites: fruites})
+      setFruites(fruites => fruites);
     }
   
     const handleCheckChieldElement = (event) => {
@@ -81,7 +81,7 @@ import axios from 'axios';
          if (fruite.value === event.target.value)
             fruite.isChecked =  event.target.checked
       })
-      this.setState({fruites: fruites})
+      setFruites(fruites => fruites);
     }
   
     
