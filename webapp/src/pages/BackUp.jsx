@@ -93,10 +93,11 @@ import axios from 'axios';
       console.log(fruites);
       let newFruites = [ ...fruites ];
       newFruites.forEach(fruite => {
-         if (fruite.value === event.target.value) {
-            console.log('****' + event.target.value + ' ' + fruite.value);
-            fruite.isChecked = event.target.checked;
-          }   
+        console.log('parentID:= ' + event.target.parentId);
+        if (fruite.value === event.target.value) {
+          console.log('****' + event.target.value + ' ' + fruite.value);
+          fruite.isChecked = event.target.checked;
+        }   
       })
       setFruites(newFruites);
       console.log(newFruites);
