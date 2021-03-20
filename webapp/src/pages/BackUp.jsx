@@ -93,6 +93,7 @@ import axios from 'axios';
     
     const CheckBox = props => {
       console.log(props.value);
+      console.log(props.isChecked);
       return (
         <li>
          <input key={props.id} onClick={props.handleCheckChieldElement} type="checkbox" checked={props.isChecked} value={props.value} /> {props.value}
