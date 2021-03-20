@@ -72,22 +72,22 @@ import axios from 'axios';
     }
 
     const handleAllChecked = (event) => {
-      console.log('handleAllChecked');
-      //fruites.forEach(fruite => fruite.isChecked = event.target.checked); 
-      fruites.forEach(fruite => fruite.isChecked = true); 
+      console.log('handleAllChecked ' + event.target.checked);
+      fruites.forEach(fruite => fruite.isChecked = event.target.checked); 
       setFruites(fruites => fruites);
     }
   
     const handleCheckChieldElement = (event) => {
-      console.log('handleCheckChieldElement')
+      console.log('handleCheckChieldElement ' + event.target.checked)
+      console.log('1.fruites= ' + fruites);
       fruites.forEach(fruite => {
          if (fruite.value === event.target.value) {
-            console.log(fruite.value);
-            //fruite.isChecked = event.target.checked
-            fruite.isChecked = true;
+            console.log('****' + event.target.value + ' ' + fruite.value);
+            fruite.isChecked = event.target.checked;
           }   
       })
       setFruites(fruites => fruites);
+      console.log('2.fruites= ' + fruites);
     }
   
     
