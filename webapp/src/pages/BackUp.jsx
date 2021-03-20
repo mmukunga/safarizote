@@ -30,10 +30,20 @@ import axios from 'axios';
     const [collapsed, setCollapsed] = useState(true);
 
     const [fruites, setFruites] = useState([
-        {id: 1, value: "banana", isChecked: false},
-        {id: 2, value: "apple", isChecked: false},
-        {id: 3, value: "mango", isChecked: false},
-        {id: 4, value: "grap", isChecked: false}]);
+        {id: 0,  parentId: null, value: "Desktop(this PC)", isChecked: false},
+        {id: 1,  parentId: 0, value: "C:SimTemps", isChecked: false},
+        {id: 10, parentId: 1, value: "D:SimTemps", isChecked: false},
+        {id: 11, parentId: 1, value: "E:SimTemps", isChecked: false},
+        {id: 2,  parentId: 0, value: "C:Projects", isChecked: false},
+        {id: 20, parentId: 2, value: "D:Projects", isChecked: false},
+        {id: 21, parentId: 2, value: "E:Projects", isChecked: false},
+        {id: 3,  parentId: 0, value: "C:FamilieAlbum", isChecked: false},
+        {id: 30, parentId: 3, value: "D:FamilieAlbum", isChecked: false},
+        {id: 31, parentId: 3, value: "E:FamilieAlbum", isChecked: false},
+        {id: 4,  parentId: 0, value: "C:Temps", isChecked: false},
+        {id: 40, parentId: 4, value: "D:Temps", isChecked: false},
+        {id: 41, parentId: 4, value: "E:Temps", isChecked: false}]);
+        
 
 
 
