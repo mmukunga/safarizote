@@ -73,7 +73,7 @@ import axios from 'axios';
 
     const handleAllChecked = (event) => {
       console.log('handleAllChecked ' + event.target.checked);
-      const newFruites = { ...fruites };
+      let newFruites = [ ...fruites ];
       newFruites.forEach(fruite => fruite.isChecked = event.target.checked); 
       setFruites(newFruites);
     }
@@ -81,7 +81,7 @@ import axios from 'axios';
     const handleCheckChieldElement = (event) => {
       console.log('handleCheckChieldElement ' + event.target.checked)
       console.log(fruites);
-      const newFruites = { ...fruites };
+      let newFruites = [ ...fruites ];
       newFruites.forEach(fruite => {
          if (fruite.value === event.target.value) {
             console.log('****' + event.target.value + ' ' + fruite.value);
