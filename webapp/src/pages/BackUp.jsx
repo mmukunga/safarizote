@@ -73,15 +73,19 @@ import axios from 'axios';
 
     const handleAllChecked = (event) => {
       console.log('handleAllChecked')
-      fruites.forEach(fruite => fruite.isChecked = event.target.checked) 
+      //fruites.forEach(fruite => fruite.isChecked = event.target.checked); 
+      fruites.forEach(fruite => fruite.isChecked = true); 
       setFruites(fruites => fruites);
     }
   
     const handleCheckChieldElement = (event) => {
       console.log('handleCheckChieldElement')
       fruites.forEach(fruite => {
-         if (fruite.value === event.target.value)
-            fruite.isChecked =  event.target.checked
+         if (fruite.value === event.target.value) {
+            console.log(fruite.value);
+            //fruite.isChecked = event.target.checked
+            fruite.isChecked = true;
+          }   
       })
       setFruites(fruites => fruites);
     }
