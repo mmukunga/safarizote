@@ -108,7 +108,7 @@ import axios from 'axios';
       console.log(props.isChecked);
       return (
         <li>
-         <input key={props.id} onClick={props.handleCheckChieldElement} type="checkbox" checked={props.isChecked} value={props.value} /> {props.value}
+         <input key={props.id} id={props.parentId} onClick={props.handleCheckChieldElement} type="checkbox" checked={props.isChecked} value={props.value} /> {props.value}
         </li>
       )
     }
@@ -157,7 +157,7 @@ import axios from 'axios';
         <ul>
         {
           fruites.map((fruite) => {
-            return (<CheckBox handleCheckChieldElement={handleCheckChieldElement}  {...fruite} />)
+            return (<CheckBox id={fruite.id} parentId={fruite.parentId} handleCheckChieldElement={handleCheckChieldElement}  {...fruite} />)
           })
         }
         </ul>
