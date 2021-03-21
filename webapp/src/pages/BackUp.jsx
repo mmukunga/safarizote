@@ -95,10 +95,10 @@ import axios from 'axios';
       }); 
       
       newFruites.forEach(fruite => {
-        console.log('EventID:= ' + event.target.id);
-        console.log('parentID:= ' + fruite.parentId);
+        console.log('1.EventID:= ' + event.target.id);
+        console.log('1.parentID:= ' + fruite.parentId);
         if (fruite.parentId === event.target.id) {
-          console.log('CHECK-IT:' + fruite.value);
+          console.log('1.CHECK-IT:' + fruite.value);
           fruite.isChecked = event.target.checked;
         }   
       });
@@ -117,6 +117,16 @@ import axios from 'axios';
           fruite.isChecked = event.target.checked;
         }   
       });
+
+      newFruites.forEach(fruite => {
+        console.log('2.EventID:= ' + event.target.id);
+        console.log('2.parentID:= ' + fruite.parentId);
+        if (fruite.parentId === event.target.id) {
+          console.log('2.CHECK-IT:' + fruite.value);
+          fruite.isChecked = event.target.checked;
+        }   
+      });
+
       setFruites(newFruites);
       console.log(newFruites);
     }
