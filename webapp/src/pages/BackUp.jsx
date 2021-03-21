@@ -95,10 +95,11 @@ import axios from 'axios';
       }); 
       
       newFruites.forEach(fruite => {
-        console.log('parentID:= ' + event.target.id);
+        console.log('EventID:= ' + event.target.id);
+        console.log('parentID:= ' + fruite.parentId);
         if (fruite.parentId === event.target.id) {
           console.log('CHECK-IT:' + fruite.value);
-          //fruite.isChecked = event.target.checked;
+          fruite.isChecked = event.target.checked;
         }   
       });
 
