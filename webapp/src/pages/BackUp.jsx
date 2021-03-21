@@ -82,6 +82,10 @@ import axios from 'axios';
     }
 
     const handleAllChecked = (event) => {
+      let fruitesTemp =  [ ...fruites ];
+      fruitesTemp.forEach(fruite => fruite.isChecked = false); 
+      setFruites(fruitesTemp);
+
       console.log('handleAllChecked ' + event.target.checked);
       let newFruites = [ ...fruites ];
       newFruites.forEach(fruite => {
@@ -89,6 +93,15 @@ import axios from 'axios';
             fruite.isChecked = event.target.checked
         }
       }); 
+      
+      newFruites.forEach(fruite => {
+        console.log('parentID:= ' + event.target.id);
+        if (fruite.parentId === event.target.id) {
+          console.log('CHECK-IT:' + fruite.value);
+          //fruite.isChecked = event.target.checked;
+        }   
+      });
+
       setFruites(newFruites);
     }
   
@@ -102,7 +115,7 @@ import axios from 'axios';
           console.log('****' + event.target.value + ' ' + fruite.value);
           fruite.isChecked = event.target.checked;
         }   
-      })
+      });
       setFruites(newFruites);
       console.log(newFruites);
     }
