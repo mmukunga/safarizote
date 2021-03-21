@@ -89,17 +89,6 @@ function App() {
 
     return (
         <header style={imageStyles} className="App-header">  
-            <p className="App-title">
-              Edit <code>src/App.js</code> and save to reload.         
-              <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Learn React
-              </a>
-            </p>
             <nav className="Navigation">
               <div className="NavLogo"> 
                 <img src={logo} className="App-logo" alt="logo"/>
@@ -115,6 +104,17 @@ function App() {
                 <button onClick={handleLogout}>Logout</button>
               </div>
             </nav> 
+            <p className="App-title">
+              Edit <code>src/App.js</code> and save to reload.         
+              <a
+                className="App-link"
+                href="https://reactjs.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Learn React
+              </a>
+            </p>
         </header>
       );
     }
