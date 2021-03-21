@@ -88,21 +88,7 @@ function App() {
     return (
         <header style={imageStyles} className="App-header">  
             <div className="ToolBar">                 
-                <nav className="Navigation">
-                  <div className="leftDiv"> 
-                    <img src={logo} className="App-logo" alt="logo"/>
-                  </div>
-                  <div className="rightDiv">
-                    <NavLink to="/" className="Nav_link">Home</NavLink>
-                    <NavLink to="/aboutUs" className="Nav_link">About Us</NavLink>
-                    <NavLink to="/safaris" className="Nav_link">Safaris</NavLink>
-                    <NavLink to="/signIn" className="Nav_link">Login</NavLink>
-                    <NavLink to="/email" className="Nav_link">Email</NavLink>
-                    <NavLink to="/weather" className="Nav_link">Weather</NavLink>
-                    <Menu/>
-                    <button onClick={handleLogout}>Logout</button>
-                  </div>
-                </nav> 
+                Simon
             </div>
               
             <p className="App-title">
