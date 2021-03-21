@@ -68,7 +68,8 @@ function App() {
 
     const imageStyles = {
       backgroundImage: `url(${selectedImage})`, 
-      display: props.displayHome
+      display: props.displayHome,
+      border:'4px solid green'
     };
     
     console.log('1..imageStyles');
