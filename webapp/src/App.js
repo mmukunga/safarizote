@@ -67,7 +67,8 @@ function App() {
     const [selectedImage, setSelectedImage] = React.useState(images[0]);
 
     const imageStyles = {
-      backgroundImage: `url(${selectedImage}) no-repeat`, 
+      backgroundImage: `url(${selectedImage})`, 
+      backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
       display: props.displayHome,
       border:'4px solid green'
