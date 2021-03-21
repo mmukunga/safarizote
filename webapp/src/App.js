@@ -68,7 +68,7 @@ function App() {
 
     const imageStyles = {
       backgroundImage: `url(${selectedImage}) no-repeat`, 
-      backgroundSize: cover,
+      backgroundSize: 'cover',
       display: props.displayHome,
       border:'4px solid green'
     };
