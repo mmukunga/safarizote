@@ -14,7 +14,7 @@
     clear: both;
   }
 
-  .leftDiv, .rightDiv {
+  .NavLogo, .NavMenu {
     display: inline-block;
     vertical-align: top;
     color:blue;
@@ -22,7 +22,7 @@
     /*background: #f7e7ce;*/
   }
 
-  .rightDiv {
+  .NavMenu {
     width: calc(100% - 100px);
     border: 2px solid white ;
   }
