@@ -70,7 +70,7 @@ import axios from 'axios';
       //...submit to API or something
       e.preventDefault();
       axios.post("/api/backUp", {
-          name='Arkiv',
+          name: 'Arkiv',
           dateCreated: new Date(),
           parent: null
         })
