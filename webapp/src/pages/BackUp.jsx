@@ -85,6 +85,11 @@ import axios from 'axios';
       let fruitesTemp =  [ ...fruites ];
       fruitesTemp.forEach(fruite => fruite.isChecked = false); 
       setFruites(fruitesTemp);
+      
+      const checkedItems = fruitesTemp.filter((item) => item.parentId == event.target.id);
+      console.log('1.CHECKED ITEMS...');
+      console.log(checkedItems);
+      console.log('1.CHECKED ITEMS...');
 
       console.log('handleAllChecked ' + event.target.checked);
       let newFruites = [ ...fruites ];
@@ -110,6 +115,12 @@ import axios from 'axios';
       console.log('handleCheckChieldElement ' + event.target.checked)
       console.log(fruites);
       let newFruites = [ ...fruites ];
+
+      const checkedItems = fruitesTemp.filter((item) => item.parentId == event.target.id);
+      console.log('2.CHECKED ITEMS...');
+      console.log(checkedItems);
+      console.log('2.CHECKED ITEMS...');
+
       newFruites.forEach(fruite => {
         console.log('parentID:= ' + event.target.id);
         if (fruite.value === event.target.value) {
