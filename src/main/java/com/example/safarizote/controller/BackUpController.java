@@ -1,5 +1,6 @@
 package com.example.safarizote.controller;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class BackUpController {
   private CategoryRepository repository;
     
     @Transactional
-    @RequestMapping(value = "/api/backUp",  method={RequestMethod.GET})
+    @RequestMapping(value = "/api/categories",  method={RequestMethod.GET})
     public ResponseEntity<List<Category>> findAll() {
         System.out.println("Category.findAll(), the time at the server is now " + new Date());
         List<Category> categories = repository.findAll();
@@ -41,6 +42,21 @@ public class BackUpController {
         System.out.println("Category.findAll()  End OK!");
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
+
+
+    @RequestMapping(value="/api/backUp", method=RequestMethod.POST)
+	public ResponseEntity<Category> backUp() {
+        System.out.println("BackUp, the time at the server is now " + new Date());
+        
+        Category rootFolder = Category.builder().name("Parent").parent(null).dateCreated(Instant.now()).build();
+        Category category = Category.builder().name("DummyFolder").parent(rootFolder).dateCreated(Instant.now()).build();
+
+        System.out.println("BackUpLoader..category..." + category);
+        
+        System.out.println("Category.findAll()  End OK!");
+        return new ResponseEntity<>(category, HttpStatus.OK);
+	}
+
 
     public void displayList(Category category, StringBuffer indentation){
         indentation.append(" ");

@@ -23,7 +23,7 @@ import axios from 'axios';
     ]);
         
     React.useEffect(() => {
-      axios.get('/api/backUp').then(response => {
+      axios.get('/api/categories').then(response => {
           console.log(response);
       }).catch(error => {
           console.log(error);
@@ -63,6 +63,21 @@ import axios from 'axios';
           fruite.isChecked = event.target.checked;
       });
       setFruites(fruitesTemp);
+    };
+
+    const handleSubmit = (e) => {
+      console.log("triggered");
+      //...submit to API or something
+      e.preventDefault();
+      axios.post("/api/backUp", {
+          name='Arkiv',
+          dateCreated: new Date(),
+          parent: null
+        })
+        .then(() => { });
+      setSale("");
+      setDistrict("");
+  
     };
 
     return (
