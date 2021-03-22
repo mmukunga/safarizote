@@ -92,14 +92,14 @@ import axios from 'axios';
       console.log('1.CHECKED ITEMS...');
 
       console.log('handleAllChecked ' + event.target.checked);
-      let newFruites = [ ...fruites ];
-      newFruites.forEach(fruite => {
+      //let newFruites = [ ...fruites ];
+      fruitesTemp.forEach(fruite => {
         if(fruite.parentId === event.target.id) {
             fruite.isChecked = event.target.checked
         }
       }); 
       
-      newFruites.forEach(fruite => {
+      fruitesTemp.forEach(fruite => {
         console.log('1.EventID:= ' + event.target.id);
         console.log('1.parentID:= ' + fruite.parentId);
         if (fruite.parentId === event.target.id) {
@@ -108,20 +108,20 @@ import axios from 'axios';
         }   
       });
 
-      setFruites(newFruites);
+      setFruites(fruitesTemp);
     }
   
     const handleCheckChieldElement = (event) => {
       console.log('handleCheckChieldElement ' + event.target.checked)
       console.log(fruites);
-      let newFruites = [ ...fruites ];
+      let fruitesTemp = [ ...fruites ];
 
       const checkedItems = fruitesTemp.filter((item) => item.parentId == event.target.id);
       console.log('2.CHECKED ITEMS...');
       console.log(checkedItems);
       console.log('2.CHECKED ITEMS...');
 
-      newFruites.forEach(fruite => {
+      fruitesTemp.forEach(fruite => {
         console.log('parentID:= ' + event.target.id);
         if (fruite.value === event.target.value) {
           console.log('****' + event.target.value + ' ' + fruite.value);
@@ -129,7 +129,7 @@ import axios from 'axios';
         }   
       });
 
-      newFruites.forEach(fruite => {
+      fruitesTemp.forEach(fruite => {
         console.log('2.EventID:= ' + event.target.id);
         console.log('2.parentID:= ' + fruite.parentId);
         if (fruite.parentId === event.target.id) {
@@ -138,8 +138,8 @@ import axios from 'axios';
         }   
       });
 
-      setFruites(newFruites);
-      console.log(newFruites);
+      setFruites(fruitesTemp);
+      console.log(fruitesTemp);
     }
   
     const CheckBox = props => {
