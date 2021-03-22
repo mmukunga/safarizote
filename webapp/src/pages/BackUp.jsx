@@ -69,6 +69,7 @@ import axios from 'axios';
       <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
           <strong>Tree BackUp</strong>
           <h3> Check and Uncheck All Example </h3>
+          <div className="BackUps">
           {groups.map(item => (
             <div>
               <input type="checkbox" onChange={handleAllChecked(item.id)} value="checkedall"/>{" "}
@@ -88,7 +89,7 @@ import axios from 'axios';
               </ul>
             </div>
           ))}
-
+          </div>
       </Card>
     );
   }

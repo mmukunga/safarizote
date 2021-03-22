@@ -1,4 +1,15 @@
 
+.BackUps {
+  margin-left: 100px;
+  margin-top: 100px;
+  text-align: left;
+}
+
+.BackUps > div ul {
+  list-style: none;
+}
+
+
 .TreeItem0 {
   flex-grow: 1;
   max-width: 400px;
