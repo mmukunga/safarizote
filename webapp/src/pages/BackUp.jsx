@@ -74,7 +74,7 @@ import axios from 'axios';
           dateCreated: new Date(),
           parent: null
         })
-        .then(() => { });
+        .then((response) => { console.log(response);});
 
       setCategory({});
       console.log(category + " Submited OK!!");
