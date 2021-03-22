@@ -3,7 +3,7 @@ import Card from './Card';
 import axios from 'axios';
 
   const BackUp = () => {
-
+    const [category, setCategory] = React.useState({});
     const [groups, setGroups] = React.useState([
         {id: 1, name: "C:SimTemps"},
         {id: 2, name: "C:Projects"},
@@ -75,8 +75,9 @@ import axios from 'axios';
           parent: null
         })
         .then(() => { });
-      setSale("");
-      setDistrict("");
+
+      setCategory({});
+      console.log(category + " Submited OK!!");
   
     };
 
@@ -84,6 +85,7 @@ import axios from 'axios';
       <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
           <strong>Tree BackUp</strong>
           <h3> Check and Uncheck All Example </h3>
+          <form onSubmit={handleSubmit}>
           <div className="BackUps">
           {groups.map(item => (
             <div>
@@ -105,6 +107,8 @@ import axios from 'axios';
             </div>
           ))}
           </div>
+          <button type="submit">Submit</button>
+          </form>
       </Card>
     );
   }
