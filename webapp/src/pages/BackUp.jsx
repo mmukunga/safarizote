@@ -12,14 +12,14 @@ import axios from 'axios';
       ]);
 
     const [fruites, setFruites] = React.useState([
-      { groupId: 1, id: 1, rolename: 1, value: "D:SimTemps", isChecked: false },
-      { groupId: 1, id: 2, rolename: 1, value: "E:SimTemps", isChecked: false },
-      { groupId: 2, id: 1, rolename: 1, value: "D:Projects", isChecked: false },
-      { groupId: 2, id: 2, rolename: 1, value: "E:Projects", isChecked: false },
-      { groupId: 3, id: 1, rolename: 1, value: "D:FamilieAlbum", isChecked: false },
-      { groupId: 3, id: 2, rolename: 1, value: "E:FamilieAlbum", isChecked: false },
-      { groupId: 4, id: 1, rolename: 1, value: "D:Temps", isChecked: false },
-      { groupId: 4, id: 2, rolename: 1, value: "E:Temps", isChecked: false }
+      { groupId: 1, id: 1, value: "D:SimTemps", isChecked: false },
+      { groupId: 1, id: 2, value: "E:SimTemps", isChecked: false },
+      { groupId: 2, id: 1, value: "D:Projects", isChecked: false },
+      { groupId: 2, id: 2, value: "E:Projects", isChecked: false },
+      { groupId: 3, id: 1, value: "D:FamilieAlbum", isChecked: false },
+      { groupId: 3, id: 2, value: "E:FamilieAlbum", isChecked: false },
+      { groupId: 4, id: 1, value: "D:Temps", isChecked: false },
+      { groupId: 4, id: 2, value: "E:Temps", isChecked: false }
     ]);
         
     React.useEffect(() => {
@@ -71,6 +71,18 @@ import axios from 'axios';
       console.log("triggered");
       //...submit to API or something
       e.preventDefault();
+
+      let fruitesTemp = [...fruites];
+      fruitesTemp
+        .filter(f => f.groupId === id)
+        .forEach(fruite => {
+          fruite.isChecked = true;
+      });
+
+      console.log("1.SELECTED");
+      console.log(fruitesTemp);
+      console.log("2.SELECTED");
+
       axios.post("/api/backUp", {
           name: 'Arkiv',
           dateCreated: new Date(),
