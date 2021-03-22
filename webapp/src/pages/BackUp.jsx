@@ -24,7 +24,9 @@ import axios from 'axios';
         
     React.useEffect(() => {
       axios.get('/api/categories').then(response => {
+          console.log("1.Categories..");
           console.log(response);
+          console.log("2.Categories..");
       }).catch(error => {
           console.log(error);
       });
@@ -74,7 +76,11 @@ import axios from 'axios';
           dateCreated: new Date(),
           parent: null
         })
-        .then((response) => { console.log(response);});
+        .then((response) => { 
+          console.log("1.BackUp..");
+          console.log(response);
+          console.log("2.BackUp..");
+        });
 
       setCategory({});
       console.log(category + " Submited OK!!");
