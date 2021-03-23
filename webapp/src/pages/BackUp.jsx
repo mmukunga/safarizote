@@ -24,9 +24,7 @@ import axios from 'axios';
         
     React.useEffect(() => {
       axios.get('/api/categories').then(response => {
-          console.log("1.Categories..");
           console.log(response);
-          console.log("2.Categories..");
       }).catch(error => {
           console.log(error);
       });
@@ -49,7 +47,6 @@ import axios from 'axios';
 
     const handleAllChecked = id => event => {
       let fruitesTemp = [...fruites];
-      console.log(event.target.checked);
       fruitesTemp
         .filter(f => f.parentId === id)
         .forEach(fruite => {
@@ -68,26 +65,18 @@ import axios from 'axios';
     };
 
     const handleSubmit = (e) => {
-      console.log("triggered");
-      //...submit to API or something
       e.preventDefault();
 
       let fruitesTemp = [...fruites];
       fruitesTemp.filter(f => f.isChecked === true);
-
-      console.log("1.SELECTED");
       console.log(fruitesTemp);
-      console.log("2.SELECTED");
-
       axios.post("/api/backUp", {
           name: 'Arkiv',
           dateCreated: new Date(),
           parent: null
         })
         .then((response) => { 
-          console.log("1.BackUp..");
           console.log(response);
-          console.log("2.BackUp..");
         });
 
       setCategory({});

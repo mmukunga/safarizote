@@ -73,10 +73,6 @@ function App() {
       display: props.displayHome,
       border:'4px solid green'
     };
-    
-    console.log('1..imageStyles');
-    console.log(imageStyles);
-    console.log('2..imageStyles');
 
     React.useEffect(() => {
         const intervalID = setTimeout(() =>  {
