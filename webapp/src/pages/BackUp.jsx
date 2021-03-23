@@ -68,15 +68,16 @@ import axios from 'axios';
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      let testMe = [];
+      let selectedItems = [];
       let fruitesTemp = [...fruites];
-      fruitesTemp.filter(f => {
+      fruitesTemp.forEach(f => {
         console.log('f.isChecked:= ' + f.isChecked);
-        if (f.isChecked === true) { testMe = [...testMe, f]; }
-        return(f.isChecked === true);
+        if (f.isChecked === true) { 
+          selectedItems = [...selectedItems, f]; 
+        }
       });
-      console.log(fruitesTemp);
-      console.log(testMe);
+
+      console.log(selectedItems);
       axios.post("/api/backUp", {
           name: 'Arkiv',
           dateCreated: new Date(),
@@ -88,7 +89,6 @@ import axios from 'axios';
 
       setCategory({});
       console.log(category + " Submited OK!!");
-  
     };
 
     return (
