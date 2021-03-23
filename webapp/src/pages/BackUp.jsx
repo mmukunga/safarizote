@@ -73,11 +73,7 @@ import axios from 'axios';
       e.preventDefault();
 
       let fruitesTemp = [...fruites];
-      fruitesTemp
-        .filter(f => f.groupId === id)
-        .forEach(fruite => {
-          fruite.isChecked = true;
-      });
+      fruitesTemp.filter(f => f.isChecked === true);
 
       console.log("1.SELECTED");
       console.log(fruitesTemp);
