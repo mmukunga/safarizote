@@ -70,7 +70,7 @@ import axios from 'axios';
       e.preventDefault();
 
       let fruitesTemp = [...fruites];
-      fruitesTemp.filter(f => f.isChecked === true);
+      fruitesTemp.filter(f => f.isChecked);
       console.log(fruitesTemp);
       axios.post("/api/backUp", {
           name: 'Arkiv',
