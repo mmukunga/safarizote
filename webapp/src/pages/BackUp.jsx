@@ -5,21 +5,21 @@ import axios from 'axios';
   const BackUp = () => {
     const [category, setCategory] = React.useState({});
     const [groups, setGroups] = React.useState([
-        {id: 1, name: "C:SimTemps"},
-        {id: 2, name: "C:Projects"},
-        {id: 3, name: "C:FamilieAlbum"},
-        {id: 4, name: "C:Temps"}
+        {parentId: 0, id: 01, name: "C:SimTemps", isChecked: false, dateCreated: new Date()},
+        {parentId: 0, id: 02, name: "C:Projects", isChecked: false, dateCreated: new Date()},
+        {parentId: 0, id: 03, name: "C:FamilieAlbum", isChecked: false, dateCreated: new Date()},
+        {parentId: 0, id: 04, name: "C:Temps", isChecked: false, dateCreated: new Date()}
       ]);
 
     const [fruites, setFruites] = React.useState([
-      { groupId: 1, id: 1, value: "D:SimTemps", isChecked: false },
-      { groupId: 1, id: 2, value: "E:SimTemps", isChecked: false },
-      { groupId: 2, id: 1, value: "D:Projects", isChecked: false },
-      { groupId: 2, id: 2, value: "E:Projects", isChecked: false },
-      { groupId: 3, id: 1, value: "D:FamilieAlbum", isChecked: false },
-      { groupId: 3, id: 2, value: "E:FamilieAlbum", isChecked: false },
-      { groupId: 4, id: 1, value: "D:Temps", isChecked: false },
-      { groupId: 4, id: 2, value: "E:Temps", isChecked: false }
+      { parentId: 1, id: 05, name: "D:SimTemps", isChecked: false, dateCreated: new Date() },
+      { parentId: 1, id: 06, name: "E:SimTemps", isChecked: false, dateCreated: new Date() },
+      { parentId: 2, id: 07, name: "D:Projects", isChecked: false, dateCreated: new Date() },
+      { parentId: 2, id: 08, name: "E:Projects", isChecked: false, dateCreated: new Date() },
+      { parentId: 3, id: 09, name: "D:FamilieAlbum", isChecked: false, dateCreated: new Date() },
+      { parentId: 3, id: 10, name: "E:FamilieAlbum", isChecked: false, dateCreated: new Date() },
+      { parentId: 4, id: 11, name: "D:Temps", isChecked: false, dateCreated: new Date() },
+      { parentId: 4, id: 12, name: "E:Temps", isChecked: false, dateCreated: new Date() }
     ]);
         
     React.useEffect(() => {
@@ -51,7 +51,7 @@ import axios from 'axios';
       let fruitesTemp = [...fruites];
       console.log(event.target.checked);
       fruitesTemp
-        .filter(f => f.groupId === id)
+        .filter(f => f.parentId === id)
         .forEach(fruite => {
           fruite.isChecked = event.target.checked;
         });
@@ -61,7 +61,7 @@ import axios from 'axios';
     const handleCheckChieldElement = event => {
       let fruitesTemp = [...fruites];
       fruitesTemp.forEach(fruite => {
-        if (`${fruite.groupId}-${fruite.id}` === event.target.value)
+        if (`${fruite.parentId}-${fruite.id}` === event.target.value)
           fruite.isChecked = event.target.checked;
       });
       setFruites(fruitesTemp);
@@ -106,14 +106,14 @@ import axios from 'axios';
               <input type="checkbox" onChange={handleAllChecked(item.id)} value="checkedall"/>{" "}
               {item.name}
               <ul>
-                {fruites.filter(fruit => fruit.groupId === item.id).map((fruite, index) => {
+                {fruites.filter(fruit => fruit.parentId === item.id).map((fruite, index) => {
                     return (
                       <CheckBox
                         key={`${item.id}-${fruite.id}`}
                         handleCheckChieldElement={handleCheckChieldElement}
                         {...fruite}
                         value={`${item.id}-${fruite.id}`}
-                        label={fruite.value}
+                        label={fruite.name}
                       />
                     );
                   })}

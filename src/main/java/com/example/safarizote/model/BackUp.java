@@ -32,7 +32,7 @@ public class BackUp {
     Long id;
     @Column(unique = true)
     @NonNull String name; 
-    Boolean collapsed;
+    Boolean isChecked;
     Instant dateCreated;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "parent_id")

@@ -2,7 +2,6 @@ package com.example.safarizote.repository;
 
 import java.time.Instant;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -35,14 +34,14 @@ public class BackUpLoader implements CommandLineRunner {
         Set<BackUp> children = folders.stream().map(title -> BackUp.builder()
             .name(title)
             .parent(rootFolder) 
-            .collapsed(true)
+            .isChecked(true)
             .dateCreated(Instant.now())
             .build())
             .collect(Collectors.toSet());                             
         System.out.println("BackUpLoader..children..." + children);
         BackUp root = repository.save(BackUp.builder()
             .name(rootFolder.getName())
-            .collapsed(true)
+            .isChecked(true)
             .dateCreated(Instant.now())
             .children(children)
             .build());        
@@ -55,14 +54,14 @@ public class BackUpLoader implements CommandLineRunner {
         Set<BackUp> simTempsChildrenSet = simTempsChildren.stream().map(title -> BackUp.builder()
             .name(title)
             .parent(simTempsFolder) 
-            .collapsed(true)
+            .isChecked(true)
             .dateCreated(Instant.now())
             .build())
             .collect(Collectors.toSet());                             
         System.out.println("BackUpLoader..simTempsChildrenSet..." + simTempsChildrenSet);
         BackUp simTempsDB = repository.save(BackUp.builder()
             .name(simTempsFolder.getName())
-            .collapsed(true)
+            .isChecked(true)
             .dateCreated(Instant.now())
             .children(simTempsChildrenSet)
             .build());        
@@ -76,7 +75,7 @@ public class BackUpLoader implements CommandLineRunner {
         Set<BackUp> simTempsChildren = simTemps.stream().map(title -> BackUp.builder()
             .name(title)
             .parent(simTempsFolder) 
-            .collapsed(true)
+            .isChecked(true)
             .dateCreated(Instant.now())
             .build())
             .collect(Collectors.toSet()); 
@@ -88,7 +87,7 @@ public class BackUpLoader implements CommandLineRunner {
         
         BackUp rootFamilieAlbum = repository.save(BackUp.builder()
             .name(familieAlbumFolder.getName())
-            .collapsed(true)
+            .isChecked(true)
             .dateCreated(Instant.now())
             .children(familieAlbumChildren)
             .build());   
