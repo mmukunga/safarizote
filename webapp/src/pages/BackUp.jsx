@@ -68,10 +68,15 @@ import axios from 'axios';
 
     const handleSubmit = (e) => {
       e.preventDefault();
-
+      let testMe = [];
       let fruitesTemp = [...fruites];
-      fruitesTemp.filter(f => f.isChecked);
+      fruitesTemp.filter(f => {
+        console.log('f.isChecked:= ' + f.isChecked);
+        if (f.isChecked === true) { testMe = [...testMe, f]; }
+        return(f.isChecked === true);
+      });
       console.log(fruitesTemp);
+      console.log(testMe);
       axios.post("/api/backUp", {
           name: 'Arkiv',
           dateCreated: new Date(),
