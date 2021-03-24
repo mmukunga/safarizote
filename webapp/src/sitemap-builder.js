@@ -1,5 +1,6 @@
 require("babel-register")({
-  presets: ["es2015", "react"]
+  babelrc: false,  
+  presets: ['env', 'react']
 });
 
 const router = require('./App').default;
