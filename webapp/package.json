@@ -14,13 +14,19 @@
     "web-vitals": "^0.2.4",
     "axios": "^0.21.1",
     "react-checkbox-tree": "^1.6.0",
-    "react-promise-tracker": "^2.1.0"
+    "react-promise-tracker": "^2.1.0",
+    "react-router-sitemap": "^1.2.0",
+    "babel-register": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-cli": "^6.26.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "sitemap": "babel-node ./sitemap-builder.js"
   },
   "proxy": "http://localhost:8080",
   "eslintConfig": {
