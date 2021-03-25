@@ -1,13 +1,16 @@
-require("babel-register")({
-  babelrc: false,  
-  presets: ['env', 'react']
-});
 
-const router = require('./App').default;
-const Sitemap = require('react-router-sitemap').default;
+  require("@babel/register")({
+    presets: ["@babel/env", "@babel/react"]
+  });
 
-(
-    new Sitemap(router)
-        .build('https://safarizote.herokuapp.com')
-        .save('./public/sitemap.xml')
-);
+  const router = require('./routes').default;
+  const Sitemap = require("react-router-sitemap").default; 
+
+  function generateSitemap() {
+    return (
+      new Sitemap(router)
+          .build("https://safarizote.herokuapp.com/")
+          .save("./public/sitemap.xml")
+    );
+  }
+  generateSitemap();
