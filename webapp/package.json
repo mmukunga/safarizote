@@ -17,7 +17,7 @@
     "react-promise-tracker": "^2.1.0",
     "react-router-sitemap": "^1.2.0",
     "@babel/register": "^7.13.8",
-    "@babel/env": "5.2.0"
+    "@babel/env": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
