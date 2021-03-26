@@ -105,6 +105,7 @@ import Card from './Card';
             const filteredCountry = countries.find(country => {
                return (country.value === event.target.value);
             });
+            console.log(filteredCountry);
             let newCountry = { ...state, 
                 countryCode: filteredCountry.value, 
                 countryName: filteredCountry.title
