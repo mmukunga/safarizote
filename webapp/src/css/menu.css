@@ -34,6 +34,11 @@
   }
 
   @media screen and (max-width: 600px) {
+    .Navigation {
+      border: 2px solid grey;
+      text-align: center;
+    }
+
     .NavLogo, .NavMenu {
       width: 100%;
       display: block;
