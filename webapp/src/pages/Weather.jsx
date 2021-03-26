@@ -39,14 +39,15 @@ import Card from './Card';
             .then(response => {
                 let filteredCountries = [];
                 console.log(response);
+                setCountries([response.data]);
+                /*
                 response.data.forEach(function(d) {
                   filteredCountries.push({
                      id: d.id,   
                      countryName: d.name,
                      countryCode: d.code
                    });
-                 }); 
-                setCountries(filteredCountries);
+                 });*/
             }).catch(err => console.log(err))
     }, []);
 
