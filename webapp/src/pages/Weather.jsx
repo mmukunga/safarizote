@@ -42,8 +42,8 @@ import Card from './Card';
                 response.data.forEach(function(d) {
                   filteredCountries.push({
                      id: d.id,   
-                     title: d.name,
-                     value: d.code
+                     countryName: d.name,
+                     countryCode: d.code
                    });
                  }); 
                 setCountries(filteredCountries);
@@ -105,12 +105,12 @@ import Card from './Card';
     const handleChange = (event) => {
         if (event.target.name === "countryCode") {
             const filteredCountry = countries.find(country => {
-               return (country.value === event.target.value);
+               return (country.countryCode === event.target.value);
             });
             console.log(filteredCountry);
             let newCountry = { ...state, 
-                countryCode: filteredCountry.value, 
-                countryName: filteredCountry.title
+                countryCode: filteredCountry.countryCode, 
+                countryName: filteredCountry.countryName
             };
             dispatch({ type: 'SET_COUNTRY', payload: newCountry});
         } else {
@@ -151,7 +151,7 @@ import Card from './Card';
           <select id="countryCode" name="countryCode" onChange={handleChange}>    
                 <option value="none">Select Country</option>   
                 {countries.map((country) => (
-                    <option value={country.title}>{country.value}</option>
+                    <option value={country.countryName}>{country.countryCode}</option>
                 ))}    
             </select>
           <select id="cityName" name="cityName" onChange={handleChange}>    
