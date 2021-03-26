@@ -17,7 +17,7 @@ const Card = (props) => {
   };
 */
   const labelStyles = {color: fontColor};
-
+  console.log(className);
   return (
     <div className={className}>
       <div style={labelStyles}>

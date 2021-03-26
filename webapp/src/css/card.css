@@ -1,6 +1,5 @@
 
-.OuterCard {
-    width: 650px; 
+.OuterCard { 
     background-color: white; 
     color: black; 
     border-radius: 10px; 
@@ -10,7 +9,6 @@
 }
 
 .InnerCard {
-    width: 600px;
     background-color: rgb(240, 255, 255); 
     color: black; 
     border-radius: 10px; 
