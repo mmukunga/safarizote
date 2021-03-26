@@ -50,6 +50,7 @@ import Card from './Card';
     }, []);
 
     const handleChange = (event) => {
+        console.log(countries);
         if (event.target.name === "countryCode") {
             const filteredCountry = countries.find(country => {
                return (country.countryCode === event.target.value);
