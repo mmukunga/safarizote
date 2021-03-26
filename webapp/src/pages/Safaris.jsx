@@ -58,7 +58,7 @@ const Safaris = () => {
     });
     
     return (
-      <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
+      <Card className="InnerCard" fontColor="black">
           <p>Safaris!!</p>
           <ul id="page-numbers">
             {renderPageNumbers}

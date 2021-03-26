@@ -45,7 +45,7 @@ const Email = () => {
         });
     }
     return (
-        <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
+        <Card className="InnerCard" fontColor="black" >
             <p>Contact Us!!</p>
             <div className="form-container">
             <form onSubmit={handleSubmit}>

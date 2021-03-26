@@ -2,7 +2,9 @@ import React from 'react';
 
 const Card = (props) => {
 
-  const { cardWidth, fontColor, backgroundColor, children } = props;
+  //const { className, fontColor, backgroundColor, children } = props;
+  const { className, fontColor, children } = props;
+  /*
   const style = {
     width: cardWidth,
     backgroundColor: backgroundColor,
@@ -13,11 +15,11 @@ const Card = (props) => {
     border: cardWidth == '650px' ? '4px solid #a30319' : '4px solid #90DFF5',
     boxShadow: '0 0 10px 5p'
   };
-
+*/
   const labelStyles = {color: fontColor};
 
   return (
-    <div style={style}>
+    <div className={className}>
       <div style={labelStyles}>
         {children}
       </div>

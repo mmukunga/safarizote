@@ -92,7 +92,7 @@ import axios from 'axios';
     };
 
     return (
-      <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
+      <Card className="InnerCard" fontColor="black">
           <strong>Tree BackUp</strong>
           <h3> Check and Uncheck All Example </h3>
           <form onSubmit={handleSubmit}>

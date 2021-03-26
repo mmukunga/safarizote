@@ -128,7 +128,7 @@ function App() {
   
   return (
     <div className="App"> 
-      <Card cardWidth="650px" fontColor="black" backgroundColor="white">
+      <Card className="OuterCard" fontColor="black">
         <Layout displayHome={displayHome}>
           <Switch>
               <Route exact path="/" component={Home} />

@@ -111,7 +111,7 @@ const Stock = () => {
     };
     
     return (
-      <Card cardWidth="500px" fontColor="black" backgroundColor="#F0FFFF">
+      <Card className="InnerCard" fontColor="black">
         <p>Stock!!</p>
         <form onSubmit={handleSubmit} className="StockWrapper">
         <ul className="StockList">
