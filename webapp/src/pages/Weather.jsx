@@ -38,6 +38,7 @@ import Card from './Card';
         axios.get('/api/countries')
             .then(response => {
                 let filteredCountries = [];
+                console.log(response);
                 response.data.forEach(function(d) {
                   filteredCountries.push({
                      id: d.id,   
@@ -59,6 +60,7 @@ import Card from './Card';
       axios.post('/api/cities', country)
           .then(response => {
               let filteredCity = [];
+              console.log(response);
               response.data.forEach(function(city) {
                 filteredCity.push({  
                     id: city.id,  
