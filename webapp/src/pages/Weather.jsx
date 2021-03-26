@@ -36,88 +36,17 @@ import Card from './Card';
     const [list, setList] = React.useState([]);
 
     React.useEffect(() => {
-        axios.get('/api/countries')
-            .then(response => {
-                let filteredCountries = [];
-                console.log(response);
-                setCountries([response.data]);
-            }).catch(err => console.log(err));
-
-            let country = {
-                  name: 'Kabul',
-                  code: "AF",
-                  cities: null
-            };
-
-            axios.post('/api/cities', country)
-            .then(response => {
-                let filteredCity = [];
-                console.log(response);             
-                /*
-                response.data.forEach((city) => {
-                  filteredCity.push({  
-                      id: city.id,  
-                      value: city.name,
-                      title: city.name
-                    });
-                  }); 
-                */
-                dispatch({ type: 'SET_CITIES', payload: filteredCity });
-            }).catch(err => console.log(err))
-
-
-    }, []);
-
-    React.useEffect(() => {
-      let country = {
-            name: state.countryName,
-            code: state.countryCode,
-            cities: null
-      };
-
-      axios.post('/api/cities', country)
-          .then(response => {
-              let filteredCity = [];
-              console.log(response);
-              response.data.forEach(function(city) {
-                filteredCity.push({  
-                    id: city.id,  
-                    value: city.name,
-                    title: city.name
-                  });
-                }); 
-              dispatch({ type: 'SET_CITIES', payload: filteredCity });
-          }).catch(err => console.log(err))
-    }, [state.countryCode]);
-
-    React.useEffect(() => {
-        const country = {
-            name: state.countryName,
-            code: state.countryCode,
-            cities: null
+      axios.get('/api/countries')
+        .then(response => {
+            let filteredCountries = [];
+            console.log(response);
+            setCountries([response.data]);
+        }).catch(err => console.log(err));
+         let country = {
+              name: 'Kabul',
+              code: "AF",
+              cities: null
         };
-          
-        var headers = {
-          'Content-Type': 'application/json' 
-        };
-  
-        const fetchData = async () => {
-          axios.post('/api/weather', country, headers).then(response => {
-            setWeather(response.data);
-          }).catch(err => {
-              console.log(err);
-          });
-    
-          axios.post('/api/forecast', country, headers).then(response => {
-            setList(response.data.list);
-            setForecast(response.data);
-          }).catch(err => {
-            console.log(err);
-          });
-        };
-  
-        fetchData();
-  
     }, []);
 
     const handleChange = (event) => {
