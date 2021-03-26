@@ -34,21 +34,38 @@ import Card from './Card';
     const [weather, setWeather] = React.useState({});
     const [forecast, setForecast] = React.useState([]);
     const [list, setList] = React.useState([]);
+
     React.useEffect(() => {
         axios.get('/api/countries')
             .then(response => {
                 let filteredCountries = [];
                 console.log(response);
                 setCountries([response.data]);
+            }).catch(err => console.log(err));
+
+            let country = {
+                  name: 'Kabul',
+                  code: "AF",
+                  cities: null
+            };
+
+            axios.post('/api/cities', country)
+            .then(response => {
+                let filteredCity = [];
+                console.log(response);             
                 /*
-                response.data.forEach(function(d) {
-                  filteredCountries.push({
-                     id: d.id,   
-                     countryName: d.name,
-                     countryCode: d.code
-                   });
-                 });*/
+                response.data.forEach((city) => {
+                  filteredCity.push({  
+                      id: city.id,  
+                      value: city.name,
+                      title: city.name
+                    });
+                  }); 
+                */
+                dispatch({ type: 'SET_CITIES', payload: filteredCity });
             }).catch(err => console.log(err))
+
+
     }, []);
 
     React.useEffect(() => {
