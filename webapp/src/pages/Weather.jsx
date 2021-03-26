@@ -212,9 +212,9 @@ import Card from './Card';
       <div className="ForecastCard">
         <span>{props.date}</span>
         <img src={`${IMG_URL}/${props.weather[0].icon}.png`} alt="wthr img" className="wthrImg"/>          
-        <small>High</small>
+        <div>High</div>
         <div>{props.temp.day}°</div>
-        <small>Now</small>
+        <div>Now</div>
         <div>{props.temp.min}°</div>
         <div>{props.weather[0].description}</div>         
       </div>
