@@ -1,7 +1,6 @@
 .ToolBar {
     vertical-align: top;
     text-align: center;
-    /*background:#f8ecd5;*/
     border: 1px solid #f00;
   }  
 
@@ -19,7 +18,6 @@
     vertical-align: top;
     color:blue;
     width: 80px;
-    /*background: #f7e7ce;*/
   }
 
   .NavMenu {
@@ -32,4 +30,13 @@
     width: 70px; 
     display: inline-block;
     vertical-align: top;
+  }
+
+
+  @media screen and (max-width: 600px) {
+    .NavLogo, .NavMenu {
+      width: 100%;
+      margin-top: 0;
+      display: block;
+    }
   }
