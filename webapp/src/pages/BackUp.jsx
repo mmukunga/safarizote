@@ -115,7 +115,6 @@ import axios from 'axios';
             </div>
           ))}
           </div>
-          <button type="submit">Submit</button>
           <div className="row">
             <input type="submit" value="Submit!" className="lg-button btn-primary"/>
           </div>  
