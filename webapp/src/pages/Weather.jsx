@@ -53,12 +53,12 @@ import Card from './Card';
         console.log(countries);
         if (event.target.name === "countryCode") {
             const filteredCountry = countries.find(country => {
-               return (country.countryCode === event.target.value);
+               return (country.code === event.target.value);
             });
             console.log(filteredCountry);
             let newCountry = { ...state, 
-                countryCode: filteredCountry.countryCode, 
-                countryName: filteredCountry.countryName
+                countryCode: filteredCountry.code, 
+                countryName: filteredCountry.name
             };
             dispatch({ type: 'SET_COUNTRY', payload: newCountry});
         } else {
