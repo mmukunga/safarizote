@@ -101,8 +101,6 @@ import Card from './Card';
             code: state.code,
             cities: null
         };
-        
-        console.log(country);
 
         axios.post('/api/weather', country, headers).then(response => {
             setWeather(response.data);
@@ -117,25 +115,23 @@ import Card from './Card';
             console.log(err);
         });
     }
-    
-    console.log(countries);
 
     return (
         <Card className="InnerCard" fontColor="black">
         {state.cityName} - {state.countryName}, {state.countryCode} 
         <form class="form-inline"  onSubmit={handleSubmit}>
           <select id="countryCode" name="countryCode" onChange={handleChange}>    
-                <option value="none">Select Country</option>   
-                {countries.map((country) => (
-                    <option value={country.name}>{country.code}</option>
-                ))}    
-            </select>
+              <option value="none">Select Country</option>   
+              {countries.map((country) => (
+                  <option value={country.name}>{country.code}</option>
+              ))}    
+          </select>
           <select id="cityName" name="cityName" onChange={handleChange}>    
-                  <option value="none">Select City</option>    
-                  {state.cities && state.cities.map((city) => (
-                      <option value={city.name}>{city.name}</option>
-                  ))}
-                </select>  
+              <option value="none">Select City</option>    
+              {state.cities && state.cities.map((city) => (
+                  <option value={city.name}>{city.name}</option>
+              ))}
+            </select>  
           <button type="submit">Submit</button>
         </form>
         

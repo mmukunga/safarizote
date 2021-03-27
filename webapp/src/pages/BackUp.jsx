@@ -71,13 +71,11 @@ import axios from 'axios';
       let selectedItems = [];
       let fruitesTemp = [...fruites];
       fruitesTemp.forEach(f => {
-        console.log('f.isChecked:= ' + f.isChecked);
         if (f.isChecked === true) { 
           selectedItems = [...selectedItems, f]; 
         }
       });
 
-      console.log(selectedItems);
       axios.post("/api/backUp", {
           name: 'Arkiv',
           dateCreated: new Date(),
