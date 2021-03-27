@@ -31,6 +31,7 @@ import Card from './Card';
   const Weather = () => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
     const [countries, setCountries] = React.useState([]);
+    const [cities, setCities] = React.useState([]);
     const [weather, setWeather] = React.useState({});
     const [forecast, setForecast] = React.useState([]);
     const [list, setList] = React.useState([]);
@@ -51,8 +52,10 @@ import Card from './Card';
       axios.post('/api/cities', country)
         .then(response => {
             let filteredCity = [];
-            console.log(response.data);    
-            dispatch({ type: 'SET_CITIES', payload: filteredCity });
+            console.log(response.data);   
+            setCities(response.data);
+            const cities = response.data;
+            dispatch({ type: 'SET_CITIES', payload: cities });
         }).catch(err => console.log(err));
 
     }, []);
@@ -116,7 +119,7 @@ import Card from './Card';
           <select id="cityName" name="cityName" onChange={handleChange}>    
                   <option value="none">Select City</option>    
                   {state.cities && state.cities.map((city) => (
-                      <option value={city.cityName}>{city.cityName}</option>
+                      <option value={city.name}>{city.name}</option>
                   ))}
                 </select>  
           <button type="submit">Submit</button>
