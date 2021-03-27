@@ -3,9 +3,9 @@ import axios from 'axios';
 import Card from './Card';
 
   const initialState = {
-      cityName: 'Kabul',
-      countryCode: "AF",
-      countryName: "Afghanistan",
+      city: 'Kabul',
+      code: "AF",
+      name: "Afghanistan",
       cities: null
   };
 
@@ -53,6 +53,7 @@ import Card from './Card';
         console.log(countries);
         if (event.target.name === "countryCode") {
             const filteredCountry = countries.find(country => {
+               console.log(country.code + ' === ' + event.target.value);
                return (country.code === event.target.value);
             });
             console.log(filteredCountry);
