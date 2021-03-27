@@ -38,15 +38,23 @@ import Card from './Card';
     React.useEffect(() => {
       axios.get('/api/countries')
         .then(response => {
-            let filteredCountries = [];
             console.log(response);
             setCountries(response.data);
         }).catch(err => console.log(err));
+
          let country = {
               name: 'Kabul',
               code: "AF",
               cities: null
         };
+        
+      axios.post('/api/cities', country)
+        .then(response => {
+            let filteredCity = [];
+            console.log(response.data);    
+            dispatch({ type: 'SET_CITIES', payload: filteredCity });
+        }).catch(err => console.log(err));
+
     }, []);
 
     const handleChange = (event) => {
