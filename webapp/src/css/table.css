@@ -1,7 +1,6 @@
 .sTable {
    width: 100%;
    box-sizing: border-box; 
-   font-size: 14px; 
    border: 2px solid silver;
    text-align: left; 
    border-collapse: collapse; 
@@ -43,6 +42,5 @@
   padding-bottom: 12px;
   text-align: left;
   color: #4CAF50;
-  font-size: 14px; 
   font-weight: bold;
 }

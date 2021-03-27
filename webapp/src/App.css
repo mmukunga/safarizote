@@ -4,7 +4,7 @@
 }
 
 .App-title{
-  font-size: .5em;
+  font-size: 1.5em;
 }
 
 .App-logo {
@@ -29,6 +29,11 @@
 .App-link {
   color: #61dafb;
 }
+
+p { 
+  text-align: left;
+}
+
 
 @keyframes App-logo-spin {
   from {

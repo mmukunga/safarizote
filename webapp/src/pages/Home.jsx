@@ -41,8 +41,8 @@ const Home = () => {
 
     return (
         <Card className="InnerCard" fontColor="black">
-            <h4 style={{ margin: '20px', fontSize: 16, fontStyle: 'bold', textAlign: 'left'}}>Safari Zote!</h4>
-            <p style={{ margin: '20px', fontSize: 14, textAlign: 'left'}}>People also ask about this</p>
+            <h4 style={{ margin: '20px', fontStyle: 'bold', textAlign: 'left'}}>Safari Zote!</h4>
+            <p style={{ margin: '20px', textAlign: 'left'}}>People also ask about this</p>
             <ul className="vList">
                <li>How much does a safari cost in Kenya?</li>
                <li>What is the best safari in Kenya?</li>
@@ -63,7 +63,7 @@ const Home = () => {
                  </tr>
                )}
             </table>
-            <p style={{ margin: '20px', fontSize: 14, textAlign:'left'}}>Number of Hits: { data.length }</p>
+            <p style={{ margin: '20px', textAlign:'left'}}>Number of Hits: { data.length }</p>
         </Card>
     )
 }
