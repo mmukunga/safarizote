@@ -15,7 +15,7 @@ import Card from './Card';
               return {...state, ...action.payload};
           case 'SET_CITY':
               return { 
-                  ...state, cityName: action.payload
+                  ...state, city: action.payload
               };  
           case 'SET_CITIES':
               return { 
@@ -69,8 +69,8 @@ import Card from './Card';
             });
             console.log(filteredCountry);
             let newCountry = { ...state, 
-                countryCode: filteredCountry.code, 
-                countryName: filteredCountry.name
+                code: filteredCountry.code, 
+                name: filteredCountry.name
             };
             dispatch({ type: 'SET_COUNTRY', payload: newCountry});
         } else {
@@ -85,11 +85,13 @@ import Card from './Card';
         };
 
         const country = {
-            name: state.cityName,
-            code: state.countryCode,
+            name: state.name,
+            code: state.code,
             cities: null
         };
-
+        
+        console.log(country);
+        
         axios.post('/api/weather', country, headers).then(response => {
             setWeather(response.data);
         }).catch(err => {
