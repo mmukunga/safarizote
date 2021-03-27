@@ -39,7 +39,6 @@ import Card from './Card';
     React.useEffect(() => {
       axios.get('/api/countries')
         .then(response => {
-            console.log(response);
             setCountries(response.data);
         }).catch(err => console.log(err));
 
@@ -52,7 +51,6 @@ import Card from './Card';
       axios.post('/api/cities', country)
         .then(response => {
             let filteredCity = [];
-            console.log(response.data);   
             setCities(response.data);
             const cities = response.data;
             dispatch({ type: 'SET_CITIES', payload: cities });
@@ -60,14 +58,28 @@ import Card from './Card';
 
     }, []);
 
+
+    React.useEffect(() => {
+      let country = {
+        name: state.name,
+        code: state.code,
+        cities: null
+      };
+      
+      axios.post('/api/cities', country)
+        .then(response => {  
+            setCities(response.data);
+            const cities = response.data;
+            dispatch({ type: 'SET_CITIES', payload: cities });
+        }).catch(err => console.log(err));
+
+    }, [state.code]);
+
     const handleChange = (event) => {
-        console.log(countries);
         if (event.target.name === "countryCode") {
             const filteredCountry = countries.find(country => {
-               console.log(country.name + ' === ' + event.target.value);
                return (country.name === event.target.value);
-            });
-            console.log(filteredCountry);
+            });          
             let newCountry = { ...state, 
                 code: filteredCountry.code, 
                 name: filteredCountry.name
@@ -91,7 +103,7 @@ import Card from './Card';
         };
         
         console.log(country);
-        
+
         axios.post('/api/weather', country, headers).then(response => {
             setWeather(response.data);
         }).catch(err => {
