@@ -40,7 +40,7 @@ import Card from './Card';
         .then(response => {
             let filteredCountries = [];
             console.log(response);
-            setCountries([response.data]);
+            setCountries(response.data);
         }).catch(err => console.log(err));
          let country = {
               name: 'Kabul',
@@ -91,6 +91,8 @@ import Card from './Card';
             console.log(err);
         });
     }
+    
+    console.log(countries);
 
     return (
         <Card className="InnerCard" fontColor="black">
