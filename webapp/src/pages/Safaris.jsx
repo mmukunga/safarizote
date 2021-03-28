@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Table from './Table';
 import Card from './Card';
+import logo from '../logo.svg';
 
 const Safaris = () => {
     const [safaris, setSafaris] = useState([]);
