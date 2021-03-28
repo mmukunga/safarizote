@@ -31,7 +31,7 @@ public class SafariLoader implements CommandLineRunner {
         repository.save(Safari.builder()
             .title("3 Days Masai Mara")
             .price(450.00)
-            .description("<div dangerouslySetInnerHTML={{__html: '<img src='https://media.geeksforgeeks.org/wp-content/uploads/20190808143838/logsm.png' alt='Longtail' boat in Thailand'/>'}}></div> The 3-days Masai Mara safari tour in Kenya is the shortest and cheapest solution offering the best way to experience the view of African safaris big 5")
+            .description("<div dangerouslySetInnerHTML={{__html: '<strong>strong text</strong>'}} />")
             .dateCreated(Instant.now())
             .build());
 
