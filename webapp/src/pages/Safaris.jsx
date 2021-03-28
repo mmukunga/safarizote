@@ -60,7 +60,7 @@ const Safaris = () => {
     
     return (
       <Card className="InnerCard" fontColor="black">
-          <p>Safaris!!</p>
+          <h3>Our Safaris</h3>
           <ul id="page-numbers">
             {renderPageNumbers}
           </ul>
