@@ -1,5 +1,6 @@
 
 import React from "react";
+import parse from "html-react-parser";
 
 function Table({ children, ...props }) {
     const firstRow = props.data[0];
@@ -10,7 +11,7 @@ function Table({ children, ...props }) {
         <Table.TR>
           {Object.values(el).map(el => {
               return (
-                <Table.TD>{el}</Table.TD>
+                <Table.TD>{parse('<p>sibling 1</p><p>sibling 2</p>')}{el}</Table.TD>
               )}  
           )}
         </Table.TR>
