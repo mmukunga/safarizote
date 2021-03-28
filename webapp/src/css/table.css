@@ -1,48 +1,56 @@
-.sTable {
-   width: 100%;
-   box-sizing: border-box; 
-   border: 2px solid silver;
-   text-align: left; 
-   border-collapse: collapse; 
-   border-spacing: 10em 5em;
-   padding: 0 20em 10em 20em;
-   border: 1px solid orange;
-
+.Table {
+  width: 100%;
+  box-sizing: border-box; 
+  border: 2px solid silver;
+  text-align: left; 
+  border-collapse: collapse; 
+  border-spacing: 10em 5em;
+  padding: 0 20em 10em 20em;
+  border: 1px solid orange;
 }
 
 .Spinner {
-   text-align: center;
-   color:red;
-   background:silver;
+  text-align: center;
+  color:red;
+  background:silver;
 
-   margin: auto;
-   width: 40%;
-   border: 3px solid #73AD21;
-   padding: 10px;
+  margin: auto;
+  width: 40%;
+  border: 3px solid #73AD21;
+  padding: 10px;
 }
 
-.sTable td, .sTable th {
-   border: 1px solid #fff0f0;
-   padding: 8px;
+.Table td, .Table th {
+  border: 1px solid #fff0f0;
+  padding: 8px;
 }
 
-.sTable td {
-   text-align: left;
-   background: #f8ecd5;
+.Table td {
+  text-align: left;
 }
 
-.sTable tr:nth-child(even) {
-    background-color:#fff0f0;
+.Table tr:nth-child(even) {
+  background-color:#87CEFA;
 }
 
-.sTable tr:hover {
-   background-color: #ddd;
+.Table tr:hover {
+  background-color: #ddd;
 }
 
-.sTable th {
+.Table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
   color: #4CAF50;
   font-weight: bold;
+}
+
+.SafariImg {
+  float: right; 
+  margin: 5px;
+}
+
+.SafariParag {
+  text-align: justify;
+  font-size: 25px;
 }

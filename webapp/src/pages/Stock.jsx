@@ -128,8 +128,8 @@ const Stock = () => {
         </ul>
         </form>
         <p>{stockCompany} {dateTime}</p>
-        <div className="StockTable">
-          <div className="StockRow">
+        <div className="StockItem">
+          <div className="BoersDetails">
               <Quote name="Timestamp" list={timestamp}/>
               <Quote name="Close" list={close}/>
               <Quote name="Low" list={low}/>
