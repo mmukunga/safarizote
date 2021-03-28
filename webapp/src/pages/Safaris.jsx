@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Table from './Table';
 import Card from './Card';
-import logo from '../logo.svg';
 
 const Safaris = () => {
     const [safaris, setSafaris] = useState([]);
     const [checked, setChecked] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
+    const logo = '/logo192.png';
+
     const [pageSize, setPageSize] = useState(2);
     const handleChecked = (e) => {
       setChecked(!checked);

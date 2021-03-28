@@ -1,10 +1,11 @@
 
 import React from "react";
 import parse from "html-react-parser";
-import logo from '../logo.svg';
 
 function Table({ children, ...props }) {
     const firstRow = props.data[0];
+    const logo = '/logo192.png';
+
     const headers = Object.keys(firstRow);
     const headerRow = headers.map(el => <Table.TH>{el}</Table.TH>);
     const rows = props.data.map(el => { 
