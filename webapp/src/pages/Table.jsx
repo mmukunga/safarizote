@@ -4,7 +4,6 @@ import parse from "html-react-parser";
 
 function Table({ children, ...props }) {
     const firstRow = props.data[0];
-    const logo = '/logo192.png';
 
     const headers = Object.keys(firstRow);
     const headerRow = headers.map(el => <Table.TH>{el}</Table.TH>);
