@@ -11,7 +11,7 @@ function Table({ children, ...props }) {
         <Table.TR>
           {Object.values(el).map(el => {
               return (
-                <Table.TD>{parse('<p>sibling 1</p><p>sibling 2</p>')}{el}</Table.TD>
+                <Table.TD>{parse(el)}</Table.TD>
               )}  
           )}
         </Table.TR>
