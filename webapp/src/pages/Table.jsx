@@ -1,6 +1,7 @@
 
 import React from "react";
 import parse from "html-react-parser";
+import logo from '../logo.svg';
 
 function Table({ children, ...props }) {
     const firstRow = props.data[0];
