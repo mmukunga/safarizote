@@ -11,7 +11,7 @@ function Table({ children, ...props }) {
         <Table.TR>
           {Object.values(el).map(el => {
               return (
-                <Table.TD>{parse(el)}</Table.TD>
+                <Table.TD>{isNaN(el)? parse(el) : el}</Table.TD>
               )}  
           )}
         </Table.TR>
