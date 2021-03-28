@@ -31,53 +31,52 @@ public class SafariLoader implements CommandLineRunner {
         repository.save(Safari.builder()
             .title("3 Days Masai Mara")
             .price(450.00)
-            .description("<p className='sparag'><img src='images/cheeter.jpg' className='simg' alt='Longtail boat in Thailand' align='top'/> The 3-days Masai Mara safari tour in Kenya is the shortest and cheapest solution offering the best way to experience the view of African safaris big 5</p>")
+            .description("<p class='sparag'><img src='images/cheeter.jpg' class='simg' alt='Longtail boat in Thailand' align='top'/> The 3-days Masai Mara safari tour in Kenya is the shortest and cheapest solution offering the best way to experience the view of African safaris big 5</p>")
             .dateCreated(Instant.now())
             .build());
 
         repository.save(Safari.builder()
             .title("1 Day Nairobi City Tour")
             .price(150.00)
-            .description("<p className='sparag'><img src='images/gnus.jpg' className='simg' alt='Longtail boat in Thailand' align='top'/> On your Nairobi City Tours and Attractions, you will visit places like Nairobi National Park, Karen Blixen Museum, Giraffe Centre, Animal Orphanage</p>")
+            .description("<p class='sparag'><img src='images/gnus.jpg' class='simg' alt='Longtail boat in Thailand' align='top'/> On your Nairobi City Tours and Attractions, you will visit places like Nairobi National Park, Karen Blixen Museum, Giraffe Centre, Animal Orphanage</p>")
             .dateCreated(Instant.now())
             .build());
 
         repository.save(Safari.builder()
             .title("3 Days Amboseli and Tsavo")
             .price(500.00)
-            .description("<p className='sparag'><img src='images/leopard.jpg' className='simg' alt='Longtail boat in Thailand' align='top'/> Amboseli safari tours, for the wild at heart. Amboseli National Park is one of the world's most amazing national parks.</p>")
+            .description("<p class='sparag'><img src='images/leopard.jpg' class='simg' alt='Longtail boat in Thailand' align='top'/> Amboseli safari tours, for the wild at heart. Amboseli National Park is one of the world's most amazing national parks.</p>")
             .dateCreated(Instant.now())
             .build());
         
         repository.save(Safari.builder()
             .title("1 Day Lake Nakuru National Park Trip")
             .price(175.00)
-            .description("<p className='sparag'><img src='images/savannah.jpg' className='simg' alt='Longtail boat in Thailand' align='top'/> Highlight: Enjoy a full-day tour of Lake Nakuru National Park, home to one of the most remarkable wild bird populations in all of Africa. Get up close with the wildlife on a game viewing drive, and be on the lookout for the park's amazing flamingos.</p>")
+            .description("<p class='sparag'><img src='images/savannah.jpg' class='simg' alt='Longtail boat in Thailand' align='top'/> Highlight: Enjoy a full-day tour of Lake Nakuru National Park, home to one of the most remarkable wild bird populations in all of Africa. Get up close with the wildlife on a game viewing drive, and be on the lookout for the park's amazing flamingos.</p>")
             .dateCreated(Instant.now())
             .build());
 
         repository.save(Safari.builder()
             .title("6 days Kilimanjaro Climb - Rongai Route")
             .price(1450.00)
-            .description("<p className='sparag'><img src='images/tourists.jpg' className='simg' alt='Longtail boat in Thailand' align='top'/> Rongai Route Kilimanjaro Climb, this is the third popular route on Kilimanjaro and involves much shorter approach to Kibo than the Marangu Route. Climb Kilimanjaro from Kenya via the Rongai Route (6 days)</p>")
+            .description("<p class='sparag'><img src='images/tourists.jpg' class='simg' alt='Longtail boat in Thailand' align='top'/> Rongai Route Kilimanjaro Climb, this is the third popular route on Kilimanjaro and involves much shorter approach to Kibo than the Marangu Route. Climb Kilimanjaro from Kenya via the Rongai Route (6 days)</p>")
             .dateCreated(Instant.now())
             .build());
 
         repository.save(Safari.builder()
             .title("5 Days Mount Kenya Trekking Sirimon – Chogoria")
             .price(945.00)
-            .description("<p className='sparag'><img src='images/jeep.jpg' className='simg' alt='Longtail boat in Thailand' align='top'/> This 5 Days Mount Kenya Trekking Sirimon-Chogoria Route peak circuiting program offers some of the finest mountain trekking experience in East Africa!</p>")
+            .description("<p class='sparag'><img src='images/jeep.jpg' class='simg' alt='Longtail boat in Thailand' align='top'/> This 5 Days Mount Kenya Trekking Sirimon-Chogoria Route peak circuiting program offers some of the finest mountain trekking experience in East Africa!</p>")
             .dateCreated(Instant.now())
             .build());
         
         repository.save(Safari.builder()
             .title("7 Days Kenya Beach Holiday and Amboseli")
             .price(1550.00)
-            .description("<p className='sparag'><img src='images/cheeters.jpg' className='simg' alt='Longtail boat in Thailand' align='top'/> Kenya has so much to offer the visitor - from the vast plains of the iconic Masai Mara and Amboseli teeming with wildlife to the white sand beaches of the Indian Ocean.</p>")
+            .description("<p class='sparag'><img src='images/cheeters.jpg' class='simg' alt='Longtail boat in Thailand' align='top'/> Kenya has so much to offer the visitor - from the vast plains of the iconic Masai Mara and Amboseli teeming with wildlife to the white sand beaches of the Indian Ocean.</p>")
             .dateCreated(Instant.now())
             .build());
         
-
         List<Booking> bookings = createBookings();
         for (int i = 0; i < bookings.size(); i++) {
             System.out.println("New Booking:= " + bookings.get(i));
