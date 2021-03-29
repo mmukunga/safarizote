@@ -97,7 +97,7 @@ function App() {
                 <NavLink to="/email" className="Nav_link">Email</NavLink>
                 <NavLink to="/weather" className="Nav_link">Weather</NavLink>
                 <Menu/>
-                <button onClick={handleLogout}>Logout</button>
+                <button onClick={handleLogout} className="LogOut">Logout</button>
               </div>
             </nav> 
             <p className="App-title">

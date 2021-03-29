@@ -33,6 +33,10 @@
     vertical-align: top;
   }
 
+  .LogOut {
+    border: 4px solid white;
+  }
+
   @media screen and (max-width: 600px) {
     .Navigation {
       border: 2px solid grey;
