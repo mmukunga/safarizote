@@ -30,7 +30,7 @@
 }
 
 .Table tr:nth-child(even) {
-  background-color:#87CEFA;
+  background-color: #f4f1e7;
 }
 
 .Table tr:hover {
