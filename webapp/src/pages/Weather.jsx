@@ -50,11 +50,21 @@ import Card from './Card';
         
       axios.post('/api/cities', country)
         .then(response => {
-            let filteredCity = [];
             setCities(response.data);
             const cities = response.data;
             dispatch({ type: 'SET_CITIES', payload: cities });
         }).catch(err => console.log(err));
+
+      axios.post('/api/weather', country, headers)
+        .then(response => {
+            setWeather(response.data);
+        }).catch(err => { console.log(err)});
+
+      axios.post('/api/forecast', country, headers)
+        .then(response => {
+          setList(response.data.list);
+          setForecast(response.data);
+       }).catch(err => {console.log(err)});
 
     }, []);
 
@@ -144,7 +154,7 @@ import Card from './Card';
           : <div>No Weather</div>   
         }
 
-        <p>Forecast</p>
+        <h3>Weather Forecast</h3>
         {forecast != null 
           ? <ForecastList cards={list} />
           : <div>No Forecast</div>   

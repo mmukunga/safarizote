@@ -25,16 +25,13 @@ public class EmailController {
 
     @RequestMapping(value="/api/email",  method={RequestMethod.GET})
     public ResponseEntity<List<Email>> emails() {
-        System.out.println("Email, the time at the server is now " + new Date());
         List<Email> emails = repository.findAll();
-        System.out.println("Email, the time at the server is now " + new Date());
         System.out.println("Emails() End OK!");
         return new ResponseEntity<>(emails, HttpStatus.OK);
     }
 
     @RequestMapping(value="/api/sendEmail",  method={RequestMethod.POST})
     public ResponseEntity<Email> sendEmail(@RequestBody Email email) {
-        System.out.println("Email, the time at the server is now " + new Date());
         System.out.println("Email " + email);
         try {
             emailService.sendEmail(email);
@@ -42,7 +39,6 @@ public class EmailController {
             e.printStackTrace();
         }
 
-        System.out.println("Emails() Send End OK!");
         repository.save(email);
         System.out.println("Emails() Saved End OK!");
         return new ResponseEntity<>(email, HttpStatus.OK);

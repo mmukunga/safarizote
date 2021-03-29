@@ -36,9 +36,6 @@ public class BackUpController {
             }
         }
         System.out.println("Category.findAll(), the time at the server is now " + new Date());
-        //String json = new Gson().toJson(categories);
-        //System.out.println("Category.findAll(), JSON!:= " + json);
-
         System.out.println("Category.findAll()  End OK!");
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }

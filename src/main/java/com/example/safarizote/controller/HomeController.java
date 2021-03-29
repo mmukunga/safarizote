@@ -23,23 +23,19 @@ public class HomeController {
     
   @RequestMapping(value="/api/healthCheck", method=RequestMethod.POST)
   public ResponseEntity<String> healthCheck() {
-      System.out.println("healthCheck() , the time at the server is now " + new Date());
       String status = "healthCheck: OK!!";
       return new ResponseEntity<>(status, HttpStatus.OK);
   }
 
     @RequestMapping(value = "/api/allHits",  method={RequestMethod.GET})
     public ResponseEntity<List<Tracker>> findAll() {
-        System.out.println("Tracker.findAll(), the time at the server is now " + new Date());
         List<Tracker> visits = repository.findAll();
-        System.out.println("Tracker.findAll(), the time at the server is now " + new Date());
         System.out.println("Tracker.findAll(),  End OK!");
         return new ResponseEntity<>(visits, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/api/saveVisit",  method={RequestMethod.POST})
     public void save(@RequestBody Tracker visit) {
-        System.out.println("Tracker.findAll()  Start...");
         System.out.println(visit);
         repository.save(visit);
         System.out.println("Tracker.findAll()  End OK!");

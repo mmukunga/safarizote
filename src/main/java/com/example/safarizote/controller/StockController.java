@@ -32,28 +32,24 @@ public class StockController {
             throw new Exception();
         }
         
-        System.out.println("Current Stock, the time at the server is now " + new Date() + "\n");
         System.out.println("Tickers:" + tickers ) ;
         return new ResponseEntity<>(tickers, HttpStatus.OK);
     }
 
     @RequestMapping(value="/api/current", method = RequestMethod.POST)
     public ResponseEntity<String> getCurrentStock(@RequestBody Ticker ticker) throws Exception {
-        System.out.println("Current Stock, the time at the server is now " + new Date() + "\n");
         System.out.println("Current Stock:" + ticker); 
         // Validate Sticker
         if (repository.findById(ticker.getId()).isEmpty()) {
             throw new Exception();
         }
         String jsonObject = stockClient.yahooCurrent(ticker.getSymbol());
-        System.out.println("Current Stock, the time at the server is now " + new Date() + "\n");
         System.out.println("Current Stock:" + jsonObject );
         return new ResponseEntity<>(jsonObject, HttpStatus.OK);
     }
 
     @RequestMapping(value="/api/history", method = RequestMethod.POST)
     public ResponseEntity<String> getStockHistory(@RequestBody Ticker ticker) throws Exception {
-        System.out.println("Stock History, the time at the server is now " + new Date() + "\n");
         System.out.println("Stock History:" + ticker); 
         // Validate Sticker
         if (repository.findById(ticker.getId()).isEmpty()) {
@@ -76,7 +72,6 @@ public class StockController {
 
         String jsonObject = stockClient.yahooHistory(ticker.getSymbol(), from, to);
 
-        System.out.println("Stock History, the time at the server is now " + new Date() + "\n");
         System.out.println("Stock History:" + jsonObject ) ;
         
         return new ResponseEntity<>(jsonObject, HttpStatus.OK);

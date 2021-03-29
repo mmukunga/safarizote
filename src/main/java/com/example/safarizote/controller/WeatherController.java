@@ -46,20 +46,14 @@ public class WeatherController {
 
     @RequestMapping(value="/api/cities",  method={RequestMethod.POST})       
     public ResponseEntity<List<City>> getCities(@RequestBody Country country) { 
-        System.out.println("1.getCities country:= " + country); 
-        System.out.println("1.getCities countryCode:= " + country.getCode()); 
         Country dbCountry = repository.findByCode(country.getCode());
-        System.out.println("2.getCities - dbCountry:= " + dbCountry); 
-        List<City> cities = dbCountry.getCities();
-        System.out.println("3.getCities - cities:= " + cities); 
-        Set<City> cities2 = cityReository.findByCountry(country.getCode());
-        System.out.println("3.getCities - cities2:= " + cities2); 
+        List<City> cities = dbCountry.getCities(); 
+        Set<City> citiesByCode = cityReository.findByCountry(country.getCode());
         return new ResponseEntity<>(cities, HttpStatus.OK);   
     }
 
     @RequestMapping(value = "/api/weather",  method={RequestMethod.POST})
     public ResponseEntity<String> getWeatherData(@RequestBody Country country) throws IOException {
-        System.out.println("1.Current Weather - COUNTRY1:= " + country); 
         HttpURLConnection con = null ;
         InputStream is = null;
         String location = country.getName() + "," + country.getCode();
@@ -69,7 +63,6 @@ public class WeatherController {
         con.setDoInput(true);
         con.setDoOutput(true);
         con.connect();
-        System.out.println("2.Current Weather - COUNTRY2:= " + country); 
         // Let's read the response
         StringBuffer buffer = new StringBuffer();
         is = con.getInputStream();
@@ -78,17 +71,14 @@ public class WeatherController {
         while (  (line = br.readLine()) != null )
             buffer.append(line + "\r\n");
 
-        System.out.println("3.Current Weather - COUNTRY3:= " + country); 
         is.close();
-        con.disconnect();
-        System.out.println("4.Current Weather - COUNTRY4:= " + country); 
+        con.disconnect(); 
         return new ResponseEntity<>(buffer.toString(), HttpStatus.OK);
 
     }
 
     @RequestMapping(value = "/api/forecast",  method={RequestMethod.POST})
     public ResponseEntity<String> getWeatherForecast(@RequestBody Country country) throws IOException {
-        System.out.println("1.Forecast Weather - COUNTRY1:= " + country); 
         HttpURLConnection con = null ;
         InputStream is = null;
         String location = country.getName()+","+country.getCode();
@@ -98,7 +88,6 @@ public class WeatherController {
         con.setDoInput(true);
         con.setDoOutput(true);
         con.connect();
-        System.out.println("2.Forecast Weather - COUNTRY2:= " + country); 
         // Let's read the response
         StringBuffer buffer = new StringBuffer();
         is = con.getInputStream();
@@ -107,10 +96,8 @@ public class WeatherController {
         while (  (line = br.readLine()) != null )
             buffer.append(line + "\r\n");
 
-        System.out.println("3.Forecast Weather - COUNTRY3:= " + country); 
         is.close();
         con.disconnect();
-        System.out.println("4.Forecast Weather - COUNTRY4:= " + country); 
         return new ResponseEntity<>(buffer.toString(), HttpStatus.OK);
     }
 

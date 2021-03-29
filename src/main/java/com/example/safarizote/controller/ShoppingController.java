@@ -21,10 +21,7 @@ public class ShoppingController {
 
   @RequestMapping(value = "/api/shopping",  method={RequestMethod.GET})
   public ResponseEntity<List<Shopping>> shopping(){
-    System.out.println("1. SHOPPING");
     List<Shopping> sourceSet = repository.findAll();
-    System.out.println("2. SHOPPING");
-    System.out.println("==============> 1. Simple For loop Example.");
     for (int i = 0; i < sourceSet.size(); i++) {
         System.out.println(sourceSet.get(i));
     }

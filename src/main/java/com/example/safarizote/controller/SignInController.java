@@ -23,7 +23,6 @@ public class SignInController {
 
     @RequestMapping(value = "/api/findAll",  method={RequestMethod.GET})
     public ResponseEntity<List<UserAuth>> findAll() {
-        System.out.println("Login, the time at the server is now " + new Date());
         List<UserAuth> users = repository.findAll();
         System.out.println("Login, the time at the server is now " + new Date());
         System.out.println("findAll() End OK!");
@@ -32,31 +31,23 @@ public class SignInController {
 
     @RequestMapping(value = "/api/login",  method={RequestMethod.POST})
     public ResponseEntity<UserAuth> logIn(@RequestBody UserAuth userAuth) {
-        System.out.println("\n==============> 1. .. " + userAuth);
-        UserAuth foundUser = null;
+        UserAuth authedUser = null;
         List<UserAuth> users = repository.findAll();
-        System.out.println("\n==============> 2. USERS SIZE:=.." + users.size());
-        for (UserAuth temp : users) {
-            System.out.println("SignInRepository FROM USER:= " + temp);
+        for (UserAuth tempUser : users) {
+            System.out.println("SignInRepository FROM USER:= " + tempUser);
             System.out.println("SignInRepository FROM DB:= " + userAuth);
-            System.out.println("============================");
-            System.out.println("COMPARE1:= " + temp.getEmail() + " <> " + userAuth.getEmail());
-            System.out.println("COMPARE2:= " + temp.getPassword() + " <> " + userAuth.getPassword());
-            System.out.println("============================");
-            if (temp.getEmail().equals(userAuth.getEmail())) {
-                foundUser = temp;
-                System.out.println("SignInRepository USER FOUND!!:= " + temp);
+            System.out.println("COMPARE1:= " + tempUser.getEmail() + " <> " + userAuth.getEmail());
+            System.out.println("COMPARE2:= " + tempUser.getPassword() + " <> " + userAuth.getPassword());
+
+            if (tempUser.getEmail().equals(userAuth.getEmail()) &&
+                tempUser.getPassword().equals(userAuth.getPassword()) ) {
+                authedUser = tempUser;
+                System.out.println("SignInRepository USER FOUND!!:= " + tempUser);
                 break;
             }
-            /*
-            if (temp.getEmail().equals(userAuth.getEmail()) &&
-               (temp.getPassword().equals(userAuth.getPassword())) ) {
-                  System.out.println("SignInRepository logIn FOUND!!:= " + temp);
-                  return new ResponseEntity<>(temp, HttpStatus.OK);
-               }*/
         }
-        System.out.println("SignInRepository END USER!:= " + foundUser);
+        System.out.println("SignInRepository END USER!:= " + authedUser);
         System.out.println("SignInRepository END OK!!");
-        return new ResponseEntity<>(foundUser, HttpStatus.OK);
+        return new ResponseEntity<>(authedUser, HttpStatus.OK);
     }
 }

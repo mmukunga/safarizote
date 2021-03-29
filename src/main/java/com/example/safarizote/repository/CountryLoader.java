@@ -38,10 +38,8 @@ public class CountryLoader implements CommandLineRunner {
             cList.add("DK");
         
             List<String> aList = new ArrayList<>();
-        if (repository.count() > 0) {
-           //getNew countries
+        if (repository.count() > 0) {          
            List<Country> lst = repository.findAll();
-           System.out.println("\n==============> 2. New Enhanced For loop Example..");
            for (Country temp : lst) {
               if (!cList.contains(temp.getCode())){ 
                   aList.add(temp.getCode());
