@@ -34,7 +34,7 @@
   }
 
   .LogOut {
-    border: 4px solid white;
+    border: 2px solid white;
   }
 
   @media screen and (max-width: 600px) {
