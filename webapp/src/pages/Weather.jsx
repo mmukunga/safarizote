@@ -60,6 +60,10 @@ import Card from './Card';
 
     React.useEffect(() => {
       alert('init');
+      var headers = {
+        'Content-Type': 'application/json' 
+      };
+
       const country = {
             name: state.city,
             code: state.code,
@@ -81,7 +85,8 @@ import Card from './Card';
 
     }, [countries]);
 
-    React.useEffect(() => {
+    React.useEffect(() => { 
+
       let country = {
         name: state.name,
         code: state.code,
