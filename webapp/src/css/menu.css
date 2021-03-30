@@ -8,20 +8,25 @@ nav {
   border-bottom: 1px solid black;
 }
 
-.crumbs li {
-  list-style-type: none;
-  padding-left: 0;
+.Nav_link {
+  vertical-align: middle;
+  text-decoration: none;
+  color: blue;
 }
 
-.crumb {
-  display: inline-block;
+.Nav_link:link {
+  text-decoration: underline !important;
 }
 
-.crumb a::after {
-  display: inline-block;
-  color: #000;
-  content: '>';
-  font-size: 80%;
-  font-weight: bold;
-  padding: 0 3px;
+.Nav_link:visited {
+  background: white;
+  color:red;
+}
+
+.Nav_link:hover {
+  color: #61dafb;
+}
+
+.Nav_link:active {
+  color: teal;
 }
