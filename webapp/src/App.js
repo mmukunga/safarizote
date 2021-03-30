@@ -85,10 +85,8 @@ function App() {
     return (
         <header style={imageStyles} className="App-header">  
             <nav className="Navigation">
-              <div className="NavLogo"> 
-                <img src={logo} className="App-logo" alt="logo"/>
-              </div>
               <div className="NavMenu">
+                <img src={logo} className="App-logo" alt="logo"/>
                 <NavLink to="/" className="Nav_link">Home</NavLink>
                 <NavLink to="/aboutUs" className="Nav_link">About&nbsp;Us</NavLink>
                 <NavLink to="/safaris" className="Nav_link">Safaris</NavLink>
