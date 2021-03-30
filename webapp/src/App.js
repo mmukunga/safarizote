@@ -90,7 +90,7 @@ function App() {
               </div>
               <div className="NavMenu">
                 <NavLink to="/" className="Nav_link">Home</NavLink>
-                <NavLink to="/aboutUs" className="Nav_link">About Us</NavLink>
+                <NavLink to="/aboutUs" className="Nav_link">AboutUs</NavLink>
                 <NavLink to="/safaris" className="Nav_link">Safaris</NavLink>
                 <NavLink to="/signIn" className="Nav_link">Login</NavLink>
                 <NavLink to="/email" className="Nav_link">Email</NavLink>

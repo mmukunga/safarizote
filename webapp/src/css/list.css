@@ -9,7 +9,8 @@
   border: 2px solid white;
   margin: 2px;
   text-decoration: none;
-  color: #0000FF;
+  color: #fff;
+  font-size: 18px;
 }
 
 .Nav_link:link {
