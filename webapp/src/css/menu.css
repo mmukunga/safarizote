@@ -5,7 +5,7 @@
   }  
 
   .Navigation {
-    border: 2px solid #fefeef;
+    border: 0px solid #fefeef;
   }
   
   .Navigation:after {
@@ -18,12 +18,12 @@
     vertical-align: top;
     color:blue;
     width: 80px;
-    border: 1px solid #fefeef;
+    border: 0px solid #fefeef;
   }
 
   .NavMenu {
     width: calc(100% - 100px);
-    border: 2px solid #fefeef ;
+    border: 0px solid #fefeef ;
   }
 
   .xLogo {
@@ -41,7 +41,7 @@
 
   @media screen and (max-width: 600px) {
     .Navigation {
-      border: 2px solid grey;
+      border: 0px solid grey;
       text-align: center;
     }
 
@@ -50,6 +50,6 @@
       display: block;
       font-size: 16px;
       color: darkblue;
-      border: 1px solid red;
+      border: 0px solid red;
     }
   }
