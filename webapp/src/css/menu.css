@@ -46,7 +46,7 @@
     .Navigation {
       width: 100%;
       display: block;
-      border: 0px solid grey;
+      border: 2px solid grey;
       text-align: center;
       word-wrap:break-all;
     }
