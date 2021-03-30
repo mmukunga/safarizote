@@ -3,35 +3,6 @@
   border: 2px solid red;
 }
 
-.Nav_link {
-  vertical-align: middle;
-  border-radius: 2px;
-  border: 0px solid white;
-  margin: 2px;
-  text-decoration: none;
-  color: #fff;
-  font-size: 18px;
-}
-
-.Nav_link:link {
-  vertical-align: middle;
-  border-radius: 2px;
-  text-decoration: underline !important;
-}
-.Nav_link:visited {
-  border: 0px solid white;
-  background: white;
-  color:red;
-}
-
-.Nav_link:hover {
-  color: #61dafb;
-}
-
-.Nav_link:active {
-  color: teal;
-}
-
 .vList{
   margin: 0 auto;
   text-align: left;
