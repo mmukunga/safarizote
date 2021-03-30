@@ -30,6 +30,8 @@
   vertical-align: top;    
 }
 
+td { vertical-align: top; }
+
 .Table tr:nth-child(even) {
   background-color: #f4f1e7;
 }
