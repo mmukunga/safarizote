@@ -16,7 +16,7 @@
 .Nav_link:link {
   vertical-align: middle;
   border-radius: 2px;
-  text-decoration: none;
+  text-decoration: underline !important;
 }
 .Nav_link:visited {
   border: 0px solid white;
