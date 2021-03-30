@@ -30,7 +30,6 @@ const Safaris = () => {
 
     safaris.forEach(function(safari) {
         array_nodes.push({
-          id: safari.id,
           title: safari.title,
           description: safari.description,
           price: safari.price
