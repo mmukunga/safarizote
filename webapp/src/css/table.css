@@ -27,7 +27,8 @@
 
 .Table td {
   text-align: left;
-  vertical-align: top;    
+  vertical-align: top; 
+  min-width: 100px;   
 }
 
 td { vertical-align: top; }
