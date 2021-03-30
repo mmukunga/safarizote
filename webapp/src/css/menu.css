@@ -44,12 +44,15 @@
 
   @media screen and (max-width: 600px) {
     .Navigation {
+      width: 100%;
+      display: block;
       border: 0px solid grey;
       text-align: center;
       word-wrap:break-all;
     }
 
     .NavLogo, .NavMenu {
+      width: 100%;
       display: block;
       font-size: 16px;
       color: darkblue;
