@@ -6,6 +6,7 @@
 
   .Navigation {
     border: 0px solid #fefeef;
+    word-wrap:break-all;
   }
   
   .Navigation:after {
@@ -19,11 +20,13 @@
     color:blue;
     width: 80px;
     border: 0px solid #fefeef;
+    word-wrap:break-all;
   }
 
   .NavMenu {
     width: calc(100% - 100px);
     border: 0px solid #fefeef ;
+    word-wrap:break-all;
   }
 
   .xLogo {
@@ -43,13 +46,14 @@
     .Navigation {
       border: 0px solid grey;
       text-align: center;
+      word-wrap:break-all;
     }
 
     .NavLogo, .NavMenu {
-      width: 100%;
       display: block;
       font-size: 16px;
       color: darkblue;
       border: 0px solid red;
+      word-wrap:break-all;
     }
   }
