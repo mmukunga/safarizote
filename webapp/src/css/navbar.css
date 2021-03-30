@@ -9,6 +9,7 @@ nav {
 }
 
 .Nav_link {
+  display: inline-block;
   vertical-align: middle;
   text-decoration: none;
   color: blue;
@@ -29,4 +30,13 @@ nav {
 
 .Nav_link:active {
   color: teal;
+}
+
+.Nav_link a::after {
+  display: inline-block;
+  color: #000;
+  content: '>';
+  font-size: 80%;
+  font-weight: bold;
+  padding: 0 3px;
 }
