@@ -6,7 +6,7 @@
 .Nav_link {
   vertical-align: middle;
   border-radius: 2px;
-  border: 2px solid white;
+  border: 0px solid white;
   margin: 2px;
   text-decoration: none;
   color: #fff;
@@ -19,7 +19,9 @@
   text-decoration: none;
 }
 .Nav_link:visited {
-  border: 2px solid white;
+  border: 0px solid white;
+  background: white;
+  color:red;
 }
 
 .Nav_link:hover {

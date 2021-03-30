@@ -5,7 +5,7 @@
   }  
 
   .Navigation {
-    border: 2px solid grey;
+    border: 2px solid #fefeef;
   }
   
   .Navigation:after {
@@ -18,12 +18,12 @@
     vertical-align: top;
     color:blue;
     width: 80px;
-    border: 1px solid red;
+    border: 1px solid #fefeef;
   }
 
   .NavMenu {
     width: calc(100% - 100px);
-    border: 2px solid white ;
+    border: 2px solid #fefeef ;
   }
 
   .xLogo {
