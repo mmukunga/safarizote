@@ -29,18 +29,19 @@ nav {
   display: inline-block;
   vertical-align: middle;
   text-decoration: none;
-  color: blue;
+  color: darkblue;
   background: white;
   margin: 2px;
 }
 
 .Nav_link:link {
   text-decoration: underline !important;
+  text-decoration-color: green;
 }
 
 .Nav_link:visited {
   background: white;
-  color:red;
+  color:blue;
 }
 
 .Nav_link:hover {
