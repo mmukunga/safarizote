@@ -6,9 +6,9 @@ import logo from './logo.svg';
 import './App.css';
 
 import Card from './pages/Card';
+import Safaris from './pages/Safaris';
 import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
-import Safaris from './pages/Safaris';
 import Shopping from './pages/Shopping';
 import Lotto from './pages/Lotto';
 import BackUp from './pages/BackUp';
@@ -88,9 +88,9 @@ function App() {
                 <span className="Nav_link">
                   <img src={logo} className="App-logo" alt="logo"></img>
                 </span>
-                <NavLink to="/" className="Nav_link">Home</NavLink>
+                <NavLink to="/" className="Nav_link">Safaris</NavLink>
                 <NavLink to="/aboutUs" className="Nav_link">About&nbsp;Us</NavLink>
-                <NavLink to="/safaris" className="Nav_link">Safaris</NavLink>
+                <NavLink to="/home" className="Nav_link">Home</NavLink>
                 <NavLink to="/signIn" className="Nav_link">Login</NavLink>
                 <NavLink to="/email" className="Nav_link">Email</NavLink>
                 <NavLink to="/weather" className="Nav_link">Weather</NavLink>
@@ -132,10 +132,10 @@ function App() {
       <Card className="OuterCard" fontColor="black">
         <Layout displayHome={displayHome}>
           <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" component={Safaris} />
               <Route path="/aboutUs" component={AboutUs} />
               <Private path="/shopping" component={Shopping} exact/>
-              <Route path="/safaris" component={Safaris} />
+              <Route path="/home" component={Home} />
               <Private path="/tipping" component={Lotto} exact/>
               <Route path="/signIn" component={SignIn} />
               <Route path="/email" component={Email} />

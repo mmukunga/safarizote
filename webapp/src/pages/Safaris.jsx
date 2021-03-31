@@ -30,7 +30,7 @@ const Safaris = () => {
 
     safaris.forEach(function(safari) {
         array_nodes.push({
-          title: safari.title,
+          title: + ' <span className=\'>USD '+safari.title + '<span>',
           description: safari.description + ' <strong>USD ' + safari.price + '<strong>',
         });
     });
