@@ -23,16 +23,18 @@
 .Table td, .Table th {
   border: 1px solid #fff0f0;
   padding: 2px;
+  min-width:150px;
 }
 
 .Table td {
   text-align: left;
   vertical-align: top; 
-  min-width: 10px;   
+  min-width: 110px;   
 }
 
 td { 
   vertical-align: top; 
+  min-width:150px;
 }
 
 .Table tr:nth-child(even) {
