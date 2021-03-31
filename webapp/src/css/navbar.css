@@ -1,21 +1,15 @@
-.ToolBar {
-  vertical-align: top;
-  text-align: center;
-  border: 1px solid #f00;
-}  
-
-nav {
-  border-bottom: 1px solid black;
-}
-
-
 .Navigation {
   border: 1px solid #fefeef;
+  text-align: center;
 }
 
 .Navigation:after {
   content: "";
   clear: both;
+}
+
+nav {
+  border-bottom: 1px solid black;
 }
 
 .NavLogo, .NavMenu {
@@ -30,7 +24,6 @@ nav {
   border: 1px solid #fefeef ;
   word-wrap:break-all;
 }
-
 
 .Nav_link {
   display: inline-block;
