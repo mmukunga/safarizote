@@ -48,13 +48,13 @@ td {
   font-weight: bold;
 }
 
-.simg {
+.SafariSnap {
   float: right; 
   margin: 5px;
-  width: 150px;
+  width: 250px;
 }
 
-.sparag {
+.SafariDetails {
   width: 100%;
   height: auto;
 }
