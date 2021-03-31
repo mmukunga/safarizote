@@ -68,7 +68,6 @@ p {
 
 @media screen and (max-width: 600px) {
   .App {
-    width: 100%;
     text-align: left;
     margin: 0;
   }
