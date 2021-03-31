@@ -99,14 +99,17 @@ function App() {
               </div>
             </nav> 
             <p className="App-title">
-              Edit <code>src/App.js</code> and save to reload.         
+              The most revered of Africa’s safari destinations, Kenya is located in 
+              East Africa and boasts the Masai Mara National Park, renowned for its 
+              abundant wildlife and annual Great Migration.
+              Common Trips <code>src/App.js</code> pluss the most preffered.         
               <a
                 className="App-link"
                 href="https://reactjs.org"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Learn React
+                Please Book here
               </a>
             </p>
         </header>
