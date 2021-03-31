@@ -20,8 +20,7 @@ import Private from './pages/Private';
 
 function App() {
   const selectStyle = {
-      border: '4px solid white', 
-      width: '100px', 
+      width: '60px', 
       padding: '2px', 
       background: '#2a9df4'
   };

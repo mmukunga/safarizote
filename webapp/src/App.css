@@ -11,6 +11,7 @@
   height: 8vmin;
   pointer-events: none;
   background: white;
+  border: 1px solid red;
 }
 
 @media (prefers-reduced-motion: no-preference) {
