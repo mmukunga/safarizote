@@ -8,6 +8,30 @@ nav {
   border-bottom: 1px solid black;
 }
 
+
+.Navigation {
+  border: 1px solid #fefeef;
+}
+
+.Navigation:after {
+  content: "";
+  clear: both;
+}
+
+.NavLogo, .NavMenu {
+  display: inline-block;
+  vertical-align: top;
+  color:blue;
+  border: 1px solid #fefeef;
+}
+
+.NavMenu {
+  width: calc(100% - 10px);
+  border: 1px solid #fefeef ;
+  word-wrap:break-all;
+}
+
+
 .Nav_link {
   display: inline-block;
   vertical-align: middle;
