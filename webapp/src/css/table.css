@@ -28,6 +28,10 @@
   min-width:150px
 }
 
+table tr th {
+  background-color: #d0d;
+}
+
 td { 
   vertical-align: top; 
   min-width:150px;
@@ -61,5 +65,5 @@ td {
 
 .SafariTitle {
   color:red;
-  
+
 }
