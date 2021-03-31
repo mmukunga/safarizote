@@ -12,7 +12,7 @@ function Table({ children, ...props }) {
         <Table.TR>
           {Object.values(el).map(el => {
               return (
-                <Table.TD>{isNaN(el)? parse(el) : el}</Table.TD>
+                <Table.TD>{Number.isInteger(el) ? el : parse(el)}</Table.TD>
               )}  
           )}
         </Table.TR>
