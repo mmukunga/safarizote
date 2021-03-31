@@ -31,8 +31,7 @@ const Safaris = () => {
     safaris.forEach(function(safari) {
         array_nodes.push({
           title: safari.title,
-          description: safari.description,
-          price: safari.price
+          description: safari.description + ' <strong>USD ' + safari.price + '<strong>',
         });
     });
     
