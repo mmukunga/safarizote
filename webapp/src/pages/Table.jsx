@@ -21,7 +21,7 @@ function Table({ children, ...props }) {
     });
 
       return (
-        <table {...props} style={{border: '1px solid black', textAlign:'left', borderCollapse: 'collapse'}}>
+        <table {...props} style={{border: '1px solid black', textAlign:'left', borderCollapse: 'collapse'}}  id="customers">
             <Table.TR>
               {headerRow}
             </Table.TR>
