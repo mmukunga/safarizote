@@ -22,6 +22,12 @@ const Tableless = props => {
     return (
     <div>
       Macharia XX
+      <div style={{ margin: '1em' }}>            
+            <div class="tableWrap"  style={{ background: 'green' }}>
+                <div class="tableCol">Title</div>
+                <div class="tableCol">Description</div>
+            </div>
+        </div>
       {props && props.data.map(card => (
         <Card {...card} />
       ))}

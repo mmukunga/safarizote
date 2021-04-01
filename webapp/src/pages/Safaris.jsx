@@ -65,10 +65,6 @@ const Safaris = () => {
             {renderPageNumbers}
           </ul>
           {currentItems && currentItems.length > 0 
-          ? <Table data={currentItems}/> 
-          : <p>No Data Found!!</p>}
-          Simon
-          {currentItems && currentItems.length > 0 
           ? <Tableless data={currentItems}/> 
           : <p>No Data Found!!</p>}
       </Card>
