@@ -101,15 +101,16 @@ function App() {
             <p className="App-title">
               The most revered of Africa’s safari destinations, Kenya is located in 
               East Africa and boasts the Masai Mara National Park, renowned for its 
-              abundant wildlife and annual Great Migration.
-              Common Trips <code>src/App.js</code> pluss the most preffered.         
+              abundant wildlife and annual Great Migration.<br/>
+              Common Trips <code>src/App.js</code> pluss the most preffered.<br/>    
+              <Link to="/email" style={{color: 'white'}} activeStyle={{color: 'red'}}>Please Contact Us!</Link><br/>     
               <a
                 className="App-link"
-                href="https://reactjs.org"
+                href="https://safarizote.herokuapp.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Please Book here
+                Safari Zote
               </a>
             </p>
         </header>
