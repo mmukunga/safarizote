@@ -15,9 +15,9 @@ const Tableless = props => {
         </div>
         )
     }
-    return(
+    return (
     <div>
-        Macharia
+      Macharia XX
       {cards && cards.data.map(card => (
         <Card {...card} />
       ))}
