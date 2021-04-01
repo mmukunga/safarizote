@@ -60,6 +60,18 @@ const Safaris = () => {
     return (
       <Card className="InnerCard" fontColor="black">
           <h3>Our Safaris</h3>
+          <div style={{margin:"20px"}}>
+            <img src="http://i.imgur.com/6bkt2Qk.gif" align="right" width="140" height="140" border="0" style={{margin:"0 0 20px 20px", background:"#E79851"}} />
+            <p style={{margin:"0", font:"16px/1.25 sans-serif", color:"#4CB3E8", textAlign:"justify"}}>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, aut eligendi dignissimos, illum eaque ut architecto quisquam! 
+                Odio, aliquam eligendi iste tempore beatae, deserunt! Officia temporibus at, debitis excepturi porro mollitia aspernatur labore 
+                unde dolores quae blanditiis dignissimos error aut iure magnam sed placeat impedit incidunt praesentium natus dolorum. Hic illum 
+                vitae iusto aspernatur tempora voluptatem id dolor reiciendis amet ea iste similique fuga, accusamus quibusdam, atque itaque 
+                quae sit dolorem asperiores facilis, fugit odio eveniet. Autem iusto nisi, minus sunt fuga quas sed expedita incidunt veniam 
+                nobis id ab. Blanditiis ullam laboriosam, quibusdam fugiat repellat labore nulla natus minima at, a veritatis nostrum dignissimos 
+                ipsa libero, voluptatem itaque!
+            </p>
+        </div>
           <ul id="page-numbers">
             {renderPageNumbers}
           </ul>

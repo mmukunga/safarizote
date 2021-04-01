@@ -21,4 +21,10 @@
     .tableCol { 
         width: 90%; 
     }
+
+    img {
+      display:block;
+      float:none;
+      margin:0 auto 20px !important;
+    }
   }
