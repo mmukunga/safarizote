@@ -32,18 +32,17 @@ nav {
 .Nav_link {
   display: inline-block;
   vertical-align: middle;
-  color: darkblue;
   background: white;
-  margin: 2px;
+  padding: 5px;
+  margin: 5px;
 }
 
 .Nav_link:link {
-  color: #fff;
+  color: blue;
   text-decoration: none;
 }
 
 .Nav_link:visited {
-  background: white;
   color:red;
 }
 
