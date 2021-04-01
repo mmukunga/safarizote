@@ -15,7 +15,6 @@ nav {
 .NavLogo, .NavMenu {
   display: inline-block;
   vertical-align: top;
-  color:blue;
   border: 1px solid #fefeef;
 }
 
@@ -28,7 +27,6 @@ nav {
 .Nav_link {
   display: inline-block;
   vertical-align: middle;
-  text-decoration: none;
   color: darkblue;
   background: white;
   margin: 2px;
@@ -41,7 +39,7 @@ nav {
 
 .Nav_link:visited {
   background: white;
-  color:blue;
+  color:red;
 }
 
 .Nav_link:hover {

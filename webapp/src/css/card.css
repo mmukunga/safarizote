@@ -1,7 +1,6 @@
 .OuterCard { 
   max-width: 650px;
   background-color: white; 
-  color: black; 
   border-radius: 10px; 
   margin: 10px auto; 
   padding: 1px; 
@@ -10,7 +9,6 @@
 
 .InnerCard {
   background-color: rgb(240, 255, 255); 
-  color: black; 
   border-radius: 10px; 
   margin: 10px auto; 
   padding: 1px; 
@@ -19,8 +17,7 @@
 
 @media screen and (max-width: 600px) {
   .OuterCard { 
-    background-color: white; 
-    color: black; 
+    background-color: white;
     border-radius: 10px; 
     margin: 10px auto; 
     padding: 1px; 
@@ -28,8 +25,7 @@
   }
 
   .InnerCard {
-    background-color: rgb(240, 255, 255); 
-    color: black; 
+    background-color: rgb(240, 255, 255);
     border-radius: 10px; 
     margin: 10px auto; 
     padding: 1px; 
