@@ -1,4 +1,5 @@
 import React from 'react';
+import parse from "html-react-parser";
 
 const Tableless = props => {
     console.log('Mukunga1');
@@ -12,8 +13,8 @@ const Tableless = props => {
         return (
         <div style={{ margin: '1em' }}>            
             <div class="tableWrap">
-                <div class="tableCol">{props.title}</div>
-                <div class="tableCol">{props.description}</div>
+                <div class="tableCol">{Number.isInteger(props.title) ? props.title : parse(props.title)}</div>
+                <div class="tableCol">{Number.isInteger(props.description) ? props.description : parse(props.description)}</div>
             </div>
         </div>
         )
