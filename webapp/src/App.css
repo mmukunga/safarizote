@@ -12,8 +12,8 @@
   width: 6vmin;
   height: 6vmin;
   pointer-events: none;
-  background: green;
-  border: 1px solid red;
+  background: white;
+  border: 1px solid green;
   border-radius: 50%;
 }
 
