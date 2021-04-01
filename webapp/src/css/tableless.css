@@ -10,6 +10,10 @@
     background: #e0f8ff;
   }
 
+  .tableHeader {
+    background: green;
+  }
+
   @media only screen and (max-width: 600px) {
     .tableWrap, .tableCol {
          display: block;
