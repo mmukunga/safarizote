@@ -52,14 +52,12 @@ import Card from './Card';
         .then(response => {
             setCities(response.data);
             const cities = response.data;
-            console.log('weather..');
             dispatch({ type: 'SET_CITIES', payload: cities });
         }).catch(err => console.log(err));
 
     }, []);
 
     React.useEffect(() => {
-      alert('init');
       var headers = {
         'Content-Type': 'application/json' 
       };
@@ -73,13 +71,11 @@ import Card from './Card';
       axios.post('/api/weather', country, headers)
         .then(response => {
             setWeather(response.data);
-            console.log('weather..');
         }).catch(err => { console.log(err)});
 
       axios.post('/api/forecast', country, headers)
         .then(response => {
           setList(response.data.list);
-          console.log('forecast..');
           setForecast(response.data);
        }).catch(err => {console.log(err)});
 

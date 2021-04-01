@@ -8,21 +8,26 @@
   clear: both;
 }
 
+/*
 nav {
   border-bottom: 1px solid black;
 }
+*/
 
-.NavLogo, .NavMenu {
+.NavMenu {
   display: inline-block;
   vertical-align: top;
   border: 1px solid #fefeef;
+  width: calc(100% - 10px);
 }
 
+/*
 .NavMenu {
   width: calc(100% - 10px);
   border: 1px solid #fefeef ;
   word-wrap:break-all;
 }
+*/
 
 .Nav_link {
   display: inline-block;
@@ -33,8 +38,8 @@ nav {
 }
 
 .Nav_link:link {
-  text-decoration: underline !important;
-  text-decoration-color: green;
+  color: #fff;
+  text-decoration: none;
 }
 
 .Nav_link:visited {
@@ -50,6 +55,7 @@ nav {
   color: teal;
 }
 
+/*
 .Nav_link a::after {
   display: inline-block;
   color: #000;
@@ -58,3 +64,4 @@ nav {
   font-weight: bold;
   padding: 0 3px;
 }
+*/
