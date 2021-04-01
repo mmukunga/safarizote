@@ -11,7 +11,7 @@
   }
 
   .tableHeader {
-    background: green;
+    background-color: #4CAF50;
   }
 
   @media only screen and (max-width: 600px) {
