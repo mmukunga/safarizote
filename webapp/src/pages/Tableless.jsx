@@ -8,8 +8,8 @@ const Tableless = props => {
         return (
         <div style={{ margin: '1em' }}>            
           <div className="tableWrap">
-            <div className="tableCol">{Number.isInteger(props.title) ? props.title : parse(props.title)}</div>
-            <div className="tableCol">{Number.isInteger(props.description) ? props.description : parse(props.description)}</div>
+            <div className="tableCol" style={{width:'30%'}}>{Number.isInteger(props.title) ? props.title : parse(props.title)}</div>
+            <div className="tableCol" style={{width:'70%'}}>{Number.isInteger(props.description) ? props.description : parse(props.description)}</div>
           </div>
         </div>
         )
@@ -18,8 +18,8 @@ const Tableless = props => {
     <div>
       <div style={{ margin: '1em' }}>            
         <div className="tableWrap">
-          <div className="tableCol tableHeader">Title</div>
-          <div className="tableCol tableHeader">Description</div>
+          <div className="tableCol tableHeader" style={{width:'30%'}}>Title</div>
+          <div className="tableCol tableHeader" style={{width:'70%'}}>Description</div>
         </div>
       </div>
       {props && props.data.map(card => (
