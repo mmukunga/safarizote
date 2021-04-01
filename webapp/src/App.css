@@ -60,6 +60,7 @@ p {
 @import url("./css/inline.css");
 @import url("./css/email.css");
 @import url("./css/table.css");
+@import url("./css/tableless.css");
 @import url("./css/weather.css");
 @import url("./css/stock.css");
 @import url("./css/spinner.css");

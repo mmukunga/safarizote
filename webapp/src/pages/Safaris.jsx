@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Table from './Table';
 import Card from './Card';
+import Tableless from './Tableless';
 
 const Safaris = () => {
     const [safaris, setSafaris] = useState([]);
     const [checked, setChecked] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-
+    
+    const [cards, setCards] = useState([]);
     const [pageSize, setPageSize] = useState(2);
     const handleChecked = (e) => {
       setChecked(!checked);
@@ -64,6 +66,10 @@ const Safaris = () => {
           </ul>
           {currentItems && currentItems.length > 0 
           ? <Table data={currentItems}/> 
+          : <p>No Data Found!!</p>}
+
+          {currentItems && currentItems.length > 0 
+          ? <Tableless data={currentItems}/> 
           : <p>No Data Found!!</p>}
       </Card>
     );

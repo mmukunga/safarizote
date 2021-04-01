@@ -8,26 +8,12 @@
   clear: both;
 }
 
-/*
-nav {
-  border-bottom: 1px solid black;
-}
-*/
-
 .NavMenu {
   display: inline-block;
   vertical-align: top;
   border: 1px solid #fefeef;
   width: calc(100% - 10px);
 }
-
-/*
-.NavMenu {
-  width: calc(100% - 10px);
-  border: 1px solid #fefeef ;
-  word-wrap:break-all;
-}
-*/
 
 .Nav_link {
   display: inline-block;
@@ -38,7 +24,7 @@ nav {
 }
 
 .Logo {
-  background-image: transparent;
+  background-color: transparent;
 }
 
 .Nav_link:link {
@@ -57,14 +43,3 @@ nav {
 .Nav_link:active {
   color: teal;
 }
-
-/*
-.Nav_link a::after {
-  display: inline-block;
-  color: #000;
-  content: '>';
-  font-size: 80%;
-  font-weight: bold;
-  padding: 0 3px;
-}
-*/
