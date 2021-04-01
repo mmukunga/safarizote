@@ -37,6 +37,10 @@ nav {
   margin: 2px;
 }
 
+.Logo {
+  background-image: transparent;
+}
+
 .Nav_link:link {
   color: blue;
   text-decoration: none;
