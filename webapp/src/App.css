@@ -9,7 +9,8 @@
 }
 
 .App-logo {
-  height: 8vmin;
+  width: 6vmin;
+  height: 6vmin;
   pointer-events: none;
   background: green;
   border: 1px solid red;
