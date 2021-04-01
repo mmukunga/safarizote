@@ -3,6 +3,7 @@ import React from 'react';
 const Tableless = props => {
     const { cards } = props;
     const Card = props => {
+        console.log('Mukunga');
         return (
         <div style={{ margin: '1em' }}>            
             <div class="tableWrap">
