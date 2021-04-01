@@ -9,7 +9,6 @@ const Safaris = () => {
     const [checked, setChecked] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     
-    const [cards, setCards] = useState([]);
     const [pageSize, setPageSize] = useState(2);
     const handleChecked = (e) => {
       setChecked(!checked);
