@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, NavLink } from "react-router-dom";
+import { Route, Switch, NavLink, Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
 import logo from './logo.svg';
