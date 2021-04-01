@@ -4,14 +4,14 @@
 }
 
 .App-title{
-  font-size: 1.5em;
-  color: darkred;
+  font-size: 1.0em;
+  color:aliceblue;
 }
 
 .App-logo {
   height: 8vmin;
   pointer-events: none;
-  background: white;
+  background: green;
   border: 1px solid red;
 }
 
