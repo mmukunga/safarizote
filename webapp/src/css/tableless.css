@@ -5,7 +5,6 @@
 
   .tableCol {
     display: table-cell;
-    width: 33.3%;
     padding: 10px;
     background: #e0f8ff;
   }
