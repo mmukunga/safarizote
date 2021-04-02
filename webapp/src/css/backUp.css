@@ -8,3 +8,10 @@
 .BackUps > div ul {
   list-style: none;
 }
+
+@media only screen and (max-width: 600px) {
+  .BackUps {
+    margin: 2px;
+    text-align: left;
+  }
+}
