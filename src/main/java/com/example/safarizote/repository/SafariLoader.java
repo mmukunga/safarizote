@@ -29,51 +29,51 @@ public class SafariLoader implements CommandLineRunner {
             return;
         }
         repository.save(Safari.builder()
-            .title("3 Days Masai Mara")
+            .title("3 Days 2 Nights Maasai Mara – Masai mara safari package")
             .price(450.00)
-            .description("<div class='SafariDetails'><img src='images/cheeter.jpg' class='SafariSnap' alt='Longtail boat in Thailand' align='top'/> The 3-days Masai Mara safari tour in Kenya is the shortest and cheapest solution offering the best way to experience the view of African safaris big 5. Thousands of visitors come to the <p>Mara every year to enjoy some of the most authentic safari experiences in Africa.</p> <p>The Mara is renowned for delivering exceptional big cat (lion, leopard and cheetah) sightings.</p> Cheetahs are particularly well adapted to the region’s flat plains, which makes the Masai Mara one of the best places to see these nimble predators.</p><p>They often seek vantage points on fallen trees, termite mounds, and even game drive vehicles! It’s a highlight of any Masai Mara safari to watch the world’s fastest land mammal chase down its prey.</p></div>")
+            .description("<div class='SafariDetails'><img src='images/cheeter.jpg' class='SafariSnap' alt='3 Days 2 Nights Maasai Mara – Masai mara safari package' align='top'/> The Masai Mara reserve will tickle your thrill spot with Kenya’s richest concentration of wildlife. The lush golden grassland plains are filled with plentiful zebras, lions and wild beasts, with a real-life alacrity of on-camera safari expeditions.This acacia land brings you goosebumps with the cheerful sight of the five giants, the elephants, rhinos, lions, leopards and the wild buffaloes. Feel the intriguing sense of nomadic life with captivating day-time activities and splendid overnight stays at camps or lodges on this trip to Masai Mara. <p>Below are the details for the 3 Day Masaai Mara Safari:</p><p><strong>DAY 1: NAIROBI – MASAI MARA</strong></p> <p>Pick up from Airport of Place of Residence in Nairobi at 7:00am, Your safari takes you to the Maasai Mara Reserve and into the domain of the Maasai, Kenya’s cattle-herding nomads determined to preserve their traditions. Arrival in Masai Mara in time for lunch, after lunch embark on an evening Game drive until Late evening when you settle for dinner and overnight. accommodation overnight at either Mara Sopa Lodge, Mara Serena Safari Lodge, Ashnil Mara Tented Camp or Mara Sarova Game Camp</p><p><strong>DAY 2: MASAI MARA</strong></p> <p>Spend the day in Masai Mara, Kenya’s most popular game reserve where you will have the best opportunity of spotting the Big Five – lion, leopard, buffalo, rhino and elephant, Game drives are flexible, with the option of going out with picnic lunch boxes to spend entire day in the park, or you can choose to have early morning and late afternoon game drives. You will also have the option of visiting a local Masai village (at a cost of US$20 per person).</p> <p>All meals and overnight at either Mara Sopa Lodge, Mara Serena Safari Lodge, Ashnil Mara Tented Camp or Mara Sarova Game Camp</p> <p><strong>DAY 3: Masai Mara National Reserve – Nairobi</strong></p> <p>Early Morning breakfast at your camp check out of the camp and park and drive to Nairobi arriving in time for lunch. Lunch at carnivore afterwards drop off at your respective hotel or airport at 3:30 PM.</p> </div>")
             .dateCreated(Instant.now())
             .build());
 
         repository.save(Safari.builder()
-            .title("1 Day Nairobi City Tour")
+            .title("1 Day Nairobi National Park,Elephant Center-Giraffes & Karen Blixen Full day tour")
             .price(150.00)
-            .description("<p class='SafariDetails'><img src='images/gnus.jpg' class='SafariSnap' alt='Longtail boat in Thailand' align='top'/> On your Nairobi City Tours and Attractions, you will visit places like Nairobi National Park, Karen Blixen Museum, Giraffe Centre, Animal Orphanage. A Nairobi excursion where you spend a wonderful half day at the historical Karen Blixen museum ( Out of Africa) and with giraffes and baby elephants! Visiting the Giraffe Manor and the Daphne Sheldrick Elephant Orphanage-The David Sheldrick Wildlife Trust: A Haven for Elephants and Rhinos- Nairobi 1 Day Sightseeing Trips: Go On A half Day Nairobi Road viewing the city <br/>  Karen Blixen Museum - \"I had a farm in Africa, at the foot of the Ngong Hills' ...... for those lovers of \"Out of Africa\" the museum will take you back in time to breathe the spirit of the writer and the lives she immortalized.  The Giraffe Centre - This education centre gives you an opportunity to get up close and personal with Rothchild giraffes.  Daphne Sheldrick Elephant Orphanage - Get up close and personal with orphaned elephant (and often rhino). This is where Daphne Sheldrick has perfected the raising and re-integrating of orphaned elephants into the wild. Open to the public from 11.00am - 12.00pm daily.         This is the best excursion ever in Nairobi -A good and educational study african tour or Great for Family and fun out day in nairobi before safari and after safari in kenya!!! <br/> Program Morning Late morning Option <br/> Pick up at hotel or airport at 10.00am <br/> Sheldrick Orphanage11am-12pm-Giraffe center <br/> 12-1.30pmKaren Blixen Museum1.30-3pm <br/> rate Includes-Transport/all entrance fees Optional Lunch at Carnivore restaurant for 30USD</p>")
+            .description("<div class='SafariDetails'><img src='images/gnus.jpg' class='SafariSnap' alt='1 Day Nairobi National Park,Elephant Center-Giraffes & Karen Blixen Full day tour' align='top'/> This full day tour is an excellent way to begin or end your East Africa safari. Search out wildlife at Nairobi National Park, on the outskirts of Nairobi. Enjoy lunch at a local restaurant and visit the Karen Blixen Museum. Stop by the Giraffe Center for a close up look at the endangered Rothschild giraffe1 full day Nairobi National Park tour, Baby elephant Giraffes & Karen Blixen Museum Tour in Nairobi. <p><strong>Important Details</strong></p> Included <ul><li>Safari van with open roof</li><li>pickup and Drop off-Nairobi Hotel/Apartment/Airport</li><li>Driver Guide</li></ul> Not Included <ul><li></li></ul> Additional Info <ul><li>Public transportation options are available nearby</li><li>Suitable for all physical fitness levels</li></ul> Meeting Point <p> We will pick up and drop off At any Nairobi Hotel/Apartment/Airport</p></div>")
             .dateCreated(Instant.now())
             .build());
 
         repository.save(Safari.builder()
             .title("3 Days Amboseli and Tsavo")
             .price(500.00)
-            .description("<p class='SafariDetails'><img src='images/leopard.jpg' class='SafariSnap' alt='Longtail boat in Thailand' align='top'/> Amboseli safari tours, for the wild at heart. Amboseli National Park is one of the world's most amazing national parks.</p>")
+            .description("<div class='SafariDetails'><img src='images/leopard.jpg' class='SafariSnap' alt='Longtail boat in Thailand' align='top'/> Amboseli safari tours, for the wild at heart. Amboseli National Park is one of the world's most amazing national parks.</div>")
             .dateCreated(Instant.now())
             .build());
         
         repository.save(Safari.builder()
             .title("1 Day Lake Nakuru National Park Trip")
             .price(175.00)
-            .description("<p class='SafariDetails'><img src='images/savannah.jpg' class='SafariSnap' alt='Longtail boat in Thailand' align='top'/> Highlight: Enjoy a full-day tour of Lake Nakuru National Park, home to one of the most remarkable wild bird populations in all of Africa. Get up close with the wildlife on a game viewing drive, and be on the lookout for the park's amazing flamingos.</p>")
+            .description("<div class='SafariDetails'><img src='images/savannah.jpg' class='SafariSnap' alt='Longtail boat in Thailand' align='top'/> Highlight: Enjoy a full-day tour of Lake Nakuru National Park, home to one of the most remarkable wild bird populations in all of Africa. Get up close with the wildlife on a game viewing drive, and be on the lookout for the park's amazing flamingos.</div>")
             .dateCreated(Instant.now())
             .build());
 
         repository.save(Safari.builder()
             .title("6 days Kilimanjaro Climb - Rongai Route")
             .price(1450.00)
-            .description("<p class='SafariDetails'><img src='images/tourists.jpg' class='SafariSnap' alt='Longtail boat in Thailand' align='top'/> Rongai Route Kilimanjaro Climb, this is the third popular route on Kilimanjaro and involves much shorter approach to Kibo than the Marangu Route. Climb Kilimanjaro from Kenya via the Rongai Route (6 days)</p>")
+            .description("<div class='SafariDetails'><img src='images/tourists.jpg' class='SafariSnap' alt='Longtail boat in Thailand' align='top'/> Rongai Route Kilimanjaro Climb, this is the third popular route on Kilimanjaro and involves much shorter approach to Kibo than the Marangu Route. Climb Kilimanjaro from Kenya via the Rongai Route (6 days)</div>")
             .dateCreated(Instant.now())
             .build());
 
         repository.save(Safari.builder()
             .title("5 Days Mount Kenya Trekking Sirimon – Chogoria")
             .price(945.00)
-            .description("<p class='SafariDetails'><img src='images/jeep.jpg' class='SafariSnap' alt='Longtail boat in Thailand' align='top'/> This 5 Days Mount Kenya Trekking Sirimon-Chogoria Route peak circuiting program offers some of the finest mountain trekking experience in East Africa!</p>")
+            .description("<div class='SafariDetails'><img src='images/jeep.jpg' class='SafariSnap' alt='Longtail boat in Thailand' align='top'/> This 5 Days Mount Kenya Trekking Sirimon-Chogoria Route peak circuiting program offers some of the finest mountain trekking experience in East Africa!</div>")
             .dateCreated(Instant.now())
             .build());
         
         repository.save(Safari.builder()
             .title("7 Days Kenya Beach Holiday and Amboseli")
             .price(1550.00)
-            .description("<p class='SafariDetails'><img src='images/cheeters.jpg' class='SafariSnap' alt='Longtail boat in Thailand' align='top'/> Kenya has so much to offer the visitor - from the vast plains of the iconic Masai Mara and Amboseli teeming with wildlife to the white sand beaches of the Indian Ocean.</p>")
+            .description("<div class='SafariDetails'><img src='images/cheeters.jpg' class='SafariSnap' alt='Longtail boat in Thailand' align='top'/> Kenya has so much to offer the visitor - from the vast plains of the iconic Masai Mara and Amboseli teeming with wildlife to the white sand beaches of the Indian Ocean.</div>")
             .dateCreated(Instant.now())
             .build());
         
