@@ -22,7 +22,7 @@ function App() {
   const selectStyle = {
       width: '60px', 
       padding: '2px', 
-      background: '#4CAF50'
+      background: '#f8f9fa'
   };
 
   const displayHome = {

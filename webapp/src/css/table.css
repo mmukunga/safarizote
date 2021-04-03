@@ -77,7 +77,6 @@ td {
 
 }
 
-
 .Shoppings { 
   border: 1px solid black;
   text-align: left;
@@ -85,21 +84,34 @@ td {
 }
 
 
-@media only screen and (max-width: 600px) {
-  .SafariSnap {
-    width: 150px;
-  }
+  @media only screen and (max-width: 600px) {
+    .SafariSnap {
+      width: 150px;
+    }
 
-  .Table td {
-    text-align: left;
-    vertical-align: top; 
-  }
-  
-  td { 
-    vertical-align: top; 
-  }
+    .Table td {
+      text-align: left;
+      vertical-align: top; 
+    }
+    
+    td { 
+      vertical-align: top; 
+    }
 
-  .InnerCard table, thead, tbody, th, td, tr { 
-		display: block; 
-	}
+    .InnerCard table, thead, tbody, th, td, tr { 
+      display: block; 
+    }
+
+    .InnerCard thead { 
+      opacity: 0; 
+      border: 0 none; 
+      height: 0; 
+    }
+
+    .InnerCard thead * { 
+      margin: 0; 
+      padding: 0; 
+      border: 0 none; 
+      height: 0px; 
+    }
 }
