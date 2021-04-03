@@ -98,4 +98,8 @@ td {
   td { 
     vertical-align: top; 
   }
+
+  .InnerCard table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
 }
