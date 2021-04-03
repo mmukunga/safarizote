@@ -6,7 +6,6 @@ const Card = (props) => {
     color: fontColor
   };
 
-  console.log(className);
   return (
     <div className={className}>
       <div style={labelStyles}>
