@@ -49,7 +49,6 @@ ul.StockList li::before {
     padding: 0;
 }
 
-
 @media only screen and (max-width: 600px) {
     .QuoteContainer {
       display: block;
