@@ -82,8 +82,12 @@ td {
     width: 150px;
   }
 
-  table, thead, tbody, th, td, tr { 
-		display: block; 
-	}
-
+  .Table td {
+    text-align: left;
+    vertical-align: top; 
+  }
+  
+  td { 
+    vertical-align: top; 
+  }
 }
