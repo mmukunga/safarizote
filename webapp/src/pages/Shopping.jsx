@@ -86,7 +86,7 @@ const Shopping = () => {
             <button type="submit">Send</button> 
           </div>
         </form> 
-        <table style={{ border: '1px solid black', textAlign:'left', borderCollapse: 'collapse'}}>
+        <table className="Table">
             <tr>
               <th>Product</th> 
               <th>Price</th>  

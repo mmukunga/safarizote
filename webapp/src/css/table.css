@@ -77,6 +77,14 @@ td {
 
 }
 
+
+.Shoppings { 
+  border: 1px solid black;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+
 @media only screen and (max-width: 600px) {
   .SafariSnap {
     width: 150px;
