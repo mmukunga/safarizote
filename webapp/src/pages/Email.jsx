@@ -21,13 +21,15 @@ const reducer = function (state, action) {
     }
 }
 
-const Email = () => {
+const Email = (props) => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
     const [replyMsg, setReplyMsg] = React.useState('Reply Message');
     const handleChange = (event) => {
         dispatch({type: 'SET_EMAIL', payload: event.target});
     }
 
+    console.log('props.location.state:= ' + props.location.state);
+    
     const clearState = () => {
        dispatch({type: 'RESET_ALL', payload: initialState});
     };

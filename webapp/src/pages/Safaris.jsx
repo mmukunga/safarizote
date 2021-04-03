@@ -59,7 +59,12 @@ const Safaris = () => {
     
     return (
       <Card className="InnerCard" fontColor="black">
-          <h3>Our Safaris</h3>
+          <p>Our Safaris  <Link to={{ 
+            pathname: "/email", 
+            state: 'bookingId' 
+            }}>
+            Please send us Booking Request from here
+            </Link></p>
           <ul id="page-numbers">
             {renderPageNumbers}
           </ul>
