@@ -81,4 +81,9 @@ td {
   .SafariSnap {
     width: 150px;
   }
+
+  table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+
 }
