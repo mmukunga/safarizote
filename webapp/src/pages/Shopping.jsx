@@ -96,6 +96,10 @@ const Shopping = () => {
               <th>DateCreated</th> 
             </tr>
             {data.map(item => {
+              var dateCreated = item.dateCreated;
+              console.log(dateCreated);
+              dateCreated = dateCreated.split(' ')[0];
+              console.log(dateCreated);
               return (
               <tr key={item.id}>
                <td>{item.product}</td> 
@@ -103,7 +107,7 @@ const Shopping = () => {
                <td>{item.store}</td> 
                <td>{item.quantity}</td> 
                <td>{item.name}</td>  
-               <td>{item.dateCreated}</td> 
+               <td>{dateCreated}</td> 
               </tr>)}
               )}
         </table>
