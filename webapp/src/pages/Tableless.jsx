@@ -5,12 +5,11 @@ const Tableless = props => {
     console.log(props);
     const Card = (props) => {
         console.log(props);
-        const my_name = 'Mukunga';
         return (
         <div style={{ margin: '1em' }}>            
           <div className="tableWrap">
             <div className="tableCol">{Number.isInteger(props.title) ? props.title : parse(props.title)}</div>
-            <div className="tableCol">{Number.isInteger(props.description) ? props.description : parse(props.description)}</div>
+            <div className="tableCol">{Number.isInteger(props.description) ? props.description : parse(props.description)}  <Link to={{ pathname: '/email', state: `${props.id}` }}>Please Enquire Here</Link></div>
           </div>
         </div>
         )
