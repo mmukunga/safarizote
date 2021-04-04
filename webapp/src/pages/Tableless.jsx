@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import parse from "html-react-parser";
 
 const Tableless = props => {
@@ -9,7 +10,7 @@ const Tableless = props => {
         <div style={{ margin: '1em' }}>            
           <div className="tableWrap">
             <div className="tableCol">{Number.isInteger(props.title) ? props.title : parse(props.title)}</div>
-            <div className="tableCol">{Number.isInteger(props.description) ? props.description : parse(props.description)}  <Link to={{ pathname: '/email', state: `${props.id}` }}>Please Enquire Here</Link></div>
+            <div className="tableCol">{Number.isInteger(props.description) ? props.description : parse(props.description)} <Link to={{ pathname: '/email', state: `${props.id}` }}>Please Enquire Here</Link></div>
           </div>
         </div>
         )
