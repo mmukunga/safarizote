@@ -5,6 +5,7 @@ const Tableless = props => {
     console.log(props);
     const Card = (props) => {
         console.log(props);
+        const my_name = 'Mukunga';
         return (
         <div style={{ margin: '1em' }}>            
           <div className="tableWrap">
