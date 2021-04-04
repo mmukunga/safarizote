@@ -10,54 +10,102 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.transaction.annotation.Transactional;
-import com.example.safarizote.model.Category;
-import com.example.safarizote.repository.CategoryRepository;
+
+import com.example.safarizote.model.BackUp;
+import com.example.safarizote.repository.BackUpRepository;
+
+import com.example.safarizote.utils.CopyDir;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.*;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @RestController
 public class BackUpController { 
+  final Logger logger = LoggerFactory.getLogger(BackUpController.class);
+
   @Autowired
-  private CategoryRepository repository;
+  private BackUpRepository repository;
     
     @Transactional
     @RequestMapping(value = "/api/categories",  method={RequestMethod.GET})
-    public ResponseEntity<List<Category>> findAll() {
-        System.out.println("Category.findAll(), the time at the server is now " + new Date());
-        List<Category> categories = repository.findAll();
-        System.out.println("Category.findAll() SIZE:= " + categories.size());
+    public ResponseEntity<List<BackUp>> findAll() {
+        System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
+        List<BackUp> categories = repository.findAll();
+        System.out.println("BackUp.findAll() SIZE:= " + categories.size());
         StringBuffer indentation = new StringBuffer();
         indentation.append(" ");
-        for (Category category : categories) {
+        for (BackUp category : categories) {
             System.out.println(indentation.toString() + category.getName() + " " + category.getDateCreated());
             if (category.getChildren().size() > 0){
                displayList(category, indentation);
             }
         }
-        System.out.println("Category.findAll(), the time at the server is now " + new Date());
-        System.out.println("Category.findAll()  End OK!");
+        System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
+        System.out.println("BackUp.findAll()  End OK!");
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
-
-    @RequestMapping(value="/api/backUp", method=RequestMethod.POST)
-	public ResponseEntity<Category> backUp() {
+    @RequestMapping(value="/api/backUp", method = RequestMethod.POST)
+    public ResponseEntity<BackUp> getCurrentStock(@RequestBody BackUp category) throws Exception {    
         System.out.println("BackUp, the time at the server is now " + new Date());
         
-        Category rootFolder = Category.builder().name("Parent").parent(null).dateCreated(Instant.now()).build();
-        Category category = Category.builder().name("DummyFolder").parent(rootFolder).dateCreated(Instant.now()).build();
+        //BackUp rootFolder = BackUp.builder().name("Parent").parent(null).dateCreated(Instant.now()).build();
+        //BackUp category = BackUp.builder().name("DummyFolder").parent(rootFolder).dateCreated(Instant.now()).build();
 
         System.out.println("BackUpLoader..category..." + category);
         
-        System.out.println("Category.findAll()  End OK!");
+        System.out.println("BackUp.findAll()  End OK!");
         return new ResponseEntity<>(category, HttpStatus.OK);
 	}
+    
 
+    @RequestMapping(value = "/api/doBackUp", method = RequestMethod.POST)
+    public ResponseEntity<Void> doBackUp(@RequestBody BackUp folder) throws Exception {
+        logger.warn("Folder:= " + folder);
+        List<BackUp> items = repository.findAll(); 
 
-    public void displayList(Category category, StringBuffer indentation){
+        System.out.println("BackUp, the time at the server is now " + new Date());
+
+        System.out.println("BackUpLoader..folder..." + folder);
+        System.out.println("BackUp.findAll()  End OK!");
+
+        for(BackUp backUp : items){
+            if (backUp.getId()==folder.getId()){
+                String osName = System.getProperty("os.name");
+                logger.warn("Os.Name:= " + osName);
+                Path sourceDir;
+                Path targetDir;
+
+                if (!osName.contains("Linux")) {
+                    sourceDir = Paths.get("C:/".concat(backUp.getName()));
+                    targetDir = Paths.get(folder.getName().concat("/").concat(backUp.getName()));
+                } else {
+                    sourceDir = Paths.get("/home/x00sms/source/".concat(backUp.getName()));
+                    targetDir = Paths.get("/home/x00sms/target/".concat(backUp.getName()));
+                }
+
+                logger.trace("SourceDir:= " + sourceDir);
+                logger.trace("TargetDir:= " + targetDir);
+
+                Files.walkFileTree(sourceDir, new CopyDir(sourceDir, targetDir));
+                logger.warn("BackUp Completed OK!");
+            }
+        }
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    public void displayList(BackUp category, StringBuffer indentation){
         indentation.append(" ");
-        for (Category temp : category.getChildren()) {
+        for (BackUp temp : category.getChildren()) {
             System.out.println(indentation.toString() + temp.getName() + " " + temp.getDateCreated());
             if (temp.getChildren().size() > 0){
                 displayList(temp, indentation);

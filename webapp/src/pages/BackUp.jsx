@@ -76,7 +76,7 @@ import axios from 'axios';
         }
       });
 
-      axios.post("/api/backUp", {
+      axios.post("/api/doBackUp", {
           name: 'Arkiv',
           dateCreated: new Date(),
           parent: null

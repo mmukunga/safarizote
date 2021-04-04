@@ -88,12 +88,12 @@ function App() {
                 <span className="Nav_link Logo">
                   <img src={logo} className="App-logo" alt="logo"></img>
                 </span>
-                <NavLink to="/" className="Nav_link">Safaris</NavLink>
-                <NavLink to="/aboutUs" className="Nav_link">About&nbsp;Us</NavLink>
-                <NavLink to="/home" className="Nav_link">Home</NavLink>
-                <NavLink to="/signIn" className="Nav_link">Login</NavLink>
+                <NavLink to="/" className="Nav_link">Home</NavLink>
                 <NavLink to="/email" className="Nav_link">Email</NavLink>
                 <NavLink to="/weather" className="Nav_link">Weather</NavLink>
+                <NavLink to="/home" className="Nav_link">Metrics</NavLink>
+                <NavLink to="/aboutUs" className="Nav_link">About&nbsp;Us</NavLink>
+                <NavLink to="/signIn" className="Nav_link">Login</NavLink>
                 <Menu/>
                 <button onClick={handleLogout} className="LogOut">Logout</button>
               </div>
