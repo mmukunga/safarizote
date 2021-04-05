@@ -39,7 +39,8 @@ ul.StockList li::before {
 .QuoteContainer {
     border: 1px solid #f8ecd5;
     margin: 1px;
-    width: 75px;
+    width: 80px;
+    text-align: left;
     display: inline-block;
 }
 
