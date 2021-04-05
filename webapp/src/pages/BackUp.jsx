@@ -75,6 +75,8 @@ import axios from 'axios';
           selectedItems = [...selectedItems, f]; 
         }
       });
+      
+      console.log('FruitesTemp:= ' + fruitesTemp);
 
       axios.post("/api/doBackUp", {
           name: 'Arkiv',
