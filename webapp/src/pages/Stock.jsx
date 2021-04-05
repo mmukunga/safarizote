@@ -80,7 +80,7 @@ const Stock = () => {
         setHigh(response.data.chart.result[0].indicators.quote[0].high);
         setLow(response.data.chart.result[0].indicators.quote[0].low);
         setOpen(response.data.chart.result[0].indicators.quote[0].open);
-        setVolume(((response.data.chart.result[0].indicators.quote[0].volume)/1000000).toFixed(2) + "M");
+        setVolume(response.data.chart.result[0].indicators.quote[0].volume);
       }).catch(function (error) {
         console.log(error);
       }) 
