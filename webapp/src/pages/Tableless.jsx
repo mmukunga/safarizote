@@ -10,7 +10,7 @@ const Tableless = props => {
         <div style={{ margin: '1em' }}>            
           <div className="tableWrap">
             <div className="tableCol">{Number.isInteger(props.title) ? props.title : parse(props.title)}</div>
-            <div className="tableCol">{Number.isInteger(props.description) ? props.description : parse(props.description)} <br/> <Link to={{ pathname: '/email', state: `${props.title}` }} style={{background:'#f8f9fa', textDecoration:'none'}}>Please Click here to enquire</Link></div>
+            <div className="tableCol">{Number.isInteger(props.description) ? props.description : parse(props.description)} <br/> <Link to={{ pathname: '/email', state: `${props.title}` }} style={{background:'#f8f9fa', textDecoration:'none', fontWeight: 'bold', color: 'brown'}}>Please Click here to enquire</Link></div>
           </div>
         </div>
         )
