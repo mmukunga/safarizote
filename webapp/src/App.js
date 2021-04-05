@@ -7,7 +7,7 @@ import './App.css';
 
 import Card from './pages/Card';
 import Safaris from './pages/Safaris';
-import Home from './pages/Home';
+import Metrics from './pages/Metrics';
 import AboutUs from './pages/AboutUs';
 import Shopping from './pages/Shopping';
 import Lotto from './pages/Lotto';
@@ -91,7 +91,7 @@ function App() {
                 <NavLink to="/" className="Nav_link">Home</NavLink>
                 <NavLink to="/email" className="Nav_link">Email</NavLink>
                 <NavLink to="/weather" className="Nav_link">Weather</NavLink>
-                <NavLink to="/home" className="Nav_link">Metrics</NavLink>
+                <NavLink to="/metrics" className="Nav_link">Metrics</NavLink>
                 <NavLink to="/aboutUs" className="Nav_link">About&nbsp;Us</NavLink>
                 <NavLink to="/signIn" className="Nav_link">Login</NavLink>
                 <Menu/>
@@ -136,7 +136,7 @@ function App() {
               <Route exact path="/" component={Safaris} />
               <Route path="/aboutUs" component={AboutUs} />
               <Private path="/shopping" component={Shopping} exact/>
-              <Route path="/home" component={Home} />
+              <Route path="/metrics" component={Metrics} />
               <Private path="/tipping" component={Lotto} exact/>
               <Route path="/signIn" component={SignIn} />
               <Route path="/email" component={Email} />

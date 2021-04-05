@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Card from './Card';
 
-const Home = () => {
+const Metrics = () => {
    const [data, setData] = useState([]);
    const [counts, setCounts] = useState([]);
    const [clientInfo, setClientInfo] = useState({});
@@ -51,9 +51,9 @@ const Home = () => {
             </ul>
             <table className="Table">  
               <tr>
-                <th></th>
-                <th>Url</th>
-                <th>Hits</th>
+                <th>ID</th>
+                <th>URL</th>
+                <th>HITS</th>
               </tr>        
                {counts.map((item,idx) => 
                  <tr key={idx}>
@@ -68,4 +68,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Metrics
