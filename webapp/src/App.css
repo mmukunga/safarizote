@@ -12,8 +12,8 @@
   width: 6vmin;
   height: 6vmin;
   pointer-events: none;
-  background: white;
-  border: 1px solid green;
+  background: silver;
+  border: 1px dotted brown;
   border-radius: 50%;
 }
 
@@ -66,7 +66,6 @@ p {
 @import url("./css/spinner.css");
 @import url("./css/navbar.css");
 @import url("./css/backUp.css");
-
 
 @media screen and (max-width: 600px) {
   .App {

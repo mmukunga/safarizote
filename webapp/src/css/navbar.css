@@ -18,7 +18,8 @@
 .Nav_link {
   display: inline-block;
   vertical-align: middle;
-  border-right: 4px solid white;
+  border: 2px dotted white;
+  border-radius: 15%;
   padding: 2px;
   margin: 2px;
 }
@@ -33,7 +34,7 @@
 }
 
 .Nav_link:visited {
-  color: coral;
+  color: teal;
 }
 
 .Nav_link:hover {
@@ -41,5 +42,5 @@
 }
 
 .Nav_link:active {
-  color: teal;
+  color:  coral;
 }
