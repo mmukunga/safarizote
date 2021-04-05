@@ -98,7 +98,7 @@ const Shopping = () => {
             {data.map(item => {
               var dateCreated = item.dateCreated;
               console.log(dateCreated);
-              dateCreated = dateCreated.split('.')[0];
+              dateCreated = dateCreated.split('T')[0];
               console.log(dateCreated);
               return (
               <tr key={item.id}>
