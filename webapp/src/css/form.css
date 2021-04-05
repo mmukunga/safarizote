@@ -21,7 +21,6 @@ select,textarea {
   padding: 12px; 
   resize: vertical;
   box-sizing: border-box;  
-  
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
@@ -45,7 +44,7 @@ input[type=submit] {
   background-color: rgb(37, 116, 161);    
   color: white;    
   border: none;  
-  
+  width: 98%;
   padding: 12px 20px;
   border-radius: 4px;
   cursor: pointer;
