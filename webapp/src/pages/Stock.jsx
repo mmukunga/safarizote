@@ -108,7 +108,7 @@ const Stock = () => {
             {list.map((item, idx) => (
               <li key={idx}>{ name === 'Timestamp' 
                   ? (new Date(item*1000)).toLocaleDateString() 
-                  : (item===null ? <span>&nbsp;</span> : (name === 'Volume' ? (item/1000000).toFixed(2) + 'M' : item.toFixed(2)))}</li>
+                  : (item===null ? <span>&nbsp;</span> : (name === 'Volume' ? (item/1000).toFixed(2) + 'K' : item.toFixed(2)))}</li>
             ))}
           </ul>
         </div>
