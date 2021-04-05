@@ -53,32 +53,26 @@ public class BackUpController {
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
-    @RequestMapping(value="/api/backUp", method = RequestMethod.POST)
-    public ResponseEntity<BackUp> getCurrentStock(@RequestBody BackUp category) throws Exception {    
-        System.out.println("BackUp, the time at the server is now " + new Date());
-        
-        //BackUp rootFolder = BackUp.builder().name("Parent").parent(null).dateCreated(Instant.now()).build();
-        //BackUp category = BackUp.builder().name("DummyFolder").parent(rootFolder).dateCreated(Instant.now()).build();
-
-        System.out.println("BackUpLoader..category..." + category);
-        
-        System.out.println("BackUp.findAll()  End OK!");
-        return new ResponseEntity<>(category, HttpStatus.OK);
-	}
-    
-
     @RequestMapping(value = "/api/doBackUp", method = RequestMethod.POST)
-    public ResponseEntity<Void> doBackUp(@RequestBody BackUp folder) throws Exception {
-        logger.warn("Folder:= " + folder);
+    public ResponseEntity<Void> doBackUp(@RequestBody List <BackUp> folders) throws Exception {
+        logger.warn("Folders:= " + folders);
         List<BackUp> items = repository.findAll(); 
 
         System.out.println("BackUp, the time at the server is now " + new Date());
-
-        System.out.println("BackUpLoader..folder..." + folder);
+        System.out.println("BackUpLoader..folder..." + folders);
         System.out.println("BackUp.findAll()  End OK!");
+        System.out.println("==============> 1. Simple For loop Example.");
+
+        BackUp targetFolder = null;
+        for (int i = 0; i < folders.size(); i++) {
+            System.out.println(folders.get(i));
+            targetFolder = folders.get(i);
+        }
+
+        BackUp source = repository.findByName(targetFolder.getParent().getName());
 
         for(BackUp backUp : items){
-            if (backUp.getId()==folder.getId()){
+            if (backUp.getId()==targetFolder.getId()){
                 String osName = System.getProperty("os.name");
                 logger.warn("Os.Name:= " + osName);
                 Path sourceDir;
@@ -86,7 +80,7 @@ public class BackUpController {
 
                 if (!osName.contains("Linux")) {
                     sourceDir = Paths.get("C:/".concat(backUp.getName()));
-                    targetDir = Paths.get(folder.getName().concat("/").concat(backUp.getName()));
+                    targetDir = Paths.get(source.getName().concat("/").concat(backUp.getName()));
                 } else {
                     sourceDir = Paths.get("/home/x00sms/source/".concat(backUp.getName()));
                     targetDir = Paths.get("/home/x00sms/target/".concat(backUp.getName()));
@@ -112,5 +106,4 @@ public class BackUpController {
             }
         }
     }
-
 }

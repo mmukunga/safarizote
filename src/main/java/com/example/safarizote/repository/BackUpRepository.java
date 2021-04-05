@@ -9,4 +9,5 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface BackUpRepository extends JpaRepository<BackUp,Integer> {
     BackUp findByName(String name);
+    BackUp findByParentId(String parentId);
 }

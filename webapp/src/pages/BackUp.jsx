@@ -81,13 +81,10 @@ import axios from 'axios';
       console.log('2.SelectedItems...');
 
       axios.post("/api/doBackUp", {
-          name: 'Arkiv',
-          dateCreated: new Date(),
-          parent: null
-        })
-        .then((response) => { 
-          console.log(response);
-        });
+        selectedItems
+      }).then((response) => { 
+        console.log(response);
+      });
 
       setCategory({});
       console.log(category + " Submited OK!!");
