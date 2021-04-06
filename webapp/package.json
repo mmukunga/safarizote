@@ -19,7 +19,8 @@
     "react-router-sitemap": "^1.2.0",
     "@babel/register": "^7.13.8",
     "@babel/core": "^7.13.10",
-    "@babel/preset-env": "^7.13.12"
+    "@babel/preset-env": "^7.13.12",
+    "reactjs-media": "^1.5.1"
   },
   "scripts": {
     "start": "react-scripts start",

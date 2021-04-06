@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { ReactVideo } from "reactjs-media";
+
 import axios from 'axios';
 import Card from './Card';
 import Tableless from './Tableless';
@@ -76,6 +78,13 @@ const Safaris = () => {
     return (
       <Card className="InnerCard" fontColor="black">
           <p>Our Safaris</p>
+          <ReactVideo
+                src="https://www.example.com/url_to_video.mp4"
+                poster="https://www.example.com/poster.png"
+                primaryColor="red"
+                // other props
+            />
+            
           <ul id="page-numbers">
             {renderPageNumbers}
           </ul>
