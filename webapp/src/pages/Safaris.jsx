@@ -79,8 +79,8 @@ const Safaris = () => {
       <Card className="InnerCard" fontColor="black">
           <p>Our Safaris</p>
           <ReactVideo
-                src="https://www.youtube.com/watch?v=Ct3tFP_ySdw"
-                poster="https://www.example.com/poster.png"
+                src="https://blog.naturalsafaris.com/wp-content/uploads/2018/08/VID-20190529-WA0013.mp4?_=2"
+                poster="D:\Temps\safarizote\webapp\public\images\gnus.jpg"
                 primaryColor="red"
                 // other props
             />
