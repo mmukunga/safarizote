@@ -79,7 +79,7 @@ const Safaris = () => {
       <Card className="InnerCard" fontColor="black">
           <p>Our Safaris</p>
           <ReactVideo
-                src="https://www.adeptkenyasafaris.co.ke/wp-content/uploads/2019/10/Masai-Mara-Migration.mp4?_=1. 00:00"
+                src="https://www.youtube.com/watch?v=Ct3tFP_ySdw"
                 poster="https://www.example.com/poster.png"
                 primaryColor="red"
                 // other props
