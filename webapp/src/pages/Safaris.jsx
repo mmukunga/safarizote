@@ -79,12 +79,12 @@ const Safaris = () => {
       <Card className="InnerCard" fontColor="black">
           <p>Our Safaris</p>
           <ReactVideo
-                src="https://www.example.com/url_to_video.mp4"
+                src="https://www.adeptkenyasafaris.co.ke/wp-content/uploads/2019/10/Masai-Mara-Migration.mp4?_=1. 00:00"
                 poster="https://www.example.com/poster.png"
                 primaryColor="red"
                 // other props
             />
-            
+
           <ul id="page-numbers">
             {renderPageNumbers}
           </ul>
