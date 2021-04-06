@@ -38,6 +38,7 @@ const Email = (props) => {
         e.preventDefault();
         axios.post('/api/email', {
             name: state.name,
+            title: props.title===null ? 'Dan Johnson' : props.title, 
             email: state.email,
             phone: state.phone,
             message: state.message

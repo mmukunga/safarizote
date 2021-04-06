@@ -5,22 +5,6 @@ import Card from './Card';
 const Metrics = () => {
    const [data, setData] = useState([]);
    const [counts, setCounts] = useState([]);
-   const [clientInfo, setClientInfo] = useState({});
-   useEffect(() => {
-      axios.get('https://extreme-ip-lookup.com/json/')
-        .then(response => {
-            axios.post('/api/saveVisit', {
-               url: response.data.ipName,
-               browser: 'Microsoft Edge',
-               dateCreated: new Date().toUTCString
-            }).then(response => {
-               console.log(response)
-            });
-            setClientInfo(response.data);
-        }).catch(e => {
-            console.log(e);
-        })
-    }, []);
 
     useEffect(() => {
       axios.get('/api/allHits').then(response => {
@@ -37,7 +21,7 @@ const Metrics = () => {
       }).catch(err => {
           console.log(err);
       });
-    }, [clientInfo]);
+    }, []);
 
     return (
         <Card className="InnerCard" fontColor="black">

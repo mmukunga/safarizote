@@ -7,7 +7,8 @@ const Safaris = () => {
     const [safaris, setSafaris] = useState([]);
     const [checked, setChecked] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    
+    const [clientInfo, setClientInfo] = useState({});
+
     const [pageSize, setPageSize] = useState(2);
     const handleChecked = (e) => {
       setChecked(!checked);
@@ -17,6 +18,22 @@ const Safaris = () => {
     const handleClick = (event) => {
       setCurrentPage(event.target.id);
     }
+    
+    useEffect(() => {
+      axios.get('https://extreme-ip-lookup.com/json/')
+        .then(response => {
+            axios.post('/api/saveVisit', {
+              url: response.data.ipName,
+              browser: 'Microsoft Edge',
+              dateCreated: new Date().toUTCString
+            }).then(response => {
+              console.log(response)
+            });
+            setClientInfo(response.data);
+        }).catch(e => {
+            console.log(e);
+        })
+    }, []);
 
     useEffect(() => {
         axios.get('/api/safaris').then(response => {

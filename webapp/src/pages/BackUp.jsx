@@ -75,10 +75,7 @@ import axios from 'axios';
           selectedItems = [...selectedItems, f]; 
         }
       });
-      
-      console.log('1.SelectedItems...');
       console.log(selectedItems);
-      console.log('2.SelectedItems...');
 
       axios.post("/api/doBackUp", {
         selectedItems

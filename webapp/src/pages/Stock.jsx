@@ -98,9 +98,6 @@ const Stock = () => {
     }, []);
 
     const Quote = ({name, list}) => {
-      console.log('1..items..');
-      console.log(list);
-      console.log('2..items..');
       return (
         <div className="QuoteContainer">
           <p>{name}</p>

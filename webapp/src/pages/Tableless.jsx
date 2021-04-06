@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 import parse from "html-react-parser";
 
 const Tableless = props => {
-    console.log(props);
     const Card = (props) => {
-        console.log(props);
         return (
         <div style={{ margin: '1em' }}>            
           <div className="tableWrap">

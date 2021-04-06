@@ -45,7 +45,6 @@ const SignIn = (props) => {
 
     if (localStorage.getItem('token') != null) {
         const userToken = localStorage.getItem('token');
-        console.log(userToken);
         return <Redirect to={from} />;
     }
 
