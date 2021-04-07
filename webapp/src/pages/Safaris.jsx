@@ -78,10 +78,13 @@ const Safaris = () => {
     return (
       <Card className="InnerCard" fontColor="black">
           <p>Our Safaris</p>
+          <strong>React video Component</strong>
           <ReactVideo
                 src="https://blog.naturalsafaris.com/wp-content/uploads/2018/08/VID-20190529-WA0013.mp4?_=2"
-                poster="D:\Temps\safarizote\webapp\public\images\gnus.jpg"
+                autoPlay
                 primaryColor="red"
+                poster="https://images.pexels.com/photos/4737019/pexels-photo-4737019.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                className="ReactVideo"
                 // other props
             />
 
