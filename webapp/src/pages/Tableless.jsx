@@ -41,8 +41,8 @@ const Tableless = props => {
           <div style={{ margin: '1em' }}>  
             <Card {...card} />
             <Accordion isExpand={true} title={card.title} description={card.description}>
-              {Number.isInteger(description) ? description : parse(description)}
-              <Link to={{ pathname: '/email', state: `${title}` }} style={{background:'#f8f9fa', textDecoration:'none', fontWeight: 'bold', color: 'brown'}}>Please Click here to enquire</Link>
+              {Number.isInteger(props.description) ? props.description : parse(props.description)}
+              <Link to={{ pathname: '/email', state: `${props.title}` }} style={{background:'#f8f9fa', textDecoration:'none', fontWeight: 'bold', color: 'brown'}}>Please Click here to enquire</Link>
             </Accordion>
           </div>
         )}
