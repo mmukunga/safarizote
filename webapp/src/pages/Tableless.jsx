@@ -38,17 +38,15 @@ const Tableless = props => {
       </div>
       {props && props.data.map(card => { 
         return (
-        <div>
-        <Card {...card} />
-        <Accordion isExpand={true} title={Number.isInteger(props.title) ? props.title : parse(props.title)}>
-           { Number.isInteger(props.description) ? props.description : parse(props.description)} <br/>
-              <Link to={{ pathname: '/email', state: `${props.title}` }} 
-                   style={{background:'#f8f9fa', textDecoration:'none', fontWeight: 'bold', color: 'brown'}}>
-                    Please Click here to enquire
-              </Link>
-        </Accordion>
-        </div>
-      ); })}
+          <div style={{ margin: '1em' }}>  
+            <Card {...card} />
+            <Accordion isExpand={true} title="Why do we use it?">
+              {Number.isInteger(props.description) ? props.description : parse(props.description)}
+              <Link to={{ pathname: '/email', state: `${props.title}` }} style={{background:'#f8f9fa', textDecoration:'none', fontWeight: 'bold', color: 'brown'}}>Please Click here to enquire</Link>
+            </Accordion>
+          </div>
+        )}
+      )}
     </div>
   );
 } 
