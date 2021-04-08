@@ -14,7 +14,7 @@ const Tableless = props => {
         )
     }
 
-    const Accordion = ({ children, title, isExpand = false }) => {
+    const Accordion = ({ children, title, isExpand = false, description }) => {
       const [expand, setExpand] = useState(isExpand);
       return (
         <div className="box">
@@ -40,9 +40,9 @@ const Tableless = props => {
         return (
           <div style={{ margin: '1em' }}>  
             <Card {...card} />
-            <Accordion isExpand={true} title="Why do we use it?">
-              {Number.isInteger(props.description) ? props.description : parse(props.description)}
-              <Link to={{ pathname: '/email', state: `${props.title}` }} style={{background:'#f8f9fa', textDecoration:'none', fontWeight: 'bold', color: 'brown'}}>Please Click here to enquire</Link>
+            <Accordion isExpand={true} title={card.title} description={card.description}>
+              {Number.isInteger(description) ? description : parse(description)}
+              <Link to={{ pathname: '/email', state: `${title}` }} style={{background:'#f8f9fa', textDecoration:'none', fontWeight: 'bold', color: 'brown'}}>Please Click here to enquire</Link>
             </Accordion>
           </div>
         )}
