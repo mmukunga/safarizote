@@ -18,12 +18,12 @@ const Tableless = props => {
       const [expand, setExpand] = useState(isExpand);
       return (
         <div className="box">
-          <div className="title-box" onClick={() => setExpand(expand => !expand)}>
+          <div className="tableCol" onClick={() => setExpand(expand => !expand)}>
             <span className="title">{parse(title)}</span>
             <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>
             <div className="clearfix"></div>
           </div>
-          {expand && <div className="content">{children}</div>}
+          {expand && <div className="tableCol">{children}</div>}
         </div>
       )
     }
