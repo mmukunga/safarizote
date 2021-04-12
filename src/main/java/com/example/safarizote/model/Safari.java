@@ -26,6 +26,7 @@ import lombok.NonNull;
 @Builder
 public class Safari {
   @Id @GeneratedValue Long id;
+  @Column(columnDefinition="TEXT")
   @NonNull String title;
   @NonNull Double price;
   @Column(columnDefinition="TEXT")
