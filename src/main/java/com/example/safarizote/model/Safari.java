@@ -28,9 +28,9 @@ public class Safari {
   @Id @GeneratedValue Long id;
   @Column(columnDefinition="TEXT")
   @NonNull String title;
-  @NonNull Double price;
   @Column(columnDefinition="TEXT")
   @NonNull String description;
+  @NonNull Double price;
   @NonNull Instant dateCreated;
   @OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
   Set<Booking> bookings;
