@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ReactVideo } from "reactjs-media";
 import parse from "html-react-parser";
+import ReactPlayer from "react-player";
 
 import axios from 'axios';
 import Card from './Card';
@@ -10,12 +11,29 @@ const Safaris = () => {
     const [checked, setChecked] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [clientInfo, setClientInfo] = useState({});
-
     const [pageSize, setPageSize] = useState(2);
+    const [readyCount, setReadyCount] = React.useState(0);
+    const [playing, setPlaying] = React.useState(false);
+
+    const onReady = () => {
+      setReadyCount(readyCount + 1);
+    };
+
+    React.useEffect(() => {
+      if (readyCount === links.length) {
+        setPlaying(true);
+      }
+    }, [readyCount]);
+
     const handleChecked = (e) => {
       setChecked(!checked);
       console.log(e);
     }
+
+    const links = [
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+    ];
 
     const handleClick = (event) => {
       setCurrentPage(event.target.id);
@@ -114,6 +132,11 @@ const Safaris = () => {
                 // other props
             />
            
+
+           {links.map((url) => (
+              <ReactPlayer key={url} playing={playing} onReady={onReady} url={url} />
+            ))}
+
           <ul id="page-numbers">
             {renderPageNumbers}
           </ul>
