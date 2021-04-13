@@ -81,7 +81,7 @@ const Safaris = () => {
         return (
           <div className="box">
             <div onClick={() => setExpand(expand => !expand)}>
-              <span className="title">{parse(title)} <i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>
+              {parse(title)} <i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i>
               <div className="clearfix"></div>
             </div>
             {expand && <div>{children}</div>}
