@@ -3,7 +3,6 @@ import { ReactVideo } from "reactjs-media";
 
 import axios from 'axios';
 import Card from './Card';
-import Tableless from './Tableless';
 
 const Safaris = () => {
     const [safaris, setSafaris] = useState([]);
@@ -75,6 +74,32 @@ const Safaris = () => {
       );
     });
 
+    const OurSafaris = props => {
+      const Accordion = ({ children, title, isExpand = false }) => {
+        const [expand, setExpand] = useState(isExpand);
+        return (
+          <div className="box">
+            <div onClick={() => setExpand(expand => !expand)}>
+              <span className="title">{parse(title)} <i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>
+              <div className="clearfix"></div>
+            </div>
+            {expand && <div>{children}</div>}
+          </div>
+        )
+      }
+  
+      return (
+      <div>
+        {props && props.data.map(card =>{ return (
+          <Accordion isExpand={true} title={card.title}>
+            ..ADD YOUR TEXT HERE..
+          </Accordion>
+        ); })}
+      </div>
+    );
+  } 
+
+
     return (
       <Card className="InnerCard" fontColor="black">
           <p>Our Safaris</p>
@@ -92,7 +117,7 @@ const Safaris = () => {
             {renderPageNumbers}
           </ul>
           {currentItems && currentItems.length > 0 
-           ? <Tableless data={currentItems}/> 
+           ? <OurSafaris data={currentItems}/> 
            : <p>No Data Found!!</p>}
       </Card>
     );
