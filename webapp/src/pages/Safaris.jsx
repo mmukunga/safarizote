@@ -122,10 +122,9 @@ const Safaris = () => {
 
     return (
       <Card className="InnerCard" fontColor="black">
-          <p>Our Safaris</p>
           <p>ReactPlayer -Vimeo</p>
           <div style={{ height: '50vh' }}>
-            <ReactPlayer
+            <ReactPlayer autoPlay
               url="https://vimeo.com/226260195"
               className="react-player"
               playing={false}
@@ -133,26 +132,7 @@ const Safaris = () => {
               height="100%"
             />
           </div>
-          <p>Player -Sintel</p>
-          <Player style={{ width: '500px' }}>
-            <source src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
-          </Player>
-
-          <p>ReactVideo Component</p>
-          <ReactVideo
-                src="https://blog.naturalsafaris.com/wp-content/uploads/2018/08/VID-20190529-WA0013.mp4?_=2"
-                autoPlay
-                primaryColor="red"
-                poster="https://images.pexels.com/photos/4737019/pexels-photo-4737019.jpeg"
-                className="ReactVideo"
-                // other props
-            />
-           
-           <p>ReactPlayer Multi</p>
-           {links.map((url) => (
-              <ReactPlayer autoPlay key={url} playing={playing} onReady={onReady} url={url} />
-            ))}
-
+          <p>Our Safaris</p>
           <ul id="page-numbers">
             {renderPageNumbers}
           </ul>
