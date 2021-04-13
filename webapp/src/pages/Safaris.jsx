@@ -93,7 +93,7 @@ const Safaris = () => {
       <div>
         {props && props.data.map(card =>{ return (
           <Accordion isExpand={true} title={card.title}>
-            ..ADD YOUR TEXT HERE..
+            {card.description}
           </Accordion>
         ); })}
       </div>
