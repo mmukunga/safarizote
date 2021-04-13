@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ReactVideo } from "reactjs-media";
+import parse from "html-react-parser";
 
 import axios from 'axios';
 import Card from './Card';
