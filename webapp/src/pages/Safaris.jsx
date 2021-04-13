@@ -80,7 +80,7 @@ const Safaris = () => {
         const [expand, setExpand] = useState(isExpand);
         return (
           <div className="box">
-            <div onClick={() => setExpand(expand => !expand)}>
+            <div onClick={() => setExpand(expand => !expand)} class='SafariDetails'>
               {parse(title)} <i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i>
               <div className="clearfix"></div>
             </div>
