@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ReactVideo } from "reactjs-media";
 import parse from "html-react-parser";
 import ReactPlayer from "react-player";
+import { Player } from 'video-react'
 
 import axios from 'axios';
 import Card from './Card';
@@ -122,6 +123,20 @@ const Safaris = () => {
     return (
       <Card className="InnerCard" fontColor="black">
           <p>Our Safaris</p>
+          <p>ReactPlayer</p>
+          <div style={{ height: '100vh' }}>
+            <ReactPlayer
+              url="https://vimeo.com/226260195"
+              className="react-player"
+              playing={false}
+              width="100%"
+              height="100%"
+            />
+          </div>
+          <Player style={{ width: '500px' }}>
+            <source src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
+          </Player>
+
           <strong>React video Component</strong>
           <ReactVideo
                 src="https://blog.naturalsafaris.com/wp-content/uploads/2018/08/VID-20190529-WA0013.mp4?_=2"
@@ -134,7 +149,7 @@ const Safaris = () => {
            
 
            {links.map((url) => (
-              <ReactPlayer key={url} playing={playing} onReady={onReady} url={url} />
+              <ReactPlayer autoPlay key={url} playing={playing} onReady={onReady} url={url} />
             ))}
 
           <ul id="page-numbers">
