@@ -122,7 +122,6 @@ const Safaris = () => {
     return (
       <Card className="InnerCard" fontColor="black">
           <p>ReactPlayer -Vimeo</p>
-          <div className='player-wrapper'>
             <ReactPlayer autoPlay
               url="https://vimeo.com/226260195"
               className="react-player"
@@ -131,7 +130,6 @@ const Safaris = () => {
               height="50vh"
               light="https://i.stack.imgur.com/zw9Iz.png"
             />
-          </div>
           <p>Our Safaris</p>
           <ul id="page-numbers">
             {renderPageNumbers}
