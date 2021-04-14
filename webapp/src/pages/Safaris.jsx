@@ -122,11 +122,13 @@ const Safaris = () => {
     return (
       <Card className="InnerCard" fontColor="black">
           <p>ReactPlayer -Vimeo</p>
-            <ReactVideo autoPlay
-              src="https://vimeo.com/226260195"
-              poster="https://i.stack.imgur.com/zw9Iz.png"
-              primaryColor="red"
-            />
+          <h1>React video Component</h1>
+          <ReactVideo 
+          src="https://storage.coverr.co/videos/BALBxhjqfldnwtv00YopEAA014UtVoZo00R?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6Ijg3NjdFMzIzRjlGQzEzN0E4QTAyIiwiaWF0IjoxNjExMjc0NTQwfQ.rVZT49viuSpaSaXUkejPw3N9cvSHbxmSwhrnDUKJCMc" 
+          autoPlay
+          primaryColor="red"
+          poster="https://images.pexels.com/photos/4737019/pexels-photo-4737019.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+          />
           <p>Our Safaris</p>
           <ul id="page-numbers">
             {renderPageNumbers}
