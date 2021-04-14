@@ -3,7 +3,8 @@
   .clearfix {
     clear: both;
   }
-  .react-player {
+
+  .undefined {
     margin: 10px auto;
     background: rgba(0, 0, 0, .1);
     border: 2px solid green;
@@ -27,6 +28,7 @@
     transition: all 0.1s;
     transform: rotate(90deg);
   }
+
   .icon .fa.down {
     transform: rotate(0deg);
   }
