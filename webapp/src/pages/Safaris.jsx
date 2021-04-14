@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { ReactVideo } from "reactjs-media";
 import parse from "html-react-parser";
 import ReactPlayer from "react-player";
-import { ReactVideo } from "reactjs-media";
 import { Player } from 'video-react'
 
 import axios from 'axios';
