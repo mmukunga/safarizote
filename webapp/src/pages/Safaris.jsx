@@ -16,11 +16,16 @@ const Safaris = () => {
      
     const [readyCount, setReadyCount] = React.useState(0);
     const [playing, setPlaying] = React.useState(false);
+    const [isPlaying, setIsPlaying] = React.useState(false);
 
     const onReady = () => {
       setReadyCount(readyCount + 1);
     };
 
+    const togglePlay = () => {
+      setIsPlaying(!isPlaying);
+    };
+    
     React.useEffect(() => {
       if (readyCount === links.length) {
         setPlaying(true);
@@ -127,9 +132,13 @@ const Safaris = () => {
             <ReactPlayer 
               key="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" 
               playing={playing} 
+              controls={true}
               onReady={onReady} 
               url="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
             />
+            {/* <PlayerContiner>
+                    <Button onClick={togglePlay}>Play</Button>
+                </PlayerContiner> */}
           </div>
           <h1>React video Component</h1>
           <ReactVideo 
