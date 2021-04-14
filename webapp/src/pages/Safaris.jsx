@@ -123,14 +123,9 @@ const Safaris = () => {
       <Card className="InnerCard" fontColor="black">
           <p>ReactPlayer -Vimeo</p>
             <ReactVideo autoPlay
-              src="https://vimeo.com/226260195"
+              src="https://www.example.com/url_to_video.mp4"
               poster="https://www.example.com/poster.png"
               primaryColor="red"
-              className="react-player"
-              playing={true}
-              width="450px"
-              height="50vh"
-              light="https://i.stack.imgur.com/zw9Iz.png"
             />
           <p>Our Safaris</p>
           <ul id="page-numbers">
