@@ -1,62 +1,12 @@
-  .tableWrap {
-    display: table;
-    width: 100%;
-  }
-
-  .tableCol {
-    display: table-cell;
-    padding: 10px;
-    background: #e0f8ff;
-    text-align: left;
-    border:1px solid#f2f2f2;;
-    min-width: 150px;
-  }
-  
-  .tableCol ul {
-    text-align: left;
-  }
-
-  .tableHeader {
-    background-color: #f8f9fa;
-  }
+ 
 
   .clearfix {
     clear: both;
   }
-  
-  .player-wrapper {
-    height: 100%;
-    width: 100%;
-    border: 2px solid red;
-    text-align: center;
-  }  
-
   .react-player {
-    margin-bottom: 10px;
+    margin: 10px auto;
     background: rgba(0, 0, 0, .1);
     border: 2px solid green;
-  }
-
-  @import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
-
-  .box {
-    margin: 1em;
-    color: #333;
-    border: 1px solid #ddd;
-  }
-  .title-box {
-    cursor: pointer;
-    padding: 15px;
-    background-color: #f5f5f5;
-  }
-  .title {
-    width: calc(100% - 20px);
-  }
-  .icon {
-    width: 20px;
-    display: flex;
-    color: #666;
-    float: right;
   }
 
   .fa { 
@@ -87,13 +37,6 @@
   }
 
   @media only screen and (max-width: 600px) {
-    .tableWrap, .tableCol {
-         display: block;
-    }
-    .tableCol { 
-        width: 90%; 
-    }
-
     img {
       display:block;
       float:none;
