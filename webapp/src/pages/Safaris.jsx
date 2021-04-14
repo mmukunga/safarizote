@@ -15,7 +15,6 @@ const Safaris = () => {
     const [pageSize, setPageSize] = useState(2);
     const [readyCount, setReadyCount] = React.useState(0);
     const [playing, setPlaying] = React.useState(false);
-    const [currentTime, setCurrentTime] = useState(null)
 
     const onReady = () => {
       setReadyCount(readyCount + 1);
@@ -127,7 +126,6 @@ const Safaris = () => {
               src="https://vimeo.com/226260195"
               poster="https://i.stack.imgur.com/zw9Iz.png"
               primaryColor="red"
-              onTimeUpdate={time => setCurrentTime({currentTime: time})}
             />
           <p>Our Safaris</p>
           <ul id="page-numbers">
