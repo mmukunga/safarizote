@@ -133,7 +133,6 @@ const Safaris = () => {
               src="https://vimeo.com/226260195"
               poster="https://i.stack.imgur.com/zw9Iz.png"
               primaryColor="red"
-              onTimeUpdate={onTimeUpdateProp}
             />
           <p>Our Safaris</p>
           <ul id="page-numbers">
