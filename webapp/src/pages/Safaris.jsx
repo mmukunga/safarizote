@@ -125,6 +125,8 @@ const Safaris = () => {
           <p>ReactPlayer -Vimeo</p>
             <ReactVideo autoPlay
               src="https://vimeo.com/226260195"
+              poster="https://www.example.com/poster.png"
+              primaryColor="red"
               className="react-player"
               playing={true}
               width="450px"
