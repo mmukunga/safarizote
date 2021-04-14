@@ -129,8 +129,8 @@ const Safaris = () => {
       <Card className="InnerCard" fontColor="black">
           <p>ReactPlayer -Vimeo</p>
             <ReactVideo autoPlay
-              src="https://www.example.com/url_to_video.mp4"
-              poster="https://www.example.com/poster.png"
+              src="https://vimeo.com/226260195"
+              poster="https://i.stack.imgur.com/zw9Iz.png"
               primaryColor="red"
               onTimeUpdate={onTimeUpdateProp}
             />
