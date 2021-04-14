@@ -15,12 +15,13 @@ const Safaris = () => {
     const [pageSize, setPageSize] = useState(2);
     const [readyCount, setReadyCount] = React.useState(0);
     const [playing, setPlaying] = React.useState(false);
+    const [currentTime, setCurrentTime] = useState(null)
 
     const onReady = () => {
       setReadyCount(readyCount + 1);
     };
 
-    const onTimeUpdateProp = (event, currentTime, duration) => {
+    const onTimeUpdateProp = ({event, currentTime=new Date(), duration}) => {
       // some logic is place here
       console.log(currentTime);
   }
