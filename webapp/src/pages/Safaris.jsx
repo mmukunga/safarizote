@@ -20,6 +20,12 @@ const Safaris = () => {
       setReadyCount(readyCount + 1);
     };
 
+    const onTimeUpdateProp = (event, currentTime, duration) => {
+      // some logic is place here
+      console.log(currentTime);
+  }
+
+
     React.useEffect(() => {
       if (readyCount === links.length) {
         setPlaying(true);
@@ -126,6 +132,7 @@ const Safaris = () => {
               src="https://www.example.com/url_to_video.mp4"
               poster="https://www.example.com/poster.png"
               primaryColor="red"
+              onTimeUpdate={onTimeUpdateProp}
             />
           <p>Our Safaris</p>
           <ul id="page-numbers">
