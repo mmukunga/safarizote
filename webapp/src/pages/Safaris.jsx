@@ -21,12 +21,6 @@ const Safaris = () => {
       setReadyCount(readyCount + 1);
     };
 
-    const onTimeUpdateProp = ({event, currentTime=new Date(), duration}) => {
-      // some logic is place here
-      console.log(currentTime);
-  }
-
-
     React.useEffect(() => {
       if (readyCount === links.length) {
         setPlaying(true);
@@ -133,6 +127,7 @@ const Safaris = () => {
               src="https://vimeo.com/226260195"
               poster="https://i.stack.imgur.com/zw9Iz.png"
               primaryColor="red"
+              onTimeUpdate={time => setCurrentTime({currentTime: time})}
             />
           <p>Our Safaris</p>
           <ul id="page-numbers">
