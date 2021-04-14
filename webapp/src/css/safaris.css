@@ -25,15 +25,16 @@
   }
   
   .player-wrapper {
-    height: 60vh;
-    width: 480px;
-    border: 2px solid green;
+    height: 100%;
+    width: 100%;
+    border: 2px solid red;
     text-align: center;
   }  
 
   .react-player {
     margin-bottom: 10px;
     background: rgba(0, 0, 0, .1);
+    border: 2px solid green;
   }
 
   @import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
