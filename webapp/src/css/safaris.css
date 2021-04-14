@@ -1,5 +1,10 @@
  
 
+  .ReactPlayer {
+    font-family: sans-serif;
+    text-align: center;
+  }
+
   .clearfix {
     clear: both;
   }
