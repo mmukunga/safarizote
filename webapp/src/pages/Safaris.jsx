@@ -127,8 +127,8 @@ const Safaris = () => {
               url="https://vimeo.com/226260195"
               className="react-player"
               playing={true}
-              width="100%"
-              height="500px"
+              width="450px"
+              height="50vh"
               light="https://i.stack.imgur.com/zw9Iz.png"
             />
           </div>

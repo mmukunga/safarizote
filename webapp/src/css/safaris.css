@@ -25,9 +25,10 @@
   }
   
   .player-wrapper {
-    height: 50vh;
+    height: 60vh;
     width: 480px;
     border: 2px solid green;
+    text-align: center;
   }  
 
   .react-player {
