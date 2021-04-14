@@ -13,6 +13,7 @@ const Safaris = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [clientInfo, setClientInfo] = useState({});
     const [pageSize, setPageSize] = useState(2);
+     
     const [readyCount, setReadyCount] = React.useState(0);
     const [playing, setPlaying] = React.useState(false);
 
@@ -40,7 +41,7 @@ const Safaris = () => {
       setCurrentPage(event.target.id);
     }
     
-    useEffect(() => {
+    React.useEffect(() => {
       axios.get('https://extreme-ip-lookup.com/json/')
         .then(response => {
             axios.post('/api/saveVisit', {
@@ -56,7 +57,7 @@ const Safaris = () => {
         })
     }, []);
 
-    useEffect(() => {
+    React.useEffect(() => {
         axios.get('/api/safaris').then(response => {
           setSafaris(response.data);
         }).catch(err => {
@@ -122,6 +123,13 @@ const Safaris = () => {
     return (
       <Card className="InnerCard" fontColor="black">
           <p>ReactPlayer -Vimeo</p>
+          <ReactPlayer 
+            key="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" 
+            playing={playing} 
+            onReady={onReady} 
+            url="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+          />
+
           <h1>React video Component</h1>
           <ReactVideo 
           src="https://storage.coverr.co/videos/BALBxhjqfldnwtv00YopEAA014UtVoZo00R?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6Ijg3NjdFMzIzRjlGQzEzN0E4QTAyIiwiaWF0IjoxNjExMjc0NTQwfQ.rVZT49viuSpaSaXUkejPw3N9cvSHbxmSwhrnDUKJCMc" 
