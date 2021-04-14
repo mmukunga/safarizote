@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ReactVideo } from "reactjs-media";
 import parse from "html-react-parser";
 import ReactPlayer from "react-player";
+import { ReactVideo } from "reactjs-media";
 import { Player } from 'video-react'
 
 import axios from 'axios';
@@ -122,8 +123,8 @@ const Safaris = () => {
     return (
       <Card className="InnerCard" fontColor="black">
           <p>ReactPlayer -Vimeo</p>
-            <ReactPlayer autoPlay
-              url="https://vimeo.com/226260195"
+            <ReactVideo autoPlay
+              src="https://vimeo.com/226260195"
               className="react-player"
               playing={true}
               width="450px"
