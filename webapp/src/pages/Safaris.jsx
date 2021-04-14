@@ -25,7 +25,7 @@ const Safaris = () => {
     const togglePlay = () => {
       setIsPlaying(!isPlaying);
     };
-    
+
     React.useEffect(() => {
       if (readyCount === links.length) {
         setPlaying(true);
@@ -83,7 +83,7 @@ const Safaris = () => {
     const indexOfFirstItem = indexOfLastItem - pageSize;
     const currentItems = array_nodes.slice(indexOfFirstItem, indexOfLastItem);
 
-    // Logic for displaying page numbers
+    //Logic for displaying page numbers
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(array_nodes.length / pageSize); i++) {
       pageNumbers.push(i);
