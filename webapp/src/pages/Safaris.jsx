@@ -94,7 +94,7 @@ const Safaris = () => {
       );
     });
 
-    const OurSafaris = props => {
+    const SafariTours = props => {
       const Accordion = ({ children, title, isExpand = false }) => {
         const [expand, setExpand] = useState(isExpand);
         return (
@@ -119,17 +119,17 @@ const Safaris = () => {
     );
   } 
 
-
     return (
       <Card className="InnerCard" fontColor="black">
           <p>ReactPlayer -Vimeo</p>
-          <div style={{ height: '50vh' }}>
+          <div className='player-wrapper'>
             <ReactPlayer autoPlay
               url="https://vimeo.com/226260195"
               className="react-player"
-              playing={false}
+              playing={true}
               width="100%"
-              height="100%"
+              height="500px"
+              light="https://i.stack.imgur.com/zw9Iz.png"
             />
           </div>
           <p>Our Safaris</p>
@@ -137,7 +137,7 @@ const Safaris = () => {
             {renderPageNumbers}
           </ul>
           {currentItems && currentItems.length > 0 
-           ? <OurSafaris data={currentItems}/> 
+           ? <SafariTours data={currentItems}/> 
            : <p>No Data Found!!</p>}
       </Card>
     );

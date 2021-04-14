@@ -23,7 +23,19 @@
   .clearfix {
     clear: both;
   }
-   
+  
+  .player-wrapper {
+    height: 50vh;
+    width: 480px;
+    border: 2px solid green;
+  }  
+
+  .react-player {
+    margin-bottom: 10px;
+    background: rgba(0, 0, 0, .1);
+  }
+
+
   @import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
   .box {
