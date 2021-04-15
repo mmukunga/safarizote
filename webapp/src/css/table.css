@@ -65,23 +65,6 @@ td {
   font-weight: bold;
 }
 
-.SafariSnap {
-  float: right; 
-  margin: 5px;
-  width: 350px;
-}
-
-.SafariDetails {
-  width: 100%;
-  height: auto;
-  text-align: left;
-}
-
-.SafariTitle {
-  color:red;
-
-}
-
 .Shoppings { 
   border: 1px solid black;
   text-align: left;
@@ -94,10 +77,6 @@ span.Italic {
 
 
   @media only screen and (max-width: 600px) {
-    .SafariSnap {
-      width: 300px;
-    }
-
     .Table td {
       text-align: left;
       vertical-align: top; 

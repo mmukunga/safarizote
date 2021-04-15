@@ -1,49 +1,70 @@
-  .VideoWrapper {
-    margin: 0 auto;
-    border: 2px solid red; 
-  }
+.SafariSnap {
+  float: right; 
+  margin: 5px;
+  width: 350px;
+}
 
-  .video-player {
-    background: rgba(0,0,0,.1);
-    border: 0px solid green;
-    width: 50%;
-    margin: 0 auto;
-  }
+.SafariDetails {
+  width: 100%;
+  height: auto;
+  text-align: left;
+}
 
-  .clearfix {
-    clear: both;
-  }
+.SafariTitle {
+  color:red;
 
-  .fa { 
-    display:inline-block;
-    font:normal normal normal 14px/1 FontAwesome;
-    font-size:inherit;
-    text-rendering:auto;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-  }
+}  
+  
+.VideoWrapper {
+  margin: 0 auto;
+  border: 2px solid red; 
+}
 
-  .fa-play-circle:before{
-    content:"\f144";
-  }
+.video-player {
+  background: rgba(0,0,0,.1);
+  border: 0px solid green;
+  width: 50%;
+  margin: 0 auto;
+}
 
-  .icon .fa {
-    font-size: 20px;
-    transition: all 0.1s;
-    transform: rotate(90deg);
-  }
+.clearfix {
+  clear: both;
+}
 
-  .icon .fa.down {
-    transform: rotate(0deg);
-  }
+.fa { 
+   display:inline-block;
+   font:normal normal normal 14px/1 FontAwesome;
+   font-size:inherit;
+   text-rendering:auto;
+   -webkit-font-smoothing:antialiased;
+   -moz-osx-font-smoothing:grayscale;
+}
+
+.fa-play-circle:before{
+   content:"\f144";
+}
+
+.icon .fa {
+  font-size: 20px;
+  transition: all 0.1s;
+  transform: rotate(90deg);
+}
+
+.icon .fa.down {
+   transform: rotate(0deg);
+}
    
-  .content {
-    padding: 15px;
-    border-top: 1px solid #ddd;
+.content {
+   padding: 15px;
+   border-top: 1px solid #ddd;
+ }
+
+@media only screen and (max-width: 600px) {
+  .SafariSnap {
+    width: 300px;
   }
 
-  @media only screen and (max-width: 600px) {
-    img {
+  img {
       display:block;
       float:none;
       margin:0 auto 20px !important;

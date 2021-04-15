@@ -76,7 +76,7 @@ const Safaris = () => {
         <div className="box">
           <div onClick={() => setExpand(expand => !expand)} class='SafariDetails'>          
             <p>VideoPlayer</p>
-            {parse(title)} <i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i>
+            <VideoPlayer video={video}/>{parse(title)} <i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i>
             <div className="clearfix"></div>
           </div>
           {expand && <div>{children}</div>}
