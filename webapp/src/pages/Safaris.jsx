@@ -139,10 +139,10 @@ const Safaris = () => {
       }
     
       return (
-        <div style={{border:'2px solid green', background:'silver'}}>
+        <div style={{border:'2px solid green'}}>
           <video ref={videoRef} width="400">
             {/* Of course it's the big buck bunny! */}
-            <source src={url} type="video/mp4" />
+            <source src={big_buck_bunny} type="video/mp4" />
           </video>
           <div>
             <button onClick={playVideo}>Play</button>
