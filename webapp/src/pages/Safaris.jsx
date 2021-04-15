@@ -140,7 +140,7 @@ const Safaris = () => {
     
       return (
         <div className="videoCanvas">
-          <video ref={videoRef} width="400" controls loop>
+          <video ref={videoRef} controls loop className="video-player">
             {/* Of course it's the big buck bunny! */}
             <source src={big_buck_bunny} type="video/mp4" />
           </video>
