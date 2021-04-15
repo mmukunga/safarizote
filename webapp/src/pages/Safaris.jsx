@@ -78,21 +78,21 @@ const Safaris = () => {
       );
     });
 
-    const SafariTours = props => {
-      const Accordion = ({ children, title, isExpand = false }) => {
-        const [expand, setExpand] = useState(isExpand);
-        return (
-          <div className="box">
-            <div onClick={() => setExpand(expand => !expand)} class='SafariDetails'>
-              {parse(title)} <i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i>
-              <div className="clearfix"></div>
-            </div>
-            {expand && <div>{children}</div>}
-          </div>
-        )
-      }
-  
+  const SafariTours = props => {
+    const Accordion = ({ children, title, isExpand = false }) => {
+      const [expand, setExpand] = useState(isExpand);
       return (
+        <div className="box">
+          <div onClick={() => setExpand(expand => !expand)} class='SafariDetails'>
+            {parse(title)} <i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i>
+            <div className="clearfix"></div>
+          </div>
+          {expand && <div>{children}</div>}
+        </div>
+      )
+    }
+  
+    return (
       <div>
         {props && props.data.map(card =>{ return (
           <Accordion isExpand={false} title={card.title}>
