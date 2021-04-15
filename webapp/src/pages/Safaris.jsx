@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ReactVideo } from "reactjs-media";
 import parse from "html-react-parser";
 import ReactPlayer from "react-player";
