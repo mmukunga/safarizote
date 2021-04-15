@@ -1,9 +1,14 @@
-    .clearfix {
+  .VideoWrapper {
+    margin: 0 auto;
+    border: 2px solid red;
+    width:100%; 
+  }
+
+  .clearfix {
     clear: both;
   }
 
-  .undefined {
-    margin: 10px auto;
+  .video-player {
     background: rgba(0, 0, 0, .1);
     border: 2px solid green;
   }
