@@ -5,6 +5,8 @@ import video from "../media/globe_480_700kB.mov";
 import axios from 'axios';
 import Card from './Card';
 
+import 'font-awesome/css/font-awesome.css';
+
 const Safaris = () => {
     const [safaris, setSafaris] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -74,8 +76,7 @@ const Safaris = () => {
       const [expand, setExpand] = useState(isExpand);
       return (
         <div className="box">
-          <div onClick={() => setExpand(expand => !expand)} class='SafariDetails'>          
-            <p>VideoPlayer</p>
+          <div onClick={() => setExpand(expand => !expand)} class='SafariDetails'>  
             <VideoPlayer video={video}/>{parse(title)} <i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i>
             <div className="clearfix"></div>
           </div>
