@@ -74,7 +74,9 @@ const Safaris = () => {
       const [expand, setExpand] = useState(isExpand);
       return (
         <div className="box">
-          <div onClick={() => setExpand(expand => !expand)} class='SafariDetails'>
+          <div onClick={() => setExpand(expand => !expand)} class='SafariDetails'>          
+            <p>VideoPlayer</p>
+            <VideoPlayer video={video}/>
             {parse(title)} <i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i>
             <div className="clearfix"></div>
           </div>
@@ -121,8 +123,6 @@ const Safaris = () => {
 
   return (
     <Card className="InnerCard" fontColor="black">
-        <p>VideoPlayer</p>
-        <VideoPlayer video={video}/>
         <p>Our Safaris</p>
         <ul id="page-numbers">
           {renderPageNumbers}
