@@ -124,10 +124,21 @@ const Safaris = () => {
       </div>
     );
   } 
-
+    const url = 'https://vimeo.com/243556536';
     return (
       <Card className="InnerCard" fontColor="black">
           <p>ReactPlayer -Vimeo</p>
+          <ReactPlayer
+              url={url}
+              config={{
+                youtube: {
+                  playerVars: { showinfo: 1 }
+                },
+                facebook: {
+                  appId: '12345'
+                }
+              }}
+            />
           <div className="ReactPlayer">
             <ReactPlayer 
               url='https://vimeo.com/243556536'
