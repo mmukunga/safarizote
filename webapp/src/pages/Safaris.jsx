@@ -1,8 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { ReactVideo } from "reactjs-media";
+import React, { useState, useRef } from 'react';
 import parse from "html-react-parser";
-import ReactPlayer from "react-player";
-import { Player } from 'video-react';
 import video from "../media/globe_480_700kB.mov";
 
 import axios from 'axios';
@@ -10,38 +7,18 @@ import Card from './Card';
 
 const Safaris = () => {
     const [safaris, setSafaris] = useState([]);
-    const [checked, setChecked] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [clientInfo, setClientInfo] = useState({});
     const [pageSize, setPageSize] = useState(2);
      
     const [readyCount, setReadyCount] = React.useState(0);
     const [playing, setPlaying] = React.useState(false);
-    const [isPlaying, setIsPlaying] = React.useState(false);
-
-    const onReady = () => {
-      setReadyCount(readyCount + 1);
-    };
-
-    const togglePlay = () => {
-      setIsPlaying(!isPlaying);
-    };
 
     React.useEffect(() => {
       if (readyCount === links.length) {
         setPlaying(true);
       }
     }, [readyCount]);
-
-    const handleChecked = (e) => {
-      setChecked(!checked);
-      console.log(e);
-    }
-
-    const links = [
-      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
-    ];
 
     const handleClick = (event) => {
       setCurrentPage(event.target.id);
@@ -125,71 +102,46 @@ const Safaris = () => {
       </div>
     );
   } 
-    const url = 'https://vimeo.com/243556536';
-    const big_buck_bunny = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
 
-    const VideoPlayer = () => {
-      const videoRef = useRef(null);
+  const VideoPlayer = (props) => {
+    const videoRef = useRef(null);
+   
+    function playVideo() {
+      videoRef.current.play();
+    }
+  
+    function pauseVideo() {
+      videoRef.current.pause();
+    }
     
-      function playVideo() {
-        videoRef.current.play();
-      }
-    
-      function pauseVideo() {
-        videoRef.current.pause();
-      }
-    
-      return (
-        <div className="videoCanvas">
-          <video ref={videoRef} controls autoPlay loop muted className="video-player">
-            {/* Of course it's the big buck bunny! */}
-            <source src={big_buck_bunny} type="video/mp4" />
-          </video>
-          <div>
-            <button onClick={playVideo}>Play</button>
-            <button onClick={pauseVideo}>Pause</button>
-          </div>
-        </div>
-      );
-    };
-
     return (
-      <Card className="InnerCard" fontColor="black">
-          <p>VideoPlayer</p>
-          <VideoPlayer />
-          <p>ReactPlayer</p>
-          <ReactPlayer
-              url={url}
-              config={{
-                youtube: {
-                  playerVars: { showinfo: 1 }
-                },
-                facebook: {
-                  appId: '12345'
-                }
-              }}
-            />
-          <div className="ReactPlayer">
-            <ReactPlayer 
-              url='https://vimeo.com/243556536'
-              className='react-player'
-              playing={playing} 
-              controls={true}
-              onReady={onReady} 
-            />
-            {/* <PlayerContiner>
-                    <Button onClick={togglePlay}>Play</Button>
-                </PlayerContiner> */}
-          </div>
-          <p>Our Safaris</p>
-          <ul id="page-numbers">
-            {renderPageNumbers}
-          </ul>
-          {currentItems && currentItems.length > 0 
-           ? <SafariTours data={currentItems}/> 
-           : <p>No Data Found!!</p>}
-      </Card>
+      <div className="videoCanvas">
+        <video ref={videoRef} controls autoPlay loop muted className="video-player">
+          {/* Of course it's the big buck bunny! */}
+          <source src={props.video} type="video/mp4" />
+        </video>
+        <div>
+          <button onClick={playVideo}>Play</button>
+          <button onClick={pauseVideo}>Pause</button>
+        </div>
+      </div>
     );
   };
+
+  return (
+    <Card className="InnerCard" fontColor="black">
+        <p>VideoPlayer</p>
+        <VideoPlayer video={video}/>
+        <p>Our Safaris</p>
+        <ul id="page-numbers">
+          {renderPageNumbers}
+        </ul>
+
+        {currentItems && currentItems.length > 0 
+           ? <SafariTours data={currentItems}/> 
+           : <p>No Data Found!!</p>}           
+    </Card>
+  );
+};
 
   export default Safaris;
