@@ -125,6 +125,7 @@ const Safaris = () => {
     );
   } 
     const url = 'https://vimeo.com/243556536';
+    const big_buck_bunny = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
 
     const VideoPlayer = () => {
       const videoRef = useRef(null);
@@ -138,10 +139,10 @@ const Safaris = () => {
       }
     
       return (
-        <div>
+        <div style={{border:'2px solid green', background:'silver'}}>
           <video ref={videoRef} width="400">
             {/* Of course it's the big buck bunny! */}
-            <source src="big-buck-bunny.mp4" type="video/mp4" />
+            <source src={url} type="video/mp4" />
           </video>
           <div>
             <button onClick={playVideo}>Play</button>
