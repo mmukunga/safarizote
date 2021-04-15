@@ -139,7 +139,7 @@ const Safaris = () => {
     
       return (
         <div>
-          <video ref={this.myVideo} width="400">
+          <video ref={videoRef} width="400">
             {/* Of course it's the big buck bunny! */}
             <source src="big-buck-bunny.mp4" type="video/mp4" />
           </video>
