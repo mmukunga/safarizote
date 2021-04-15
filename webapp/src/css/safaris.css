@@ -11,8 +11,10 @@
   }
 
   .videoCanvas {
-    margin: 10px auto;
-    border: 2px solid green;
+    margin: 0 auto;
+    border: 2px solid red;
+    width:450px; 
+    height:450px;
   }
  
   .video-player {

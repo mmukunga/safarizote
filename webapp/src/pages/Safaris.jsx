@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ReactVideo } from "reactjs-media";
 import parse from "html-react-parser";
 import ReactPlayer from "react-player";
-import { Player } from 'video-react'
+import { Player } from 'video-react';
+import video from "../media/globe_480_700kB.mov";
 
 import axios from 'axios';
 import Card from './Card';
@@ -140,7 +141,7 @@ const Safaris = () => {
     
       return (
         <div className="videoCanvas">
-          <video ref={videoRef} controls loop className="video-player">
+          <video ref={videoRef} controls autoPlay loop muted className="video-player">
             {/* Of course it's the big buck bunny! */}
             <source src={big_buck_bunny} type="video/mp4" />
           </video>
