@@ -10,15 +10,6 @@ const Safaris = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [clientInfo, setClientInfo] = useState({});
     const [pageSize, setPageSize] = useState(2);
-     
-    const [readyCount, setReadyCount] = React.useState(0);
-    const [playing, setPlaying] = React.useState(false);
-
-    React.useEffect(() => {
-      if (readyCount === links.length) {
-        setPlaying(true);
-      }
-    }, [readyCount]);
 
     const handleClick = (event) => {
       setCurrentPage(event.target.id);
