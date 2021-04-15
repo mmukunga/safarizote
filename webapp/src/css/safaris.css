@@ -1,13 +1,14 @@
-.SafariSnap {
-  float: right; 
-  margin: 5px;
-  width: 350px;
-}
-
 .SafariDetails {
   width: 100%;
   height: auto;
   text-align: left;
+  border: 2px solid orange;
+}
+
+.SafariSnap {
+  float: right; 
+  margin: 5px;
+  width: 350px;
 }
 
 .SafariTitle {
