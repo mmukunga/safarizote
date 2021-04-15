@@ -125,9 +125,39 @@ const Safaris = () => {
     );
   } 
     const url = 'https://vimeo.com/243556536';
+
+    const VideoPlayer = () => {
+      const videoRef = useRef(null);
+    
+      function playVideo() {
+        videoRef.current.play();
+      }
+    
+      function pauseVideo() {
+        videoRef.current.pause();
+      }
+    
+      return (
+        <div>
+          <video ref={this.myVideo} width="400">
+            {/* Of course it's the big buck bunny! */}
+            <source src="big-buck-bunny.mp4" type="video/mp4" />
+          </video>
+          <div>
+            <button onClick={playVideo}>Play</button>
+            <button onClick={pauseVideo}>Pause</button>
+          </div>
+        </div>
+      );
+    };
+
+
+
     return (
       <Card className="InnerCard" fontColor="black">
-          <p>ReactPlayer -Vimeo</p>
+          <p>VideoPlayer</p>
+          <VideoPlayer />
+          <p>ReactPlayer</p>
           <ReactPlayer
               url={url}
               config={{
