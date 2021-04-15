@@ -139,8 +139,8 @@ const Safaris = () => {
       }
     
       return (
-        <div style={{border:'2px solid green'}}>
-          <video ref={videoRef} width="400">
+        <div className="videoCanvas">
+          <video ref={videoRef} width="400" controls loop>
             {/* Of course it's the big buck bunny! */}
             <source src={big_buck_bunny} type="video/mp4" />
           </video>
@@ -151,8 +151,6 @@ const Safaris = () => {
         </div>
       );
     };
-
-
 
     return (
       <Card className="InnerCard" fontColor="black">

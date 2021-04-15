@@ -10,6 +10,11 @@
     height:450px;
   }
 
+  .videoCanvas {
+    margin: 10px auto;
+    border: 2px solid green;
+  }
+
   .clearfix {
     clear: both;
   }
