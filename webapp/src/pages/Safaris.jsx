@@ -144,4 +144,4 @@ const Safaris = () => {
   );
 };
 
-  export default Safaris;
+export default Safaris;
