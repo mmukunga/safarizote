@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import parse from "html-react-parser";
 import video from "../media/globe_480_700kB.mov";
+import kilimanjaro from "../media/kilimanjaro";
 
 import axios from 'axios';
 import Card from './Card';
@@ -79,7 +80,7 @@ const Safaris = () => {
       return (
         <div className="box">
           <div onClick={() => setExpand(expand => !expand)} class='SafariDetails'>  
-            <VideoPlayer video={videoUrl}/>{parse(title)} <i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i>
+            <VideoPlayer video={kilimanjaro}/>{parse(title)} <i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i>
             <div className="clearfix"></div>
           </div>
           {expand && <div>{children}</div>}
