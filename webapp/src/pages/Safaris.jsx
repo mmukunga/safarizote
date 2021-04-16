@@ -1,7 +1,11 @@
 import React, { useState, useRef } from 'react';
 import parse from "html-react-parser";
-import video from "../media/globe_480_700kB.mov";
+import Big_Buck_Bunny from "../media/Big_Buck_Bunny.mp4";
+import kenya_safari from "../media/kenya-safari.mp4";
 import kilimanjaro from "../media/kilimanjaro.mp4";
+import MOV_FILE from "../media/MOV_FILE.mov";
+import preview from "../media/preview.mp4";
+import the_globe from "../media/the_globe.mov";
 
 import axios from 'axios';
 import Card from './Card';
@@ -75,23 +79,24 @@ const Safaris = () => {
     });
 
   const SafariTours = props => {
-    const Accordion = ({ children, title, isExpand = false }) => {
+    const Accordion = ({ children, title, isExpand = false, video }) => {
       const [expand, setExpand] = useState(isExpand);
       return (
         <div className="box">
           <div onClick={() => setExpand(expand => !expand)} class='SafariDetails'>  
-            <VideoPlayer video={kilimanjaro}/>{parse(title)} <i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i>
+            <VideoPlayer video={video}/>{parse(title)} <i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i>
             <div className="clearfix"></div>
           </div>
           {expand && <div>{children}</div>}
         </div>
       )
     }
-  
+    
+    const videos = props.videos;
     return (
       <div>
-        {props && props.data.map(card =>{ return (
-          <Accordion isExpand={false} title={card.title}>
+        {props && props.data.map((card, idx) =>{ return (
+          <Accordion isExpand={false} title={card.title} video={videos[idx]}>
             {parse(card.description)}
           </Accordion>
         ); })}
@@ -120,12 +125,7 @@ const Safaris = () => {
     );
   };
 
-  const links = [
-    "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-    "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-    "https://storage.coverr.co/videos/BALBxhjqfldnwtv00YopEAA014UtVoZo00R?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6Ijg3NjdFMzIzRjlGQzEzN0E4QTAyIiwiaWF0IjoxNjExMjc0NTQwfQ.rVZT49viuSpaSaXUkejPw3N9cvSHbxmSwhrnDUKJCMc",
-    kilimanjaro
-  ];
+  const videos = [ Big_Buck_Bunny, kenya_safari, kilimanjaro, MOV_FILE, preview, the_globe ];
 
   return (
     <Card className="InnerCard" fontColor="black">
@@ -134,7 +134,7 @@ const Safaris = () => {
         </ul>
 
         {currentItems && currentItems.length > 0 
-           ? <SafariTours data={currentItems}/> 
+           ? <SafariTours data={currentItems} videos={videos}/> 
            : <p>No Data Found!!</p>}           
     </Card>
   );
