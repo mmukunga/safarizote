@@ -9,6 +9,7 @@
   float: right; 
   margin: 5px;
   width: 350px;
+  border: 1px solid red;
 }
 
 .SafariTitle {
@@ -68,7 +69,9 @@
    border-top: 1px solid #ddd;
  }
 
-@media only screen and (max-width: 600px) {
+ @import "font-awesome/css/font-awesome.css";
+
+ @media only screen and (max-width: 600px) {
   .SafariSnap {
     width: 300px;
   }
