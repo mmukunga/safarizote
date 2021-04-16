@@ -120,11 +120,19 @@ const Safaris = () => {
     );
   };
 
+  const links = [
+    "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    "https://storage.coverr.co/videos/BALBxhjqfldnwtv00YopEAA014UtVoZo00R?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6Ijg3NjdFMzIzRjlGQzEzN0E4QTAyIiwiaWF0IjoxNjExMjc0NTQwfQ.rVZT49viuSpaSaXUkejPw3N9cvSHbxmSwhrnDUKJCMc",
+    kilimanjaro
+  ];
+
   return (
     <Card className="InnerCard" fontColor="black">
         <ul id="page-numbers">
          <li style={{fontStyle: 'oblique'}}>Our Safaris: </li> {renderPageNumbers}
         </ul>
+
         {currentItems && currentItems.length > 0 
            ? <SafariTours data={currentItems}/> 
            : <p>No Data Found!!</p>}           
