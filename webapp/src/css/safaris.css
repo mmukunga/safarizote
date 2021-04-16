@@ -1,5 +1,4 @@
 .SafariDetails {
-  width: 100%;
   height: auto;
   text-align: left;
   border: 2px solid orange;
@@ -72,11 +71,14 @@
  @import "font-awesome/css/font-awesome.css";
 
  @media only screen and (max-width: 600px) {
-  .SafariSnap {
-    width: 300px;
-  }
+    .SafariSnap {
+      float: inherit; 
+      margin: 5px;
+      width: 100%;
+      border: 1px solid green;
+    }  
 
-  img {
+    img {
       display:block;
       float:none;
       margin:0 auto 20px !important;
