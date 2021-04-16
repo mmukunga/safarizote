@@ -5,7 +5,7 @@ import video from "../media/globe_480_700kB.mov";
 import axios from 'axios';
 import Card from './Card';
 
-import 'font-awesome';
+import 'font-awesome/css/font-awesome';
 
 const Safaris = () => {
     const [safaris, setSafaris] = useState([]);
