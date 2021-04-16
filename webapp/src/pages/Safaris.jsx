@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import parse from "html-react-parser";
 import video from "../media/globe_480_700kB.mov";
-import kilimanjaro from "../media/kilimanjaro";
+import kilimanjaro from "../media/kilimanjaro.mp4";
 
 import axios from 'axios';
 import Card from './Card';
