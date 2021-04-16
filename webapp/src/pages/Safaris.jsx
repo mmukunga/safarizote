@@ -119,11 +119,9 @@ const Safaris = () => {
 
   return (
     <Card className="InnerCard" fontColor="black">
-        <p>Our Safaris</p>
         <ul id="page-numbers">
-          {renderPageNumbers}
+         <li style={{fontWeight: 'bold'}}>Our Safaris: </li> {renderPageNumbers}
         </ul>
-
         {currentItems && currentItems.length > 0 
            ? <SafariTours data={currentItems}/> 
            : <p>No Data Found!!</p>}           
