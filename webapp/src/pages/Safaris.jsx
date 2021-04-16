@@ -13,6 +13,8 @@ const Safaris = () => {
     const [clientInfo, setClientInfo] = useState({});
     const [pageSize, setPageSize] = useState(2);
 
+    const videoUrl = 'https://www.youtube.com/watch?v=3qW5z4xeiac';
+
     const handleClick = (event) => {
       setCurrentPage(event.target.id);
     }
@@ -77,7 +79,7 @@ const Safaris = () => {
       return (
         <div className="box">
           <div onClick={() => setExpand(expand => !expand)} class='SafariDetails'>  
-            <VideoPlayer video={video}/>{parse(title)} <i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i>
+            <VideoPlayer video={videoUrl}/>{parse(title)} <i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i>
             <div className="clearfix"></div>
           </div>
           {expand && <div>{children}</div>}
@@ -120,7 +122,7 @@ const Safaris = () => {
   return (
     <Card className="InnerCard" fontColor="black">
         <ul id="page-numbers">
-         <li style={{fontWeight: 'bold'}}>Our Safaris: </li> {renderPageNumbers}
+         <li style={{fontStyle: 'oblique'}}>Our Safaris: </li> {renderPageNumbers}
         </ul>
         {currentItems && currentItems.length > 0 
            ? <SafariTours data={currentItems}/> 
