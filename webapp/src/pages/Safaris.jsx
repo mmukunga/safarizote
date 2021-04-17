@@ -15,7 +15,7 @@ import 'font-awesome/css/font-awesome.css';
 const Safaris = () => {
     const [safaris, setSafaris] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [numberOfHits, setNumberOfHits] = useState(0);
+    const [numberOfHits, setNumberOfHits] = useState('0');
     const [pageSize, setPageSize] = useState(2);
 
     const videoUrl = 'https://www.youtube.com/watch?v=3qW5z4xeiac';
