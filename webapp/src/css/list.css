@@ -15,10 +15,11 @@ ul.vList li {
 }
 
 ul.vList li::before {
-  content: "\2022";
-  background-color: yellow;
+  content: "»";
   color: red;
   font-weight: bold;
+  display: inline-block; 
+  width: 1em;
 }
 
 #page-numbers {
