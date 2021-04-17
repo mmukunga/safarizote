@@ -136,8 +136,7 @@ const Safaris = () => {
         {currentItems && currentItems.length > 0 
            ? <SafariTours data={currentItems} videos={videos}/> 
            : <p>No Data Found!!</p>}  
-               
-        <p style={{ margin: '20px', textAlign:'left'}}>Number of Hits: { numberOfHits }</p>        
+                     
     </Card>
   );
 };
