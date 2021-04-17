@@ -15,7 +15,12 @@
   color:red;
 
 }  
-  
+
+.even {
+  background: #fefbd8;
+  color:black;
+}
+
 .VideoWrapper {
   margin: 0 auto;
   border: 2px solid red; 

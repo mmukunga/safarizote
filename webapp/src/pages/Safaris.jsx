@@ -80,10 +80,11 @@ const Safaris = () => {
     });
 
   const SafariTours = props => {
-    const Accordion = ({ children, title, isExpand = false, video }) => {
+    const Accordion = ({ children, title, isExpand = false, video, idx}) => {
       const [expand, setExpand] = useState(isExpand);
+      const mod = idx % 2;
       return (
-        <div className="box">
+        <div className={`box ${mod==0 ? ' even' : ''}`}>
           <div onClick={() => setExpand(expand => !expand)} class='SafariDetails'>  
             <VideoPlayer video={video}/>{parse(title)} <i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i>
             <div className="clearfix"></div>
@@ -97,7 +98,7 @@ const Safaris = () => {
     return (
       <div>
         {props && props.data.map((card, idx) =>{ return (
-          <Accordion isExpand={false} title={card.title} video={videos[idx]}>
+          <Accordion isExpand={false} title={card.title} video={videos[idx]} idx={idx}>
             {parse(card.description)}
           </Accordion>
         ); })}
