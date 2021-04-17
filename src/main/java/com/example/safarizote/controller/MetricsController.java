@@ -26,17 +26,19 @@ public class MetricsController {
       return new ResponseEntity<>(status, HttpStatus.OK);
   }
 
-    @RequestMapping(value = "/api/allHits",  method={RequestMethod.GET})
-    public ResponseEntity<List<Tracker>> findAll() {
-        List<Tracker> visits = repository.findAll();
-        System.out.println("Tracker.findAll(),  End OK!");
-        return new ResponseEntity<>(visits, HttpStatus.OK);
-    }
+  @RequestMapping(value = "/api/allHits",  method={RequestMethod.GET})
+  public ResponseEntity<List<Tracker>> findAll() {
+    List<Tracker> visits = repository.findAll();
+    System.out.println("Tracker.findAll(),  End OK!");
+    return new ResponseEntity<>(visits, HttpStatus.OK);
+  }
 
-    @RequestMapping(value = "/api/saveVisit",  method={RequestMethod.POST})
-    public void save(@RequestBody Tracker visit) {
-        System.out.println(visit);
-        repository.save(visit);
-        System.out.println("Tracker.findAll()  End OK!");
-    }
+  @RequestMapping(value = "/api/saveVisit",  method={RequestMethod.POST})
+  public ResponseEntity<Integer> save(@RequestBody Tracker visit) {
+    System.out.println(visit);
+    repository.save(visit);
+    List<Tracker> visits = repository.findAll();
+    System.out.println("Tracker.findAll()  End OK!");
+    return new ResponseEntity<Integer>(visits.size(), HttpStatus.OK);
+  }
 }

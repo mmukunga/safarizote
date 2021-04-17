@@ -15,7 +15,7 @@ import 'font-awesome/css/font-awesome.css';
 const Safaris = () => {
     const [safaris, setSafaris] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [clientInfo, setClientInfo] = useState({});
+    const [numberOfHits, setNumberOfHits] = useState(0);
     const [pageSize, setPageSize] = useState(2);
 
     const videoUrl = 'https://www.youtube.com/watch?v=3qW5z4xeiac';
@@ -34,7 +34,7 @@ const Safaris = () => {
             }).then(response => {
               console.log(response)
             });
-            setClientInfo(response.data);
+            setNumberOfHits(response.data);
         }).catch(e => {
             console.log(e);
         })
@@ -135,7 +135,9 @@ const Safaris = () => {
 
         {currentItems && currentItems.length > 0 
            ? <SafariTours data={currentItems} videos={videos}/> 
-           : <p>No Data Found!!</p>}           
+           : <p>No Data Found!!</p>}  
+               
+        <p style={{ margin: '20px', textAlign:'left'}}>Number of Hits: { numberOfHits }</p>        
     </Card>
   );
 };
