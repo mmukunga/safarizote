@@ -126,7 +126,8 @@ const Safaris = () => {
   };
 
   const videos = [ Big_Buck_Bunny, kenya_safari, kilimanjaro, MOV_FILE, preview, the_globe ];
-
+  console.log(numberOfHits);
+  
   return (
     <Card className="InnerCard" fontColor="black">
         <ul id="page-numbers">
