@@ -9,7 +9,7 @@
 }
 
 ul.vList li {
-  padding-left: 30px;
+  padding-left: 10px;
   list-style: none;
   margin-bottom: 10px;
 }
@@ -19,7 +19,7 @@ ul.vList li::before {
   color: red;
   font-weight: bold;
   display: inline-block; 
-  width: 1em;
+  width: .5em;
 }
 
 #page-numbers {
