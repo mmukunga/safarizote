@@ -18,7 +18,7 @@
 .Nav_link {
   display: inline-block;
   vertical-align: middle;
-  border: 2px dotted white;
+  border: 2px solid #92a8d1;
   border-radius: 15%;
   padding: 2px;
   margin: 2px;
@@ -26,6 +26,8 @@
 
 .Logo {
   background-color: transparent;
+  border: 2px solid #92a8d1;
+  vertical-align: middle;
 }
 
 .Nav_link:link {
