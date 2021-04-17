@@ -32,9 +32,10 @@ const Safaris = () => {
               browser: 'Microsoft Edge',
               dateCreated: new Date().toUTCString
             }).then(response => {
-              console.log(response)
+              console.log(response);
+              setNumberOfHits(response.data);
+              console.log(response.data);
             });
-            setNumberOfHits(response.data);
         }).catch(e => {
             console.log(e);
         })
@@ -126,8 +127,10 @@ const Safaris = () => {
   };
 
   const videos = [ Big_Buck_Bunny, kenya_safari, kilimanjaro, MOV_FILE, preview, the_globe ];
+  console.log('1.NumberOfHits');
   console.log(numberOfHits);
-  
+  console.log('2.NumberOfHits');
+
   return (
     <Card className="InnerCard" fontColor="black">
         <ul id="page-numbers">
