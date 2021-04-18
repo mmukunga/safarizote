@@ -12,13 +12,14 @@
 }
 
 .SafariTitle {
-  color:red;
+  color: brown
 }  
 
 .oddRow {
   background: #f2f6fb;
   padding: 5px;
   margin: 5px;
+  border: 1px inset brown;
 }
 
 .VideoWrapper {

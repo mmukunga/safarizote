@@ -17,7 +17,7 @@ ul.StockList {
 }
 
 ul.StockList li::before {
-    content: "•"; color: red;
+    content: "•"; color: brown;
     display: inline-block; 
     width: 1em;
     padding: 5px;
