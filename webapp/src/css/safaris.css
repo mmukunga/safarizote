@@ -1,7 +1,7 @@
 .SafariDetails {
   height: auto;
   text-align: left;
-  border: 2px solid orange;
+  margin: 2px;
 }
 
 .SafariSnap {
@@ -16,8 +16,8 @@
 
 }  
 
-.even {
-  background:#4DC3FF;
+.evenRow {
+  background:#F0FFFF;
   color:black;
 }
 
