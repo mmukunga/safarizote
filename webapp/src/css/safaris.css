@@ -19,7 +19,8 @@
   background: #f2f6fb;
   padding: 5px;
   margin: 5px;
-  border: 1px inset brown;
+  border: 1px inset azure;
+  border-radius: 5%;
 }
 
 .VideoWrapper {
