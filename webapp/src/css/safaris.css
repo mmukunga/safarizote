@@ -19,7 +19,7 @@
   background: #f2f6fb;
   padding: 5px;
   margin: 5px;
-  border: 1px inset azure;
+  border: 2px outset#90dff5;
   border-radius: 2%;
 }
 
@@ -74,6 +74,17 @@
    padding: 15px;
    border-top: 1px solid #ddd;
  }
+
+ ul#page-numbers li {
+    padding-left:1em;
+    color:#f00; /* red bullet */
+  }
+
+  ul#page-numbers li span {
+    display:block;
+    margin-left:-0.5em;
+}
+
 
  @import "font-awesome/css/font-awesome.css";
 
