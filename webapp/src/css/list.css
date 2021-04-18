@@ -15,7 +15,7 @@ ul.vList li {
 }
 
 ul.vList li::before {
-  content: "»&nbsp;";
+  content: "» ";
   color: red;
   font-weight: bold;
   display: inline-block; 
@@ -37,7 +37,6 @@ ul.vList li::before {
 @media screen and (max-width: 600px) {
   .vList {
     padding: 0 5px 0 5px;
-    float: left;
-    margin: 10px;
+    margin: 5px;
   }
 }
