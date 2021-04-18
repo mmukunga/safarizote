@@ -84,7 +84,7 @@ const Safaris = () => {
       const [expand, setExpand] = useState(isExpand);
       const mod = idx % 2;
       return (
-        <div className={`box ${mod==0 ? 'evenRow' : ''}`}>
+        <div className={`box ${mod!=0 ? 'oddRow' : ''}`}>
           <div onClick={() => setExpand(expand => !expand)} class='SafariDetails'>  
             <VideoPlayer video={video}/>{parse(title)} <i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i>
             <div className="clearfix"></div>

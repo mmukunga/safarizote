@@ -8,7 +8,7 @@
   float: right; 
   margin: 5px;
   width: 350px;
-  border: 1px solid red;
+  border: 0px solid brown;
 }
 
 .SafariTitle {
@@ -16,7 +16,7 @@
 
 }  
 
-.evenRow {
+.oddRow {
   background: #E0EEEE;
   padding: 5px;
   margin: 5px;
