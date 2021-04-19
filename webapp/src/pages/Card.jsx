@@ -5,7 +5,7 @@ const Card = (props) => {
   const labelStyles = {
     color: fontColor,
     fontFamily: 'Courier New, monospace',
-    fontSize:'12px'
+    fontSize:'13px'
   };
 
   return (
