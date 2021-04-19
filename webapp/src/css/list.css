@@ -3,18 +3,15 @@
   border: 2px solid red;
 }
 
-ul.vList{
-  /*margin: 0 auto;
-  text-align: left;*/
-  margin-left: 10px;
-  padding-left: 0px;
+.vList{
+  margin: 0 auto;
+  text-align: left;
 }
 
 ul.vList li {
   padding-left: 10px;
   list-style: none;
   margin-bottom: 10px;
-  display: inline-block;
 }
 
 ul.vList li::before {
