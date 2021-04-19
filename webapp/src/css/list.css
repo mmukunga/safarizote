@@ -3,9 +3,11 @@
   border: 2px solid red;
 }
 
-.vList{
-  margin: 0 auto;
-  text-align: left;
+ul.vList{
+  /*margin: 0 auto;
+  text-align: left;*/
+  margin-left: 10px;
+  padding-left: 0px;
 }
 
 ul.vList li {
