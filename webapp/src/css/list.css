@@ -15,7 +15,7 @@ ul.vList li {
 }
 
 ul.vList li::before {
-  content: "\0BB \020 \00a0";
+  content: "\0BB   \00a0";
   color: brown;
   font-weight: bold;
   display: inline-block; 
