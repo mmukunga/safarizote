@@ -2,16 +2,31 @@
 .Safaris {
   border: 2px solid red;
 }
-
+/*
 .vList{
   margin: 0 auto;
   text-align: left;
+}*/
+
+.vList {
+	margin: 10px;
+	width: 120px;
+	font-family: sans-serif;
+}
+
+ul.vList {
+  list-style: none;
 }
 
 ul.vList li {
+  /*
   padding-left: 10px;
   list-style: none;
   margin-bottom: 10px;
+  */
+  display: block;
+	border: 1px solid #000;
+	border-top: 0px;
 }
 
 ul.vList li::before {
