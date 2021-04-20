@@ -6,9 +6,9 @@ const Card = (props) => {
     color: fontColor,
     fontFamily: 'Courier New, monospace',
     fontSize: '13px',
+    
     margin: '2px',
-    padding: '2px',
-    background: 'green'
+    padding: '2px'
   };
 
   return (
