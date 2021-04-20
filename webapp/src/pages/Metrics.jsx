@@ -47,7 +47,7 @@ const Metrics = () => {
                  </tr>
                )}
             </table>
-            <p style={{ margin: '20px', textAlign:'left'}}>Number of Hits: { data.length }</p>
+            <p style={{ margin: '20px', textAlign:'left'}}>Site Visits|Hits: { data.length }</p>
         </Card>
     )
 }
