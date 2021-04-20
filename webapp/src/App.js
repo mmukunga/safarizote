@@ -20,7 +20,7 @@ import Private from './pages/Private';
 
 function App() {
   const selectStyle = {
-      width: '60px', 
+      width: '80px', 
       padding: '2px', 
       background: '#f8f9fa'
   };
@@ -67,11 +67,9 @@ function App() {
 
     const imageStyles = {
       backgroundImage: `url(${selectedImage})`, 
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover',
-      display: props.displayHome,
-      border:'4px solid #fefeef'
+      display: props.displayHome
     };
+
     React.useEffect(() => {
         const intervalID = setTimeout(() =>  {
             const id = Math.floor(Math.random() * (7 - 0) + 0);

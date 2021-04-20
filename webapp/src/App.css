@@ -31,6 +31,9 @@
   justify-content: center;
   font-size: calc(10px + 1vmin);
   padding: 10px;
+  border: 4px solid #fefeef;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .App-link {
