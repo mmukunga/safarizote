@@ -117,12 +117,10 @@ function App() {
 
   const Layout = (props) => {
       return (
-        <div>
-          <Toolbar displayHome={props.displayHome}/>
           <main>
-            {props.children}
+          <Toolbar displayHome={props.displayHome}/>         
+          {props.children}
           </main>
-        </div>
       );
   }
   
