@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
 import parse from "html-react-parser";
+import moment from 'moment';
+
 import Big_Buck_Bunny from "../media/Big_Buck_Bunny.mp4";
 import kenya_safari from "../media/kenya-safari.mp4";
 import kilimanjaro from "../media/kilimanjaro.mp4";
@@ -30,7 +32,7 @@ const Safaris = () => {
             axios.post('/api/saveVisit', {
               url: response.data.ipName,
               browser: 'Microsoft Edge',
-              dateCreated: new Date().toUTCString
+              dateCreated: moment.now()
             }).then(response => {
               console.log(response);
               setNumberOfHits(response.data);
