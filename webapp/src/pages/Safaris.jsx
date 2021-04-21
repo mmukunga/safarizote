@@ -15,7 +15,7 @@ import 'font-awesome/css/font-awesome.css';
 const Safaris = () => {
     const [safaris, setSafaris] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [numberOfHits, setNumberOfHits] = useState('0');
+    const [numberOfHits, setNumberOfHits] = useState([]);
     const [pageSize, setPageSize] = useState(2);
 
     const videoUrl = 'https://www.youtube.com/watch?v=3qW5z4xeiac';
@@ -135,7 +135,7 @@ const Safaris = () => {
   return (
     <Card className="InnerCard" fontColor="black">
         <ul id="page-numbers">
-         <li style={{paddingLeft:'1em',color:'black',fontStyle: 'oblique'}}><span>Site Visits|Hits: { numberOfHits } </span></li> 
+         <li style={{paddingLeft:'1em',color:'black',fontStyle: 'oblique'}}><span>Site Visits|Hits: { numberOfHits.length } </span></li> 
          <li style={{paddingLeft:'1em',color:'black',fontStyle: 'oblique'}}><span>Our Safaris: </span></li> 
          {renderPageNumbers}
         </ul>
