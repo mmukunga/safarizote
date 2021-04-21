@@ -34,11 +34,11 @@ public class MetricsController {
   }
 
   @RequestMapping(value = "/api/saveVisit",  method={RequestMethod.POST})
-  public ResponseEntity<Tracker> save(@RequestBody Tracker visit) {
+  public ResponseEntity<List<Tracker>> save(@RequestBody Tracker visit) {
     System.out.println(visit);
     repository.save(visit);
     List<Tracker> visits = repository.findAll();
     System.out.println("Tracker.findAll()  End OK!");
-    return new ResponseEntity<Integer>(visits, HttpStatus.OK);
+    return new ResponseEntity<>(visits, HttpStatus.OK);
   }
 }
