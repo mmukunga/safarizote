@@ -11,9 +11,7 @@ const Metrics = () => {
         var array_hits = [];
         response.data.forEach((d) => {
           const data_group = response.data.filter(item => item.url === d.url); 
-          console.log(data_group);              
           var last_item = data_group[data_group.length - 1];
-          console.log(last_item);    
 
           array_hits.push({
               url: d.url,
@@ -21,9 +19,6 @@ const Metrics = () => {
               date_last_created: last_item.dateCreated
             });
         });
-          
-        console.log(array_hits);
-        // setData(array_hits);
 
         const mediaTypes = array_hits.map(dataItem => dataItem.url) 
         .filter((mediaType, index, array) => array.indexOf(mediaType) === index); // filter out duplicates

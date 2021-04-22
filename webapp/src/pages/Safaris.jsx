@@ -34,9 +34,7 @@ const Safaris = () => {
               browser: 'Microsoft Edge',
               dateCreated: moment.now()
             }).then(response => {
-              console.log(response);
               setNumberOfHits(response.data);
-              console.log(response.data);
             });
         }).catch(e => {
             console.log(e);
@@ -46,12 +44,8 @@ const Safaris = () => {
     React.useEffect(() => {
         axios.get('/api/safaris').then(response => {
           setSafaris(response.data);
-
           /* Map each item of nodes to a nested array where each is a row of two columns */
           const safarisArray = safaris.map((safari) => [safari.url, safari.browser]);
-          console.log(safarisArray);
-
-
           var result = [];
           safarisArray.reduce(function(res, value) {
             if (!res[value.url]) {
@@ -61,8 +55,6 @@ const Safaris = () => {
             res[value.url].qty += 1;
             return res;
           }, {});
-
-          console.log(result);
 
         }).catch(err => {
         console.log(err);
@@ -148,10 +140,7 @@ const Safaris = () => {
   };
 
   const videos = [ Big_Buck_Bunny, kenya_safari, kilimanjaro, MOV_FILE, preview, the_globe ];
-  console.log('1.NumberOfHits');
   console.log(numberOfHits);
-  console.log('2.NumberOfHits');
-
   return (
     <Card className="InnerCard" fontColor="black">
         <ul id="page-numbers">

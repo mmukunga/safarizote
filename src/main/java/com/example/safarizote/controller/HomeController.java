@@ -24,10 +24,7 @@ public class HomeController {
     List<Safari> sourceSet = repository.findAll();
 
     System.out.println("Simple Java Safari for-loop Example.");
-    for (int i = 0; i < sourceSet.size(); i++) {
-        System.out.println(sourceSet.get(i));
-    }
-
+    System.out.println("HomeController.findSafaris() SIZE:= " + sourceSet.size());
     System.out.println("findSafaris() End OK!");
 
     return new ResponseEntity<>(sourceSet, HttpStatus.OK);
