@@ -29,7 +29,8 @@ const Metrics = () => {
 
           array_hits.push({
               url: d.url,
-              browser: d.browser
+              browser: d.browser,
+              date_last_created: last_item.dateCreated
             });
           });
           
