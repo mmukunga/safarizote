@@ -1,6 +1,6 @@
 .OuterCard { 
   max-width: 650px;
-  background-color: coral;
+  background-color: moccasin;
   border-radius: 10px; 
   margin: 10px auto; 
   padding: 1px; 
@@ -17,7 +17,7 @@
 
 @media screen and (max-width: 600px) {
   .OuterCard { 
-    background-color: coral;
+    background-color: moccasin;
     border-radius: 10px; 
     margin: 0 auto; 
     padding: 1px; 
