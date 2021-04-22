@@ -22,7 +22,7 @@ const Metrics = () => {
 
         var array_hits = [];
         response.data.forEach((d) => {
-          const data_group = data.filter(item => item.url === d.url); 
+          const data_group = response.data.filter(item => item.url === d.url); 
           console.log(data_group);              
           var last_item = data_group[data_group.length - 1];
           console.log(last_item);    
