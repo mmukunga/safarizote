@@ -30,6 +30,10 @@ public class MetricsController {
   @RequestMapping(value = "/api/allHits",  method={RequestMethod.GET})
   public ResponseEntity<List<Tracker>> findAll() {
     List<Tracker> visits = repository.findAll();
+    System.out.println("\n==============> 1. Tracker..");
+    for (Tracker temp : visits) {
+        System.out.println(temp);
+    }
     System.out.println("Tracker.findAll(),  End OK!");
     return new ResponseEntity<>(visits, HttpStatus.OK);
   }
@@ -37,9 +41,15 @@ public class MetricsController {
   @RequestMapping(value = "/api/saveVisit",  method={RequestMethod.POST})
   public ResponseEntity<List<Tracker>> save(@RequestBody Tracker visit) {
     visit.setDateCreated(Instant.now());
+    System.out.println("1.===visit===");
     System.out.println(visit);
+    System.out.println("2.===visit===");
     repository.save(visit);
     List<Tracker> visits = repository.findAll();
+    System.out.println("\n==============> 2. Tracker..");
+    for (Tracker temp : visits) {
+        System.out.println(temp);
+    }
     System.out.println("Tracker.findAll()  End OK!");
     return new ResponseEntity<>(visits, HttpStatus.OK);
   }
