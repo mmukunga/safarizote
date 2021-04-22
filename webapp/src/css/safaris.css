@@ -85,8 +85,9 @@
     margin-left:-0.5em;
 }
 
- @import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
  @import url("font-awesome/css/font-awesome.css");
+ @import "~font-awesome/css/font-awesome.css";
+ @import url("~font-awesome/css/font-awesome.css");
  
 
  @media only screen and (max-width: 600px) {
