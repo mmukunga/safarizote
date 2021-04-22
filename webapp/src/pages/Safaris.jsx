@@ -94,6 +94,10 @@ const Safaris = () => {
   const SafariTours = props => {
     const Accordion = ({ children, title, isExpand = false, video, idx}) => {
       const [expand, setExpand] = useState(isExpand);
+      
+      console.log(expand? 'expanded' : 'colapsed');
+      console.log(isExpand? 'expanded' : 'colapsed');
+
       const mod = idx % 2;
       return (
         <div className={`box ${mod!=0 ? 'oddRow' : ''}`}>
