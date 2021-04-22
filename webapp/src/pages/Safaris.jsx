@@ -12,8 +12,6 @@ import the_globe from "../media/the_globe.mov";
 import axios from 'axios';
 import Card from './Card';
 
-import 'font-awesome/css/font-awesome.css';
-
 const Safaris = () => {
     const [safaris, setSafaris] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
