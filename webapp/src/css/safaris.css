@@ -85,8 +85,7 @@
     margin-left:-0.5em;
 }
 
-
- @import "font-awesome/css/font-awesome.css";
+ @import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
 
  @media only screen and (max-width: 600px) {
     .SafariSnap {
