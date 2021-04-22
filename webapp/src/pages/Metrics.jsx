@@ -8,8 +8,10 @@ const Metrics = () => {
 
     useEffect(() => {
       axios.get('/api/allHits').then(response => {
+
         const mediaTypes = response.data.map(dataItem => dataItem.url) 
         .filter((mediaType, index, array) => array.indexOf(mediaType) === index); // filter out duplicates
+
         const counts = mediaTypes.map(dataItem => ({
             type: dataItem,
             count: response.data.filter(item => item.url == dataItem).length
@@ -18,6 +20,20 @@ const Metrics = () => {
         setData(response.data);
         setCounts(counts);
 
+        var array_hits = [];
+        data.forEach((d) => {
+          const data_group = data.filter(item => item.url === d.url); 
+          console.log(data_group);              
+          var last_item = data_group[data_group.length - 1];
+          console.log(last_item);    
+
+          array_hits.push({
+              url: d.url,
+              browser: d.browser
+            });
+          });
+          
+          console.log(array_hits);
       }).catch(err => {
           console.log(err);
       });
