@@ -12,7 +12,7 @@
   display: inline-block;
   vertical-align: top;
   border-top: 1px solid #fefeef;
-  width: calc(100% - 10px);
+  width: calc(100% - 2px);
 }
 
 .Nav_link {
@@ -37,8 +37,7 @@
 }
 
 .Nav_link:visited {
-  color: rgb(178, 45, 14
-  );
+  color: rgb(178, 45, 14);
 }
 
 .Nav_link:hover {
