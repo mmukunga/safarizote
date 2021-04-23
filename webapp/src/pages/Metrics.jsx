@@ -28,8 +28,11 @@ const Metrics = () => {
             count: array_hits.filter(item => item.url == dataItem).length
         }));
 
+        var sortedCounts = [...counts];
+        sortedCounts.sort((a,b) => a.count - b.count);
+
         setData(array_hits);
-        setCounts(counts);
+        setCounts(sortedCounts);
 
       }).catch(err => {
           console.log(err);
