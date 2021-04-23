@@ -29,7 +29,7 @@ const Metrics = () => {
         }));
 
         var sortedCounts = [...counts];
-        sortedCounts.sort((a,b) => (a.count > b.count) ? 1 : -1);
+        sortedCounts.sort((a,b) => b.count - a.count); //descending order
 
         setData(array_hits);
         setCounts(sortedCounts);
