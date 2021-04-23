@@ -31,6 +31,15 @@
   vertical-align: middle;
 }
 
+.LogOut {
+  margin: 0em;
+  padding: 1px 2px;
+  border: 2px outset red;
+  background-color: #337ab7;
+  color: #fff;
+}
+
+
 .Nav_link:link {
   color: blue;
   text-decoration: none;
