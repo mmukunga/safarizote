@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+
 Sitemap: https://safarizote.herokuapp.com/sitemap.xml
 Host: https://safarizote.herokuapp.com
