@@ -1,0 +1,25 @@
+
+.fa {
+    display:inline-block;
+    font:normal normal normal 14px/1 FontAwesome;
+    font-size:inherit;
+    text-rendering:auto;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale
+}
+
+.fa-arrow-circle-down:before {
+    content:"\f0ab"
+}
+
+.fa-arrow-circle-right:before {
+    content:"\f0a9"
+}
+
+.fa-play-circle:before {
+    content:"\f144"
+}
+
+.fa-play-circle-o:before {
+    content:"\f01d"
+}
