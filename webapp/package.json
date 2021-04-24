@@ -23,7 +23,8 @@
     "moment": "^2.29.1",
     "reactjs-media": "^1.5.1",
     "react-player": "^2.9.0",
-    "video-react": "^0.14.1"
+    "video-react": "^0.14.1",
+    "font-awesome": "^4.7.0"
   },
   "scripts": {
     "start": "react-scripts start",
