@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Kenya Safari Tours Web Application",
+  "name": "Safari Zote",
+  "description": "Kenya Safari Application. You can book for a safari by calling or sending us an email. View weather information for major cities of Africa", 
   "icons": [
     {
       "src": "favicon.ico",
