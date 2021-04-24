@@ -72,6 +72,7 @@ p {
 @import url("./css/spinner.css");
 @import url("./css/navbar.css");
 @import url("./css/backUp.css");
+@import url("./css/font-awesome.css");
 
 @media screen and (max-width: 600px) {
   .App {
