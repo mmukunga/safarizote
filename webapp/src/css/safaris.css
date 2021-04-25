@@ -17,10 +17,8 @@
 
 .oddRow {
   background: #f2f6fb;
-  padding: 5px;
-  margin: 5px;
-  border: 2px outset#90dff5;
-  border-radius: 2%;
+  border-top: 2px outset#90dff5;
+  margin-top: 5px;
 }
 
 .VideoWrapper {
