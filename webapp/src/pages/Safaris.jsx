@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react';
 import parse from "html-react-parser";
 import moment from 'moment';
-import '~font-awesome/less/font-awesome.less';
+import 'font-awesome/less/font-awesome.less';
+import 'font-awesome/scss/font-awesome.scss';
 
 import Big_Buck_Bunny from "../media/Big_Buck_Bunny.mp4";
 import kenya_safari from "../media/kenya-safari.mp4";
