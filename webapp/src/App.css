@@ -50,6 +50,7 @@ p span {
   margin:10px;
   display: block; 
   opacity: 0.5;
+  color: darkred;
 }
 
 @keyframes App-logo-spin {

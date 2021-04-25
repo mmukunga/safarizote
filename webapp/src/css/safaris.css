@@ -74,6 +74,10 @@
    border-top: 1px solid #ddd;
  }
 
+ ul#page-numbers {
+    padding: 0;
+  }
+
  ul#page-numbers li {
     padding-left:1em;
     color:#f00; /* red bullet */
