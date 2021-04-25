@@ -45,11 +45,11 @@ p {
 }
 
 p span { 
-  width: calc(100% - 10px); 
+  width: calc(100% - 30px); 
   padding:10px;
   margin:10px;
   display: block; 
-  background-color: silver;
+  opacity: 0.5;
 }
 
 @keyframes App-logo-spin {
