@@ -97,11 +97,11 @@ function App() {
               </div>
             </nav> 
             <p className="App-title">
-              The most revered of Africa’s safari destinations, Kenya is located in 
+              <span>The most revered of Africa’s safari destinations, Kenya is located in 
               East Africa and boasts the Masai Mara National Park, renowned for its 
-              abundant wildlife and annual Great Migration.<br/>
-              Common Trips <code>src/App.js</code> pluss the most preffered.<br/>    
-              <Link to="/email" style={{color: 'white'}} activeStyle={{color: 'red'}}>Please Contact Us!</Link><br/>     
+              abundant wildlife and annual Great Migration.</span>
+              <span>Common Trips <code>src/App.js</code> pluss the most preffered.</span>    
+              <span><Link to="/email" style={{color: 'white'}} activeStyle={{color: 'red'}}>Please Contact Us!</Link></span>   
               <a
                 className="App-link"
                 href="https://safarizote.herokuapp.com"
