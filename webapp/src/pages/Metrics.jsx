@@ -25,6 +25,7 @@ const Metrics = () => {
 
         const counts = mediaTypes.map(dataItem => ({
             type: dataItem,
+            dateCreated: array_hits.filter(item => item.url == dataItem).date_last_created,
             count: array_hits.filter(item => item.url == dataItem).length
         }));
 
@@ -54,12 +55,14 @@ const Metrics = () => {
                 <th>ID</th>
                 <th>URL</th>
                 <th>HITS</th>
+                <th>DATE</th>
               </tr>        
                {counts.map((item,idx) => 
                  <tr key={idx}>
                    <td>{idx}</td>
                    <td>{item.type}</td>
                    <td>{item.count}</td>
+                   <td>{item.date_last_created}</td>
                  </tr>
                )}
             </table>
