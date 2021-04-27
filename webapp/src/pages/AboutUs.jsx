@@ -3,6 +3,12 @@ import Card from './Card';
 
 const AboutUs = () => {
     const [names, setNames] = useState(["Simon Mukunga", "steve", "carol"]);
+    
+    React.useEffect(() => {
+      document.title = "Kenya Safari Specialist and a Professional Safari Guide in flora and fauna";
+    }, []);
+
+
     return (
         <Card className="InnerCard" fontColor="black" >
            <h4>About Us!</h4>

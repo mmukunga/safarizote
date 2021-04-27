@@ -37,6 +37,10 @@ import Card from './Card';
     const [list, setList] = React.useState([]);
 
     React.useEffect(() => {
+      document.title = "Get the World weather forecast. Access hourly, 1 day and 5 day forecasts along with up to the minute reports and videos from safarizote.herokuapp.com";
+    }, []);
+
+    React.useEffect(() => {
       axios.get('/api/countries')
         .then(response => {
             setCountries(response.data);

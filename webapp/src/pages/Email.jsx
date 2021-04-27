@@ -28,6 +28,10 @@ const Email = (props) => {
         dispatch({type: 'SET_EMAIL', payload: event.target});
     }
 
+    React.useEffect(() => {
+        document.title = "Use this form or send us email at mkunsim@gmail.com. Your name and email address will not be published, sold, or shared. We will not spam you";
+      }, []);
+
     console.log('props.location.state:= ' + props.location.state);
     
     const clearState = () => {

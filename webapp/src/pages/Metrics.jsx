@@ -5,6 +5,10 @@ import Card from './Card';
 const Metrics = () => {
    const [data, setData] = useState([]);
    const [counts, setCounts] = useState([]);
+   
+   React.useEffect(() => {
+    document.title = "Average rating: 4/6 stars, based on 887 safari reviews. Read our Kenya safari reviews from both users and reputable safari experts!";
+  }, []);
 
     useEffect(() => {
       axios.get('/api/allHits').then(response => {
