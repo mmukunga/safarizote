@@ -49,7 +49,7 @@ public class WeatherController {
     public ResponseEntity<List<City>> getCities(@RequestBody Country country) { 
 
         List<City> countryCities = new ArrayList<>(); 
-        
+       
         String jsonFile = "city_list.json";
         System.out.println("1.**************WeatherController****************");
         List<City> cityList = weatherClient.getCities(jsonFile);
@@ -59,9 +59,15 @@ public class WeatherController {
         // New Enhanced For loop
         System.out.println("\n==============> 2. New Enhanced For loop Example..");
         for (City temp : cityList) {
-            System.out.println(temp);
+            if (temp.getCountry().equals(country.getCode())) {
+                System.out.println(temp);
+                countryCities.add(temp);
+            }
         }
  
+        for (City temp : countryCities) {
+            System.out.println(temp);
+        }
 
         Country dbCountry = repository.findByCode(country.getCode());
         List<City> cities = dbCountry.getCities(); 
