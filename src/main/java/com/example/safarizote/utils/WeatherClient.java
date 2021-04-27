@@ -30,7 +30,9 @@ import org.springframework.core.io.ResourceLoader;
 
 @Component
 public class WeatherClient {
-
+    @Autowired
+    ResourceLoader resourceLoader;
+    
     public List<City> getCities(String path) throws Exception {
         System.out.println("CountryLoader - path:= " + path);
         Resource resource = resourceLoader.getResource("classpath:city_list.json");
