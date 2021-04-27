@@ -96,7 +96,7 @@ public class CountryLoader implements CommandLineRunner {
        
     }
 
-    public List<City> getCities(String path) throws IOException {
+    public List<City> getCities(String path) throws Exception {
         //InputStream inputStream = Files.newInputStream(Path.of(path));
         System.out.println("CountryLoader - path:= " + path);
         Resource resource = resourceLoader.getResource("classpath:city_list.json");
