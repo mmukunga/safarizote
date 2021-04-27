@@ -16,6 +16,7 @@ import com.example.safarizote.model.City;
 import com.example.safarizote.model.Country;
 
 import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 
