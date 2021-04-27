@@ -14,6 +14,10 @@ import java.util.Scanner;
 
 import org.springframework.stereotype.Component;
 
+
+import com.example.safarizote.model.City;
+import com.example.safarizote.model.Country;
+
 @Component
 public class WeatherClient {
 
