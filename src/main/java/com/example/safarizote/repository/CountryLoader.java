@@ -19,12 +19,19 @@ import com.google.gson.Gson;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
+
 @Component
 public class CountryLoader implements CommandLineRunner {
     private static final Logger logger = LoggerFactory.getLogger(CountryLoader.class);
 
     @Autowired
     private CountryRepository repository;
+
+    @Autowired
+    ResourceLoader resourceLoader;
+
 
     @Override
     public void run(String... args) throws Exception {
