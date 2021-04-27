@@ -27,6 +27,15 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
+
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
+
+
 @RestController
 public class WeatherController {
     private static final String API_KEY = "6ab73f3655f1a0db55237e9f5b00bff9";
