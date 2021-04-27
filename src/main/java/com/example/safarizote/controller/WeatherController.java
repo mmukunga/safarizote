@@ -7,6 +7,7 @@ import com.example.safarizote.model.City;
 import com.example.safarizote.model.Country;
 import com.example.safarizote.repository.CityRepository;
 import com.example.safarizote.repository.CountryRepository;
+import com.example.safarizote.utils.WeatherClient;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
