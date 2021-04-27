@@ -37,7 +37,9 @@ public class CountryLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         String jsonFile = "city_list.json";
+        System.out.println("1.**************CountryLoader ****************");
         List<City> cityList = getCities(jsonFile);
+        System.out.println("2.**************CountryLoader ****************");
         System.out.println("CountryLoader - cityList:= " + cityList.size());
 
         List<String> cList = new ArrayList<>();
