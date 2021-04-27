@@ -28,6 +28,10 @@ public class CountryLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        String jsonFile = "city_list.json";
+        List<City> cityList = getCities(jsonFile);
+        System.out.println("CountryLoader - cityList:= " + cityList.size());
+
         List<String> cList = new ArrayList<>();
             cList.add("AF");
             cList.add("AL");
@@ -90,5 +94,28 @@ public class CountryLoader implements CommandLineRunner {
             logger.info("{}", country.getName());
         });  
        
+    }
+
+    public List<City> getCities(String path) throws IOException {
+        //InputStream inputStream = Files.newInputStream(Path.of(path));
+        System.out.println("CountryLoader - path:= " + path);
+        Resource resource = resourceLoader.getResource("classpath:city_list.json");
+        InputStream inputStream = resource.getInputStream();
+        JsonReader reader = new JsonReader(new InputStreamReader(inputStream));
+        List<City> cities = new ArrayList<>();
+
+        long start = System.currentTimeMillis();
+        reader.beginArray();
+        while (reader.hasNext()) {
+          City e = new Gson().fromJson(reader, City.class);
+          //System.out.println(Person);
+          cities.add(e);
+        }
+
+        reader.endArray();
+        long end = System.currentTimeMillis();
+        float sec = (end - start) / 1000F; 
+        System.out.println("CountryLoader - TimeTaken:=" + sec + " seconds");
+        return cities;
     }
 }
