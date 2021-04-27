@@ -34,10 +34,11 @@ public class WeatherController {
 
     @Autowired
     private CountryRepository repository;
-
     @Autowired
     private CityRepository cityReository;
-    
+    @Autowired
+    private WeatherClient weatherClient;
+
     @RequestMapping(value = "/api/countries",  method={RequestMethod.GET})       
     public ResponseEntity<List<Country>> getCountries() { 
         List<Country> countries = repository.findAll();  
@@ -46,6 +47,22 @@ public class WeatherController {
 
     @RequestMapping(value="/api/cities",  method={RequestMethod.POST})       
     public ResponseEntity<List<City>> getCities(@RequestBody Country country) { 
+
+        List<City> countryCities = new ArrayList<>(); 
+        
+        String jsonFile = "city_list.json";
+        System.out.println("1.**************WeatherController****************");
+        List<City> cityList = weatherClient.getCities(jsonFile);
+        System.out.println("2.**************WeatherController****************");
+        System.out.println("WeatherController - cityList:= " + cityList.size());
+
+        // New Enhanced For loop
+        System.out.println("\n==============> 2. New Enhanced For loop Example..");
+        for (City temp : cityList) {
+            System.out.println(temp);
+        }
+ 
+
         Country dbCountry = repository.findByCode(country.getCode());
         List<City> cities = dbCountry.getCities(); 
         Set<City> citiesByCode = cityReository.findByCountry(country.getCode());

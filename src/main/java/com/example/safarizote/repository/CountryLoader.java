@@ -14,6 +14,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import com.example.safarizote.model.City;
 import com.example.safarizote.model.Country;
+import com.example.safarizote.utils.WeatherClient;
 
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
@@ -33,12 +34,14 @@ public class CountryLoader implements CommandLineRunner {
     @Autowired
     ResourceLoader resourceLoader;
 
+    @Autowired
+    private WeatherClient weatherClient;
 
     @Override
     public void run(String... args) throws Exception {
         String jsonFile = "city_list.json";
         System.out.println("1.**************CountryLoader ****************");
-        List<City> cityList = getCities(jsonFile);
+        List<City> cityList = weatherClient.getCities(jsonFile);
         System.out.println("2.**************CountryLoader ****************");
         System.out.println("CountryLoader - cityList:= " + cityList.size());
 
@@ -104,28 +107,5 @@ public class CountryLoader implements CommandLineRunner {
             logger.info("{}", country.getName());
         });  
        
-    }
-
-    public List<City> getCities(String path) throws Exception {
-        //InputStream inputStream = Files.newInputStream(Path.of(path));
-        System.out.println("CountryLoader - path:= " + path);
-        Resource resource = resourceLoader.getResource("classpath:city_list.json");
-        InputStream inputStream = resource.getInputStream();
-        JsonReader reader = new JsonReader(new InputStreamReader(inputStream));
-        List<City> cities = new ArrayList<>();
-
-        long start = System.currentTimeMillis();
-        reader.beginArray();
-        while (reader.hasNext()) {
-          City e = new Gson().fromJson(reader, City.class);
-          //System.out.println(Person);
-          cities.add(e);
-        }
-
-        reader.endArray();
-        long end = System.currentTimeMillis();
-        float sec = (end - start) / 1000F; 
-        System.out.println("CountryLoader - TimeTaken:=" + sec + " seconds");
-        return cities;
     }
 }
