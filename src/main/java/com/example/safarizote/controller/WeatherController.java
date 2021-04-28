@@ -68,18 +68,21 @@ public class WeatherController {
         System.out.println("WeatherController - cityList:= " + cityList.size());
 
         // New Enhanced For loop
-        System.out.println("\n==============> 2. New Enhanced For loop Example..");
+        System.out.println("\n==============> 1. New Enhanced For loop Example..");
         for (City temp : cityList) {
             if (temp.getCountry().equals(country.getCode())) {
-                System.out.println(temp);
                 countryCities.add(temp);
             }
         }
  
+        // New Enhanced For loop
+        System.out.println("\n==============> 2. New Enhanced For loop Example..");
         for (City temp : countryCities) {
             System.out.println(temp);
         }
-
+        // New Enhanced For loop
+        System.out.println("\n==============> 3. New Enhanced For loop Example..");
+        
         Country dbCountry = repository.findByCode(country.getCode());
         List<City> cities = dbCountry.getCities(); 
         Set<City> citiesByCode = cityReository.findByCountry(country.getCode());

@@ -47,7 +47,6 @@ public class WeatherClient {
         reader.beginArray();
         while (reader.hasNext()) {
           City e = new Gson().fromJson(reader, City.class);
-          //System.out.println(Person);
           cities.add(e);
         }
 
