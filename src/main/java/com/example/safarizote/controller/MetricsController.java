@@ -48,7 +48,7 @@ public class MetricsController {
     List<Tracker> visits = repository.findAll();
     System.out.println("\n==============> 2. Tracker..");
     //for (Tracker temp : visits) {
-        System.out.println("" + visits.size);
+        System.out.println("" + visits.size());
     //}
     System.out.println("\n==============> 2. Tracker..");
     System.out.println("Tracker.findAll()  End OK!");
