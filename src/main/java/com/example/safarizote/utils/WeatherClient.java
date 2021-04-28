@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 
 import com.example.safarizote.model.City;
+import com.example.safarizote.model.BigCity;
 import com.example.safarizote.model.Country;
 
 
@@ -40,19 +41,19 @@ public class WeatherClient {
     @Autowired
     ResourceLoader resourceLoader;
 
-    public List<City> getCities(String path, String countryCode) throws Exception {
+    public List<BigCity> getCities(String path, String countryCode) throws Exception {
         System.out.println("CountryLoader - path:= " + path);
         Resource resource = resourceLoader.getResource("classpath:city_list.json");
         InputStream inputStream = resource.getInputStream();
         
         JsonReader reader = new JsonReader(new InputStreamReader(inputStream));
-        List<City> cities = new ArrayList<>();
+        List<BigCity> cities = new ArrayList<>();
         long startTime = System.currentTimeMillis();
 
         try {
             reader.beginArray();
             while (reader.hasNext()) {
-            City e = new Gson().fromJson(reader, City.class);
+            BigCity e = new Gson().fromJson(reader, BigCity.class);
             if (e.getCountry().equals(countryCode)) {
                 cities.add(e);
             }
