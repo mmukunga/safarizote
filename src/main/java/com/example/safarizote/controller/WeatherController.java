@@ -90,7 +90,7 @@ public class WeatherController {
         Country dbCountry = repository.findByCode(country.getCode());
         List<City> cities = dbCountry.getCities(); 
         Set<City> citiesByCode = cityReository.findByCountry(country.getCode());
-        return new ResponseEntity<>(cities, HttpStatus.OK);   
+        return new ResponseEntity<>(cityList, HttpStatus.OK);   
     }
 
     @RequestMapping(value = "/api/weather",  method={RequestMethod.POST})
