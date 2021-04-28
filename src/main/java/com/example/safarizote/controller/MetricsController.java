@@ -47,9 +47,10 @@ public class MetricsController {
     repository.save(visit);
     List<Tracker> visits = repository.findAll();
     System.out.println("\n==============> 2. Tracker..");
-    for (Tracker temp : visits) {
-        System.out.println(temp);
-    }
+    //for (Tracker temp : visits) {
+        System.out.println("" + visits.size);
+    //}
+    System.out.println("\n==============> 2. Tracker..");
     System.out.println("Tracker.findAll()  End OK!");
     return new ResponseEntity<>(visits, HttpStatus.OK);
   }

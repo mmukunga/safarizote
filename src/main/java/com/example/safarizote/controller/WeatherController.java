@@ -76,12 +76,15 @@ public class WeatherController {
         }
  
         // New Enhanced For loop
-        System.out.println("\n==============> 2. New Enhanced For loop Example..");
-        for (City temp : countryCities) {
-            System.out.println(temp);
-        }
+        // System.out.println("\n==============> 2. New Enhanced For loop Example..");
+        // for (City temp : countryCities) {
+        //    System.out.println(temp);
+        // }
+          
+        System.out.println("WeatherController - countryCities.size():= " + countryCities.size());
+
         // New Enhanced For loop
-        System.out.println("\n==============> 3. New Enhanced For loop Example..");
+        //System.out.println("\n==============> 3. New Enhanced For loop Example..");
         
         Country dbCountry = repository.findByCode(country.getCode());
         List<City> cities = dbCountry.getCities(); 
