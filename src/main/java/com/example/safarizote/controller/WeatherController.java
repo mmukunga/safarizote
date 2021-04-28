@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Set;
 
 //import com.example.safarizote.model.City;
-import com.example.safarizote.model.City2;
+import com.example.safarizote.model.City;
 import com.example.safarizote.model.Country;
 import com.example.safarizote.repository.CityRepository;
 import com.example.safarizote.repository.CountryRepository;
@@ -58,13 +58,13 @@ public class WeatherController {
     }
 
     @RequestMapping(value="/api/cities",  method={RequestMethod.POST})       
-    public ResponseEntity<List<City2>> getCities(@RequestBody Country country) throws Exception { 
+    public ResponseEntity<List<City>> getCities(@RequestBody Country country) throws Exception { 
 
-        List<City2> countryCities = new ArrayList<>(); 
+        List<City> countryCities = new ArrayList<>(); 
        
         String jsonFile = "city_list.json";
         System.out.println("1.**************WeatherController****************");
-        List<City2> cityList = weatherClient.getCities(jsonFile, country.getCode());
+        List<City> cityList = weatherClient.getCities(jsonFile, country.getCode());
         System.out.println("2.**************WeatherController****************");
         System.out.println("WeatherController - cityList:= " + cityList.size());
 

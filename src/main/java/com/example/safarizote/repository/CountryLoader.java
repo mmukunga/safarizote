@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import com.example.safarizote.model.City2;
+import com.example.safarizote.model.City;
 import com.example.safarizote.model.Country;
 import com.example.safarizote.utils.WeatherClient;
 
@@ -44,7 +44,8 @@ public class CountryLoader implements CommandLineRunner {
         //List<City> cityList = weatherClient.getCities(jsonFile);
         //System.out.println("2.**************CountryLoader ****************");
         //System.out.println("CountryLoader - cityList:= " + cityList.size());
-
+        repository.deleteAll();
+        /*     
         List<String> cList = new ArrayList<>();
             cList.add("AF");
             cList.add("AL");
@@ -70,19 +71,21 @@ public class CountryLoader implements CommandLineRunner {
         if (aList.isEmpty()) {
             return;
         }
-
+        */
+        
         String fileCountryName = "countries.json";  
         ClassLoader classLoader = getClass().getClassLoader();
         InputStream isCountry = classLoader.getResourceAsStream(fileCountryName);     
         Reader countryReader = new InputStreamReader(isCountry, StandardCharsets.UTF_8);
         Gson gsonCountry = new Gson();
         
-        Country[] countries = gsonCountry.fromJson(countryReader, Country[].class);   
+        Country[] countries = gsonCountry.fromJson(countryReader, Country[].class);  
+
         Arrays.stream(countries).forEach(country -> {
-            if (aList.contains(country.getCode())) {
+            //if (aList.contains(country.getCode())) {
                 repository.save(Country.builder().name(country.getName())
                 .code(country.getCode()).build()); 
-            }
+            //}
         });
        
         String fileCityName = "city_list.json"; 
@@ -90,7 +93,7 @@ public class CountryLoader implements CommandLineRunner {
         InputStream isCity = classCityLoader.getResourceAsStream(fileCityName);
         Reader cityReader = new InputStreamReader(isCity, StandardCharsets.UTF_8);
         Gson gson = new Gson();
-        City2[] cities = gson.fromJson(cityReader, City2[].class); 
+        City[] cities = gson.fromJson(cityReader, City[].class); 
         Arrays.stream(cities).forEach(city -> {
             Country country = repository.findByCode(city.getCountry());
             if (country != null) {

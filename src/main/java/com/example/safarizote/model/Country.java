@@ -27,5 +27,5 @@ public class Country {
     @NonNull String code;
     @Singular 
     @OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
-    List<City2> cities;
+    List<City> cities;
 }
