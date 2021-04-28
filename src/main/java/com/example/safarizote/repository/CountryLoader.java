@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import com.example.safarizote.model.City;
+import com.example.safarizote.model.City2;
 import com.example.safarizote.model.Country;
 import com.example.safarizote.utils.WeatherClient;
 
