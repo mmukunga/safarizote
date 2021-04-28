@@ -40,20 +40,20 @@ public class WeatherClient {
         System.out.println("CountryLoader - path:= " + path);
         Resource resource = resourceLoader.getResource("classpath:city_list.json");
         InputStream inputStream = resource.getInputStream();
-        try {
+        
         JsonReader reader = new JsonReader(new InputStreamReader(inputStream));
         List<City> cities = new ArrayList<>();
+        try {
+            long start = System.currentTimeMillis();
+            reader.beginArray();
+            while (reader.hasNext()) {
+            City e = new Gson().fromJson(reader, City.class);
+            if (e.getCountry().equals(countryCode)) {
+                cities.add(e);
+            }
+            }
 
-        long start = System.currentTimeMillis();
-        reader.beginArray();
-        while (reader.hasNext()) {
-          City e = new Gson().fromJson(reader, City.class);
-          if (e.getCountry().equals(countryCode)) {
-            cities.add(e);
-          }
-        }
-
-        reader.endArray();
+            reader.endArray();
         } finally {
             try {
                 if (reader != null) {
