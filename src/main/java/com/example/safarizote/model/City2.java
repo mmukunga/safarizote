@@ -15,10 +15,12 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BigCity {
+public class City2 {
     @Id @GeneratedValue Long id;
     @NonNull String country;
     @NonNull String name;
     @NonNull String state;
-    @NonNull Coord coord;
+    @JsonBackReference
+    @OneToOne(fetch = FetchType.EAGER)
+    private Coord coord;
 }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import com.example.safarizote.model.City;
-import com.example.safarizote.model.BigCity;
+import com.example.safarizote.model.City2;
 import com.example.safarizote.model.Country;
 import com.example.safarizote.repository.CityRepository;
 import com.example.safarizote.repository.CountryRepository;
@@ -64,7 +64,7 @@ public class WeatherController {
        
         String jsonFile = "city_list.json";
         System.out.println("1.**************WeatherController****************");
-        List<BigCity> cityList = weatherClient.getCities(jsonFile, country.getCode());
+        List<City2> cityList = weatherClient.getCities(jsonFile, country.getCode());
         System.out.println("2.**************WeatherController****************");
         System.out.println("WeatherController - cityList:= " + cityList.size());
 
