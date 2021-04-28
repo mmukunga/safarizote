@@ -58,7 +58,7 @@ public class WeatherController {
     }
 
     @RequestMapping(value="/api/cities",  method={RequestMethod.POST})       
-    public ResponseEntity<List<City>> getCities(@RequestBody Country country) throws Exception { 
+    public ResponseEntity<List<City2>> getCities(@RequestBody Country country) throws Exception { 
 
         List<City> countryCities = new ArrayList<>(); 
        
