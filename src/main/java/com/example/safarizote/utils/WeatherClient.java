@@ -36,10 +36,11 @@ public class WeatherClient {
     @Autowired
     ResourceLoader resourceLoader;
 
-    public List<City> getCities(String path) throws Exception {
+    public List<City> getCities(String path, String countryCode) throws Exception {
         System.out.println("CountryLoader - path:= " + path);
         Resource resource = resourceLoader.getResource("classpath:city_list.json");
         InputStream inputStream = resource.getInputStream();
+        try {
         JsonReader reader = new JsonReader(new InputStreamReader(inputStream));
         List<City> cities = new ArrayList<>();
 
@@ -47,10 +48,22 @@ public class WeatherClient {
         reader.beginArray();
         while (reader.hasNext()) {
           City e = new Gson().fromJson(reader, City.class);
-          cities.add(e);
+          if (e.getCountry().equals(countryCode)) {
+            cities.add(e);
+          }
         }
 
         reader.endArray();
+        } finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (IOException e) {
+                // let it go.
+                System.out.println(e);
+            }
+        }
         long end = System.currentTimeMillis();
         float sec = (end - start) / 1000F; 
         System.out.println("CountryLoader - TimeTaken:=" + sec + " seconds");
