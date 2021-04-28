@@ -43,8 +43,9 @@ public class WeatherClient {
         
         JsonReader reader = new JsonReader(new InputStreamReader(inputStream));
         List<City> cities = new ArrayList<>();
+        long start = System.currentTimeMillis();
+
         try {
-            long start = System.currentTimeMillis();
             reader.beginArray();
             while (reader.hasNext()) {
             City e = new Gson().fromJson(reader, City.class);
@@ -52,7 +53,6 @@ public class WeatherClient {
                 cities.add(e);
             }
             }
-
             reader.endArray();
         } finally {
             try {
@@ -64,6 +64,7 @@ public class WeatherClient {
                 System.out.println(e);
             }
         }
+        
         long end = System.currentTimeMillis();
         float sec = (end - start) / 1000F; 
         System.out.println("CountryLoader - TimeTaken:=" + sec + " seconds");
