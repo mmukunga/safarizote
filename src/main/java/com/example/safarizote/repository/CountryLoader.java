@@ -85,12 +85,12 @@ public class CountryLoader implements CommandLineRunner {
             }
         });
        
-        String fileCityName = "cities.json"; 
+        String fileCityName = "city_list.json"; 
         ClassLoader classCityLoader = getClass().getClassLoader();
         InputStream isCity = classCityLoader.getResourceAsStream(fileCityName);
         Reader cityReader = new InputStreamReader(isCity, StandardCharsets.UTF_8);
         Gson gson = new Gson();
-        City[] cities = gson.fromJson(cityReader, City[].class); 
+        City2[] cities = gson.fromJson(cityReader, City2[].class); 
         Arrays.stream(cities).forEach(city -> {
             Country country = repository.findByCode(city.getCountry());
             if (country != null) {
@@ -98,7 +98,7 @@ public class CountryLoader implements CommandLineRunner {
                 if (aList.contains(country.getCode())) {
                     System.out.println("NEW City: " + city);
                     country.getCities().add(city);
-                    repository.save(country); 
+                    //repository.save(country); 
                 }
             }
         });

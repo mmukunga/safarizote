@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
 
-import com.example.safarizote.model.City;
+//import com.example.safarizote.model.City;
 import com.example.safarizote.model.City2;
 import com.example.safarizote.model.Country;
 import com.example.safarizote.repository.CityRepository;
@@ -60,7 +60,7 @@ public class WeatherController {
     @RequestMapping(value="/api/cities",  method={RequestMethod.POST})       
     public ResponseEntity<List<City2>> getCities(@RequestBody Country country) throws Exception { 
 
-        List<City> countryCities = new ArrayList<>(); 
+        List<City2> countryCities = new ArrayList<>(); 
        
         String jsonFile = "city_list.json";
         System.out.println("1.**************WeatherController****************");
@@ -87,9 +87,9 @@ public class WeatherController {
         // New Enhanced For loop
         //System.out.println("\n==============> 3. New Enhanced For loop Example..");
         
-        Country dbCountry = repository.findByCode(country.getCode());
-        List<City> cities = dbCountry.getCities(); 
-        Set<City> citiesByCode = cityReository.findByCountry(country.getCode());
+        //Country dbCountry = repository.findByCode(country.getCode());
+        //List<City> cities = dbCountry.getCities(); 
+        //Set<City> citiesByCode = cityReository.findByCountry(country.getCode());
         return new ResponseEntity<>(cityList, HttpStatus.OK);   
     }
 
