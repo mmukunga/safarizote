@@ -29,7 +29,7 @@ const Metrics = () => {
         });  
         // statements
         console.log('2021-04-29 12:12:2000');
-        return arrayHits;
+        return aggregatedData;
     }
 
     useEffect(() => {
