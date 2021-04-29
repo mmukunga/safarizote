@@ -40,8 +40,9 @@ const Metrics = () => {
         var lastDate;
         const counts = mediaTypes.map(dataItem => ({
             url: dataItem,
-            dateCreated: asyncFunc(array_hits, dataItem)
+            dateCreated: await asyncFunc(array_hits, dataItem)
                 .then(result => {
+                  console.log(result);
                   return result;
                 }),
             count: array_hits.filter(item => item.url == dataItem).length
