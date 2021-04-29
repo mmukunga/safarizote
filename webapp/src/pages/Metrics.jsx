@@ -6,71 +6,70 @@ const Metrics = () => {
    const [data, setData] = useState([]);
    const [counts, setCounts] = useState([]);
    
-   React.useEffect(() => {
-    document.title = "Average rating: 4/6 stars, based on 887 safari reviews. Read our Kenya safari reviews from both users and reputable safari experts!";
-  }, []);
+    async function findDate(data) {
+        var arrayHits = [];
+        data.forEach((d) => {
+          const data_group = data.filter(item => item.url === d.url); 
+          var last_item = data_group[data_group.length - 1];
+          arrayHits.push({
+              url: d.url,
+              browser: d.browser,
+              date_last_created: last_item.dateCreated
+            });
+        });  
+        // statements
+        console.log('2021-04-29 12:12:2000');
+        return arrayHits;
+    }
 
     useEffect(() => {
-      axios.get('/api/allHits').then(response => {
-        var array_hits = [];
+       axios.get('/api/allHits').then(response => {
+         var array_hits = [];
+
+       // Add hook
+       const fetchData = (data) => {
+         findDate(data)
+         .then(resp => {
+            return resp;
+         })
+         .catch(err => {
+             console.log("Metrics can't be added");
+             console.error(err);
+         })
+       }
+
+       const myData = fetchData(response.data);
+       console.log(myData);
+
         response.data.forEach((d) => {
           const data_group = response.data.filter(item => item.url === d.url); 
           var last_item = data_group[data_group.length - 1];
-          console.log(last_item);
+
           array_hits.push({
               url: d.url,
               browser: d.browser,
-              dateCreated: last_item.dateCreated
+              date_last_created: last_item.dateCreated
             });
         });
 
-        console.log(array_hits);
-        
-
-        async function asyncLastDate(array_hits, dataItem) {
-          const items  = array_hits.filter(item => item.url == dataItem);
-          const result = items[items.length - 1].dateCreated;
-          console.log(result);
-          return result; 
-        }
-
-
-        const fetchData = (array_hits, dataItem) => {
-          asyncLastDate(array_hits, dataItem).then(resp => {
-            console.log(resp);
-            return resp;
-          });
-        };
-
         const mediaTypes = array_hits.map(dataItem => dataItem.url) 
         .filter((mediaType, index, array) => array.indexOf(mediaType) === index); // filter out duplicates
-        console.log(mediaTypes);
 
-        var result = mediaTypes.map((dataItem)=>{
-          const arrayCount = array_hits.filter(item => item.url == dataItem).length;
-          const items  = array_hits.filter(item => item.url == dataItem);
-          const lastDate = items[items.length - 1].dateCreated;
-          var item = {
-            url: dataItem,
-            dateCreated: lastDate,
-            count: arrayCount
-          };
-          setCounts((item) => ([ ...counts, ...item ]));
-          return (item);
-        });
-        
-        console.log(result.length);
+        const counts = mediaTypes.map(dataItem => ({
+            type: dataItem,
+            count: array_hits.filter(item => item.url == dataItem).length
+        }));
+
+        var sortedCounts = [...counts];
+        sortedCounts.sort((a,b) => b.count - a.count); //descending order
+
+        setData(array_hits);
+        setCounts(sortedCounts);
 
       }).catch(err => {
           console.log(err);
       });
     }, []);
-
-     if (counts.length > 0 && counts[0].dateCreated != undefined) {
-       console.log(counts);
-     } else {
-       console.log('counts UNDEFINED!!');
-     }
 
     return (
         <Card className="InnerCard" fontColor="black">
@@ -87,14 +86,12 @@ const Metrics = () => {
                 <th>ID</th>
                 <th>URL</th>
                 <th>HITS</th>
-                <th>DATE</th>
               </tr>        
                {counts.map((item,idx) => 
                  <tr key={idx}>
                    <td>{idx}</td>
-                   <td>{item.url}</td>
+                   <td>{item.type}</td>
                    <td>{item.count}</td>
-                   <td>{item.dateCreated}</td>
                  </tr>
                )}
             </table>
