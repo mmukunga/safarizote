@@ -5,7 +5,8 @@ import Card from './Card';
 const Metrics = () => {
    const [data, setData] = useState([]);
    const [counts, setCounts] = useState([]);
-   
+   const [myData, setMyData] = useState([]);
+
     async function findDate(data) {
         var arrayHits = [];
         data.forEach((d) => {
@@ -30,7 +31,8 @@ const Metrics = () => {
        const fetchData = (data) => {
          findDate(data)
          .then(resp => {
-            return resp;
+          console.log(resp);
+          setMyData([ ...myData, ...resp ]);
          })
          .catch(err => {
              console.log("Metrics can't be added");
@@ -38,8 +40,7 @@ const Metrics = () => {
          })
        }
 
-       const myData = fetchData(response.data);
-       console.log(myData);
+       fetchData(response.data);
 
         response.data.forEach((d) => {
           const data_group = response.data.filter(item => item.url === d.url); 
@@ -71,6 +72,8 @@ const Metrics = () => {
       });
     }, []);
 
+    console.log(myData);
+    
     return (
         <Card className="InnerCard" fontColor="black">
             <h4 style={{ margin: '20px', fontStyle: 'bold', textAlign: 'left'}}>Safari Zote!</h4>
