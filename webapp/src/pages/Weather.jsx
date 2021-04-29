@@ -150,7 +150,7 @@ import Card from './Card';
           <select id="countryCode" name="countryCode" onChange={handleChange}>    
               <option value="none">Select Country</option>   
               {countries.map((country) => (
-                  <option value={country.name}>{country.code}</option>
+                  <option value={country.code}>{country.name}</option>
               ))}    
           </select>
           <select id="cityName" name="cityName" onChange={handleChange}>    
