@@ -16,7 +16,7 @@ const Metrics = () => {
         response.data.forEach((d) => {
           const data_group = response.data.filter(item => item.url === d.url); 
           var last_item = data_group[data_group.length - 1];
-
+          console.log(last_item);
           array_hits.push({
               url: d.url,
               browser: d.browser,
