@@ -24,17 +24,21 @@ const Metrics = () => {
             });
         });
 
+        console.log(array_hits);
+
         const mediaTypes = array_hits.map(dataItem => dataItem.url) 
         .filter((mediaType, index, array) => array.indexOf(mediaType) === index); // filter out duplicates
+        console.log(mediaTypes);
 
         const counts = mediaTypes.map(dataItem => ({
             type: dataItem,
             dateCreated: array_hits.filter(item => item.url == dataItem).dateCreated,
             count: array_hits.filter(item => item.url == dataItem).length
         }));
-
+        
         var sortedCounts = [...counts];
         sortedCounts.sort((a,b) => b.count - a.count); //descending order
+        console.log(sortedCounts);
 
         setData(array_hits);
         setCounts(sortedCounts);
