@@ -25,6 +25,14 @@ const Metrics = () => {
         });
 
         console.log(array_hits);
+        
+
+        async function asyncFunc(array_hits, dataItem) {
+          const items  = array_hits.filter(item => item.url == dataItem);
+          const result = items[items.length - 1].dateCreated;
+          console.log(result);
+          return new Date(); 
+        }
 
         const mediaTypes = array_hits.map(dataItem => dataItem.url) 
         .filter((mediaType, index, array) => array.indexOf(mediaType) === index); // filter out duplicates
@@ -32,11 +40,10 @@ const Metrics = () => {
         var lastDate;
         const counts = mediaTypes.map(dataItem => ({
             url: dataItem,
-            dateCreated: lastDate = new Promise((array_hits) => {
-              const items = array_hits.filter(item => item.url == dataItem);
-              const lastItem = items[items.length - 1];
-              return lastItem.dateCreated
-            }),
+            dateCreated: asyncFunc(array_hits, dataItem)
+                .then(result => {
+                  return result;
+                }),
             count: array_hits.filter(item => item.url == dataItem).length
         }));
         console.log(counts);
