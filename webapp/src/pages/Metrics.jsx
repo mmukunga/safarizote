@@ -6,6 +6,7 @@ const Metrics = () => {
    const [data, setData] = useState([]);
    const [counts, setCounts] = useState([]);
    const [myData, setMyData] = useState([]);
+   const [totalCount, setTotalCount] = useState(0);
 
     async function findDate(data) {
         var arrayHits = [];
@@ -40,6 +41,9 @@ const Metrics = () => {
             .then(resp => {
               console.log(resp);
               setMyData([ ...myData, ...resp ]);
+              const totalCount = data.reduce((a,v) =>  a = a + v.count , 0 );
+              console.log(totalCount);
+              setTotalCount(totalCount);
             })
             .catch(err => {
                 console.log("Metrics can't be added");
@@ -70,17 +74,19 @@ const Metrics = () => {
               <tr>
                 <th>ID</th>
                 <th>URL</th>
+                <th>Last Visited</th>
                 <th>HITS</th>
               </tr>        
-               {counts.map((item,idx) => 
+               {myData.map((item,idx) => 
                  <tr key={idx}>
                    <td>{idx}</td>
                    <td>{item.type}</td>
+                   <td>{item.dateCreated}</td>
                    <td>{item.count}</td>
                  </tr>
                )}
             </table>
-            <p style={{ margin: '20px', textAlign:'left'}}>Hits: { data.length }</p>
+            <p style={{ margin: '20px', textAlign:'left'}}>Hits: { totalCount }</p>
         </Card>
     )
 }
