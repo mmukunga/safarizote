@@ -39,74 +39,19 @@ public class CountryLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        //String jsonFile = "city_list.json";
-        //System.out.println("1.**************CountryLoader ****************");
-        //List<City> cityList = weatherClient.getCities(jsonFile);
-        //System.out.println("2.**************CountryLoader ****************");
-        //System.out.println("CountryLoader - cityList:= " + cityList.size());
-        repository.deleteAll();
-        /*     
-        List<String> cList = new ArrayList<>();
-            cList.add("AF");
-            cList.add("AL");
-            cList.add("DZ");
-            cList.add("KE");
-            cList.add("NO");
-            cList.add("SE");
-            cList.add("DK");
-        
-            List<String> aList = new ArrayList<>();
-        if (repository.count() > 0) {          
-           List<Country> lst = repository.findAll();
-           for (Country temp : lst) {
-              if (!cList.contains(temp.getCode())){ 
-                  aList.add(temp.getCode());
-                 System.out.println(temp);
-              }
-           }
-        } else {
-            aList.addAll(cList);
-        }
-        
-        if (aList.isEmpty()) {
-            return;
-        }
-        */
-        
+        // repository.deleteAll();
         String fileCountryName = "countries.json";  
+
         ClassLoader classLoader = getClass().getClassLoader();
         InputStream isCountry = classLoader.getResourceAsStream(fileCountryName);     
         Reader countryReader = new InputStreamReader(isCountry, StandardCharsets.UTF_8);
         Gson gsonCountry = new Gson();
         
         Country[] countries = gsonCountry.fromJson(countryReader, Country[].class);  
-
         Arrays.stream(countries).forEach(country -> {
-            //if (aList.contains(country.getCode())) {
                 repository.save(Country.builder().name(country.getName())
                 .code(country.getCode()).build()); 
-            //}
         });
-        
-       /*
-        String fileCityName = "city_list.json"; 
-        ClassLoader classCityLoader = getClass().getClassLoader();
-        InputStream isCity = classCityLoader.getResourceAsStream(fileCityName);
-        Reader cityReader = new InputStreamReader(isCity, StandardCharsets.UTF_8);
-        Gson gson = new Gson();
-        City[] cities = gson.fromJson(cityReader, City[].class); 
-        Arrays.stream(cities).forEach(city -> {
-            Country country = repository.findByCode(city.getCountry());
-            if (country != null) {
-                System.out.println("CountryLoader.. Name:= " + country.getName() + " Code:= " + city.getCountry());
-                //if (aList.contains(country.getCode())) {
-                    System.out.println("NEW City: " + city);
-                    country.getCities().add(city);
-                    //repository.save(country); 
-                //}
-            }
-        });
-        */
 
         repository.findAll().forEach((country) -> {
             logger.info("{}", country.getName());
