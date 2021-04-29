@@ -3,13 +3,10 @@ import axios from 'axios';
 import Card from './Card';
 
 const Metrics = () => {
-   const [data, setData] = useState([]);
-   const [counts, setCounts] = useState([]);
    const [myData, setMyData] = useState([]);
    const [totalCount, setTotalCount] = useState(0);
 
     async function findDate(data) {
-        var arrayHits = [];
         const mediaTypes = data.map(dataItem => dataItem.url) 
         .filter((mediaType, index, array) => array.indexOf(mediaType) === index); // filter out duplicates
         
@@ -18,34 +15,18 @@ const Metrics = () => {
             dateCreated: data.filter(item => item.url == dataItem)[0].dateCreated.split('.')[0],
             count: data.filter(item => item.url == dataItem).length
         }));
-      
-        data.forEach((d) => {
-          const data_group = data.filter(item => item.url === d.url); 
-          var last_item = data_group[data_group.length - 1];
-          arrayHits.push({
-              url: d.url,
-              browser: d.browser,
-              date_last_created: last_item.dateCreated.split('.')[0]
-            });
-        });  
-        // statements
-        console.log('2021-04-29 12:12:2000');
+        
         return aggregatedData;
     }
 
     useEffect(() => {
        axios.get('/api/allHits').then(response => {
-          // Fetch Data
           const fetchData = (data) => {
-            findDate(data)
-            .then(resp => {
-              console.log(resp);
+            findDate(data).then(resp => {
               setMyData([ ...myData, ...resp ]);
-              const totalCount = data.reduce((total,item) => total=total+item.count, 0);
-              console.log(totalCount);
+              const totalCount = data.reduce((total,item) => total = total + item.count, 0);
               setTotalCount(totalCount);
-            })
-            .catch(err => {
+            }).catch(err => {
                 console.log("Metrics can't be added");
                 console.error(err);
             })

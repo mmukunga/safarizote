@@ -30,6 +30,7 @@ const Safaris = () => {
     }, []);
 
     React.useEffect(() => {
+      console.log(navigator.userAgent);
       axios.get('https://extreme-ip-lookup.com/json/')
         .then(response => {
             axios.post('/api/saveVisit', {
