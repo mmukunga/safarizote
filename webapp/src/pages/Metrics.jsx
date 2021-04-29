@@ -9,6 +9,15 @@ const Metrics = () => {
 
     async function findDate(data) {
         var arrayHits = [];
+        const mediaTypes = data.map(dataItem => dataItem.url) 
+        .filter((mediaType, index, array) => array.indexOf(mediaType) === index); // filter out duplicates
+        
+        const aggregatedData = mediaTypes.map(dataItem => ({
+            type: dataItem,
+            dateCreated: data.filter(item => item.url == dataItem)[0].dateCreated,
+            count: data.filter(item => item.url == dataItem).length
+        }));
+      
         data.forEach((d) => {
           const data_group = data.filter(item => item.url === d.url); 
           var last_item = data_group[data_group.length - 1];
@@ -25,47 +34,20 @@ const Metrics = () => {
 
     useEffect(() => {
        axios.get('/api/allHits').then(response => {
-         var array_hits = [];
+          // Fetch Data
+          const fetchData = (data) => {
+            findDate(data)
+            .then(resp => {
+              console.log(resp);
+              setMyData([ ...myData, ...resp ]);
+            })
+            .catch(err => {
+                console.log("Metrics can't be added");
+                console.error(err);
+            })
+          }
 
-       // Add hook
-       const fetchData = (data) => {
-         findDate(data)
-         .then(resp => {
-          console.log(resp);
-          setMyData([ ...myData, ...resp ]);
-         })
-         .catch(err => {
-             console.log("Metrics can't be added");
-             console.error(err);
-         })
-       }
-
-       fetchData(response.data);
-
-        response.data.forEach((d) => {
-          const data_group = response.data.filter(item => item.url === d.url); 
-          var last_item = data_group[data_group.length - 1];
-
-          array_hits.push({
-              url: d.url,
-              browser: d.browser,
-              date_last_created: last_item.dateCreated
-            });
-        });
-
-        const mediaTypes = array_hits.map(dataItem => dataItem.url) 
-        .filter((mediaType, index, array) => array.indexOf(mediaType) === index); // filter out duplicates
-
-        const counts = mediaTypes.map(dataItem => ({
-            type: dataItem,
-            count: array_hits.filter(item => item.url == dataItem).length
-        }));
-
-        var sortedCounts = [...counts];
-        sortedCounts.sort((a,b) => b.count - a.count); //descending order
-
-        setData(array_hits);
-        setCounts(sortedCounts);
+          fetchData(response.data);
 
       }).catch(err => {
           console.log(err);
@@ -73,7 +55,7 @@ const Metrics = () => {
     }, []);
 
     console.log(myData);
-    
+
     return (
         <Card className="InnerCard" fontColor="black">
             <h4 style={{ margin: '20px', fontStyle: 'bold', textAlign: 'left'}}>Safari Zote!</h4>
