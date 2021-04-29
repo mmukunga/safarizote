@@ -45,24 +45,32 @@ const Metrics = () => {
         const mediaTypes = array_hits.map(dataItem => dataItem.url) 
         .filter((mediaType, index, array) => array.indexOf(mediaType) === index); // filter out duplicates
         console.log(mediaTypes);
-        const counts = mediaTypes.map(dataItem => ({
-            url: dataItem,
-            dateCreated: fetchData(array_hits, dataItem),
-            count: array_hits.filter(item => item.url == dataItem).length
-        }));
-        console.log(counts);
-/*
-        var sortedCounts = [...counts];
-        sortedCounts.sort((a,b) => b.count - a.count); //descending order
-        console.log(sortedCounts);
 
-        setData(array_hits);
-        setCounts(sortedCounts);
-*/
+        var result = mediaTypes.map((dataItem)=>{
+          const arrayCount = array_hits.filter(item => item.url == dataItem).length;
+          const items  = array_hits.filter(item => item.url == dataItem);
+          const lastDate = items[items.length - 1].dateCreated;
+          var item = {
+            url: dataItem,
+            dateCreated: lastDate,
+            count: arrayCount
+          };
+          setCounts((item) => ([ ...counts, ...item ]));
+          return (item);
+        });
+        
+        console.log(result.length);
+
       }).catch(err => {
           console.log(err);
       });
     }, []);
+
+     if (counts.length > 0 && counts[0].dateCreated != undefined) {
+       console.log(counts);
+     } else {
+       console.log('counts UNDEFINED!!');
+     }
 
     return (
         <Card className="InnerCard" fontColor="black">
