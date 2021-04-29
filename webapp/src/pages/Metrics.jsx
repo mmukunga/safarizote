@@ -20,7 +20,7 @@ const Metrics = () => {
           array_hits.push({
               url: d.url,
               browser: d.browser,
-              date_last_created: last_item.dateCreated
+              dateCreated: last_item.dateCreated
             });
         });
 
@@ -29,7 +29,7 @@ const Metrics = () => {
 
         const counts = mediaTypes.map(dataItem => ({
             type: dataItem,
-            dateCreated: array_hits.filter(item => item.url == dataItem).date_last_created,
+            dateCreated: array_hits.filter(item => item.url == dataItem).dateCreated,
             count: array_hits.filter(item => item.url == dataItem).length
         }));
 
