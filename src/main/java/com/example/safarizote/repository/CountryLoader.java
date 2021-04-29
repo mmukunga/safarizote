@@ -87,7 +87,8 @@ public class CountryLoader implements CommandLineRunner {
                 .code(country.getCode()).build()); 
             //}
         });
-       
+        
+       /*
         String fileCityName = "city_list.json"; 
         ClassLoader classCityLoader = getClass().getClassLoader();
         InputStream isCity = classCityLoader.getResourceAsStream(fileCityName);
@@ -98,14 +99,15 @@ public class CountryLoader implements CommandLineRunner {
             Country country = repository.findByCode(city.getCountry());
             if (country != null) {
                 System.out.println("CountryLoader.. Name:= " + country.getName() + " Code:= " + city.getCountry());
-                if (aList.contains(country.getCode())) {
+                //if (aList.contains(country.getCode())) {
                     System.out.println("NEW City: " + city);
                     country.getCities().add(city);
                     //repository.save(country); 
-                }
+                //}
             }
         });
-        
+        */
+
         repository.findAll().forEach((country) -> {
             logger.info("{}", country.getName());
         });  
