@@ -15,7 +15,7 @@ const Metrics = () => {
         
         const aggregatedData = mediaTypes.map(dataItem => ({
             type: dataItem,
-            dateCreated: data.filter(item => item.url == dataItem)[0].dateCreated,
+            dateCreated: data.filter(item => item.url == dataItem)[0].dateCreated.split('.')[0],
             count: data.filter(item => item.url == dataItem).length
         }));
       
