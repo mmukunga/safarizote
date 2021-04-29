@@ -31,11 +31,12 @@ const Metrics = () => {
         console.log(mediaTypes);
 
         const counts = mediaTypes.map(dataItem => ({
-            type: dataItem,
+            url: dataItem,
             dateCreated: array_hits.filter(item => item.url == dataItem).dateCreated,
             count: array_hits.filter(item => item.url == dataItem).length
         }));
-        
+        console.log(counts);
+
         var sortedCounts = [...counts];
         sortedCounts.sort((a,b) => b.count - a.count); //descending order
         console.log(sortedCounts);
@@ -68,9 +69,9 @@ const Metrics = () => {
                {counts.map((item,idx) => 
                  <tr key={idx}>
                    <td>{idx}</td>
-                   <td>{item.type}</td>
+                   <td>{item.url}</td>
                    <td>{item.count}</td>
-                   <td>{item.date_last_created}</td>
+                   <td>{item.dateCreated}</td>
                  </tr>
                )}
             </table>
