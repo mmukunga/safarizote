@@ -25,7 +25,7 @@ const Metrics = () => {
           arrayHits.push({
               url: d.url,
               browser: d.browser,
-              date_last_created: last_item.dateCreated
+              date_last_created: last_item.dateCreated.split('.')[0]
             });
         });  
         // statements
@@ -41,7 +41,7 @@ const Metrics = () => {
             .then(resp => {
               console.log(resp);
               setMyData([ ...myData, ...resp ]);
-              const totalCount = data.reduce((total,currentItem) => total=total+currentItem.count, 0);
+              const totalCount = data.reduce((total,item) => total=total+item.count, 0);
               console.log(totalCount);
               setTotalCount(totalCount);
             })
