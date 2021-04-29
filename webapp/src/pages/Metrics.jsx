@@ -29,12 +29,12 @@ const Metrics = () => {
         const mediaTypes = array_hits.map(dataItem => dataItem.url) 
         .filter((mediaType, index, array) => array.indexOf(mediaType) === index); // filter out duplicates
         console.log(mediaTypes);
-
+        var lastDate;
         const counts = mediaTypes.map(dataItem => ({
             url: dataItem,
-            dateCreated: (array_hits) => {
+            dateCreated: lastDate = (array_hits) => {
               const items = array_hits.filter(item => item.url == dataItem);
-              const lastItem = items[items.length - 1]
+              const lastItem = items[items.length - 1];
               return lastItem.dateCreated
             },
             count: array_hits.filter(item => item.url == dataItem).length
