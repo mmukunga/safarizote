@@ -27,35 +27,38 @@ const Metrics = () => {
         console.log(array_hits);
         
 
-        async function asyncFunc(array_hits, dataItem) {
+        async function asyncLastDate(array_hits, dataItem) {
           const items  = array_hits.filter(item => item.url == dataItem);
           const result = items[items.length - 1].dateCreated;
           console.log(result);
           return result; 
         }
 
+
+        const fetchData = (array_hits, dataItem) => {
+          asyncLastDate(array_hits, dataItem).then(resp => {
+            console.log(resp);
+            return resp;
+          });
+        };
+
         const mediaTypes = array_hits.map(dataItem => dataItem.url) 
         .filter((mediaType, index, array) => array.indexOf(mediaType) === index); // filter out duplicates
         console.log(mediaTypes);
-        var lastDate;
         const counts = mediaTypes.map(dataItem => ({
             url: dataItem,
-            dateCreated: await asyncFunc(array_hits, dataItem)
-                .then(result => {
-                  console.log(result);
-                  return result;
-                }),
+            dateCreated: fetchData(array_hits, dataItem),
             count: array_hits.filter(item => item.url == dataItem).length
         }));
         console.log(counts);
-
+/*
         var sortedCounts = [...counts];
         sortedCounts.sort((a,b) => b.count - a.count); //descending order
         console.log(sortedCounts);
 
         setData(array_hits);
         setCounts(sortedCounts);
-
+*/
       }).catch(err => {
           console.log(err);
       });
