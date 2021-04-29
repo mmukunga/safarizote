@@ -31,7 +31,7 @@ const Metrics = () => {
           const items  = array_hits.filter(item => item.url == dataItem);
           const result = items[items.length - 1].dateCreated;
           console.log(result);
-          return new Date(); 
+          return result; 
         }
 
         const mediaTypes = array_hits.map(dataItem => dataItem.url) 
