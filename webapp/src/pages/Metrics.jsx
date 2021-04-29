@@ -41,7 +41,7 @@ const Metrics = () => {
             .then(resp => {
               console.log(resp);
               setMyData([ ...myData, ...resp ]);
-              const totalCount = data.reduce((a,v) =>  a = a + v.count , 0 );
+              const totalCount = data.reduce((total,currentItem) => total=total+currentItem.count, 0);
               console.log(totalCount);
               setTotalCount(totalCount);
             })
