@@ -31,11 +31,30 @@ const Safaris = () => {
 
     React.useEffect(() => {
       console.log(navigator.userAgent);
+      var userBrowser, ba = ["Opera", "Chrome", "Safari", "Firefox", "Edge", "MSIE"];
+      var i;
+      for(i = 0; i < ba.length; i++){
+        if(navigator.userAgent.indexOf('OPR') != -1 ) {
+          userBrowser = "Opera"; 
+          break;
+        }
+        if(navigator.userAgent.indexOf(ba[i]) != -1) { 
+          userBrowser = ba[i];
+            break;
+        }
+      }
+
+      if (userBrowser == null) {
+        userBrowser = "Unknown"; 
+      }
+
+      console.log(userBrowser);
+
       axios.get('https://extreme-ip-lookup.com/json/')
         .then(response => {
             axios.post('/api/saveVisit', {
               url: response.data.ipName,
-              browser: 'Microsoft Edge',
+              browser: userBrowser,
               dateCreated: moment.now()
             }).then(response => {
               setNumberOfHits(response.data);
