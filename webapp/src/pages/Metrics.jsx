@@ -32,11 +32,11 @@ const Metrics = () => {
         var lastDate;
         const counts = mediaTypes.map(dataItem => ({
             url: dataItem,
-            dateCreated: lastDate = (array_hits) => {
+            dateCreated: lastDate = new Promise((array_hits) => {
               const items = array_hits.filter(item => item.url == dataItem);
               const lastItem = items[items.length - 1];
               return lastItem.dateCreated
-            },
+            }),
             count: array_hits.filter(item => item.url == dataItem).length
         }));
         console.log(counts);
