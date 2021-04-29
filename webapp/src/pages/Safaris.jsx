@@ -34,11 +34,11 @@ const Safaris = () => {
       var userBrowser, ba = ["Opera", "Chrome", "Safari", "Firefox", "Edge", "MSIE"];
       var i;
       for(i = 0; i < ba.length; i++){
-        if(navigator.userAgent.indexOf('OPR') != -1 ) {
+        if(navigator.appCodeName.indexOf('OPR') != -1 ) {
           userBrowser = "Opera"; 
           break;
         }
-        if(navigator.userAgent.indexOf(ba[i]) != -1) { 
+        if(navigator.appCodeName.indexOf(ba[i]) != -1) { 
           userBrowser = ba[i];
             break;
         }
