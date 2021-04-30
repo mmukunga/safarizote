@@ -47,6 +47,7 @@ public class BackUpLoader implements CommandLineRunner {
             .build());        
         System.out.println("BackUpLoader...root..." + root);
 
+        /*
         BackUp simTempsFolder = repository.findByName("C:SimTemps");
         System.out.println("BackUpLoader..simTempsFolder..." + simTempsFolder);
         List<String> simTempsChildren = Arrays.asList("D:SimTemps", "E:SimTemps");
@@ -63,7 +64,9 @@ public class BackUpLoader implements CommandLineRunner {
             .isChecked(true)
             .dateCreated(Instant.now())
             .children(simTempsChildrenSet)
-            .build());        
+            .build());  
+        */
+        
         System.out.println("BackUpLoader...simTempsDB..." + simTempsDB);
         System.out.println("BackUpLoader...OK!");
         repository.findAll().forEach((backUp) -> {
