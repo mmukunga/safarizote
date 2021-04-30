@@ -25,7 +25,6 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@EqualsAndHashCode
 public class BackUp {
     @Id
     @GeneratedValue(strategy= GenerationType.TABLE)
