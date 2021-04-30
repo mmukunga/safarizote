@@ -24,7 +24,7 @@ public class BackUpLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         // repository.deleteAll();
-        
+
         if (repository.count() > 0) {
            System.out.println("..BACK_UP TABLE NOT EMPTY!!..");
            return;
@@ -57,15 +57,11 @@ public class BackUpLoader implements CommandLineRunner {
             .build())
             .collect(Collectors.toSet());                             
         System.out.println("BackUpLoader..simTempsChildrenSet..." + simTempsChildrenSet);
-        BackUp simTempsDB = repository.save(BackUp.builder()
-            .name(simTempsFolder.getName())
-            .isChecked(true)
-            .dateCreated(Instant.now())
-            .children(simTempsChildrenSet)
-            .build());  
-        
 
-        //System.out.println("BackUpLoader...simTempsDB..." + simTempsDB);
+        simTempsFolder.setChildren(simTempsChildrenSet);
+        BackUp simTempsDB = repository.save(simTempsFolder);  
+        System.out.println("BackUpLoader...simTempsDB..." + simTempsDB);
+        
         System.out.println("BackUpLoader...OK!");
         repository.findAll().forEach((backUp) -> {
           displayBackUp(backUp);
