@@ -83,19 +83,19 @@ import axios from 'axios';
           <h3> Check and Uncheck All Example </h3>
           <form onSubmit={handleSubmit}>
           <div className="BackUps">
-          {groups.map(item => (
+          {groups.map(group => (
             <div>
-              <input type="checkbox" onChange={handleAllChecked(item.id)} value="checkedall"/>{" "}
-              {item.name}
+              <input type="checkbox" onChange={handleAllChecked(group.id)} value="checkedall"/>{" "}
+              {group.name}
               <ul>
-                {fruites.filter(fruit => fruit.parentId === item.id).map((fruite, index) => {
+                {group.children.map((child, index) => {
                     return (
                       <CheckBox
-                        key={`${item.id}-${fruite.id}`}
+                        key={`${child.id}-${child.id}`}
                         handleCheckChieldElement={handleCheckChieldElement}
-                        {...fruite}
-                        value={`${item.id}-${fruite.id}`}
-                        label={fruite.name}
+                        {...child}
+                        value={`${child.id}-${child.id}`}
+                        label={child.name}
                       />
                     );
                   })}
