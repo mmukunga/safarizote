@@ -33,7 +33,10 @@ public class BackUp {
     @NonNull String name; 
     Boolean isChecked;
     Instant dateCreated;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @JoinColumn(name = "parent_id")
     BackUp parent;
     @OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
