@@ -33,15 +33,9 @@ const Safaris = () => {
     React.useEffect(() => {
       console.log(navigator.userAgent);
       console.log(Bowser.parse(window.navigator.userAgent));
-      
-      axios.get("https://checkip.amazonaws.com/").then(res => console.log(res));
-
       axios.get('https://www.cloudflare.com/cdn-cgi/trace')
         .then(response => {
-            let ipRegex = /[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/;
-            let ip = response.match(ipRegex)[0];
             console.log(response);
-            console.log(ip);
       });
 
       axios.get('https://extreme-ip-lookup.com/json/')
