@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.safarizote.model.Tracker;
-import com.example.safarizote.repository.TrackerRepository;
+import com.example.safarizote.model.Metrics;
+import com.example.safarizote.repository.MetricsRepository;
 
 @RestController
 public class MetricsController { 
   @Autowired
-  private TrackerRepository repository;
+  private MetricsRepository repository;
     
   @RequestMapping(value="/api/healthCheck", method=RequestMethod.POST)
   public ResponseEntity<String> healthCheck() {
@@ -28,30 +28,30 @@ public class MetricsController {
   }
 
   @RequestMapping(value = "/api/allHits",  method={RequestMethod.GET})
-  public ResponseEntity<List<Tracker>> findAll() {
-    List<Tracker> visits = repository.findAll();
-    System.out.println("\n==============> 1. Tracker..");
-    for (Tracker temp : visits) {
+  public ResponseEntity<List<Metrics>> findAll() {
+    List<Metrics> visits = repository.findAll();
+    System.out.println("\n==============> 1. Metrics..");
+    for (Metrics temp : visits) {
         System.out.println(temp);
     }
-    System.out.println("Tracker.findAll(),  End OK!");
+    System.out.println("Metrics.findAll(),  End OK!");
     return new ResponseEntity<>(visits, HttpStatus.OK);
   }
 
   @RequestMapping(value = "/api/saveVisit",  method={RequestMethod.POST})
-  public ResponseEntity<List<Tracker>> save(@RequestBody Tracker visit) {
+  public ResponseEntity<List<Metrics>> save(@RequestBody Metrics visit) {
     visit.setDateCreated(Instant.now());
     System.out.println("1.===visit===");
     System.out.println(visit);
     System.out.println("2.===visit===");
     repository.save(visit);
-    List<Tracker> visits = repository.findAll();
-    System.out.println("\n==============> 2. Tracker..");
-    //for (Tracker temp : visits) {
+    List<Metrics> visits = repository.findAll();
+    System.out.println("\n==============> 2. Metrics..");
+    //for (Metrics temp : visits) {
         System.out.println("" + visits.size());
     //}
-    System.out.println("\n==============> 2. Tracker..");
-    System.out.println("Tracker.findAll()  End OK!");
+    System.out.println("\n==============> 2. Metrics..");
+    System.out.println("Metrics.findAll()  End OK!");
     return new ResponseEntity<>(visits, HttpStatus.OK);
   }
 }

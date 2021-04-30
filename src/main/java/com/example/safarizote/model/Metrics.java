@@ -17,7 +17,7 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Tracker {
+public class Metrics {
   @Id @GeneratedValue Long id;
   @NonNull String url;
   @NonNull String browser;
