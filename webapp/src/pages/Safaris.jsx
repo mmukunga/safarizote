@@ -33,16 +33,16 @@ const Safaris = () => {
     React.useEffect(() => {
       console.log(navigator.userAgent);
       console.log(Bowser.parse(window.navigator.userAgent));
-      axios.get('https://www.cloudflare.com/cdn-cgi/trace')
+      axios.get('http://ipinfo.io/json')
         .then(response => {
-            console.log(response);
+            console.log(response.data.hostname);
       });
 
-      axios.get('https://extreme-ip-lookup.com/json/')
+      axios.get('http://ipinfo.io/json')
         .then(response => {
-          const userBrowser = Bowser.parse(window.navigator.userAgent);
+            const userBrowser = Bowser.parse(window.navigator.userAgent);
             axios.post('/api/saveVisit', {
-              url: response.data.ipName,
+              url: response.data.hostname,
               browser: userBrowser.name,
               dateCreated: moment.now()
             }).then(response => {
