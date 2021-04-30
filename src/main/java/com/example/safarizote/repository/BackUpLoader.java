@@ -42,12 +42,12 @@ public class BackUpLoader implements CommandLineRunner {
         Set<BackUp> children = folders.stream().map(title -> BackUp.builder()
             .name(title)
             .parent(root) 
-            .isChecked(true)
+            .isChecked(false)
             .dateCreated(Instant.now())
             .build())
             .collect(Collectors.toSet());                                         
         System.out.println("BackUpLoader..children..." + children);
-        
+
         root.setChildren(children);
         BackUp dbRoot = repository.save(root);        
         System.out.println("BackUpLoader...dbRoot..." + dbRoot);
@@ -58,7 +58,7 @@ public class BackUpLoader implements CommandLineRunner {
         Set<BackUp> simTempsChildrenSet = simTempsChildren.stream().map(title -> BackUp.builder()
             .name(title)
             .parent(simTempsFolder) 
-            .isChecked(true)
+            .isChecked(false)
             .dateCreated(Instant.now())
             .build())
             .collect(Collectors.toSet());                             

@@ -5,26 +5,8 @@ import axios from 'axios';
   const BackUp = () => {
     const [category, setCategory] = React.useState({});
     const [categories, setCategories] = React.useState([]);
-
-    const myPC = {parentId: null, id: 0, name: "MyPc", isChecked: false, dateCreated: new Date()};
-
-    const [groups, setGroups] = React.useState([
-        {parentId: 0, id: 1, name: "C:SimTemps", isChecked: false, dateCreated: new Date()},
-        {parentId: 0, id: 2, name: "C:Projects", isChecked: false, dateCreated: new Date()},
-        {parentId: 0, id: 3, name: "C:FamilieAlbum", isChecked: false, dateCreated: new Date()},
-        {parentId: 0, id: 4, name: "C:Temps", isChecked: false, dateCreated: new Date()}
-      ]);
-
-    const [fruites, setFruites] = React.useState([
-      { parentId: 1, id: 5, name: "D:SimTemps", isChecked: false, dateCreated: new Date() },
-      { parentId: 1, id: 6, name: "E:SimTemps", isChecked: false, dateCreated: new Date() },
-      { parentId: 2, id: 7, name: "D:Projects", isChecked: false, dateCreated: new Date() },
-      { parentId: 2, id: 8, name: "E:Projects", isChecked: false, dateCreated: new Date() },
-      { parentId: 3, id: 9, name: "D:FamilieAlbum", isChecked: false, dateCreated: new Date() },
-      { parentId: 3, id: 10, name: "E:FamilieAlbum", isChecked: false, dateCreated: new Date() },
-      { parentId: 4, id: 11, name: "D:Temps", isChecked: false, dateCreated: new Date() },
-      { parentId: 4, id: 12, name: "E:Temps", isChecked: false, dateCreated: new Date() }
-    ]);
+    const [groups, setGroups] = React.useState([]);
+    const [fruites, setFruites] = React.useState([]);
         
     React.useEffect(() => {
       axios.get('/api/categories').then(response => {
@@ -32,8 +14,8 @@ import axios from 'axios';
           setCategories([...categories, ...response.data]);
           const grps = response.data.filter(category => category.name.startsWith('C:') == true) 
           const frts = response.data.filter(category => category.name.startsWith('C:') == false) 
-          console.log(grps);
-          console.log(frts);
+          setGroups([...groups, ...grps]);
+          setFruites([...fruites, ...frts]);
           
       }).catch(error => {
           console.log(error);
