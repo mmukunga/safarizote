@@ -63,7 +63,7 @@ public class BackUpLoader implements CommandLineRunner {
             .build());  
         */
 
-        System.out.println("BackUpLoader...simTempsDB..." + simTempsDB);
+        //System.out.println("BackUpLoader...simTempsDB..." + simTempsDB);
         System.out.println("BackUpLoader...OK!");
         repository.findAll().forEach((backUp) -> {
           displayBackUp(backUp);
