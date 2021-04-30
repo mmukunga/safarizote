@@ -30,8 +30,8 @@ import axios from 'axios';
       axios.get('/api/categories').then(response => {
           console.log(response);
           setCategories([...categories, ...response.data]);
-          const grps = categories.filter(category => category.name.startsWith('C:') == true) 
-          const frts = categories.filter(category => category.name.startsWith('C:') == false) 
+          const grps = response.data.filter(category => category.name.startsWith('C:') == true) 
+          const frts = response.data.filter(category => category.name.startsWith('C:') == false) 
           console.log(grps);
           console.log(frts);
           
