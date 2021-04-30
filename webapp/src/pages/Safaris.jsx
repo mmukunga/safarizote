@@ -32,37 +32,22 @@ const Safaris = () => {
 
     React.useEffect(() => {
       console.log(navigator.userAgent);
-
-      axios.get("https://www.cloudflare.com/cdn-cgi/trace").then(response=> {
-        console.log(response.data);
-        console.log(Bowser.parse(response.data.uag));
-      });
-      
-      var userBrowser, ba = ["Opera", "Chrome", "Safari", "Firefox", "Edge", "MSIE"];
-      var i;
-      for(i = 0; i < ba.length; i++){
-        if(navigator.userAgent.indexOf('OPR') != -1 ) {
-          userBrowser = "Opera"; 
-          break;
-        }
-        if(navigator.userAgent.indexOf(ba[i]) != -1) { 
-          userBrowser = ba[i];
-            break;
-        }
-      }
-
-      if (userBrowser == null) {
-        userBrowser = "Unknown"; 
-      }
-
       console.log(Bowser.parse(window.navigator.userAgent));
-      console.log(userBrowser);
+      
+      axios.get('https://www.cloudflare.com/cdn-cgi/trace')
+        .then(response => {
+            let ipRegex = /[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/
+            let ip = response.match(ipRegex)[0];
+            console.log(response);
+            console.log(ip);
+      });
 
       axios.get('https://extreme-ip-lookup.com/json/')
         .then(response => {
+          const userBrowser = Bowser.parse(window.navigator.userAgent);
             axios.post('/api/saveVisit', {
               url: response.data.ipName,
-              browser: userBrowser,
+              browser: userBrowser.name,
               dateCreated: moment.now()
             }).then(response => {
               setNumberOfHits(response.data);
