@@ -33,12 +33,12 @@ const Safaris = () => {
     React.useEffect(() => {
       console.log(navigator.userAgent);
       console.log(Bowser.parse(window.navigator.userAgent));
-      axios.get('http://ipinfo.io/json')
+      axios.get('https://ipinfo.io/json')
         .then(response => {
             console.log(response.data.hostname);
       });
 
-      axios.get('http://ipinfo.io/json')
+      axios.get('https://ipinfo.io/json')
         .then(response => {
             const userBrowser = Bowser.parse(window.navigator.userAgent);
             axios.post('/api/saveVisit', {
