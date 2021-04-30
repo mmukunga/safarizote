@@ -4,6 +4,8 @@ import axios from 'axios';
 
   const BackUp = () => {
     const [category, setCategory] = React.useState({});
+    const [folders, setFolders] = React.useState([]);
+    
     const myPC = {parentId: null, id: 0, name: "MyPc", isChecked: false, dateCreated: new Date()};
 
     const [groups, setGroups] = React.useState([
