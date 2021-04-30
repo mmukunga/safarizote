@@ -40,7 +40,8 @@ public class BackUpLoader implements CommandLineRunner {
             .build())
             .collect(Collectors.toSet());                             
         System.out.println("BackUpLoader..children..." + children);
-        BackUp root = repository.save(myPC.setChildren(children));        
+        myPC.setChildren(children);
+        BackUp root = repository.save(myPC);        
         System.out.println("BackUpLoader...root..." + root);
 
         /*
