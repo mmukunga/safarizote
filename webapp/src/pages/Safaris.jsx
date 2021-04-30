@@ -34,6 +34,8 @@ const Safaris = () => {
       console.log(navigator.userAgent);
       console.log(Bowser.parse(window.navigator.userAgent));
       
+      axios.get("https://checkip.amazonaws.com/").then(res => console.log(res));
+
       axios.get('https://www.cloudflare.com/cdn-cgi/trace')
         .then(response => {
             let ipRegex = '/[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/';
