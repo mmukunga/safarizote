@@ -31,13 +31,6 @@ const Safaris = () => {
     }, []);
 
     React.useEffect(() => {
-      console.log(navigator.userAgent);
-      console.log(Bowser.parse(window.navigator.userAgent));
-      axios.get('https://ipinfo.io/json')
-        .then(response => {
-            console.log(response.data.hostname);
-      });
-
       axios.get('https://ipinfo.io/json')
         .then(response => {
             const userBrowser = Bowser.parse(window.navigator.userAgent);
@@ -106,9 +99,6 @@ const Safaris = () => {
   const SafariTours = props => {
     const Accordion = ({ children, title, isExpand = false, video, idx}) => {
       const [expand, setExpand] = useState(isExpand);
-      
-      console.log(expand? 'expanded' : 'colapsed');
-      console.log(isExpand? 'expanded' : 'colapsed');
 
       const mod = idx % 2;
       return (
@@ -156,7 +146,6 @@ const Safaris = () => {
   };
 
   const videos = [ Big_Buck_Bunny, kenya_safari, kilimanjaro, MOV_FILE, preview, the_globe ];
-  console.log(numberOfHits);
   return (
     <Card className="InnerCard" fontColor="black">
         <ul id="page-numbers">
