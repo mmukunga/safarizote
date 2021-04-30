@@ -32,6 +32,8 @@ import axios from 'axios';
           setCategories([...categories, ...response.data]);
           const grps = categories.filter(category => category.name.startsWith('C:') == true) 
           const frts = categories.filter(category => category.name.startsWith('C:') == false) 
+          console.log(grps);
+          console.log(frts);
           
       }).catch(error => {
           console.log(error);
