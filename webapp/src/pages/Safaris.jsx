@@ -36,7 +36,7 @@ const Safaris = () => {
       
       axios.get('https://www.cloudflare.com/cdn-cgi/trace')
         .then(response => {
-            let ipRegex = /[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/
+            let ipRegex = '/[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/';
             let ip = response.match(ipRegex)[0];
             console.log(response);
             console.log(ip);
