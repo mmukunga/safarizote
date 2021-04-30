@@ -24,29 +24,6 @@ const Safaris = () => {
     const handleClick = (event) => {
       setCurrentPage(event.target.id);
     }
-    
-
-    function text(url) {
-      return fetch(url).then(res => res.text());
-    }
-    
-    text('https://www.cloudflare.com/cdn-cgi/trace').then(data => {
-      let ipRegex = /[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/
-      let ip = data.match(ipRegex)[0];
-      console.log(data);
-      console.log(ip);
-    });
-
-    function json(url) {
-      return axios.get(url).then(res => res);
-    }
-
-
-    let apiKey = '6ab73f3655f1a0db55237e9f5b00bff9';
-    json(`https://api.ipdata.co?api-key=${apiKey}`).then(data => {
-      console.log(data);
-      // so many more properties
-    });
 
     React.useEffect(() => {
       document.title = "Mombasa Safari Tours to Kenya's Major National Parks. Masai Mara, Tsavo East, Ngutuni, Tsavo West, Amboseli also to other najor destinations in Kenya";
@@ -54,6 +31,9 @@ const Safaris = () => {
 
     React.useEffect(() => {
       console.log(navigator.userAgent);
+
+      axios.get("https://www.cloudflare.com/cdn-cgi/trace").then(response=> console.log(response.data));
+
       var userBrowser, ba = ["Opera", "Chrome", "Safari", "Firefox", "Edge", "MSIE"];
       var i;
       for(i = 0; i < ba.length; i++){
