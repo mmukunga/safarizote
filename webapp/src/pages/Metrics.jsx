@@ -25,8 +25,8 @@ const Metrics = () => {
           const fetchData = (data) => {
             findDate(data).then(resp => {
               setMyData([ ...myData, ...resp ]);
-              const totalCount = data.reduce((total, item) => total = total + item.count, 0);
-              const totalCount2 = myData.reduce((total, item) => total = total + item.count, 0);
+              const totalCount = resp.reduce((total, item) => total = total + item.count, 0);
+              const totalCount2 = resp.reduce((total, item) => total = total + item.count, 0);
               console.log(totalCount);
               console.log(totalCount2);
               setTotalCount(totalCount);
