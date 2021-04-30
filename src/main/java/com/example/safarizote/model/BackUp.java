@@ -17,6 +17,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.JsonBackReference;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
