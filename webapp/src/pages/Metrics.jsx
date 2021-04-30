@@ -21,10 +21,14 @@ const Metrics = () => {
 
     useEffect(() => {
        axios.get('/api/allHits').then(response => {
+         console.log(response);
           const fetchData = (data) => {
             findDate(data).then(resp => {
               setMyData([ ...myData, ...resp ]);
-              const totalCount = data.reduce((total,item) => total = total + item.count, 0);
+              const totalCount = data.reduce((total, item) => total = total + item.count, 0);
+              const totalCount2 = myData.reduce((total, item) => total = total + item.count, 0);
+              console.log(totalCount);
+              console.log(totalCount2);
               setTotalCount(totalCount);
             }).catch(err => {
                 console.log("Metrics can't be added");
@@ -40,7 +44,7 @@ const Metrics = () => {
     }, []);
 
     console.log(myData);
-
+    console.log(totalCount);
     return (
         <Card className="InnerCard" fontColor="black">
             <h4 style={{ margin: '20px', fontStyle: 'bold', textAlign: 'left'}}>Safari Zote!</h4>
