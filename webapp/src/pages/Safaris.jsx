@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import parse from "html-react-parser";
 import moment from 'moment';
+import Bowser from "bowser";
 import 'font-awesome/less/font-awesome.less';
 
 import Big_Buck_Bunny from "../media/Big_Buck_Bunny.mp4";
@@ -32,8 +33,11 @@ const Safaris = () => {
     React.useEffect(() => {
       console.log(navigator.userAgent);
 
-      axios.get("https://www.cloudflare.com/cdn-cgi/trace").then(response=> console.log(response.data));
-
+      axios.get("https://www.cloudflare.com/cdn-cgi/trace").then(response=> {
+        console.log(response.data);
+        console.log(Bowser.parse(response.data.uag));
+      });
+      
       var userBrowser, ba = ["Opera", "Chrome", "Safari", "Firefox", "Edge", "MSIE"];
       var i;
       for(i = 0; i < ba.length; i++){
@@ -51,6 +55,7 @@ const Safaris = () => {
         userBrowser = "Unknown"; 
       }
 
+      console.log(Bowser.parse(window.navigator.userAgent));
       console.log(userBrowser);
 
       axios.get('https://extreme-ip-lookup.com/json/')
