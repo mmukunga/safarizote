@@ -39,6 +39,11 @@ public class BackUpController {
     public ResponseEntity<List<BackUp>> findAll() {
         System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
         List<BackUp> categories = repository.findAll();
+
+        for (BackUp category : categories) {
+            System.out.println(category);
+        }
+
         System.out.println("BackUp.findAll() SIZE:= " + categories.size());
         StringBuffer indentation = new StringBuffer();
         indentation.append(" ");

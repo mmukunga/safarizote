@@ -29,7 +29,13 @@ public class BackUpLoader implements CommandLineRunner {
            System.out.println("..BACK_UP TABLE NOT EMPTY!!..");
            return;
         }
-        BackUp root = repository.save(BackUp.builder().name("myPC").isChecked(true).parent(null).dateCreated(Instant.now()).build());
+
+        BackUp root = repository.save(BackUp.builder()
+            .name("myPC")
+            .isChecked(true)
+            .parent(null)
+            .dateCreated(Instant.now())
+            .build());
 
         System.out.println("BackUpLoader..myPC..." + root);
         List<String> folders = Arrays.asList("C:SimTemps", "C:Projects", "C:FamilieAlbum");
@@ -39,13 +45,13 @@ public class BackUpLoader implements CommandLineRunner {
             .isChecked(true)
             .dateCreated(Instant.now())
             .build())
-            .collect(Collectors.toSet());                             
+            .collect(Collectors.toSet());                                         
         System.out.println("BackUpLoader..children..." + children);
+        
         root.setChildren(children);
         BackUp dbRoot = repository.save(root);        
         System.out.println("BackUpLoader...dbRoot..." + dbRoot);
-
-        
+     
         BackUp simTempsFolder = repository.findByName("C:SimTemps");
         System.out.println("BackUpLoader..simTempsFolder..." + simTempsFolder);
         List<String> simTempsChildren = Arrays.asList("D:SimTemps", "E:SimTemps");
@@ -61,7 +67,7 @@ public class BackUpLoader implements CommandLineRunner {
         simTempsFolder.setChildren(simTempsChildrenSet);
         BackUp simTempsDB = repository.save(simTempsFolder);  
         System.out.println("BackUpLoader...simTempsDB..." + simTempsDB);
-        
+
         System.out.println("BackUpLoader...OK!");
         repository.findAll().forEach((backUp) -> {
           displayBackUp(backUp);
