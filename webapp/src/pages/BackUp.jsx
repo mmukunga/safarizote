@@ -4,8 +4,8 @@ import axios from 'axios';
 
   const BackUp = () => {
     const [category, setCategory] = React.useState({});
-    const [folders, setFolders] = React.useState([]);
-    
+    const [categories, setCategories] = React.useState([]);
+
     const myPC = {parentId: null, id: 0, name: "MyPc", isChecked: false, dateCreated: new Date()};
 
     const [groups, setGroups] = React.useState([
@@ -29,6 +29,7 @@ import axios from 'axios';
     React.useEffect(() => {
       axios.get('/api/categories').then(response => {
           console.log(response);
+          setCategories([...categories, ...response.data]);
       }).catch(error => {
           console.log(error);
       });
