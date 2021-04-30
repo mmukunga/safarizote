@@ -89,6 +89,7 @@ import axios from 'axios';
               {group.name}
               <ul>
                 {group.children.map((child, index) => {
+                    console.log('1.child..' + index);
                     return (
                       <CheckBox
                         key={`${child.id}-${child.id}`}
