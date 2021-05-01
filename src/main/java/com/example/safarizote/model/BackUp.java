@@ -41,7 +41,7 @@ public class BackUp {
 
     @ManyToOne
     @JoinColumn(name = "parent_id")
-    private BackUp parent;
+    BackUp parent;
 
     @OneToMany(mappedBy="parent", cascade=CascadeType.ALL)
     Set<BackUp> children;
