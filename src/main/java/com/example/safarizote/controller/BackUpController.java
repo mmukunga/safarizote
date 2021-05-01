@@ -34,16 +34,14 @@ public class BackUpController {
   @Autowired
   private BackUpRepository repository;
     
-    @Transactional
     @RequestMapping(value = "/api/categories",  method={RequestMethod.GET})
     public ResponseEntity<List<BackUp>> findAll() {
         System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
         List<BackUp> categories = repository.findAll();
-
         for (BackUp category : categories) {
             System.out.println(category);
         }
-
+        /*
         System.out.println("BackUp.findAll() SIZE:= " + categories.size());
         StringBuffer indentation = new StringBuffer();
         indentation.append(" ");
@@ -53,6 +51,7 @@ public class BackUpController {
                displayList(category, indentation);
             }
         }
+        */
         System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
         System.out.println("BackUp.findAll()  End OK!");
         return new ResponseEntity<>(categories, HttpStatus.OK);
