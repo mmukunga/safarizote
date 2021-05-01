@@ -15,7 +15,7 @@ import axios from 'axios';
           const grps = response.data.filter(category => category.name.startsWith('C:') == true); 
           const frts = response.data.filter(category => category.name.startsWith('C:') == false); 
           setGroups([...groups, ...grps]);
-          setCategories([...fruites, ...grps, ...frts]);
+         // setCategories([...grps, ...frts]);
           
       }).catch(error => {
           console.log(error);
