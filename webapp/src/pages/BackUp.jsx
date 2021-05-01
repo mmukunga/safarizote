@@ -11,7 +11,7 @@ import axios from 'axios';
     React.useEffect(() => {
       axios.get("/api/categories").then(response => {
           console.log(response);
-          //setCategories([...categories, ...response.data]);
+          setCategories([...response.data]);
           //const grps = response.data.filter(category => category.name.startsWith('C:') == true); 
           //const frts = response.data.filter(category => category.name.startsWith('C:') == false); 
           //setGroups([...groups, ...grps]);
@@ -89,12 +89,12 @@ import axios from 'axios';
           <h3> Check and Uncheck All Example </h3>
           <form onSubmit={handleSubmit}>
           <div className="BackUps">
-          {groups.map(group => (
+          {categories.map(category => (
             <div>
-              <input type="checkbox" onChange={handleAllChecked(group.id)} value="checkedall"/>{" "}
-              {group.name}
+              <input type="checkbox" onChange={handleAllChecked(category.id)} value="checkedall"/>{" "}
+              {category.name}
               <ul>
-                {group.children.map((child, index) => {
+                {category.children.map((child, index) => {
                     console.log(child.id + '.child..' + child.name);
                     return (
                       <CheckBox
