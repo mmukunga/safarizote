@@ -6,16 +6,16 @@ import axios from 'axios';
     const [category, setCategory] = React.useState({});
     const [categories, setCategories] = React.useState([]);
     const [groups, setGroups] = React.useState([]);
-    const [fruites, setFruites] = React.useState([]);
+    //const [fruites, setFruites] = React.useState([]);
         
     React.useEffect(() => {
       axios.get('/api/categories').then(response => {
           console.log(response);
           setCategories([...categories, ...response.data]);
-          const grps = response.data.filter(category => category.name.startsWith('C:') == true) 
-          const frts = response.data.filter(category => category.name.startsWith('C:') == false) 
+          const grps = response.data.filter(category => category.name.startsWith('C:') == true); 
+          const frts = response.data.filter(category => category.name.startsWith('C:') == false); 
           setGroups([...groups, ...grps]);
-          setFruites([...fruites, ...frts]);
+          setCategories([...fruites, ...grps, ...frts]);
           
       }).catch(error => {
           console.log(error);
@@ -38,29 +38,31 @@ import axios from 'axios';
     };
 
     const handleAllChecked = id => event => {
-      let fruitesTemp = [...fruites];
-      fruitesTemp
+      alert('1.Checking..');
+      let categoriesTemp = [...categories];
+      categoriesTemp
         .filter(f => f.parentId === id)
         .forEach(fruite => {
           fruite.isChecked = event.target.checked;
         });
-        setFruites(fruitesTemp);
+        setCategories(categoriesTemp);
     };
 
     const handleCheckChieldElement = event => {
-      let fruitesTemp = [...fruites];
-      fruitesTemp.forEach(fruite => {
+      alert('2.CheckingElement..');
+      let categoriesTemp = [...categories];
+      categoriesTemp.forEach(fruite => {
         if (`${fruite.parentId}-${fruite.id}` === event.target.value)
           fruite.isChecked = event.target.checked;
       });
-      setFruites(fruitesTemp);
+      setCategories(categoriesTemp);
     };
 
     const handleSubmit = (e) => {
       e.preventDefault();
       let selectedItems = [];
-      let fruitesTemp = [...fruites];
-      fruitesTemp.forEach(f => {
+      let categoriesTemp = [...categories];
+      categoriesTemp.forEach(f => {
         if (f.isChecked === true) { 
           selectedItems = [...selectedItems, f]; 
         }
@@ -89,7 +91,7 @@ import axios from 'axios';
               {group.name}
               <ul>
                 {group.children.map((child, index) => {
-                    console.log('1.child..' + index);
+                    console.log(child.id + '.child..' + child.name);
                     return (
                       <CheckBox
                         key={`${child.id}-${child.id}`}
