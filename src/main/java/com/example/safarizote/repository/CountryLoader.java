@@ -40,6 +40,10 @@ public class CountryLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         // repository.deleteAll();
+        if (repository.count() > 0) {
+            System.out.println("..COUNTRY TABLE NOT EMPTY!!..");
+            return;
+         }
         String fileCountryName = "countries.json";  
 
         ClassLoader classLoader = getClass().getClassLoader();
