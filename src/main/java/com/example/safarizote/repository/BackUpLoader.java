@@ -66,7 +66,7 @@ public class BackUpLoader implements CommandLineRunner {
         projectsFolder.setChildren(projectsChildrenSet);
         BackUp projectsDB = repository.save(projectsFolder);  
         System.out.println("BackUpLoader...projectsDB..." + projectsDB);
-
+        System.out.println("6.BackUpLoader..BACKUP!!");
         BackUp simTempsFolder = repository.findByName("C:SimTemps");
         System.out.println("BackUpLoader..simTempsFolder..." + simTempsFolder);
         List<String> simTempsChildren = Arrays.asList("D:SimTemps", "E:SimTemps");
@@ -81,7 +81,7 @@ public class BackUpLoader implements CommandLineRunner {
         simTempsFolder.setChildren(simTempsChildrenSet);
         BackUp simTempsDB = repository.save(simTempsFolder);  
         System.out.println("BackUpLoader...simTempsDB..." + simTempsDB);
-
+        System.out.println("7.BackUpLoader..BACKUP!!");
         BackUp familieAlbumFolder = repository.findByName("C:FamilieAlbum");
         System.out.println("BackUpLoader..familieAlbumFolder..." + familieAlbumFolder);
         List<String> familieAlbumChildren = Arrays.asList("D:FamilieAlbum", "E:FamilieAlbum");
@@ -96,7 +96,7 @@ public class BackUpLoader implements CommandLineRunner {
         familieAlbumFolder.setChildren(familieAlbumChildrenSet);
         BackUp familieAlbumDB = repository.save(familieAlbumFolder);  
         System.out.println("BackUpLoader...familieAlbumDB..." + familieAlbumDB);
-
+        System.out.println("8.BackUpLoader..BACKUP!!");
         System.out.println("BackUpLoader...OK!");
         repository.findAll().forEach((backUp) -> {
           displayBackUp(backUp);
