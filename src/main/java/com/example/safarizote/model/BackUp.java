@@ -40,6 +40,7 @@ public class BackUp {
     Instant dateCreated;
 
     @ManyToOne
+    @JsonBackReference
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @JoinColumn(name = "parent_id")
