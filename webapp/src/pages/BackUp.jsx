@@ -9,14 +9,13 @@ import axios from 'axios';
     //const [fruites, setFruites] = React.useState([]);
         
     React.useEffect(() => {
-      axios.get('/api/categories').then(response => {
+      axios.get("/api/categories").then(response => {
           console.log(response);
-          setCategories([...categories, ...response.data]);
-          const grps = response.data.filter(category => category.name.startsWith('C:') == true); 
-          const frts = response.data.filter(category => category.name.startsWith('C:') == false); 
-          setGroups([...groups, ...grps]);
-         // setCategories([...grps, ...frts]);
-          
+          //setCategories([...categories, ...response.data]);
+          //const grps = response.data.filter(category => category.name.startsWith('C:') == true); 
+          //const frts = response.data.filter(category => category.name.startsWith('C:') == false); 
+          //setGroups([...groups, ...grps]);
+         // setCategories([...grps, ...frts]);          
       }).catch(error => {
           console.log(error);
       });
