@@ -39,20 +39,20 @@ import axios from 'axios';
     };
 
     const handleAllChecked = id => event => {
-      alert('1.Checking..');
+      console.log('1.Checking..');
       let categoriesTemp = [...categories];
       categoriesTemp
         .filter(f => f.parentId === id)
         .forEach(category => {
           category.isChecked = event.target.checked;
         });
-        console.log(categoriesTemp);
-        setCategories(categoriesTemp);
+      console.log(categoriesTemp);
+      setCategories(categoriesTemp);
+      console.log('2.Checking..');
     };
 
     const handleCheckChieldElement = event => {
       console.log('1.CheckingElement..');
-      console.log('2.CheckingElement..');
       let categoriesTemp = [...categories];
       categoriesTemp.forEach(category => {
         console.log(`${category.parentId}-${category.id}`+ ' === ' + event.target.value);
@@ -60,6 +60,7 @@ import axios from 'axios';
           category.isChecked = event.target.checked;
       });
       setCategories(categoriesTemp);
+      console.log('2.CheckingElement..');
     };
 
     const handleSubmit = (e) => {
