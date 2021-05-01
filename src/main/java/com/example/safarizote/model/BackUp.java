@@ -32,7 +32,7 @@ import lombok.NonNull;
 @Builder
 public class BackUp {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     Long id;
     @Column(unique = true)
     @NonNull String name; 
