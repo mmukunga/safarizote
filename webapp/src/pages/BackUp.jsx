@@ -23,6 +23,7 @@ import axios from 'axios';
     }, []);  
 
     const CheckBox = props => {
+      alert(props.isChecked);
       return (
         <li>
           <input
@@ -45,11 +46,14 @@ import axios from 'axios';
         .forEach(fruite => {
           fruite.isChecked = event.target.checked;
         });
+        console.log(categoriesTemp);
         setCategories(categoriesTemp);
     };
 
     const handleCheckChieldElement = event => {
-      alert('2.CheckingElement..');
+      console.log('1.CheckingElement..');
+      console.log(`${fruite.parentId}-${fruite.id}`+ ' === ' + event.target.value);
+      console.log('2.CheckingElement..');
       let categoriesTemp = [...categories];
       categoriesTemp.forEach(fruite => {
         if (`${fruite.parentId}-${fruite.id}` === event.target.value)
