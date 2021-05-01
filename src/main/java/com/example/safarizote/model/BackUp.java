@@ -41,6 +41,7 @@ public class BackUp {
 
     @ManyToOne
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @JoinColumn(name = "parent_id")
     BackUp parent;
 
