@@ -24,20 +24,20 @@ public class BackUpLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         // repository.deleteAll();
-
+        System.out.println("1.BackUpLoader..BACKUP!!");
         if (repository.count() > 0) {
            System.out.println("..BACK_UP TABLE NOT EMPTY!!..");
            return;
         }
-
+        System.out.println("2.BackUpLoader..BACKUP!!");
         BackUp root = repository.save(BackUp.builder()
             .name("myPC")
             .isChecked(true)
             .parent(null)
             .dateCreated(Instant.now())
             .build());
-
-        System.out.println("BackUpLoader..myPC..." + root);
+            System.out.println("BackUpLoader..BACKUP!!");
+        System.out.println("3.BackUpLoader..myPC..." + root);
         List<String> folders = Arrays.asList("C:SimTemps", "C:Projects", "C:FamilieAlbum");
         Set<BackUp> children = folders.stream().map(title -> BackUp.builder()
             .name(title)
@@ -47,11 +47,11 @@ public class BackUpLoader implements CommandLineRunner {
             .build())
             .collect(Collectors.toSet());                                         
         System.out.println("BackUpLoader..children..." + children);
-
+        System.out.println("4.BackUpLoader..BACKUP!!");
         root.setChildren(children);
         BackUp dbRoot = repository.save(root);        
         System.out.println("BackUpLoader...dbRoot..." + dbRoot);
-
+        System.out.println("5.BackUpLoader..BACKUP!!");
         BackUp projectsFolder = repository.findByName("C:Projects");
         System.out.println("BackUpLoader..projectsFolder..." + projectsFolder);
         List<String> projectsChildren = Arrays.asList("D:Projects", "E:Projects");
