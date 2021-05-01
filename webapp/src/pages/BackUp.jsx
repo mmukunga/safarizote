@@ -43,8 +43,8 @@ import axios from 'axios';
       let categoriesTemp = [...categories];
       categoriesTemp
         .filter(f => f.parentId === id)
-        .forEach(fruite => {
-          fruite.isChecked = event.target.checked;
+        .forEach(category => {
+          category.isChecked = event.target.checked;
         });
         console.log(categoriesTemp);
         setCategories(categoriesTemp);
@@ -52,12 +52,12 @@ import axios from 'axios';
 
     const handleCheckChieldElement = event => {
       console.log('1.CheckingElement..');
-      console.log(`${fruite.parentId}-${fruite.id}`+ ' === ' + event.target.value);
       console.log('2.CheckingElement..');
       let categoriesTemp = [...categories];
-      categoriesTemp.forEach(fruite => {
-        if (`${fruite.parentId}-${fruite.id}` === event.target.value)
-          fruite.isChecked = event.target.checked;
+      categoriesTemp.forEach(category => {
+        console.log(`${category.parentId}-${category.id}`+ ' === ' + event.target.value);
+        if (`${category.parentId}-${category.id}` === event.target.value)
+          category.isChecked = event.target.checked;
       });
       setCategories(categoriesTemp);
     };
