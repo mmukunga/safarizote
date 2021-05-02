@@ -39,6 +39,11 @@ import axios from 'axios';
           category.children.map(child => {
             child.isChecked = event.target.checked;
           });
+        } else {
+          category.isChecked = false;
+          category.children.map(child => {
+            child.isChecked = false;
+          });
         }
       });
       console.log(categoriesTemp);
@@ -55,6 +60,11 @@ import axios from 'axios';
           category.children.map(child => {
             console.log(`${category.id}-${child.id}`);
             child.isChecked = event.target.checked;
+          });
+        } else {
+          category.isChecked = false;
+          category.children.map(child => {
+            child.isChecked = false;
           });
         }
       });
