@@ -34,11 +34,16 @@ import axios from 'axios';
       console.log('1.Checking..');
       var categoriesTemp = [...categories];
       categoriesTemp.map((category) => {
-          child.isChecked= false;
+        category.isChecked= false;
           category.children.map((child) => {
             child.isChecked= false;
               console.log(child);
-          })
+              if (child.children.length > 0) {
+                child.children.map((item) => {
+                  item.isChecked= false; 
+                });  
+              }
+          });
       });
       console.log(categoriesTemp);
       categoriesTemp.forEach(category => {
