@@ -47,7 +47,7 @@ import axios from 'axios';
       console.log('2.Checking..');
     };
 
-    const handleCheckChieldElement = event => {
+    const handleCheckChieldElement = id => event => {
       console.log('1.CheckingElement..');
       let categoriesTemp = [...categories];
       categoriesTemp.forEach(category => {
@@ -102,7 +102,7 @@ import axios from 'axios';
                     return (
                       <CheckBox
                         key={`${child.id}-${item.id}`}
-                        handleCheckChieldElement={handleCheckChieldElement}
+                        handleCheckChieldElement={handleCheckChieldElement(item.id)}
                         {...item}
                         value={`${child.id}-${item.id}`}
                         label={item.name}
