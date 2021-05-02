@@ -92,7 +92,7 @@ import axios from 'axios';
           <h3>Check and Uncheck All Example</h3>
           <form onSubmit={handleSubmit}>
           <div className="BackUps">
-          {React.Children.map(children, (child, i) => (
+          {children.map((child) => (
             <div>
               <input type="checkbox" onChange={handleAllChecked(child.id)} value="checkedall"/>{" "}
               {child.name}
