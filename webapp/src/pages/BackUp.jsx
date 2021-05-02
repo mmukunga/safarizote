@@ -16,7 +16,6 @@ import axios from 'axios';
     }, []);  
 
     const CheckBox = props => {
-      alert(props.isChecked);
       return (
         <li>
           <input
