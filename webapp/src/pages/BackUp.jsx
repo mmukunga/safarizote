@@ -31,6 +31,7 @@ import axios from 'axios';
     };
 
     const handleAllChecked = id => event => {
+      alert('all');
       console.log('1.Checking..');
       var categoriesTemp = [...categories];
       categoriesTemp.map((category) => {
@@ -65,6 +66,7 @@ import axios from 'axios';
     };
 
     const handleCheckChieldElement = id => event => {
+      alert('one');
       console.log('1.CheckingElement..');
       let categoriesTemp = [...categories];
       categoriesTemp.forEach(category => {
