@@ -41,10 +41,12 @@ import axios from 'axios';
       console.log('1.Checking..');
       let categoriesTemp = [...categories];
       categoriesTemp.forEach(category => {
-         category.isChecked = event.target.checked;
-         category.children.map(child => {
-           child.isChecked = event.target.checked;
-         });
+        if (category.id === id) {
+          category.isChecked = event.target.checked;
+          category.children.map(child => {
+            child.isChecked = event.target.checked;
+          });
+        }
       });
       console.log(categoriesTemp);
       setCategories(categoriesTemp);
@@ -55,11 +57,13 @@ import axios from 'axios';
       console.log('1.CheckingElement..');
       let categoriesTemp = [...categories];
       categoriesTemp.forEach(category => {
-        category.isChecked = event.target.checked;
-        category.children.map(child => {
-          console.log(`${category.id}-${child.id}`);
-          child.isChecked = event.target.checked;
-        });
+        if (category.id === id) {
+          category.isChecked = event.target.checked;
+          category.children.map(child => {
+            console.log(`${category.id}-${child.id}`);
+            child.isChecked = event.target.checked;
+          });
+        }
       });
       setCategories(categoriesTemp);
       console.log('2.CheckingElement..');
