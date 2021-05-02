@@ -32,7 +32,15 @@ import axios from 'axios';
 
     const handleAllChecked = id => event => {
       console.log('1.Checking..');
-      let categoriesTemp = [...categories];
+      var categoriesTemp = [...categories];
+      categoriesTemp.map((category) => {
+          child.isChecked= false;
+          category.children.map((child) => {
+            child.isChecked= false;
+              console.log(child);
+          })
+      });
+      console.log(categoriesTemp);
       categoriesTemp.forEach(category => {
         if (category.id === id) {
           category.isChecked = event.target.checked;
