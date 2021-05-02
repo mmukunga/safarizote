@@ -84,7 +84,7 @@ import axios from 'axios';
       console.log(category + " Submited OK!!");
     };
     
-    const children = categories.children;
+    const children =  categories.filter(f => f.children.length > 0);
 
     return (
       <Card className="InnerCard" fontColor="black">
