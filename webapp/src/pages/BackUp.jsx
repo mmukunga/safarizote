@@ -5,17 +5,11 @@ import axios from 'axios';
   const BackUp = () => {
     const [category, setCategory] = React.useState({});
     const [categories, setCategories] = React.useState([]);
-    const [groups, setGroups] = React.useState([]);
-    //const [fruites, setFruites] = React.useState([]);
         
     React.useEffect(() => {
       axios.get("/api/categories").then(response => {
           console.log(response);
-          setCategories([...response.data]);
-          //const grps = response.data.filter(category => category.name.startsWith('C:') == true); 
-          //const frts = response.data.filter(category => category.name.startsWith('C:') == false); 
-          //setGroups([...groups, ...grps]);
-         // setCategories([...grps, ...frts]);          
+          setCategories(response.data);       
       }).catch(error => {
           console.log(error);
       });
@@ -89,27 +83,29 @@ import axios from 'axios';
       setCategory({});
       console.log(category + " Submited OK!!");
     };
+    
+    const children = categories.children;
 
     return (
       <Card className="InnerCard" fontColor="black">
           <strong>Tree BackUp</strong>
-          <h3> Check and Uncheck All Example </h3>
+          <h3>Check and Uncheck All Example</h3>
           <form onSubmit={handleSubmit}>
           <div className="BackUps">
-          {categories.map(category => (
+          {React.Children.map(children, (child, i) => (
             <div>
-              <input type="checkbox" onChange={handleAllChecked(category.id)} value="checkedall"/>{" "}
-              {category.name}
+              <input type="checkbox" onChange={handleAllChecked(child.id)} value="checkedall"/>{" "}
+              {child.name}
               <ul>
-                {category.children.map((child, index) => {
-                    console.log(child.id + '.child..' + child.name);
+                {child.children.map((item) => {
+                    console.log(item.id + '.item..' + item.name);
                     return (
                       <CheckBox
-                        key={`${child.id}-${child.id}`}
+                        key={`${child.id}-${item.id}`}
                         handleCheckChieldElement={handleCheckChieldElement}
-                        {...child}
-                        value={`${child.id}-${child.id}`}
-                        label={child.name}
+                        {...item}
+                        value={`${child.id}-${item.id}`}
+                        label={item.name}
                       />
                     );
                   })}
