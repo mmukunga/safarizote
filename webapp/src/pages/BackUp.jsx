@@ -38,9 +38,9 @@ import axios from 'axios';
       console.log('1.Checking..');
       const categoryTemp = {...category};
       console.log(categoryTemp);
-      categoryTemp.children.map((category) => {
-        category.isChecked= false;
-          category.children.map((child) => {
+      categoryTemp.children.map((cat) => {
+        cat.isChecked= false;
+          cat.children.map((child) => {
             child.isChecked= false;
               console.log(child);
               if (child.children.length > 0) {
@@ -51,15 +51,15 @@ import axios from 'axios';
           });
       });
       console.log(categoryTemp);
-      categoryTemp.children.forEach(category => {
-        if (category.id === id) {
-          category.isChecked = event.target.checked;
-          category.children.map(child => {
+      categoryTemp.children.forEach(cat => {
+        if (cat.id === id) {
+          cat.isChecked = event.target.checked;
+          cat.children.map(child => {
             child.isChecked = event.target.checked;
           });
         } else {
-          category.isChecked = false;
-          category.children.map(child => {
+          cat.isChecked = false;
+          cat.children.map(child => {
             child.isChecked = false;
           });
         }
@@ -73,16 +73,16 @@ import axios from 'axios';
       alert('one');
       console.log('1.CheckingElement..');
       const categoryTemp = {...category};
-      categoryTemp.children.forEach(category => {
-        if (category.id === id) {
-          category.isChecked = event.target.checked;
-          category.children.map(child => {
-            console.log(`${category.id}-${child.id}`);
+      categoryTemp.children.forEach(cat => {
+        if (cat.id === id) {
+          cat.isChecked = event.target.checked;
+          cat.children.map(child => {
+            console.log(`${cat.id}-${child.id}`);
             child.isChecked = event.target.checked;
           });
         } else {
-          category.isChecked = false;
-          category.children.map(child => {
+          cat.isChecked = false;
+          cat.children.map(child => {
             child.isChecked = false;
           });
         }
@@ -109,7 +109,7 @@ import axios from 'axios';
       });
 
       setCategory({});
-      console.log(category + " Submited OK!!");
+      console.log("Submited OK!!");
     };
     
     return (
@@ -118,12 +118,12 @@ import axios from 'axios';
           <h3>Check and Uncheck All Example</h3>
           <form onSubmit={handleSubmit}>
           <div className="BackUps">
-          {category && category.children.map((category) => (
+          {category && category.children.map((cat) => (
             <div>
-              <input type="checkbox" onChange={handleAllChecked(category.id)} value="checkedall"/>{" "}
-              {category.name}
+              <input type="checkbox" onChange={handleAllChecked(cat.id)} value="checkedall"/>{" "}
+              {cat.name}
               <ul>
-                {category.children.map((child) => {
+                {cat.children.map((child) => {
                     return (
                       <CheckBox
                         key={`${child.id}`}
