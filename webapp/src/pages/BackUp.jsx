@@ -114,6 +114,9 @@ import axios from 'axios';
     
 
     console.log(category);
+    console.log(category.children);
+    const temps = [...category.children];
+    console.log(temps.length);
     
     return (
       <Card className="InnerCard" fontColor="black">
