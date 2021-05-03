@@ -4,13 +4,14 @@ import axios from 'axios';
 
   const BackUp = () => {
     const [category, setCategory] = React.useState({});
-    const [categories, setCategories] = React.useState([]);
+    //const [categories, setCategories] = React.useState([]);
         
     React.useEffect(() => {
       axios.get("/api/categories").then(response => {
           console.log(response);   
-          const filteredData =  response.data.filter(f => f.children.length > 0);         
-          setCategories(filteredData); 
+          //const filteredData =  response.data.filter(f => f.children.length > 0);         
+          //setCategories(filteredData); 
+          setCategory(response.data[0]);
       }).catch(error => {
           console.log(error);
       });
@@ -34,9 +35,9 @@ import axios from 'axios';
     const handleAllChecked = id => event => {
       alert('all');
       console.log('1.Checking..');
-      var categoriesTemp = [...categories];
-      console.log(categoriesTemp);
-      categoriesTemp.map((category) => {
+      const categoryTemp = {...category};
+      console.log(categories);
+      categoryTemp.children.map((category) => {
         category.isChecked= false;
           category.children.map((child) => {
             child.isChecked= false;
@@ -48,8 +49,8 @@ import axios from 'axios';
               }
           });
       });
-      console.log(categoriesTemp);
-      categoriesTemp.forEach(category => {
+      console.log(categoryTemp);
+      categoryTemp.children.forEach(category => {
         if (category.id === id) {
           category.isChecked = event.target.checked;
           category.children.map(child => {
@@ -62,16 +63,16 @@ import axios from 'axios';
           });
         }
       });
-      console.log(categoriesTemp);
-      setCategories(categoriesTemp);
+      console.log(categoryTemp);
+      setCategory(categoryTemp);
       console.log('2.Checking..');
     };
 
     const handleCheckChieldElement = id => event => {
       alert('one');
       console.log('1.CheckingElement..');
-      let categoriesTemp = [...categories];
-      categoriesTemp.forEach(category => {
+      const categoryTemp = {...category};
+      categoryTemp.children.forEach(category => {
         if (category.id === id) {
           category.isChecked = event.target.checked;
           category.children.map(child => {
@@ -85,15 +86,15 @@ import axios from 'axios';
           });
         }
       });
-      setCategories(categoriesTemp);
+      setCategory(categoryTemp);
       console.log('2.CheckingElement..');
     };
 
     const handleSubmit = (e) => {
       e.preventDefault();
       let selectedItems = [];
-      let categoriesTemp = [...categories];
-      categoriesTemp.forEach(f => {
+      let categoryTemp = {...category};
+      categoryTemp.children.forEach(f => {
         if (f.isChecked === true) { 
           selectedItems = [...selectedItems, f]; 
         }
@@ -116,7 +117,7 @@ import axios from 'axios';
           <h3>Check and Uncheck All Example</h3>
           <form onSubmit={handleSubmit}>
           <div className="BackUps">
-          {categories.map((category) => (
+          {category.children.map((category) => (
             <div>
               <input type="checkbox" onChange={handleAllChecked(category.id)} value="checkedall"/>{" "}
               {category.name}
