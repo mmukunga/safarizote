@@ -128,7 +128,7 @@ import axios from 'axios';
                         key={`${child.id}`}
                         handleCheckChieldElement={handleCheckChieldElement(child.id)}
                         {...child}
-                        value={`${item.id}`}
+                        value={`${child.id}`}
                         label={child.name}
                       />
                     );
