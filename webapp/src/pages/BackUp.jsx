@@ -38,19 +38,19 @@ import axios from 'axios';
       console.log('1.Checking..');
       const categoryTemp = {...category};
       console.log(categoryTemp);
+      
       categoryTemp.children.map((cat) => {
         cat.isChecked= false;
-          cat.children.map((child) => {
-            child.isChecked= false;
-              console.log(child);
-              if (child.children.length > 0) {
-                child.children.map((item) => {
-                  item.isChecked= false; 
-                });  
-              }
-          });
+        cat.children.map((child) => {
+          child.isChecked= false;
+          if (child.children.length > 0) {
+            child.children.map((item) => {
+              item.isChecked= false; 
+            });  
+          }
+        });
       });
-      console.log(categoryTemp);
+      
       categoryTemp.children.forEach(cat => {
         if (cat.id === id) {
           cat.isChecked = event.target.checked;
@@ -64,7 +64,7 @@ import axios from 'axios';
           });
         }
       });
-      console.log(categoryTemp);
+      
       setCategory(categoryTemp);
       console.log('2.Checking..');
     };
