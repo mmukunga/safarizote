@@ -36,7 +36,7 @@ import axios from 'axios';
       alert('all');
       console.log('1.Checking..');
       const categoryTemp = {...category};
-      console.log(categories);
+      console.log(categoryTemp);
       categoryTemp.children.map((category) => {
         category.isChecked= false;
           category.children.map((child) => {
