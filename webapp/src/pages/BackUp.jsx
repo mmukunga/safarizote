@@ -8,8 +8,9 @@ import axios from 'axios';
         
     React.useEffect(() => {
       axios.get("/api/categories").then(response => {
-          console.log(response);
-          setCategories(response.data);       
+          console.log(response);   
+          const filteredData =  response.data.filter(f => f.children.length > 0);         
+          setCategories(filteredData); 
       }).catch(error => {
           console.log(error);
       });
@@ -34,6 +35,7 @@ import axios from 'axios';
       alert('all');
       console.log('1.Checking..');
       var categoriesTemp = [...categories];
+      console.log(categoriesTemp);
       categoriesTemp.map((category) => {
         category.isChecked= false;
           category.children.map((child) => {
@@ -108,28 +110,25 @@ import axios from 'axios';
       console.log(category + " Submited OK!!");
     };
     
-    const children =  categories.filter(f => f.children.length > 0);
-
     return (
       <Card className="InnerCard" fontColor="black">
           <strong>Tree BackUp</strong>
           <h3>Check and Uncheck All Example</h3>
           <form onSubmit={handleSubmit}>
           <div className="BackUps">
-          {children.map((child) => (
+          {categories.map((category) => (
             <div>
-              <input type="checkbox" onChange={handleAllChecked(child.id)} value="checkedall"/>{" "}
-              {child.name}
+              <input type="checkbox" onChange={handleAllChecked(category.id)} value="checkedall"/>{" "}
+              {category.name}
               <ul>
-                {child.children.map((item) => {
-                    console.log(item.id + '.item..' + item.name);
+                {category.children.map((child) => {
                     return (
                       <CheckBox
-                        key={`${child.id}-${item.id}`}
-                        handleCheckChieldElement={handleCheckChieldElement(item.id)}
-                        {...item}
-                        value={`${child.id}-${item.id}`}
-                        label={item.name}
+                        key={`${child.id}`}
+                        handleCheckChieldElement={handleCheckChieldElement(child.id)}
+                        {...child}
+                        value={`${item.id}`}
+                        label={child.name}
                       />
                     );
                   })}
