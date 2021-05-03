@@ -9,7 +9,8 @@ import axios from 'axios';
     React.useEffect(() => {
       axios.get("/api/categories").then(response => {
           console.log(response);   
-          //const filteredData =  response.data.filter(f => f.children.length > 0);         
+          //const filteredData =  response.data.filter(f => f.children.length > 0);   
+          console.log(response.data[0]);        
           //setCategories(filteredData); 
           setCategory(response.data[0]);
       }).catch(error => {
@@ -117,7 +118,7 @@ import axios from 'axios';
           <h3>Check and Uncheck All Example</h3>
           <form onSubmit={handleSubmit}>
           <div className="BackUps">
-          {category.children.map((category) => (
+          {category && category.children.map((category) => (
             <div>
               <input type="checkbox" onChange={handleAllChecked(category.id)} value="checkedall"/>{" "}
               {category.name}
