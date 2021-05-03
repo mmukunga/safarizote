@@ -34,9 +34,8 @@ import axios from 'axios';
     };
 
 
-    const uncheckAll = (props) => {
+    const uncheckAll = () => {
       console.log('1.Uncheck All..');
-      console.log(props.categoryTemp);
       const categoryTemp = {...category};
       console.log(categoryTemp);
       categoryTemp.isChecked = false;
@@ -51,28 +50,27 @@ import axios from 'axios';
           }
         });
       });
+      console.log(categoryTemp);
       setCategory(categoryTemp);
       console.log('2.Uncheck All..');
-
     }
 
     const handleAllChecked = id => event => {
-      console.log('1.Checking..');
+      console.log('1.Checking..');    
+      uncheckAll();
       const categoryTemp = {...category};
       console.log(categoryTemp);
-      
-      uncheckAll(categoryTemp);
       
       categoryTemp.children.forEach(cat => {
         if (cat.id === id) {
           cat.isChecked = event.target.checked;
           cat.children.map(child => {
-            child.isChecked = event.target.checked;
-          });
-        } else {
-          cat.isChecked = false;
-          cat.children.map(child => {
-            child.isChecked = false;
+            child.isChecked = event.target.checked;          
+            if (child.children.length > 0) {
+              child.children.map((item) => {
+                item.isChecked= event.target.checked; 
+              });  
+            }
           });
         }
       });
@@ -90,11 +88,6 @@ import axios from 'axios';
           cat.children.map(child => {
             console.log(`${cat.id}-${child.id}`);
             child.isChecked = event.target.checked;
-          });
-        } else {
-          cat.isChecked = false;
-          cat.children.map(child => {
-            child.isChecked = false;
           });
         }
       });
