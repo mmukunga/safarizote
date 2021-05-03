@@ -33,12 +33,13 @@ import axios from 'axios';
       );
     };
 
-    const handleAllChecked = id => event => {
-      alert('all');
-      console.log('1.Checking..');
+
+    const uncheckAll = (props) => {
+      console.log('1.Uncheck All..');
+      console.log(props.categoryTemp);
       const categoryTemp = {...category};
       console.log(categoryTemp);
-      
+      categoryTemp.isChecked = false;
       categoryTemp.children.map((cat) => {
         cat.isChecked= false;
         cat.children.map((child) => {
@@ -50,6 +51,17 @@ import axios from 'axios';
           }
         });
       });
+      setCategory(categoryTemp);
+      console.log('2.Uncheck All..');
+
+    }
+
+    const handleAllChecked = id => event => {
+      console.log('1.Checking..');
+      const categoryTemp = {...category};
+      console.log(categoryTemp);
+      
+      uncheckAll(categoryTemp);
       
       categoryTemp.children.forEach(cat => {
         if (cat.id === id) {
@@ -70,7 +82,6 @@ import axios from 'axios';
     };
 
     const handleCheckChieldElement = id => event => {
-      alert('one');
       console.log('1.CheckingElement..');
       const categoryTemp = {...category};
       categoryTemp.children.forEach(cat => {
@@ -101,7 +112,6 @@ import axios from 'axios';
         }
       });
       console.log(selectedItems);
-
       axios.post("/api/doBackUp", {
         selectedItems
       }).then((response) => { 
@@ -120,9 +130,6 @@ import axios from 'axios';
     } else {
       console.log('!!!NO DATA!!!');
     }
-    
-    //const temps = [...category.children];
-    //console.log(temps.length);
 
     return (
       <Card className="InnerCard" fontColor="black">
