@@ -114,7 +114,13 @@ import axios from 'axios';
     
 
     console.log(category);
-    //console.log(category.children);
+
+    if (category && category.children.length > 0) {
+      console.log(category.children);
+    } else {
+      console.log('!!!NO DATA!!!');
+    }
+    
     //const temps = [...category.children];
     //console.log(temps.length);
 
