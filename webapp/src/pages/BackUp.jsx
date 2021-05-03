@@ -132,8 +132,25 @@ import axios from 'axios';
           <div className="BackUps">
 
 
-            fgdfgdfg
-            dsdsfsgfd
+          {category.children!=null && category.children.map((cat) => (
+            <div>
+              <input type="checkbox" onChange={handleAllChecked(cat.id)} value="checkedall"/>{" "}
+              {cat.name}
+              <ul>
+                {cat.children.map((child) => {
+                    return (
+                      <CheckBox
+                        key={`${child.id}`}
+                        handleCheckChieldElement={handleCheckChieldElement(child.id)}
+                        {...child}
+                        value={`${child.id}`}
+                        label={child.name}
+                      />
+                    );
+                  })}
+              </ul>
+            </div>
+          ))}
 
 
           </div>
