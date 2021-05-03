@@ -80,25 +80,32 @@ import axios from 'axios';
     };
 
     const handleCheckChieldElement = id => event => {
-      console.log('1.CheckingElement..');
+      console.log('1.handleCheckChieldElement..');
       const categoryTemp = {...category};
       categoryTemp.children.forEach(cat => {
         if (cat.id != id) {
+          console.log('CHILDREN LOOPING 1');
           cat.children.map(child => {
             console.log(`${child.id}`);
+            console.log('CHILDREN LOOPING 2');
             if (child.id != id) {
               if (child.children.length > 0) {
+                console.log('CHILDREN LOOPING 3');
                 child.children.map((item) => {
+                  console.log('CHILDREN LOOPING 4');
                   if (item.id === id) {
+                    console.log('DEEP CHECKED!!');
                     item.isChecked = !event.target.checked; 
                   }
                 });  
               }            
             } else { 
+              console.log('CHILD CHECKED!!');
               child.isChecked = !event.target.checked; 
             }  
           });
         } else {
+          console.log('CAT CHECKED!!');
           cat.isChecked = !event.target.checked;
         }
       });
