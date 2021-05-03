@@ -112,31 +112,21 @@ import axios from 'axios';
       console.log("Submited OK!!");
     };
     
+
+    console.log(category);
+    
     return (
       <Card className="InnerCard" fontColor="black">
           <strong>Tree BackUp</strong>
           <h3>Check and Uncheck All Example</h3>
           <form onSubmit={handleSubmit}>
           <div className="BackUps">
-          {category && category.children.map((cat) => (
-            <div>
-              <input type="checkbox" onChange={handleAllChecked(cat.id)} value="checkedall"/>{" "}
-              {cat.name}
-              <ul>
-                {cat.children.map((child) => {
-                    return (
-                      <CheckBox
-                        key={`${child.id}`}
-                        handleCheckChieldElement={handleCheckChieldElement(child.id)}
-                        {...child}
-                        value={`${child.id}`}
-                        label={child.name}
-                      />
-                    );
-                  })}
-              </ul>
-            </div>
-          ))}
+
+
+            fgdfgdfg
+            dsdsfsgfd
+
+
           </div>
           <div className="row">
             <input type="submit" value="Submit!" className="lg-button btn-primary"/>
