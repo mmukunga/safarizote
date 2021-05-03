@@ -83,12 +83,23 @@ import axios from 'axios';
       console.log('1.CheckingElement..');
       const categoryTemp = {...category};
       categoryTemp.children.forEach(cat => {
-        if (cat.id === id) {
-          cat.isChecked = event.target.checked;
+        if (cat.id != id) {
           cat.children.map(child => {
-            console.log(`${cat.id}-${child.id}`);
-            child.isChecked = event.target.checked;
+            console.log(`${child.id}`);
+            if (child.id != id) {
+              if (child.children.length > 0) {
+                child.children.map((item) => {
+                  if (item.id === id) {
+                    item.isChecked = !event.target.checked; 
+                  }
+                });  
+              }            
+            } else { 
+              child.isChecked = !event.target.checked; 
+            }  
           });
+        } else {
+          cat.isChecked = !event.target.checked;
         }
       });
       setCategory(categoryTemp);
