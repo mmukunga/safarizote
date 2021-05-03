@@ -115,7 +115,7 @@ import axios from 'axios';
 
     console.log(category);
 
-    if (category && category.children.length > 0) {
+    if (category.children && category.children.length > 0) {
       console.log(category.children);
     } else {
       console.log('!!!NO DATA!!!');
