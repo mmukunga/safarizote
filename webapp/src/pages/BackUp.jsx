@@ -31,6 +31,7 @@ import axios from 'axios';
     const uncheckAll = () => {
       alert('!!UNCHECK!!');
       const categoryTemp = {...category};
+      console.log(categoryTemp);
       categoryTemp.isChecked = false;
       categoryTemp.children.map((cat) => {
         cat.isChecked= false;
