@@ -107,7 +107,7 @@ import axios from 'axios';
           });
         } else {
           console.log('CHECK ME CAT!!');
-          cat.isChecked = (child.isChecked===true)? false:true; 
+          cat.isChecked = (cat.isChecked===true)? false:true; 
         }
       });
       setCategory(categoryTemp);
