@@ -89,24 +89,25 @@ import axios from 'axios';
             console.log(`${child.id}`);
             console.log('CHILDREN LOOPING 2');
             if (child.id != id) {
+              console.log('CHILDREN LOOPING 3');
               if (child.children.length > 0) {
-                console.log('CHILDREN LOOPING 3');
+                console.log('CHILDREN LOOPING 4');
                 child.children.map((item) => {
-                  console.log('CHILDREN LOOPING 4');
+                  console.log('CHILDREN LOOPING 5');
                   if (item.id === id) {
-                    console.log('DEEP CHECKED!!');
-                    item.isChecked = !event.target.checked; 
+                    console.log('DEEP CHECK ME!!');
+                    item.isChecked = (child.isChecked===true)? false:true; 
                   }
                 });  
               }            
             } else { 
-              console.log('CHILD CHECKED!!');
-              child.isChecked = !event.target.checked; 
+              console.log('CHECK ME!!');
+              child.isChecked = (child.isChecked===true)? false:true; 
             }  
           });
         } else {
-          console.log('CAT CHECKED!!');
-          cat.isChecked = !event.target.checked;
+          console.log('CHECK ME CAT!!');
+          cat.isChecked = (child.isChecked===true)? false:true; 
         }
       });
       setCategory(categoryTemp);
