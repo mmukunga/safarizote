@@ -37,11 +37,9 @@ import axios from 'axios';
         cat.isChecked= false;
         cat.children.map((child) => {
           child.isChecked= false;
-          if (child.children.length > 0) {
             child.children.map((item) => {
               item.isChecked= false; 
             });  
-          }
         });
       });
       setCategory(categoryTemp);
