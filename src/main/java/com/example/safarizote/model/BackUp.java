@@ -32,20 +32,22 @@ import lombok.NonNull;
 @Builder
 public class BackUp {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    
     @Column(unique = true)
     @NonNull String name; 
     Boolean isChecked;
     Instant dateCreated;
 
-    @JsonBackReference
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="parent_id", referencedColumnName="id")
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name="parent")
     BackUp parent;
 
-    @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+    @JsonManagedReference
+    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval=true, fetch = FetchType.LAZY)
     Set<BackUp> children;
 }
