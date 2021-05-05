@@ -34,7 +34,7 @@ public class BackUp {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    
+
     @Column(unique = true)
     @NonNull String name; 
     Boolean isChecked;
@@ -43,11 +43,10 @@ public class BackUp {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
-    @JoinColumn(name="parent")
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
     BackUp parent;
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval=true, fetch = FetchType.LAZY)
+    @Transient
     Set<BackUp> children;
 }
