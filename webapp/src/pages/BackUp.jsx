@@ -104,7 +104,7 @@ import axios from 'axios';
 
       folders.forEach((folder) => {
         if (folder.children && folder.children.length > 0) {
-          arrayOfFiles = getAllFiles(folder, arrayOfFiles)
+          arrayOfFiles = uncheckAllFiles(folder, arrayOfFiles)
         } else {
           folder.isChecked = false;
           arrayOfFiles.push(folder);
