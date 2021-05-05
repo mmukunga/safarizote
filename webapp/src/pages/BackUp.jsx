@@ -101,6 +101,7 @@ import axios from 'axios';
 
       var folders = [...dirFolder.children];
       arrayOfFiles = arrayOfFiles || []
+      arrayOfFiles.push(dirFolder);
 
       folders.forEach((folder) => {
         if (folder.children && folder.children.length > 0) {
@@ -114,7 +115,24 @@ import axios from 'axios';
       return arrayOfFiles;
     }
     
+    const uncheckAllFiles2 = (dirFolder, arrayOfFiles) => {
+      dirFolder.isChecked = false;
 
+      //var folders = [...dirFolder.children];
+      //arrayOfFiles = arrayOfFiles || []
+      //arrayOfFiles.push(dirFolder);
+
+      dirFolder.children.forEach((folder) => {
+        if (folder.children && folder.children.length > 0) {
+          dirFolder = uncheckAllFiles2(folder, arrayOfFiles)
+        } else {
+          folder.isChecked = false;
+          //arrayOfFiles.push(folder);
+        }
+      })
+    
+      return arrayOfFiles;
+    }
 
     const handleSubmit = (e) => {
       e.preventDefault();

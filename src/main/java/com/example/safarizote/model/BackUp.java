@@ -39,13 +39,13 @@ public class BackUp {
     Boolean isChecked;
     Instant dateCreated;
 
-    @ManyToOne
     @JsonBackReference
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @JoinColumn(name = "parent_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="parent", referencedColumnName="id")
     BackUp parent;
 
-    @OneToMany(mappedBy="parent", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @OneToMany(mappedBy="parent", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     Set<BackUp> children;
 }
