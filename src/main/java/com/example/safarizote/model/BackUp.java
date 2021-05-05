@@ -46,6 +46,6 @@ public class BackUp {
     @JoinColumn(name="parent_id", referencedColumnName="id")
     BackUp parent;
 
-    @OneToMany(mappedBy="parent", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+    @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     Set<BackUp> children;
 }
