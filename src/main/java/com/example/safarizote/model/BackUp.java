@@ -43,7 +43,7 @@ public class BackUp {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="parent", referencedColumnName="id")
+    @JoinColumn(name="parent_id", referencedColumnName="id")
     BackUp parent;
 
     @OneToMany(mappedBy="parent", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
