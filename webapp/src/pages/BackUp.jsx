@@ -47,6 +47,12 @@ import axios from 'axios';
 
     const handleAllChecked = id => event => {
       uncheckAll();
+
+      const result = uncheckAllFiles(category);
+      console.log('1..result..');
+      console.log(result);
+      console.log('2..result..');
+      
       const categoryTemp = {...category};
       categoryTemp.children.forEach(cat => {
         if (cat.id === id) {
@@ -87,6 +93,28 @@ import axios from 'axios';
       });
       setCategory(categoryTemp);
     };
+
+
+
+    const uncheckAllFiles = (dirFolder, arrayOfFiles) => {
+      dirFolder.isChecked = false;
+
+      folders = [...dirFolder.children];
+      arrayOfFiles = arrayOfFiles || []
+
+      folders.forEach((folder) => {
+        if (folder.children && folder.children.length > 0) {
+          arrayOfFiles = getAllFiles(folder, arrayOfFiles)
+        } else {
+          folder.isChecked = false;
+          arrayOfFiles.push(folder);
+        }
+      })
+    
+      return arrayOfFiles;
+    }
+    
+
 
     const handleSubmit = (e) => {
       e.preventDefault();
