@@ -99,7 +99,7 @@ import axios from 'axios';
     const uncheckAllFiles = (dirFolder, arrayOfFiles) => {
       dirFolder.isChecked = false;
 
-      folders = [...dirFolder.children];
+      var folders = [...dirFolder.children];
       arrayOfFiles = arrayOfFiles || []
 
       folders.forEach((folder) => {
