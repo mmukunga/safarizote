@@ -12,8 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
-
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -36,19 +34,18 @@ public class BackUp {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     Long id;
-
     @Column(unique = true)
     @NonNull String name; 
     Boolean isChecked;
     Instant dateCreated;
 
+    @ManyToOne
+    @JsonBackReference
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @JsonBackReference
-    @ManyToOne(cascade={CascadeType.ALL})
-    @JoinColumn(name="parent_id")
+    @JoinColumn(name = "parent_id")
     BackUp parent;
 
-    @OneToMany(mappedBy="parent")
+    @OneToMany(mappedBy="parent", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     Set<BackUp> children;
 }
