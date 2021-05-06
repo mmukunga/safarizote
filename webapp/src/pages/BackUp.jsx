@@ -83,7 +83,7 @@ import axios from 'axios';
     const handleAllChecked = id => event => {
       uncheckAll();
       
-      let treeArr = [...category];
+      let treeArr = {...category};
       getChildren(treeArr, category);
       console.log('1.treeArr..');
       console.log(treeArr);
