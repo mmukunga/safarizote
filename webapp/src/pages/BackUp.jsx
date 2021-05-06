@@ -32,6 +32,8 @@ import axios from 'axios';
 
     const getChildren = (resultarr,data) => {
       resultarr.isChecked = false;
+      console.log(resultarr);
+      console.log(resultarr.children);
       resultarr.children.forEach((elemt,index) => {
           if(elemt.children.length > 0){
               elemt.isChecked = false;
