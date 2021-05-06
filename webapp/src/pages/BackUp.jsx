@@ -47,7 +47,7 @@ import axios from 'axios';
 
     const getAllFiles = (dirPath, arrayOfFiles) =>{
       console.log(dirPath);
-      var files = [...dirPath];
+      var files = {...dirPath};
       console.log(files);
       var arrayOfFiles = arrayOfFiles || [];
     
