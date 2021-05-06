@@ -34,7 +34,7 @@ import lombok.NonNull;
 @Builder
 public class BackUp {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     Long id;
 
     @Column(unique = true)
