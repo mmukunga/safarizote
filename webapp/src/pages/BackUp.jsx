@@ -87,8 +87,8 @@ import axios from 'axios';
     const handleAllChecked = id => event => {
       uncheckAll();
       console.log(category);
-      let clone = {...category};
-      console.log(clone);
+      let treeArr = {...category};
+      console.log(treeArr);
       getChildren(treeArr, category);
       console.log('1.treeArr..');
       console.log(treeArr);
