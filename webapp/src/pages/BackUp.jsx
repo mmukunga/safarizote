@@ -47,6 +47,7 @@ import axios from 'axios';
 
     const getAllFiles = (dirPath, arrayOfFiles) =>{
       console.log(dirPath);
+      dirPath.isChecked = false;
       var files = {...dirPath};
       console.log(files);
       var arrayOfFiles = arrayOfFiles || [];
@@ -56,6 +57,7 @@ import axios from 'axios';
           arrayOfFiles = getAllFiles(file, arrayOfFiles);
           console.log(arrayOfFiles);
         } else {
+          file.isChecked = false;
           arrayOfFiles = [...arrayOfFiles, file];
           console.log(arrayOfFiles);
         }
