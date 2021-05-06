@@ -52,7 +52,7 @@ import axios from 'axios';
       console.log(files);
       var arrayOfFiles = arrayOfFiles || [];
     
-      files.children.forEach((file) => {
+      dirPath.children.forEach((file) => {
         if (file.children > 0) {
           arrayOfFiles = getAllFiles(file, arrayOfFiles);
           console.log(arrayOfFiles);
