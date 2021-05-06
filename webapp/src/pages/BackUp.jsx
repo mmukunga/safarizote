@@ -34,12 +34,14 @@ import axios from 'axios';
       resultarr.isChecked = false;
       console.log(resultarr);
       console.log(resultarr.children);
-      resultarr.children.forEach((elemt,index) => {
-          if(elemt.children.length > 0){
-              elemt.isChecked = false;
-              getChildren(elemt.children,data);
-          }
-      });
+      if (resultarr.children != undefined) {
+        resultarr.children.map((elemt,index) => {
+            if(elemt.children.length > 0){
+                elemt.isChecked = false;
+                getChildren(elemt.children,data);
+            }
+        });
+      }
     }
 
 
