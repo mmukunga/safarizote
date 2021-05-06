@@ -58,8 +58,8 @@ import axios from 'axios';
           console.log(arrayOfFiles);
         } else {
           file.isChecked = false;
-          arrayOfFiles = [...arrayOfFiles, file];
-          console.log(arrayOfFiles);
+          //arrayOfFiles = [...arrayOfFiles, file];
+          console.log(file);
         }
       });
     
