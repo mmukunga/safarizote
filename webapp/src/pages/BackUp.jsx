@@ -6,7 +6,7 @@ import axios from 'axios';
     const [category, setCategory] = React.useState({});     
     React.useEffect(() => {
       axios.get("/api/categories").then(response => {
-          console.log(response);
+          console.log(response.data[0]);
           setCategory(response.data[0]);
       }).catch(error => {
           console.log(error);
@@ -45,9 +45,33 @@ import axios from 'axios';
       setCategory(categoryTemp);
     }
 
+    const getAllFiles = (dirPath, arrayOfFiles) =>{
+      console.log(dirPath);
+      var files = [...dirPath];
+      console.log(files);
+      var arrayOfFiles = arrayOfFiles || [];
+    
+      files.children.forEach((file) => {
+        if (file.children > 0) {
+          arrayOfFiles = getAllFiles(file, arrayOfFiles);
+          console.log(arrayOfFiles);
+        } else {
+          arrayOfFiles = [...arrayOfFiles, file];
+          console.log(arrayOfFiles);
+        }
+      });
+    
+      return arrayOfFiles;
+    }
+
     const handleAllChecked = id => event => {
       uncheckAll();
 
+      const result1 = getAllFiles(category);
+      console.log('1..result1..');
+      console.log(result1);
+      console.log('2..result2..');
+     
       const result = uncheckAllFiles(category);
       console.log('1..result..');
       console.log(result);
