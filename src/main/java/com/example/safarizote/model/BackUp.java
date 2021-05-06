@@ -45,10 +45,10 @@ public class BackUp {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @JsonBackReference
-    @ManyToOne
-    @JoinColumn(name = "parent_id")
+    @ManyToOne(cascade={CascadeType.ALL})
+    @JoinColumn(name="parent_id")
     BackUp parent;
 
-    @Transient
+    @OneToMany(mappedBy="parent")
     Set<BackUp> children;
 }
