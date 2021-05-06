@@ -28,6 +28,20 @@ import axios from 'axios';
       );
     };
 
+
+
+    const getChildren = (resultarr,data) => {
+      resultarr.isChecked = false;
+      resultarr.forEach((elemt,index) => {
+          if(elemt.children.length > 0){
+              elemt.isChecked = false;
+              getChildren(elemt.children,data);
+          }
+      });
+    }
+
+
+
     const uncheckAll = () => {
       alert('!!UNCHECK!!');
       var categoryTemp = {...category};
@@ -68,7 +82,12 @@ import axios from 'axios';
 
     const handleAllChecked = id => event => {
       uncheckAll();
-
+      
+      let treeArr = [...category];
+      getChildren(treeArr, category);
+      console.log('1.treeArr..');
+      console.log(treeArr);
+      console.log('2.treeArr..');
       const result1 = getAllFiles(category);
       console.log('1..result1..');
       console.log(result1);
