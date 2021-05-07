@@ -44,6 +44,8 @@ import axios from 'axios';
         console.log(ar);
         ar.children.forEach(val => {
           console.log(initArr[i]);
+          console.log([].concat(val));
+          console.log([].push(val));
           console.log(val);
           initArr[i] && initArr[i].push(val);
           if (Array.isArray(val.children) && val.children.length > 0) {
