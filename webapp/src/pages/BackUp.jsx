@@ -28,28 +28,6 @@ import axios from 'axios';
       );
     };
 
-
-
-    const formatArrA = arr => {
-      let initArr = []
-      let curChildren = []
-      const format = (ar, i) => {
-        initArr[i] || (initArr[i] = [])
-             curchildren = [] // Re-empty Curchildren each time
-        ar.children.forEach(val => {
-          initArr[i].push(val)
-          if (Array.isArray(val.children) && val.children.length > 0) {
-            curChildren = [...curChildren, ...val.children]
-          }
-        })
-        if (curChildren.length > 0) {
-          format(curChildren, i + 1)
-        }
-        return initArr
-      }
-      return format(arr, 0)
-    }
-
     const formatArrB = obj => {
       let initArr = {}
       const format = (ar, i) => {
