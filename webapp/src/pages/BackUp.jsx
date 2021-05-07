@@ -28,24 +28,32 @@ import axios from 'axios';
       );
     };
 
-    const formatArrB = arr => {
+    const formatArrB = obj => {
+      const temp = {
+        id: obj.id, 
+        name: obj.name, 
+        isChecked: obj.isChecked, 
+        dateCreated: obj.dateCreated, 
+        children: obj.children
+      };
       let initArr = [];
       const format = (ar, i) => {
         initArr[i] || (initArr[i] = []);
-        ar.forEach(val => {
+        ar.children.forEach(val => {
           initArr[i].push(val)
           if (Array.isArray(val.children) && val.children.length > 0) {
               format (val.children, i + 1) 
           }
         });
-        return initArr;
+        temp.children = (initArr = []);
+        return temp;
       }
-      return format(arr, 0);
+      return format(temp, 0);
     }
 
     const handleAllChecked = id => event => {     
       const categoryTemp = {...category};
-      console.log(formatArrB(categoryTemp.children));
+      console.log(formatArrB(category));
       setCategory(categoryTemp);
     };
 
