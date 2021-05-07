@@ -65,6 +65,7 @@ import axios from 'axios';
 
     function test() {
       const catTemp = category;
+      console.log(catTemp);
       catTemp.isChecked = false;
       let iteration = function(catTemp) {
         let newArr = [];
@@ -74,9 +75,11 @@ import axios from 'axios';
           if (item.children != undefined && item.children.length > 0) {
             iteration(item.children);
           }
+          console.log(item);
           return item;
         });
        }
+       console.log(newArr);
         return newArr;
       };
       const cat = iteration(catTemp);
