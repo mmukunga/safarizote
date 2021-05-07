@@ -28,38 +28,46 @@ import axios from 'axios';
       );
     };
 
-    const formatArrB = obj => {
-      const temp = {
-        id: obj.id, 
-        name: obj.name, 
-        isChecked: obj.isChecked, 
-        dateCreated: obj.dateCreated, 
-        children: obj.children
-      };
-      console.log(temp);
-      let initArr = [];
+
+
+    const formatArrA = arr => {
+      let initArr = []
+      let curChildren = []
       const format = (ar, i) => {
-        initArr[i] || (initArr[i] = []);
-        console.log(initArr[i]);
-        console.log(ar);
+        initArr[i] || (initArr[i] = [])
+             curchildren = [] // Re-empty Curchildren each time
         ar.children.forEach(val => {
-          console.log(initArr[i]);
-          console.log([].concat(val));
-          console.log([].push(val));
-          console.log(val);
-          initArr[i] && initArr[i].push(val);
+          initArr[i].push(val)
           if (Array.isArray(val.children) && val.children.length > 0) {
-              format (val, i + 1) 
+            curChildren = [...curChildren, ...val.children]
           }
-        });
-        temp.children = (initArr = []);
-        return temp;
+        })
+        if (curChildren.length > 0) {
+          format(curChildren, i + 1)
+        }
+        return initArr
       }
-      return format(temp, 0);
+      return format(arr, 0)
+    }
+
+    const formatArrB = obj => {
+      let initArr = {}
+      const format = (ar, i) => {
+        initArr || (initArr = {})
+        ar.forEach(val => {
+          initArr = {...initArr, val}
+          if (Array.isArray(val.children) && val.children.length > 0) {
+              format (val, i + 1)
+          }
+        })
+        return initArr
+      }
+      return format(obj, 0)
     }
 
     const handleAllChecked = id => event => {     
       const categoryTemp = {...category};
+      console.log(categoryTemp);
       console.log(formatArrB(category));
       setCategory(categoryTemp);
     };
