@@ -69,7 +69,7 @@ import axios from 'axios';
       catTemp.isChecked = false;
       let iteration = function(catTemp) {
         let newArr = [];
-        if (catTemp != undefined && catTemp.length > 0) {
+        if (catTemp.children != undefined && catTemp.children.length > 0) {
           newArr = catTemp.children.map(item => {
             item.isChecked = false;
           if (item.children != undefined && item.children.length > 0) {
