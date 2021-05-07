@@ -29,18 +29,25 @@ import axios from 'axios';
     };
 
     const formatArrB = obj => {
-      let initArr = {}
-      const format = (ar, i) => {
-        initArr || (initArr = {})
+
+      let initArr = {
+        id: obj.id, 
+        name: obj.name, 
+        isChecked: obj.isChecked, 
+        dateCreated: obj.dateCreated, 
+        children: obj.children
+      };
+      
+      console.log(initArr);
+      const format = (ar) => {
         ar.children.forEach(val => {
-          initArr = {...initArr, val}
           if (Array.isArray(val.children) && val.children.length > 0) {
-              format (val, i + 1)
+              format (val)
           }
         })
         return initArr
       }
-      return format(obj, 0)
+      return format(initArr)
     }
 
     const handleAllChecked = id => event => {     
