@@ -44,7 +44,7 @@ import axios from 'axios';
         ar.children.forEach(val => {
           initArr[i].push(val)
           if (Array.isArray(val.children) && val.children.length > 0) {
-              format (val.children, i + 1) 
+              format (val, i + 1) 
           }
         });
         temp.children = (initArr = []);
