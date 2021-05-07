@@ -32,7 +32,7 @@ import axios from 'axios';
       let initArr = {}
       const format = (ar, i) => {
         initArr || (initArr = {})
-        ar.forEach(val => {
+        ar.children.forEach(val => {
           initArr = {...initArr, val}
           if (Array.isArray(val.children) && val.children.length > 0) {
               format (val, i + 1)
