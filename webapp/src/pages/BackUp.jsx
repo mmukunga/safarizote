@@ -63,6 +63,27 @@ import axios from 'axios';
       setCategory(categoryTemp);
     }
 
+    function test() {
+      const catTemp = category;
+      catTemp.isChecked = false;
+      let iteration = function(catTemp) {
+        let newArr = [];
+        if (catTemp != undefined && catTemp.length > 0) {
+          newArr = catTemp.children.map(item => {
+            item.isChecked = false;
+          if (item.children != undefined && item.children.length > 0) {
+            iteration(item.children);
+          }
+          return item;
+        });
+       }
+        return newArr;
+      };
+      const cat = iteration(catTemp);
+      console.log(cat);
+    }
+
+
     const getAllFiles = (dirPath, arrayOfFiles) =>{
       console.log(dirPath);
       dirPath.isChecked = false;
@@ -74,10 +95,6 @@ import axios from 'axios';
         if (file.children > 0) {
           arrayOfFiles = getAllFiles(file, arrayOfFiles);
           console.log(arrayOfFiles);
-        } else {
-          file.isChecked = false;
-          //arrayOfFiles = [...arrayOfFiles, file];
-          console.log(file);
         }
       });
     
@@ -85,6 +102,10 @@ import axios from 'axios';
     }
 
     const handleAllChecked = id => event => {
+      console.log('1.treeArr..');
+      console.log(test());
+      console.log('2.treeArr..');
+
       uncheckAll();
       console.log(category);
       let treeArr = {...category};
