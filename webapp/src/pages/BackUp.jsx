@@ -40,6 +40,7 @@ import axios from 'axios';
       let initArr = [];
       const format = (ar, i) => {
         initArr[i] || (initArr[i] = []);
+        console.log(initArr[i]);
         console.log(ar);
         ar.children.forEach(val => {
           console.log(initArr[i]);
