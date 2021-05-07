@@ -28,7 +28,7 @@ import axios from 'axios';
       );
     };
 
-    const formatArrB = obj => {
+    const uncheckArrB = (obj, isChecked) => {
 
       let initArr = {
         id: obj.id, 
@@ -39,24 +39,28 @@ import axios from 'axios';
       };
 
       console.log(initArr);
-      const format = (ar) => {
-        ar.isChecked = false;
+      const uncheck = (ar) => {
+        ar.isChecked = isChecked;
         ar.children.forEach(val => {
-          val.isChecked = false;
+          val.isChecked = isChecked;
           if (Array.isArray(val.children) && val.children.length > 0) {
-              format (val)
+              uncheck (val)
           }
         })
         return initArr
       }
-      return format(initArr)
+      return uncheck(initArr)
     }
 
     const handleAllChecked = id => event => {     
       const categoryTemp = {...category};
       console.log(categoryTemp);
       category.isChecked = false;
-      console.log(formatArrB(category));
+      console.log(uncheckArrB(category, false));
+
+      const fruites = categoryTemp.children.forEach(fruite => (fruite.id = id));
+      console.log(uncheckArrB(fruites, true));
+      
       setCategory(categoryTemp);
     };
 
