@@ -28,166 +28,32 @@ import axios from 'axios';
       );
     };
 
-
-
-    const getChildren = (resultarr,data) => {
-      resultarr.isChecked = false;
-      console.log(resultarr);
-      console.log(resultarr.children);
-      if (resultarr.children != undefined) {
-        resultarr.children.map((elemt,index) => {
-            if(elemt.children.length > 0){
-                elemt.isChecked = false;
-                getChildren(elemt.children,data);
-            }
-        });
-      }
-    }
-
-
-
-    const uncheckAll = () => {
-      alert('!!UNCHECK!!');
-      var categoryTemp = {...category};
-      console.log(categoryTemp);
-      categoryTemp.isChecked = false;
-      categoryTemp.children.map((cat) => {
-        cat.isChecked= false;
-        cat.children.map((child) => {
-          child.isChecked= false;
-            child.children.map((item) => {
-              item.isChecked= false; 
-            });  
-        });
-      });
-      setCategory(categoryTemp);
-    }
-
-    function test() {
-      const catTemp = category;
-      console.log(catTemp);
-      catTemp.isChecked = false;
-      let iteration = function(catTemp) {
-        let newArr = [];
-        if (catTemp.children != undefined && catTemp.children.length > 0) {
-          newArr = catTemp.children.map(item => {
-            //item.isChecked = false;
-          if (item.children != undefined && item.children.length > 0) {
-            iteration(item.children);
+    const formatArrB = arr => {
+      let initArr = [];
+      const format = (ar, i) => {
+        initArr[i] || (initArr[i] = []);
+        ar.forEach(val => {
+          initArr[i].push(val)
+          if (Array.isArray(val.children) && val.children.length > 0) {
+              format (Val.children, i + 1) 
           }
-          console.log(item);
-          return item;
         });
-       }
-       console.log(newArr);
-        return newArr;
-      };
-      const cat = iteration(catTemp);
-      console.log(cat);
+        return initArr;
+      }
+      return format(arr, 0);
     }
 
-
-    const getAllFiles = (dirPath, arrayOfFiles) =>{
-      console.log(dirPath);
-      dirPath.isChecked = false;
-      var files = {...dirPath};
-      console.log(files);
-      var arrayOfFiles = arrayOfFiles || [];
-    
-      dirPath.children.forEach((file) => {
-        if (file.children > 0) {
-          arrayOfFiles = getAllFiles(file, arrayOfFiles);
-          console.log(arrayOfFiles);
-        }
-      });
-    
-      return arrayOfFiles;
-    }
-
-    const handleAllChecked = id => event => {
-      console.log('1.treeArr..');
-      console.log(test());
-      console.log('2.treeArr..');
-
-      uncheckAll();
-      console.log(category);
-      let treeArr = {...category};
-      console.log(treeArr);
-      getChildren(treeArr, category);
-      console.log('1.treeArr..');
-      console.log(treeArr);
-      console.log('2.treeArr..');
-      const result1 = getAllFiles(category);
-      console.log('1..result1..');
-      console.log(result1);
-      console.log('2..result2..');
-     
-      const result = uncheckAllFiles(category);
-      console.log('1..result..');
-      console.log(result);
-      console.log('2..result..');
-      
+    const handleAllChecked = id => event => {     
       const categoryTemp = {...category};
-      categoryTemp.children.forEach(cat => {
-        if (cat.id === id) {
-          cat.isChecked = event.target.checked;
-          cat.children.map(child => {
-            child.isChecked = event.target.checked;          
-            if (child.children.length > 0) {
-              child.children.map((item) => {
-                item.isChecked= event.target.checked; 
-              });  
-            }
-          });
-        }
-      });
+      console.log(formatArrB(categoryTemp.children));
       setCategory(categoryTemp);
     };
 
     const handleCheckChieldElement = id => event => {
       const categoryTemp = {...category};
-      categoryTemp.children.forEach(cat => {
-        if (cat.id != id) {
-          cat.children.map(child => {
-            if (child.id != id) {
-              if (child.children.length > 0) {
-                child.children.map((item) => {
-                  if (item.id === id) {
-                    item.isChecked = (child.isChecked===true)? false:true; 
-                  }
-                });  
-              }            
-            } else { 
-              child.isChecked = (child.isChecked===true)? false:true; 
-            }  
-          });
-        } else {
-          cat.isChecked = (cat.isChecked===true)? false:true; 
-        }
-      });
+      console.log(categoryTemp);
       setCategory(categoryTemp);
     };
-
-
-
-    const uncheckAllFiles = (dirFolder, arrayOfFiles) => {
-      dirFolder.isChecked = false;
-
-      var folders = [...dirFolder.children];
-      arrayOfFiles = arrayOfFiles || []
-      arrayOfFiles.push(dirFolder);
-
-      folders.forEach((folder) => {
-        if (folder.children && folder.children.length > 0) {
-          arrayOfFiles = uncheckAllFiles(folder, arrayOfFiles)
-        } else {
-          folder.isChecked = false;
-          arrayOfFiles.push(folder);
-        }
-      })
-    
-      return arrayOfFiles;
-    }
 
     const handleSubmit = (e) => {
       e.preventDefault();
