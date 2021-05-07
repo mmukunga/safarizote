@@ -37,10 +37,12 @@ import axios from 'axios';
         dateCreated: obj.dateCreated, 
         children: obj.children
       };
-      
+
       console.log(initArr);
       const format = (ar) => {
+        ar.isChecked = false;
         ar.children.forEach(val => {
+          val.isChecked = false;
           if (Array.isArray(val.children) && val.children.length > 0) {
               format (val)
           }
@@ -53,6 +55,7 @@ import axios from 'axios';
     const handleAllChecked = id => event => {     
       const categoryTemp = {...category};
       console.log(categoryTemp);
+      category.isChecked = false;
       console.log(formatArrB(category));
       setCategory(categoryTemp);
     };
