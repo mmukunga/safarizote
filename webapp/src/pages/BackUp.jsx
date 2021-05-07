@@ -45,7 +45,7 @@ import axios from 'axios';
         ar.children.forEach(val => {
           console.log(initArr[i]);
           console.log(val);
-          initArr[i].push(val);
+          initArr[i] && initArr[i].push(val);
           if (Array.isArray(val.children) && val.children.length > 0) {
               format (val, i + 1) 
           }
