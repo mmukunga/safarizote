@@ -36,9 +36,11 @@ import axios from 'axios';
         dateCreated: obj.dateCreated, 
         children: obj.children
       };
+      console.log(temp);
       let initArr = [];
       const format = (ar, i) => {
         initArr[i] || (initArr[i] = []);
+        console.log(ar);
         ar.children.forEach(val => {
           initArr[i].push(val)
           if (Array.isArray(val.children) && val.children.length > 0) {
