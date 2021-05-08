@@ -76,6 +76,7 @@ import axios from 'axios';
       categoryTemp.children.forEach(fruite => console.log((fruite.id + '=' + id)));
       const fruites = categoryTemp.children.filter(fruite => (fruite.id === id));
       console.log(fruites);
+      fruites.map(el => el.isChecked = true);
       console.log('Fruites', flattenObjFunction(fruites));
       setCategory(categoryTemp);
     };
