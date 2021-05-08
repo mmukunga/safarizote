@@ -112,6 +112,7 @@ import axios from 'axios';
       const fruites = categoryTemp.children.filter(fruite => (fruite.id === id));
       console.log(fruites[0]);
       console.log(flatten(fruites[0]));
+      console.log(flatten(fruites.flat(3)));
       //console.log(checkArrB(fruites[0]));
       //console.log(fruites[0]);
       setCategory(categoryTemp);
