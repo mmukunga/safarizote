@@ -28,7 +28,7 @@ import axios from 'axios';
       );
     };
 
-    const uncheckArrB = (obj, isChecked) => {
+    const uncheckArrB = (obj) => {
 
       let initArr = {
         id: obj.id, 
@@ -40,9 +40,9 @@ import axios from 'axios';
 
       console.log(initArr);
       const uncheck = (ar) => {
-        ar.isChecked = isChecked;
+        ar.isChecked = false;
         ar.children.forEach(val => {
-          val.isChecked = isChecked;
+          val.isChecked = false;
           if (Array.isArray(val.children) && val.children.length > 0) {
               uncheck(val);
           }
@@ -52,18 +52,66 @@ import axios from 'axios';
       return uncheck(initArr);
     }
 
+    
+
+    const flatten = (arr) => {
+      const newArr = arr.reduce((acc, item) => {
+        if (Array.isArray(item)) {
+          acc = acc.concat(flatten(item));
+        } else {
+         acc.push(item);
+        }
+    
+        return acc;
+      }, []);
+    
+      return newArr;
+    }
+
+
+
+    const checkArrB = (obj) => {
+
+      let initArr = {
+        id: obj.id, 
+        name: obj.name, 
+        isChecked: obj.isChecked, 
+        dateCreated: obj.dateCreated, 
+        children: obj.children
+      };
+      
+
+      console.log(initArr);
+      const checkAll = (ar) => {
+        ar.isChecked = true;
+        ar.children.forEach(val => {
+          val.isChecked = true;
+          if (Array.isArray(val.children) && val.children.length > 0) {
+            checkAll(val);
+          }
+        })
+        return initArr;
+      }
+      const categoryTemp = {...category};
+      console.log(categoryTemp);
+      return checkAll(categoryTemp);
+    }
+
+
+
     const handleAllChecked = id => event => {     
       const categoryTemp = {...category};
       console.log(categoryTemp);
       category.isChecked = false;
-      console.log(uncheckArrB(category, false));
+      console.log(uncheckArrB(category));
       console.log('id:= ' + id);
       console.log('value:= ' + event.target.value);
       categoryTemp.children.forEach(fruite => console.log((fruite.id + '=' + id)));
       const fruites = categoryTemp.children.filter(fruite => (fruite.id === id));
       console.log(fruites[0]);
-      console.log(uncheckArrB(fruites[0], true));
-      console.log(fruites[0]);
+      console.log(flatten(fruites));
+      //console.log(checkArrB(fruites[0]));
+      //console.log(fruites[0]);
       setCategory(categoryTemp);
     };
 
