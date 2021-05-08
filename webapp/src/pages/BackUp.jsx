@@ -60,7 +60,7 @@ import axios from 'axios';
       console.log('id:= ' + id);
       console.log('value:= ' + event.target.value);
       categoryTemp.children.forEach(fruite => console.log((fruite.id + '=' + id)));
-      const fruites = categoryTemp.children.forEach(fruite => (fruite.id = id));
+      const fruites = categoryTemp.children.forEach(fruite => (fruite.id === id));
       console.log(fruites);
       //console.log(uncheckArrB(fruites, true));
       setCategory(categoryTemp);
