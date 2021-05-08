@@ -61,8 +61,8 @@ import axios from 'axios';
       console.log('value:= ' + event.target.value);
       categoryTemp.children.forEach(fruite => console.log((fruite.id + '=' + id)));
       const fruites = categoryTemp.children.filter(fruite => (fruite.id === id));
-      console.log(fruites);
-      //console.log(uncheckArrB(fruites, true));
+      console.log(fruites[0]);
+      console.log(uncheckArrB(fruites[0], true));
       setCategory(categoryTemp);
     };
 
