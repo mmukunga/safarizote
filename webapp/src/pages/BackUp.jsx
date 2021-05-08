@@ -99,7 +99,23 @@ import axios from 'axios';
       return checkAll(categoryTemp);
     }
 
+  const flattenArray = [];
+  const flattenObjFunction = (obj) => {
+    for (let [key,value] of Object.entries(obj)) {
+      if("object"== typeof(value)){ // check if the property is an object
+            flattenObjFunction(value) //If property is an object that object will be passed to the flattenObjFunction recursively
+      }
+      else {
+        //title and value will be added to the flattenArray if it the value is not added before
+        if(flattenArray.findIndex(element=> element.id == obj.id &&  element.name == obj.name) === -1) {
+            flattenArray.push({id: obj.id, name: obj.name, isChecked: obj.isChecked, dateCreated: obj.dateCreated});
+          }
+      }
+    }
+    return flattenArray
+  }
 
+  console.log('Result', flattenObjFunction(category));
 
     const handleAllChecked = id => event => {     
       const categoryTemp = {...category};
