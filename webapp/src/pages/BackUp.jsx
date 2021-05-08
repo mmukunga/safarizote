@@ -55,16 +55,18 @@ import axios from 'axios';
     
 
     const flatten = (arr) => {
-      const newArr = arr.reduce((acc, item) => {
-        if (Array.isArray(item)) {
+      console.log(arr);
+      const newArr = arr.children.reduce((acc, item) => {
+        if (Array.isArray(item.children)) {
+          console.log(item);
           acc = acc.concat(flatten(item));
         } else {
          acc.push(item);
         }
-    
+        console.log(acc);
         return acc;
       }, []);
-    
+      console.log(newArr);
       return newArr;
     }
 
@@ -109,7 +111,7 @@ import axios from 'axios';
       categoryTemp.children.forEach(fruite => console.log((fruite.id + '=' + id)));
       const fruites = categoryTemp.children.filter(fruite => (fruite.id === id));
       console.log(fruites[0]);
-      console.log(flatten(fruites));
+      console.log(flatten(fruites[0]));
       //console.log(checkArrB(fruites[0]));
       //console.log(fruites[0]);
       setCategory(categoryTemp);
