@@ -44,12 +44,12 @@ import axios from 'axios';
         ar.children.forEach(val => {
           val.isChecked = isChecked;
           if (Array.isArray(val.children) && val.children.length > 0) {
-              uncheck (val)
+              uncheck(val);
           }
         })
-        return initArr
+        return initArr;
       }
-      return uncheck(initArr)
+      return uncheck(initArr);
     }
 
     const handleAllChecked = id => event => {     
@@ -59,8 +59,8 @@ import axios from 'axios';
       console.log(uncheckArrB(category, false));
 
       const fruites = categoryTemp.children.forEach(fruite => (fruite.id = id));
-      console.log(uncheckArrB(fruites, true));
-      
+      console.log(fruites);
+      //console.log(uncheckArrB(fruites, true));
       setCategory(categoryTemp);
     };
 
