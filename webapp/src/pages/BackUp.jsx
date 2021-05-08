@@ -52,70 +52,23 @@ import axios from 'axios';
       return uncheck(initArr);
     }
 
-    
-
-    const flatten = (arr) => {
-      console.log(arr);
-      const newArr = arr.children.reduce((acc, item) => {
-        if (Array.isArray(item.children)) {
-          console.log(item);
-          acc = acc.concat(flatten(item));
-        } else {
-         acc.push(item);
+    const flattenArray = [];
+    const flattenObjFunction = (obj) => {
+      for (let [key,value] of Object.entries(obj)) {
+        if("object"== typeof(value)){ // check if the property is an object
+              flattenObjFunction(value) //If property is an object that object will be passed to the flattenObjFunction recursively
         }
-        console.log(acc);
-        return acc;
-      }, []);
-      console.log(newArr);
-      return newArr;
+        else {
+          //title and value will be added to the flattenArray if it the value is not added before
+          if(flattenArray.findIndex(element=> element.id == obj.id &&  element.name == obj.name) === -1) {
+              flattenArray.push({id: obj.id, name: obj.name, isChecked: obj.isChecked, dateCreated: obj.dateCreated});
+            }
+        }
+      }
+      return flattenArray
     }
 
-
-
-    const checkArrB = (obj) => {
-
-      let initArr = {
-        id: obj.id, 
-        name: obj.name, 
-        isChecked: obj.isChecked, 
-        dateCreated: obj.dateCreated, 
-        children: obj.children
-      };
-      
-
-      console.log(initArr);
-      const checkAll = (ar) => {
-        ar.isChecked = true;
-        ar.children.forEach(val => {
-          val.isChecked = true;
-          if (Array.isArray(val.children) && val.children.length > 0) {
-            checkAll(val);
-          }
-        })
-        return initArr;
-      }
-      const categoryTemp = {...category};
-      console.log(categoryTemp);
-      return checkAll(categoryTemp);
-    }
-
-  const flattenArray = [];
-  const flattenObjFunction = (obj) => {
-    for (let [key,value] of Object.entries(obj)) {
-      if("object"== typeof(value)){ // check if the property is an object
-            flattenObjFunction(value) //If property is an object that object will be passed to the flattenObjFunction recursively
-      }
-      else {
-        //title and value will be added to the flattenArray if it the value is not added before
-        if(flattenArray.findIndex(element=> element.id == obj.id &&  element.name == obj.name) === -1) {
-            flattenArray.push({id: obj.id, name: obj.name, isChecked: obj.isChecked, dateCreated: obj.dateCreated});
-          }
-      }
-    }
-    return flattenArray
-  }
-
-  console.log('Result', flattenObjFunction(category));
+    console.log('Result', flattenObjFunction(category));
 
     const handleAllChecked = id => event => {     
       const categoryTemp = {...category};
@@ -126,11 +79,7 @@ import axios from 'axios';
       console.log('value:= ' + event.target.value);
       categoryTemp.children.forEach(fruite => console.log((fruite.id + '=' + id)));
       const fruites = categoryTemp.children.filter(fruite => (fruite.id === id));
-      console.log(fruites[0]);
-      console.log(flatten(fruites[0]));
-      console.log(flatten(fruites.flat(3)));
-      //console.log(checkArrB(fruites[0]));
-      //console.log(fruites[0]);
+      console.log(fruites);
       setCategory(categoryTemp);
     };
 
