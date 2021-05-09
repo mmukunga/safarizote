@@ -28,6 +28,32 @@ import axios from 'axios';
       );
     };
 
+
+    const checkArrB = (obj, id) => {
+
+      let initArr = {
+        id: obj.id, 
+        name: obj.name, 
+        isChecked: obj.isChecked, 
+        dateCreated: obj.dateCreated, 
+        children: obj.children
+      };
+
+      console.log(initArr);
+      const check = (ar) => {
+        if (ar.id===id) { ar.isChecked = true; }
+        ar.children.forEach(val => {
+          if (ar.id===id) { val.isChecked = false; }
+          if (Array.isArray(val.children) && val.children.length > 0) {
+              check(val);
+          }
+        })
+        return initArr;
+      }
+      return check(initArr);
+    }
+
+
     const uncheckArrB = (obj) => {
 
       let initArr = {
@@ -71,19 +97,15 @@ import axios from 'axios';
       console.log(categoryTemp);
       category.isChecked = false;
       console.log(uncheckArrB(category));
-      console.log('id:= ' + id);
-      console.log('value:= ' + event.target.value);
-      categoryTemp.children.forEach(fruite => console.log((fruite.id + '=' + id)));
+
       var fruites = categoryTemp.children.filter(fruite => (fruite.id === id));
-      console.log(fruites);
-      console.log('Fruites', (fruites = flattenObjFunction(fruites)));
+      fruites = flattenObjFunction(fruites);
       fruites.forEach(el => el.isChecked = true);
-      console.log(fruites);
-      var recipes = fruites.map((recipe) =>{
-          return {...recipe, isChecked: true}
-      });
-      console.log(recipes);
-      console.log('Fruites', flattenObjFunction(fruites));
+      console.log('Fruites', fruites);
+      
+      fruites.map(el => checkArrB(category, el.id));
+      console.log('Categories', category);
+
       setCategory(categoryTemp);
     };
 
