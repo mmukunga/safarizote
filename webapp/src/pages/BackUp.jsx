@@ -74,7 +74,7 @@ import axios from 'axios';
       console.log('id:= ' + id);
       console.log('value:= ' + event.target.value);
       categoryTemp.children.forEach(fruite => console.log((fruite.id + '=' + id)));
-      const fruites = categoryTemp.children.filter(fruite => (fruite.id === id));
+      var fruites = categoryTemp.children.filter(fruite => (fruite.id === id));
       console.log(fruites);
       fruites.map(el => el.isChecked = true);
       console.log('Fruites', flattenObjFunction(fruites));
