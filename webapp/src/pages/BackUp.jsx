@@ -38,9 +38,13 @@ import axios from 'axios';
       };
 
       const check = (ar) => {
-        if (ar.id === id) { ar.isChecked = true; }
+        if (ar.id === id) {
+           ar.isChecked = true;
+        }
         ar.children.forEach(val => {
-          if (val.id === id) { val.isChecked = true; }
+          if (val.id === id) {
+             val.isChecked = true;
+          }
           if (Array.isArray(val.children) && val.children.length > 0) {
               check(val);
           }
@@ -79,7 +83,7 @@ import axios from 'axios';
             flattenObjFunction(value, flattenArray)
         }
         else {
-          if(flattenArray.findIndex(element=> element.id == obj.id &&  element.name == obj.name) === -1) {
+          if(flattenArray.findIndex(element=> element.id == obj.id && element.name == obj.name) === -1) {
               flattenArray.push({id: obj.id, name: obj.name, isChecked: obj.isChecked, dateCreated: obj.dateCreated});
           }
         }
