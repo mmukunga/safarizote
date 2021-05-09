@@ -75,7 +75,7 @@ import axios from 'axios';
       return uncheck(initArr);
     }
 
-    const uncheckArrB = (obj, id) => {
+    const uncheckObjB = (obj, id) => {
       let initArr = {
         id: obj.id, 
         name: obj.name, 
@@ -123,7 +123,7 @@ import axios from 'axios';
           var selfolder = categoryTemp.children.filter(fruite => (fruite.id === id));
           selfolder = flattenObjFunction(selfolder);
           selfolder.forEach(el => el.isChecked = false);
-          selfolder.forEach(el => uncheckArrB(category, el.id));
+          selfolder.forEach(el => uncheckObjB(category, el.id));
       }
       const categoryTemp = {...category};
       category.isChecked = false;
