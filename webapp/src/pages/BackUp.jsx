@@ -121,12 +121,13 @@ import axios from 'axios';
       
       var categoryTemp = {...category};
 
-      console.log('ID:=' + id + ' Checked:=' + checked + ' CheckedValue:=' + checkedValue);  
-      if (checked == false && checkedValue == 'checkedall') {
-          var selfolder = categoryTemp.children.filter(fruite => (fruite.id === id));
-          selfolder = flattenObjFunction(selfolder);
-          selfolder.forEach(el => el.isChecked = false);
-          selfolder.forEach(el => uncheckObjB(category, el.id));
+      console.log('1.ID:=' + id + ' Checked:=' + checked + ' CheckedValue:=' + checkedValue);  
+      if (checked === false && checkedValue === 'checkedall') {
+        console.log('2.ID:=' + id + ' Checked:=' + checked + ' CheckedValue:=' + checkedValue);
+        var selfolder = categoryTemp.children.filter(fruite => (fruite.id === id));
+        selfolder = flattenObjFunction(selfolder);
+        selfolder.forEach(el => el.isChecked = false);
+        selfolder.forEach(el => uncheckObjB(category, el.id));
       }
       
       categoryTemp.isChecked = false;
