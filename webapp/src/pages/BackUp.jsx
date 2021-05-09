@@ -89,7 +89,11 @@ import axios from 'axios';
       return flattenArray
     }
 
-    const handleAllChecked = id => event => {     
+    const handleAllChecked = id => event => {  
+      const checked = event.target.checked; 
+      const checkedValue = event.target.value;
+      const checkedName  = event.target.name;
+      console.log('Checked:=' + checked + ' CheckedValue:=' + checkedValue + ' CheckedName:=' + checkedName);  
       const categoryTemp = {...category};
       category.isChecked = false;
       uncheckArrB(category);
@@ -97,11 +101,9 @@ import axios from 'axios';
       var fruites = categoryTemp.children.filter(fruite => (fruite.id === id));
       fruites = flattenObjFunction(fruites);
       fruites.forEach(el => el.isChecked = true);
-
-      console.log('Fruites', fruites);      
+      //console.log('Fruites', fruites);      
       fruites.map(el => checkArrB(category, el.id));
-      console.log('Categories', category);
-
+      //console.log('Categories', category);
       setCategory(categoryTemp);
     };
 
