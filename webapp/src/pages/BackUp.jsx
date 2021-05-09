@@ -75,6 +75,32 @@ import axios from 'axios';
       return uncheck(initArr);
     }
 
+    const uncheckArrB = (obj, id) => {
+      let initArr = {
+        id: obj.id, 
+        name: obj.name, 
+        isChecked: false, 
+        dateCreated: obj.dateCreated, 
+        children: obj.children
+      };
+
+      const uncheck = (ar) => {
+        if (ar.id === id) {
+           ar.isChecked = false;
+        }
+        ar.children.forEach(val => {
+          if (val.id === id) {
+             val.isChecked = false;
+          }
+          if (Array.isArray(val.children) && val.children.length > 0) {
+            uncheck(val);
+          }
+        })
+        return initArr;
+      }
+      return uncheck(initArr);
+    }
+
     const flattenObjFunction = (obj, flattenArray = []) => {
       for (let [key,value] of Object.entries(obj)) {
         if("object"== typeof(value)){
@@ -93,9 +119,11 @@ import axios from 'axios';
       const checked = event.target.checked; 
       const checkedValue = event.target.value;
       console.log('ID:=' + id + ' Checked:=' + checked + ' CheckedValue:=' + checkedValue);  
-      if(checked == false && checkedValue == 'checkedall') {
-        category.isChecked = false;
-        uncheckArrB(category);
+      if (checked == false && checkedValue == 'checkedall') {
+          var selfolder = categoryTemp.children.filter(fruite => (fruite.id === id));
+          selfolder = flattenObjFunction(selfolder);
+          selfolder.forEach(el => el.isChecked = false);
+          selfolder.forEach(el => uncheckArrB(category, el.id));
       }
       const categoryTemp = {...category};
       category.isChecked = false;
