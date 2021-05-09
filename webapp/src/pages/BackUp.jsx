@@ -41,9 +41,9 @@ import axios from 'axios';
 
       console.log(initArr);
       const check = (ar) => {
-        if (ar.id===id) { ar.isChecked = true; }
+        if (ar.id === id) { ar.isChecked = true; }
         ar.children.forEach(val => {
-          if (ar.id===id) { val.isChecked = false; }
+          if (val.id === id) { val.isChecked = true; }
           if (Array.isArray(val.children) && val.children.length > 0) {
               check(val);
           }
