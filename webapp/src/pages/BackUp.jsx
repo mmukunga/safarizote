@@ -6,7 +6,6 @@ import axios from 'axios';
     const [category, setCategory] = React.useState({});     
     React.useEffect(() => {
       axios.get("/api/categories").then(response => {
-          console.log(response.data[0]);
           setCategory(response.data[0]);
       }).catch(error => {
           console.log(error);
@@ -28,7 +27,6 @@ import axios from 'axios';
       );
     };
 
-
     const checkArrB = (obj, id) => {
 
       let initArr = {
@@ -39,7 +37,6 @@ import axios from 'axios';
         children: obj.children
       };
 
-      console.log(initArr);
       const check = (ar) => {
         if (ar.id === id) { ar.isChecked = true; }
         ar.children.forEach(val => {
@@ -53,7 +50,6 @@ import axios from 'axios';
       return check(initArr);
     }
 
-
     const uncheckArrB = (obj) => {
 
       let initArr = {
@@ -64,7 +60,6 @@ import axios from 'axios';
         children: obj.children
       };
 
-      console.log(initArr);
       const uncheck = (ar) => {
         ar.isChecked = false;
         ar.children.forEach(val => {
@@ -94,15 +89,14 @@ import axios from 'axios';
 
     const handleAllChecked = id => event => {     
       const categoryTemp = {...category};
-      console.log(categoryTemp);
       category.isChecked = false;
-      console.log(uncheckArrB(category));
+      uncheckArrB(category);
 
       var fruites = categoryTemp.children.filter(fruite => (fruite.id === id));
       fruites = flattenObjFunction(fruites);
       fruites.forEach(el => el.isChecked = true);
-      console.log('Fruites', fruites);
-      
+
+      console.log('Fruites', fruites);      
       fruites.map(el => checkArrB(category, el.id));
       console.log('Categories', category);
 
@@ -111,7 +105,6 @@ import axios from 'axios';
 
     const handleCheckChieldElement = id => event => {
       const categoryTemp = {...category};
-      console.log(categoryTemp);
       setCategory(categoryTemp);
     };
 
@@ -134,14 +127,6 @@ import axios from 'axios';
       setCategory({});
       console.log("Submited OK!!");
     };
-    
-    console.log(category);
-
-    if (category.children!=null) {
-      console.log(category.children);
-    } else {
-      console.log('!!!NO DATA!!!');
-    }
 
     return (
       <Card className="InnerCard" fontColor="black">
