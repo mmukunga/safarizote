@@ -28,11 +28,10 @@ import axios from 'axios';
     };
 
     const checkArrB = (obj, id) => {
-
       let initArr = {
         id: obj.id, 
         name: obj.name, 
-        isChecked: obj.isChecked, 
+        isChecked: true, 
         dateCreated: obj.dateCreated, 
         children: obj.children
       };
@@ -55,11 +54,10 @@ import axios from 'axios';
     }
 
     const uncheckArrB = (obj) => {
-
       let initArr = {
         id: obj.id, 
         name: obj.name, 
-        isChecked: obj.isChecked, 
+        isChecked: false, 
         dateCreated: obj.dateCreated, 
         children: obj.children
       };
@@ -134,34 +132,34 @@ import axios from 'axios';
 
     return (
       <Card className="InnerCard" fontColor="black">
-          <strong>Tree BackUp</strong>
-          <h3>Check and Uncheck All Example</h3>
-          <form onSubmit={handleSubmit}>
-          <div className="BackUps">
-          {category.children!=null && category.children.map((cat) => (
-            <div>
-              <input type="checkbox" onChange={handleAllChecked(cat.id)} value="checkedall"/>{" "}
-              {cat.name}
-              <ul>
-                {cat.children.map((child) => {
-                    return (
-                      <CheckBox
-                        key={`${child.id}`}
-                        handleCheckChieldElement={handleCheckChieldElement(child.id)}
-                        {...child}
-                        value={`${child.id}`}
-                        label={child.name}
-                      />
-                    );
-                  })}
-              </ul>
-            </div>
-          ))}
+        <strong>Tree BackUp</strong>
+        <h3>Check and Uncheck</h3>
+        <form onSubmit={handleSubmit}>
+        <div className="BackUps">
+        {category.children!=null && category.children.map((cat) => (
+          <div>
+            <input type="checkbox" onChange={handleAllChecked(cat.id)} value="checkedall"/>{" "}
+            {cat.name}
+            <ul>
+              {cat.children.map((child) => {
+                  return (
+                    <CheckBox
+                      key={`${child.id}`}
+                      handleCheckChieldElement={handleCheckChieldElement(child.id)}
+                      {...child}
+                      value={`${child.id}`}
+                      label={child.name}
+                    />
+                  );
+                })}
+            </ul>
           </div>
-          <div className="row">
-            <input type="submit" value="Submit!" className="lg-button btn-primary"/>
-          </div>  
-          </form>
+        ))}
+        </div>
+        <div className="row">
+          <input type="submit" value="Submit!" className="lg-button btn-primary"/>
+        </div>  
+        </form>
       </Card>
     );
   }
