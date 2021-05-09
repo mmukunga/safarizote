@@ -92,8 +92,11 @@ import axios from 'axios';
     const handleAllChecked = id => event => {  
       const checked = event.target.checked; 
       const checkedValue = event.target.value;
-      const checkedName  = event.target.name;
-      console.log('Checked:=' + checked + ' CheckedValue:=' + checkedValue + ' CheckedName:=' + checkedName);  
+      console.log('ID:=' + id + ' Checked:=' + checked + ' CheckedValue:=' + checkedValue);  
+      if(checked == false && checkedValue == 'checkedall') {
+        category.isChecked = false;
+        uncheckArrB(category);
+      }
       const categoryTemp = {...category};
       category.isChecked = false;
       uncheckArrB(category);
