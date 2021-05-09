@@ -118,6 +118,9 @@ import axios from 'axios';
     const handleAllChecked = id => event => {  
       const checked = event.target.checked; 
       const checkedValue = event.target.value;
+      
+      var categoryTemp = {...category};
+
       console.log('ID:=' + id + ' Checked:=' + checked + ' CheckedValue:=' + checkedValue);  
       if (checked == false && checkedValue == 'checkedall') {
           var selfolder = categoryTemp.children.filter(fruite => (fruite.id === id));
@@ -125,9 +128,9 @@ import axios from 'axios';
           selfolder.forEach(el => el.isChecked = false);
           selfolder.forEach(el => uncheckObjB(category, el.id));
       }
-      const categoryTemp = {...category};
-      category.isChecked = false;
-      uncheckArrB(category);
+      
+      categoryTemp.isChecked = false;
+      uncheckArrB(categoryTemp);
 
       var fruites = categoryTemp.children.filter(fruite => (fruite.id === id));
       fruites = flattenObjFunction(fruites);
