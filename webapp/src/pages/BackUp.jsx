@@ -6,8 +6,8 @@ import axios from 'axios';
     const [category, setCategory] = React.useState({});     
     React.useEffect(() => {
       axios.get("/api/categories").then(response => {
-          console.log(response.data.first());
-          setCategory(response.data.first());
+          console.log(response.data[0]);
+          setCategory(response.data[0]);
       }).catch(error => {
           console.log(error);
       });
