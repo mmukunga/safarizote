@@ -121,25 +121,28 @@ import axios from 'axios';
       
       var categoryTemp = {...category};
 
-      if (checked === false && checkedValue === 'checkedall') {
+      if (checked == false && checkedValue == 'checkedall') {
         var selfolder = categoryTemp.children.filter(fruite => (fruite.id === id));
         selfolder.isChecked = false;
         selfolder = flattenObjFunction(selfolder);
         selfolder.forEach(el => el.isChecked = false);
         console.log(selfolder);
         selfolder.forEach(el => uncheckObjB(category, el.id));
-      }
+      } else {
       
-      console.log(category);
+        console.log(category);
 
-      categoryTemp.isChecked = false;
-      uncheckArrB(categoryTemp);
+        categoryTemp.isChecked = false;
+        uncheckArrB(categoryTemp);
 
-      var fruites = categoryTemp.children.filter(fruite => (fruite.id === id));
-      fruites = flattenObjFunction(fruites);
-      fruites.forEach(el => el.isChecked = true);
-      fruites.map(el => checkArrB(category, el.id));
+        var fruites = categoryTemp.children.filter(fruite => (fruite.id === id));
+        fruites = flattenObjFunction(fruites);
+        fruites.forEach(el => el.isChecked = true);
+        fruites.map(el => checkArrB(category, el.id));
+      }
+
       setCategory(categoryTemp);
+
     };
 
     const handleCheckChieldElement = id => event => {
@@ -156,7 +159,7 @@ import axios from 'axios';
           selectedItems = [...selectedItems, f]; 
         }
       });
-      
+
       console.log(selectedItems);
       axios.post("/api/doBackUp", {
         selectedItems
