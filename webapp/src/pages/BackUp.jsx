@@ -125,6 +125,7 @@ import axios from 'axios';
       if (checked === false && checkedValue === 'checkedall') {
         console.log('2.ID:=' + id + ' Checked:=' + checked + ' CheckedValue:=' + checkedValue);
         var selfolder = categoryTemp.children.filter(fruite => (fruite.id === id));
+        selfolder.isChecked = false;
         selfolder = flattenObjFunction(selfolder);
         selfolder.forEach(el => el.isChecked = false);
         console.log(selfolder);
