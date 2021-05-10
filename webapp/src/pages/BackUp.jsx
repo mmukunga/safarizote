@@ -102,7 +102,7 @@ import axios from 'axios';
     }
 
     const flattenObjFunction = (obj, flattenArray = []) => {
-      for (let [key,value] of Object.entries(obj)) {
+      for (let [key, value] of Object.entries(obj)) {
         if("object"== typeof(value)){
             flattenObjFunction(value, flattenArray)
         }
@@ -121,9 +121,7 @@ import axios from 'axios';
       
       var categoryTemp = {...category};
 
-      console.log('1.ID:=' + id + ' Checked:=' + checked + ' CheckedValue:=' + checkedValue);  
       if (checked === false && checkedValue === 'checkedall') {
-        console.log('2.ID:=' + id + ' Checked:=' + checked + ' CheckedValue:=' + checkedValue);
         var selfolder = categoryTemp.children.filter(fruite => (fruite.id === id));
         selfolder.isChecked = false;
         selfolder = flattenObjFunction(selfolder);
@@ -140,9 +138,7 @@ import axios from 'axios';
       var fruites = categoryTemp.children.filter(fruite => (fruite.id === id));
       fruites = flattenObjFunction(fruites);
       fruites.forEach(el => el.isChecked = true);
-      //console.log('Fruites', fruites);      
       fruites.map(el => checkArrB(category, el.id));
-      //console.log('Categories', category);
       setCategory(categoryTemp);
     };
 
@@ -160,6 +156,7 @@ import axios from 'axios';
           selectedItems = [...selectedItems, f]; 
         }
       });
+      
       console.log(selectedItems);
       axios.post("/api/doBackUp", {
         selectedItems
