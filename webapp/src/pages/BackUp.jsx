@@ -127,9 +127,12 @@ import axios from 'axios';
         var selfolder = categoryTemp.children.filter(fruite => (fruite.id === id));
         selfolder = flattenObjFunction(selfolder);
         selfolder.forEach(el => el.isChecked = false);
+        console.log(selfolder);
         selfolder.forEach(el => uncheckObjB(category, el.id));
       }
       
+      console.log(category);
+
       categoryTemp.isChecked = false;
       uncheckArrB(categoryTemp);
 
