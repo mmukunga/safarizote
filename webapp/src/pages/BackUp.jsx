@@ -3,7 +3,9 @@ import Card from './Card';
 import axios from 'axios';
 
   const BackUp = () => {
-    const [category, setCategory] = React.useState({});     
+    const [category, setCategory] = React.useState({});  
+    const [checkedItems, setCheckedItems] = useState({});
+
     React.useEffect(() => {
       axios.get("/api/categories").then(response => {
           setCategory(response.data[0]);
@@ -11,6 +13,10 @@ import axios from 'axios';
           console.log(error);
       });
     }, []);  
+
+    useEffect(() => {
+      console.log("checkedItems: ", checkedItems);
+    }, [checkedItems]);  
 
     const CheckBox = props => {
       return (
@@ -116,6 +122,9 @@ import axios from 'axios';
     }
 
     const handleAllChecked = id => event => {  
+      
+      setCheckedItems({...checkedItems, [event.target.name] : event.target.checked });
+
       const checked = event.target.checked; 
       const checkedValue = event.target.value;
       
@@ -140,7 +149,7 @@ import axios from 'axios';
       fruites.forEach(el => el.isChecked = true);
       fruites.map(el => checkArrB(category, el.id));
       }
-      
+
       setCategory(categoryTemp);
     };
 
@@ -177,7 +186,7 @@ import axios from 'axios';
         <div className="BackUps">
         {category.children!=null && category.children.map((cat) => (
           <div>
-            <input type="checkbox" onChange={handleAllChecked(cat.id)} value="checkedall"/>{" "}
+            <input type="checkbox" name={cat.id} checked={checkedItems[cat.id]} onChange={handleAllChecked(cat.id)} value="checkedall"/>{" "}
             {cat.name}
             <ul>
               {cat.children.map((child) => {
