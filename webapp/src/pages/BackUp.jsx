@@ -126,11 +126,8 @@ import axios from 'axios';
         selfolder.isChecked = false;
         selfolder = flattenObjFunction(selfolder);
         selfolder.forEach(el => el.isChecked = false);
-        console.log(selfolder);
         selfolder.forEach(el => uncheckObjB(category, el.id));
       } else {
-      
-        console.log(category);
 
         categoryTemp.isChecked = false;
         uncheckArrB(categoryTemp);
@@ -160,7 +157,6 @@ import axios from 'axios';
         }
       });
 
-      console.log(selectedItems);
       axios.post("/api/doBackUp", {
         selectedItems
       }).then((response) => { 
