@@ -33,20 +33,28 @@ import CheckboxTree from 'react-checkbox-tree';
   }
   
   const onExpand = (expanded) => {
-  this.setState({ expanded });
+    setTreeState({...treeState, expanded: expanded });
   }
 
   const { checked, expanded } = treeState;
 
   return (
-  <CheckboxTree
-      checked={checked}
-      expanded={expanded}
-      iconsClass="fa5"
-      nodes={nodes}
-      onCheck={onCheck}
-      onExpand={onExpand}
-  />
+    <Card className="InnerCard" fontColor="black">
+      <strong>Tree BackUp</strong>
+      <h3>Check and Uncheck</h3>
+      <form onSubmit={handleSubmit}>
+        <div className="BackUps">
+            <CheckboxTree
+                checked={checked}
+                expanded={expanded}
+                iconsClass="fa5"
+                nodes={nodes}
+                onCheck={onCheck}
+                onExpand={onExpand}
+            />
+          </div>  
+        </form>
+      </Card>
   );
 }
 export default BackUp;
