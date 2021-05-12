@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import Card from './Card';
+import axios from 'axios';
 import CheckboxTree from 'react-checkbox-tree';
   const parents = [];
   for (let i = 0; i < 100; i += 1) {
