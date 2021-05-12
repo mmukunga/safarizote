@@ -1,214 +1,50 @@
-import React, { useEffect, useState } from "react";
-import Card from './Card';
-import axios from 'axios';
+import React from 'react';
+import CheckboxTree from 'react-checkbox-tree';
+  const parents = [];
+  for (let i = 0; i < 100; i += 1) {
+    const children = [];
+    for (let j = 0; j < 200; j += 1) {
+      children.push({
+        value: `node-0-${i}-${j}`,
+        label: `Node 0-${i}-${j}`,
+      });
+    }
+
+    parents.push({
+      value: `node-0-${i}`,
+      label: `Node 0-${i}`,
+      children,
+    });  
+  }
+
+  const nodes = [{
+    value: 'node-0',
+    label: 'Node 0',
+    children: parents,
+  }];
 
   const BackUp = () => {
-    const [category, setCategory] = React.useState({});  
-    const [checkedItems, setCheckedItems] = useState({});
-
-    React.useEffect(() => {
-      axios.get("/api/categories").then(response => {
-          setCategory(response.data[0]);
-      }).catch(error => {
-          console.log(error);
-      });
-    }, []);  
-
-    useEffect(() => {
-      console.log("checkedItems: ", checkedItems);
-    }, [checkedItems]);  
-
-    const CheckBox = props => {
-      return (
-        <li>
-          <input
-            key={props.id}
-            onChange={props.handleCheckChieldElement}
-            type="checkbox"
-            checked={props.isChecked}
-            value={props.value}
-          />{" "}
-          {props.label}
-        </li>
-      );
-    };
-
-    const checkArrB = (obj, id) => {
-      let initArr = {
-        id: obj.id, 
-        name: obj.name, 
-        isChecked: true, 
-        dateCreated: obj.dateCreated, 
-        children: obj.children
-      };
-
-      const check = (ar) => {
-        if (ar.id === id) {
-           ar.isChecked = true;
-        }
-        ar.children.forEach(val => {
-          if (val.id === id) {
-             val.isChecked = true;
-          }
-          if (Array.isArray(val.children) && val.children.length > 0) {
-              check(val);
-          }
-        })
-        return initArr;
-      }
-      return check(initArr);
-    }
-
-    const uncheckArrB = (obj) => {
-      let initArr = {
-        id: obj.id, 
-        name: obj.name, 
-        isChecked: false, 
-        dateCreated: obj.dateCreated, 
-        children: obj.children
-      };
-
-      const uncheck = (ar) => {
-        ar.isChecked = false;
-        ar.children.forEach(val => {
-          val.isChecked = false;
-          if (Array.isArray(val.children) && val.children.length > 0) {
-              uncheck(val);
-          }
-        })
-        return initArr;
-      }
-      return uncheck(initArr);
-    }
-
-    const uncheckObjB = (obj, id) => {
-      let initArr = {
-        id: obj.id, 
-        name: obj.name, 
-        isChecked: false, 
-        dateCreated: obj.dateCreated, 
-        children: obj.children
-      };
-
-      const uncheck = (ar) => {
-        if (ar.id === id) {
-           ar.isChecked = false;
-        }
-        ar.children.forEach(val => {
-          if (val.id === id) {
-             val.isChecked = false;
-          }
-          if (Array.isArray(val.children) && val.children.length > 0) {
-            uncheck(val);
-          }
-        })
-        return initArr;
-      }
-      return uncheck(initArr);
-    }
-
-    const flattenObjFunction = (obj, flattenArray = []) => {
-      for (let [key, value] of Object.entries(obj)) {
-        if("object"== typeof(value)){
-            flattenObjFunction(value, flattenArray)
-        }
-        else {
-          if(flattenArray.findIndex(element=> element.id == obj.id && element.name == obj.name) === -1) {
-              flattenArray.push({id: obj.id, name: obj.name, isChecked: obj.isChecked, dateCreated: obj.dateCreated});
-          }
-        }
-      }
-      return flattenArray
-    }
-
-    const handleAllChecked = id => event => {  
-      
-      setCheckedItems({...checkedItems, [event.target.name] : event.target.checked });
-
-      const checked = event.target.checked; 
-      const checkedValue = event.target.value;
-      
-      var categoryTemp = {...category};
-
-      if (checked === false && checkedValue === 'checkedall') {
-        var selfolder = categoryTemp.children.filter(fruite => (fruite.id === id));
-        selfolder.isChecked = false;
-        selfolder = flattenObjFunction(selfolder);
-        selfolder.forEach(el => el.isChecked = false);
-        console.log(selfolder);
-        selfolder.forEach(el => uncheckObjB(category, el.id));
-      } else {
-      
-      console.log(category);
-
-      categoryTemp.isChecked = false;
-      uncheckArrB(categoryTemp);
-
-      var fruites = categoryTemp.children.filter(fruite => (fruite.id === id));
-      fruites = flattenObjFunction(fruites);
-      fruites.forEach(el => el.isChecked = true);
-      fruites.map(el => checkArrB(category, el.id));
-      }
-
-      setCategory(categoryTemp);
-    };
-
-    const handleCheckChieldElement = id => event => {
-      const categoryTemp = {...category};
-      setCategory(categoryTemp);
-    };
-
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      let selectedItems = [];
-      let categoryTemp = {...category};
-      categoryTemp.children.forEach(f => {
-        if (f.isChecked === true) { 
-          selectedItems = [...selectedItems, f]; 
-        }
-      });
-      console.log(selectedItems);
-      axios.post("/api/doBackUp", {
-        selectedItems
-      }).then((response) => { 
-        console.log(response);
-      });
-
-      setCategory({});
-      console.log("Submited OK!!");
-    };
-
-    return (
-      <Card className="InnerCard" fontColor="black">
-        <strong>Tree BackUp</strong>
-        <h3>Check and Uncheck</h3>
-        <form onSubmit={handleSubmit}>
-        <div className="BackUps">
-        {category.children!=null && category.children.map((cat) => (
-          <div>
-            <input type="checkbox" name={cat.id} checked={checkedItems[cat.id]} onChange={handleAllChecked(cat.id)} value="checkedall"/>{" "}
-            {cat.name}
-            <ul>
-              {cat.children.map((child) => {
-                  return (
-                    <CheckBox
-                      key={`${child.id}`}
-                      handleCheckChieldElement={handleCheckChieldElement(child.id)}
-                      {...child}
-                      value={`${child.id}`}
-                      label={child.name}
-                    />
-                  );
-                })}
-            </ul>
-          </div>
-        ))}
-        </div>
-        <div className="row">
-          <input type="submit" value="Submit!" className="lg-button btn-primary"/>
-        </div>  
-        </form>
-      </Card>
-    );
+    const [treeState, setTreeState] = useState({checked: [], expanded: []});
+  
+  const onCheck = (checked) => {
+    setTreeState({ ...treeState, checked: checked });
   }
-  export default BackUp;  
+  
+  const onExpand = (expanded) => {
+  this.setState({ expanded });
+  }
+
+  const { checked, expanded } = treeState;
+
+  return (
+  <CheckboxTree
+      checked={checked}
+      expanded={expanded}
+      iconsClass="fa5"
+      nodes={nodes}
+      onCheck={onCheck}
+      onExpand={onExpand}
+  />
+  );
+}
+export default BackUp;
