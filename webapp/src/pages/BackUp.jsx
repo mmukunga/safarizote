@@ -36,6 +36,11 @@ import CheckboxTree from 'react-checkbox-tree';
     setTreeState({...treeState, expanded: expanded });
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Submited OK!!");
+  };
+
   const { checked, expanded } = treeState;
 
   return (
