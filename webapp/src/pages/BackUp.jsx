@@ -4,57 +4,43 @@ import axios from 'axios';
 import CheckboxTree from 'react-checkbox-tree';
 import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
-  const parents = [];
-  for (let i = 0; i < 3; i += 1) {
-    const children = [];
-    for (let j = 0; j < 2; j += 1) {
-      children.push({
-        value: `D:\SimTemps${i}-${j}`,
-        label: `E:\SimTemps${i}-${j}`,
-      });
-    }
-
-    parents.push({
-      value: `C:\SimTemps${i}`,
-      label: `C:\SimTemps${i}`,
-      children,
-    });  
-  }
-
   const BackUp = () => {
     const [category, setCategory] = React.useState([]);  
     const [treeState, setTreeState] = React.useState({checked: [], expanded: []});
   
     const [nodes, setNodes] = React.useState([{
-      value: 'MyPC',
-      label: 'MyPC',
+      value: category.id,
+      label: category.name,
       children: parents,
     }]);
 
     const createTree = (obj) => {
-      let initArr = {
-        id: obj.id, 
-        name: obj.name, 
-        isChecked: obj.isChecked, 
-        dateCreated: obj.dateCreated, 
-        children: obj.children
-      };
-
-      const getChildren = (ar) => {
-        ar.children.forEach(val => {
-          if (Array.isArray(val.children) && val.children.length > 0) {
-            getChildren(val);
-          }
+      const parents = [];
+      category.children.forEach(folder => {
+        const children = [];
+        folder.children.forEach(item => {
+          children.push({
+            value: item.id,
+            label: item.name,
+          });
         })
-        return initArr;
-      }
-      return getChildren(initArr);
+
+        parents.push({
+          value: folder.id,
+          label: folder.name,
+          children,
+        });  
+        
+      });
+      return parents;
     }
 
     React.useEffect(() => {
       axios.get("/api/categories").then(response => {
           console.log(response.data);
-          setCategory(response.data);
+          setCategory(response.data[0]);
+          const tree = createTree(category);
+          console.log(tree);
       }).catch(error => {
           console.log(error);
       });
