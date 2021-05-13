@@ -9,14 +9,14 @@ import CheckboxTree from 'react-checkbox-tree';
     const children = [];
     for (let j = 0; j < 2; j += 1) {
       children.push({
-        value: `D:\SimTemps`,
-        label: `E:\SimTemps}`,
+        value: `D:\SimTemps${i}-${j}`,
+        label: `E:\SimTemps${i}-${j}`,
       });
     }
 
     parents.push({
-      value: `C:\SimTemps`,
-      label: `C:\SimTemps`,
+      value: `C:\SimTemps${i}`,
+      label: `C:\SimTemps${i}`,
       children,
     });  
   }
