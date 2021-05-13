@@ -5,6 +5,7 @@ import CheckboxTree from 'react-checkbox-tree';
 import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
   const BackUp = () => {
+    const [parents, setParents] = React.useState([]); 
     const [category, setCategory] = React.useState([]);  
     const [treeState, setTreeState] = React.useState({checked: [], expanded: []});
   
@@ -30,7 +31,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           label: folder.name,
           children,
         });  
-        
+
       });
       return parents;
     }
@@ -40,6 +41,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           console.log(response.data);
           setCategory(response.data[0]);
           const tree = createTree(category);
+          setParents(tree);
           console.log(tree);
       }).catch(error => {
           console.log(error);
