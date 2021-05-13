@@ -53,6 +53,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
     React.useEffect(() => {
       axios.get("/api/categories").then(response => {
+          console.log(response.data);
           setCategory(response.data);
       }).catch(error => {
           console.log(error);
