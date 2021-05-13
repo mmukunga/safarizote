@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Card from './Card';
 import axios from 'axios';
+import 'react-checkbox-tree/lib/react-checkbox-tree.css';
+
 import CheckboxTree from 'react-checkbox-tree';
   const parents = [];
   for (let i = 0; i < 3; i += 1) {
