@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Card from './Card';
 import axios from 'axios';
+import CheckboxTree from 'react-checkbox-tree';
 import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
-import CheckboxTree from 'react-checkbox-tree';
   const parents = [];
   for (let i = 0; i < 3; i += 1) {
     const children = [];
@@ -21,7 +21,6 @@ import CheckboxTree from 'react-checkbox-tree';
     });  
   }
 
- 
   const BackUp = () => {
     const [category, setCategory] = React.useState([]);  
     const [treeState, setTreeState] = React.useState({checked: [], expanded: []});
@@ -31,7 +30,6 @@ import CheckboxTree from 'react-checkbox-tree';
       label: 'MyPC',
       children: parents,
     }]);
-
 
     const createTree = (obj) => {
       let initArr = {
