@@ -4,50 +4,57 @@ import axios from 'axios';
 import CheckboxTree from 'react-checkbox-tree';
 import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
+  const parents = [];
+  for (let i = 0; i < 3; i += 1) {
+    const children = [];
+    for (let j = 0; j < 2; j += 1) {
+      children.push({
+        value: `D:\SimTemps${i}-${j}`,
+        label: `E:\SimTemps${i}-${j}`
+      });
+    }
+
+    parents.push({
+      value: `C:\SimTemps${i}`,
+      label: `C:\SimTemps${i}`,
+      children
+    });  
+  }
+
   const BackUp = () => {
-    const [parents, setParents] = React.useState([]); 
     const [category, setCategory] = React.useState([]);  
     const [treeState, setTreeState] = React.useState({checked: [], expanded: []});
   
     const [nodes, setNodes] = React.useState([{
-      value: category.id,
-      label: category.name,
-      children: parents,
+      value: 'MyPC',
+      label: 'MyPC',
+      children: parents
     }]);
 
     const createTree = (obj) => {
-      const parents = [];
-      console.log('1.createTree..');
-      obj.children.forEach(folder => {
-        const children = [];
-        console.log('2.createTree..');
-        folder.children.forEach(item => {
-          children.push({
-            value: item.id,
-            label: item.name,
-          });
+      let initArr = {
+        id: obj.id, 
+        name: obj.name, 
+        isChecked: obj.isChecked, 
+        dateCreated: obj.dateCreated, 
+        children: obj.children
+      };
+
+      const getChildren = (ar) => {
+        ar.children.forEach(val => {
+          if (Array.isArray(val.children) && val.children.length > 0) {
+            getChildren(val);
+          }
         })
-        console.log('3.createTree..');
-        parents.push({
-          value: folder.id,
-          label: folder.name,
-          children,
-        });  
-        console.log('4.createTree..');
-      });
-      console.log('5.createTree..');
-      return parents;
+        return initArr;
+      }
+      return getChildren(initArr);
     }
 
     React.useEffect(() => {
       axios.get("/api/categories").then(response => {
-          console.log('1.response.data..');
-          setCategory(response.data[0]);
-          console.log('2.response.data..');
-          const tree = createTree(response.data[0]);
-          console.log('3.response.data..');
-          setParents(tree);
-          console.log('4.response.data..');
+          console.log(response.);
+          setCategory(response.data);
       }).catch(error => {
           console.log(error);
       });
