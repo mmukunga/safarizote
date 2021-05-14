@@ -4,14 +4,15 @@ import axios from 'axios';
 import CheckboxTree from 'react-checkbox-tree';
 import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
-  const BackUp = () => { 
+  const BackUp = () => {
+    const [parents, setParents] = React.useState([]); 
     const [category, setCategory] = React.useState([]);  
     const [treeState, setTreeState] = React.useState({checked: [], expanded: []});
   
     const [nodes, setNodes] = React.useState([{
       value: category.id,
       label: category.name,
-      children: [],
+      children: parents,
     }]);
 
     const createTree = (obj) => {
@@ -40,17 +41,12 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
     React.useEffect(() => {
       axios.get("/api/categories").then(response => {
-          console.log('1.response.data..');
+          console.log(response.data[0]);
           setCategory(response.data[0]);
-          console.log('2.response.data..');
-          const parents = createTree(response.data[0]);
-          console.log(parents);
-          console.log('3.response.data..');
-          nodes.children = [...parents];
-          setNodes(nodes);
-          console.log('4.response.data..');
-          console.log(parents);
-          console.log('5.response.data..');
+          console.log(category);
+          const tree = createTree(response.data[0]);
+          setParents(tree);
+          console.log(tree);
       }).catch(error => {
           console.log(error);
       });
@@ -66,15 +62,6 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      let selectedItems = treeState.checked;
-      console.log(selectedItems);
-
-      axios.post("/api/doBackUp", {
-        selectedItems
-      }).then((response) => { 
-        console.log(response);
-      });
-
       console.log("Submited OK!!");
     };
 
