@@ -35,6 +35,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         });  
         console.log('4.createTree..');
       });
+      console.log('5.createTree..');
       return parents;
     }
 
