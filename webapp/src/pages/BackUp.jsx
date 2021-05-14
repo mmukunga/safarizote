@@ -43,9 +43,9 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       axios.get("/api/categories").then(response => {
           console.log(response.data[0]);
           setCategory(response.data[0]);
-          const tree = createTree(response.data[0]);
-          setParents(tree);
-          console.log(tree);
+          const parents = createTree(response.data[0]);
+          setNodes(parents);
+          console.log(parents);
       }).catch(error => {
           console.log(error);
       });
