@@ -17,32 +17,36 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
     const createTree = (obj) => {
       const parents = [];
-      category.children.forEach(folder => {
+      console.log('1.createTree..');
+      obj.children.forEach(folder => {
         const children = [];
+        console.log('2.createTree..');
         folder.children.forEach(item => {
           children.push({
             value: item.id,
             label: item.name,
           });
         })
-
+        console.log('3.createTree..');
         parents.push({
           value: folder.id,
           label: folder.name,
           children,
         });  
-
+        console.log('4.createTree..');
       });
       return parents;
     }
 
     React.useEffect(() => {
       axios.get("/api/categories").then(response => {
-          console.log(response.data);
+          console.log('1.response.data..');
           setCategory(response.data[0]);
+          console.log('2.response.data..');
           const tree = createTree(response.data[0]);
+          console.log('3.response.data..');
           setParents(tree);
-          console.log(tree);
+          console.log('4.response.data..');
       }).catch(error => {
           console.log(error);
       });
