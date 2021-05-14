@@ -33,6 +33,8 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           children,
         });  
       }
+
+      return parents;
     }
 
     React.useEffect(() => {
@@ -40,6 +42,8 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           setCategory(response.data[0]);
           const parents = createParents(response.data[0]);
           setParents(parents);
+          nodes.children = parents;
+          setNodes(nodes);
       }).catch(error => {
           console.log(error);
       });
