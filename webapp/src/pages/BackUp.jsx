@@ -11,7 +11,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     const [nodes, setNodes] = React.useState([{
       value: category.id,
       label: category.name,
-      children: parents,
+      children: [],
     }]);
 
     const createTree = (obj) => {
@@ -43,7 +43,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           console.log(response.data[0]);
           setCategory(response.data[0]);
           const parents = createTree(response.data[0]);
-          setNodes(parents);
+          setNodes({...nodes, parents: parents});
           console.log(parents);
       }).catch(error => {
           console.log(error);
@@ -62,7 +62,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       e.preventDefault();
       let selectedItems = treeState.checked;
       console.log(selectedItems);
-      
+
       axios.post("/api/doBackUp", {
         selectedItems
       }).then((response) => { 
