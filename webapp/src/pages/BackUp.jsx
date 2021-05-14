@@ -60,6 +60,15 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
     const handleSubmit = (e) => {
       e.preventDefault();
+      let selectedItems = treeState.checked;
+      console.log(selectedItems);
+      
+      axios.post("/api/doBackUp", {
+        selectedItems
+      }).then((response) => { 
+        console.log(response);
+      });
+
       console.log("Submited OK!!");
     };
 
