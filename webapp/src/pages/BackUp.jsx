@@ -15,6 +15,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     }]);
 
     const createTree = (obj) => {   
+      console.log(obj);
       const parents = [];
       for (let i = 0; i < 3; i += 1) {
         const children = [];
