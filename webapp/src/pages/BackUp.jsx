@@ -40,15 +40,15 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
     React.useEffect(() => {
       axios.get("/api/categories").then(response => {
-          console.log('1.response.data');
+          console.log('1.response.data..');
           setCategory(response.data[0]);
-          console.log('2.response.data');
+          console.log('2.response.data..');
           const parents = createTree(response.data[0]);
-          console.log('3.response.data');
+          console.log('3.response.data..');
           setNodes({...nodes, children: parents});
-          console.log('4.response.data');
+          console.log('4.response.data..');
           console.log(parents);
-          console.log('5.response.data');
+          console.log('5.response.data..');
       }).catch(error => {
           console.log(error);
       });
