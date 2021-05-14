@@ -10,8 +10,8 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     const [treeState, setTreeState] = React.useState({checked: [], expanded: []});
   
     const [nodes, setNodes] = React.useState([{
-      value: 'node-0',
-      label: 'Node 0',
+      value: category.id,
+      label: category.name,
       children: parents,
     }]);
 
