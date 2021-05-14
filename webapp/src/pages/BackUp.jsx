@@ -11,7 +11,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     const [nodes, setNodes] = React.useState([{
       value: 'MyPC',
       label: 'MyPC',
-      children: category,
+      children: category.children,
     }]);
 
     const createParents = (obj) => {   
