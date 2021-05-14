@@ -43,7 +43,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           console.log(response.data[0]);
           setCategory(response.data[0]);
           const parents = createTree(response.data[0]);
-          setNodes({...nodes, parents: parents});
+          setNodes({...nodes, children: parents});
           console.log(parents);
       }).catch(error => {
           console.log(error);
