@@ -9,54 +9,33 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     const [treeState, setTreeState] = React.useState({checked: [], expanded: []});
   
     const [nodes, setNodes] = React.useState([{
-      value: 'MyPC',
-      label: 'MyPC',
-      children: category.children,
+      value: 'node-0',
+      label: 'Node 0',
+      children: createTree(category),
     }]);
 
-    const createParents = (obj) => {   
-      console.log(obj);
+    const createTree = (obj) => {   
       const parents = [];
-      obj.children.forEach(val => {
+      for (let i = 0; i < 3; i += 1) {
         const children = [];
-        val.children.forEach(item => {
+        for (let j = 0; j < 2; j += 1) {
           children.push({
-            value: item.id,
-            label: item.name
+            value: `node-0-${i}-${j}`,
+            label: `Node 0-${i}-${j}`,
           });
-        });
+        }
 
         parents.push({
-          value: val.id,
-          label: val.name,
+          value: `node-0-${i}`,
+          label: `Node 0-${i}`,
           children,
         });  
-      });
-    }
-
-    const createTree = (obj) => {
-      let initArr = {
-        id: obj.id, 
-        name: obj.name, 
-        isChecked: obj.isChecked, 
-        dateCreated: obj.dateCreated, 
-        children: obj.children
-      };
-
-      const getChildren = (ar) => {
-        ar.children.forEach(val => {
-          if (Array.isArray(val.children) && val.children.length > 0) {
-            getChildren(val);
-          }
-        })
-        return initArr;
       }
-      return getChildren(initArr);
     }
 
     React.useEffect(() => {
       axios.get("/api/categories").then(response => {
-          setCategory(response.data);
+          setCategory(response.data[0]);
       }).catch(error => {
           console.log(error);
       });
@@ -65,7 +44,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     const onCheck = (checked) => {
       setTreeState({ ...treeState, checked: checked });
     }
-      
+    
     const onExpand = (expanded) => {
       setTreeState({...treeState, expanded: expanded });
     }
