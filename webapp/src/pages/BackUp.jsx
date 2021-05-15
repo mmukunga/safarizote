@@ -18,7 +18,6 @@ import CheckboxTree from 'react-checkbox-tree';
       children,
     });  
   }
-
  
   const BackUp = () => {
     const [nodes, setCategory] = React.useState([]);  
