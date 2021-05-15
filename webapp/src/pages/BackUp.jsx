@@ -37,7 +37,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           console.log(parents);
           setNodes(prevState => ({
             ...prevState,
-            children: parents
+            children: [...parents]
           }));
       }).catch(error => {
           console.log(error);
