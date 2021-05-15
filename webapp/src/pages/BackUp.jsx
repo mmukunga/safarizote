@@ -40,7 +40,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
             label: 'Node 0',
             children: parents,
           }
-          setNodes([...temp]);
+          setNodes([].push(temp));
       }).catch(error => {
           console.log(error);
       });
