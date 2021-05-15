@@ -76,7 +76,10 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
                 onCheck={onCheck}
                 onExpand={onExpand}
             />
-          </div>  
+          </div>
+          <div className="row">
+            <input type="submit" value="Submit!" className="lg-button btn-primary"/>
+          </div>    
         </form>
       </Card>
     );
