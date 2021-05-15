@@ -35,10 +35,12 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
             });  
           }
           console.log(parents);
-          setNodes(prevState => ({
-            ...prevState,
-            children: [...parents]
-          }));
+          const temp = {
+            value: 'node-0',
+            label: 'Node 0',
+            children: parents,
+          }
+          setNodes([...temp]);
       }).catch(error => {
           console.log(error);
       });
