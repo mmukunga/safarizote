@@ -42,8 +42,11 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           setCategory(response.data[0]);
           const parents = createParents(response.data[0]);
           setParents(parents);
+          console.log(nodes);
           nodes.children = parents;
+          console.log(nodes);
           setNodes(nodes);
+          console.log(nodes);
       }).catch(error => {
           console.log(error);
       });
@@ -63,6 +66,8 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     };
 
     const { checked, expanded } = treeState;
+
+    console.log(nodes);
 
     return (
       <Card className="InnerCard" fontColor="black">
