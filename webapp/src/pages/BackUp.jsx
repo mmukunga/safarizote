@@ -18,7 +18,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           setCategory(response.data);
 
           const parents = [];
-          category.children.forEach(val => {
+          response.data[0].children.forEach(val => {
             const children = [];
             val.children.forEach(item => {
               children.push({
