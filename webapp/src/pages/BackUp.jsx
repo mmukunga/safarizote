@@ -26,7 +26,8 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
                 label: `Node 0-${i}-${j}`,
               });
             }
-
+            console.log('done');
+            
             parents.push({
               value: `node-0-${i}`,
               label: `Node 0-${i}`,
