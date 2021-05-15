@@ -4,23 +4,6 @@ import axios from 'axios';
 import CheckboxTree from 'react-checkbox-tree';
 import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
-  const parents = [];
-  for (let i = 0; i < 100; i += 1) {
-    const children = [];
-    for (let j = 0; j < 200; j += 1) {
-      children.push({
-        value: `node-0-${i}-${j}`,
-        label: `Node 0-${i}-${j}`,
-      });
-    }
-
-    parents.push({
-      value: `node-0-${i}`,
-      label: `Node 0-${i}`,
-      children,
-    });  
-  }
- 
   const BackUp = () => {
     const [category, setCategory] = React.useState([]);  
     const [treeState, setTreeState] = React.useState({checked: [], expanded: []});
@@ -33,6 +16,24 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     React.useEffect(() => {
       axios.get("/api/categories").then(response => {
           setCategory(response.data);
+
+          const parents = [];
+          for (let i = 0; i < 100; i += 1) {
+            const children = [];
+            for (let j = 0; j < 200; j += 1) {
+              children.push({
+                value: `node-0-${i}-${j}`,
+                label: `Node 0-${i}-${j}`,
+              });
+            }
+
+            parents.push({
+              value: `node-0-${i}`,
+              label: `Node 0-${i}`,
+              children,
+            });  
+          }
+
           nodes.children.push(parents);
           setNodes(nodes);
       }).catch(error => {
