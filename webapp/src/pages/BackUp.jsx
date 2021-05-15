@@ -35,11 +35,10 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
             });  
           }
           console.log(parents);
-          if(parents && parents.length > 0) {
-            nodes.children.push(parents);
-          }
-          console.log(parents);
-          setNodes(nodes);
+          setNodes(prevState => ({
+            ...prevState,
+            children: parents
+          }));
       }).catch(error => {
           console.log(error);
       });
