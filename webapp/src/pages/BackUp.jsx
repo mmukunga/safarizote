@@ -2,51 +2,37 @@ import React, { useEffect, useState } from "react";
 import Card from './Card';
 import axios from 'axios';
 import CheckboxTree from 'react-checkbox-tree';
-import 'react-checkbox-tree/lib/react-checkbox-tree.css';
+  const parents = [];
+  for (let i = 0; i < 100; i += 1) {
+    const children = [];
+    for (let j = 0; j < 200; j += 1) {
+      children.push({
+        value: `node-0-${i}-${j}`,
+        label: `Node 0-${i}-${j}`,
+      });
+    }
 
+    parents.push({
+      value: `node-0-${i}`,
+      label: `Node 0-${i}`,
+      children,
+    });  
+  }
+
+ 
   const BackUp = () => {
-    const [category, setCategory] = React.useState([]);  
-    const [parents, setParents] = React.useState([]);  
+    const [nodes, setCategory] = React.useState([]);  
     const [treeState, setTreeState] = React.useState({checked: [], expanded: []});
   
     const [nodes, setNodes] = React.useState([{
-      value: category.id,
-      label: category.name,
+      value: 'node-0',
+      label: 'Node 0',
       children: parents,
     }]);
 
-    const createParents = (obj) => {   
-      console.log(obj);
-      const parents = [];
-      for (let i = 0; i < 3; i += 1) {
-        const children = [];
-        for (let j = 0; j < 2; j += 1) {
-          children.push({
-            value: `node-0-${i}-${j}`,
-            label: `Node 0-${i}-${j}`,
-          });
-        }
-
-        parents.push({
-          value: `node-0-${i}`,
-          label: `Node 0-${i}`,
-          children,
-        });  
-      }
-
-      return parents;
-    }
-
     React.useEffect(() => {
       axios.get("/api/categories").then(response => {
-          setCategory(response.data[0]);
-          const parents = createParents(response.data[0]);
-          setParents(parents);
-          console.log(nodes);
-          nodes.children = parents;
-          console.log(nodes);
-          setNodes(nodes);
-          console.log(nodes);
+          setCategory(response.data);
       }).catch(error => {
           console.log(error);
       });
@@ -66,8 +52,6 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     };
 
     const { checked, expanded } = treeState;
-
-    console.log(nodes);
 
     return (
       <Card className="InnerCard" fontColor="black">
