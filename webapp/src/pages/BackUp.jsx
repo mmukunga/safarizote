@@ -8,8 +8,8 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     const [category, setCategory] = React.useState([]);  
     const [treeState, setTreeState] = React.useState({checked: [], expanded: []});
     const [nodes, setNodes] = React.useState([{
-      value: 'node-0',
-      label: 'Node 0',
+      value: 'MyPC',
+      label: 'MyPC',
       children: [],
     }]);
 
@@ -18,26 +18,26 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           setCategory(response.data);
 
           const parents = [];
-          for (let i = 0; i < 3; i += 1) {
+          category.children.forEach(val => {
             const children = [];
-            for (let j = 0; j < 2; j += 1) {
+            val.children.forEach(item => {
               children.push({
-                value: `node-0-${i}-${j}`,
-                label: `Node 0-${i}-${j}`,
+                value: item.id,
+                label: item.name,
               });
-            }
+            });
             console.log('done');
 
             parents.push({
-              value: `node-0-${i}`,
-              label: `Node 0-${i}`,
+              value: val.id,
+              label: val.name,
               children,
             });  
-          }
+          });
           console.log(parents);
           const temp = {
-            value: 'node-0',
-            label: 'Node 0',
+            value: category.id,
+            label: category.name,
             children: parents,
           }
           setNodes([temp]);
