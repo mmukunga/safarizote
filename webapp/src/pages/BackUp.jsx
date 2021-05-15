@@ -27,15 +27,18 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
               });
             }
             console.log('done');
-            
+
             parents.push({
               value: `node-0-${i}`,
               label: `Node 0-${i}`,
               children,
             });  
           }
-
-          nodes.children.push(parents);
+          console.log(parents);
+          if(parents && parents.length > 0) {
+            nodes.children.push(parents);
+          }
+          console.log(parents);
           setNodes(nodes);
       }).catch(error => {
           console.log(error);
