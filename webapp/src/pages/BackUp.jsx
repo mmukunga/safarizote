@@ -27,12 +27,14 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     const [nodes, setNodes] = React.useState([{
       value: 'node-0',
       label: 'Node 0',
-      children: parents,
+      children: [],
     }]);
 
     React.useEffect(() => {
       axios.get("/api/categories").then(response => {
           setCategory(response.data);
+          nodes.children.push(parents);
+          setNodes(nodes);
       }).catch(error => {
           console.log(error);
       });
