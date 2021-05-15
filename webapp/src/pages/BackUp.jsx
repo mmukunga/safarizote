@@ -18,9 +18,9 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           setCategory(response.data);
 
           const parents = [];
-          for (let i = 0; i < 100; i += 1) {
+          for (let i = 0; i < 3; i += 1) {
             const children = [];
-            for (let j = 0; j < 200; j += 1) {
+            for (let j = 0; j < 2; j += 1) {
               children.push({
                 value: `node-0-${i}-${j}`,
                 label: `Node 0-${i}-${j}`,
