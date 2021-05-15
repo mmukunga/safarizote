@@ -93,7 +93,7 @@ public class BackUpController {
                 logger.trace("SourceDir:= " + sourceDir);
                 logger.trace("TargetDir:= " + targetDir);
 
-                Files.walkFileTree(sourceDir, new CopyDir(sourceDir, targetDir));
+                //Files.walkFileTree(sourceDir, new CopyDir(sourceDir, targetDir));
                 logger.warn("BackUp Completed OK!");
             }
         }
