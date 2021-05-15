@@ -20,9 +20,8 @@ import CheckboxTree from 'react-checkbox-tree';
   }
  
   const BackUp = () => {
-    const [nodes, setCategory] = React.useState([]);  
+    const [category, setCategory] = React.useState([]);  
     const [treeState, setTreeState] = React.useState({checked: [], expanded: []});
-  
     const [nodes, setNodes] = React.useState([{
       value: 'node-0',
       label: 'Node 0',
