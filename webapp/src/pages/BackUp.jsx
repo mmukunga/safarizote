@@ -26,7 +26,6 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
                 label: item.name,
               });
             });
-            console.log('done');
 
             parents.push({
               value: val.id,
@@ -35,7 +34,6 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
             });  
           });
 
-          console.log(parents);
           const tempNodes = {
             value: category.id,
             label: category.name,
@@ -57,6 +55,17 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
     const handleSubmit = (e) => {
       e.preventDefault();
+      let selectedItems = [].push(treeState.checked);
+      console.log(selectedItems);
+
+      axios.post("/api/doBackUp", {
+        selectedItems
+      }).then((response) => { 
+        console.log(response);
+      });
+
+      //setCategory({});   
+      console.log('done');
       console.log("Submited OK!!");
     };
 
