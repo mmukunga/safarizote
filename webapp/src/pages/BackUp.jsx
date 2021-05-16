@@ -61,6 +61,13 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       let selectedItems = [].push(treeState.checked);
       console.log(selectedItems);
 
+      treeState.checked.forEach(id => {
+        axios.get(`/api/backUp/${id}`).then((response) => { 
+          console.log(response);
+        });
+      });
+
+
       axios.post("/api/doBackUp", {
         selectedItems
       }).then((response) => { 

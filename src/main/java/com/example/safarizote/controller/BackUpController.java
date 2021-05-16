@@ -57,8 +57,17 @@ public class BackUpController {
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/api/backUp/{id}",  method={RequestMethod.GET})
+    public ResponseEntity<BackUp> getBackUp(@PathVariable String id) {
+        System.out.println("BackUpController: getBackUp FolderID:= " + id);
+        long folderId = Long.valueOf(id);
+        System.out.println("BackUpController: getBackUp folderId:= " + folderId);
+        BackUp backUp = repository.findById(folderId);
+        return new ResponseEntity<>(backUp, HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/api/doBackUp", method = RequestMethod.POST)
-    public ResponseEntity<Void> doBackUp(@RequestBody List <BackUp> folders) throws Exception {
+    public ResponseEntity<Void> doBackUp(@RequestBody List<BackUp> folders) throws Exception {
         logger.warn("Folders:= " + folders);
         List<BackUp> items = repository.findAll(); 
 
