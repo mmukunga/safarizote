@@ -46,15 +46,18 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     }, []);  
 
     const onCheck = (checked) => {
+      console.log(treeState.checked);
       setTreeState({ ...treeState, checked: checked });
     }
     
     const onExpand = (expanded) => {
+      console.log(treeState.expanded);
       setTreeState({...treeState, expanded: expanded });
     }
 
     const handleSubmit = (e) => {
       e.preventDefault();
+      console.log(treeState.checked);
       let selectedItems = [].push(treeState.checked);
       console.log(selectedItems);
 
