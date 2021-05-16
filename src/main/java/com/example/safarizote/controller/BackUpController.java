@@ -63,7 +63,7 @@ public class BackUpController {
         System.out.println("BackUpController: getBackUp FolderID:= " + id);
         //int folderId = Integer.valueOf(id);
         //System.out.println("BackUpController: getBackUp folderId:= " + folderId);
-        Optional<BackUp> backUp = repository.findById(id.intValue());
+        Optional<BackUp> backUp = repository.findById(id);
         return new ResponseEntity<>(backUp.get(), HttpStatus.OK);
     }
 
