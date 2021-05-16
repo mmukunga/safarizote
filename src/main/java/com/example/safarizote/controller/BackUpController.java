@@ -58,7 +58,7 @@ public class BackUpController {
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/api/backUp/${id}",  method={RequestMethod.GET})
+    @RequestMapping(value = "/api/backUp/{id}",  method={RequestMethod.GET})
     public ResponseEntity<BackUp> getBackUp(@PathVariable Long id) {
         System.out.println("BackUpController: getBackUp FolderID:= " + id);
         //int folderId = Integer.valueOf(id);
