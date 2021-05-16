@@ -62,7 +62,7 @@ public class BackUpController {
     public ResponseEntity<BackUp> getBackUp(@PathVariable Long id) {
         System.out.println("BackUpController: getBackUp FolderID:= " + id);
         List<BackUp> categories = repository.findAll();
-        BackUp backUp;
+        BackUp backUp = new BackUp();
         for (BackUp category : categories) {
             System.out.println(category);
             if (category.getId().equals(id)){
