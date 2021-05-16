@@ -60,7 +60,7 @@ public class BackUpController {
     @RequestMapping(value = "/api/backUp/{id}",  method={RequestMethod.GET})
     public ResponseEntity<BackUp> getBackUp(@PathVariable String id) {
         System.out.println("BackUpController: getBackUp FolderID:= " + id);
-        long folderId = Long.valueOf(id);
+        int folderId = Integer.valueOf(id);
         System.out.println("BackUpController: getBackUp folderId:= " + folderId);
         BackUp backUp = repository.findById(folderId);
         return new ResponseEntity<>(backUp, HttpStatus.OK);
