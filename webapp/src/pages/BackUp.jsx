@@ -68,7 +68,6 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         });
       });
 
-
       axios.post("/api/doBackUp", {
         selectedItems
       }).then((response) => { 
