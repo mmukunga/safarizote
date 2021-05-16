@@ -3,6 +3,7 @@ package com.example.safarizote.controller;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -62,8 +63,8 @@ public class BackUpController {
         System.out.println("BackUpController: getBackUp FolderID:= " + id);
         int folderId = Integer.valueOf(id);
         System.out.println("BackUpController: getBackUp folderId:= " + folderId);
-        BackUp backUp = repository.findById(folderId);
-        return new ResponseEntity<>(backUp, HttpStatus.OK);
+        Optional<BackUp> backUp = repository.findById(folderId);
+        return new ResponseEntity<>(backUp.get(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/api/doBackUp", method = RequestMethod.POST)
