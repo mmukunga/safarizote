@@ -62,7 +62,7 @@ public class BackUpController {
     public ResponseEntity<BackUp> getBackUp(@PathVariable Long id) {
         System.out.println("BackUpController: getBackUp FolderID:= " + id);
         List<BackUp> categories = repository.findAll();
-        Optional<BackUp> backUp;
+        BackUp backUp;
         for (BackUp category : categories) {
             System.out.println(category);
             if (category.getId().equals(id)){
@@ -72,9 +72,9 @@ public class BackUpController {
             } 
         }
         //int folderId = Integer.valueOf(id);
-        System.out.println("BackUpController: BackUp:= " + backUp.get());
+        System.out.println("BackUpController: BackUp:= " + backUp);
         //Optional<BackUp> backUp = repository.findById(id);
-        return new ResponseEntity<>(backUp.get(), HttpStatus.OK);
+        return new ResponseEntity<>(backUp, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/api/doBackUp", method={RequestMethod.POST})
