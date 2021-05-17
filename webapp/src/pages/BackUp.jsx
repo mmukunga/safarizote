@@ -71,12 +71,13 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       });
 
       axios.post("/api/doBackUp", {
-        selectedFolders
-      }).then((response) => { 
-        console.log(response);
+          selectedFolders
+        }).then((response) => { 
+          console.log(response);
+        }).catch(error => {
+          console.log(error);
       });
 
-      console.log('done');
       console.log("Submited OK!!");
     };
 
