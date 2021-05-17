@@ -69,8 +69,10 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           setSelectedFolders([...selectedFolders, response.data]);
         });
       });
-
-      axios.post("/api/doBackUp", {
+      
+      console.log(selectedFolders);
+      
+      axios.get("/api/doBackUp", {
           selectedFolders
         }).then((response) => { 
           console.log(response);
