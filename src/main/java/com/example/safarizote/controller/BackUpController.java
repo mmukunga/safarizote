@@ -86,7 +86,7 @@ public class BackUpController {
         System.out.println("BackUpLoader..folder..." + folders);
         System.out.println("BackUp.findAll()  End OK!");
         System.out.println("==============> 1. Simple For loop Example.");
-
+/*
         BackUp targetFolder = null;
         for (int i = 0; i < folders.size(); i++) {
             System.out.println(folders.get(i));
@@ -117,8 +117,8 @@ public class BackUpController {
                 logger.warn("BackUp Completed OK!");
             }
         }
-
-        return new ResponseEntity<>(source, HttpStatus.OK);
+*/
+        return new ResponseEntity<>(items.get(0), HttpStatus.OK);
     }
 
     public void displayList(BackUp category, StringBuffer indentation){
