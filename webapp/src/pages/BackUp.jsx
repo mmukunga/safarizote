@@ -66,9 +66,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         console.log(id);
         axios.get(`/api/backUp/${id}`).then((response) => { 
           console.log(response);
-          var folders = [...selectedFolders, response.data];
-          console.log(folders);
-          selectedFolders(folders);
+          setSelectedFolders([...selectedFolders, response.data]);
         });
       });
 
