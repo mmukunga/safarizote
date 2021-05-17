@@ -78,7 +78,7 @@ public class BackUpController {
     }
 
     @RequestMapping(value = "/api/doBackUp", method={RequestMethod.POST})
-    public ResponseEntity<Void> doBackUp(@RequestBody List<BackUp> folders) throws Exception {
+    public ResponseEntity<BackUp> doBackUp(@RequestBody List<BackUp> folders) throws Exception {
         logger.warn("Folders:= " + folders);
         List<BackUp> items = repository.findAll(); 
 
@@ -118,7 +118,7 @@ public class BackUpController {
             }
         }
 
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(source, HttpStatus.OK);
     }
 
     public void displayList(BackUp category, StringBuffer indentation){
