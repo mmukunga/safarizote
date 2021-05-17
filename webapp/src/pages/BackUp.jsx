@@ -5,7 +5,8 @@ import CheckboxTree from 'react-checkbox-tree';
 import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
   const BackUp = () => {
-    const [category, setCategory] = React.useState([]);  
+    const [category, setCategory] = React.useState([]);
+    const [selectedFolders, setSelectedFolders] = React.useState([]);    
     const [treeState, setTreeState] = React.useState({checked: [], expanded: []});
     const [nodes, setNodes] = React.useState([{
       value: '',
@@ -65,16 +66,17 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         console.log(id);
         axios.get(`/api/backUp/${id}`).then((response) => { 
           console.log(response);
+          var folders = [...selectedFolders, response.data];
+          selectedFolders(folders);
         });
       });
 
       axios.post("/api/doBackUp", {
-        selectedItems
+        selectedFolders
       }).then((response) => { 
         console.log(response);
       });
 
-      //setCategory({});   
       console.log('done');
       console.log("Submited OK!!");
     };

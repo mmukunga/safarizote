@@ -77,7 +77,7 @@ public class BackUpController {
         return new ResponseEntity<>(backUp, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/api/doBackUp", method={RequestMethod.POST})
+    @RequestMapping(value="/api/doBackUp", method={RequestMethod.POST})
     public ResponseEntity<BackUp> doBackUp(@RequestBody List<BackUp> folders) throws Exception {
         logger.warn("Folders:= " + folders);
         List<BackUp> items = repository.findAll(); 
