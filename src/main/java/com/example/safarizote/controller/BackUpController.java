@@ -89,11 +89,15 @@ public class BackUpController {
 
         BackUp targetFolder = null;
         for (int i = 0; i < folders.size(); i++) {
-            System.out.println(folders.get(i));
+            System.out.println(folders);
             targetFolder = folders.get(i);
         }
 
+        System.out.println(targetFolder);
+        System.out.println(targetFolder.getParent());
+        System.out.println(targetFolder.getParent().getName());
         BackUp source = repository.findByName(targetFolder.getParent().getName());
+        System.out.println(source);
 
         for(BackUp backUp : items){
             if (backUp.getId()==targetFolder.getId()){
