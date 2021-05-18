@@ -106,8 +106,7 @@ public class BackUpController {
              }
         }
         System.out.println("BackUpController: BackUp2:= " + parent);
-        System.out.println("BackUpController: BackUp3:= " + source);
-
+/*
         for(BackUp backUp : items){
             if (backUp.getId()==targetFolder.getId()){
                 String osName = System.getProperty("os.name");
@@ -130,8 +129,8 @@ public class BackUpController {
                 logger.warn("BackUp Completed OK!");
             }
         }
-
-        return new ResponseEntity<>(source, HttpStatus.OK);
+*/
+        return new ResponseEntity<>(parent, HttpStatus.OK);
     }
 
     public void displayList(BackUp category, StringBuffer indentation){
