@@ -48,7 +48,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
     const onCheck = (checked) => {
       console.log(checked);
-      const id = checked;
+      const id = checked[0];
       axios.get(`/api/backUp/${id}`).then((response) => { 
         console.log(response);
         console.log(response.data);
