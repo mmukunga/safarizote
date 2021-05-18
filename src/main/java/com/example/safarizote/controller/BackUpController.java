@@ -94,20 +94,19 @@ public class BackUpController {
         }
 
         System.out.println("BackUpController: BackUp1:= " + targetFolder);
-        System.out.println("BackUpController: BackUp2:= " + targetFolder.getParent());
         BackUp parent = null;
         for (int i = 0; i < items.size(); i++) {
             System.out.println(items.get(i));
-            List<BackUp> c = items.get(i).getChildren(); 
-            for (int j = 0; j < c.size(); j++) {
-                System.out.println(c.get(j));
-                if(c.get(j).getId() == targetFolder.getId()){
+            Set<BackUp> childs = items.get(i).getChildren();           
+            for(BackUp child : childs){
+                System.out.println(child);
+                if(child.getId() == targetFolder.getId()){
                     parent = items.get(i);
                 }
-            }
+             }
         }
-        System.out.println("BackUpController: BackUp3:= " + parent);
-        System.out.println("BackUpController: BackUp4:= " + source);
+        System.out.println("BackUpController: BackUp2:= " + parent);
+        System.out.println("BackUpController: BackUp3:= " + source);
 
         for(BackUp backUp : items){
             if (backUp.getId()==targetFolder.getId()){
