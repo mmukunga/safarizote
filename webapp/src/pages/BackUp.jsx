@@ -47,7 +47,13 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     }, []);  
 
     const onCheck = (checked) => {
-      console.log(treeState.checked);
+      console.log(checked);
+      const id = checked;
+      axios.get(`/api/backUp/${id}`).then((response) => { 
+        console.log(response);
+        console.log(response.data);
+        setData([...data, response.data]);
+      });
       setTreeState({ ...treeState, checked: checked });
     }
     
@@ -62,6 +68,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       let selectedItems = [].push(treeState.checked);
       console.log(selectedItems);
 
+      /*
       treeState.checked.forEach(id => {
         console.log(id);
         axios.get(`/api/backUp/${id}`).then((response) => { 
@@ -70,7 +77,8 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           setData([...data, response.data]);
         });
       });
-      
+      */
+
       console.log(data);
       
       const options = {
