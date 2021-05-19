@@ -87,12 +87,13 @@ public class BackUpController {
         System.out.println("BackUpLoader..folder..." + folders);
         System.out.println("BackUp.findAll()  End OK!");
         System.out.println("==============> 1. Simple For loop Example.");
-
         BackUp targetFolder = null;
+        System.out.println("---1.BackUpController: SELECTED1---");
         for (int i = 0; i < folders.size(); i++) {
             System.out.println(folders);
             targetFolder = folders.get(i);
         }
+        System.out.println("---2.BackUpController:SELECTED2---");
 
         System.out.println("BackUpController: BackUp1:= " + targetFolder);
         BackUp parent = null;
