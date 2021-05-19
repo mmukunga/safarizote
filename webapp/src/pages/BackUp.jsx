@@ -47,19 +47,13 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     }, []);  
 
     const onCheck = (checked) => {
-      console.log(checked);
-      const id = checked[0];
-      axios.get(`/api/backUp/${id}`).then((response) => { 
-        console.log(response);
-        console.log(response.data);
-        setData([...data, response.data]);
-      });
-      setTreeState({ ...treeState, checked: checked });
+        console.log(treeState.checked);
+        setTreeState({ ...treeState, checked: checked });
     }
     
     const onExpand = (expanded) => {
-      console.log(treeState.expanded);
-      setTreeState({...treeState, expanded: expanded });
+        console.log(treeState.expanded);
+        setTreeState({...treeState, expanded: expanded });
     }
 
     const handleSubmit = (e) => {
@@ -68,17 +62,17 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       let selectedItems = [].push(treeState.checked);
       console.log(selectedItems);
 
-      /*
       treeState.checked.forEach(id => {
         console.log(id);
         axios.get(`/api/backUp/${id}`).then((response) => { 
-          console.log(response);
-          console.log(response.data);
-          setData([...data, response.data]);
+            console.log(response);
+            console.log(response.data);
+            let selected = response.data;
+            selected.isChecked = true;
+            setData([...data, selected]);
         });
       });
-      */
-
+      
       console.log(data);
       
       const options = {
