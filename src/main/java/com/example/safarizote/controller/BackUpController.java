@@ -102,8 +102,8 @@ public class BackUpController {
             System.out.println(items.get(i));
             System.out.println("1...Start....");
             Set<BackUp> childs = items.get(i).getChildren();           
-            for(BackUp child : childs){
-                System.out.println(child + " <:> " + targetFolder.getId());
+            for(BackUp child : childs) {
+                System.out.println(child.getId() + " <:> " + targetFolder.getId());
                 if(child.getId() == targetFolder.getId()){
                     parent = items.get(i);
                 }
