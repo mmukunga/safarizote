@@ -96,18 +96,23 @@ public class BackUpController {
 
         System.out.println("BackUpController: BackUp1:= " + targetFolder);
         BackUp parent = null;
+        System.out.println("BackUpController: BackUp2:= " + targetFolder.getId());
+        System.out.println("1.=============Start===================");
         for (int i = 0; i < items.size(); i++) {
             System.out.println(items.get(i));
+            System.out.println("1...Start....");
             Set<BackUp> childs = items.get(i).getChildren();           
             for(BackUp child : childs){
                 System.out.println(child);
                 if(child.getId() == targetFolder.getId()){
                     parent = items.get(i);
                 }
-             }
+            }
+            System.out.println("1...End...."); 
         }
-        System.out.println("BackUpController: BackUp2:= " + parent);
-/*
+        System.out.println("2.==========End======================");
+        System.out.println("BackUpController: BackUp3:= " + parent);
+
         for(BackUp backUp : items){
             if (backUp.getId()==targetFolder.getId()){
                 String osName = System.getProperty("os.name");
@@ -115,6 +120,9 @@ public class BackUpController {
                 Path sourceDir;
                 Path targetDir;
 
+                System.out.println("BackUp.getName():= " + backUp.getName());
+                
+                /*
                 if (!osName.contains("Linux")) {
                     sourceDir = Paths.get("C:/".concat(backUp.getName()));
                     targetDir = Paths.get(source.getName().concat("/").concat(backUp.getName()));
@@ -125,12 +133,12 @@ public class BackUpController {
 
                 logger.trace("SourceDir:= " + sourceDir);
                 logger.trace("TargetDir:= " + targetDir);
-
+                */
                 //Files.walkFileTree(sourceDir, new CopyDir(sourceDir, targetDir));
                 logger.warn("BackUp Completed OK!");
             }
         }
-*/
+
         return new ResponseEntity<>(parent, HttpStatus.OK);
     }
 
