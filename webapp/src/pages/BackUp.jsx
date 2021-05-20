@@ -65,7 +65,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       } catch (err) {
           // Handle Error Here
           console.error(err);
-          return error;
+          return err;
       }
   };
 
