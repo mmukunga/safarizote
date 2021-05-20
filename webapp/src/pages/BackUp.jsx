@@ -6,7 +6,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
   const BackUp = () => {
     const [category, setCategory] = React.useState([]);
-    const [data, setData] = React.useState([]);    
+    //const [data, setData] = React.useState([]);    
     const [treeState, setTreeState] = React.useState({checked: [], expanded: []});
     const [nodes, setNodes] = React.useState([{
       value: '',
@@ -69,6 +69,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       }
   };
 
+    /*
     const getInitialProps = async () => {
       let restaurants = [];
       try {
@@ -82,6 +83,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         return { error };
       }
     };
+    */
 
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -99,10 +101,16 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         });
       }
       
-      let userData = await AuthUser(248);
-      console.log(userData) // your data
-
-
+      const myData = [];
+      treeState.checked.forEach(id => {
+        console.log(id);
+        let userData = await AuthUser(id);
+        console.log(userData) // your data
+        myData.push(userData);
+      });
+      
+      console.log(myData) // your data
+/*
       treeState.checked.forEach(id => {
         console.log(id);
         axios.get(`/api/backUp/${id}`).then((response) => { 
@@ -115,7 +123,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       });
       
       console.log(data);
-      
+  */    
       const options = {
         headers: {
             'Content-Type': 'application/json',
