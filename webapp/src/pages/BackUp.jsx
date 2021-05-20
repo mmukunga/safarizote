@@ -56,6 +56,17 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         setTreeState({...treeState, expanded: expanded });
     }
 
+
+    const sendDeleteRequest = async (id) => {
+      try {
+          const resp = await axios.get(`/api/backUp/${id}`)
+          console.log(resp.data);
+      } catch (err) {
+          // Handle Error Here
+          console.error(err);
+      }
+  };
+
     const getInitialProps = async () => {
       let restaurants = [];
       try {
@@ -75,8 +86,8 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       console.log(treeState.checked);
       let selectedItems = [].push(treeState.checked);
       console.log(selectedItems);
-      const t = await getInitialProps();
-      console.log(t);
+      
+      sendDeleteRequest(248);
 
       treeState.checked.forEach(id => {
         console.log(id);
