@@ -61,6 +61,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       try {
         treeState.checked.forEach(async(id) => {
           const res = await axios.get(`/api/backUp/${id}`);
+          console.log(res);
           restaurants.push(res.data);
         });
         return restaurants;
