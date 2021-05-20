@@ -69,7 +69,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
       e.preventDefault();
       console.log(treeState.checked);
       let selectedItems = [].push(treeState.checked);
