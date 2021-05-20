@@ -74,8 +74,8 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       console.log(treeState.checked);
       let selectedItems = [].push(treeState.checked);
       console.log(selectedItems);
-
-      console.log(getInitialProps());
+      const t = await getInitialProps();
+      console.log(t);
 
       treeState.checked.forEach(id => {
         console.log(id);
