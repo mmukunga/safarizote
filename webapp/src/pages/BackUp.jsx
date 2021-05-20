@@ -102,13 +102,15 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       }
       
       const myData = [];
-      treeState.checked.forEach(id => {
+      treeState.checked.forEach(async(id) => {
         console.log(id);
         let userData = await AuthUser(id);
         console.log(userData) // your data
         myData.push(userData);
       });
-      
+
+     //const requests = URLs.map(URL => axios.get(URL).catch(err => null));
+
       console.log(myData) // your data
 /*
       treeState.checked.forEach(id => {
