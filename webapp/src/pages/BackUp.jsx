@@ -94,13 +94,13 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       });
 
       let AuthUser = function(id) {
-        return axios.get(`/api/backUp/${id}`).then(token => { 
-          return token 
+        return axios.get(`/api/backUp/${id}`).then(response => { 
+          return response.data;
         });
       }
       
-      let userToken = await AuthUser(248);
-      console.log(userToken) // your data
+      let userData = await AuthUser(248);
+      console.log(userData) // your data
 
 
       treeState.checked.forEach(id => {
