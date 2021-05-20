@@ -89,7 +89,9 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       let selectedItems = [].push(treeState.checked);
       console.log(selectedItems);
 
-      console.log(sendDeleteRequest(248));
+      sendDeleteRequest(248).then(function(result) {
+          console.log(result) // "Some User token"
+      });
 
       treeState.checked.forEach(id => {
         console.log(id);
