@@ -132,7 +132,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         }
       };
 
-      axios.post("/api/doBackUp", data, options).then((response) => { 
+      axios.post("/api/doBackUp", myData, options).then((response) => { 
           console.log(response);
         }).catch(error => {
           console.log(error);
