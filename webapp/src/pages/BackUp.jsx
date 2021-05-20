@@ -61,9 +61,11 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       try {
           const resp = await axios.get(`/api/backUp/${id}`)
           console.log(resp.data);
+          return resp.data;
       } catch (err) {
           // Handle Error Here
           console.error(err);
+          return error;
       }
   };
 
@@ -86,8 +88,8 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       console.log(treeState.checked);
       let selectedItems = [].push(treeState.checked);
       console.log(selectedItems);
-      
-      sendDeleteRequest(248);
+
+      console.log(sendDeleteRequest(248));
 
       treeState.checked.forEach(id => {
         console.log(id);
