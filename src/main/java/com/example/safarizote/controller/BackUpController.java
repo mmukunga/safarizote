@@ -108,7 +108,7 @@ public class BackUpController {
         System.out.println("BackUpController: SourceDir:= " + sourceDir);
         for (BackUp target : targets) {
             String targetDir = target.getName();
-            System.out.println("BackUpController: TargetId:= " + backUp.getId() + " TargetName:= " + target);
+            System.out.println("BackUpController: TargetId:= " + target.getId() + " TargetName:= " + targetDir);
             System.out.println("BackUpController: TargetDir:= " + targetDir);
             //Files.walkFileTree(sourceDir, new CopyDir(sourceDir, targetDir));
         }    
