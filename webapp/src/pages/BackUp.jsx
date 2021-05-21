@@ -114,6 +114,20 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
      //const requests = URLs.map(URL => axios.get(URL).catch(err => null));
       example().then((result) => {
         console.log(result) // your data
+
+        const options = {
+          headers: {
+              'Content-Type': 'application/json',
+          }
+        };
+  
+        axios.post("/api/doBackUp", result, options).then((response) => { 
+            console.log(response);
+          }).catch(error => {
+            console.log(error);
+        });
+  
+
       })
 /*
       treeState.checked.forEach(id => {
@@ -129,18 +143,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       
       console.log(data);
   */    
-      const options = {
-        headers: {
-            'Content-Type': 'application/json',
-        }
-      };
-
-      axios.post("/api/doBackUp", myData, options).then((response) => { 
-          console.log(response);
-        }).catch(error => {
-          console.log(error);
-      });
-
+      
       console.log("Submited OK!!");
     };
 
