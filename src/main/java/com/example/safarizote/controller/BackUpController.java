@@ -82,65 +82,39 @@ public class BackUpController {
     public ResponseEntity<BackUp> doBackUp(@RequestBody List<BackUp> folders) throws Exception {
         logger.warn("Folders:= " + folders);
         List<BackUp> items = repository.findAll(); 
-
-        System.out.println("BackUp, the time at the server is now " + new Date());
-        System.out.println("BackUpLoader..folder..." + folders);
-        System.out.println("BackUp.findAll()  End OK!");
-        System.out.println("==============> 1. Simple For loop Example.");
         BackUp targetFolder = null;
-        System.out.println("---1.BackUpController: SELECTED1---");
         for (int i = 0; i < folders.size(); i++) {
             System.out.println(folders);
             targetFolder = folders.get(i);
         }
-        System.out.println("---2.BackUpController:SELECTED2---");
 
-        System.out.println("BackUpController: BackUp1:= " + targetFolder);
         BackUp parent = null;
-        System.out.println("BackUpController: BackUp2:= " + targetFolder.getId());
-        System.out.println("1.=============Start===================");
+        BackUp target = null;
         for (int i = 0; i < items.size(); i++) {
             System.out.println(items.get(i));
-            System.out.println("1...Start....");
             Set<BackUp> childs = items.get(i).getChildren();           
             for(BackUp child : childs) {
-                System.out.println(child.getId() + " <:> " + targetFolder.getId());
                 if(child.getId().equals(targetFolder.getId())){
                     System.out.println(child.getId() + " ***BINGO*** " + targetFolder.getId());
                     parent = items.get(i);
+                    target = child;
                 }
             }
-            System.out.println("1...End...."); 
         }
-        System.out.println("2.==========End======================");
-        System.out.println("BackUpController: BackUp3:= " + parent);
 
-        for(BackUp backUp : items){
-            if (backUp.getId()==targetFolder.getId()){
-                String osName = System.getProperty("os.name");
-                logger.warn("Os.Name:= " + osName);
-                Path sourceDir;
-                Path targetDir;
-
-                System.out.println("BackUp.getName():= " + backUp.getName());
-
-                /*
-                if (!osName.contains("Linux")) {
-                    sourceDir = Paths.get("C:/".concat(backUp.getName()));
-                    targetDir = Paths.get(source.getName().concat("/").concat(backUp.getName()));
-                } else {
-                    sourceDir = Paths.get("/home/x00sms/source/".concat(backUp.getName()));
-                    targetDir = Paths.get("/home/x00sms/target/".concat(backUp.getName()));
-                }
-
-                logger.trace("SourceDir:= " + sourceDir);
-                logger.trace("TargetDir:= " + targetDir);
-                */
+        System.out.println("BackUpController: ParentDir:= " + parent);
+        String sourceDir = parent.getName();
+        System.out.println("BackUpController: SourceDir:= " + sourceDir);
+        for(BackUp backUp : parent.getChildren()){
+            if (backUp.getId().equals(target.getId())) {
+                String targetDir = backUp.getName();
+                System.out.println("BackUpController: TargetId:= " + backUp.getId() + " TargetName:= " + target);
+                System.out.println("BackUpController: TargetDir:= " + targetDir);
                 //Files.walkFileTree(sourceDir, new CopyDir(sourceDir, targetDir));
-                logger.warn("BackUp Completed OK!");
             }
-        }
-
+        }    
+        
+        logger.warn("BackUp Completed OK!");
         return new ResponseEntity<>(parent, HttpStatus.OK);
     }
 
