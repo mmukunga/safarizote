@@ -85,7 +85,7 @@ public class BackUpController {
             for (BackUp child : childs) {
                 for (BackUp folder: folders){
                     if (folder.getId().equals(child.getId())){
-                        System.out.println(child.getId() + " ***BINGO*** " + folders.getId());
+                        System.out.println(child.getId() + " ***BINGO*** " + folder.getId());
                         parent = dbFolders.get(i);
                         break;
                     }
