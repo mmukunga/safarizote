@@ -96,7 +96,7 @@ public class BackUpController {
         System.out.println("BackUpController: ParentDir:= " + parent);
         List<BackUp> targets = new ArrayList<>();          
         for (BackUp child : parent.getChildren()) {
-            for (BackUp folder: selectedFolders){
+            for (BackUp folder: folders) {
                 if (folder.getId().equals(child.getId())){
                     System.out.println(child.getId() + " ***BINGO*** " + folder.getId());
                     targets.add(child);
