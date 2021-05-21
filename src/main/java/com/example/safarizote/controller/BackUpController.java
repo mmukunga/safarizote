@@ -62,13 +62,12 @@ public class BackUpController {
                 System.out.println(category.getId() + " " + id);
             } 
         }
-        System.out.println("BackUpController: BackUp:= " + backUp);
+        
         return new ResponseEntity<>(backUp, HttpStatus.OK);
     }
 
     @RequestMapping(value="/api/doBackUp", method={RequestMethod.POST})
     public ResponseEntity<BackUp> doBackUp(@RequestBody List<BackUp> folders) throws Exception {
-        logger.warn("Folders:= " + folders);
         List<BackUp> dbFolders = repository.findAll(); 
         BackUp parent = null;
         for (int i = 0; i < dbFolders.size(); i++) {
@@ -76,7 +75,6 @@ public class BackUpController {
             for (BackUp child : childs) {
                 for (BackUp folder: folders){
                     if (folder.getId().equals(child.getId())){
-                        System.out.println(child.getId() + " ***BINGO*** " + folder.getId());
                         parent = dbFolders.get(i);
                         break;
                     }
@@ -89,7 +87,6 @@ public class BackUpController {
         for (BackUp child : parent.getChildren()) {
             for (BackUp folder: folders) {
                 if (folder.getId().equals(child.getId())){
-                    System.out.println(child.getId() + " ***BINGO*** " + folder.getId());
                     targets.add(child);
                 }
             }
@@ -100,31 +97,27 @@ public class BackUpController {
 
         String source = parent.getName();
         source = source.replaceAll(":", ":/");
-        
+
         String osName = System.getProperty("os.name");
         logger.warn("Os.Name:= " + osName);
 
         for (BackUp backUp : targets) {
             String target = backUp.getName();
             target = target.replaceAll(":", ":/");
-            System.out.println("--Start---");
-                System.out.println("BackUpController: Source:= " + source);
-                System.out.println("BackUpController: Target:= " + target);
 
-                if (!osName.contains("Linux")) {
-                    sourceDir = Paths.get(source);
-                    targetDir = Paths.get(target);
-                } else {
-                    int index = source.indexOf(":/");
-                    System.out.println(source.substring(index+1));    
-                    sourceDir = Paths.get("/home/x00sms/source/".concat(source.substring(index+1)));
-                    index = target.indexOf(":/");
-                    System.out.println(target.substring(index+1)); 
-                    targetDir = Paths.get("/home/x00sms/target/".concat(target.substring(index+1)));
-                }
-                System.out.println("BackUpController: SourceDir:= " + sourceDir);
-                System.out.println("BackUpController: TargetDir:= " + targetDir);
-                //Files.walkFileTree(sourceDir, new CopyDir(sourceDir, targetDir));
+            if (!osName.contains("Linux")) {
+              sourceDir = Paths.get(source);
+              targetDir = Paths.get(target);
+            } else {
+              int srcIndex = source.indexOf(":/"); 
+              int tgtIndex = target.indexOf(":/");
+              sourceDir = Paths.get("/home/x00sms/source/".concat(source.substring(srcIndex+1)));
+              targetDir = Paths.get("/home/x00sms/target/".concat(target.substring(tgtIndex+1)));
+            }
+
+            System.out.println("BackUpController: SourceDir:= " + sourceDir);
+            System.out.println("BackUpController: TargetDir:= " + targetDir);
+            //Files.walkFileTree(sourceDir, new CopyDir(sourceDir, targetDir));
             System.out.println("--End---");
         }    
         
