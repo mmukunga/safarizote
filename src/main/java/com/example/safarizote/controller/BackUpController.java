@@ -96,7 +96,7 @@ public class BackUpController {
         }
 
         String sourceDir = parent.getName();
-        sourceDir = sourceDir.replaceAll(":", ":/")
+        sourceDir = sourceDir.replaceAll(":", ":/");
         System.out.println("BackUpController: SourceDir:= " + sourceDir);
         for (BackUp target : targets) {
             String targetDir = target.getName();
