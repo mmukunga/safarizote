@@ -98,7 +98,7 @@ public class BackUpController {
         for (BackUp child : parent.getChildren()) {
             for (BackUp folder: selectedFolders){
                 if (folder.getId().equals(child.getId())){
-                    System.out.println(child.getId() + " ***BINGO*** " + folders.getId());
+                    System.out.println(child.getId() + " ***BINGO*** " + folder.getId());
                     targets.add(child);
                 }
             }
