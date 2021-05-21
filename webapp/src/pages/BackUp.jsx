@@ -6,7 +6,6 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
   const BackUp = () => {
     const [category, setCategory] = React.useState([]);
-    //const [data, setData] = React.useState([]);    
     const [treeState, setTreeState] = React.useState({checked: [], expanded: []});
     const [nodes, setNodes] = React.useState([{
       value: '',
@@ -56,67 +55,26 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         setTreeState({...treeState, expanded: expanded });
     }
 
-
-    const sendDeleteRequest = async (id) => {
-      try {
-          const resp = await axios.get(`/api/backUp/${id}`)
-          console.log(resp.data);
-          return resp.data;
-      } catch (err) {
-          // Handle Error Here
-          console.error(err);
-          return err;
-      }
-  };
-
-    /*
-    const getInitialProps = async () => {
-      let restaurants = [];
-      try {
-        treeState.checked.forEach(async(id) => {
-          const res = await axios.get(`/api/backUp/${id}`);
-          console.log(res);
-          restaurants.push(res.data);
-        });
-        return restaurants;
-      } catch (error) {
-        return { error };
-      }
-    };
-    */
-
     const handleSubmit = async (e) => {
       e.preventDefault();
-      console.log(treeState.checked);
-      let selectedItems = [].push(treeState.checked);
-      console.log(selectedItems);
-
-      sendDeleteRequest(248).then(function(result) {
-          console.log(result) // "Some User token"
-      });
-
+      
       let AuthUser = function(id) {
         return axios.get(`/api/backUp/${id}`).then(response => { 
           return response.data;
         });
       }
       
-      const example = async () => {
+      const sendData = async () => {
         const myData = [];
-        //treeState.checked.forEach(async(id) => {
           for (const id of treeState.checked) {
-            console.log(id);
             let result = await AuthUser(id);
-            console.log(result) // your data
             myData.push(result );
-        //});
           }
         return myData;
       }
-     //const requests = URLs.map(URL => axios.get(URL).catch(err => null));
-      example().then((result) => {
-        console.log(result) // your data
-
+     
+      sendData().then((result) => {
+        console.log(result) 
         const options = {
           headers: {
               'Content-Type': 'application/json',
@@ -128,23 +86,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           }).catch(error => {
             console.log(error);
         });
-  
-
       })
-/*
-      treeState.checked.forEach(id => {
-        console.log(id);
-        axios.get(`/api/backUp/${id}`).then((response) => { 
-            console.log(response);
-            console.log(response.data);
-            let selected = response.data;
-            selected.isChecked = true;
-            setData([...data, selected]);
-        });
-      });
-      
-      console.log(data);
-  */    
       
       console.log("Submited OK!!");
     };
