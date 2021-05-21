@@ -62,9 +62,7 @@ public class BackUpController {
                 System.out.println(category.getId() + " " + id);
             } 
         }
-        //int folderId = Integer.valueOf(id);
         System.out.println("BackUpController: BackUp:= " + backUp);
-        //Optional<BackUp> backUp = repository.findById(id);
         return new ResponseEntity<>(backUp, HttpStatus.OK);
     }
 
@@ -72,13 +70,6 @@ public class BackUpController {
     public ResponseEntity<BackUp> doBackUp(@RequestBody List<BackUp> folders) throws Exception {
         logger.warn("Folders:= " + folders);
         List<BackUp> dbFolders = repository.findAll(); 
-        /*
-        List<BackUp> selectedFolders = new ArrayList<>();
-        for (int i = 0; i < folders.size(); i++) {
-            selectedFolders.add(get(i));
-            System.out.println("SELECTED FOLDERS:= " + selectedFolders);
-        }
-       */
         BackUp parent = null;
         for (int i = 0; i < dbFolders.size(); i++) {
             Set<BackUp> childs = dbFolders.get(i).getChildren();           
@@ -105,9 +96,11 @@ public class BackUpController {
         }
 
         String sourceDir = parent.getName();
+        sourceDir = sourceDir.replaceAll(":", ":/")
         System.out.println("BackUpController: SourceDir:= " + sourceDir);
         for (BackUp target : targets) {
             String targetDir = target.getName();
+            targetDir = targetDir.replaceAll(":", ":/");
             System.out.println("BackUpController: TargetId:= " + target.getId() + " TargetName:= " + targetDir);
             System.out.println("BackUpController: TargetDir:= " + targetDir);
             //Files.walkFileTree(sourceDir, new CopyDir(sourceDir, targetDir));
