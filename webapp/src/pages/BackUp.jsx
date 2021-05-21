@@ -101,17 +101,20 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         });
       }
       
-      const myData = [];
-      treeState.checked.forEach(async(id) => {
-        console.log(id);
-        let userData = await AuthUser(id);
-        console.log(userData) // your data
-        myData.push(userData);
-      });
-
+      const example = async () => {
+        const myData = [];
+        treeState.checked.forEach(async(id) => {
+          console.log(id);
+          let result = await AuthUser(id);
+          console.log(result) // your data
+          myData.push(result );
+        });
+        return myData;
+      }
      //const requests = URLs.map(URL => axios.get(URL).catch(err => null));
-
-      console.log(myData) // your data
+      example().then((result) => {
+        console.log(result) // your data
+      })
 /*
       treeState.checked.forEach(id => {
         console.log(id);
