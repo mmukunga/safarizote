@@ -3,6 +3,7 @@ package com.example.safarizote.controller;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.Optional;
 
@@ -43,17 +44,6 @@ public class BackUpController {
         for (BackUp category : categories) {
             System.out.println(category);
         }
-        /*
-        System.out.println("BackUp.findAll() SIZE:= " + categories.size());
-        StringBuffer indentation = new StringBuffer();
-        indentation.append(" ");
-        for (BackUp category : categories) {
-            System.out.println(indentation.toString() + category.getName() + " " + category.getDateCreated());
-            if (category.getChildren().size() > 0){
-               displayList(category, indentation);
-            }
-        }
-        */
         System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
         System.out.println("BackUp.findAll()  End OK!");
         return new ResponseEntity<>(categories, HttpStatus.OK);
@@ -81,37 +71,46 @@ public class BackUpController {
     @RequestMapping(value="/api/doBackUp", method={RequestMethod.POST})
     public ResponseEntity<BackUp> doBackUp(@RequestBody List<BackUp> folders) throws Exception {
         logger.warn("Folders:= " + folders);
-        List<BackUp> items = repository.findAll(); 
-        BackUp targetFolder = null;
+        List<BackUp> dbFolders = repository.findAll(); 
+        /*
+        List<BackUp> selectedFolders = new ArrayList<>();
         for (int i = 0; i < folders.size(); i++) {
-            System.out.println(folders);
-            targetFolder = folders.get(i);
+            selectedFolders.add(get(i));
+            System.out.println("SELECTED FOLDERS:= " + selectedFolders);
         }
-
+       */
         BackUp parent = null;
-        BackUp target = null;
-        for (int i = 0; i < items.size(); i++) {
-            System.out.println(items.get(i));
-            Set<BackUp> childs = items.get(i).getChildren();           
-            for(BackUp child : childs) {
-                if(child.getId().equals(targetFolder.getId())){
-                    System.out.println(child.getId() + " ***BINGO*** " + targetFolder.getId());
-                    parent = items.get(i);
-                    target = child;
+        for (int i = 0; i < dbFolders.size(); i++) {
+            Set<BackUp> childs = dbFolders.get(i).getChildren();           
+            for (BackUp child : childs) {
+                for (BackUp folder: folders){
+                    if (folder.getId().equals(child.getId())){
+                        System.out.println(child.getId() + " ***BINGO*** " + folders.getId());
+                        parent = dbFolders.get(i);
+                        break;
+                    }
                 }
             }
         }
 
         System.out.println("BackUpController: ParentDir:= " + parent);
+        List<BackUp> targets = new ArrayList<>();          
+        for (BackUp child : parent.getChildren()) {
+            for (BackUp folder: selectedFolders){
+                if (folder.getId().equals(child.getId())){
+                    System.out.println(child.getId() + " ***BINGO*** " + folders.getId());
+                    targets.add(child);
+                }
+            }
+        }
+
         String sourceDir = parent.getName();
         System.out.println("BackUpController: SourceDir:= " + sourceDir);
-        for(BackUp backUp : parent.getChildren()){
-            if (backUp.getId().equals(target.getId())) {
-                String targetDir = backUp.getName();
-                System.out.println("BackUpController: TargetId:= " + backUp.getId() + " TargetName:= " + target);
-                System.out.println("BackUpController: TargetDir:= " + targetDir);
-                //Files.walkFileTree(sourceDir, new CopyDir(sourceDir, targetDir));
-            }
+        for (BackUp target : targets) {
+            String targetDir = target.getName();
+            System.out.println("BackUpController: TargetId:= " + backUp.getId() + " TargetName:= " + target);
+            System.out.println("BackUpController: TargetDir:= " + targetDir);
+            //Files.walkFileTree(sourceDir, new CopyDir(sourceDir, targetDir));
         }    
         
         logger.warn("BackUp Completed OK!");
