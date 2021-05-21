@@ -100,6 +100,10 @@ public class BackUpController {
 
         String source = parent.getName();
         source = source.replaceAll(":", ":/");
+        
+        String osName = System.getProperty("os.name");
+        logger.warn("Os.Name:= " + osName);
+
         for (BackUp backUp : targets) {
             String target = backUp.getName();
             target = target.replaceAll(":", ":/");
