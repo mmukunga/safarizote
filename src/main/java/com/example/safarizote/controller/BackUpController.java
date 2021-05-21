@@ -108,8 +108,8 @@ public class BackUpController {
                 System.out.println("BackUpController: Target:= " + target);
 
                 if (!osName.contains("Linux")) {
-                    sourceDir = Paths.get(backUp.getName());
-                    targetDir = Paths.get(target.getName());
+                    sourceDir = Paths.get(source);
+                    targetDir = Paths.get(target);
                 } else {
                     int index = source.indexOf(":/");
                     System.out.println(source.substring(index+1));    
