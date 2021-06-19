@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Storage } from "@google-cloud/storage";
 import Card from './Card';
 import axios from 'axios';
 import CheckboxTree from 'react-checkbox-tree';
@@ -16,10 +15,6 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       children: [],
     }]);
     
-    // Instantiate a storage client with credentials
-    const storage = new Storage({ keyFilename: "google-cloud-key.json" });
-    const bucket = storage.bucket("bezkoder-e-commerce");
-
     React.useEffect(() => {
       axios.get("/api/categories").then(response => {
           setCategory(response.data);
