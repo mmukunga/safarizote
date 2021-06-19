@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.safarizote.model.BackUp;
@@ -65,6 +67,25 @@ public class BackUpController {
         
         return new ResponseEntity<>(backUp, HttpStatus.OK);
     }
+
+
+    @RequestMapping(value="/api/upload", method={RequestMethod.GET}, consumes={"multipart/form-data"})
+    public ResponseEntity<List<BackUp>> upload(@RequestPart("file") MultipartFile file) {
+        System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
+        System.out.println("Uploaded File: ");
+        System.out.println("Name : " + file.getName());
+        System.out.println("Type : " + file.getContentType());
+        System.out.println("Name : " + file.getOriginalFilename());
+        System.out.println("Size : " + file.getSize());
+        List<BackUp> categories = repository.findAll();
+        for (BackUp category : categories) {
+            System.out.println(category);
+        }
+        System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
+        System.out.println("BackUp.findAll()  End OK!");
+        return new ResponseEntity<>(categories, HttpStatus.OK);
+    }
+
 
     @RequestMapping(value="/api/doBackUp", method={RequestMethod.POST})
     public ResponseEntity<BackUp> doBackUp(@RequestBody List<BackUp> folders) throws Exception {

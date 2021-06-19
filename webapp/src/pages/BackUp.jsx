@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Storage } from "@google-cloud/storage";
 import Card from './Card';
 import axios from 'axios';
 import CheckboxTree from 'react-checkbox-tree';
@@ -6,12 +7,18 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
   const BackUp = () => {
     const [category, setCategory] = React.useState([]);
+    const [file, setFile] = React.useState(null);
+    const [images, setImages] = React.useState([]);
     const [treeState, setTreeState] = React.useState({checked: [], expanded: []});
     const [nodes, setNodes] = React.useState([{
       value: '',
       label: '',
       children: [],
     }]);
+    
+    // Instantiate a storage client with credentials
+    const storage = new Storage({ keyFilename: "google-cloud-key.json" });
+    const bucket = storage.bucket("bezkoder-e-commerce");
 
     React.useEffect(() => {
       axios.get("/api/categories").then(response => {
@@ -54,6 +61,69 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         console.log(treeState.expanded);
         setTreeState({...treeState, expanded: expanded });
     }
+
+    
+  const onImageChange = event => {
+    console.log(event.target.files);
+    setImages({
+      images: event.target.files,
+    });
+  }
+
+  
+  const onSubmit = e => {
+    e.preventDefault();
+
+    const formData = new FormData();
+
+    Array.from(images).forEach(image => {
+      formData.append('files', image);
+    });
+
+    axios.post(`api/upload`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      }).then(res => {
+        console.log(res);
+      }).catch(err => {
+        console.log(err);
+      });
+  }
+
+
+    const handleFile = (e) => {
+      let file = e.target.files[0];
+     setFile({ file });
+    }
+
+    const handleUpload = async (e) => {
+      console.log(file);
+      await uploadImage(file);
+    }
+  
+    const uploadImage = async file => {
+      try {
+        console.log("Upload Image", file);
+        const formData = new FormData();
+        formData.append("filename", file);
+        formData.append("destination", "images");
+        formData.append("create_thumbnail", true);
+        const config = {
+          headers: {
+            "content-type": "multipart/form-data"
+          }
+        };
+
+        // const API = "group_util_uploadImage";
+        // const HOST = "https://us-central1-wisy-dev.cloudfunctions.net";
+        // const url = `${HOST}/${API}`;
+    
+        const result = await axios.post('api/uploadFile', formData, config);
+        console.log("REsult: ", result);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
 
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -111,6 +181,22 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           <div className="row">
             <input type="submit" value="Submit!" className="lg-button btn-primary"/>
           </div>    
+        </form>
+
+        <h1>Hello CodeSandbox</h1>
+        <h2>Start editing to see some magic happen!</h2>
+        <input type="file" name="file" onChange={e => handleFile(e)} />
+        <button onClick={e => handleUpload(e)}>Upload</button>
+
+        <form onSubmit={onSubmit}>
+          <input
+            type="file"
+            name="files"
+            onChange={onImageChange}
+            alt="image"
+          />
+          <br />
+          <button type="submit">Send</button>
         </form>
       </Card>
     );
