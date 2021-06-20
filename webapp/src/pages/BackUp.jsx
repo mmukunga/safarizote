@@ -6,7 +6,11 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
   const BackUp = () => {
     const [category, setCategory] = React.useState([]);
-    const [file, setFile] = useState(null); // state for storing actual image
+    const [userInfo, setuserInfo] = useState({
+      file:[],
+      filepreview:null,
+     });
+    const [isSucces, setSuccess] = useState(null);
     const [treeState, setTreeState] = React.useState({checked: [], expanded: []});
     const [nodes, setNodes] = React.useState([{
       value: '',
@@ -59,23 +63,27 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
    
     const onImageChange = event => {
       console.log(event.target.files[0]);
-      setFile(event.target.files[0]);
+      setuserInfo({
+        ...userInfo,
+        file:event.target.files[0],
+        filepreview:URL.createObjectURL(event.target.files[0]),
+      });
     }
     
     const onSubmit = e => {
         e.preventDefault();
-        var formData = new FormData();
-        formData.append('file', file); 
-        
-        console.log ("File", formData, JSON.stringify({ 'file': file}));
 
-        axios.post('/api/doUpload', formData, {
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-        }).then((response) => { 
-            console.log(response);
-          }).catch(error => {
+        const formdata = new FormData(); 
+        formdata.append('avatar', userInfo.file);
+
+        axios.post("/api/doUpload", formdata, {   
+              headers: { "Content-Type": "multipart/form-data" } 
+        }).then(res => { // then print response status
+          console.warn(res);
+          if(res.data.success === 1){
+            setSuccess("Image upload successfully");
+          }
+        }).catch(error => {
             console.log(error);
         });
     }
@@ -139,13 +147,8 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         </form>
 
         <form onSubmit={onSubmit} style={{margin:"2px", border:"2px solid brown"}}>
-          <input
-            type="file"
-            name="myimage"
-            onChange={onImageChange}
-            alt="image"
-          />
-          <br />
+          <label className="text-white">Select Image :</label>
+          <input type="file" className="form-control" name="upload_file"  onChange={onImageChange} />
           <input type="submit" value="Upload!" className="lg-button btn-primary"/>
         </form>
       </Card>
