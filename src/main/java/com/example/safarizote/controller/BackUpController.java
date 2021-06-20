@@ -76,7 +76,7 @@ public class BackUpController {
         return new ResponseEntity<>(backUp, HttpStatus.OK);
     }
 
-    @RequestMapping(value="/api/doUpload", method={RequestMethod.POST})
+    @RequestMapping(value="/api/doUpload", method=RequestMethod.POST, consumes ={"multipart/form-data"})
     public ResponseEntity<List<BackUp>> doUpload(@RequestPart("file") MultipartFile[] images) {
         System.out.println("BackUp.doUpload(), the time at the server is now " + new Date());
         System.out.println("doUpload Start... ");
