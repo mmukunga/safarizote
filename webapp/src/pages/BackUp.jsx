@@ -7,6 +7,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
   const BackUp = () => {
     const [category, setCategory] = React.useState([]);
     const [files, setFiles] = React.useState([]);
+    const [file, setFile] = useState(null); // state for storing actual image
     const [treeState, setTreeState] = React.useState({checked: [], expanded: []});
     const [nodes, setNodes] = React.useState([{
       value: '',
@@ -40,6 +41,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
             label: category.name,
             children: parents,
           }
+
           setNodes([tempNodes]);
       }).catch(error => {
           console.log(error);
@@ -55,31 +57,28 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         console.log(treeState.expanded);
         setTreeState({...treeState, expanded: expanded });
     }
-
-    
+   
     const onImageChange = event => {
       console.log(event.target.files);
-      setFiles(event.target.files);
+      setFiles([event.target.myimage.files[0]]);
+      setFile(event.target.myimage.files[0]);
     }
-
     
     const onSubmit = e => {
         e.preventDefault();
-        var file = files[0];
         var formData = new FormData();
-        formData.append("file",file);
+        formData.append('file', file); 
         console.log ("File", formData, JSON.stringify({ 'file': file}));
-
 
         axios.post('/api/doUpload', formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }
-          }).then((response) => { 
-              console.log(response);
-            }).catch(error => {
-              console.log(error);
-          });
+        }).then((response) => { 
+            console.log(response);
+          }).catch(error => {
+            console.log(error);
+        });
     }
 
     const handleSubmit = async (e) => {
@@ -143,7 +142,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         <form onSubmit={onSubmit} style={{margin:"2px", border:"2px solid brown"}}>
           <input
             type="file"
-            name="files"
+            name="myimage"
             onChange={onImageChange}
             alt="image"
           />
