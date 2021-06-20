@@ -79,6 +79,7 @@ public class BackUpController {
 
     @RequestMapping(value = "/api/doUpload", method = RequestMethod.POST)
     public ResponseEntity<?> doUpload(@RequestParam(value = "file") MultipartFile file){
+        System.out.println("Uploading..");
         return new ResponseEntity<>(HttpStatus.valueOf(200));
     }
     
