@@ -86,8 +86,6 @@ public class BackUpController {
         System.out.println("Uploaded File: ");
         File file = images[0];
         System.out.println("Name : " + file.getName());
-        System.out.println("Type : " + file.getContentType());
-        System.out.println("Size : " + file.length());
 
         List<BackUp> categories = repository.findAll();
         for (BackUp category : categories) {
