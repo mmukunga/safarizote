@@ -69,11 +69,11 @@ public class BackUpController {
     }
 
 
-    @RequestMapping(value="/api/upload", method={RequestMethod.POST}, consumes={"multipart/form-data"})
-    public ResponseEntity<List<BackUp>> upload(@RequestPart("file") MultipartFile file) {
+    @RequestMapping(value="/api/upload", method={RequestMethod.POST}, consumes={MediaType.MULTIPART_FORM_DATA_VALUE})
+    public ResponseEntity<List<BackUp>> upload(@RequestPart("file") MultipartFile[] images) {
         System.out.println("BackUp.upload(), the time at the server is now " + new Date());
         System.out.println("Uploaded File: ");
-        
+        File file = images[0];
         System.out.println("Name : " + file.getName());
         System.out.println("Type : " + file.getContentType());
         System.out.println("Name : " + file.getOriginalFilename());
