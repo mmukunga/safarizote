@@ -88,7 +88,7 @@ public class BackUpController {
         System.out.println("Name : " + file.getName());
         System.out.println("Type : " + file.getContentType());
         System.out.println("Name : " + file.getOriginalFilename());
-        System.out.println("Size : " + file.getSize());
+        System.out.println("Size : " + file.length());
 
         List<BackUp> categories = repository.findAll();
         for (BackUp category : categories) {
