@@ -178,12 +178,14 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           </div>    
         </form>
 
-        <h1>Hello CodeSandbox</h1>
-        <h2>Start editing to see some magic happen!</h2>
-        <input type="file" name="file" onChange={e => handleFile(e)} />
-        <button onClick={e => handleUpload(e)}>Upload</button>
+        <div style={{margin:"2px", border:"2px solid red"}}>
+          <h1>Hello CodeSandbox</h1>
+          <h2>Start editing to see some magic happen!</h2>
+          <input type="file" name="file" onChange={e => handleFile(e)} />
+          <button onClick={e => handleUpload(e)}>Upload</button>
+        </div>
 
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} style={{margin:"2px", border:"2px solid brown"}}>
           <input
             type="file"
             name="files"
@@ -191,7 +193,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
             alt="image"
           />
           <br />
-          <button type="submit">Send</button>
+          <input type="submit" value="Upload!" className="lg-button btn-primary"/>
         </form>
       </Card>
     );
