@@ -6,7 +6,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
   const BackUp = () => {
     const [category, setCategory] = React.useState([]);
-    const [images, setImages] = React.useState([]);
+    const [files, setFiles] = React.useState([]);
     const [treeState, setTreeState] = React.useState({checked: [], expanded: []});
     const [nodes, setNodes] = React.useState([{
       value: '',
@@ -59,15 +59,17 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     
     const onImageChange = event => {
       console.log(event.target.files);
-      setImages({
-        images: event.target.files,
-      });
+      setFiles(event.target.files);
     }
 
     
     const onSubmit = e => {
         e.preventDefault();
-        let formData = new FormData();
+        var file = files[0];
+        var formData = new FormData();
+        formData.append("file",file);
+        console.log ( "File", formData, this.qs.stringify ({ 'file': file}));
+
 
         axios.post('/api/doUpload', formData, {
             headers: {
