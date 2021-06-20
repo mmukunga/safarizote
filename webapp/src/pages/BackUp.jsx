@@ -58,14 +58,15 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     }
    
     const onImageChange = event => {
-      console.log(event.target.myimage);
-      setFile(event.target.myimage);
+      console.log(event.target.files[0]);
+      setFile(event.target.files[0]);
     }
     
     const onSubmit = e => {
         e.preventDefault();
         var formData = new FormData();
         formData.append('file', file); 
+        
         console.log ("File", formData, JSON.stringify({ 'file': file}));
 
         axios.post('/api/doUpload', formData, {
