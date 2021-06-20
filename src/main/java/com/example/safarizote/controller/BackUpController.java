@@ -78,7 +78,7 @@ public class BackUpController {
     }
 
 
-    @RequestMapping(value="/api/doUpload", method=RequestMethod.POST})
+    @RequestMapping(value="/api/doUpload", method=RequestMethod.POST)
     public String doUpload(@RequestParam("file") MultipartFile file) {
         return "doUploaded!!";
     }
