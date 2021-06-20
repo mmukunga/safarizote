@@ -75,7 +75,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       formData.append('files', image);
     });
 
-    axios.post(`api/upload`, formData, {
+    axios.post(`/api/upload`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       }).then(res => {
         console.log(res);
@@ -112,7 +112,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         // const HOST = "https://us-central1-wisy-dev.cloudfunctions.net";
         // const url = `${HOST}/${API}`;
     
-        const result = await axios.post('api/uploadFile', formData, config);
+        const result = await axios.post('/api/upload', formData, config);
         console.log("REsult: ", result);
       } catch (error) {
         console.error(error);
