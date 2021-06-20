@@ -76,6 +76,13 @@ public class BackUpController {
         return new ResponseEntity<>(backUp, HttpStatus.OK);
     }
 
+
+    @RequestMapping(value="/api/doUpload", method=RequestMethod.POST)
+    public String doUpload() {
+        return "doUploaded!!";
+    }
+/*
+
     @RequestMapping(value="/api/doUpload", method=RequestMethod.POST, consumes ={"multipart/form-data"})
     public ResponseEntity<List<BackUp>> doUpload(@RequestPart("file") MultipartFile[] images) {
         System.out.println("BackUp.doUpload(), the time at the server is now " + new Date());
@@ -96,7 +103,7 @@ public class BackUpController {
         System.out.println("BackUp.doUpload()  End OK!");
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
-
+*/
 
     @RequestMapping(value="/api/doBackUp", method={RequestMethod.POST})
     public ResponseEntity<BackUp> doBackUp(@RequestBody List<BackUp> folders) throws Exception {

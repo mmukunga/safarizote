@@ -66,22 +66,9 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
     
     const onSubmit = e => {
-      e.preventDefault();
+        e.preventDefault();
 
-      const formData = new FormData();
-
-      Array.from(images).forEach(image => {
-        formData.append('files', image);
-      });
-
-      
-      const options = {
-        headers: {
-            'Content-Type': 'multipart/form-data',
-        }
-      };
-
-      axios.post("/api/doUpload", formData, options).then((response) => { 
+        axios.post('/api/doUpload').then((response) => { 
           console.log(response);
         }).catch(error => {
           console.log(error);
