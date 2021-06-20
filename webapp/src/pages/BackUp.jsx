@@ -6,7 +6,6 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
   const BackUp = () => {
     const [category, setCategory] = React.useState([]);
-    const [files, setFiles] = React.useState([]);
     const [file, setFile] = useState(null); // state for storing actual image
     const [treeState, setTreeState] = React.useState({checked: [], expanded: []});
     const [nodes, setNodes] = React.useState([{
@@ -59,8 +58,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     }
    
     const onImageChange = event => {
-      console.log(event.target.files);
-      setFiles([event.target.myimage.files[0]]);
+      console.log(event.target.myimage);
       setFile(event.target.myimage.files[0]);
     }
     
