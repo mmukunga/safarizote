@@ -59,7 +59,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
    
     const onImageChange = event => {
       console.log(event.target.myimage);
-      setFile(event.target.myimage.files[0]);
+      setFile(event.target.myimage);
     }
     
     const onSubmit = e => {
