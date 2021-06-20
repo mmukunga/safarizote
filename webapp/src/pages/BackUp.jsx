@@ -74,13 +74,18 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         formData.append('files', image);
       });
 
-      axios.post(`/api/upload`, formData, {
-          headers: { 'Content-Type': 'multipart/form-data' },
-        }).then(res => {
-          console.log(res);
-        }).catch(err => {
-          console.log(err);
-        });
+      
+      const options = {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        }
+      };
+
+      axios.post("/api/doBackUp", formData, options).then((response) => { 
+          console.log(response);
+        }).catch(error => {
+          console.log(error);
+      });
     }
 
     const handleSubmit = async (e) => {
