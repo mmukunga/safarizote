@@ -77,12 +77,12 @@ public class BackUpController {
     }
 
 
-    @RequestMapping(value="/api/doUpload", method=RequestMethod.POST)
-    public String doUpload() {
+    @RequestMapping(value="/api/doUpload", method=RequestMethod.POST, consumes=MediaType.MULTIPART_FORM_DATA)
+    public String doUpload(@RequestParam("file") MultipartFile file) {
         return "doUploaded!!";
     }
-/*
-
+    
+    /*
     @RequestMapping(value="/api/doUpload", method=RequestMethod.POST, consumes ={"multipart/form-data"})
     public ResponseEntity<List<BackUp>> doUpload(@RequestPart("file") MultipartFile[] images) {
         System.out.println("BackUp.doUpload(), the time at the server is now " + new Date());
