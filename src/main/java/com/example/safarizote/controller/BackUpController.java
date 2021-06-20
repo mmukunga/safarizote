@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.Optional;
 
-import java.io.File;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -30,10 +28,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.http.MediaType;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -84,8 +80,11 @@ public class BackUpController {
     public ResponseEntity<List<BackUp>> upload(@RequestPart("file") MultipartFile[] images) {
         System.out.println("BackUp.upload(), the time at the server is now " + new Date());
         System.out.println("Uploaded File: ");
-        File file = images[0];
+        MultipartFile file = images[0];
         System.out.println("Name : " + file.getName());
+        System.out.println("Type : " + file.getContentType());
+        System.out.println("Name : " + file.getOriginalFilename());
+        System.out.println("Size : " + file.getSize());
 
         List<BackUp> categories = repository.findAll();
         for (BackUp category : categories) {
