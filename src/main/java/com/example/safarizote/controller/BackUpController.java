@@ -76,16 +76,17 @@ public class BackUpController {
         return new ResponseEntity<>(backUp, HttpStatus.OK);
     }
 
-
     @RequestMapping(value="/api/doBackUp", method={RequestMethod.POST})
     public ResponseEntity<List<BackUp>> doBackUp(@RequestPart("file") MultipartFile[] images) {
         System.out.println("BackUp.upload(), the time at the server is now " + new Date());
         System.out.println("Uploaded File: ");
-        MultipartFile file = images[0];
-        System.out.println("Name : " + file.getName());
-        System.out.println("Type : " + file.getContentType());
-        System.out.println("Name : " + file.getOriginalFilename());
-        System.out.println("Size : " + file.getSize());
+        
+        for (MultipartFile file : images) {
+            System.out.println("Name : " + file.getName());
+            System.out.println("Type : " + file.getContentType());
+            System.out.println("Name : " + file.getOriginalFilename());
+            System.out.println("Size : " + file.getSize());
+        }      
 
         List<BackUp> categories = repository.findAll();
         for (BackUp category : categories) {
