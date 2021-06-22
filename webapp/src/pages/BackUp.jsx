@@ -8,10 +8,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     const [category, setCategory] = React.useState([]);
     const [fileInput , setFileInput ] = React.useState(React.createRef());
 
-    const [userInfo, setuserInfo] = useState({
-      file:[],
-      filepreview:null,
-     });
+    const [file, setFile] = useState(null);
     const [isSucces, setSuccess] = useState(null);
     const [treeState, setTreeState] = React.useState({checked: [], expanded: []});
     const [nodes, setNodes] = React.useState([{
@@ -65,20 +62,15 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
    
     const onImageChange = event => {
       console.log(event.target.files[0]);
-      setuserInfo({
-        ...userInfo,
-        file:event.target.files[0],
-        filepreview:URL.createObjectURL(event.target.files[0]),
-      });
+      setFile(event.target.files[0]);
     }
     
     const onSubmit = e => {
         e.preventDefault();
 
-        const formdata = new FormData(); 
-        formdata.append('file', userInfo.file);
-
-        axios.post('/api/doUpload', formdata, {   
+        let formData = new FormData();
+              formData.append('file', file);
+        axios.post('/api/doUpload', formData, {   
             headers: { 'Content-Type': 'multipart/form-data' } 
         }).then(response => {
             console.log(response);
@@ -147,7 +139,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
         <form onSubmit={onSubmit} style={{margin:"2px", border:"2px solid brown"}}>
           <label className="text-white">Select Image :</label>
-          <input type="file" className="form-control" name="upload_file"  onChange={onImageChange} />
+          <input type="file" className="form-control" name="file"  onChange={onImageChange} />
           <input type="submit" value="Upload!" className="lg-button btn-primary"/>
         </form>
       </Card>
