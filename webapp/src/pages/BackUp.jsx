@@ -6,6 +6,8 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
   const BackUp = () => {
     const [category, setCategory] = React.useState([]);
+    const [fileInput , setFileInput ] = React.useState(React.createRef());
+
     const [userInfo, setuserInfo] = useState({
       file:[],
       filepreview:null,
@@ -74,7 +76,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         e.preventDefault();
 
         const formdata = new FormData(); 
-        formdata.append('avatar', userInfo.file);
+        formdata.append('file', userInfo.file);
 
         axios.post("/api/doUpload", formdata, {   
               headers: { "Content-Type": "multipart/form-data" } 
