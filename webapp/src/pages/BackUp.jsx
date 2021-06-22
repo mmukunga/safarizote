@@ -79,9 +79,9 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         formdata.append('file', userInfo.file);
 
         axios.post('/api/doUpload', formdata, {   
-              headers: { 'Content-Type': 'multipart/form-data' } 
-        }).then(res => { // then print response status
-          console.log(res);
+            headers: { 'Content-Type': 'multipart/form-data' } 
+        }).then(response => {
+            console.log(response);
         }).catch(error => {
             console.log(error);
         });
