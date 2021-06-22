@@ -77,8 +77,8 @@ public class BackUpController {
         return new ResponseEntity<>(backUp, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/api/doUpload", method = RequestMethod.POST, consumes = {"multipart/form-data"})
-    public ResponseEntity<?> doUpload(@RequestPart(value = "file") MultipartFile file){
+    @RequestMapping(value = "/api/doUpload", method = RequestMethod.POST, consumes = {"multipart/mixed"})
+    public ResponseEntity<?> doUpload(@RequestPart("data") MultipartFile photoData){
         System.out.println("Uploading..");
         return new ResponseEntity<>(HttpStatus.valueOf(200));
     }
