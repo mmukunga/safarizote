@@ -69,7 +69,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         e.preventDefault();
         var formData = new FormData();
         formData.append("file", document.forms["userForm"].file.files[0]);
-        axios.post('/api/uploadFile', data, {   
+        axios.post('/api/uploadFile', formData, {   
             headers: { 'Content-Type': 'application/json' } 
         }).then(response => {
             console.log(response);
