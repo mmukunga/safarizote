@@ -84,7 +84,7 @@ public class BackUpController {
         return new ResponseEntity<>(HttpStatus.valueOf(200));
     }
     
-    @RequestMapping(value = "/api/uploadFiles", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/uploadFiles", method = RequestMethod.POST, consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
     public ResponseEntity<?> uploadFiles(@RequestPart("files") MultipartFile[] files){
         System.out.println("Uploading..");
         return new ResponseEntity<>(HttpStatus.valueOf(200));
