@@ -64,6 +64,12 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       console.log(event.target.files[0]);
       setFile(event.target.files[0]);
     }
+
+    function jsonBlob(obj) {
+      return new Blob([JSON.stringify(obj)], {
+        type: "application/json",
+      });
+    }
     
     const onSubmit = e => {
         e.preventDefault();
@@ -71,10 +77,11 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         var formData = new FormData();
         var imagefile = document.querySelector('#file');
         formData.append("image", imagefile.files[0]);
-        axios.post('/api/uploadFile', formData, {
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
+        axios.post('/api/uploadFile', jsonBlob(file), {
+          headers: { 
+            Accept: "application/json ,text/plain, */*",
+            "Content-Type": "multipart/form-data"
+          }
         })
         .then(res => {
             console.log(res);
