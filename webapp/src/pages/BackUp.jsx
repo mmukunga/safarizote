@@ -70,7 +70,9 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         var formData = new FormData();
         formData.append("file", file);
 
-        axios.post('/api/uploadFile', formData,  { headers: { 'Content-type': 'multipart/form-data' } }).then(response => {
+        let formHeaders = formData.getHeaders();
+
+        axios.post('/api/uploadFile', formData, { headers: {...formHeaders} }).then(response => {
             console.log(response);
         }).catch(error => {
             console.log(error);
@@ -135,10 +137,11 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           </div>    
         </form>
 
-        <form name="userForm" onSubmit={onSubmit} style={{margin:"2px", border:"2px solid brown"}}>
+        <form name="userForm" onSubmit={onSubmit} enctype="multipart/form-data" style={{margin:"2px", border:"2px solid brown"}}>
           <label className="text-white">Select Image :</label>
           <input type="file" className="form-control" name="file"  onChange={onImageChange} />
           <input type="submit" value="Upload!" className="lg-button btn-primary"/>
+          <button type="submit" class="btn btn-primary">Upload!</button>
         </form>
       </Card>
     );
