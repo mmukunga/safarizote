@@ -75,6 +75,11 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
             headers: {
               'Content-Type': 'multipart/form-data'
             }
+        })
+        .then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.error(err);
         });
 
     }
