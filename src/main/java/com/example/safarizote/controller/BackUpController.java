@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.safarizote.model.BackUp;
@@ -77,12 +78,18 @@ public class BackUpController {
         return new ResponseEntity<>(backUp, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/api/doUpload", method = RequestMethod.POST, consumes = {MediaType.MULTIPART_FORM_DATA})
-    public ResponseEntity<?> doUpload(@RequestPart("data") MultipartFile photoData){
+    @RequestMapping(value = "/api/uploadFile", method = RequestMethod.POST, consumes = { "multipart/form-data" })
+    public ResponseEntity<?> uploadFile(@RequestPart("file") MultipartFile file){
         System.out.println("Uploading..");
         return new ResponseEntity<>(HttpStatus.valueOf(200));
     }
     
+    @RequestMapping(value = "/api/uploadFiles", method = RequestMethod.POST, consumes = { "multipart/form-data" })
+    public ResponseEntity<?> uploadFiles(@RequestPart("files") MultipartFile[] files){
+        System.out.println("Uploading..");
+        return new ResponseEntity<>(HttpStatus.valueOf(200));
+    }
+
     /*
     @RequestMapping(value="/api/doUpload", method=RequestMethod.POST)
     public String doUpload(@RequestParam("file") MultipartFile file) {
