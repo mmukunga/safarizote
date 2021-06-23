@@ -69,11 +69,11 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         e.preventDefault();
         var formData = new FormData();
         formData.append("file", file);
+        
         const config = {
-          headers: {
-            'content-type': 'multipart/form-data'
-          }
+          headers: { 'Content-Type': 'multipart/form-data' } 
         }
+
         axios.post('/api/uploadFile', formData, config).then(response => {
             console.log(response);
         }).catch(error => {
