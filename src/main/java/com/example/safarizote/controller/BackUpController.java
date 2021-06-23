@@ -78,13 +78,13 @@ public class BackUpController {
         return new ResponseEntity<>(backUp, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/api/uploadFile", method = RequestMethod.POST, consumes = { "multipart/form-data" })
+    @RequestMapping(value = "/api/uploadFile", method = RequestMethod.POST)
     public ResponseEntity<?> uploadFile(@RequestPart("file") MultipartFile file){
         System.out.println("Uploading..");
         return new ResponseEntity<>(HttpStatus.valueOf(200));
     }
     
-    @RequestMapping(value = "/api/uploadFiles", method = RequestMethod.POST, consumes = { "multipart/form-data" })
+    @RequestMapping(value = "/api/uploadFiles", method = RequestMethod.POST)
     public ResponseEntity<?> uploadFiles(@RequestPart("files") MultipartFile[] files){
         System.out.println("Uploading..");
         return new ResponseEntity<>(HttpStatus.valueOf(200));
