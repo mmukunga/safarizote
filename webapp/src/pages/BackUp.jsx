@@ -74,9 +74,13 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     const onSubmit = e => {
         e.preventDefault();
 
+
+        
         var formData = new FormData();
+        formData.append("file", document.forms["userForm"].file.files[0]);
+            
         var imagefile = document.querySelector('#file');
-        formData.append("image", imagefile.files[0]);
+        formData.append("file", imagefile.files[0]);
         axios.post('/api/uploadFile', jsonBlob(file), {
           headers: { 
             Accept: "application/json ,text/plain, */*",
