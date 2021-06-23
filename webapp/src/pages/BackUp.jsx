@@ -139,7 +139,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
         <form name="userForm" onSubmit={onSubmit} enctype="multipart/form-data" style={{margin:"2px", border:"2px solid brown"}}>
           <label className="text-white">Select Image :</label>
-          <input type="file" className="form-control" name="file"  onChange={onImageChange} />
+          <input type="file" className="form-control"  id="file" name="file"  onChange={onImageChange} />
           <input type="submit" value="Upload!" className="lg-button btn-primary"/>
           <button type="submit" class="btn btn-primary">Upload!</button>
         </form>
