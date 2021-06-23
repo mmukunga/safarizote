@@ -71,7 +71,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         formData.append("file", file);
 
         const config = {
-         headers: form.getHeaders() 
+         headers: formData.getHeaders() 
         }
 
         axios.post('/api/uploadFile', formData, { headers: form.getHeaders() }).then(response => {
