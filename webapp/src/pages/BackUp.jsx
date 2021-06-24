@@ -83,9 +83,9 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           }
 
 
-        formData.append("file", jsonBlob(file))
+        formData.append("file", fs.createReadStream(file));
         //formData.append("file", "jsonBlob(file)")
-        axios.post('/api/uploadFile2', formData,{ headers: {'Content-Type': 'multipart/form-data' }})
+        axios.post('/api/uploadFile2', formData,{ headers: {'Content-Type': 'multipart/form-data; boundary=${form._boundary}' }})
         .then(res => {
             console.log(res);
         }).catch(err => {
