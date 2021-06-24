@@ -28,6 +28,7 @@ import com.example.safarizote.utils.CopyDir;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,6 +43,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 public class BackUpController { 
   final Logger logger = LoggerFactory.getLogger(BackUpController.class);
@@ -78,7 +80,7 @@ public class BackUpController {
         return new ResponseEntity<>(backUp, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/api/uploadFile", method = RequestMethod.POST, consumes = "multipart/form-data")
+    @RequestMapping(value = "/api/uploadFile", method = RequestMethod.POST)
     public ResponseEntity<Object> uploadFile(@RequestParam("file") MultipartFile file){
         System.out.println("Uploading file..");
         return new ResponseEntity<>(HttpStatus.valueOf(200));
