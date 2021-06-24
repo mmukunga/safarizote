@@ -69,7 +69,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     }
 
     
-    const onSubmit = e => {
+    const onSubmit = async e => {
         e.preventDefault();
         console.log(images);
         const formData = new FormData();
@@ -78,15 +78,17 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           formData.append('files', image);
         });
 
-        axios.post(`/api/uploadFile`, formData, {
+        const crews = await axios.post(`/api/uploadFile`, formData, {
           headers: { 'Content-Type': 'multipart/form-data' },
         }).then(res => {
           console.log(res);
+          return res;
         }).catch(err => {
           console.log(err);
+          return err;
         });
 
-
+        console.log(crews.data);
 /*
         axios.post('/api/uploadFile', formData)
         .then(res => {
