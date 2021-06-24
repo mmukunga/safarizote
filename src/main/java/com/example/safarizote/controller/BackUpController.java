@@ -35,7 +35,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+
 @RestController
 public class BackUpController { 
   final Logger logger = LoggerFactory.getLogger(BackUpController.class);
