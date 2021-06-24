@@ -9,7 +9,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     const [category, setCategory] = React.useState([]);
     const [fileInput , setFileInput ] = React.useState(React.createRef());
 
-    const [file, setFile] = useState(null);
+    const [images, setImages] = useState([]);
     const [isSucces, setSuccess] = useState(null);
     const [treeState, setTreeState] = React.useState({checked: [], expanded: []});
     const [nodes, setNodes] = React.useState([{
@@ -62,26 +62,38 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     }
    
     const onImageChange = event => {
-      console.log(event.target.files[0]);
-      setFile(event.target.files[0]);
+      console.log(event.target.files);
+     // setFile(event.target.files[0]);
+      console.log(event.target.files);
+      setImages([...images, ...event.target.files]);
     }
 
-    function jsonBlob(obj) {
-      return new Blob([JSON.stringify(obj)], {
-        type: "application/json",
-      });
-    }
     
     const onSubmit = e => {
         e.preventDefault();
-        var formData = new FormData();
-        formData.append("file",e.target.file.files[0]);
+        console.log(images);
+        const formData = new FormData();
+
+        Array.from(images).forEach(image => {
+          formData.append('files', image);
+        });
+
+        axios.post(`/api/uploadFile`, formData, {
+          headers: { 'Content-Type': 'multipart/form-data' },
+        }).then(res => {
+          console.log(res);
+        }).catch(err => {
+          console.log(err);
+        });
+
+
+/*
         axios.post('/api/uploadFile', formData)
         .then(res => {
             console.log(res);
         }).catch(err => {
             console.error(err);
-        });
+        });*/
     }
 
     const handleSubmit = async (e) => {
@@ -142,9 +154,21 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           </div>    
         </form>
 
+        <form onSubmit={onSubmit}>
+          <input
+            type="file"
+            name="files"
+            onChange={onImageChange}
+            alt="image"
+          />
+          <br />
+          <button type="submit">Send</button>
+        </form>
+
+
         <form name="userForm" onSubmit={onSubmit} style={{margin:"2px", border:"2px solid brown"}}>
           <label className="text-white">Select Image :</label>
-          <input type="file" className="form-control"  id="file" name="file"  onChange={onImageChange} />
+          <input type="file" className="form-control"  id="file" name="file" multiple  onChange={onImageChange} />
           <input type="submit" value="Upload!" className="lg-button btn-primary"/>
         </form>
       </Card>
