@@ -80,6 +80,13 @@ public class BackUpController {
         return new ResponseEntity<>(backUp, HttpStatus.OK);
     }
 
+
+    @RequestMapping(value = "/api/uploadFile2", method = RequestMethod.POST)
+    public ResponseEntity<Object> uploadFile2(@RequestBody("file") String file){
+        System.out.println("Uploading file..");
+        return new ResponseEntity<>(HttpStatus.valueOf(200));
+    }
+
     @RequestMapping(value = "/api/uploadFile", method = RequestMethod.POST)
     public ResponseEntity<Object> uploadFile(@RequestParam("file") MultipartFile file){
         System.out.println("Uploading file..");
