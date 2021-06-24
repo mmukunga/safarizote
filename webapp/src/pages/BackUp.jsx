@@ -82,10 +82,6 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
             formData.append('images', images[i]);
           }
 
-          formData.append('adData', new Blob([JSON.stringify(adData)], {
-              type: "application/json"
-          }));
-
 
         //formData.append("file", jsonBlob(file))
         formData.append("file", "jsonBlob(file)")
