@@ -170,6 +170,11 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           </div>    
         </form>
 
+        <form method="POST" enctype="multipart/form-data" action="/api/upload">
+            <input type="file" name="file"/>
+            <input type="submit" value="Upload"/>
+        </form>
+
         <form onSubmit={onSubmit}>
           <input
             type="file"
