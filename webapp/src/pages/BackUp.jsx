@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Card from './Card';
 import axios from 'axios';
-import fs from 'fs';
 import CheckboxTree from 'react-checkbox-tree';
 import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
