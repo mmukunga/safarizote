@@ -73,7 +73,7 @@ public class BackUpController {
     }
 
     @RequestMapping(value = "/api/uploadFile", method = RequestMethod.POST)
-    public ResponseEntity<Object> uploadFile(@RequestParam(value="file") MultipartFile file) throws IOException {
+    public ResponseEntity<Object> uploadFile(@RequestParam(value="file") MultipartFile file) throws Exception {
         if (file == null) {
 			throw new RuntimeException("You must select the a file for uploading");
 		}
