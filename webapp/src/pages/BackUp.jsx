@@ -74,7 +74,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         const formData = new FormData();
         formData.append('file', e.target.files[0]);
 
-        fetch('/api/upload', {
+        axios('/api/upload', {
             method: 'post',
             body: formData
         }).then(res => {
