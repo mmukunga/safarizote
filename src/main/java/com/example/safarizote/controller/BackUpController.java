@@ -78,7 +78,7 @@ public class BackUpController {
 			throw new RuntimeException("You must select the a file for uploading");
 		}
         System.out.println("Uploading file..");
-        return esponseEntity.ok().build();
+        return ResponseEntity.ok().build();
     }
     
     @RequestMapping(value = "/api/uploadFiles", method = RequestMethod.POST, consumes = { MediaType.MULTIPART_FORM_DATA })
@@ -86,36 +86,6 @@ public class BackUpController {
         System.out.println("Uploading files..");
         return new ResponseEntity<>(HttpStatus.valueOf(200));
     }
-
-    /*
-    @RequestMapping(value="/api/doUpload", method=RequestMethod.POST)
-    public String doUpload(@RequestParam("file") MultipartFile file) {
-        return "doUploaded!!";
-    }
-    */
-
-    /*
-    @RequestMapping(value="/api/doUpload", method=RequestMethod.POST, consumes ={"multipart/form-data"})
-    public ResponseEntity<List<BackUp>> doUpload(@RequestPart("file") MultipartFile[] images) {
-        System.out.println("BackUp.doUpload(), the time at the server is now " + new Date());
-        System.out.println("doUpload Start... ");
-        
-        for (MultipartFile file : images) {
-            System.out.println("Name : " + file.getName());
-            System.out.println("Type : " + file.getContentType());
-            System.out.println("Name : " + file.getOriginalFilename());
-            System.out.println("Size : " + file.getSize());
-        }      
-
-        List<BackUp> categories = repository.findAll();
-        for (BackUp category : categories) {
-            System.out.println(category);
-        }
-        System.out.println("BackUp.doUpload(), the time at the server is now " + new Date());
-        System.out.println("BackUp.doUpload()  End OK!");
-        return new ResponseEntity<>(categories, HttpStatus.OK);
-    }
-*/
 
     @RequestMapping(value="/api/doBackUp", method={RequestMethod.POST})
     public ResponseEntity<BackUp> doBackUp(@RequestBody List<BackUp> folders) throws Exception {
