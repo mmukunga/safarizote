@@ -76,7 +76,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
         await axios.put(`api/upload`, formData, {
           headers: {
-              'Content-type': 'multipart/mixed; boundary=--ABC123Boundary'
+              'Content-type': 'multipart/form-data; boundary=----WebKitFormBoundaryq2Y4DEHLnqPmlDAc'
           }
         }).then(res => {
             console.log(res);
@@ -85,31 +85,6 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
             console.log(err);
             return err;
         });
-
-/*
-        Array.from(images).forEach(image => {
-          formData.append('files', image);
-        });
-
-        const crews = await axios.post(`/api/uploadFile`, formData, {
-          headers: { 'Content-Type': 'multipart/form-data' },
-        }).then(res => {
-          console.log(res);
-          return res;
-        }).catch(err => {
-          console.log(err);
-          return err;
-        });
-
-        console.log(crews.data);
-        */
-/*
-        axios.post('/api/uploadFile', formData)
-        .then(res => {
-            console.log(res);
-        }).catch(err => {
-            console.error(err);
-        });*/
     }
 
     const handleSubmit = async (e) => {
@@ -170,20 +145,9 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           </div>    
         </form>
 
-        <form method="POST" enctype="multipart/form-data" action="/api/upload">
-            <input type="file" name="file"/>
-            <input type="submit" value="Upload"/>
-        </form>
-
         <form onSubmit={onSubmit} style={{margin:"2px", border:"2px solid green"}}>
           <input type="file" name="files" onChange={onImageChange}/>
           <button type="submit">Send Try!</button>
-        </form>
-
-        <form name="userForm" onSubmit={onSubmit} style={{margin:"2px", border:"2px solid brown"}}>
-          <label className="text-white">Select Image :</label>
-          <input type="file" className="form-control"  id="file" name="file" multiple  onChange={onImageChange} />
-          <input type="submit" value="Upload!" className="lg-button btn-primary"/>
         </form>
       </Card>
     );
