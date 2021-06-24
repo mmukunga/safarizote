@@ -73,7 +73,19 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         e.preventDefault();
         console.log(images);
         const formData = new FormData();
+        formData.append('file', e.target.file.files[0]);
 
+        fetch('/api/upload', {
+            method: 'post',
+            body: formData
+        }).then(res => {
+            if(res.ok) {
+                console.log(res.data);
+                alert("File uploaded successfully.")
+            }
+        });
+
+/*
         Array.from(images).forEach(image => {
           formData.append('files', image);
         });
@@ -89,6 +101,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         });
 
         console.log(crews.data);
+        */
 /*
         axios.post('/api/uploadFile', formData)
         .then(res => {
