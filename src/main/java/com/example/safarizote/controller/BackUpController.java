@@ -9,6 +9,7 @@ import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -21,7 +22,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.safarizote.model.BackUp;
@@ -71,7 +71,6 @@ public class BackUpController {
         
         return new ResponseEntity<>(backUp, HttpStatus.OK);
     }
-
 
     @RequestMapping(value = "/api/uploadFile", method = RequestMethod.POST,consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Object> uploadFile(@RequestParam MultipartFile file) throws Exception {
