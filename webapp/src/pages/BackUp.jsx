@@ -74,6 +74,19 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     const onSubmit = e => {
         e.preventDefault();
         var formData = new FormData();
+        const images = [
+          { id: 1, src: './assets/image01.jpg', title: 'foo', description: 'bar' },
+          { id: 2, src: './assets/image02.jpg', title: 'foo', description: 'bar' }
+        ];
+          for (var i = 0; i < images.length ; i++) {
+            formData.append('images', images[i]);
+          }
+
+          formData.append('adData', new Blob([JSON.stringify(adData)], {
+              type: "application/json"
+          }));
+
+
         //formData.append("file", jsonBlob(file))
         formData.append("file", "jsonBlob(file)")
         axios.post('/api/uploadFile2', formData)
