@@ -76,7 +76,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
         await axios.put('api/saveUpload', formData, {
           headers: {
-              'Content-type': null
+              'Content-type': formData.getHeaders()
           }
         }).then(res => {
             console.log(res);
