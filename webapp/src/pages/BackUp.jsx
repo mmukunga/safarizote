@@ -62,32 +62,17 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
    
     const onImageChange = event => {
       console.log(event.target.files);
+     // setFile(event.target.files[0]);
       console.log(event.target.files);
       setImages([...images, ...event.target.files]);
     }
 
-   const onSubmit = (event) => {
-
-      event.preventDefault();
-      var formData = new FormData();
-      formData.append("files", event.target.files);
-
-      for (var value of formData.values()) {
-          console.log(value);
-      }
-
-      axios.post( '/single-file', formData, {
-          headers: {
-              'Content-Type': 'multipart/form-data'
-          }
-      }).then(function(){console.log('SUCCESS!')})
-        .catch((error) => console.log(error));
-    
+   const handleUpload = (e) => {
+      e.preventDefault();
         
-       /* 
-      let file = e.target.files[0];
+        let file = e.target.files[0];
         const formdata = new FormData();
-        formdata.append('files', images);
+        formdata.append('file', file);
             
         for (var value of formdata.values()) {
             console.log(value);
@@ -101,23 +86,20 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
                 "Content-Type": "multipart/form-data"
             }
         }).then(response => console.log(response));
-      */
-
     }
 
-    /*
-        const onSubmit = async event => {
-          event.preventDefault();
-          var formData = new FormData();
-          formData.append("files", event.target.files);
-          axios.post( '/single-file', formData, {
-              headers: {
-                  'Content-Type': 'multipart/form-data'
-              }
-          }).then(function(){console.log('SUCCESS!')})
-            .catch((error) => console.log(error));
-        }
-    */
+
+    const onSubmit = async event => {
+      event.preventDefault();
+      var formData = new FormData();
+      formData.append("file", event.target.files[0]);
+      axios.post( '/single-file', formData, {
+          headers: {
+              'Content-Type': 'multipart/form-data'
+          }
+      }).then(function(){console.log('SUCCESS!')})
+        .catch((error) => console.log(error));
+    }
 
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -178,7 +160,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         </form>
 
         <form onSubmit={onSubmit} style={{margin:"2px", border:"2px solid green"}}>
-          <input type="file" name="files" multiple onChange={onImageChange}/>
+          <input type="file" name="file" onChange={onImageChange}/>
           <button type="submit">Send Try!</button>
         </form>
 
