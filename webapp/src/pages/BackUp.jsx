@@ -76,7 +76,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
         await axios.put(`api/upload`, formData, {
           headers: {
-              'Content-type': 'multipart/form-data; boundary=----WebKitFormBoundaryq2Y4DEHLnqPmlDAc'
+              'Content-type': null
           }
         }).then(res => {
             console.log(res);
