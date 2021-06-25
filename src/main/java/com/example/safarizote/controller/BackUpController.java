@@ -75,7 +75,7 @@ public class BackUpController {
 
     @ResponseBody
     @RequestMapping(value="/single-file",  method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<?> uploadSingle(@RequestParam(name="file", required = false) MultipartFile file) {
+    public ResponseEntity<?> uploadSingle(@RequestParam(name="file", required = false) MultipartFile[] file) {
         System.out.println("--File Uploaded--");
         //System.out.println(files.length);
         System.out.println(file);
