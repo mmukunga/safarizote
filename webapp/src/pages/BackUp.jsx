@@ -74,7 +74,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         const formData = new FormData();
         formData.append('file', e.target.files[0]);
 
-        await axios.put(`api/upload`, formData, {
+        await axios.put('api/saveUpload', formData, {
           headers: {
               'Content-type': null
           }
