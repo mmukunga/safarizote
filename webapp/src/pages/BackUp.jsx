@@ -72,7 +72,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       var formData = new FormData();
       formData.append("files", event.target.files);
 
-      for (var value of formdata.values()) {
+      for (var value of formData.values()) {
           console.log(value);
       }
 
