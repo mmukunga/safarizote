@@ -67,7 +67,28 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       setImages([...images, ...event.target.files]);
     }
 
-    
+   const handleUpload = (e) => {
+      e.preventDefault();
+        
+        let file = e.target.files[0];
+        const formdata = new FormData();
+        formdata.append('file', file);
+            
+        for (var value of formdata.values()) {
+            console.log(value);
+        }
+        
+        const url = 'http://127.0.0.1:8080/file/upload';
+        fetch(url, {
+            method: 'POST',
+            body: formdata,
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        }).then(response => console.log(response));
+    }
+
+
     const onSubmit = async e => {
         e.preventDefault();
         console.log(images);
@@ -147,6 +168,10 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           <input type="file" name="files" onChange={onImageChange}/>
           <button type="submit">Send Try!</button>
         </form>
+
+
+       Simon: <input type="file" onChange={handleUpload}/>
+
       </Card>
     );
   }
