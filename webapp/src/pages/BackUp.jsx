@@ -90,7 +90,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
 
     const onSubmit = async event => {
-      e.preventDefault();
+      event.preventDefault();
       var formData = new FormData();
       formData.append("file", event.target.files[0]);
       axios.post( '/single-file',formData,{
