@@ -92,8 +92,8 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     const onSubmit = async event => {
       event.preventDefault();
       var formData = new FormData();
-      formData.append("file", event.target.files[0]);
-      axios.post( '/single-file',formData,{
+      formData.append("files", event.target.files);
+      axios.post( '/single-file', formData, {
           headers: {
               'Content-Type': 'multipart/form-data'
           }
@@ -160,7 +160,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         </form>
 
         <form onSubmit={onSubmit} style={{margin:"2px", border:"2px solid green"}}>
-          <input type="file" name="files" onChange={onImageChange}/>
+          <input type="file" name="files" multiple onChange={onImageChange}/>
           <button type="submit">Send Try!</button>
         </form>
 
