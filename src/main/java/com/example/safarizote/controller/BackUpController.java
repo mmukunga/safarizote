@@ -73,13 +73,18 @@ public class BackUpController {
     }
 
 
-    @RequestMapping(path = "/api/saveUpload", method = RequestMethod.POST, consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
-    public ResponseEntity<Object> saveUpload(@RequestPart("file") MultipartFile file) {
-        if (file == null) {
-			throw new RuntimeException("You must select the a file for uploading");
-		}
-        System.out.println("Uploading file..");
+    @ResponseBody
+    @PostMapping(value="/single-file", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<?> uploadSingle(
+            @RequestParam(name="file", required = false) MultipartFile file
+    ) {
+        System.out.println("uploaded");
+        System.out.println(file);
+
+
         return ResponseEntity.ok().build();
+
+
     }
     
     @RequestMapping(value = "/api/uploadFiles", method = RequestMethod.POST, consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })

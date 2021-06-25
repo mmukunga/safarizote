@@ -89,21 +89,16 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     }
 
 
-    const onSubmit = async e => {
-        e.preventDefault();
-        console.log(images);
-        const formData = new FormData();
-        formData.append('file', e.target.files[0]);
-
-        await axios.put('api/saveUpload', formData, {
+    const onSubmit = async event => {
+      e.preventDefault();
+      var formData = new FormData();
+      formData.append("file", event.target.files[0]);
+      axios.post( '/single-file',formData,{
           headers: {
-              'Content-type': formData.getHeaders()
+              'Content-Type': 'multipart/form-data'
           }
-        }).then(res => {
-            console.log(res);
-        }).catch(err => {
-            console.log(err);
-        });
+      }).then(function(){console.log('SUCCESS!')})
+        .catch((error) => console.log(error));
     }
 
     const handleSubmit = async (e) => {
@@ -168,9 +163,6 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           <input type="file" name="files" onChange={onImageChange}/>
           <button type="submit">Send Try!</button>
         </form>
-
-
-       Simon: <input type="file" onChange={handleUpload}/>
 
       </Card>
     );
