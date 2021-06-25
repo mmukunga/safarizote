@@ -6,13 +6,13 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -73,14 +73,12 @@ public class BackUpController {
         return new ResponseEntity<>(backUp, HttpStatus.OK);
     }
 
+
     @ResponseBody
-    @RequestMapping(value="/single-file",  method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<?> uploadSingle(@RequestParam(name="file", required = false) MultipartFile[] file) {
-        System.out.println("--File Uploaded--");
-        //System.out.println(files.length);
+    @RequestMapping(value="/single-file",  method = RequestMethod.POST,consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<?> uploadSingle(@RequestParam(name="file", required = false) MultipartFile file) {
+        System.out.println("uploaded");
         System.out.println(file);
-        //Stream.of(files).forEach(file -> System.out.println(file.getOriginalFilename()));
-        System.out.println("--File Uploaded--");
         return ResponseEntity.ok().build();
     }
     
