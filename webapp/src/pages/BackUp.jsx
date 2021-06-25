@@ -66,10 +66,26 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       setImages([...images, ...event.target.files]);
     }
 
-   const onSubmit = (e) => {
-      e.preventDefault();
+   const onSubmit = (event) => {
+
+      event.preventDefault();
+      var formData = new FormData();
+      formData.append("files", event.target.files);
+
+      for (var value of formdata.values()) {
+          console.log(value);
+      }
+
+      axios.post( '/single-file', formData, {
+          headers: {
+              'Content-Type': 'multipart/form-data'
+          }
+      }).then(function(){console.log('SUCCESS!')})
+        .catch((error) => console.log(error));
+    
         
-        let file = e.target.files[0];
+       /* 
+      let file = e.target.files[0];
         const formdata = new FormData();
         formdata.append('files', images);
             
@@ -85,6 +101,8 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
                 "Content-Type": "multipart/form-data"
             }
         }).then(response => console.log(response));
+      */
+
     }
 
     /*
