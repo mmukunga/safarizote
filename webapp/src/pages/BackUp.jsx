@@ -62,17 +62,16 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
    
     const onImageChange = event => {
       console.log(event.target.files);
-     // setFile(event.target.files[0]);
       console.log(event.target.files);
       setImages([...images, ...event.target.files]);
     }
 
-   const handleUpload = (e) => {
+   const onSubmit = (e) => {
       e.preventDefault();
         
         let file = e.target.files[0];
         const formdata = new FormData();
-        formdata.append('file', file);
+        formdata.append('files', images);
             
         for (var value of formdata.values()) {
             console.log(value);
@@ -88,18 +87,19 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         }).then(response => console.log(response));
     }
 
-
-    const onSubmit = async event => {
-      event.preventDefault();
-      var formData = new FormData();
-      formData.append("files", event.target.files);
-      axios.post( '/single-file', formData, {
-          headers: {
-              'Content-Type': 'multipart/form-data'
-          }
-      }).then(function(){console.log('SUCCESS!')})
-        .catch((error) => console.log(error));
-    }
+    /*
+        const onSubmit = async event => {
+          event.preventDefault();
+          var formData = new FormData();
+          formData.append("files", event.target.files);
+          axios.post( '/single-file', formData, {
+              headers: {
+                  'Content-Type': 'multipart/form-data'
+              }
+          }).then(function(){console.log('SUCCESS!')})
+            .catch((error) => console.log(error));
+        }
+    */
 
     const handleSubmit = async (e) => {
       e.preventDefault();
