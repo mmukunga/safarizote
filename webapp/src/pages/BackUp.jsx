@@ -70,7 +70,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     const onSubmit = async event => {
       event.preventDefault();
       var formData = new FormData();
-      var imagefile = document.querySelector('#files');
+      var imagefile = document.querySelector('#file');
       console.log(imagefile);
       console.log(imagefile.files[0]);
       console.log(event.target.file.files[0]);
@@ -147,7 +147,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         </form>
 
         <form onSubmit={onSubmit} style={{margin:"2px", border:"2px solid green"}}>
-          <input type="file" name="file" class="file-input" multiple required onChange={onImageChange}/>
+          <input type="file" id="file" name="file" class="file-input" multiple required onChange={onImageChange}/>
           <button type="submit">Upload Images</button>
         </form>
 
