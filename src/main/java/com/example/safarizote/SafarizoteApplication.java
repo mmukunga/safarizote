@@ -14,10 +14,4 @@ public class SafarizoteApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SafarizoteApplication.class, args);
 	}
-
-
-	@Bean
-	public MultipartResolver multipartResolver() {
-		return new StandardServletMultipartResolver();
-	}
 }

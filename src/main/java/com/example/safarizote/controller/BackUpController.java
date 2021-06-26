@@ -73,10 +73,9 @@ public class BackUpController {
         return new ResponseEntity<>(backUp, HttpStatus.OK);
     }
 
-
     @ResponseBody
     @RequestMapping(value="/single-file",  method = RequestMethod.POST,consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<?> uploadSingle(@RequestPart("file") MultipartFile file) {
+    public ResponseEntity<?> uploadSingle(@RequestPart("file") MultipartFile[] file) {
         System.out.println("uploaded");
         System.out.println(file);
         return ResponseEntity.ok().build();

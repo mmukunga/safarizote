@@ -67,32 +67,10 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       setImages([...images, ...event.target.files]);
     }
 
-   const handleUpload = (e) => {
-      e.preventDefault();
-        
-        let file = e.target.files[0];
-        const formdata = new FormData();
-        formdata.append('file', file);
-            
-        for (var value of formdata.values()) {
-            console.log(value);
-        }
-        
-        const url = 'http://127.0.0.1:8080/file/upload';
-        fetch(url, {
-            method: 'POST',
-            body: formdata,
-            headers: {
-                "Content-Type": "multipart/form-data"
-            }
-        }).then(response => console.log(response));
-    }
-
-
     const onSubmit = async event => {
       event.preventDefault();
       var formData = new FormData();
-      var imagefile = document.querySelector('#file');
+      var imagefile = document.querySelector('#files');
       console.log(imagefile);
       console.log(imagefile.files[0]);
       console.log(event.target.file.files[0]);
@@ -169,7 +147,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         </form>
 
         <form onSubmit={onSubmit} style={{margin:"2px", border:"2px solid green"}}>
-          <input type="file" id="file" name="file"multiple onChange={onImageChange}/>
+          <input type="file" name="file" class="file-input" multiple required onChange={onImageChange}/>
           <button type="submit">Upload Images</button>
         </form>
 
