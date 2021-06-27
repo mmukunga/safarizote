@@ -72,6 +72,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       var formData = new FormData();
       const config = {
         headers: {
+          'Accept': "application/json ,text/plain, */*",
           'Content-Type': 'multipart/form-data'
         }
       };
