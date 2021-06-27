@@ -80,10 +80,12 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           headers: {
             "Content-Type": "multipart/form-data" 
           }
-      }).then(function () {
+      }).then((response) => {
+        console.log(response);
         console.log('SUCCESS!!');
       })
-      .catch(function () {
+      .catch(error => {
+        console.log(error);
         console.log('FAILURE!!');
       });
     }
