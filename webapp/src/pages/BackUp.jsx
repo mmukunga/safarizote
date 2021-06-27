@@ -72,7 +72,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     const onSubmit = event => {
       event.preventDefault();
       var formData = new FormData();
-      file.append("file", image);
+      formData.append("file", image);
       const config = {
         headers: {
           'Accept': "application/json ,text/plain, */*",
