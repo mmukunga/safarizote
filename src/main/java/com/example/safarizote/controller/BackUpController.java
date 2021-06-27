@@ -78,6 +78,9 @@ public class BackUpController {
     public ResponseEntity<Object> uploadSingle(@RequestPart("file") MultipartFile file) {
         System.out.println("uploaded");
         System.out.println(file);
+        if (file.isEmpty()) {
+            return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
+        }
         return ResponseEntity.ok().build();
     }
     
