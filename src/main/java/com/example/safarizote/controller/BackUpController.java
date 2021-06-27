@@ -73,6 +73,16 @@ public class BackUpController {
         return new ResponseEntity<>(backUp, HttpStatus.OK);
     }
 
+    @RequestMapping(value="/api/doCloud", method={RequestMethod.POST})
+    public ResponseEntity<Object> doCloud(@RequestBody List<BackUp> folders) throws Exception {
+        System.out.println("doCloud");
+        System.out.println(file);
+        if (file.isEmpty()) {
+            return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
+        }
+        return ResponseEntity.ok().build();
+    }
+
     @ResponseBody
     @RequestMapping(value="/single-file", method = RequestMethod.POST, consumes = { "multipart/form-data" })
     public ResponseEntity<Object> uploadSingle(@RequestPart("file") MultipartFile file) {

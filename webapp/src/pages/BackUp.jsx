@@ -70,25 +70,19 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     const onSubmit = async event => {
       event.preventDefault();
       var formData = new FormData();
-      var imagefile = document.querySelector('#file');
-      console.log(imagefile);
-      console.log(imagefile.files[0]);
-      console.log(event.target.file.files[0]);
-      console.log(images)
-      formData.append('file', event.target.file.files[0]);
-      axios.post( '/api/single-file', formData, {
-          headers: {
-            'Content-Type':'multipart/form-data'
-          }
-      }).then((response) => {
-        console.log(response);
-        console.log('SUCCESS!!');
-      })
-      .catch(error => {
-        console.log(error);
-        console.log('FAILURE!!');
+      const options = {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+      };
+
+      axios.post("/api/doCloud", formData, options).then((response) => { 
+          console.log(response);
+        }).catch(error => {
+          console.log(error);
       });
     }
+    
 
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -148,8 +142,8 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           </div>    
         </form>
 
-        <form onSubmit={onSubmit} style={{margin:"2px", border:"2px solid green"}} enctype="multipart/form-data">
-          <input type="file" id="file" name="file" class="file-input" onChange={onImageChange}/>
+        <form onSubmit={onSubmit} style={{margin:"2px", border:"2px solid green"}}>
+          <input type="file" name="file" class="file-input" onChange={onImageChange}/>
           <button type="submit">Upload Images</button>
         </form>
 
