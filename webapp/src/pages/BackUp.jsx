@@ -78,7 +78,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       formData.append('file', event.target.file.files[0]);
       axios.post( '/single-file', formData, {
           headers: {
-            'Content-Type':undefined,
+            'Content-Type':'multipart/form-data; boundary=----WebKitFormBoundarymNbR3PLPxsFZcT47',
             'Accept':'application/json'
           }
       }).then((response) => {
