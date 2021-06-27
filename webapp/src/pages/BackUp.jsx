@@ -146,7 +146,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           </div>    
         </form>
 
-        <form onSubmit={onSubmit} style={{margin:"2px", border:"2px solid green"}}>
+        <form onSubmit={onSubmit} style={{margin:"2px", border:"2px solid green"}} enctype="multipart/form-data">
           <input type="file" id="file" name="file" class="file-input" multiple required onChange={onImageChange}/>
           <button type="submit">Upload Images</button>
         </form>
