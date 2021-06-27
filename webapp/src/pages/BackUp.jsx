@@ -9,6 +9,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     const [fileInput , setFileInput ] = React.useState(React.createRef());
 
     const [images, setImages] = useState([]);
+    const [image, setImage] = useState(null);
     const [isSucces, setSuccess] = useState(null);
     const [treeState, setTreeState] = React.useState({checked: [], expanded: []});
     const [nodes, setNodes] = React.useState([{
@@ -62,7 +63,8 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
    
     const onImageChange = event => {
       console.log(event.target.files);
-     // setFile(event.target.files[0]);
+      console.log(event.target.files[0]);
+      setImage(event.target.files[0]);
       console.log(event.target.files);
       setImages([...images, ...event.target.files]);
     }
@@ -70,6 +72,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     const onSubmit = event => {
       event.preventDefault();
       var formData = new FormData();
+      file.append("file", image);
       const config = {
         headers: {
           'Accept': "application/json ,text/plain, */*",
