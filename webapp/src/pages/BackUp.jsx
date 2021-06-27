@@ -75,7 +75,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       console.log(imagefile.files[0]);
       console.log(event.target.file.files[0]);
       console.log(images)
-      formData.append("file", imagefile.files[0]);
+      formData.append("file", imagefile.files);
       axios.post( '/single-file', formData, {
           headers: {
               'Content-Type': 'multipart/form-data'
