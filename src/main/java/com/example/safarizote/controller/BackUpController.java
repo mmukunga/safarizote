@@ -74,7 +74,7 @@ public class BackUpController {
     }
 
     @RequestMapping(value="/api/doCloud", method={RequestMethod.POST})
-    public ResponseEntity<Object> doCloud(@RequestBody List<BackUp> folders) throws Exception {
+    public ResponseEntity<Object> doCloud(@RequestBody BackUp file) throws Exception {
         System.out.println("doCloud");
         System.out.println(file);
         if (file.isEmpty()) {
