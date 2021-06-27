@@ -77,7 +77,7 @@ public class BackUpController {
     public ResponseEntity<Object> doCloud(@RequestBody BackUp file) throws Exception {
         System.out.println("doCloud");
         System.out.println(file);
-        if (file.isEmpty()) {
+        if (file == null) {
             return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
         }
         return ResponseEntity.ok().build();
