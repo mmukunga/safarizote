@@ -65,35 +65,16 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       console.log(event.target.files[0]);
       setFile(event.target.files[0]);
     }
-
-    const onSubmit = async event => {
-      event.preventDefault();
     
-      const { data } = axios.get('/api/uploadFile').then((response) => { 
-        console.log(response);
-        return response;
-      }).catch(error => {
-        console.log(error);
-        return null;
-    }); // image/jpeg
-
-      var formData = new FormData();
-      formData.append("my-photo", data);
-      axios.post('upload_file', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-      });
-/*
-      axios.post("/api/doCloud", file, config).then((response) => { 
-          console.log(response);
-        }).catch(error => {
-          console.log(error);
-      });*/
+    const onSubmit = (e) => {
+        e.preventDefault();
+      fileUpload(file).then((response) => {
+            console.log(response.data);
+        })
     }
     
     const fileUpload = (file) => {
-        const url = '/api/upload';
+        const url = '/api/upload_file';
         const formData = new FormData();
         formData.append('file', file)
         const config = {
@@ -102,13 +83,6 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
             }
         }
         return post(url, formData, config);
-    }
-    
-    const upload = (e) => {
-        e.preventDefault();
-      fileUpload(file).then((response) => {
-            console.log(response.data);
-        })
     }
 
 
@@ -170,7 +144,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           </div>    
         </form>
 
-        <form onSubmit={upload} style={{margin:"2px", border:"2px solid green"}}>
+        <form onSubmit={onSubmit} style={{margin:"2px", border:"2px solid green"}}>
           <input type="file" id="file" name="file" class="file-input" onChange={onImageChange}/>
           <button type="submit">Upload Images</button>
         </form>

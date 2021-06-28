@@ -79,58 +79,15 @@ public class BackUpController {
         return new ResponseEntity<>(backUp, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/files", method = RequestMethod.POST)
-    public ResponseEntity  handleFileUpload(@RequestParam("file") MultipartFile file) {
-        try {
-            System.out.printf("File name=%s, size=%s\n", file.getOriginalFilename(),file.getSize());
-            //creating a new file in some local directory
-            File fileToSave = new File("C:\\test\\" + file.getOriginalFilename());
-            //copy file content from received file to new local file
-            file.transferTo(fileToSave);
-        } catch (IOException ioe) {
-            //if something went bad, we need to inform client about it
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-        //everything was OK, return HTTP OK status (200) to the client
-        return ResponseEntity.ok().build();
-    }
 
-
-
-    @ResponseBody
-    @RequestMapping(value="/api/upload", method={RequestMethod.POST})
-    public ResponseEntity<Object> upload(@RequestParam("file") MultipartFile file) throws Exception {
+    @RequestMapping(value="/api/upload_file", method={RequestMethod.POST})
+    public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file) throws Exception {
         System.out.println("A file upload request has come in");
         System.out.println(file);
         if (file == null) {
             return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
         }
         return ResponseEntity.ok().build();
-    }
-
-    @RequestMapping(value = "/api/uploadFile", method = RequestMethod.GET)
-    public ResponseEntity<String> uploadFile() throws Exception {
-        System.out.println("Uploading file..");
-        URL url = new URL("https://photo-works.net/images/europe-landscape-photo-edited.jpg");
-        BufferedImage image = ImageIO.read(url);
-        return new ResponseEntity<>("image Done OK!", HttpStatus.OK);
-    }
-
-    @ResponseBody
-    @RequestMapping(value="/single-file", method = RequestMethod.POST, consumes = { "multipart/form-data" })
-    public ResponseEntity<Object> uploadSingle(@RequestPart("file") MultipartFile file) throws Exception {
-        System.out.println("uploaded");
-        System.out.println(file);
-        if (file.isEmpty()) {
-            return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
-        }
-        return ResponseEntity.ok().build();
-    }
-    
-    @RequestMapping(value = "/api/uploadFiles", method = RequestMethod.POST, consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
-    public ResponseEntity<Object> uploadFiles(@RequestPart("files") MultipartFile[] files) throws Exception {
-        System.out.println("Uploading files..");
-        return new ResponseEntity<>(HttpStatus.valueOf(200));
     }
 
     @RequestMapping(value="/api/doBackUp", method={RequestMethod.POST})
