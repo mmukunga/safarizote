@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Card from './Card';
 import axios from 'axios';
+import logo from '../logo.svg';
 import CheckboxTree from 'react-checkbox-tree';
 import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
   const BackUp = () => {
     const [category, setCategory] = React.useState([]);
     const [fileInput , setFileInput ] = React.useState(React.createRef());
-
-    const [images, setImages] = useState([]);
-    const [image, setImage] = useState(null);
     const [isSucces, setSuccess] = useState(null);
     const [treeState, setTreeState] = React.useState({checked: [], expanded: []});
     const [nodes, setNodes] = React.useState([{
@@ -65,19 +63,17 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       console.log(event.target.files);
       console.log(event.target.files[0]);
       setImage(event.target.files[0]);
-      console.log(event.target.files);
-      setImages([...images, ...event.target.files]);
     }
 
     const onSubmit = async event => {
       event.preventDefault();
-    
+ /*   
       const { data } = await axios.get(
         'https://photo-works.net/images/europe-landscape-photo-edited.jpg'
       ) // image/jpeg
-
+*/
       var formData = new FormData();
-      formData.append("my-photo", data);
+      formData.append("my-photo", logo);
       axios.post('upload_file', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
