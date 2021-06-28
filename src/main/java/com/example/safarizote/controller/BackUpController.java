@@ -91,11 +91,11 @@ public class BackUpController {
     }
 
     @RequestMapping(value = "/api/uploadFile", method = RequestMethod.GET)
-    public ResponseEntity<BufferedImage> uploadFile() throws Exception {
+    public ResponseEntity<String> uploadFile() throws Exception {
         System.out.println("Uploading file..");
         URL url = new URL("https://photo-works.net/images/europe-landscape-photo-edited.jpg");
         BufferedImage image = ImageIO.read(url);
-        return new ResponseEntity<>(image, HttpStatus.OK);
+        return new ResponseEntity<>("image Done OK!", HttpStatus.OK);
     }
 
     @ResponseBody

@@ -67,7 +67,13 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     const onSubmit = async event => {
       event.preventDefault();
     
-      const { data } = await axios.get('/api/uploadFile') // image/jpeg
+      const { data } = axios.get('/api/uploadFile').then((response) => { 
+        console.log(response);
+        return response;
+      }).catch(error => {
+        console.log(error);
+        return null;
+    }); // image/jpeg
 
       var formData = new FormData();
       formData.append("my-photo", data);
