@@ -7,6 +7,11 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.Optional;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.MediaType;
@@ -82,6 +87,14 @@ public class BackUpController {
             return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
         }
         return ResponseEntity.ok().build();
+    }
+
+    @RequestMapping(value = "/api/uploadFile", method = RequestMethod.GET)
+    public ResponseEntity<Image> uploadFile(){
+        System.out.println("Uploading file..");
+        URL url = new URL("https://photo-works.net/images/europe-landscape-photo-edited.jpg");
+        BufferedImage image = ImageIO.read(url);
+        return new ResponseEntity<>(image, HttpStatus.OK);
     }
 
     @ResponseBody
