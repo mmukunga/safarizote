@@ -78,7 +78,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'multipart/form-data'
           }
-      })
+      });
 /*
       axios.post("/api/doCloud", file, config).then((response) => { 
           console.log(response);
