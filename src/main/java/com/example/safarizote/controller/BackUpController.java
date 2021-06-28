@@ -74,8 +74,8 @@ public class BackUpController {
     }
 
     @ResponseBody
-    @RequestMapping(value="/api/doCloud", method={RequestMethod.POST}, consumes="multipart/form-data")
-    public ResponseEntity<Object> doCloud(@RequestParam("file") MultipartFile file) throws Exception {
+    @RequestMapping(value="/upload_file", method={RequestMethod.POST}, consumes="multipart/form-data")
+    public ResponseEntity<Object> doCloud(@RequestParam("my-photo") MultipartFile file) throws Exception {
         System.out.println("A file upload request has come in");
         System.out.println(file);
         if (file == null) {
