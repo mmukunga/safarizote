@@ -69,7 +69,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       setImages([...images, ...event.target.files]);
     }
 
-    const onSubmit = event => {
+    const onSubmit = async event => {
       event.preventDefault();
     
       const { data } = await axios.get(
@@ -83,12 +83,12 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
             'Content-Type': 'multipart/form-data'
           }
       })
-
+/*
       axios.post("/api/doCloud", file, config).then((response) => { 
           console.log(response);
         }).catch(error => {
           console.log(error);
-      });
+      });*/
     }
     
 
