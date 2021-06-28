@@ -67,12 +67,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     const onSubmit = async event => {
       event.preventDefault();
     
-      const { data } = await axios.get(
-        'https://photo-works.net/images/europe-landscape-photo-edited.jpg', 
-        {headers: {
-          'Access-Control-Allow-Origin': '*'
-        }}
-      ) // image/jpeg
+      const { data } = await axios.get('/api/uploadFile') // image/jpeg
 
       var formData = new FormData();
       formData.append("my-photo", data);
