@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import java.net.URL;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
