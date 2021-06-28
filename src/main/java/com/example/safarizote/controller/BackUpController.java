@@ -90,7 +90,7 @@ public class BackUpController {
     }
 
     @RequestMapping(value = "/api/uploadFile", method = RequestMethod.GET)
-    public ResponseEntity<Image> uploadFile(){
+    public ResponseEntity<BufferedImage> uploadFile(){
         System.out.println("Uploading file..");
         URL url = new URL("https://photo-works.net/images/europe-landscape-photo-edited.jpg");
         BufferedImage image = ImageIO.read(url);
