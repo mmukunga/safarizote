@@ -98,7 +98,7 @@ public class BackUpController {
 
 
     @ResponseBody
-    @RequestMapping(value="/upload", method={RequestMethod.POST})
+    @RequestMapping(value="/api/upload", method={RequestMethod.POST})
     public ResponseEntity<Object> upload(@RequestParam("file") MultipartFile file) throws Exception {
         System.out.println("A file upload request has come in");
         System.out.println(file);
