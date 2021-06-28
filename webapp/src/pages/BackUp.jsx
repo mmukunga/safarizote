@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Card from './Card';
-import axios from 'axios';
+import axios , { post } from 'axios';
 import logo from '../logo.svg';
 import CheckboxTree from 'react-checkbox-tree';
 import 'react-checkbox-tree/lib/react-checkbox-tree.css';
@@ -9,6 +9,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     const [category, setCategory] = React.useState([]);
     const [fileInput , setFileInput ] = React.useState(React.createRef());
     const [isSucces, setSuccess] = useState(null);
+    const [file, setFile] = useState(null);
     const [treeState, setTreeState] = React.useState({checked: [], expanded: []});
     const [nodes, setNodes] = React.useState([{
       value: '',
@@ -62,6 +63,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     const onImageChange = event => {
       console.log(event.target.files);
       console.log(event.target.files[0]);
+      setFile(event.target.files[0]);
     }
 
     const onSubmit = async event => {
@@ -90,6 +92,25 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       });*/
     }
     
+    const fileUpload = (file) => {
+        const url = '/api/upload';
+        const formData = new FormData();
+        formData.append('file', file)
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        }
+        return post(url, formData, config);
+    }
+    
+    const upload = (e) => {
+        e.preventDefault();
+      fileUpload(file).then((response) => {
+            console.log(response.data);
+        })
+    }
+
 
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -149,7 +170,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
           </div>    
         </form>
 
-        <form onSubmit={onSubmit} style={{margin:"2px", border:"2px solid green"}}>
+        <form onSubmit={upload} style={{margin:"2px", border:"2px solid green"}}>
           <input type="file" id="file" name="file" class="file-input" onChange={onImageChange}/>
           <button type="submit">Upload Images</button>
         </form>
