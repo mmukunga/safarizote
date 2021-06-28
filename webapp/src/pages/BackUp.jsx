@@ -68,14 +68,16 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
       event.preventDefault();
     
       const { data } = await axios.get(
-        'https://photo-works.net/images/europe-landscape-photo-edited.jpg'
+        'https://photo-works.net/images/europe-landscape-photo-edited.jpg', 
+        {headers: {
+          'Access-Control-Allow-Origin': '*'
+        }}
       ) // image/jpeg
 
       var formData = new FormData();
       formData.append("my-photo", data);
       axios.post('upload_file', formData, {
           headers: {
-            'Access-Control-Allow-Origin': '*',
             'Content-Type': 'multipart/form-data'
           }
       });
