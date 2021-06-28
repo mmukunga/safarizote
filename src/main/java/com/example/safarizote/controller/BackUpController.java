@@ -91,7 +91,7 @@ public class BackUpController {
     }
 
     @RequestMapping(value = "/api/uploadFile", method = RequestMethod.GET)
-    public ResponseEntity<BufferedImage> uploadFile(){
+    public ResponseEntity<BufferedImage> uploadFile() throws Exception {
         System.out.println("Uploading file..");
         URL url = new URL("https://photo-works.net/images/europe-landscape-photo-edited.jpg");
         BufferedImage image = ImageIO.read(url);
@@ -100,7 +100,7 @@ public class BackUpController {
 
     @ResponseBody
     @RequestMapping(value="/single-file", method = RequestMethod.POST, consumes = { "multipart/form-data" })
-    public ResponseEntity<Object> uploadSingle(@RequestPart("file") MultipartFile file) {
+    public ResponseEntity<Object> uploadSingle(@RequestPart("file") MultipartFile file) throws Exception {
         System.out.println("uploaded");
         System.out.println(file);
         if (file.isEmpty()) {
@@ -110,7 +110,7 @@ public class BackUpController {
     }
     
     @RequestMapping(value = "/api/uploadFiles", method = RequestMethod.POST, consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
-    public ResponseEntity<Object> uploadFiles(@RequestPart("files") MultipartFile[] files){
+    public ResponseEntity<Object> uploadFiles(@RequestPart("files") MultipartFile[] files) throws Exception {
         System.out.println("Uploading files..");
         return new ResponseEntity<>(HttpStatus.valueOf(200));
     }
