@@ -86,7 +86,7 @@ public class BackUpController {
         BackUp backUp = new BackUp();
         for (BackUp category : categories) {
             System.out.println(category);
-            if (category.getId()!=null){
+            if (category.getId() != null){
                 backUp = category;
                 break;
             } 

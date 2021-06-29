@@ -107,7 +107,7 @@ const reducer = (state, action) => {
       
       let AuthUser = function(id) {
         return axios.get(`/api/upload/${id}`).then(response => { 
-          console.log(response.data);
+          console.log(response);
           return response.data;
         });
       }
