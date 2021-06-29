@@ -147,7 +147,9 @@ const reducer = (state, action) => {
       }
      
       sendData().then((result) => {
-        console.log(result) 
+        console.log(result);
+        result.data.append("ASadasdsdweedafsfsdf"); 
+        console.log(result);
         const options = {
           headers: {
               'Content-Type': 'application/json',
