@@ -153,7 +153,7 @@ const reducer = (state, action) => {
           }
         };
   
-        axios.post("/api/doUpload", state.files, options).then((response) => { 
+        axios.post("/api/doUpload", result, options).then((response) => { 
             console.log(response);
           }).catch(error => {
             console.log(error);
