@@ -102,31 +102,6 @@ const reducer = (state, action) => {
       }
     }
 
-
-    const onSubmit = useCallback(
-      (e) => {
-        e.preventDefault()
-        if (state.files.length) {
-          dispatch({ type: 'submit' })
-        } else {
-          window.alert("You don't have any files loaded.")
-        }
-      },
-      [state.files.length],
-    )
-
-    const fileUpload = (file) => {
-        const url = '/api/upload_file';
-        const formData = new FormData();
-        formData.append('file', file)
-        const config = {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        }
-        return post(url, formData, config);
-    }
-
     const uploadSubmit = async (e) => {
       e.preventDefault();
       
@@ -139,8 +114,8 @@ const reducer = (state, action) => {
       
       const sendData = async () => {
         const myData = [];
-          for (const id of treeState.checked) {
-            let result = await AuthUser(id);
+          for (const value of category) {
+            let result = await AuthUser(value.id);
             myData.push(result );
           }
         return myData;
