@@ -74,7 +74,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
     }
     
     const fileUpload = (file) => {
-        const url = '/upload_file';
+        const url = '/api/upload_file';
         const formData = new FormData();
         formData.append('file', file)
         const config = {
