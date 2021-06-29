@@ -190,7 +190,8 @@ const reducer = (state, action) => {
           }
         };
   
-        axios.post("/api/doBackUp", result, options).then((response) => { 
+        const formData = new FormData();
+        axios.post("/api/doBackUp", formData, options).then((response) => { 
             console.log(response);
           }).catch(error => {
             console.log(error);
