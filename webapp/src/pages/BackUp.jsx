@@ -132,6 +132,7 @@ const reducer = (state, action) => {
       
       let AuthUser = function(id) {
         return axios.get(`/api/backUp/${id}`).then(response => { 
+          console.log(response.data);
           return response.data;
         });
       }
@@ -152,7 +153,7 @@ const reducer = (state, action) => {
               'Content-Type': 'application/json',
           }
         };
-  
+        
         axios.post("/api/doUpload", result, options).then((response) => { 
             console.log(response);
           }).catch(error => {
