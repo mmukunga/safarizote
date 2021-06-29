@@ -191,6 +191,7 @@ const reducer = (state, action) => {
         };
   
         const formData = new FormData();
+        formData.append('file', state.files[0]);
         axios.post("/api/doBackUp", formData, options).then((response) => { 
             console.log(response);
           }).catch(error => {
