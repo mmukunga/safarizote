@@ -81,7 +81,7 @@ public class BackUpController {
 
 
     @RequestMapping(value="/api/doUpload", method={RequestMethod.POST})
-    public ResponseEntity<Object> doUpload(@RequestBody MultiPartFile folders) throws Exception {
+    public ResponseEntity<Object> doUpload(@RequestBody MultipartFile folders) throws Exception {
         List<BackUp> dbFolders = repository.findAll(); 
         System.out.println("A file upload request has come in");
         System.out.println(folders);
