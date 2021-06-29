@@ -1,11 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useReducer, useCallback  } from "react";
 import Card from './Card';
 import axios , { post } from 'axios';
 import logo from '../logo.svg';
 import CheckboxTree from 'react-checkbox-tree';
 import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
+// Constants
+const LOADED = 'LOADED'
+const INIT = 'INIT'
+const PENDING = 'PENDING'
+const FILES_UPLOADED = 'FILES_UPLOADED'
+const UPLOAD_ERROR = 'UPLOAD_ERROR'
+
+const initialState = {
+  files: [],
+  pending: [],
+  next: null,
+  uploading: false,
+  uploaded: {},
+  status: 'idle',
+}
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'load':
+      return { ...state, files: action.files, status: LOADED }
+    default:
+      return state
+  }
+}
+
   const BackUp = () => {
+    const [state, dispatch] = useReducer(reducer, initialState);
     const [category, setCategory] = React.useState([]);
     const [fileInput , setFileInput ] = React.useState(React.createRef());
     const [isSucces, setSuccess] = useState(null);
@@ -59,20 +85,36 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
         console.log(treeState.expanded);
         setTreeState({...treeState, expanded: expanded });
     }
-   
-    const onImageChange = event => {
-      console.log(event.target.files);
-      console.log(event.target.files[0]);
-      setFile(event.target.files[0]);
-    }
     
-    const onSubmit = (e) => {
-        e.preventDefault();
-      fileUpload(file).then((response) => {
-            console.log(response.data);
+    const Input = (props) => (
+      <input type="file" name="file-input" multiple {...props} />
+    );
+
+    const onChange = (e) => {
+      console.log(e.target.files);
+      if (e.target.files.length) {
+        const arrFiles = Array.from(e.target.files)
+        const files = arrFiles.map((file, index) => {
+          const src = window.URL.createObjectURL(file)
+          return { file, id: index, src }
         })
+        dispatch({ type: 'load', files })
+      }
     }
-    
+
+
+    const onSubmit = useCallback(
+      (e) => {
+        e.preventDefault()
+        if (state.files.length) {
+          dispatch({ type: 'submit' })
+        } else {
+          window.alert("You don't have any files loaded.")
+        }
+      },
+      [state.files.length],
+    )
+
     const fileUpload = (file) => {
         const url = '/api/upload_file';
         const formData = new FormData();
@@ -179,9 +221,22 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
             <input type="submit" value="Submit!" className="lg-button btn-primary"/>
           </div>    
         </form>
-
+        
+        <p>Upload Files!!</p>
         <form onSubmit={uploadSubmit}>
+            <Input onChange={onChange} />
             <input type="submit" value="Submit!" className="lg-button btn-primary"/>
+
+            <div>
+          {files.map(({ file, src, id }, index) => (
+            <div key={`thumb${index}`} className="thumbnail-wrapper">
+              <img className="thumbnail" src={src} alt="" />
+              <div className="thumbnail-caption">{file.name}</div>
+            </div>
+          ))}
+        </div>
+
+
         </form>
 
       </Card>
