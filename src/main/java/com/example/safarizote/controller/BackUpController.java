@@ -79,6 +79,21 @@ public class BackUpController {
         return new ResponseEntity<>(backUp, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/api/upload/{id}",  method={RequestMethod.GET})
+    public ResponseEntity<BackUp> getUpload(@PathVariable Long id) {
+        System.out.println("BackUpController: getBackUp FolderID:= " + id);
+        List<BackUp> categories = repository.findAll();
+        BackUp backUp = new BackUp();
+        for (BackUp category : categories) {
+            System.out.println(category);
+            if (category.getId()!=null){
+                backUp = category;
+                break;
+            } 
+        }
+        
+        return new ResponseEntity<>(backUp, HttpStatus.OK);
+    }
 
     @RequestMapping(value="/api/doUpload", method={RequestMethod.POST})
     public ResponseEntity<Object> doUpload(@RequestBody List<File> files) throws Exception {

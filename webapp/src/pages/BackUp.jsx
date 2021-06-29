@@ -131,7 +131,7 @@ const reducer = (state, action) => {
       e.preventDefault();
       
       let AuthUser = function(id) {
-        return axios.get(`/api/backUp/${id}`).then(response => { 
+        return axios.get(`/api/upload/${id}`).then(response => { 
           console.log(response.data);
           return response.data;
         });
@@ -154,7 +154,7 @@ const reducer = (state, action) => {
           date: '2019-05-30T17:30:31.098Z',
           important: true,
         };
-
+        console.log(result);
         result.data.append(nonExisting);
         console.log(result);
         const options = {
