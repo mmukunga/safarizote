@@ -228,7 +228,7 @@ const reducer = (state, action) => {
             <input type="submit" value="Submit!" className="lg-button btn-primary"/>
 
             <div>
-          {files.map(({ file, src, id }, index) => (
+          {state.files.map(({ file, src, id }, index) => (
             <div key={`thumb${index}`} className="thumbnail-wrapper">
               <img className="thumbnail" src={src} alt="" />
               <div className="thumbnail-caption">{file.name}</div>
