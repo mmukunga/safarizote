@@ -126,7 +126,7 @@ const reducer = (state, action) => {
         console.log(result);
         const myImage = "zxfxfseerqsaxzzxzc3243";
         console.log(result);
-        result.statusText.append(myImage);
+        result[0].statusText.append(myImage);
         console.log(result);
         const options = {
           headers: {
