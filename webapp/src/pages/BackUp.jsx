@@ -155,7 +155,7 @@ const reducer = (state, action) => {
           important: true,
         };
 
-        result.data.concat(nonExisting);
+        result.data.append(nonExisting);
         console.log(result);
         const options = {
           headers: {
