@@ -84,8 +84,8 @@ public class BackUpController {
     public ResponseEntity<BackUp> doUpload(@RequestBody List<BackUp> folders) throws Exception {
         List<BackUp> dbFolders = repository.findAll(); 
         System.out.println("A file upload request has come in");
-        System.out.println(file);
-        if (file == null) {
+        System.out.println(folders);
+        if (folders == null) {
             return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
         }
         return ResponseEntity.ok().build();
