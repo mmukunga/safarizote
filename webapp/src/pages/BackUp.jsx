@@ -116,6 +116,7 @@ const reducer = (state, action) => {
         const myData = [];
           for (const value of category) {
             let result = await AuthUser(value.id);
+            console.log(result);
             myData.push(result );
           }
         return myData;
@@ -123,14 +124,9 @@ const reducer = (state, action) => {
      
       sendData().then((result) => {
         console.log(result);
-        const nonExisting = {
-          id: 10000,
-          content: 'This note is not saved to server',
-          date: '2019-05-30T17:30:31.098Z',
-          important: true,
-        };
+        const myImage = "zxfxfseerqsaxzzxzc3243";
         console.log(result);
-        //result.data.append(nonExisting);
+        result.statusText.append(myImage);
         console.log(result);
         const options = {
           headers: {
