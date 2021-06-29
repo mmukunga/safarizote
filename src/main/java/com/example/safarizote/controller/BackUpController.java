@@ -4,6 +4,7 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Set;
 import java.util.Optional;
 
@@ -83,14 +84,13 @@ public class BackUpController {
     public ResponseEntity<BackUp> getUpload(@PathVariable Long id) {
         System.out.println("BackUpController: getBackUp FolderID:= " + id);
         List<BackUp> categories = repository.findAll();
-        BackUp backUp = new BackUp();
-        for (BackUp category : categories) {
-            System.out.println(category);
-            if (category.getId() != null){
-                backUp = category;
-                break;
-            } 
-        }
+
+        Random randomGenerator = new Random();
+        int index = randomGenerator.nextInt(categories.size());
+
+        BackUp backUp = categories.get(index);
+        backUp.setChildren(null);
+        System.out.println("Managers choice this week" + backUp + "our recommendation to you");
         
         return new ResponseEntity<>(backUp, HttpStatus.OK);
     }

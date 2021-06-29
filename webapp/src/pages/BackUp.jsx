@@ -130,7 +130,7 @@ const reducer = (state, action) => {
           important: true,
         };
         console.log(result);
-        result.data.append(nonExisting);
+        //result.data.append(nonExisting);
         console.log(result);
         const options = {
           headers: {
