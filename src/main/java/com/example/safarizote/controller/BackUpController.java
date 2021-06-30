@@ -83,7 +83,7 @@ public class BackUpController {
         System.out.println(files);
         List<BackUp> dbFolders = repository.findAll(); 
         System.out.println("A file upload request has come in");
-        String fileName = files.get(0).getOriginalFilename();
+        String fileName = files.get(0).getName();
         System.out.println(fileName);
         if (files == null) {
             return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
