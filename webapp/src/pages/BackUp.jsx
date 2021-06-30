@@ -27,7 +27,6 @@ const reducer = (state, action) => {
   const BackUp = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const [category, setCategory] = React.useState([]);
-    const [treeState, setTreeState] = React.useState({checked: [], expanded: []});
     const [nodes, setNodes] = React.useState([{
       value: '',
       label: '',
