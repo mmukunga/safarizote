@@ -127,7 +127,7 @@ const reducer = (state, action) => {
         const myImage = "zxfxfseerqsaxzzxzc3243";
         console.log(result);
         console.log(result[0].name);
-        result[0].name.append(myImage);
+        result[0].name=myImage;
         console.log(result);
         const options = {
           headers: {
