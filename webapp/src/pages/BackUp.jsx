@@ -116,7 +116,7 @@ const reducer = (state, action) => {
     };
     
     const Input = (props) => (
-      <input type="file" name="file" multiple {...props} />
+      <input type="file" name="file" multiple {...props} style={{border:'2px solid red'}} />
     );
 
     return (
