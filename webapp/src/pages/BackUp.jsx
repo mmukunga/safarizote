@@ -125,13 +125,14 @@ const reducer = (state, action) => {
       const url = '/api/upload';
       const formData = new FormData();
       formData.append('file', file);
-
+/*
       const config = {
           headers: {
               'Content-type': 'application/json'
           }
-      }
-      return post(url, formData, config)
+      } 
+      return post(url, formData, config) */
+      return post(url, formData); 
   }
 
     const Input = (props) => (
