@@ -122,10 +122,11 @@ const reducer = (state, action) => {
     const fileUpload = (file) => {
       const url = '/api/upload';
       const formData = new FormData();
-      formData.append('file', file)
+      formData.append('file', file);
+
       const config = {
           headers: {
-              'content-type': 'multipart/form-data'
+              'Content-type': 'application/json'
           }
       }
       return post(url, formData, config)
