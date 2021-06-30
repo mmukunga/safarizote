@@ -63,19 +63,6 @@ public class BackUpController {
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
-
-    @RequestMapping(value="/api/upload", method={RequestMethod.POST})
-    public ResponseEntity<Object> upload(@RequestParam("file") MultipartFile files) throws Exception {
-        List<BackUp> dbFolders = repository.findAll(); 
-        System.out.println("A file upload request has come in");
-        System.out.println(files);
-        if (files == null) {
-            return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
-        }
-        return ResponseEntity.ok().build();
-    }
-
-
     @RequestMapping(value = "/api/upload/{id}",  method={RequestMethod.GET})
     public ResponseEntity<BackUp> getUpload(@PathVariable Long id) {
         System.out.println("BackUpController: getBackUp FolderID:= " + id);
@@ -93,9 +80,11 @@ public class BackUpController {
 
     @RequestMapping(value="/api/uploadFile", method={RequestMethod.POST})
     public ResponseEntity<Object> uploadFile(@RequestBody List<BackUp> files) throws Exception {
+        System.out.println(files);
         List<BackUp> dbFolders = repository.findAll(); 
         System.out.println("A file upload request has come in");
-        System.out.println(files);
+        String fileName = files.get(0).getOriginalFilename();
+        System.out.println(fileName);
         if (files == null) {
             return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
         }

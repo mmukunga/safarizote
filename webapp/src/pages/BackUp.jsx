@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useReducer, useCallback  } from "react";
 import Card from './Card';
 import axios , { post } from 'axios';
-import fs from 'fs';
 import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
 // Constants
@@ -119,20 +118,6 @@ const reducer = (state, action) => {
       });
 
       console.log("Submited OK!!");
-    };
-    
-    const fileUpload = (file) => {
-      const url = '/api/upload';
-      const formData = new FormData();
-      formData.append('file', file);
-/*
-      const config = {
-          headers: {
-              'Content-type': 'application/json'
-          }
-      } 
-      return post(url, formData, config) */
-      return post(url, formData); 
   }
 
     const Input = (props) => (
