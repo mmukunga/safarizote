@@ -97,25 +97,25 @@ const reducer = (state, action) => {
       }
      
       sendData(e).then((result) => {
-        console.log(state.files[0]);
-        fileUpload(state.files[0]).then((response) => {
-            console.log(response.data);
-        });
-
-        console.log(result);
-        const options = {
-          headers: {
+          console.log(result);
+          const options = {
+            headers: {
               'Content-Type': 'application/json',
-          }
-        };
-        
-        axios.post("/api/uploadFile", result, options).then((response) => { 
-            console.log(response);
+            }
+          };
+          
+          axios.post("/api/uploadFile", result, options).then((response) => { 
+              console.log(response);
           }).catch(error => {
-            console.log(error);
-        });
-      })
-      
+              console.log(error);
+          });
+      });
+          
+      console.log(state.files[0]);
+      fileUpload(state.files[0]).then((response) => {
+          console.log(response.data);
+      });
+
       console.log("Submited OK!!");
     };
     
