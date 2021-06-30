@@ -98,7 +98,7 @@ const reducer = (state, action) => {
      
       sendData(e).then((result) => {
         const [file] = e.target.files[0];
-        const arrayBuffer = await file.arrayBuffer()
+        const arrayBuffer = file.arrayBuffer()
         const myBlob = new Blob([new Uint8Array(arrayBuffer)], {
           type: file.type,
         });
