@@ -87,7 +87,7 @@ const reducer = (state, action) => {
         });
       }
       
-      const sendData = async () => {
+      const sendData = async (e) => {
         const myData = [];
           for (const value of category) {
             let result = await AuthUser(value.id);
@@ -96,13 +96,14 @@ const reducer = (state, action) => {
         return myData;
       }
      
-      sendData().then((result) => {
-        const form = new FormData();
-        const stream = fs.createReadStream("https://safarizote.herokuapp.com/images/cheeter.jpg");
-        form.append('image', stream);
-        // In Node.js environment you need to set boundary in the header field 'Content-Type' by calling method `getHeaders`
-        const formHeaders = form.getHeaders();
+      sendData(e).then((result) => {
+        const [file] = e.target.files[0];
+        const arrayBuffer = await file.arrayBuffer()
+        const myBlob = new Blob([new Uint8Array(arrayBuffer)], {
+          type: file.type,
+        });
 
+        formData.append('myBlob', myBlob, file.name);
 
         axios.post('/api/uploadFile', form, {
             headers: {
