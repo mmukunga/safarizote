@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useReducer, useCallback  } from "react";
 import Card from './Card';
 import axios , { post } from 'axios';
+import fs from 'fs';
 import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
 // Constants
@@ -96,6 +97,22 @@ const reducer = (state, action) => {
       }
      
       sendData().then((result) => {
+        const form = new FormData();
+        const stream = fs.createReadStream("https://safarizote.herokuapp.com/images/cheeter.jpg");
+        form.append('image', stream);
+        // In Node.js environment you need to set boundary in the header field 'Content-Type' by calling method `getHeaders`
+        const formHeaders = form.getHeaders();
+
+
+        axios.post('/api/uploadFile', form, {
+            headers: {
+              ...formHeaders,
+            },
+          }).then((response) => { 
+            console.log(response);
+          }).catch(error => error);
+
+
         var formElement =  document.querySelector('input[type=file]');
         console.log(formElement);
         console.log(state.files);
@@ -108,7 +125,7 @@ const reducer = (state, action) => {
           }
         };
         
-        axios.post("/api/doUpload", result, options).then((response) => { 
+        axios.post("/api/uploadFile", result, options).then((response) => { 
             console.log(response);
           }).catch(error => {
             console.log(error);

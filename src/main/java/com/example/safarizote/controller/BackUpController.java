@@ -78,8 +78,8 @@ public class BackUpController {
         return new ResponseEntity<>(backUp, HttpStatus.OK);
     }
 
-    @RequestMapping(value="/api/doUpload", method={RequestMethod.POST})
-    public ResponseEntity<Object> doUpload(@RequestBody List<BackUp> files) throws Exception {
+    @RequestMapping(value="/api/uploadFile", method={RequestMethod.POST})
+    public ResponseEntity<Object> uploadFile(@RequestBody List<BackUp> files) throws Exception {
         List<BackUp> dbFolders = repository.findAll(); 
         System.out.println("A file upload request has come in");
         System.out.println(files);
