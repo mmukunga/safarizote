@@ -110,13 +110,6 @@ const reducer = (state, action) => {
           });
       });
           
-      console.log(state.files[0]);
-      fileUpload(state.files[0]).then((response) => { 
-          console.log(response);
-      }).catch(error => {
-          console.log(error);
-      });
-
       console.log("Submited OK!!");
   }
 
