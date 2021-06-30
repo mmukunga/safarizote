@@ -85,10 +85,6 @@ const reducer = (state, action) => {
         console.log(treeState.expanded);
         setTreeState({...treeState, expanded: expanded });
     }
-    
-    const Input = (props) => (
-      <input type="file" name="file-input" multiple {...props} />
-    );
 
     const onChange = (e) => {
       console.log(e.target.files);
@@ -183,43 +179,34 @@ const reducer = (state, action) => {
       console.log("Submited OK!!");
     };
 
+    
+    
+    const Input = (props) => (
+      <input type="file" name="file" multiple {...props} />
+    );
+
     const { checked, expanded } = treeState;
 
     return (
       <Card className="InnerCard" fontColor="black">
         <strong>Tree BackUp</strong>
         <h3>Check and Uncheck</h3>
-        <form onSubmit={handleSubmit}>
-          <div className="BackUps">
-            <CheckboxTree
-                checked={checked}
-                expanded={expanded}
-                iconsClass="fa5"
-                nodes={nodes}
-                onCheck={onCheck}
-                onExpand={onExpand}
-            />
-          </div>
-          <div className="row">
-            <input type="submit" value="Submit!" className="lg-button btn-primary"/>
-          </div>    
-        </form>
-        
         <p>Upload Files!!</p>
         <form onSubmit={uploadSubmit}>
-            <Input onChange={onChange} />
+          <div className="BackUps">
+              <Input onChange={onChange} />
+          </div>  
+          <div className="row">  
             <input type="submit" value="Submit!" className="lg-button btn-primary"/>
-
-            <div>
-          {state.files.map(({ file, src, id }, index) => (
-            <div key={`thumb${index}`} className="thumbnail-wrapper">
-              <img className="thumbnail" src={src} alt="" />
-              <div className="thumbnail-caption">{file.name}</div>
-            </div>
-          ))}
-        </div>
-
-
+          </div>
+          <div>
+            {state.files.map(({ file, src, id }, index) => (
+              <div key={`thumb${index}`} className="thumbnail-wrapper">
+                <img className="thumbnail" src={src} alt="" />
+                <div className="thumbnail-caption">{file.name}</div>
+              </div>
+            ))}
+          </div>
         </form>
 
       </Card>
