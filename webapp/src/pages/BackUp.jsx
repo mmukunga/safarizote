@@ -108,7 +108,7 @@ const reducer = (state, action) => {
               'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
             }
           };
-          axios.post("/api/uploadFile", formData, options).then((response) => { 
+          axios.post("/api/uploadFile", formData).then((response) => { 
               console.log(response);
           }).catch(error => {
               console.log(error);
