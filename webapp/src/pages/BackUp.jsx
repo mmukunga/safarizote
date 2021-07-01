@@ -99,7 +99,7 @@ const reducer = (state, action) => {
           console.log(result);
           const options = {
             headers: {
-              'Content-Type': 'application/json',
+              'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
             }
           };
           
