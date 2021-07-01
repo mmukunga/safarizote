@@ -14,6 +14,13 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import java.net.URL;
 
+
+import java.nio.charset.Charset;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.util.StreamUtils;
+
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.MediaType;
@@ -51,6 +58,9 @@ public class BackUpController {
   @Autowired
   private BackUpRepository repository;
     
+  @Value("https://storage.cloud.google.com/sms_familie_album/2001%20MaxUlf/MaxUlf/P9010004.JPG")
+  private Resource gcsFile;
+
     @RequestMapping(value = "/api/categories",  method={RequestMethod.GET})
     public ResponseEntity<List<BackUp>> findAll() {
         System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
@@ -77,16 +87,22 @@ public class BackUpController {
         
         return new ResponseEntity<>(backUp, HttpStatus.OK);
     }
-
+    
     @RequestMapping(value="/api/downloadFile", method={RequestMethod.GET})
     public ResponseEntity<Object> download(@RequestParam("image") String image) throws Exception {
         System.out.println(image);
         List<BackUp> dbFolders = repository.findAll(); 
         System.out.println("An image upload request has come in!!");
-        System.out.println(image);
+        System.out.println("Image from Multipart:= " + image);
         if (image == null) {
             return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
         }
+
+        String gcsFile = StreamUtils.copyToString(
+            gcsFile.getInputStream(),
+            Charset.defaultCharset()) + "\n";
+            System.out.println("Image from GoogleCloud Storage:= " + gcsFile);
+
         return ResponseEntity.ok().build();
     }
 
