@@ -98,19 +98,9 @@ const reducer = (state, action) => {
       sendData(e).then((result) => {
           console.log(result);
           let formData = new FormData();
-          state.files.forEach(file => {
-            formData.append("files", file.raw); 
-            formData.append("fileNames", file.name);
-          });
+          formData.append("file",  state.files[0]); 
           
-          const options = {
-            headers: {
-              "Access-Control-Allow-Origin": "*",
-              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-              'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
-            }
-          };
-          axios.post("/api/uploadFile", formData, options).then((response) => { 
+          axios.post("/api/uploadFile", formData).then((response) => { 
               console.log(response);
           }).catch(error => {
               console.log(error);
