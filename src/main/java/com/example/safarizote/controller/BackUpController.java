@@ -80,11 +80,11 @@ public class BackUpController {
 
     @RequestMapping(value="/api/downloadFile", method={RequestMethod.GET})
     public ResponseEntity<Object> download(@RequestParam("image") String image) throws Exception {
-        System.out.println(file);
+        System.out.println(image);
         List<BackUp> dbFolders = repository.findAll(); 
-        System.out.println("A file upload request has come in");
-        System.out.println(file);
-        if (file == null) {
+        System.out.println("An image upload request has come in!!");
+        System.out.println(image);
+        if (image == null) {
             return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
         }
         return ResponseEntity.ok().build();
