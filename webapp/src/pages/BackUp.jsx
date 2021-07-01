@@ -105,10 +105,12 @@ const reducer = (state, action) => {
           
           const options = {
             headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
               'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
             }
           };
-          axios.post("/api/uploadFile", formData).then((response) => { 
+          axios.post("/api/uploadFile", formData, options).then((response) => { 
               console.log(response);
           }).catch(error => {
               console.log(error);
