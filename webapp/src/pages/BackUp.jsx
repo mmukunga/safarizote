@@ -103,7 +103,9 @@ const reducer = (state, action) => {
             }
           };
           
-          axios.post("/api/uploadFile", result, options).then((response) => { 
+          let formData = new FormData();
+          formData.append('file', state.file, "filename");
+          axios.post("/api/uploadFile", formData, options).then((response) => { 
               console.log(response);
           }).catch(error => {
               console.log(error);
