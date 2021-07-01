@@ -98,7 +98,11 @@ const reducer = (state, action) => {
       sendData(e).then((result) => {
           console.log(result);
           let formData = new FormData();
-          formData.append('file', state.file, "filename");
+          state.files.forEach(file => {
+            formData.append("files", file.raw); 
+            formData.append("fileNames", file.name);
+          });
+          
           const options = {
             headers: {
               'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
