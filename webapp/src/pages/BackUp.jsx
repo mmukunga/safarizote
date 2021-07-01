@@ -97,10 +97,8 @@ const reducer = (state, action) => {
      
       sendData(e).then((result) => {
           console.log(result);
-          let formData = new FormData();
-          formData.append("file",  state.files[0]); 
-          
-          axios.post("/api/uploadFile", formData).then((response) => { 
+          const formData = state.files[0].name;
+          axios.get(`/api/downloadFile?image=${formData}`).then((response) => { 
               console.log(response);
           }).catch(error => {
               console.log(error);
