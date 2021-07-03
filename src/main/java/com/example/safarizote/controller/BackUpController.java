@@ -108,7 +108,7 @@ public class BackUpController {
 
         return ResponseEntity.ok().build();
     }
-/*
+
     @RequestMapping(value = "/api/gcsDownload", method = RequestMethod.GET)
 	public ResponseEntity<Object> readGcsFile(@RequestParam("image") String image) throws IOException {
         System.out.println("An image upload request has come in!!");
@@ -122,6 +122,7 @@ public class BackUpController {
         return ResponseEntity.ok().build();        
 	}
 
+    /*
 	@RequestMapping(value = "/api/gcsUpload", method = RequestMethod.POST)
 	String writeGcs(@RequestBody String data) throws IOException {
 		try (OutputStream os = ((WritableResource) this.gcsFile).getOutputStream()) {
