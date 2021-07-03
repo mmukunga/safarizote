@@ -110,13 +110,18 @@ public class BackUpController {
     }
 
     @RequestMapping(value = "/api/gcsDownload", method = RequestMethod.GET)
-	public String readGcsFile(@RequestParam("image") String image) throws IOException {
+	public ResponseEntity<Object> readGcsFile(@RequestParam("image") String image) throws IOException {
+        System.out.println("An image upload request has come in!!");
+        
         System.out.println("Image/gcsFile from GoogleCloud Storage:= " + image);
-		return StreamUtils.copyToString(
+		String gcsFile = StreamUtils.copyToString(
 				this.gcsFile.getInputStream(),
 				Charset.defaultCharset()) + "\n";
-	}
+        System.out.println("Image from GoogleCloud Storage:= " + gcsFile);
 
+        return ResponseEntity.ok().build();        
+	}
+/*
 	@RequestMapping(value = "/api/gcsUpload", method = RequestMethod.POST)
 	String writeGcs(@RequestBody String data) throws IOException {
 		try (OutputStream os = ((WritableResource) this.gcsFile).getOutputStream()) {
@@ -124,7 +129,7 @@ public class BackUpController {
 		}
 		return "file was updated\n";
 	}
-
+*/
 
     public void displayList(BackUp category, StringBuffer indentation){
         indentation.append(" ");
