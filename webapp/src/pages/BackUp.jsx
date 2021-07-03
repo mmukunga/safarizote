@@ -99,8 +99,9 @@ const reducer = (state, action) => {
           console.log(result);
           console.log(state);
           console.log(state.files);
-          const formData = state.files[0].name;
-          axios.get(`/api/gcsDownload?image=${formData}`).then((response) => { 
+          console.log(state.files[0]);
+          const image = state.files[0].src;
+          axios.get(`/api/gcsDownload?image=${image}`).then((response) => { 
               console.log(response);
           }).catch(error => {
               console.log(error);
