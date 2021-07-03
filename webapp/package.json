@@ -24,8 +24,7 @@
     "react-player": "^2.9.0",
     "video-react": "^0.14.1",
     "font-awesome": "^4.7.0",
-    "bowser": "^2.11.0",
-    "fs": "^0.0.1-security"
+    "bowser": "^2.11.0"
   },
   "scripts": {
     "start": "react-scripts start",
