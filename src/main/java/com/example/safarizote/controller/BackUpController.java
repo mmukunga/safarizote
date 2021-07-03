@@ -106,6 +106,22 @@ public class BackUpController {
         return ResponseEntity.ok().build();
     }
 
+    @RequestMapping(value = "/api/gcsDownload", method = RequestMethod.GET)
+	public String readGcsFile() throws IOException {
+		return StreamUtils.copyToString(
+				this.gcsFile.getInputStream(),
+				Charset.defaultCharset()) + "\n";
+	}
+
+	@RequestMapping(value = "/api/gcsUpload", method = RequestMethod.POST)
+	String writeGcs(@RequestBody String data) throws IOException {
+		try (OutputStream os = ((WritableResource) this.gcsFile).getOutputStream()) {
+			os.write(data.getBytes());
+		}
+		return "file was updated\n";
+	}
+
+
     public void displayList(BackUp category, StringBuffer indentation){
         indentation.append(" ");
         for (BackUp temp : category.getChildren()) {
