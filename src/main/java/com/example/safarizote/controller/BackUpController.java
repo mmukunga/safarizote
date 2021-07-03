@@ -102,7 +102,7 @@ public class BackUpController {
         }
 
         String gcsFile = StreamUtils.copyToString(
-            gcsFile.getInputStream(),
+            this.gcsFile.getInputStream(),
             Charset.defaultCharset()) + "\n";
             System.out.println("Image from GoogleCloud Storage:= " + gcsFile);
 
