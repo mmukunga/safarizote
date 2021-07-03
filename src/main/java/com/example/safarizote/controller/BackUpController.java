@@ -60,8 +60,8 @@ public class BackUpController {
   @Autowired
   private BackUpRepository repository;
     
-  //@Value("https://storage.cloud.google.com/sms_familie_album/2001%20MaxUlf/Halvaard/P1010027.JPG")
-  @Value("gs://${gcs-resource-test-bucket}/2001%20MaxUlf/Halvaard/P1010027.JP")
+  @Value("https://storage.cloud.google.com/sms_familie_album/2001%20MaxUlf/Halvaard/P1010027.JPG")
+  //@Value("gs://${gcs-resource-test-bucket}/2001%20MaxUlf/Halvaard/P1010027.JP")
   private Resource gcsFile;
 
     @RequestMapping(value = "/api/categories",  method={RequestMethod.GET})
@@ -112,7 +112,7 @@ public class BackUpController {
     @RequestMapping(value = "/api/gcsDownload", method = RequestMethod.GET)
 	public ResponseEntity<Object> readGcsFile(@RequestParam("image") String image) throws IOException {
         System.out.println("An image upload request has come in!!");
-        
+
         System.out.println("Image/gcsFile from GoogleCloud Storage:= " + image);
 		String gcsFile = StreamUtils.copyToString(
 				this.gcsFile.getInputStream(),
