@@ -14,6 +14,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import java.net.URL;
 
+import java.io.OutputStream;
+import java.nio.charset.Charset;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
