@@ -58,7 +58,7 @@ public class BackUpController {
   @Autowired
   private BackUpRepository repository;
     
-  @Value("https://storage.cloud.google.com/sms_familie_album/2001%20MaxUlf/MaxUlf/P9010004.JPG")
+  @Value("https://storage.cloud.google.com/FamilieAlbum/sms_familie_album/2001%20MaxUlf/MaxUlf/P9010004.JPG")
   private Resource gcsFile;
 
     @RequestMapping(value = "/api/categories",  method={RequestMethod.GET})
