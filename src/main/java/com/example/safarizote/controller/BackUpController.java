@@ -16,13 +16,10 @@ import java.net.URL;
 
 import java.io.OutputStream;
 import java.nio.charset.Charset;
-import com.example.safarizote.utils.GoogleStorageClientAdapter; 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.WritableResource;
 import org.springframework.util.StreamUtils;
-
-import com.google.api.services.storage.model.StorageObject;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -61,9 +58,6 @@ public class BackUpController {
   @Autowired
   private BackUpRepository repository;
   
-  @Autowired
-  private GoogleStorageClientAdapter googleStorageClientAdapter;
-
   @Value("https://${gcs-resource-test-bucket}/2013%20Disneyland%20Paris/05.08.2013/DSC00945.JPG?authuser=0")
   private Resource gcsFile;
 
@@ -115,20 +109,6 @@ public class BackUpController {
     @RequestMapping(value = "/api/gcsDownload", method = RequestMethod.GET)
 	public ResponseEntity<Object> readGcsFile(@RequestParam("image") String image) throws IOException {
         System.out.println("An image upload request has come in!!");
-        try {
-            StorageObject object = googleStorageClientAdapter.download(gcsFile);
-
-            byte[] res = Files.toByteArray((File) object.get("file"));
-            ByteArrayResource resource = new ByteArrayResource(res);
-
-            ByteArrayResource img = ResponseEntity.ok()
-                    .contentLength(res.length)
-                    .header("Content-type", "application/octet-stream")
-                    .header("Content-disposition", "attachment; filename=\"" + path + "\"").body(resource);
-        }catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException("No such file or directory");
-        }
 
         System.out.println("Image/gcsFile from GoogleCloud Storage:= " + image);
 		String gcsFile = StreamUtils.copyToString(
