@@ -62,7 +62,9 @@ public class BackUpController {
     
   //@Value("https://storage.cloud.google.com/sms_familie_album/2001%20MaxUlf/Halvaard/P1010027.JPG")
   //@Value("gs://${gcs-resource-test-bucket}/2001%20MaxUlf/Halvaard/P1010027.JP")
-  @Value("gs://${gcs-resource-test-bucket}/2001 MaxUlf/Halvaard/P1010027.JPG")
+  //gs://sms_familie_album/2013 Disneyland Paris/05.08.2013/DSC00945.JPG
+  //@Value("gs://${gcs-resource-test-bucket}/2001 MaxUlf/Halvaard/P1010027.JPG")
+  @Value("gs://sms_familie_album/2013%20Disneyland%20Paris/05.08.2013/DSC00945.JPG")
   private Resource gcsFile;
 
     @RequestMapping(value = "/api/categories",  method={RequestMethod.GET})
