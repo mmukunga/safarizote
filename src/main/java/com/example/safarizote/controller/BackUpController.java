@@ -68,6 +68,8 @@ public class BackUpController {
   
   @Value("https://${gcs-resource-test-bucket}/2013%20Disneyland%20Paris/05.08.2013/DSC00945.JPG?authuser=0")
   private Resource gcsFile;
+  
+  private static Storage storage = StorageOptions.getDefaultInstance().getService(); 
 
     @RequestMapping(value = "/api/categories",  method={RequestMethod.GET})
     public ResponseEntity<List<BackUp>> findAll() {
@@ -128,10 +130,10 @@ public class BackUpController {
         System.out.println("Image from GoogleCloud Storage:= " + gcsFile);   
 
 
-        String BUCKET_NAME = "storage.cloud.google.com/sms_familie_album";
+        String BUCKET_NAME = "sms_familie_album";
         String OBJECT_NAME = "2013%20Disneyland%20Paris/05.08.2013/DSC00945.JPG?authuser=0";
 
-        Storage storage = StorageOptions.getDefaultInstance().getService();
+        //Storage storage = StorageOptions.getDefaultInstance().getService();
         Blob blob = storage.get(BlobId.of(BUCKET_NAME, OBJECT_NAME));
         String fileContent = new String(blob.getContent());
         System.out.println("fileContent from GoogleCloud Storage:= " + fileContent);
