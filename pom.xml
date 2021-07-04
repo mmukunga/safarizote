@@ -33,6 +33,11 @@
 			<version>1.2.8.RELEASE</version>
 		</dependency>
 		<dependency>
+			<groupId>com.google.apis</groupId>
+			<artifactId>google-api-services-storage</artifactId>
+			<version>1.19.0</version>
+		</dependency>
+		<dependency>
 			<groupId>com.google.api-client</groupId>
 			<artifactId>google-api-client-gson</artifactId>
 			<version>1.31.2</version>
