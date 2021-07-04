@@ -107,16 +107,26 @@ public class BackUpController {
     }
 
     @RequestMapping(value = "/api/gcsDownload", method = RequestMethod.GET)
-	public ResponseEntity<Object> readGcsFile(@RequestParam("image") String image) throws IOException {
+	public ResponseEntity<Resource> readGcsFile(@RequestParam("image") String image) throws IOException {
         System.out.println("An image upload request has come in!!");
 
         System.out.println("Image/gcsFile from GoogleCloud Storage:= " + image);
 		String gcsFile = StreamUtils.copyToString(
 				this.gcsFile.getInputStream(),
 				Charset.defaultCharset()) + "\n";
+        
+        String contentType = "application/octet-stream";
+        System.out.println("Image from GoogleCloud Storage:= " +  this.gcsFile.getFilename());
+        System.out.println("Image from GoogleCloud Storage:= " + gcsFile);   
+
         System.out.println("Image from GoogleCloud Storage:= " + gcsFile);
 
-        return new ResponseEntity<>(gcsFile, HttpStatus.OK);     
+        //return new ResponseEntity<>(gcsFile, HttpStatus.OK); 
+        
+        return ResponseEntity.ok()
+        .contentType(MediaType.parseMediaType(contentType))
+        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + this.gcsFile.getFilename() + "\"")
+        .body(this.gcsFile);
 	}
 
     /*
