@@ -60,10 +60,6 @@ public class BackUpController {
   @Autowired
   private BackUpRepository repository;
     
-  //@Value("https://storage.cloud.google.com/sms_familie_album/2001%20MaxUlf/Halvaard/P1010027.JPG")
-  //@Value("gs://${gcs-resource-test-bucket}/2001%20MaxUlf/Halvaard/P1010027.JP")
-  //gs://sms_familie_album/2013 Disneyland Paris/05.08.2013/DSC00945.JPG
-  //@Value("gs://${gcs-resource-test-bucket}/2001 MaxUlf/Halvaard/P1010027.JPG")
   @Value("https://${gcs-resource-test-bucket}/2013%20Disneyland%20Paris/05.08.2013/DSC00945.JPG?authuser=0")
   private Resource gcsFile;
 
@@ -122,7 +118,7 @@ public class BackUpController {
 				Charset.defaultCharset()) + "\n";
         System.out.println("Image from GoogleCloud Storage:= " + gcsFile);
 
-        return ResponseEntity.ok().build();        
+        return new ResponseEntity<>(gcsFile, HttpStatus.OK);     
 	}
 
     /*
