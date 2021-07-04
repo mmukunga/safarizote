@@ -14,6 +14,13 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import java.net.URL;
 
+
+import com.google.cloud.storage.Storage;
+import com.google.cloud.storage.Blob;
+import com.google.cloud.storage.BlobId;
+import com.google.cloud.storage.StorageOptions;
+
+
 import java.io.OutputStream;
 import java.nio.charset.Charset;
 import org.springframework.beans.factory.annotation.Value;
@@ -120,7 +127,11 @@ public class BackUpController {
         System.out.println("Image from GoogleCloud Storage:= " +  this.gcsFile.getFilename());
         System.out.println("Image from GoogleCloud Storage:= " + gcsFile);   
 
-        System.out.println("Image from GoogleCloud Storage:= " + gcsFile);
+
+        Storage storage = StorageOptions.getDefaultInstance().getService();
+        Blob blob = storage.get(BlobId.of(bucketName, srcFilename));
+        String fileContent = new String(blob.getContent());
+        System.out.println("fileContent from GoogleCloud Storage:= " + fileContent);
 
         //return new ResponseEntity<>(gcsFile, HttpStatus.OK); 
         
