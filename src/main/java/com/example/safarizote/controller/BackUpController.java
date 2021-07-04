@@ -118,7 +118,6 @@ public class BackUpController {
         try {
             StorageObject object = googleStorageClientAdapter.download(gcsFile);
 
-
             byte[] res = Files.toByteArray((File) object.get("file"));
             ByteArrayResource resource = new ByteArrayResource(res);
 
