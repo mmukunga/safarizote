@@ -22,7 +22,7 @@ import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.StorageOptions;
 import com.google.auth.oauth2.GoogleCredentials;
 
-import org.springframework.util.ResourceUtils;
+//import org.springframework.util.ResourceUtils;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
 import org.springframework.beans.factory.annotation.Value;
@@ -125,7 +125,7 @@ public class BackUpController {
         Resource resource = new ClassPathResource("classpath:credentials.json");
         //InputStream inputStream = resource.getInputStream();
         //File file = new File(classLoader.getResource("credentials.json").getFile());
-        File file = ResourceUtils.getFile("classpath:credentials.json");
+        //File file = ResourceUtils.getFile("classpath:credentials.json");
         GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
         Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
         //Storage storage = StorageOptions.getDefaultInstance().getService();
