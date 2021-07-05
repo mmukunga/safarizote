@@ -121,11 +121,11 @@ public class BackUpController {
         System.out.println("An image upload request has come in!!");
         
         //ClassLoader classLoader = getClass().getClassLoader();
-        //Resource resource = new ClassPathResource("classpath:credentials.json");
+        Resource resource = new ClassPathResource("classpath:credentials.json");
         //InputStream inputStream = resource.getInputStream();
         //File file = new File(classLoader.getResource("credentials.json").getFile());
         File file = ResourceUtils.getFile("classpath:credentials.json");
-        GoogleCredentials credentials = GoogleCredentials.fromStream(new FileInputStream(file));
+        GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
         Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
         //Storage storage = StorageOptions.getDefaultInstance().getService();
 
