@@ -122,7 +122,7 @@ public class BackUpController {
 	public ResponseEntity<String> readGcsFile(@RequestParam("image") String image) throws IOException {
         System.out.println("An image upload request has come in!!");
         
-        Credentials credentials = GoogleCredentials.fromStream(new FileInputStream("credentials.json"));
+        GoogleCredentials credentials = GoogleCredentials.fromStream(new FileInputStream("credentials.json"));
         Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
         //Storage storage = StorageOptions.getDefaultInstance().getService();
 
