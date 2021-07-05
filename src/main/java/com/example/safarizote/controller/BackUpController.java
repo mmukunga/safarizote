@@ -10,6 +10,7 @@ import java.util.Optional;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import java.net.URL;
@@ -19,6 +20,8 @@ import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.StorageOptions;
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
+import com.google.auth.oauth2.GoogleCredentials;
 
 
 import java.io.OutputStream;
@@ -26,6 +29,7 @@ import java.nio.charset.Charset;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.WritableResource;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.StreamUtils;
 
 import org.springframework.http.HttpStatus;
