@@ -37,11 +37,6 @@
 			<artifactId>spring-cloud-gcp-storage</artifactId>
 			<version>1.2.8.RELEASE</version>
 		</dependency>
-		<dependency>
-			<groupId>com.google.auth</groupId>
-			<artifactId>google-auth-library-oauth2-http</artifactId>
-			<version>0.20.0</version>
-		</dependency>
         <dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
