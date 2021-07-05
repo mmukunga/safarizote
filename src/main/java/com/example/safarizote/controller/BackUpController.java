@@ -22,7 +22,7 @@ import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.StorageOptions;
 import com.google.auth.oauth2.GoogleCredentials;
 
-
+import org.springframework.util.ResourceUtils;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
 import org.springframework.beans.factory.annotation.Value;
@@ -120,12 +120,12 @@ public class BackUpController {
 	public ResponseEntity<String> readGcsFile(@RequestParam("image") String image) throws IOException {
         System.out.println("An image upload request has come in!!");
         
-        ClassLoader classLoader = getClass().getClassLoader();
-        Resource resource = new ClassPathResource("classpath:credentials.json");
-        InputStream inputStream = resource.getInputStream();
-        File file = new File(classLoader.getResource("credentials.json").getFile());
-
-        GoogleCredentials credentials = GoogleCredentials.fromStream(/*new FileInputStream(file)*/inputStream);
+        //ClassLoader classLoader = getClass().getClassLoader();
+        //Resource resource = new ClassPathResource("classpath:credentials.json");
+        //InputStream inputStream = resource.getInputStream();
+        //File file = new File(classLoader.getResource("credentials.json").getFile());
+        File file = ResourceUtils.getFile("classpath:credentials.json");
+        GoogleCredentials credentials = GoogleCredentials.fromStream(new FileInputStream(file));
         Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
         //Storage storage = StorageOptions.getDefaultInstance().getService();
 
