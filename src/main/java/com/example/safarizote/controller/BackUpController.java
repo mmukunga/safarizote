@@ -69,8 +69,6 @@ public class BackUpController {
   @Value("https://${gcs-resource-test-bucket}/2013%20Disneyland%20Paris/05.08.2013/DSC00945.JPG?authuser=0")
   private Resource gcsFile;
   
-  private static Storage storage = StorageOptions.getDefaultInstance().getService(); 
-
     @RequestMapping(value = "/api/categories",  method={RequestMethod.GET})
     public ResponseEntity<List<BackUp>> findAll() {
         System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
@@ -119,6 +117,10 @@ public class BackUpController {
     @RequestMapping(value = "/api/gcsDownload", method = RequestMethod.GET)
 	public ResponseEntity<String> readGcsFile(@RequestParam("image") String image) throws IOException {
         System.out.println("An image upload request has come in!!");
+        
+        Credentials credentials = GoogleCredentials.fromStream(new FileInputStream("credentials.json"));
+        Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
+        //Storage storage = StorageOptions.getDefaultInstance().getService();
 
         System.out.println("Image/gcsFile from GoogleCloud Storage:= " + image);
 		String gcsFile = StreamUtils.copyToString(
