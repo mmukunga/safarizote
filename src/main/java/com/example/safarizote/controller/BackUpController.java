@@ -127,7 +127,7 @@ public class BackUpController {
         //InputStream inputStream = resource.getInputStream();
         //File file = new File(classLoader.getResource("credentials.json").getFile());
         //File file = ResourceUtils.getFile("classpath:credentials.json");
-        //GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
+        GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
         //Storage storage = StorageOptions.newBuilder().setCredentials(credentials).setProjectId("familiealbum-sms").build().getService();
         //Storage storage = StorageOptions.getDefaultInstance().getService();
         //System.out.println("1.Image/gcsFile from GoogleCloud Storage:= " + storage);
@@ -153,11 +153,12 @@ public class BackUpController {
             throw new IllegalArgumentException("file not found!");
         }
 
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("credentials.json");
+       /* InputStream inputStream = getClass().getClassLoader().getResourceAsStream("credentials.json");
         if (inputStream == null) {
             throw new IllegalArgumentException("inputStream not found!");
         }
         GoogleCredentials credentials = GoogleCredentials.fromStream(inputStream);
+        */
         Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
         // Get specific file from specified bucket
         BlobId blobId = BlobId.of(BUCKET_NAME, OBJECT_NAME);
