@@ -144,9 +144,9 @@ public class BackUpController {
 
         String BUCKET_NAME = "sms_familie_album";
         String OBJECT_NAME = "mail.jpg";
-
+        String PROJECT_ID  = "familiealbum-sms";
         // Instantiate a Google Cloud Storage client
-        Storage storage = StorageOptions.getDefaultInstance().getService();
+        Storage storage = StorageOptions.newBuilder().setProjectId(PROJECT_ID).build().getService();
         // Get specific file from specified bucket
         Blob blob = storage.get(BlobId.of(BUCKET_NAME, OBJECT_NAME));
         // Download file to specified path
