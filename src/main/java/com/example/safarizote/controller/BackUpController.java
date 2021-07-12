@@ -143,22 +143,15 @@ public class BackUpController {
 
 
         String BUCKET_NAME = "sms_familie_album";
-        //String BUCKET_NAME = "https://storage.googleapis.com/sms_familie_album";
-        //storage.cloud.google.com/sms_familie_album
-        //String OBJECT_NAME = "2013%20Disneyland%20Paris/05.08.2013/DSC00945.JPG?authuser=0";
-        String OBJECT_NAME = "2013%20Disneyland%20Paris/05.08.2013/DSC00945.JPG";
+        String OBJECT_NAME = "mail.jpg";
 
-        //Storage storage = StorageOptions.getDefaultInstance().getService();
-
-        //Blob blob = storage.get(BlobId.of(BUCKET_NAME, OBJECT_NAME));
-
+        // Instantiate a Google Cloud Storage client
         Storage storage = StorageOptions.getDefaultInstance().getService();
-        Blob blob = storage.get(BUCKET_NAME, OBJECT_NAME);
-        ReadChannel readChannel = blob.reader();
-        File file = new File("/tmp/" + OBJECT_NAME);
-        FileOutputStream fileOuputStream = new FileOutputStream(file);
-        fileOuputStream.getChannel().transferFrom(readChannel, 0, Long.MAX_VALUE);
-        fileOuputStream.close();
+        // Get specific file from specified bucket
+        Blob blob = storage.get(BlobId.of(BUCKET_NAME, OBJECT_NAME));
+        // Download file to specified path
+        //blob.downloadTo(destFilePath);
+        // [END storage_download_file]
 
         String fileContent = new String(blob.getContent());
         System.out.println("fileContent from GoogleCloud Storage:= " + fileContent);
