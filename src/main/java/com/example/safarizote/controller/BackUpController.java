@@ -129,6 +129,7 @@ public class BackUpController {
         GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
         Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
         //Storage storage = StorageOptions.getDefaultInstance().getService();
+        System.out.println("Image/gcsFile from GoogleCloud Storage:= " + storage);
 
         System.out.println("Image/gcsFile from GoogleCloud Storage:= " + image);
 		String gcsFile = StreamUtils.copyToString(
@@ -147,9 +148,10 @@ public class BackUpController {
         String OBJECT_NAME = "2013%20Disneyland%20Paris/05.08.2013/DSC00945.JPG";
 
         //Storage storage = StorageOptions.getDefaultInstance().getService();
-        Blob blob = storage.get(BlobId.of(BUCKET_NAME, OBJECT_NAME));
-        String fileContent = new String(blob.getContent());
-        System.out.println("fileContent from GoogleCloud Storage:= " + fileContent);
+
+        //Blob blob = storage.get(BlobId.of(BUCKET_NAME, OBJECT_NAME));
+        //String fileContent = new String(blob.getContent());
+        //System.out.println("fileContent from GoogleCloud Storage:= " + fileContent);
 
         return new ResponseEntity<>(gcsFile, HttpStatus.OK); 
 	}
