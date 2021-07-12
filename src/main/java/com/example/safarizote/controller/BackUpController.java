@@ -147,6 +147,12 @@ public class BackUpController {
         String PROJECT_ID  = "familiealbum-sms";
         // Instantiate a Google Cloud Storage client
         //ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        
+        URL resource2 = getClass().getClassLoader().getResource("credentials.json");
+        if (resource2 == null) {
+            throw new IllegalArgumentException("file not found!");
+        }
+
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("credentials.json");
         GoogleCredentials credentials = GoogleCredentials.fromStream(inputStream);
         Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
