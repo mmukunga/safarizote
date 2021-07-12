@@ -154,6 +154,9 @@ public class BackUpController {
         }
 
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("credentials.json");
+        if (inputStream == null) {
+            throw new IllegalArgumentException("inputStream not found!");
+        }
         GoogleCredentials credentials = GoogleCredentials.fromStream(inputStream);
         Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
         // Get specific file from specified bucket
