@@ -20,6 +20,7 @@ import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.StorageOptions;
+import com.google.auth.oauth2.Credentials;
 import com.google.auth.oauth2.GoogleCredentials;
 
 //import org.springframework.util.ResourceUtils;
@@ -126,7 +127,7 @@ public class BackUpController {
         //InputStream inputStream = resource.getInputStream();
         //File file = new File(classLoader.getResource("credentials.json").getFile());
         //File file = ResourceUtils.getFile("classpath:credentials.json");
-        GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
+        Credentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
         Storage storage = StorageOptions.newBuilder().setCredentials(credentials).setProjectId("familiealbum-sms").build().getService();
         //Storage storage = StorageOptions.getDefaultInstance().getService();
         System.out.println("1.Image/gcsFile from GoogleCloud Storage:= " + storage);
@@ -149,7 +150,7 @@ public class BackUpController {
 
         //Storage storage = StorageOptions.getDefaultInstance().getService();
 
-        //Blob blob = storage.get(BlobId.of(BUCKET_NAME, OBJECT_NAME));
+        Blob blob = storage.get(BlobId.of(BUCKET_NAME, OBJECT_NAME));
         //String fileContent = new String(blob.getContent());
         //System.out.println("fileContent from GoogleCloud Storage:= " + fileContent);
 
