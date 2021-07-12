@@ -151,8 +151,8 @@ public class BackUpController {
         //Storage storage = StorageOptions.getDefaultInstance().getService();
 
         Blob blob = storage.get(BlobId.of(BUCKET_NAME, OBJECT_NAME));
-        //String fileContent = new String(blob.getContent());
-        //System.out.println("fileContent from GoogleCloud Storage:= " + fileContent);
+        String fileContent = new String(blob.getContent());
+        System.out.println("fileContent from GoogleCloud Storage:= " + fileContent);
 
         return new ResponseEntity<>(gcsFile, HttpStatus.OK); 
 	}
