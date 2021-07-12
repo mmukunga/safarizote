@@ -143,7 +143,7 @@ public class BackUpController {
 
 
         String BUCKET_NAME = "sms_familie_album";
-        String OBJECT_NAME = "gs://sms_familie_album/mail.jpg";
+        String OBJECT_NAME = "mail.jpg";
         String PROJECT_ID  = "familiealbum-sms";
         // Instantiate a Google Cloud Storage client
         //ClassLoader classloader = Thread.currentThread().getContextClassLoader();
@@ -160,14 +160,16 @@ public class BackUpController {
         GoogleCredentials credentials = GoogleCredentials.fromStream(inputStream);
         Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
         // Get specific file from specified bucket
-        Blob blob = storage.get(BlobId.of(BUCKET_NAME, OBJECT_NAME));
+        BlobId blobId = BlobId.of(BUCKET_NAME, OBJECT_NAME);
+        Blob blob = storage.get(blobId);
+        if (blob != null) {
+            String fileContent = new String(blob.getContent());
+            System.out.println("fileContent from GoogleCloud Storage:= " + fileContent);
+        }    
         // Download file to specified path
         //blob.downloadTo(destFilePath);
         // [END storage_download_file]
 
-        String fileContent = new String(blob.getContent());
-        System.out.println("fileContent from GoogleCloud Storage:= " + fileContent);
-        
         return new ResponseEntity<>(gcsFile, HttpStatus.OK); 
 	}
 
