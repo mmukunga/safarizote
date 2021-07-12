@@ -146,8 +146,8 @@ public class BackUpController {
         String OBJECT_NAME = "mail.jpg";
         String PROJECT_ID  = "familiealbum-sms";
         // Instantiate a Google Cloud Storage client
-        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        InputStream inputStream = ClassLoaderUtil.getResourceAsStream("credentials.json", BackUpController.class);
+        //ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("credentials.json");
         GoogleCredentials credentials = GoogleCredentials.fromStream(inputStream);
         Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
         // Get specific file from specified bucket
