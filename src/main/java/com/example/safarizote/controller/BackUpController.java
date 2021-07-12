@@ -10,7 +10,7 @@ import java.util.Optional;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import java.net.URL;
@@ -147,7 +147,7 @@ public class BackUpController {
         String PROJECT_ID  = "familiealbum-sms";
         // Instantiate a Google Cloud Storage client
         //ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        
+
         URL resource2 = getClass().getClassLoader().getResource("credentials.json");
         if (resource2 == null) {
             throw new IllegalArgumentException("file not found!");
