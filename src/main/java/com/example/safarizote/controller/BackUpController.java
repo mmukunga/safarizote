@@ -141,7 +141,8 @@ public class BackUpController {
 
 
         String BUCKET_NAME = "sms_familie_album";
-        String OBJECT_NAME = "2013%20Disneyland%20Paris/05.08.2013/DSC00945.JPG?authuser=0";
+        //String OBJECT_NAME = "2013%20Disneyland%20Paris/05.08.2013/DSC00945.JPG?authuser=0";
+        String OBJECT_NAME = "2013%20Disneyland%20Paris/05.08.2013/DSC00945.JPG";
 
         //Storage storage = StorageOptions.getDefaultInstance().getService();
         Blob blob = storage.get(BlobId.of(BUCKET_NAME, OBJECT_NAME));
