@@ -20,7 +20,6 @@ import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.StorageOptions;
-import com.google.auth.Credentials;
 import com.google.auth.oauth2.GoogleCredentials;
 
 //import org.springframework.util.ResourceUtils;
@@ -127,10 +126,10 @@ public class BackUpController {
         //InputStream inputStream = resource.getInputStream();
         //File file = new File(classLoader.getResource("credentials.json").getFile());
         //File file = ResourceUtils.getFile("classpath:credentials.json");
-        Credentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
-        Storage storage = StorageOptions.newBuilder().setCredentials(credentials).setProjectId("familiealbum-sms").build().getService();
+        //GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
+        //Storage storage = StorageOptions.newBuilder().setCredentials(credentials).setProjectId("familiealbum-sms").build().getService();
         //Storage storage = StorageOptions.getDefaultInstance().getService();
-        System.out.println("1.Image/gcsFile from GoogleCloud Storage:= " + storage);
+        //System.out.println("1.Image/gcsFile from GoogleCloud Storage:= " + storage);
 
         System.out.println("2.Image/gcsFile from GoogleCloud Storage:= " + image);
 		String gcsFile = StreamUtils.copyToString(
@@ -150,7 +149,16 @@ public class BackUpController {
 
         //Storage storage = StorageOptions.getDefaultInstance().getService();
 
-        Blob blob = storage.get(BlobId.of(BUCKET_NAME, OBJECT_NAME));
+        //Blob blob = storage.get(BlobId.of(BUCKET_NAME, OBJECT_NAME));
+
+        Storage storage = StorageOptions.newBuilder().setProjectId("familiealbum-sms").build().getService();
+        Blob blob = storage.get(BUCKET_NAME, OBJECT_NAME);
+        ReadChannel readChannel = blob.reader();
+        File file = new File("/tmp/" + FILE_NAME);
+        FileOutputStream fileOuputStream = new FileOutputStream(file);
+        fileOuputStream.getChannel().transferFrom(readChannel, 0, Long.MAX_VALUE);
+        fileOuputStream.close();
+
         String fileContent = new String(blob.getContent());
         System.out.println("fileContent from GoogleCloud Storage:= " + fileContent);
 
