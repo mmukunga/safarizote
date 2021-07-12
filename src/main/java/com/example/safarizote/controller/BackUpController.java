@@ -127,22 +127,22 @@ public class BackUpController {
         //File file = new File(classLoader.getResource("credentials.json").getFile());
         //File file = ResourceUtils.getFile("classpath:credentials.json");
         GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
-        Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
+        Storage storage = StorageOptions.newBuilder().setCredentials(credentials).setProjectId("familiealbum-sms").build().getService();
         //Storage storage = StorageOptions.getDefaultInstance().getService();
-        System.out.println("Image/gcsFile from GoogleCloud Storage:= " + storage);
+        System.out.println("1.Image/gcsFile from GoogleCloud Storage:= " + storage);
 
-        System.out.println("Image/gcsFile from GoogleCloud Storage:= " + image);
+        System.out.println("2.Image/gcsFile from GoogleCloud Storage:= " + image);
 		String gcsFile = StreamUtils.copyToString(
 				this.gcsFile.getInputStream(),
 				Charset.defaultCharset()) + "\n";
         
         String contentType = "application/octet-stream";
-        System.out.println("Image from GoogleCloud Storage:= " +  this.gcsFile.getFilename());
-        System.out.println("Image from GoogleCloud Storage:= " + gcsFile);   
+        System.out.println("3.Image from GoogleCloud Storage:= " +  this.gcsFile.getFilename());
+        System.out.println("4.Image from GoogleCloud Storage:= " + gcsFile);   
 
 
-        //String BUCKET_NAME = "storage.cloud.google.com/sms_familie_album";
-        String BUCKET_NAME = "https://storage.googleapis.com/sms_familie_album";
+        String BUCKET_NAME = "sms_familie_album";
+        //String BUCKET_NAME = "https://storage.googleapis.com/sms_familie_album";
         //storage.cloud.google.com/sms_familie_album
         //String OBJECT_NAME = "2013%20Disneyland%20Paris/05.08.2013/DSC00945.JPG?authuser=0";
         String OBJECT_NAME = "2013%20Disneyland%20Paris/05.08.2013/DSC00945.JPG";
