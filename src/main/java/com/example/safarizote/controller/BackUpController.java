@@ -148,7 +148,7 @@ public class BackUpController {
         // Instantiate a Google Cloud Storage client
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         InputStream inputStream = ClassLoaderUtil.getResourceAsStream("credentials.json", BackUpController.class);
-        Credentials credentials = GoogleCredentials.fromStream(inputStream);
+        GoogleCredentials credentials = GoogleCredentials.fromStream(inputStream);
         Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
         // Get specific file from specified bucket
         Blob blob = storage.get(BlobId.of(BUCKET_NAME, OBJECT_NAME));
