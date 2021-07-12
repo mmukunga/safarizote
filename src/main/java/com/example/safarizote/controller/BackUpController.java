@@ -143,7 +143,7 @@ public class BackUpController {
 
 
         String BUCKET_NAME = "sms_familie_album";
-        String OBJECT_NAME = "mail.jpg";
+        String OBJECT_NAME = "gs://sms_familie_album/mail.jpg";
         String PROJECT_ID  = "familiealbum-sms";
         // Instantiate a Google Cloud Storage client
         //ClassLoader classloader = Thread.currentThread().getContextClassLoader();
