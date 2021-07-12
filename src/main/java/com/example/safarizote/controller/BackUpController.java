@@ -18,6 +18,7 @@ import java.net.URL;
 
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.Blob;
+import com.google.cloud.ReadChannel;
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.StorageOptions;
 import com.google.auth.oauth2.GoogleCredentials;
