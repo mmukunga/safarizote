@@ -154,7 +154,7 @@ public class BackUpController {
         Storage storage = StorageOptions.newBuilder().setProjectId("familiealbum-sms").build().getService();
         Blob blob = storage.get(BUCKET_NAME, OBJECT_NAME);
         ReadChannel readChannel = blob.reader();
-        File file = new File("/tmp/" + FILE_NAME);
+        File file = new File("/tmp/" + OBJECT_NAME);
         FileOutputStream fileOuputStream = new FileOutputStream(file);
         fileOuputStream.getChannel().transferFrom(readChannel, 0, Long.MAX_VALUE);
         fileOuputStream.close();
