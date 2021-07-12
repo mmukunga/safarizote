@@ -140,7 +140,8 @@ public class BackUpController {
         System.out.println("Image from GoogleCloud Storage:= " + gcsFile);   
 
 
-        String BUCKET_NAME = "storage.cloud.google.com/sms_familie_album";
+        //String BUCKET_NAME = "storage.cloud.google.com/sms_familie_album";
+        String BUCKET_NAME = "https://storage.googleapis.com/sms_familie_album";
         //storage.cloud.google.com/sms_familie_album
         //String OBJECT_NAME = "2013%20Disneyland%20Paris/05.08.2013/DSC00945.JPG?authuser=0";
         String OBJECT_NAME = "2013%20Disneyland%20Paris/05.08.2013/DSC00945.JPG";
