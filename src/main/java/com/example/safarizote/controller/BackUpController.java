@@ -121,16 +121,6 @@ public class BackUpController {
     @RequestMapping(value = "/api/gcsDownload", method = RequestMethod.GET)
 	public ResponseEntity<String> readGcsFile(@RequestParam("image") String image) throws IOException {
         System.out.println("An image upload request has come in!!");
-        
-        //ClassLoader classLoader = getClass().getClassLoader();
-        Resource resource = new ClassPathResource("credentials.json");
-        //InputStream inputStream = resource.getInputStream();
-        //File file = new File(classLoader.getResource("credentials.json").getFile());
-        //File file = ResourceUtils.getFile("classpath:credentials.json");
-        GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
-        //Storage storage = StorageOptions.newBuilder().setCredentials(credentials).setProjectId("familiealbum-sms").build().getService();
-        //Storage storage = StorageOptions.getDefaultInstance().getService();
-        //System.out.println("1.Image/gcsFile from GoogleCloud Storage:= " + storage);
 
         System.out.println("2.Image/gcsFile from GoogleCloud Storage:= " + image);
 		String gcsFile = StreamUtils.copyToString(
@@ -159,7 +149,18 @@ public class BackUpController {
         }
         GoogleCredentials credentials = GoogleCredentials.fromStream(inputStream);
         */
-        Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
+        
+        //ClassLoader classLoader = getClass().getClassLoader();
+        Resource resource = new ClassPathResource("credentials.json");
+        //InputStream inputStream = resource.getInputStream();
+        //File file = new File(classLoader.getResource("credentials.json").getFile());
+        //File file = ResourceUtils.getFile("classpath:credentials.json");
+        GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
+        System.out.println("1.Image/gcsFile from GoogleCloud credentials:= " + credentials);
+        //Storage storage = StorageOptions.newBuilder().setCredentials(credentials).setProjectId("familiealbum-sms").build().getService();
+        //Storage storage = StorageOptions.getDefaultInstance().getService();
+        Storage storage = StorageOptions.newBuilder().setProjectId("familiealbum-sms").setCredentials(credentials).build().getService();
+        System.out.println("1.Image/gcsFile from GoogleCloud Storage:= " + storage);
         // Get specific file from specified bucket
         BlobId blobId = BlobId.of(BUCKET_NAME, OBJECT_NAME);
         Blob blob = storage.get(blobId);
