@@ -138,12 +138,12 @@ public class BackUpController {
         // Instantiate a Google Cloud Storage client
         //ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 
-        URL resource2 = getClass().getClassLoader().getResource("credentials.json");
-        if (resource2 == null) {
+        URL resourceUrl = getClass().getClassLoader().getResource("credentials.json");
+        if (resourceUrl == null) {
             throw new IOException("file not found!");
         }
 
-       /* InputStream inputStream = getClass().getClassLoader().getResourceAsStream("credentials.json");
+        /* InputStream inputStream = getClass().getClassLoader().getResourceAsStream("credentials.json");
         if (inputStream == null) {
             throw new IllegalArgumentException("inputStream not found!");
         }
@@ -183,7 +183,7 @@ public class BackUpController {
 		}
 		return "file was updated\n";
 	}
-*/
+    */
 
     public void displayList(BackUp category, StringBuffer indentation){
         indentation.append(" ");
