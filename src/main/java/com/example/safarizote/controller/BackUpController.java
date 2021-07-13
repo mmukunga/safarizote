@@ -150,7 +150,7 @@ public class BackUpController {
 
         URL resource2 = getClass().getClassLoader().getResource("credentials.json");
         if (resource2 == null) {
-            throw new Exception("file not found!");
+            throw new IOException("file not found!");
         }
 
        /* InputStream inputStream = getClass().getClassLoader().getResourceAsStream("credentials.json");
