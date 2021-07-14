@@ -31,6 +31,9 @@ import com.google.cloud.storage.StorageException;
 
 import com.google.appengine.tools.cloudstorage.GcsFileMetadata;
 import com.google.appengine.tools.cloudstorage.GcsService;
+import com.google.appengine.tools.cloudstorage.GcsFilename;
+import com.google.appengine.tools.cloudstorage.RetryParams;
+import com.google.appengine.tools.cloudstorage.GcsInputChannel;
 import com.google.appengine.tools.cloudstorage.GcsServiceFactory;
 
 import com.google.auth.oauth2.GoogleCredentials;
