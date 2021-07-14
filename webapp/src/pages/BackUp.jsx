@@ -102,7 +102,7 @@ const reducer = (state, action) => {
           console.log(state.files[0]);
           const image = state.files[0].src;
           axios.get(`/api/gcsDownload?image=${image}`).then((response) => { 
-              console.log(response);
+              console.log(response.data);
           }).catch(error => {
               console.log(error);
           });

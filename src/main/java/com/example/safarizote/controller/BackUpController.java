@@ -150,25 +150,22 @@ public class BackUpController {
         BlobId blobId = BlobId.of(BUCKET_NAME, OBJECT_NAME);
         Blob blob = storage.get(blobId);
         if (blob != null) {
-            String fileContent = new String(blob.getContent());
-            System.out.println("fileContent from GoogleCloud Storage fileContent:= " + fileContent);
-        }  
+            //String fileContent = new String(blob.getContent());
+            //System.out.println("fileContent from GoogleCloud Storage fileContent:= " + fileContent); 
         
-        String imageURL = blob.getMediaLink();
-        System.out.println("4.Image from GoogleCloud Storage imageURL:= " + imageURL);   
-        // Download file to specified path
-        // blob.downloadTo(destFilePath);
-        // [END storage_download_file]
-
-        byte[] content = blob.getContent(BlobSourceOption.generationMatch());
-        String s = new String(content);
-        //byte[] encodedBytes = Base64.getDecoder().encode(content);
-        //byte[] encodedBytes = Base64.getEncoder().encode(new String(content).getBytes());
-        byte[] encodedBytes = Base64.getEncoder().encode(s.getBytes());
-        String fileContent2 = new String(encodedBytes);
-        System.out.println("fileContent from GoogleCloud Storage fileContent2:= " + fileContent2);
-
-        return new ResponseEntity<>(gcsFile, HttpStatus.OK); 
+            String imageURL = blob.getMediaLink();
+            System.out.println("4.Image from GoogleCloud Storage imageURL:= " + imageURL);   
+    
+            byte[] fileContent = blob.getContent(BlobSourceOption.generationMatch());
+            String fileContentString = new String(fileContent);
+            byte[] encodedBytes = Base64.getEncoder().encode(fileContentString.getBytes());
+    
+            String encodedBytesString = new String(encodedBytes);
+            System.out.println("fileContent from GoogleCloud Storage encodedBytesString:= " + encodedBytesString);
+    
+            return new ResponseEntity<>(encodedBytesString, HttpStatus.OK); 
+        } 
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
     
 	@RequestMapping(value = "/api/gcsUpload", method = RequestMethod.POST)
