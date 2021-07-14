@@ -126,7 +126,7 @@ public class BackUpController {
     }
 
     @RequestMapping(value = "/api/gcsDownload", method = RequestMethod.GET)
-	public ResponseEntity<String> readGcsFile(@RequestParam("image") String image) throws IOException {
+	public ResponseEntity<?> readGcsFile(@RequestParam("image") String image) throws IOException {
         System.out.println("1.Image/gcsFile from GoogleCloud Storage:= " + image);
 		String gcsFile = StreamUtils.copyToString(
 				this.gcsFile.getInputStream(),
