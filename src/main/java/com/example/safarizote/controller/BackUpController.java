@@ -164,7 +164,7 @@ public class BackUpController {
         String s = new String(content);
         //byte[] encodedBytes = Base64.getDecoder().encode(content);
         //byte[] encodedBytes = Base64.getEncoder().encode(new String(content).getBytes());
-        byte[] encodedBytes = Base64.encodeBase64(s.getBytes());
+        byte[] encodedBytes = Base64.getEncoder().encode(s.getBytes());
         String fileContent2 = new String(encodedBytes);
         System.out.println("fileContent from GoogleCloud Storage fileContent2:= " + fileContent2);
 
