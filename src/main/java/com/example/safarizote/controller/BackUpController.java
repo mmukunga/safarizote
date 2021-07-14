@@ -7,28 +7,13 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Set;
 import java.util.Optional;
-import java.util.Base64;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.InputStream;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import javax.imageio.ImageIO;
 import java.net.URL;
 
-/*
-import com.google.cloud.ReadChannel;
-import com.google.cloud.storage.Storage;
-import com.google.cloud.storage.Blob;
-import com.google.cloud.storage.BlobId;
-import com.google.cloud.storage.StorageOptions;
-import com.google.cloud.storage.Blob.BlobSourceOption;
-import com.google.cloud.storage.Storage.SignUrlOption;
-import com.google.cloud.storage.StorageException;
-*/
 import com.google.appengine.tools.cloudstorage.GcsFileMetadata;
 import com.google.appengine.tools.cloudstorage.GcsService;
 import com.google.appengine.tools.cloudstorage.GcsFilename;
@@ -36,15 +21,10 @@ import com.google.appengine.tools.cloudstorage.RetryParams;
 import com.google.appengine.tools.cloudstorage.GcsInputChannel;
 import com.google.appengine.tools.cloudstorage.GcsServiceFactory;
 
-//import com.google.auth.oauth2.GoogleCredentials;
-
-//import org.springframework.util.ResourceUtils;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
-import java.nio.channels.Channels;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.WritableResource;
 import org.springframework.util.StreamUtils;
 
@@ -64,8 +44,6 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.example.safarizote.model.BackUp;
 import com.example.safarizote.repository.BackUpRepository;
@@ -77,15 +55,7 @@ import org.slf4j.LoggerFactory;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.nio.ByteBuffer;
-import java.nio.channels.ReadableByteChannel;
 
 @CrossOrigin(origins = "*")
 @RestController
