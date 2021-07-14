@@ -129,49 +129,25 @@ public class BackUpController {
     @RequestMapping(value = "/api/gcsDownload", method = RequestMethod.GET)
 	public ResponseEntity<?> readGcsFile(@RequestParam("image") String image) throws IOException {
         System.out.println("1.Image/gcsFile from GoogleCloud Storage:= " + image);
-		String gcsFile = StreamUtils.copyToString(
-				this.gcsFile.getInputStream(),
-				Charset.defaultCharset()) + "\n";
         
-        String contentType = "application/octet-stream";
-        System.out.println("2.Image from GoogleCloud Storage:= " +  this.gcsFile.getFilename());
-        System.out.println("3.Image from GoogleCloud Storage:= " + gcsFile);   
-
+        String contentType = "application/octet-stream"; 
         String BUCKET_NAME = "sms_familie_album";
         String OBJECT_NAME = "mail.jpg";
         String PROJECT_ID  = "familiealbum-sms";
 
-        URL resourceUrl = getClass().getClassLoader().getResource("credentials.json");
-        if (resourceUrl == null) {
-            throw new IOException("file not found!");
-        }
-
         Resource resource = new ClassPathResource("credentials.json");
         GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
-        Storage storage = StorageOptions.newBuilder().setProjectId("familiealbum-sms").setCredentials(credentials).build().getService();
 
         // Get specific file from specified bucket
+        Storage storage = StorageOptions.newBuilder().setProjectId("familiealbum-sms").setCredentials(credentials).build().getService();
         BlobId blobId = BlobId.of(BUCKET_NAME, OBJECT_NAME);
         Blob blob = storage.get(blobId);
-        if (blob != null) {
-            String content = new String(blob.getContent());
-            System.out.println("fileContent from GoogleCloud Storage content:= " + content); 
         
-            String imageURL = blob.getMediaLink();
-            System.out.println("4.Image from GoogleCloud Storage imageURL:= " + imageURL);   
-    
-            byte[] fileContent = blob.getContent(BlobSourceOption.generationMatch());
-            String fileContentString = new String(fileContent);
-            //System.out.println("fileContent from GoogleCloud Storage fileContentString:= " + fileContentString); 
-            byte[] encodedBytes = Base64.getEncoder().encode(fileContentString.getBytes());
-    
-            String encodedBytesString = new String(encodedBytes);
-            //System.out.println("fileContent from GoogleCloud Storage encodedBytesString:= " + encodedBytesString);
-    
+        String s = null;
 
+        if (blob != null) {
             ReadChannel readChannel = blob.reader();
             InputStream in = Channels.newInputStream(readChannel);
-            //byte[] fileBytes = IOUtils.toByteArray(in);
             ByteArrayOutputStream output = new ByteArrayOutputStream();
             try {
                 byte[] b = new byte[4096];
@@ -179,21 +155,15 @@ public class BackUpController {
                 while ((n = in.read(b)) != -1) {
                     output.write(b, 0, n);
                 }
-                //return output.toByteArray();
+                byte[] fileBytes = output.toByteArray();
+                s = new String(fileBytes);
             } finally {
                 output.close();
             }
-            byte[] fileBytes = output.toByteArray();
-            String s = new String(fileBytes);
+            
             System.out.println(s);
-            /*
-            File file = new File("/tmp/" + OBJECT_NAME);
-            FileOutputStream fileOuputStream = new FileOutputStream(file);
-            fileOuputStream.getChannel().transferFrom(readChannel, 0, Long.MAX_VALUE);
-            byte[] gzipFileBytes = fileOuputStream.toByteArray();
-            fileOuputStream.close();
-            */
-            return new ResponseEntity<>(fileBytes, HttpStatus.OK); 
+            return new ResponseEntity<>(s, HttpStatus.OK); 
+            
         } 
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}

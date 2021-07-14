@@ -122,6 +122,7 @@ const reducer = (state, action) => {
         <strong>Tree BackUp</strong>
         <p>Upload Files!!</p>
         <img src={image} title='title' alt='Image Description Here!!'/>
+        <img class="cfc-form-width-large ng-star-inserted" src="https://storage.cloud.google.com/sms_familie_album/mail.jpg?authuser=0" alt="mail.jpg" sandboxuid="3"></img>
         <form onSubmit={uploadSubmit}>
           <div className="BackUps">
               <Input onChange={onChange} />
