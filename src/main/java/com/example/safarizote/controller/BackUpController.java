@@ -126,7 +126,7 @@ public class BackUpController {
     }
 
     @RequestMapping(value = "/api/gcsDownload", method = RequestMethod.GET)
-	public ResponseEntity<Files> readGcsFile(@RequestParam("image") String image) throws IOException {
+	public ResponseEntity<?> readGcsFile(@RequestParam("image") String image) throws IOException {
         System.out.println("1.Image/gcsFile from GoogleCloud Storage:= " + image);
 		String gcsFile = StreamUtils.copyToString(
 				this.gcsFile.getInputStream(),
@@ -169,13 +169,30 @@ public class BackUpController {
     
 
             ReadChannel readChannel = blob.reader();
-            //File file = new File("/tmp/" + OBJECT_NAME);
-            String outputFileName = "/tmp/" + OBJECT_NAME;
-            FileOutputStream fileOuputStream = new FileOutputStream(outputFileName);
+            InputStream in = Channels.newInputStream(readChannel);
+            //byte[] fileBytes = IOUtils.toByteArray(in);
+            ByteArrayOutputStream output = new ByteArrayOutputStream();
+            try {
+                byte[] b = new byte[4096];
+                int n = 0;
+                while ((n = in.read(b)) != -1) {
+                    output.write(b, 0, n);
+                }
+                //return output.toByteArray();
+            } finally {
+                output.close();
+            }
+            byte[] fileBytes = output.toByteArray();
+            String s = new String(fileBytes);
+            System.out.println(s);
+            /*
+            File file = new File("/tmp/" + OBJECT_NAME);
+            FileOutputStream fileOuputStream = new FileOutputStream(file);
             fileOuputStream.getChannel().transferFrom(readChannel, 0, Long.MAX_VALUE);
+            byte[] gzipFileBytes = fileOuputStream.toByteArray();
             fileOuputStream.close();
-
-            return new ResponseEntity<>(new File(outputFileName), HttpStatus.OK); 
+            */
+            return new ResponseEntity<>(fileBytes, HttpStatus.OK); 
         } 
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
