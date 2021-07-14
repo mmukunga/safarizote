@@ -158,7 +158,7 @@ public class BackUpController {
     
             byte[] fileContent = blob.getContent(BlobSourceOption.generationMatch());
             String fileContentString = new String(fileContent);
-            System.out.println("fileContent from GoogleCloud Storage fileContentString:= " + fileContentString); 
+            //System.out.println("fileContent from GoogleCloud Storage fileContentString:= " + fileContentString); 
             byte[] encodedBytes = Base64.getEncoder().encode(fileContentString.getBytes());
     
             String encodedBytesString = new String(encodedBytes);
