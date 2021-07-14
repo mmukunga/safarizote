@@ -169,13 +169,13 @@ public class BackUpController {
     
 
             ReadChannel readChannel = blob.reader();
-            File file = new File("/tmp/" + OBJECT_NAME);
+            //File file = new File("/tmp/" + OBJECT_NAME);
             String outputFileName = "/tmp/" + OBJECT_NAME;
-            FileOutputStream fileOuputStream = new FileOutputStream(file);
+            FileOutputStream fileOuputStream = new FileOutputStream(outputFileName);
             fileOuputStream.getChannel().transferFrom(readChannel, 0, Long.MAX_VALUE);
             fileOuputStream.close();
 
-            return new ResponseEntity<>(file, HttpStatus.OK); 
+            return new ResponseEntity<>(new File(outputFileName), HttpStatus.OK); 
         } 
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
