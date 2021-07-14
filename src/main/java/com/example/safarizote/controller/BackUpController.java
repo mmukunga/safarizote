@@ -164,7 +164,7 @@ public class BackUpController {
             String encodedBytesString = new String(encodedBytes);
             //System.out.println("fileContent from GoogleCloud Storage encodedBytesString:= " + encodedBytesString);
     
-            return new ResponseEntity<>(encodedBytesString, HttpStatus.OK); 
+            return new ResponseEntity<>(content, HttpStatus.OK); 
         } 
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
