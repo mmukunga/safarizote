@@ -32,11 +32,6 @@
 			<artifactId>appengine-gcs-client</artifactId>
 			<version>0.6</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-gcp-starter-storage</artifactId>
-			<version>1.2.8.RELEASE</version>
-		</dependency>
         <dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
