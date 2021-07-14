@@ -28,6 +28,11 @@ import com.google.cloud.storage.StorageOptions;
 import com.google.cloud.storage.Blob.BlobSourceOption;
 import com.google.cloud.storage.Storage.SignUrlOption;
 import com.google.cloud.storage.StorageException;
+
+import com.google.appengine.tools.cloudstorage.GcsFileMetadata;
+import com.google.appengine.tools.cloudstorage.GcsService;
+import com.google.appengine.tools.cloudstorage.GcsServiceFactory;
+
 import com.google.auth.oauth2.GoogleCredentials;
 
 //import org.springframework.util.ResourceUtils;
@@ -69,6 +74,15 @@ import org.slf4j.LoggerFactory;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.nio.ByteBuffer;
+import java.nio.channels.ReadableByteChannel;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -135,39 +149,23 @@ public class BackUpController {
         String OBJECT_NAME = "mail.jpg";
         String PROJECT_ID  = "familiealbum-sms";
 
-        Resource resource = new ClassPathResource("credentials.json");
-        GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
+        GcsService gcsService = GcsServiceFactory.createGcsService(RetryParams.getDefaultInstance());
+        GcsFilename fileName = new GcsFilename(BUCKET_NAME, OBJECT_NAME);
+        System.out.println(fileName.toString() + "<br>");
+        System.out.println(String.format("/gs/%s/%s", fileName.getBucketName(), fileName.getObjectName()));
+        int fileSize = (int) gcsService.getMetadata(fileName).getLength();
+        ByteBuffer result = ByteBuffer.allocate(fileSize);
 
-        // Get specific file from specified bucket
-        Storage storage = StorageOptions.newBuilder().setProjectId("familiealbum-sms").setCredentials(credentials).build().getService();
-        BlobId blobId = BlobId.of(BUCKET_NAME, OBJECT_NAME);
-        Blob blob = storage.get(blobId);
-        
-        String s = null;
+        try (GcsInputChannel readChannel = gcsService.openReadChannel(fileName, 0)) {
+            readChannel.read(result);
+        }
 
-        if (blob != null) {
-            ReadChannel readChannel = blob.reader();
-            InputStream in = Channels.newInputStream(readChannel);
-            ByteArrayOutputStream output = new ByteArrayOutputStream();
-            try {
-                byte[] b = new byte[4096];
-                int n = 0;
-                while ((n = in.read(b)) != -1) {
-                    output.write(b, 0, n);
-                }
-                byte[] fileBytes = output.toByteArray();
-                s = new String(fileBytes);
-            } finally {
-                output.close();
-            }
-            
-            System.out.println(s);
-            return new ResponseEntity<>(s, HttpStatus.OK); 
-            
-        } 
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        byte[] fileContent = result.array();
+
+        return new ResponseEntity<>(fileContent, HttpStatus.OK); 
 	}
-    
+   
+
 	@RequestMapping(value = "/api/gcsUpload", method = RequestMethod.POST)
 	String writeGcs(@RequestBody String data) throws IOException {
 		try (OutputStream os = ((WritableResource) this.gcsFile).getOutputStream()) {
