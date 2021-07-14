@@ -120,62 +120,50 @@ public class BackUpController {
 
     @RequestMapping(value = "/api/gcsDownload", method = RequestMethod.GET)
 	public ResponseEntity<String> readGcsFile(@RequestParam("image") String image) throws IOException {
-        System.out.println("An image upload request has come in!!");
-
-        System.out.println("2.Image/gcsFile from GoogleCloud Storage:= " + image);
+        System.out.println("1.Image/gcsFile from GoogleCloud Storage:= " + image);
 		String gcsFile = StreamUtils.copyToString(
 				this.gcsFile.getInputStream(),
 				Charset.defaultCharset()) + "\n";
         
         String contentType = "application/octet-stream";
-        System.out.println("3.Image from GoogleCloud Storage:= " +  this.gcsFile.getFilename());
-        System.out.println("4.Image from GoogleCloud Storage:= " + gcsFile);   
-
+        System.out.println("2.Image from GoogleCloud Storage:= " +  this.gcsFile.getFilename());
+        System.out.println("3.Image from GoogleCloud Storage:= " + gcsFile);   
 
         String BUCKET_NAME = "sms_familie_album";
         String OBJECT_NAME = "mail.jpg";
         String PROJECT_ID  = "familiealbum-sms";
-        // Instantiate a Google Cloud Storage client
-        //ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 
         URL resourceUrl = getClass().getClassLoader().getResource("credentials.json");
         if (resourceUrl == null) {
             throw new IOException("file not found!");
         }
 
-        /* InputStream inputStream = getClass().getClassLoader().getResourceAsStream("credentials.json");
-        if (inputStream == null) {
-            throw new IllegalArgumentException("inputStream not found!");
-        }
-        GoogleCredentials credentials = GoogleCredentials.fromStream(inputStream);
-        */
-        
-        //ClassLoader classLoader = getClass().getClassLoader();
         Resource resource = new ClassPathResource("credentials.json");
-        //InputStream inputStream = resource.getInputStream();
-        //File file = new File(classLoader.getResource("credentials.json").getFile());
-        //File file = ResourceUtils.getFile("classpath:credentials.json");
         GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
-        System.out.println("1.Image/gcsFile from GoogleCloud credentials:= " + credentials);
-        //Storage storage = StorageOptions.newBuilder().setCredentials(credentials).setProjectId("familiealbum-sms").build().getService();
-        //Storage storage = StorageOptions.getDefaultInstance().getService();
         Storage storage = StorageOptions.newBuilder().setProjectId("familiealbum-sms").setCredentials(credentials).build().getService();
-        System.out.println("1.Image/gcsFile from GoogleCloud Storage:= " + storage);
+
         // Get specific file from specified bucket
         BlobId blobId = BlobId.of(BUCKET_NAME, OBJECT_NAME);
         Blob blob = storage.get(blobId);
         if (blob != null) {
             String fileContent = new String(blob.getContent());
-            System.out.println("fileContent from GoogleCloud Storage:= " + fileContent);
-        }    
+            System.out.println("fileContent from GoogleCloud Storage fileContent:= " + fileContent);
+        }  
+        
+        String imageURL = blob.getMediaLink();
+        System.out.println("4.Image from GoogleCloud Storage imageURL:= " + imageURL);   
         // Download file to specified path
-        //blob.downloadTo(destFilePath);
+        // blob.downloadTo(destFilePath);
         // [END storage_download_file]
+        byte[] content = blob.getContent(BlobSourceOption.generationMatch());
+        String s = new String(content);
+        byte[] encodedBytes = Base64.encodeBase64(content);
+        String fileContent2 = new String(encodedBytes);
+        System.out.println("fileContent from GoogleCloud Storage fileContent2:= " + fileContent2);
 
         return new ResponseEntity<>(gcsFile, HttpStatus.OK); 
 	}
-
-    /*
+    
 	@RequestMapping(value = "/api/gcsUpload", method = RequestMethod.POST)
 	String writeGcs(@RequestBody String data) throws IOException {
 		try (OutputStream os = ((WritableResource) this.gcsFile).getOutputStream()) {
@@ -183,7 +171,6 @@ public class BackUpController {
 		}
 		return "file was updated\n";
 	}
-    */
 
     public void displayList(BackUp category, StringBuffer indentation){
         indentation.append(" ");
