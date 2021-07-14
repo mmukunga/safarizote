@@ -27,6 +27,7 @@ const reducer = (state, action) => {
   const BackUp = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const [category, setCategory] = React.useState([]);
+    const [image, setImage] = React.useState('');
     const [nodes, setNodes] = React.useState([{
       value: '',
       label: '',
@@ -103,6 +104,7 @@ const reducer = (state, action) => {
           const image = state.files[0].src;
           axios.get(`/api/gcsDownload?image=${image}`).then((response) => { 
               console.log(response.data);
+              setImage(response.data);
           }).catch(error => {
               console.log(error);
           });
@@ -119,6 +121,7 @@ const reducer = (state, action) => {
       <Card className="InnerCard" fontColor="black">
         <strong>Tree BackUp</strong>
         <p>Upload Files!!</p>
+        <img src={image} title='title' alt='Image Description Here!!'/>
         <form onSubmit={uploadSubmit}>
           <div className="BackUps">
               <Input onChange={onChange} />
