@@ -12,11 +12,14 @@ import java.util.Base64;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.InputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import java.net.URL;
 
 
+import com.google.cloud.ReadChannel;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.ReadChannel;
@@ -164,7 +167,14 @@ public class BackUpController {
             String encodedBytesString = new String(encodedBytes);
             //System.out.println("fileContent from GoogleCloud Storage encodedBytesString:= " + encodedBytesString);
     
-            return new ResponseEntity<>(content, HttpStatus.OK); 
+
+            ReadChannel readChannel = blob.reader();
+            File file = new File("/tmp/" + OBJECT_NAME);
+            FileOutputStream fileOuputStream = new FileOutputStream(file);
+            fileOuputStream.getChannel().transferFrom(readChannel, 0, Long.MAX_VALUE);
+            fileOuputStream.close();
+
+            return new ResponseEntity<>(file, HttpStatus.OK); 
         } 
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
