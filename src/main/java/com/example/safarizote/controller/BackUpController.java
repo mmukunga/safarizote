@@ -159,15 +159,12 @@ public class BackUpController {
         // Download file to specified path
         // blob.downloadTo(destFilePath);
         // [END storage_download_file]
-        String imageData = "data:image/png;base64,iVBORw0KGgoAAAANSUhE....";
-        String base64Data = new String(blob.getContent()).split(",")[1];
-        byte[] decodedBytes = Base64.getDecoder().decode(base64Data);
 
         byte[] content = blob.getContent(BlobSourceOption.generationMatch());
         String s = new String(content);
         //byte[] encodedBytes = Base64.getDecoder().encode(content);
         //byte[] encodedBytes = Base64.getEncoder().encode(new String(content).getBytes());
-        byte[] encodedBytes = Base64.getEncoder().encode(new String(content).getBytes());
+        byte[] encodedBytes = Base64.encodeBase64(s.getBytes());
         String fileContent2 = new String(encodedBytes);
         System.out.println("fileContent from GoogleCloud Storage fileContent2:= " + fileContent2);
 
