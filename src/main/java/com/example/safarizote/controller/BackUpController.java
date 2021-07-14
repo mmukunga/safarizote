@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Set;
 import java.util.Optional;
+import java.util.Base64;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
