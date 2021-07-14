@@ -150,14 +150,15 @@ public class BackUpController {
         BlobId blobId = BlobId.of(BUCKET_NAME, OBJECT_NAME);
         Blob blob = storage.get(blobId);
         if (blob != null) {
-            //String fileContent = new String(blob.getContent());
-            System.out.println("fileContent from GoogleCloud Storage fileContent:= " + fileContent); 
+            String content = new String(blob.getContent());
+            System.out.println("fileContent from GoogleCloud Storage content:= " + content); 
         
             String imageURL = blob.getMediaLink();
             System.out.println("4.Image from GoogleCloud Storage imageURL:= " + imageURL);   
     
             byte[] fileContent = blob.getContent(BlobSourceOption.generationMatch());
             String fileContentString = new String(fileContent);
+            System.out.println("fileContent from GoogleCloud Storage fileContentString:= " + fileContentString); 
             byte[] encodedBytes = Base64.getEncoder().encode(fileContentString.getBytes());
     
             String encodedBytesString = new String(encodedBytes);
