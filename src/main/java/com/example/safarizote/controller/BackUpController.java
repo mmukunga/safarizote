@@ -154,14 +154,18 @@ public class BackUpController {
         long size = blob.getSize(); // no RPC call is required
         byte[] content = blob.getContent(); // one or multiple RPC calls will be issued
 
-        String data = blob.getMd5();
-        System.out.println("BLOB DATA : " +  data);    
+        //String data = blob.getMd5();
+        //System.out.println("BLOB DATA : " +  data);    
         
         Map<String,String> map = blob.getMetadata();
         System.out.println("\nExample 1...");
         for (Map.Entry<String, String> entry : map.entrySet()) {
             System.out.println("Key : " + entry.getKey() + " Value : " + entry.getValue());
         } 
+        Integer duration = 15;
+        URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
+        String imageUrl = signedUrl.toExternalForm();
+        System.out.println("Generated image url : " + imageUrl);
 
         /*
                 GcsService gcsService = GcsServiceFactory.createGcsService(RetryParams.getDefaultInstance());
@@ -177,7 +181,7 @@ public class BackUpController {
 
                 byte[] fileContent = result.array();
         */
-        return new ResponseEntity<>(gcsFile, HttpStatus.OK); 
+        return new ResponseEntity<>(imageUrl, HttpStatus.OK); 
 	}
    
 
