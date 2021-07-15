@@ -18,7 +18,7 @@ const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case 'load':
-      return { ...state, files: action.files, status: LOADED }
+      return { ...state, files: action.payload, status: LOADED }
     case 'add_item' :
       return { ...state, files: [...state.files, action.payload] }  
     default:
@@ -73,10 +73,11 @@ const reducer = (state, action) => {
       if (e.target.files.length) {
         const arrFiles = Array.from(e.target.files)
         const files = arrFiles.map((file, index) => {
+          console.log(file);
           const src = window.URL.createObjectURL(file)
           return { file, id: index, src }
         })
-        dispatch({ type: 'load', files })
+        dispatch({ type: 'load', payload: files })
       }
     }
 
@@ -123,7 +124,7 @@ const reducer = (state, action) => {
               const gcsData = {file: File, id: state.files.length+1, src: `blob:${response.data}`}
               dispatch({
                 type: 'add_item',
-                payload: { gcsData }
+                payload: gcsData
               });
 
           }).catch(error => {
