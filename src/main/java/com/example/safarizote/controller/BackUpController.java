@@ -33,6 +33,7 @@ import java.io.OutputStream;
 import java.nio.charset.Charset;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.WritableResource;
 import org.springframework.util.StreamUtils;
 
