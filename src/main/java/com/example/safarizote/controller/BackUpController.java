@@ -124,6 +124,11 @@ public class BackUpController {
         String BUCKET_NAME = "sms_familie_album";
         String OBJECT_NAME = "mail.jpg";
         String PROJECT_ID  = "familiealbum-sms";
+
+        String gcsFile = StreamUtils.copyToString(
+            this.gcsFile.getInputStream(),
+            Charset.defaultCharset()) + "\n";
+            System.out.println("Image from GoogleCloud Storage:= " + gcsFile);
 /*
         GcsService gcsService = GcsServiceFactory.createGcsService(RetryParams.getDefaultInstance());
         GcsFilename fileName = new GcsFilename(BUCKET_NAME, OBJECT_NAME);
