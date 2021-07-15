@@ -109,7 +109,18 @@ const reducer = (state, action) => {
           axios.get(`/api/gcsDownload?image=${image}`).then((response) => { 
               console.log(response.data);
               setImage(response.data);
-              const gcsData = response.data;
+              const date = new Date();
+              const unixTimeStamp = Math.floor(date.getTime() / 1000);
+              const File = {
+                  lastModified: unixTimeStamp,
+                  lastModifiedDate: date,
+                  name: response.data,
+                  size: 8000,
+                  type: "image/jpeg",
+                  webkitRelativePath: ""
+              };
+
+              const gcsData = {file: File, id: state.files.length+1, src: `blob:${response.data}`}
               dispatch({
                 type: 'add_item',
                 payload: { gcsData }
