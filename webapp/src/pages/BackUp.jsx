@@ -121,6 +121,7 @@ const reducer = (state, action) => {
       <Card className="InnerCard" fontColor="black">
         <strong>Tree BackUp</strong>
         <p>Upload Files!!</p>
+        <img src={image} alt={"GCS Image!!"}/> 
         <form onSubmit={uploadSubmit}>
           <div className="BackUps">
               <Input onChange={onChange} />
