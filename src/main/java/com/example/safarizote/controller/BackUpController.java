@@ -14,12 +14,14 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 
+/*
 import com.google.appengine.tools.cloudstorage.GcsFileMetadata;
 import com.google.appengine.tools.cloudstorage.GcsService;
 import com.google.appengine.tools.cloudstorage.GcsFilename;
 import com.google.appengine.tools.cloudstorage.RetryParams;
 import com.google.appengine.tools.cloudstorage.GcsInputChannel;
 import com.google.appengine.tools.cloudstorage.GcsServiceFactory;
+*/
 
 import java.io.OutputStream;
 import java.nio.charset.Charset;
@@ -121,7 +123,7 @@ public class BackUpController {
         String BUCKET_NAME = "sms_familie_album";
         String OBJECT_NAME = "mail.jpg";
         String PROJECT_ID  = "familiealbum-sms";
-
+/*
         GcsService gcsService = GcsServiceFactory.createGcsService(RetryParams.getDefaultInstance());
         GcsFilename fileName = new GcsFilename(BUCKET_NAME, OBJECT_NAME);
         System.out.println(fileName.toString() + "<br>");
@@ -134,8 +136,8 @@ public class BackUpController {
         }
 
         byte[] fileContent = result.array();
-
-        return new ResponseEntity<>(fileContent, HttpStatus.OK); 
+*/
+        return new ResponseEntity<>(image, HttpStatus.OK); 
 	}
    
 
