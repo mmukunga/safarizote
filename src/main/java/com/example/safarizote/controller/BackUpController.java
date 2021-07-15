@@ -140,7 +140,6 @@ public class BackUpController {
         String gcsFile = StreamUtils.copyToString(
             this.gcsFile.getInputStream(),
             Charset.defaultCharset()) + "\n";
-            //System.out.println("Image from GoogleCloud Storage:= " + gcsFile);
         
         Resource resource = new ClassPathResource("credentials.json");
         GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
@@ -155,33 +154,10 @@ public class BackUpController {
         long size = blob.getSize(); // no RPC call is required
         byte[] content = blob.getContent(); // one or multiple RPC calls will be issued
 
-        //String data = blob.getMd5();
-        //System.out.println("BLOB DATA : " +  data);    
-    /*    
-        Map<String,String> map = blob.getMetadata();
-        System.out.println("\nExample 1...");
-        for (Map.Entry<String, String> entry : map.entrySet()) {
-            System.out.println("Key : " + entry.getKey() + " Value : " + entry.getValue());
-        } */
         Integer duration = 15;
         URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
         String imageUrl = signedUrl.toExternalForm();
         System.out.println("Generated image url : " + imageUrl);
-
-        /*
-                GcsService gcsService = GcsServiceFactory.createGcsService(RetryParams.getDefaultInstance());
-                GcsFilename fileName = new GcsFilename(BUCKET_NAME, OBJECT_NAME);
-                System.out.println(fileName.toString() + "<br>");
-                System.out.println(String.format("/gs/%s/%s", fileName.getBucketName(), fileName.getObjectName()));
-                int fileSize = (int) gcsService.getMetadata(fileName).getLength();
-                ByteBuffer result = ByteBuffer.allocate(fileSize);
-
-                try (GcsInputChannel readChannel = gcsService.openReadChannel(fileName, 0)) {
-                    readChannel.read(result);
-                }
-
-                byte[] fileContent = result.array();
-        */
         return new ResponseEntity<>(imageUrl, HttpStatus.OK); 
 	}
    

@@ -27,7 +27,7 @@ const reducer = (state, action) => {
   const BackUp = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const [category, setCategory] = React.useState([]);
-    const [image, setImage] = React.useState('');
+    const [image, setImage] = React.useState('http://www.hyperlinkcode.com/images/sample-image.jpg');
     const [nodes, setNodes] = React.useState([{
       value: '',
       label: '',
@@ -121,7 +121,7 @@ const reducer = (state, action) => {
       <Card className="InnerCard" fontColor="black">
         <strong>Tree BackUp</strong>
         <p>Upload Files!!</p>
-        <img src={image} alt={"GCS Image!!"}/> 
+        <img src={image} className="resize" alt={"GCS Image!!"}/> 
         <form onSubmit={uploadSubmit}>
           <div className="BackUps">
               <Input onChange={onChange} />

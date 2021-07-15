@@ -9,6 +9,11 @@
   list-style: none;
 }
 
+img.resize {
+  max-width:50%;
+  max-height:50%;
+}
+
 @media only screen and (max-width: 600px) {
   .BackUps {
     margin: 5px;
