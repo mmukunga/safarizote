@@ -7,7 +7,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 const LOADED = 'LOADED';
 
 const initialState = {
-  files: [],
+  files: ['http://www.hyperlinkcode.com/images/sample-image.jpg'],
   pending: [],
   next: null,
   uploading: false,
@@ -19,6 +19,8 @@ const reducer = (state, action) => {
   switch (action.type) {
     case 'load':
       return { ...state, files: action.files, status: LOADED }
+    case 'add_item' :
+      return { ...state, files: [...state.files, action.payload] }  
     default:
       return state
   }
@@ -100,11 +102,18 @@ const reducer = (state, action) => {
           console.log(result);
           console.log(state);
           console.log(state.files);
-          console.log(state.files[0]);
-          const image = state.files[0].src;
+          var index =  state.files[Math.floor(Math.random() * state.files.length)];
+          console.log(state.files[index]);
+          const image = state.files[index].src;
           axios.get(`/api/gcsDownload?image=${image}`).then((response) => { 
               console.log(response.data);
               setImage(response.data);
+              const gcsData = response.data;
+              dispatch({
+                type: 'add_item',
+                payload: { gcsData }
+              });
+
           }).catch(error => {
               console.log(error);
           });
