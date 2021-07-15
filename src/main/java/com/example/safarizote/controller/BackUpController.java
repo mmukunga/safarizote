@@ -128,7 +128,7 @@ public class BackUpController {
         String gcsFile = StreamUtils.copyToString(
             this.gcsFile.getInputStream(),
             Charset.defaultCharset()) + "\n";
-            System.out.println("Image from GoogleCloud Storage:= " + gcsFile);
+            //System.out.println("Image from GoogleCloud Storage:= " + gcsFile);
 /*
         GcsService gcsService = GcsServiceFactory.createGcsService(RetryParams.getDefaultInstance());
         GcsFilename fileName = new GcsFilename(BUCKET_NAME, OBJECT_NAME);
