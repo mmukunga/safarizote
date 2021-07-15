@@ -23,6 +23,12 @@ import com.google.appengine.tools.cloudstorage.GcsInputChannel;
 import com.google.appengine.tools.cloudstorage.GcsServiceFactory;
 */
 
+import com.google.cloud.storage.Storage;
+import com.google.cloud.storage.Blob;
+import com.google.cloud.storage.BlobId;
+import com.google.cloud.storage.StorageOptions;
+import com.google.auth.oauth2.GoogleCredentials;
+
 import java.io.OutputStream;
 import java.nio.charset.Charset;
 import org.springframework.beans.factory.annotation.Value;
@@ -145,7 +151,7 @@ public class BackUpController {
 
         String data = blob.getMd5();
         System.out.println("BLOB DATA : " +  data);    
-        
+
         /*
                 GcsService gcsService = GcsServiceFactory.createGcsService(RetryParams.getDefaultInstance());
                 GcsFilename fileName = new GcsFilename(BUCKET_NAME, OBJECT_NAME);
