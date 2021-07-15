@@ -67,7 +67,8 @@ public class BackUpController {
   @Autowired
   private BackUpRepository repository;
   
-  @Value("https://${gcs-resource-test-bucket}/2013%20Disneyland%20Paris/05.08.2013/DSC00945.JPG?authuser=0")
+  //@Value("https://${gcs-resource-test-bucket}/2013%20Disneyland%20Paris/05.08.2013/DSC00945.JPG?authuser=0")
+  @Value("gs://${gcs-resource-test-bucket}/mail.jpg")
   private Resource gcsFile;
   
     @RequestMapping(value = "/api/categories",  method={RequestMethod.GET})
