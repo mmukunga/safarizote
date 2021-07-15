@@ -102,7 +102,8 @@ const reducer = (state, action) => {
           console.log(result);
           console.log(state);
           console.log(state.files);
-          var index =  state.files[Math.floor(Math.random() * state.files.length)];
+          var index = Math.floor(Math.random() * state.files.length);
+          console.log('INDEX: ' + index);
           console.log(state.files[index]);
           const image = state.files[index].src;
           axios.get(`/api/gcsDownload?image=${image}`).then((response) => { 
