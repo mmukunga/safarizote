@@ -7,7 +7,7 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 const LOADED = 'LOADED';
 
 const initialState = {
-  files: ['http://www.hyperlinkcode.com/images/sample-image.jpg'],
+  files: [],
   pending: [],
   next: null,
   uploading: false,
