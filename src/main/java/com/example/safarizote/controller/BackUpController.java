@@ -143,7 +143,7 @@ public class BackUpController {
 
         byte[] fileContent = result.array();
 */
-        return new ResponseEntity<>(image, HttpStatus.OK); 
+        return new ResponseEntity<>(gcsFile, HttpStatus.OK); 
 	}
    
 
