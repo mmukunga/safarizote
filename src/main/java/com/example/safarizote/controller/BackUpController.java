@@ -66,6 +66,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.ByteBuffer;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 @CrossOrigin(origins = "*")
 @RestController
 public class BackUpController { 
@@ -152,6 +156,12 @@ public class BackUpController {
 
         String data = blob.getMd5();
         System.out.println("BLOB DATA : " +  data);    
+        
+        Map<String,String> map = blob.getMetadata();
+        System.out.println("\nExample 1...");
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            System.out.println("Key : " + entry.getKey() + " Value : " + entry.getValue());
+        } 
 
         /*
                 GcsService gcsService = GcsServiceFactory.createGcsService(RetryParams.getDefaultInstance());
