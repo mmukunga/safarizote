@@ -121,7 +121,7 @@ const reducer = (state, action) => {
                   webkitRelativePath: ""
               };
 
-              const gcsData = {file: File, id: state.files.length+1, src: `blob:${response.data}`}
+              const gcsData = {file: File, id: state.files.length+1, src: `${response.data}`}
               dispatch({
                 type: 'add_item',
                 payload: gcsData
