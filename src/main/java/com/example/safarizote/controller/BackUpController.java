@@ -129,20 +129,37 @@ public class BackUpController {
             this.gcsFile.getInputStream(),
             Charset.defaultCharset()) + "\n";
             //System.out.println("Image from GoogleCloud Storage:= " + gcsFile);
-/*
-        GcsService gcsService = GcsServiceFactory.createGcsService(RetryParams.getDefaultInstance());
-        GcsFilename fileName = new GcsFilename(BUCKET_NAME, OBJECT_NAME);
-        System.out.println(fileName.toString() + "<br>");
-        System.out.println(String.format("/gs/%s/%s", fileName.getBucketName(), fileName.getObjectName()));
-        int fileSize = (int) gcsService.getMetadata(fileName).getLength();
-        ByteBuffer result = ByteBuffer.allocate(fileSize);
+        
+        Resource resource = new ClassPathResource("credentials.json");
+        GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
 
-        try (GcsInputChannel readChannel = gcsService.openReadChannel(fileName, 0)) {
-            readChannel.read(result);
-        }
+        // Get specific file from specified bucket
+        Storage storage = StorageOptions.newBuilder().setProjectId(PROJECT_ID).setCredentials(credentials).build().getService();
+        BlobId blobId = BlobId.of(BUCKET_NAME, OBJECT_NAME);
+        Blob blob = storage.get(blobId);
 
-        byte[] fileContent = result.array();
-*/
+        System.out.println("Image URL : " +  blob.getMediaLink());    
+
+        long size = blob.getSize(); // no RPC call is required
+        byte[] content = blob.getContent(); // one or multiple RPC calls will be issued
+
+        String data = blob.getMd5();
+        System.out.println("BLOB DATA : " +  data);    
+        
+        /*
+                GcsService gcsService = GcsServiceFactory.createGcsService(RetryParams.getDefaultInstance());
+                GcsFilename fileName = new GcsFilename(BUCKET_NAME, OBJECT_NAME);
+                System.out.println(fileName.toString() + "<br>");
+                System.out.println(String.format("/gs/%s/%s", fileName.getBucketName(), fileName.getObjectName()));
+                int fileSize = (int) gcsService.getMetadata(fileName).getLength();
+                ByteBuffer result = ByteBuffer.allocate(fileSize);
+
+                try (GcsInputChannel readChannel = gcsService.openReadChannel(fileName, 0)) {
+                    readChannel.read(result);
+                }
+
+                byte[] fileContent = result.array();
+        */
         return new ResponseEntity<>(gcsFile, HttpStatus.OK); 
 	}
    
