@@ -87,6 +87,23 @@ public class BackUpController {
     @RequestMapping(value = "/api/categories",  method={RequestMethod.GET})
     public ResponseEntity<List<BackUp>> findAll() {
         System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
+
+        Resource resource = new ClassPathResource("credentials.json");
+        GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
+
+        // Get specific file from specified bucket
+        Storage storage = StorageOptions.newBuilder().setProjectId(PROJECT_ID).setCredentials(credentials).build().getService();
+        List<String> imageUrls = new ArrayList<>();
+        Bucket bucket = storage.get(BUCKET_NAME);
+        for (Blob b : bucket.list().iterateAll()) {
+                System.out.println(b.getName());
+                Integer duration = 15;
+                URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
+                String imageUrl = signedUrl.toExternalForm();
+                System.out.println("Generated image url : " + imageUrl);
+                imageUrls.add(imageUrl);
+        }
+
         List<BackUp> categories = repository.findAll();
         for (BackUp category : categories) {
             System.out.println(category);
@@ -111,20 +128,31 @@ public class BackUpController {
         return new ResponseEntity<>(backUp, HttpStatus.OK);
     }
     
-    @RequestMapping(value="/api/downloadFile", method={RequestMethod.GET})
-    public ResponseEntity<Object> download(@RequestParam("image") String image) throws Exception {
-        System.out.println(image);
+    @RequestMapping(value="/api/gcsDownloadAll", method={RequestMethod.GET})
+    public ResponseEntity<Object> readGcsFiles(@RequestParam("folder") String folder) throws Exception {
+        System.out.println(folder);
         List<BackUp> dbFolders = repository.findAll(); 
-        System.out.println("An image upload request has come in!!");
-        System.out.println("Image from Multipart:= " + image);
-        if (image == null) {
+        System.out.println("An folder upload request has come in!!");
+        System.out.println("Folder from Multipart:= " + folder);
+        if (folder == null) {
             return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
         }
 
-        String gcsFile = StreamUtils.copyToString(
-            this.gcsFile.getInputStream(),
-            Charset.defaultCharset()) + "\n";
-            System.out.println("Image from GoogleCloud Storage:= " + gcsFile);
+        Resource resource = new ClassPathResource("credentials.json");
+        GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
+
+        // Get specific file from specified bucket
+        Storage storage = StorageOptions.newBuilder().setProjectId(PROJECT_ID).setCredentials(credentials).build().getService();
+        List<String> imageUrls = new ArrayList<>();
+        Bucket bucket = storage.get(BUCKET_NAME);
+        for (Blob b : bucket.list().iterateAll()) {
+            System.out.println(b.getName());
+            Integer duration = 15;
+            URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
+            String imageUrl = signedUrl.toExternalForm();
+            System.out.println("Generated image url : " + imageUrl);
+            imageUrls.add(imageUrl);
+        }
 
         return ResponseEntity.ok().build();
     }
