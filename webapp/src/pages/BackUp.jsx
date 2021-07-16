@@ -144,7 +144,6 @@ const reducer = (state, action) => {
       <Card className="InnerCard" fontColor="black">
         <strong>Tree BackUp</strong>
         <p>Upload Files!!</p>
-        <img src={image} className="resize" alt={"GCS Image!!"}/> 
         <form onSubmit={uploadSubmit}>
           <div className="BackUps">
               <Input onChange={onChange} />
@@ -155,7 +154,7 @@ const reducer = (state, action) => {
           <div>
             {state.files.map(({ file, src, id }, index) => (
               <div key={`thumb${index}`} className="thumbnail-wrapper">
-                <img className="thumbnail" src={src} alt="" />
+                <img className="thumbnail" src={src}  className="resize" alt={"GCS Image!!"} />
                 <div className="thumbnail-caption">{file.name}</div>
               </div>
             ))}
