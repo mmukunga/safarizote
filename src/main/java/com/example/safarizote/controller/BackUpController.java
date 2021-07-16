@@ -97,7 +97,7 @@ public class BackUpController {
         List<String> imageUrls = new ArrayList<>();
         Bucket bucket = storage.get(BUCKET_NAME);
         for (Blob blob : bucket.list().iterateAll()) {
-            if (!blob.isDirectory() && matchPattern.matcher(blob.getName()).matches()) {
+            if (matchPattern.matcher(blob.getName()).matches()) {
                 System.out.println(blob.getName());
                 Integer duration = 15;
                 URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
@@ -159,7 +159,7 @@ public class BackUpController {
         List<String> imageUrls = new ArrayList<>();
         Bucket bucket = storage.get(BUCKET_NAME);
         for (Blob blob : bucket.list().iterateAll()) {
-            if (!blob.isDirectory() && matchPattern.matcher(blob.getName()).matches()) {
+            if (matchPattern.matcher(blob.getName()).matches()) {
                 System.out.println(blob.getName());
                 Integer duration = 15;
                 URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
@@ -208,7 +208,7 @@ public class BackUpController {
 
         Bucket bucket = storage.get(BUCKET_NAME);
         for (Blob b : bucket.list().iterateAll()) {
-            if (!b.isDirectory() && matchPattern.matcher(b.getName()).matches()) {
+            if (matchPattern.matcher(b.getName()).matches()) {
                 System.out.println(b.getName());
             }    
         }
