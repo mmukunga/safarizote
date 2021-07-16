@@ -24,6 +24,7 @@ import com.google.appengine.tools.cloudstorage.GcsServiceFactory;
 */
 
 import com.google.cloud.storage.Storage;
+import com.google.cloud.storage.Bucket;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.StorageOptions;
@@ -158,6 +159,12 @@ public class BackUpController {
         URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
         String imageUrl = signedUrl.toExternalForm();
         System.out.println("Generated image url : " + imageUrl);
+
+        Bucket bucket = storage.get(BUCKET_NAME);
+        for (Blob b : bucket.list().iterateAll()) {
+                System.out.println(b.getName());
+        }
+
         return new ResponseEntity<>(imageUrl, HttpStatus.OK); 
 	}
    
