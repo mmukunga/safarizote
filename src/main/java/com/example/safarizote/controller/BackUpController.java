@@ -87,7 +87,6 @@ public class BackUpController {
     @RequestMapping(value = "/api/categories",  method={RequestMethod.GET})
     public ResponseEntity<List<BackUp>> findAll() {
         System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
-
         Resource resource = new ClassPathResource("credentials.json");
         GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
 
@@ -95,8 +94,8 @@ public class BackUpController {
         Storage storage = StorageOptions.newBuilder().setProjectId(PROJECT_ID).setCredentials(credentials).build().getService();
         List<String> imageUrls = new ArrayList<>();
         Bucket bucket = storage.get(BUCKET_NAME);
-        for (Blob b : bucket.list().iterateAll()) {
-                System.out.println(b.getName());
+        for (Blob blob : bucket.list().iterateAll()) {
+                System.out.println(blob.getName());
                 Integer duration = 15;
                 URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
                 String imageUrl = signedUrl.toExternalForm();
