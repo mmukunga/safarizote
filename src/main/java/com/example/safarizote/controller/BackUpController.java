@@ -151,8 +151,8 @@ public class BackUpController {
         Storage storage = StorageOptions.newBuilder().setProjectId(PROJECT_ID).setCredentials(credentials).build().getService();
         List<String> imageUrls = new ArrayList<>();
         Bucket bucket = storage.get(BUCKET_NAME);
-        for (Blob b : bucket.list().iterateAll()) {
-            System.out.println(b.getName());
+        for (Blob blob : bucket.list().iterateAll()) {
+            System.out.println(blob.getName());
             Integer duration = 15;
             URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
             String imageUrl = signedUrl.toExternalForm();
