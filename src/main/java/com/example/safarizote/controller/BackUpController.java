@@ -87,6 +87,10 @@ public class BackUpController {
     @RequestMapping(value = "/api/categories",  method={RequestMethod.GET})
     public ResponseEntity<List<BackUp>> findAll() throws IOException {
         System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
+        
+        String matchExpr = "2013 Disneyland Paris";
+        Pattern matchPattern = Pattern.compile(matchExpr);
+
         String contentType = "application/octet-stream"; 
         String BUCKET_NAME = "sms_familie_album";
         String OBJECT_NAME = "mail.jpg";
@@ -100,18 +104,21 @@ public class BackUpController {
         List<String> imageUrls = new ArrayList<>();
         Bucket bucket = storage.get(BUCKET_NAME);
         for (Blob blob : bucket.list().iterateAll()) {
+            if (!blob.isDirectory() && matchPattern.matcher(blob.getName()).matches()) {
                 System.out.println(blob.getName());
                 Integer duration = 15;
                 URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
                 String imageUrl = signedUrl.toExternalForm();
                 System.out.println("Generated image url : " + imageUrl);
                 imageUrls.add(imageUrl);
+            }    
         }
-
+        
         List<BackUp> categories = repository.findAll();
         for (BackUp category : categories) {
             System.out.println(category);
         }
+
         System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
         System.out.println("BackUp.findAll()  End OK!");
         return new ResponseEntity<>(categories, HttpStatus.OK);
@@ -136,6 +143,9 @@ public class BackUpController {
     public ResponseEntity<Object> readGcsFiles(@RequestParam("folder") String folder) throws Exception {
         System.out.println(folder);
 
+        String matchExpr = "2013 Disneyland Paris";
+        Pattern matchPattern = Pattern.compile(matchExpr);
+
         String contentType = "application/octet-stream"; 
         String BUCKET_NAME = "sms_familie_album";
         String OBJECT_NAME = "mail.jpg";
@@ -156,12 +166,14 @@ public class BackUpController {
         List<String> imageUrls = new ArrayList<>();
         Bucket bucket = storage.get(BUCKET_NAME);
         for (Blob blob : bucket.list().iterateAll()) {
-            System.out.println(blob.getName());
-            Integer duration = 15;
-            URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
-            String imageUrl = signedUrl.toExternalForm();
-            System.out.println("Generated image url : " + imageUrl);
-            imageUrls.add(imageUrl);
+            if (!blob.isDirectory() && matchPattern.matcher(blob.getName()).matches()) {
+                System.out.println(blob.getName());
+                Integer duration = 15;
+                URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
+                String imageUrl = signedUrl.toExternalForm();
+                System.out.println("Generated image url : " + imageUrl);
+                imageUrls.add(imageUrl);
+            }
         }
 
         return ResponseEntity.ok().build();
@@ -171,6 +183,9 @@ public class BackUpController {
 	public ResponseEntity<?> readGcsFile(@RequestParam("image") String image) throws IOException {
         System.out.println("1.Image/gcsFile from GoogleCloud Storage:= " + image);
         
+        String matchExpr = "2013 Disneyland Paris";
+        Pattern matchPattern = Pattern.compile(matchExpr);
+
         String contentType = "application/octet-stream"; 
         String BUCKET_NAME = "sms_familie_album";
         String OBJECT_NAME = "mail.jpg";
@@ -200,7 +215,9 @@ public class BackUpController {
 
         Bucket bucket = storage.get(BUCKET_NAME);
         for (Blob b : bucket.list().iterateAll()) {
+            if (!b.isDirectory() && matchPattern.matcher(b.getName()).matches()) {
                 System.out.println(b.getName());
+            }    
         }
 
         return new ResponseEntity<>(imageUrl, HttpStatus.OK); 
