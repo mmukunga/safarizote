@@ -74,7 +74,8 @@ const reducer = (state, action) => {
         const arrFiles = Array.from(e.target.files)
         const files = arrFiles.map((file, index) => {
           console.log(file);
-          const src = window.URL.createObjectURL(file)
+          const src = window.URL.createObjectURL(file);
+          console.log(src);
           return { file, id: index, src }
         })
         dispatch({ type: 'load', payload: files })
