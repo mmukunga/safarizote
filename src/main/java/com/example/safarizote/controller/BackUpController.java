@@ -14,14 +14,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 
-/*
-import com.google.appengine.tools.cloudstorage.GcsFileMetadata;
-import com.google.appengine.tools.cloudstorage.GcsService;
-import com.google.appengine.tools.cloudstorage.GcsFilename;
-import com.google.appengine.tools.cloudstorage.RetryParams;
-import com.google.appengine.tools.cloudstorage.GcsInputChannel;
-import com.google.appengine.tools.cloudstorage.GcsServiceFactory;
-*/
+import java.util.regex.Pattern;
 
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.Bucket;
@@ -113,7 +106,7 @@ public class BackUpController {
                 imageUrls.add(imageUrl);
             }    
         }
-        
+
         List<BackUp> categories = repository.findAll();
         for (BackUp category : categories) {
             System.out.println(category);
