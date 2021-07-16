@@ -85,13 +85,13 @@ public class BackUpController {
   private Resource gcsFile;
   
     @RequestMapping(value = "/api/categories",  method={RequestMethod.GET})
-    public ResponseEntity<List<BackUp>> findAll() {
+    public ResponseEntity<List<BackUp>> findAll() throws IOException {
         System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
         String contentType = "application/octet-stream"; 
         String BUCKET_NAME = "sms_familie_album";
         String OBJECT_NAME = "mail.jpg";
         String PROJECT_ID  = "familiealbum-sms";
-        
+
         Resource resource = new ClassPathResource("credentials.json");
         GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
 
