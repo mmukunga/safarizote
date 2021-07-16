@@ -131,6 +131,12 @@ public class BackUpController {
     @RequestMapping(value="/api/gcsDownloadAll", method={RequestMethod.GET})
     public ResponseEntity<Object> readGcsFiles(@RequestParam("folder") String folder) throws Exception {
         System.out.println(folder);
+
+        String contentType = "application/octet-stream"; 
+        String BUCKET_NAME = "sms_familie_album";
+        String OBJECT_NAME = "mail.jpg";
+        String PROJECT_ID  = "familiealbum-sms";
+
         List<BackUp> dbFolders = repository.findAll(); 
         System.out.println("An folder upload request has come in!!");
         System.out.println("Folder from Multipart:= " + folder);
