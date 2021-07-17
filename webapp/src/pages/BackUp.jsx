@@ -155,7 +155,10 @@ const reducer = (state, action) => {
             {state.files.map(({ file, src, id }, index) => (
               <div key={`thumb${index}`} className="thumbnail-wrapper">
                 <img className="thumbnail" src={src}  className="resize" alt={"GCS Image!!"} />
-                <div className="thumbnail-caption">{file.name}</div>
+                <div className="thumbnail-caption">{file.name.substring(
+                      str.lastIndexOf("sms_familie_album"), 
+                      str.lastIndexOf("?")
+                  )}</div>
               </div>
             ))}
           </div>
