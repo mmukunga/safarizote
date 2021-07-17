@@ -97,14 +97,16 @@ public class BackUpController {
         List<String> imageUrls = new ArrayList<>();
         Bucket bucket = storage.get(BUCKET_NAME);
         for (Blob blob : bucket.list().iterateAll()) {
-            String name = blob.getName().substring(blob.getName().indexOf("sms_familie_album"), blob.getName().indexOf("?"));
-            System.out.println("FOLDER name : " + name);
+            String path = blob.getName().substring(blob.getName().indexOf("sms_familie_album"), blob.getName().indexOf("?"));
+            System.out.println("PATH path : " + path);
+            String folder = path.substring( 0, path.firstIndexOf("/"));
+            System.out.println("FOLDER folder : " + folder);
             if (matchPattern.matcher(blob.getName()).matches()) {
                 System.out.println(blob.getName());
                 Integer duration = 15;
                 URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
                 String imageUrl = signedUrl.toExternalForm();
-                System.out.println("Generated IMAGE URL 2 : " + imageUrl);
+                System.out.println("Generated IMAGE URL1 : " + imageUrl);
                 imageUrls.add(imageUrl);
             }    
         }
