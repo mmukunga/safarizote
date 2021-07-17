@@ -156,8 +156,8 @@ const reducer = (state, action) => {
               <div key={`thumb${index}`} className="thumbnail-wrapper">
                 <img className="thumbnail" src={src}  className="resize" alt={"GCS Image!!"} />
                 <div className="thumbnail-caption">{file.name.substring(
-                      str.lastIndexOf("sms_familie_album"), 
-                      str.lastIndexOf("?")
+                      file.name.lastIndexOf("sms_familie_album"), 
+                      file.name.lastIndexOf("?")
                   )}</div>
               </div>
             ))}
