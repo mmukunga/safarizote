@@ -97,6 +97,8 @@ public class BackUpController {
         List<String> imageUrls = new ArrayList<>();
         Bucket bucket = storage.get(BUCKET_NAME);
         for (Blob blob : bucket.list().iterateAll()) {
+            String name = blob.getName().substring(blob.getName().indexOf("sms_familie_album"), blob.getName().indexOf("?"));
+            System.out.println("FOLDER name : " + name);
             if (matchPattern.matcher(blob.getName()).matches()) {
                 System.out.println(blob.getName());
                 Integer duration = 15;
