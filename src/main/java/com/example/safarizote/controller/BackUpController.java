@@ -208,7 +208,6 @@ public class BackUpController {
 
         Bucket bucket = storage.get(BUCKET_NAME);
         for (Blob b : bucket.list().iterateAll()) {
-            System.out.println(b.getName());
             if (matchPattern.matcher(b.getName()).matches()) {
                 System.out.println("Generated IMAGE URL 1 : " + imageUrl);
                 System.out.println(b.getName());
