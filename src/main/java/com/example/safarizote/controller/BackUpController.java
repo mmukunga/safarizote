@@ -81,7 +81,7 @@ public class BackUpController {
     public ResponseEntity<List<BackUp>> findAll() throws IOException {
         System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
         
-        String matchExpr = "2013 Disneyland Paris*";
+        String matchExpr = ".*2013 Disneyland Paris.*";
         Pattern matchPattern = Pattern.compile(matchExpr);
 
         String contentType = "application/octet-stream"; 
@@ -102,7 +102,7 @@ public class BackUpController {
                 Integer duration = 15;
                 URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
                 String imageUrl = signedUrl.toExternalForm();
-                System.out.println("Generated image url : " + imageUrl);
+                System.out.println("Generated IMAGE URL 2 : " + imageUrl);
                 imageUrls.add(imageUrl);
             }    
         }
@@ -136,7 +136,7 @@ public class BackUpController {
     public ResponseEntity<Object> readGcsFiles(@RequestParam("folder") String folder) throws Exception {
         System.out.println(folder);
 
-        String matchExpr = "2013 Disneyland Paris*";
+        String matchExpr = ".*2013 Disneyland Paris.*";
         Pattern matchPattern = Pattern.compile(matchExpr);
 
         String contentType = "application/octet-stream"; 
@@ -164,7 +164,7 @@ public class BackUpController {
                 Integer duration = 15;
                 URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
                 String imageUrl = signedUrl.toExternalForm();
-                System.out.println("Generated image url : " + imageUrl);
+                System.out.println("Generated IMAGE URL 3 : " + imageUrl);
                 imageUrls.add(imageUrl);
             }
         }
@@ -176,7 +176,7 @@ public class BackUpController {
 	public ResponseEntity<?> readGcsFile(@RequestParam("image") String image) throws IOException {
         System.out.println("1.Image/gcsFile from GoogleCloud Storage:= " + image);
         
-        String matchExpr = "2013 Disneyland Paris*";
+        String matchExpr = ".*2013 Disneyland Paris.*";
         Pattern matchPattern = Pattern.compile(matchExpr);
 
         String contentType = "application/octet-stream"; 
@@ -204,11 +204,13 @@ public class BackUpController {
         Integer duration = 15;
         URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
         String imageUrl = signedUrl.toExternalForm();
-        System.out.println("Generated image url : " + imageUrl);
+        System.out.println("Generated IMAGE URL XX : " + imageUrl);
 
         Bucket bucket = storage.get(BUCKET_NAME);
         for (Blob b : bucket.list().iterateAll()) {
+            System.out.println(b.getName());
             if (matchPattern.matcher(b.getName()).matches()) {
+                System.out.println("Generated IMAGE URL 1 : " + imageUrl);
                 System.out.println(b.getName());
             }    
         }
