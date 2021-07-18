@@ -95,30 +95,25 @@ public class BackUpController {
         // Get specific file from specified bucket
         Storage storage = StorageOptions.newBuilder().setProjectId(PROJECT_ID).setCredentials(credentials).build().getService();
         List<String> imageUrls = new ArrayList<>();
-        List<String> items = new ArrayList<>();
+        List<String> folders = new ArrayList<>();
         Bucket bucket = storage.get(BUCKET_NAME);
         for (Blob blob : bucket.list().iterateAll()) {
             String path = blob.getName().substring(blob.getName().indexOf("sms_familie_album"), blob.getName().indexOf("?"));
             System.out.println("PATH path : " + path);
             String folder = path.substring( 0, path.firstIndexOf("/"));
             System.out.println("FOLDER folder : " + folder);
-      
-            for (Item item : items) {
-                if (item.getName().equals(name)) {
-                    return true;
+
+            boolean found = false;
+            for (String f : folders) {
+                if (!f.getName().equals(folder)) {
+                    found = true;
                 }
             }
 
-
-
-            if (matchPattern.matcher(blob.getName()).matches()) {
-                System.out.println(blob.getName());
-                Integer duration = 15;
-                URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
-                String imageUrl = signedUrl.toExternalForm();
-                System.out.println("Generated IMAGE URL1 : " + imageUrl);
-                imageUrls.add(imageUrl);
-            }    
+            if (found == false) {
+                System.out.println("FOLDER FOUND : " + folder);
+                folders.add(folder);
+            }
         }
 
         List<BackUp> categories = repository.findAll();
