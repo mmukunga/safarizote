@@ -95,7 +95,6 @@ public class BackUpController {
         // Get specific file from specified bucket
         Storage storage = StorageOptions.newBuilder().setProjectId(PROJECT_ID).setCredentials(credentials).build().getService();
         List<String> imageUrls = new ArrayList<>();
-        List<String> folders = new ArrayList<>();
         Bucket bucket = storage.get(BUCKET_NAME);
         for (Blob blob : bucket.list().iterateAll()) {
             String path = blob.getName().substring(blob.getName().indexOf("sms_familie_album"), blob.getName().indexOf("?"));
@@ -104,23 +103,18 @@ public class BackUpController {
             System.out.println("FOLDER folder : " + folder);
 
             boolean found = false;
-            for (String f : folders) {
-                if (!f.equals(folder)) {
+            for (String imageUrl : imageUrls) {
+                if (!imageUrl.equals(folder)) {
                     found = true;
                 }
             }
 
             if (found == false) {
                 System.out.println("FOLDER FOUND : " + folder);
-                folders.add(folder);
+                imageUrls.add(folder);
             }
         }
-        /*
-        List<BackUp> categories = repository.findAll();
-        for (BackUp category : categories) {
-            System.out.println(category);
-        }
-        */
+        
         System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
         System.out.println("BackUp.findAll()  End OK!");
         return new ResponseEntity<>(categories, HttpStatus.OK);
