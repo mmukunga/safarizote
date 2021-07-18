@@ -105,7 +105,7 @@ public class BackUpController {
 
             boolean found = false;
             for (String f : folders) {
-                if (!f.getName().equals(folder)) {
+                if (!f.equals(folder)) {
                     found = true;
                 }
             }
@@ -115,12 +115,12 @@ public class BackUpController {
                 folders.add(folder);
             }
         }
-
+        /*
         List<BackUp> categories = repository.findAll();
         for (BackUp category : categories) {
             System.out.println(category);
         }
-
+        */
         System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
         System.out.println("BackUp.findAll()  End OK!");
         return new ResponseEntity<>(categories, HttpStatus.OK);
