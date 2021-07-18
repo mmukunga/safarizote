@@ -114,10 +114,10 @@ public class BackUpController {
                 imageUrls.add(folder);
             }
         }
-        
+
         System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
         System.out.println("BackUp.findAll()  End OK!");
-        return new ResponseEntity<>(categories, HttpStatus.OK);
+        return new ResponseEntity<>(imageUrls, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/api/upload/{id}",  method={RequestMethod.GET})
