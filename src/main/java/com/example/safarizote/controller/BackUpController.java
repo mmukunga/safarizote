@@ -78,7 +78,7 @@ public class BackUpController {
   private Resource gcsFile;
   
     @RequestMapping(value = "/api/categories",  method={RequestMethod.GET})
-    public ResponseEntity<List<BackUp>> findAll() throws IOException {
+    public ResponseEntity<List<String>> findAll() throws IOException {
         System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
         
         String matchExpr = ".*2013 Disneyland Paris.*";
