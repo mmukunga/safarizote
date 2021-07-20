@@ -101,8 +101,6 @@ public class BackUpController {
             //String path = blob.getName().substring(blob.getName().indexOf("sms_familie_album"), blob.getName().indexOf("?"));
             //System.out.println("PATH path : " + path);
             // Passing Substring    
-            int index = s1.indexOf("method"); //Returns the index of this substring  
-            System.out.println("index of substring "+index);  
             if (blob.getName().indexOf("/") != -1) {     
                 String folder = blob.getName().substring( 0, blob.getName().indexOf("/"));
                 System.out.println("FOLDER folder : " + folder);
