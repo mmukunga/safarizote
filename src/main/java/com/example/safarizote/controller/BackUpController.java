@@ -99,7 +99,7 @@ public class BackUpController {
         for (Blob blob : bucket.list().iterateAll()) {
             System.out.println("PATH blob.getName() : " + blob.getName());
             //String path = blob.getName().substring(blob.getName().indexOf("sms_familie_album"), blob.getName().indexOf("?"));
-            System.out.println("PATH path : " + path);
+            //System.out.println("PATH path : " + path);
             String folder = blob.getName().substring( 0, blob.getName().indexOf("/"));
             System.out.println("FOLDER folder : " + folder);
             boolean found = false;
