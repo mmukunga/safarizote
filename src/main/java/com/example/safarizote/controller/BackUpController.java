@@ -102,10 +102,10 @@ public class BackUpController {
             //System.out.println("PATH path : " + path);
             // Passing Substring    
             int index = blob.getName().indexOf("/"); //Returns the index of this substring  
-            System.out.println("Index of Substring:= " + index);       
+            System.out.println("1. Index of Substring:= " + index);       
             index = (index != -1) ? index : blob.getName().length;
             String folder = blob.getName().substring(0, index);
-            System.out.println("FOLDER folder:= " + folder);
+            System.out.println("2. FOLDER folder:= " + folder);
             boolean found = false;
             for (String imageUrl : imageUrls) {
                 if (!imageUrl.contains(folder)) {
