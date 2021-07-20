@@ -103,7 +103,7 @@ public class BackUpController {
             // Passing Substring    
             int index = blob.getName().indexOf("/"); //Returns the index of this substring  
             System.out.println("1. Index of Substring:= " + index);       
-            index = (index != -1) ? index : blob.getName().length;
+            index = (index != -1) ? index : blob.getName().size();
             String folder = blob.getName().substring(0, index);
             System.out.println("2. FOLDER folder:= " + folder);
             boolean found = false;
