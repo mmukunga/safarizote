@@ -103,7 +103,7 @@ public class BackUpController {
             System.out.println("FOLDER folder : " + folder);
             boolean found = false;
             for (String imageUrl : imageUrls) {
-                if (!imageUrl.equals(folder)) {
+                if (!imageUrl.contains(folder)) {
                     found = true;
                 }
             }
