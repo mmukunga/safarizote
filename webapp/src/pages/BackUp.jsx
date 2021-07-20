@@ -30,40 +30,10 @@ const reducer = (state, action) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const [category, setCategory] = React.useState([]);
     const [image, setImage] = React.useState('http://www.hyperlinkcode.com/images/sample-image.jpg');
-    const [nodes, setNodes] = React.useState([{
-      value: '',
-      label: '',
-      children: [],
-    }]);
     
     React.useEffect(() => {
       axios.get("/api/categories").then(response => {
           setCategory(response.data);
-
-          const parents = [];
-          response.data[0].children.forEach(val => {
-            const children = [];
-            val.children.forEach(item => {
-              children.push({
-                value: item.id,
-                label: item.name,
-              });
-            });
-
-            parents.push({
-              value: val.id,
-              label: val.name,
-              children,
-            });  
-          });
-
-          const tempNodes = {
-            value: category.id,
-            label: category.name,
-            children: parents,
-          }
-
-          setNodes([tempNodes]);
       }).catch(error => {
           console.log(error);
       });
