@@ -100,23 +100,23 @@ public class BackUpController {
             System.out.println("PATH blob.getName() : " + blob.getName());
             //String path = blob.getName().substring(blob.getName().indexOf("sms_familie_album"), blob.getName().indexOf("?"));
             //System.out.println("PATH path : " + path);
-            // Passing Substring   
-            String imagePath = blob.getName(); 
-            int index = blob.getName().indexOf("/"); //Returns the index of this substring  
-            System.out.println("1. Index of Substring:= " + index);       
-            index = (index != -1) ? index : blob.getName().length;
-            String folder = blob.getName().substring(0, index);
-            System.out.println("2. FOLDER folder:= " + folder);
-            boolean found = false;
-            for (String imageUrl : imageUrls) {
-                if (!imageUrl.contains(folder)) {
-                    found = true;
+            // Passing Substring    
+            int index = s1.indexOf("method"); //Returns the index of this substring  
+            System.out.println("index of substring "+index);  
+            if (blob.getName().indexOf("/") != -1) {     
+                String folder = blob.getName().substring( 0, blob.getName().indexOf("/"));
+                System.out.println("FOLDER folder : " + folder);
+                boolean found = false;
+                for (String imageUrl : imageUrls) {
+                    if (!imageUrl.contains(folder)) {
+                        found = true;
+                    }
                 }
-            }
 
-            if (found == false) {
-                System.out.println("FOLDER FOUND : " + folder);
-                imageUrls.add(folder);
+                if (found == false) {
+                    System.out.println("FOLDER FOUND : " + folder);
+                    imageUrls.add(folder);
+                }
             }
         }
 
