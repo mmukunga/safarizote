@@ -100,8 +100,12 @@ public class BackUpController {
             System.out.println("PATH blob.getName() : " + blob.getName());
             //String path = blob.getName().substring(blob.getName().indexOf("sms_familie_album"), blob.getName().indexOf("?"));
             //System.out.println("PATH path : " + path);
-            String folder = blob.getName().substring( 0, blob.getName().indexOf("/"));
-            System.out.println("FOLDER folder : " + folder);
+            // Passing Substring    
+            int index = blob.getName().indexOf("/"); //Returns the index of this substring  
+            System.out.println("Index of Substring:= " + index);       
+            index = (index != -1) ? index : blob.getName().length;
+            String folder = blob.getName().substring(0, index);
+            System.out.println("FOLDER folder:= " + folder);
             boolean found = false;
             for (String imageUrl : imageUrls) {
                 if (!imageUrl.contains(folder)) {
