@@ -56,7 +56,9 @@ const reducer = (state, action) => {
       e.preventDefault();
       
       let AuthUser = function(id) {
-        return axios.get(`/api/upload/${id}`).then(response => { 
+        console.log("ID:= " + id);
+        const index = 200;
+        return axios.get(`/api/upload/${index}`).then(response => { 
           return response.data;
         });
       }
