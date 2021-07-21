@@ -65,10 +65,10 @@ const reducer = (state, action) => {
       
       const sendData = async (e) => {
         const myData = [];
-          for (const value of category) {
+          /*for (const value of category) {
             let result = await AuthUser(value.id);
             myData.push(result );
-          }
+          }*/
         return myData;
       }
      

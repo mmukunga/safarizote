@@ -124,7 +124,7 @@ public class BackUpController {
     }
 
     @RequestMapping(value = "/api/upload/{id}",  method={RequestMethod.GET})
-    public ResponseEntity<BackUp> getUpload(@PathVariable Long id) {
+    public ResponseEntity<String> getUpload(@PathVariable Long id) {
         System.out.println("BackUpController: getBackUp FolderID:= " + id);
         List<BackUp> categories = repository.findAll();
 
@@ -135,9 +135,10 @@ public class BackUpController {
         backUp.setChildren(null);
         System.out.println("Managers choice this week" + backUp + "our recommendation to you");
         
-        return new ResponseEntity<>(backUp, HttpStatus.OK);
+        return new ResponseEntity<>("backUp", HttpStatus.OK);
     }
-    
+
+
     @RequestMapping(value="/api/gcsDownloadAll", method={RequestMethod.GET})
     public ResponseEntity<Object> readGcsFiles(@RequestParam("folder") String folder) throws Exception {
         System.out.println(folder);
