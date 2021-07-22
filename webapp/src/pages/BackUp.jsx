@@ -34,6 +34,23 @@ const reducer = (state, action) => {
     React.useEffect(() => {
       axios.get("/api/categories").then(response => {
           setCategory(response.data);
+
+              const fileName = 'http://www.hyperlinkcode.com/images/sample-image.jpg';
+              const date = new Date();
+              const unixTimeStamp = Math.floor(date.getTime() / 1000);
+              const File = {
+                  lastModified: unixTimeStamp,
+                  lastModifiedDate: date,
+                  name: fileName,
+                  size: 8000,
+                  type: "image/jpeg",
+                  webkitRelativePath: ""
+              };
+
+              const gcsData = {file: File, id: state.files.length+1, src: `${fileName}`}
+              dispatch({ type: 'add_item', payload: gcsData });
+
+
       }).catch(error => {
           console.log(error);
       });
@@ -59,6 +76,7 @@ const reducer = (state, action) => {
         console.log("ID:= " + id);
         const index = 200;
         return axios.get(`/api/upload/${index}`).then(response => { 
+          console.log(response);
           return response.data;
         });
       }
