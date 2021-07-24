@@ -28,8 +28,6 @@ const reducer = (state, action) => {
 
   const BackUp = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
-    const [category, setCategory] = React.useState([]);
-    const [image, setImage] = React.useState('http://www.hyperlinkcode.com/images/sample-image.jpg');
     
     React.useEffect(() => {
       axios.get("/api/categories").then(response => {
@@ -135,7 +133,7 @@ const reducer = (state, action) => {
         <strong>Upload Files!!</strong>
         <form onSubmit={uploadSubmit}>
           <div className="BackUps">  
-            <input type="file" name="file" className="lg-button btn-primary"  onChange={onChange} />
+            <input type="file" name="file" multiple className="lg-button btn-primary"  onChange={onChange} />
           </div>
           <div>
             {state.files.map(({ file, src, id }, index) => (
