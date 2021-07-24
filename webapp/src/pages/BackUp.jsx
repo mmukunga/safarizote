@@ -92,6 +92,17 @@ const reducer = (state, action) => {
           console.log(result);
           console.log(state);
           console.log(state.files);
+
+          const formData = new FormData();
+          formData.append('file',state.files)
+          const config = {
+              headers: {
+                  'content-type': 'multipart/form-data'
+              }
+          }
+
+          console.log(formData);
+          
           var index = Math.floor(Math.random() * state.files.length);
           console.log('INDEX: ' + index);
           console.log(state.files[index]);
@@ -123,9 +134,7 @@ const reducer = (state, action) => {
       console.log("Submited OK!!");
   }
 
-    const Input = (props) => (
-      <input type="file" name="file" multiple {...props} style={{border:'2px solid red'}} />
-    );
+   
 
     return (
       <Card className="InnerCard" fontColor="black">
