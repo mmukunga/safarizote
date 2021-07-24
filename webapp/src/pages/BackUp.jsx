@@ -134,12 +134,8 @@ const reducer = (state, action) => {
       <Card className="InnerCard" fontColor="black">
         <strong>Upload Files!!</strong>
         <form onSubmit={uploadSubmit}>
-          <div className="BackUps">
-              <Input onChange={onChange} />
-          </div>  
-          <div className="row">  
-            <input type="submit" value="Submit!" className="lg-button btn-primary"/>
-            <input type="file" name="file" style={{border:'2px solid red'}} />
+          <div className="BackUps">  
+            <input type="file" name="file" className="lg-button btn-primary"  onChange={onChange} />
           </div>
           <div>
             {state.files.map(({ file, src, id }, index) => (
