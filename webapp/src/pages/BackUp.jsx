@@ -139,6 +139,7 @@ const reducer = (state, action) => {
           </div>  
           <div className="row">  
             <input type="submit" value="Submit!" className="lg-button btn-primary"/>
+            <input type="file" name="file" style={{border:'2px solid red'}} />
           </div>
           <div>
             {state.files.map(({ file, src, id }, index) => (
