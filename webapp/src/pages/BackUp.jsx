@@ -31,7 +31,7 @@ const reducer = (state, action) => {
     
     React.useEffect(() => {
       axios.get("/api/categories").then(response => {
-          setCategory(response.data);
+          console.log(response.data);
 
               const fileName = 'http://www.hyperlinkcode.com/images/sample-image.jpg';
               const date = new Date();
@@ -98,7 +98,6 @@ const reducer = (state, action) => {
           const image = state.files[index].src;
           axios.get(`/api/gcsDownload?image=${image}`).then((response) => { 
               console.log(response.data);
-              setImage(response.data);
               const date = new Date();
               const unixTimeStamp = Math.floor(date.getTime() / 1000);
               const File = {
