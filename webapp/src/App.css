@@ -16,7 +16,7 @@
   height: 6vmin;
   pointer-events: none;
   background: transparent;
-  border: 1px dotted white;
+  border: 2px solid #fefbd8;
   border-radius: 50%;
 }
 
@@ -88,4 +88,17 @@ p span {
     text-align: left;
     margin: 0;
   }
+
+  .NavMenu {
+    text-align: center;
+  }
+  .NavMenu .Nav_link {
+    width: 100%;
+  }
+  .NavMenu .menuButton {
+    position: absolute;
+    left: 10px;
+    top: 8px;
+  }
+
 }
