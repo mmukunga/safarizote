@@ -32,8 +32,10 @@
   vertical-align: middle;
 }
 
-#AppLogo {
+.AppLogo {
   border:2px solid red;
+  width:  200px;
+  height: 200px;
 }
 
 
