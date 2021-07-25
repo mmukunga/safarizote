@@ -32,6 +32,13 @@
   vertical-align: middle;
 }
 
+.ImageLogo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
 .LogOut {
   margin: 0em;
   padding: 1px 2px;
