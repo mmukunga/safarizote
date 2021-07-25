@@ -33,6 +33,12 @@
   padding: 10px;
 }
 
+a.Logo {
+  cursor:default;
+  background-color: transparent;
+  border: 0px solid #fefbd8;
+  vertical-align: middle;
+}
 
 .Logo {
   background-color: transparent;
