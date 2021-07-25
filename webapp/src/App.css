@@ -93,7 +93,7 @@ p span {
     text-align: center;
   }
   .NavMenu .Nav_link {
-    width: 100%;
+    display: inline-block;
   }
   .NavMenu .menuButton {
     position: absolute;
