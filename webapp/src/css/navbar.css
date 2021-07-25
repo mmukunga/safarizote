@@ -32,6 +32,11 @@
   vertical-align: middle;
 }
 
+#AppLogo {
+  border:2px solid red;
+}
+
+
 .ImageLogo {
   display: block;
   margin-left: auto;

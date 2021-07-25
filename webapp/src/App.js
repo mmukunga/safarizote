@@ -84,7 +84,7 @@ function App() {
             <nav className="Navigation">
               <div className="NavMenu">
                 <div className="ImageLogo">
-                  <img src={logo} className="App-logo" alt="logo"></img>
+                  <img src={logo} id="AppLogo" alt="logo"></img>
                 </div>
                 <NavLink to="/" className="Nav_link">Home</NavLink>
                 <NavLink to="/email" className="Nav_link">Email</NavLink>
