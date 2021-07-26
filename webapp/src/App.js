@@ -26,7 +26,7 @@ function App() {
   };
 
   const displayHome = {
-    color: 'blue'
+    color: 'white'
   }
 
   const DropDown = ({ history }) => {

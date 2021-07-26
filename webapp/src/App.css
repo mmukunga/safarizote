@@ -102,12 +102,4 @@ p span {
   .NavMenu .Nav_link {
     display: inline-block;
   }
-
-  /*  
-    .NavMenu .menuButton {
-      position: absolute;
-      left: 10px;
-      top: 8px;
-    }
-  */
 }
