@@ -19,7 +19,6 @@
   display: inline-block;
   vertical-align: middle;
   border: 2px solid #fefbd8;
-  /*background: bisque;*/
   background: #337ab7;
   font-weight: normal;
   border-radius: 10%;
@@ -27,19 +26,11 @@
   margin: 1px;
 }
 
-/*
-.Center {
-  margin: auto;
-  width: 50%;
-  border: 3px solid green;
-  padding: 10px;
-}
-*/
-
 .Logo {
   cursor:default;
   background-color: transparent;
   border: 3px solid #fefbd8;
+  border-radius: 15%;
   vertical-align: middle;
 }
 
