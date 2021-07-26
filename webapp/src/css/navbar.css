@@ -41,12 +41,6 @@
   vertical-align: middle;
 }
 
-
-.element {
-  background-image: url('../logo.svg');
-  /* other styles */
-}
-
 .LogOut {
   margin: 0em;
   padding: 1px 2px;
