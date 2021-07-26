@@ -36,7 +36,8 @@
 .Logo {
   cursor:default;
   background-color: transparent;
-  border: 3px solid #fefbd8;
+  /*border: 3px solid #fefbd8;*/
+  border: 3px solid red;
   vertical-align: middle;
 }
 
