@@ -39,15 +39,14 @@
 .Logo {
   cursor:default;
   background-color: transparent;
-  /*border: 3px solid #fefbd8;*/
-  border: 3px solid red;
+  border: 3px solid #fefbd8;
   vertical-align: middle;
 }
 
 .LogOut {
   margin: 0em;
   padding: 1px 2px;
-  border: 2px outset red;
+  border: 2px outset #fefbd8;
   background-color: #337ab7;
   color: #fff;
 }
