@@ -11,19 +11,12 @@
   font-weight: 600;
 }
 
-.circle-container {
-  width: 6vw;
-  height: 6vw;
-}
-
-
 .App-logo {
   width: 6vmin;
   height: 6vmin;
   pointer-events: none;
   background: transparent;
-  /*border: 2px solid #fefbd8;*/
-  border: 3px solid green;
+  border: 2px solid #fefbd8;
   border-radius: 50%;
 }
 
@@ -97,20 +90,22 @@ p span {
   }
 
   .Logo {
-    height: 400px;
+    height: 28px;
   }
-
 
   .NavMenu {
     text-align: center;
   }
+
   .NavMenu .Nav_link {
     display: inline-block;
   }
-  .NavMenu .menuButton {
-    position: absolute;
-    left: 10px;
-    top: 8px;
-  }
 
+  /*  
+    .NavMenu .menuButton {
+      position: absolute;
+      left: 10px;
+      top: 8px;
+    }
+  */
 }
