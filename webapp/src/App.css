@@ -16,7 +16,8 @@
   height: 6vmin;
   pointer-events: none;
   background: transparent;
-  border: 2px solid #fefbd8;
+  /*border: 2px solid #fefbd8;*/
+  border: 3px solid green;
   border-radius: 50%;
 }
 
