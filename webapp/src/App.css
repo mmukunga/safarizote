@@ -96,6 +96,11 @@ p span {
     margin: 0;
   }
 
+  .Logo {
+    height: 400px;
+  }
+
+
   .NavMenu {
     text-align: center;
   }
