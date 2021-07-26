@@ -43,7 +43,7 @@
 
 
 .element {
-  background-image: url(my_SVG_image.svg);
+  background-image: url('../logo.svg');
   /* other styles */
 }
 
