@@ -85,7 +85,7 @@ function App() {
               <div className="NavMenu">
                 <div class='circle-container'>
                   <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
-                    <circle cx="46" cy="45" r="40"></circle>
+                  <img src={logo} className="App-logo" alt="logo"></img>
                   </svg>
                 </div>
 
