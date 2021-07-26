@@ -11,6 +11,12 @@
   font-weight: 600;
 }
 
+.circle-container {
+  width: 6vw;
+  height: 6vw;
+}
+
+
 .App-logo {
   width: 6vmin;
   height: 6vmin;

@@ -83,6 +83,12 @@ function App() {
         <header style={imageStyles} className="App-header">  
             <nav className="Navigation">
               <div className="NavMenu">
+                <div class='circle-container'>
+                  <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+                    <circle cx="46" cy="45" r="40"></circle>
+                  </svg>
+                </div>
+
                 <a href="" className="Nav_link Logo"> 
                   <img src={logo} className="App-logo" alt="logo"></img>
                 </a>
