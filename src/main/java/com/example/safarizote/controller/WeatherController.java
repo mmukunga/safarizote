@@ -39,6 +39,9 @@ import org.springframework.core.io.ResourceLoader;
 import com.wirefreethought.geodb.client.net.GeoDbApiClient;
 import com.wirefreethought.geodb.client.model.GeoDbInstanceType;
 import com.wirefreethought.geodb.client.request.FindCountriesRequest;
+import com.wirefreethought.geodb.client.model.CountriesResponse;
+import com.wirefreethought.geodb.client.model.CountryResponse;
+import com.wirefreethought.geodb.client.model.CurrenciesResponse;
 
 @RestController
 public class WeatherController {
