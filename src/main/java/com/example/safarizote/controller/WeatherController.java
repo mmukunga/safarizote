@@ -38,6 +38,7 @@ import org.springframework.core.io.ResourceLoader;
 
 import com.wirefreethought.geodb.client.net.GeoDbApiClient;
 import com.wirefreethought.geodb.client.model.GeoDbInstanceType;
+import com.wirefreethought.geodb.client.request.FindCountriesRequest;
 
 @RestController
 public class WeatherController {
@@ -66,7 +67,7 @@ public class WeatherController {
         );
 
         System.out.println(placesResponse);
-        
+
         List<Country> countries = repository.findAll();  
         return new ResponseEntity<>(countries, HttpStatus.OK);
     }
