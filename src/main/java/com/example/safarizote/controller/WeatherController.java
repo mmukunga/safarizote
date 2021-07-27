@@ -130,7 +130,7 @@ public class WeatherController {
         Set<String> countryCodes = new HashSet();
         countryCodes.add("KE");
 
-        RegionPlacesRequest placesResponse = geoDbApi.findPlaces(
+        PopulatedPlacesResponse placesResponse = geoDbApi.findRegionPlaces(
             FindRegionPlacesRequest.builder()
                     .countryId("US")
                     .regionCode("CA")
