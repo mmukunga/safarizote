@@ -43,11 +43,48 @@ import com.wirefreethought.geodb.client.net.GeoDbApiClient;
 import com.wirefreethought.geodb.client.model.GeoDbInstanceType;
 import com.wirefreethought.geodb.client.request.PlaceRequestType;
 import com.wirefreethought.geodb.client.request.FindCountriesRequest;
+import com.wirefreethought.geodb.client.request.FindRegionPlacesRequest;
 import com.wirefreethought.geodb.client.request.FindPlacesRequest;
 import com.wirefreethought.geodb.client.model.PopulatedPlacesResponse;
 import com.wirefreethought.geodb.client.model.CountriesResponse;
 import com.wirefreethought.geodb.client.model.CountryResponse;
 import com.wirefreethought.geodb.client.model.CurrenciesResponse;
+
+
+
+import com.wirefreethought.geodb.client.model.CountriesResponse;
+import com.wirefreethought.geodb.client.model.CountrySummary;
+import com.wirefreethought.geodb.client.model.CurrenciesResponse;
+import com.wirefreethought.geodb.client.model.Currency;
+import com.wirefreethought.geodb.client.model.DateTimeResponse;
+import com.wirefreethought.geodb.client.model.DistanceResponse;
+import com.wirefreethought.geodb.client.model.GeoDbDistanceUnit;
+import com.wirefreethought.geodb.client.model.GeoDbInstanceType;
+import com.wirefreethought.geodb.client.model.GeoDbLocationConstraint;
+import com.wirefreethought.geodb.client.model.GeoDbSort;
+import com.wirefreethought.geodb.client.model.GeoDbSort.SortField;
+import com.wirefreethought.geodb.client.model.PlaceSortFields;
+import com.wirefreethought.geodb.client.model.PopulatedPlaceResponse;
+import com.wirefreethought.geodb.client.model.PopulatedPlaceSummary;
+import com.wirefreethought.geodb.client.model.PopulatedPlacesResponse;
+import com.wirefreethought.geodb.client.model.RegionSummary;
+import com.wirefreethought.geodb.client.model.RegionsResponse;
+import com.wirefreethought.geodb.client.model.TimeResponse;
+import com.wirefreethought.geodb.client.net.ApiClient;
+import com.wirefreethought.geodb.client.net.ApiException;
+import com.wirefreethought.geodb.client.net.GeoDbApiClient;
+import com.wirefreethought.geodb.client.request.FindAdminDivisionsRequest;
+import com.wirefreethought.geodb.client.request.FindCountriesRequest;
+import com.wirefreethought.geodb.client.request.FindCurrenciesRequest;
+import com.wirefreethought.geodb.client.request.FindDivisionsNearPlaceRequest;
+import com.wirefreethought.geodb.client.request.FindPlacesNearPlaceRequest;
+import com.wirefreethought.geodb.client.request.FindPlacesRequest;
+import com.wirefreethought.geodb.client.request.FindRegionDivisionsRequest;
+import com.wirefreethought.geodb.client.request.FindRegionPlacesRequest;
+import com.wirefreethought.geodb.client.request.FindRegionsRequest;
+import com.wirefreethought.geodb.client.request.GetPlaceDistanceRequest;
+import com.wirefreethought.geodb.client.request.GetPlaceRequest;
+import com.wirefreethought.geodb.client.request.PlaceRequestType;
 
 @RestController
 public class WeatherController {
@@ -93,13 +130,18 @@ public class WeatherController {
         Set<String> countryCodes = new HashSet();
         countryCodes.add("KE");
 
-        PopulatedPlacesResponse placesResponse = geoDbApi.findPlaces(
-            FindPlacesRequest.builder()
-                .countryIds(Set.of("US"))
-                .namePrefix("San")
-                .minPopulation(100000)
-                .types(Collections.singleton(PlaceRequestType.CITY))
-                .build()
+        RegionPlacesRequest placesResponse = geoDbApi.findPlaces(
+            FindRegionPlacesRequest.builder()
+                    .countryId("US")
+                    .regionCode("CA")
+                    .minPopulation(100000)
+                    .sort(
+                        GeoDbSort.builder()
+                            .fields(new SortField[] {
+                                new SortField(PlaceSortFields.FindPlaces.POPULATION, true)
+                            })
+                            .build())
+                    .build()
         );
 
         placesResponse.getData().forEach(c -> {
