@@ -3,6 +3,7 @@ package com.example.safarizote.controller;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
+import java.util.Collections;
 
 //import com.example.safarizote.model.City;
 import com.example.safarizote.model.City;
@@ -39,6 +40,7 @@ import org.springframework.core.io.ResourceLoader;
 import com.wirefreethought.geodb.client.GeoDbApi;
 import com.wirefreethought.geodb.client.net.GeoDbApiClient;
 import com.wirefreethought.geodb.client.model.GeoDbInstanceType;
+import com.wirefreethought.geodb.client.model.PlaceRequestType;
 import com.wirefreethought.geodb.client.request.FindCountriesRequest;
 import com.wirefreethought.geodb.client.request.FindPlacesRequest;
 import com.wirefreethought.geodb.client.model.PopulatedPlacesResponse;
