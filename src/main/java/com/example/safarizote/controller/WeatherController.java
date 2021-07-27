@@ -56,6 +56,17 @@ public class WeatherController {
     @RequestMapping(value = "/api/countries",  method={RequestMethod.GET})       
     public ResponseEntity<List<Country>> getCountries() { 
         GeoDbApiClient apiClient = new GeoDbApiClient(GeoDbInstanceType.FREE);
+        GeoDbApi geoDbApi = new GeoDbApi(apiClient);
+
+        CountriesResponse placesResponse = geoDbApi.findCountries(
+            FindCountriesRequest.builder()
+                .limit(5)
+                .offset(0)
+                .build()
+        );
+
+        System.out.println(placesResponse);
+        
         List<Country> countries = repository.findAll();  
         return new ResponseEntity<>(countries, HttpStatus.OK);
     }
