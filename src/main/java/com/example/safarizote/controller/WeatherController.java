@@ -40,6 +40,8 @@ import com.wirefreethought.geodb.client.GeoDbApi;
 import com.wirefreethought.geodb.client.net.GeoDbApiClient;
 import com.wirefreethought.geodb.client.model.GeoDbInstanceType;
 import com.wirefreethought.geodb.client.request.FindCountriesRequest;
+import com.wirefreethought.geodb.client.request.FindPlacesRequest;
+import com.wirefreethought.geodb.client.model.PopulatedPlacesResponse;
 import com.wirefreethought.geodb.client.model.CountriesResponse;
 import com.wirefreethought.geodb.client.model.CountryResponse;
 import com.wirefreethought.geodb.client.model.CurrenciesResponse;
@@ -84,6 +86,28 @@ public class WeatherController {
         }
 
         System.out.println("Total resuls: {}" + totalCount);
+
+
+        PopulatedPlacesResponse placesResponse = geoDbApi.findPlaces(
+            FindPlacesRequest.builder()
+                .countryIds("KE")
+                .minPopulation(10000)
+                .types(Collections.singleton(PlaceRequestType.CITY))
+                .build()
+        );
+
+        placesResponse.getData().forEach(c -> {
+            log.info("Place: {}", c);
+        });
+
+        long totalPlacesCount = placesResponse.getData().size();
+
+        if (placesResponse.getMetadata() != null) {
+            totalPlacesCount = placesResponse.getMetadata().getTotalCount();
+        }
+
+        log.info("TotalPlacesCount results: {}", totalPlacesCount);
+
 
         List<Country> countries = repository.findAll();  
         return new ResponseEntity<>(countries, HttpStatus.OK);
