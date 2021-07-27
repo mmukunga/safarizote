@@ -95,9 +95,8 @@ public class WeatherController {
 
         PopulatedPlacesResponse placesResponse = geoDbApi.findPlaces(
             FindPlacesRequest.builder()
-                .countryIds("US")
-                .namePrefix("San")
-                .minPopulation(100000)
+                .countryId("KE")
+                .minPopulation(10000)
                 .types(Collections.singleton(PlaceRequestType.CITY))
                 .build()
         );
