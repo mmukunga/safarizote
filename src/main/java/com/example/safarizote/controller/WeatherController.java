@@ -99,7 +99,7 @@ public class WeatherController {
         );
 
         placesResponse.getData().forEach(c -> {
-            log.info("Place: {}", c);
+            System.out.println("Place: {}" + c);
         });
 
         long totalPlacesCount = placesResponse.getData().size();
@@ -108,7 +108,7 @@ public class WeatherController {
             totalPlacesCount = placesResponse.getMetadata().getTotalCount();
         }
 
-        log.info("TotalPlacesCount results: {}", totalPlacesCount);
+        System.out.println("TotalPlacesCount results: {}" + totalPlacesCount);
 
 
         List<Country> countries = repository.findAll();  
