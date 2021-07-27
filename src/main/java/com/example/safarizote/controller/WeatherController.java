@@ -63,16 +63,27 @@ public class WeatherController {
         GeoDbApiClient apiClient = new GeoDbApiClient(GeoDbInstanceType.FREE);
         GeoDbApi geoDbApi = new GeoDbApi(apiClient);
         System.out.println("1.WeatherController - getCountries()");  
-        CountriesResponse placesResponse = geoDbApi.findCountries(
+        CountriesResponse countriesResponse = geoDbApi.findCountries(
             FindCountriesRequest.builder()
-                .limit(5)
+                .limit(200)
                 .offset(0)
                 .build()
         );
 
         System.out.println("2.WeatherController - getCountries()");  
-        System.out.println(placesResponse);
-        System.out.println("3.WeatherController - getCountries()");  
+        System.out.println(countriesResponse.getData());
+        System.out.println("3.WeatherController - getCountries()"); 
+        countriesResponse.getData().forEach(c -> {
+            System.out.println("Country: {}" + c);
+        });
+
+        long totalCount = countriesResponse.getData().size();
+        
+        if (countriesResponse.getMetadata() != null) {
+            totalCount = countriesResponse.getMetadata().getTotalCount();
+        }
+
+        System.out.println("Total resuls: {}" + totalCount);
 
         List<Country> countries = repository.findAll();  
         return new ResponseEntity<>(countries, HttpStatus.OK);
