@@ -36,6 +36,7 @@ import java.nio.charset.StandardCharsets;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 
+import com.wirefreethought.geodb.client.net.GeoDbApiClient;
 
 @RestController
 public class WeatherController {
@@ -53,6 +54,7 @@ public class WeatherController {
 
     @RequestMapping(value = "/api/countries",  method={RequestMethod.GET})       
     public ResponseEntity<List<Country>> getCountries() { 
+        GeoDbApiClient apiClient = new GeoDbApiClient(GeoDbInstanceType.FREE);
         List<Country> countries = repository.findAll();  
         return new ResponseEntity<>(countries, HttpStatus.OK);
     }
