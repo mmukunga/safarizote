@@ -89,10 +89,12 @@ public class WeatherController {
 
         System.out.println("Total resuls: {}" + totalCount);
 
+        Set<String> countryCodes = new HashSet();
+        countryCodes.add("KE");
 
         PopulatedPlacesResponse placesResponse = geoDbApi.findPlaces(
             FindPlacesRequest.builder()
-                .countryIds("KE")
+                .countryIds(countryCodes)
                 .minPopulation(10000)
                 .types(Collections.singleton(PlaceRequestType.CITY))
                 .build()
