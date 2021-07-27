@@ -85,7 +85,7 @@ public class WeatherController {
         System.out.println("1.WeatherController - getCountries()");  
         CountriesResponse countriesResponse = geoDbApi.findCountries(
             FindCountriesRequest.builder()
-                .limit(5)
+                .limit(150)
                 .offset(0)
                 .build()
         );
