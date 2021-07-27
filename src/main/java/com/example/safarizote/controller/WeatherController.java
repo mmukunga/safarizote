@@ -110,7 +110,7 @@ public class WeatherController {
 
         PopulatedPlacesResponse placesResponse = geoDbApi.findRegionPlaces(
             FindRegionPlacesRequest.builder()
-                    .countryId("KE")
+                    .countryId("US")
                     .regionCode("CA")
                     .minPopulation(100000)
                     .sort(
