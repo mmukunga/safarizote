@@ -85,7 +85,7 @@ public class WeatherController {
         System.out.println("1.WeatherController - getCountries()");  
         CountriesResponse countriesResponse = geoDbApi.findCountries(
             FindCountriesRequest.builder()
-                .limit(5)
+                .limit(199)
                 .offset(0)
                 .build()
         );
@@ -103,15 +103,15 @@ public class WeatherController {
             totalCount = countriesResponse.getMetadata().getTotalCount();
         }
 
-        System.out.println("Total resuls: {}" + totalCount);
+        System.out.println("Total results: {}" + totalCount);
 
         Set<String> countryCodes = new HashSet();
         countryCodes.add("KE");
 
         PopulatedPlacesResponse placesResponse = geoDbApi.findRegionPlaces(
             FindRegionPlacesRequest.builder()
-                    .countryId("US")
-                    .regionCode("CA")
+                    .countryId("KE")
+                    //.regionCode("CA")
                     .minPopulation(100000)
                     .sort(
                         GeoDbSort.builder()
