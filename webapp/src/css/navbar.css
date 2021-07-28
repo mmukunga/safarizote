@@ -39,7 +39,9 @@
   padding: 1px 2px;
   border: 2px outset #fefbd8;
   background-color: #337ab7;
-  background-image: url(../media/logout.png); 
+  background: url(../media/logout.png); 
+  background-repeat: no-repeat;
+  background-size: auto;
   color: #fff;
 }
 
