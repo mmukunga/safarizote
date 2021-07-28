@@ -100,7 +100,7 @@ function App() {
                 <a href="" className="Nav_link LogOut" onClick={handleLogout}></a>
               </div>
             </nav> 
-            <span style={{color:'brown'}}>{isLoggedIn!=null ? 'LoggedIn' : 'Please loggin!!'}</span>
+            <div style={{width:'100%', color:'brown', textAlign:'right'}}>{isLoggedIn!=null ? 'LoggedIn' : 'Please loggin!!'}</div>
             <p className="App-title">
               <span>The most revered of Africa’s safari destinations, Kenya is located in 
               East Africa and boasts the Masai Mara National Park, renowned for its 
