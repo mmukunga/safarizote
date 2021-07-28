@@ -95,8 +95,8 @@ function App() {
                 <NavLink to="/weather" className="Nav_link">Weather</NavLink>
                 <NavLink to="/metrics" className="Nav_link">Metrics</NavLink>
                 <NavLink to="/aboutUs" className="Nav_link">About&nbsp;Us</NavLink>
-                <NavLink to="/signIn" className="Nav_link">Login</NavLink>
                 <Menu/>
+                <NavLink to="/signIn" className="Nav_link">Login</NavLink>
                 <a href="" className="Nav_link LogOut" onClick={handleLogout}></a>
               </div>
             </nav> 
