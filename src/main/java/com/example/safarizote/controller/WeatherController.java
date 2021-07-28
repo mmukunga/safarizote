@@ -6,7 +6,6 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.Collections;
 
-//import com.example.safarizote.model.City;
 import com.example.safarizote.model.City;
 import com.example.safarizote.model.Country;
 import com.example.safarizote.repository.CityRepository;
@@ -20,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -34,35 +35,6 @@ import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
-
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
-
-import com.wirefreethought.geodb.client.GeoDbApi;
-import com.wirefreethought.geodb.client.net.GeoDbApiClient;
-import com.wirefreethought.geodb.client.model.GeoDbInstanceType;
-import com.wirefreethought.geodb.client.request.FindRegionPlacesRequest;
-import com.wirefreethought.geodb.client.request.FindPlacesRequest;
-import com.wirefreethought.geodb.client.model.PopulatedPlacesResponse;
-import com.wirefreethought.geodb.client.model.CountriesResponse;
-import com.wirefreethought.geodb.client.model.CountryResponse;
-import com.wirefreethought.geodb.client.model.GeoDbSort;
-import com.wirefreethought.geodb.client.model.GeoDbSort.SortField;
-import com.wirefreethought.geodb.client.model.PlaceSortFields;
-import com.wirefreethought.geodb.client.model.PopulatedPlaceResponse;
-import com.wirefreethought.geodb.client.model.PopulatedPlacesResponse;
-import com.wirefreethought.geodb.client.model.RegionsResponse;
-import com.wirefreethought.geodb.client.model.TimeResponse;
-import com.wirefreethought.geodb.client.net.ApiClient;
-import com.wirefreethought.geodb.client.net.ApiException;
-import com.wirefreethought.geodb.client.request.FindCountriesRequest;
-import com.wirefreethought.geodb.client.request.FindPlacesRequest;
-import com.wirefreethought.geodb.client.request.FindRegionDivisionsRequest;
-import com.wirefreethought.geodb.client.request.FindRegionPlacesRequest;
-import com.wirefreethought.geodb.client.request.FindRegionsRequest;
-import com.wirefreethought.geodb.client.request.GetPlaceDistanceRequest;
-import com.wirefreethought.geodb.client.request.GetPlaceRequest;
-import com.wirefreethought.geodb.client.request.PlaceRequestType;
 
 @RestController
 public class WeatherController {
@@ -80,61 +52,6 @@ public class WeatherController {
 
     @RequestMapping(value = "/api/countries",  method={RequestMethod.GET})       
     public ResponseEntity<List<Country>> getCountries() { 
-        GeoDbApiClient apiClient = new GeoDbApiClient(GeoDbInstanceType.FREE);
-        GeoDbApi geoDbApi = new GeoDbApi(apiClient);
-        System.out.println("1.WeatherController - getCountries()");  
-        CountriesResponse countriesResponse = geoDbApi.findCountries(
-            FindCountriesRequest.builder()
-                //.limit(5)
-                .offset(0)
-                .build()
-        );
-
-        System.out.println("2.WeatherController - getCountries()");  
-        System.out.println(countriesResponse.getData());
-        System.out.println("3.WeatherController - getCountries()"); 
-        countriesResponse.getData().forEach(c -> {
-            System.out.println("Country: {}" + c);
-        });
-
-        long totalCount = countriesResponse.getData().size();
-        
-        if (countriesResponse.getMetadata() != null) {
-            totalCount = countriesResponse.getMetadata().getTotalCount();
-        }
-
-        System.out.println("Total results: {}" + totalCount);
-
-        Set<String> countryCodes = new HashSet();
-        countryCodes.add("KE");
-
-        PopulatedPlacesResponse placesResponse = geoDbApi.findRegionPlaces(
-            FindRegionPlacesRequest.builder()
-                    .countryId("US")
-                    .regionCode("CA")
-                    .minPopulation(100000)
-                    .sort(
-                        GeoDbSort.builder()
-                            .fields(new SortField[] {
-                                new SortField(PlaceSortFields.FindPlaces.POPULATION, true)
-                            })
-                            .build())
-                    .build()
-        );
-
-        placesResponse.getData().forEach(c -> {
-            System.out.println("Place: {}" + c);
-        });
-
-        long totalPlacesCount = placesResponse.getData().size();
-
-        if (placesResponse.getMetadata() != null) {
-            totalPlacesCount = placesResponse.getMetadata().getTotalCount();
-        }
-
-        System.out.println("TotalPlacesCount results: {}" + totalPlacesCount);
-
-
         List<Country> countries = repository.findAll();  
         return new ResponseEntity<>(countries, HttpStatus.OK);
     }

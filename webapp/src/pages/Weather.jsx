@@ -92,21 +92,6 @@ import Card from './Card';
         code: state.code,
         cities: null
       };
-      
-      var options = {
-        method: 'GET',
-        url: 'https://wft-geo-db.p.rapidapi.com/v1/geo/cities',
-        params: {countryIds: 'KE'},
-        headers: {'x-rapidapi-host': 'wft-geo-db.p.rapidapi.com'}
-      };
-      
-      axios.request(options).then(function (response) {
-        console.log(response.data);
-      }).catch(function (error) {
-        console.error(error);
-      });
-
-
 
       axios.post('/api/cities', country)
         .then(response => {  
