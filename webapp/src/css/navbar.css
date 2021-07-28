@@ -41,7 +41,7 @@
   background-color: #337ab7;
   background: url(../media/logout.png); 
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size:  contain;
   color: #fff;
 }
 
