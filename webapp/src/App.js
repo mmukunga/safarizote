@@ -95,7 +95,7 @@ function App() {
                 <NavLink to="/aboutUs" className="Nav_link">About&nbsp;Us</NavLink>
                 <NavLink to="/signIn" className="Nav_link">Login</NavLink>
                 <Menu/>
-                <button onClick={handleLogout} className="LogOut"></button>
+                <a href="" onClick={handleLogout} className="LogOut"></a>
               </div>
             </nav> 
             <p className="App-title">
