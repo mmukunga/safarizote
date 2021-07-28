@@ -19,6 +19,8 @@ import Stock from './pages/Stock';
 import Private from './pages/Private';
 
 function App() {
+  const isLoggedIn = localStorage.getItem('token');
+
   const selectStyle = {
       width: '80px', 
       padding: '2px', 
@@ -98,6 +100,7 @@ function App() {
                 <a href="" className="Nav_link LogOut" onClick={handleLogout}></a>
               </div>
             </nav> 
+            <span style={{color:'brown'}}>{isLoggedIn!=null ? 'LoggedIn' : 'Please loggin!!'}</span>
             <p className="App-title">
               <span>The most revered of Africa’s safari destinations, Kenya is located in 
               East Africa and boasts the Masai Mara National Park, renowned for its 
