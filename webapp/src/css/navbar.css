@@ -44,12 +44,12 @@
 
 
 .Nav_link:link {
-  color: blue;
+  color: white;
   text-decoration: none;
 }
 
 .Nav_link:visited {
-  color: #00008B;
+  color: #8B0000;
 }
 
 .Nav_link:hover {
