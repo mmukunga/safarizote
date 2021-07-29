@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.net.URI;
 
 import com.example.safarizote.model.City;
+import com.example.safarizote.model.ICity;
 import com.example.safarizote.model.Country;
 import com.example.safarizote.model.ICountry;
 import com.example.safarizote.repository.CityRepository;
@@ -80,7 +81,26 @@ public class WeatherController {
     }
 
     @RequestMapping(value="/api/cities",  method={RequestMethod.POST})       
-    public ResponseEntity<List<City>> getCities(@RequestBody Country country) throws Exception { 
+    public ResponseEntity<List<ICity>> getCities(@RequestBody Country country) throws Exception { 
+
+        String ciso = "KE";
+
+        URI uri = new URI("https://api.countrystatecity.in/v1/countries/"+ciso+"/cities");
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("X-CSCAPI-KEY", "R3VrWVYzUWVtbHNjOGFEbGNhM3Rhb1dZcGpnQ3pQQkV3WlBPMmZHbA==");   
+        HttpEntity<?> requestEntity = new HttpEntity<>(null, headers);
+        ResponseEntity<List<ICity>> responseEntity = restTemplate.exchange(uri, HttpMethod.GET, requestEntity, 
+           new ParameterizedTypeReference<List<ICity>>(){});
+
+        System.out.println("10.WeatherController getCities()..");
+        System.out.println(responseEntity);
+        System.out.println("20.WeatherController getCities()..");
+        List<ICountry> result = responseEntity.getBody();
+        System.out.println(result);
+        System.out.println("30.WeatherController getCities()..");
+
+
         List<City> countryCities = new ArrayList<>(); 
         String jsonFile = "city_list.json";
         List<City> cityList = weatherClient.getCities(jsonFile, country.getCode());
