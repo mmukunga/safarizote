@@ -96,7 +96,7 @@ public class WeatherController {
         System.out.println("10.WeatherController getCities()..");
         System.out.println(responseEntity);
         System.out.println("20.WeatherController getCities()..");
-        List<ICountry> result = responseEntity.getBody();
+        List<ICity> result = responseEntity.getBody();
         System.out.println(result);
         System.out.println("30.WeatherController getCities()..");
 
