@@ -58,7 +58,7 @@ public class WeatherController {
     private WeatherClient weatherClient;
 
     @RequestMapping(value = "/api/countries",  method={RequestMethod.GET})       
-    public ResponseEntity<List<Country>> getCountries() throws Exception { 
+    public ResponseEntity<List<ICountry>> getCountries() throws Exception { 
         List<Country> countries = repository.findAll();  
 
         URI uri = new URI("https://api.countrystatecity.in/v1/countries");
