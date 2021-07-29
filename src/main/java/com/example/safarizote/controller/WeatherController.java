@@ -66,9 +66,12 @@ public class WeatherController {
         HttpEntity<?> requestEntity = new HttpEntity<>(null, headers);
         ResponseEntity<String> responseEntity = restTemplate.exchange(uri, HttpMethod.GET, requestEntity, String.class);
 
-        System.out.println("1.WeatherController getCountries()..");
+        System.out.println("10.WeatherController getCountries()..");
         System.out.println(responseEntity);
-        System.out.println("2.WeatherController getCountries()..");
+        System.out.println("20.WeatherController getCountries()..");
+        String result = responseEntity.getBody();
+        System.out.println(result);
+        System.out.println("30.WeatherController getCountries()..");
 
         return new ResponseEntity<>(countries, HttpStatus.OK);
     }
