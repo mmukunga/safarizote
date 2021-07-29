@@ -98,21 +98,23 @@ const Email = (props) => {
                 </div> 
                 </div>
                 <div className="row">
-                <div className="col-25">      
-                    <label htmlFor="message">Message</label>
-                </div> 
-                <div className="col-75">  
-                    <textarea id="message" name="message"
-                        className="expand" 
-                        rows="10"
-                        placeholder="Write something.." 
-                        className="form-control"
-                        onChange={handleChange}
-                    />
-                </div> 
+                    <div className="col-25">      
+                        <label htmlFor="message">Message</label>
+                    </div> 
+                    <div className="col-75">  
+                        <textarea id="message" name="message"
+                            className="expand" 
+                            rows="10"
+                            placeholder="Write something.." 
+                            className="form-control"
+                            onChange={handleChange}
+                        />
+                    </div> 
                 </div>
                 <div className="row">
-                  <input type="submit" value="Send Message" className="lg-button btn-primary"/>
+                    <div className="col-100">    
+                        <input type="submit" value="Send Message" className="lg-button btn-primary"/>
+                    </div>  
                 </div>  
             </form>
             </div>

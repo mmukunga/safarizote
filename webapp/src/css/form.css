@@ -65,7 +65,14 @@ input[type=submit]:hover {
   width: 75%;    
   margin-top: 6px;    
 }    
-    
+
+.col-100 {
+  width: 100%;
+  float: left;
+  margin-top: 6px;
+}
+
+
 .row:after {    
   content: "";    
   display: table;    
