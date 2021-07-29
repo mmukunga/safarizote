@@ -9,6 +9,7 @@ import java.net.URI;
 
 import com.example.safarizote.model.City;
 import com.example.safarizote.model.Country;
+import com.example.safarizote.model.ICountry;
 import com.example.safarizote.repository.CityRepository;
 import com.example.safarizote.repository.CountryRepository;
 import com.example.safarizote.utils.WeatherClient;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.core.ParameterizedTypeReference;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -64,16 +66,17 @@ public class WeatherController {
         HttpHeaders headers = new HttpHeaders();
         headers.set("X-CSCAPI-KEY", "R3VrWVYzUWVtbHNjOGFEbGNhM3Rhb1dZcGpnQ3pQQkV3WlBPMmZHbA==");   
         HttpEntity<?> requestEntity = new HttpEntity<>(null, headers);
-        ResponseEntity<String> responseEntity = restTemplate.exchange(uri, HttpMethod.GET, requestEntity, String.class);
+        ResponseEntity<List<ICountry>> responseEntity = restTemplate.exchange(uri, HttpMethod.GET, requestEntity, 
+           new ParameterizedTypeReference<List<ICountry>>(){});
 
         System.out.println("10.WeatherController getCountries()..");
         System.out.println(responseEntity);
         System.out.println("20.WeatherController getCountries()..");
-        String result = responseEntity.getBody();
+        List<ICountry> result = responseEntity.getBody();
         System.out.println(result);
         System.out.println("30.WeatherController getCountries()..");
 
-        return new ResponseEntity<>(countries, HttpStatus.OK);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @RequestMapping(value="/api/cities",  method={RequestMethod.POST})       
