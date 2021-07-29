@@ -63,8 +63,8 @@ public class WeatherController {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.set("X-CSCAPI-KEY", "R3VrWVYzUWVtbHNjOGFEbGNhM3Rhb1dZcGpnQ3pQQkV3WlBPMmZHbA==");   
-        HttpEntity<Country[]> requestEntity = new HttpEntity<>(null, headers);
-        ResponseEntity<Country[]> responseEntity = restTemplate.exchange(uri, HttpMethod.GET, requestEntity, Country[].class);
+        HttpEntity<Object[]> requestEntity = new HttpEntity<>(null, headers);
+        ResponseEntity<Country[]> responseEntity = restTemplate.exchange(uri, HttpMethod.GET, requestEntity, Object[].class);
 
         System.out.println(responseEntity);
 
