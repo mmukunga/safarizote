@@ -51,7 +51,13 @@ import Card from './Card';
               code: "AF",
               cities: null
         };
-        
+    
+        let config = {'X-CSCAPI-KEY': 'R3VrWVYzUWVtbHNjOGFEbGNhM3Rhb1dZcGpnQ3pQQkV3WlBPMmZHbA=='};
+        axios.get('https://api.countrystatecity.in/v1/countries', {headers: config}).then((response) => {
+            console.log(response);
+        }).catch(err => { console.log(err)});
+
+
       axios.post('/api/cities', country)
         .then(response => {
             setCities(response.data);
