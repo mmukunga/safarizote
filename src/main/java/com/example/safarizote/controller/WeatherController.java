@@ -14,11 +14,15 @@ import com.example.safarizote.utils.WeatherClient;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 
@@ -53,6 +57,16 @@ public class WeatherController {
     @RequestMapping(value = "/api/countries",  method={RequestMethod.GET})       
     public ResponseEntity<List<Country>> getCountries() { 
         List<Country> countries = repository.findAll();  
+
+        URI uri = new URI("https://api.countrystatecity.in/v1/countries");
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("X-CSCAPI-KEY", "R3VrWVYzUWVtbHNjOGFEbGNhM3Rhb1dZcGpnQ3pQQkV3WlBPMmZHbA==");   
+        HttpEntity<Country[]> requestEntity = new HttpEntity<>(null, headers);
+        ResponseEntity<Country[]> responseEntity = restTemplate.exchange(uri, HttpMethod.GET, requestEntity, String.class);
+
+        System.out.println(responseEntity);
+
         return new ResponseEntity<>(countries, HttpStatus.OK);
     }
 
