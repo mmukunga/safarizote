@@ -105,7 +105,7 @@ public class WeatherController {
         String jsonFile = "city_list.json";
         List<City> cityList = weatherClient.getCities(jsonFile, country.getCode());
         System.out.println("WeatherController - cityList:= " + cityList.size());  
-        return new ResponseEntity<>(cityList, HttpStatus.OK);   
+        return new ResponseEntity<>(result, HttpStatus.OK);   
     }
 
     @RequestMapping(value = "/api/weather",  method={RequestMethod.POST})
