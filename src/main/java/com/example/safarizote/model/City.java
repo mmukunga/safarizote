@@ -25,7 +25,7 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ICity {
+public class City {
     @Id @GeneratedValue Long id;
     @NonNull String name;
 }

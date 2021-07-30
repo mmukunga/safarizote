@@ -7,8 +7,8 @@ import java.util.HashSet;
 import java.util.Collections;
 import java.net.URI;
 
-import com.example.safarizote.model.ICity;
-import com.example.safarizote.model.ICountry;
+import com.example.safarizote.model.City;
+import com.example.safarizote.model.Country;
 import com.example.safarizote.utils.WeatherClient;
 
 import org.springframework.http.HttpStatus;
@@ -51,20 +51,20 @@ public class WeatherController {
     private WeatherClient weatherClient;
 
     @RequestMapping(value = "/api/countries",  method={RequestMethod.GET})       
-    public ResponseEntity<List<ICountry>> getCountries() throws Exception { 
+    public ResponseEntity<List<Country>> getCountries() throws Exception { 
 
         URI uri = new URI("https://api.countrystatecity.in/v1/countries");
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.set("X-CSCAPI-KEY", "R3VrWVYzUWVtbHNjOGFEbGNhM3Rhb1dZcGpnQ3pQQkV3WlBPMmZHbA==");   
         HttpEntity<?> requestEntity = new HttpEntity<>(null, headers);
-        ResponseEntity<List<ICountry>> responseEntity = restTemplate.exchange(uri, HttpMethod.GET, requestEntity, 
-           new ParameterizedTypeReference<List<ICountry>>(){});
+        ResponseEntity<List<Country>> responseEntity = restTemplate.exchange(uri, HttpMethod.GET, requestEntity, 
+           new ParameterizedTypeReference<List<Country>>(){});
 
         System.out.println("10.WeatherController getCountries()..");
         System.out.println(responseEntity);
         System.out.println("20.WeatherController getCountries()..");
-        List<ICountry> countries = responseEntity.getBody();
+        List<Country> countries = responseEntity.getBody();
         System.out.println(countries);
         System.out.println("30.WeatherController getCountries()..");
 
@@ -72,22 +72,22 @@ public class WeatherController {
     }
 
     @RequestMapping(value="/api/cities",  method={RequestMethod.POST})       
-    public ResponseEntity<List<ICity>> getCities(@RequestBody ICountry country) throws Exception { 
-
+    public ResponseEntity<List<City>> getCities(@RequestBody Country country) throws Exception { 
+        System.out.println("10.WeatherController getCities()..");
         String ciso = "KE";
-
+        System.out.println("10.WeatherController getCities().. country:= " + country);
         URI uri = new URI("https://api.countrystatecity.in/v1/countries/"+ciso+"/cities");
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.set("X-CSCAPI-KEY", "R3VrWVYzUWVtbHNjOGFEbGNhM3Rhb1dZcGpnQ3pQQkV3WlBPMmZHbA==");   
         HttpEntity<?> requestEntity = new HttpEntity<>(null, headers);
-        ResponseEntity<List<ICity>> responseEntity = restTemplate.exchange(uri, HttpMethod.GET, requestEntity, 
-           new ParameterizedTypeReference<List<ICity>>(){});
+        ResponseEntity<List<City>> responseEntity = restTemplate.exchange(uri, HttpMethod.GET, requestEntity, 
+           new ParameterizedTypeReference<List<City>>(){});
 
         System.out.println("10.WeatherController getCities()..");
         System.out.println(responseEntity);
         System.out.println("20.WeatherController getCities()..");
-        List<ICity> cities = responseEntity.getBody();
+        List<City> cities = responseEntity.getBody();
         System.out.println(cities);
         System.out.println("30.WeatherController getCities()..");
         System.out.println("WeatherController - cityList:= " + cities.size());  
@@ -95,7 +95,7 @@ public class WeatherController {
     }
 
     @RequestMapping(value = "/api/weather",  method={RequestMethod.POST})
-    public ResponseEntity<String> getWeatherData(@RequestBody ICountry country) throws IOException {
+    public ResponseEntity<String> getWeatherData(@RequestBody Country country) throws IOException {
         HttpURLConnection con = null ;
         InputStream is = null;
         String location = country.getName() + "," + country.getCode();
@@ -120,7 +120,7 @@ public class WeatherController {
     }
 
     @RequestMapping(value = "/api/forecast",  method={RequestMethod.POST})
-    public ResponseEntity<String> getWeatherForecast(@RequestBody ICountry country) throws IOException {
+    public ResponseEntity<String> getWeatherForecast(@RequestBody Country country) throws IOException {
         HttpURLConnection con = null ;
         InputStream is = null;
         String location = country.getName()+","+country.getCode();

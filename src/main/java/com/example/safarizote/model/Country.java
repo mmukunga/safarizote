@@ -21,7 +21,7 @@ import lombok.Singular;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ICountry {
+public class Country {
     @Id Long id;
     @NonNull String name;
     @NonNull String iso2;
