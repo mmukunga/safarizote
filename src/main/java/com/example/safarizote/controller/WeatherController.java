@@ -7,12 +7,8 @@ import java.util.HashSet;
 import java.util.Collections;
 import java.net.URI;
 
-import com.example.safarizote.model.City;
 import com.example.safarizote.model.ICity;
-import com.example.safarizote.model.Country;
 import com.example.safarizote.model.ICountry;
-import com.example.safarizote.repository.CityRepository;
-import com.example.safarizote.repository.CountryRepository;
 import com.example.safarizote.utils.WeatherClient;
 
 import org.springframework.http.HttpStatus;
@@ -52,15 +48,10 @@ public class WeatherController {
     private static String IMG_URL = "http://openweathermap.org/img/w/";
 
     @Autowired
-    private CountryRepository repository;
-    @Autowired
-    private CityRepository cityReository;
-    @Autowired
     private WeatherClient weatherClient;
 
     @RequestMapping(value = "/api/countries",  method={RequestMethod.GET})       
     public ResponseEntity<List<ICountry>> getCountries() throws Exception { 
-        List<Country> countries = repository.findAll();  
 
         URI uri = new URI("https://api.countrystatecity.in/v1/countries");
         RestTemplate restTemplate = new RestTemplate();
@@ -73,15 +64,15 @@ public class WeatherController {
         System.out.println("10.WeatherController getCountries()..");
         System.out.println(responseEntity);
         System.out.println("20.WeatherController getCountries()..");
-        List<ICountry> result = responseEntity.getBody();
-        System.out.println(result);
+        List<ICountry> countries = responseEntity.getBody();
+        System.out.println(countries);
         System.out.println("30.WeatherController getCountries()..");
 
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        return new ResponseEntity<>(countries, HttpStatus.OK);
     }
 
     @RequestMapping(value="/api/cities",  method={RequestMethod.POST})       
-    public ResponseEntity<List<ICity>> getCities(@RequestBody Country country) throws Exception { 
+    public ResponseEntity<List<ICity>> getCities(@RequestBody ICountry country) throws Exception { 
 
         String ciso = "KE";
 
@@ -96,20 +87,15 @@ public class WeatherController {
         System.out.println("10.WeatherController getCities()..");
         System.out.println(responseEntity);
         System.out.println("20.WeatherController getCities()..");
-        List<ICity> result = responseEntity.getBody();
-        System.out.println(result);
+        List<ICity> cities = responseEntity.getBody();
+        System.out.println(cities);
         System.out.println("30.WeatherController getCities()..");
-
-
-        List<City> countryCities = new ArrayList<>(); 
-        String jsonFile = "city_list.json";
-        List<City> cityList = weatherClient.getCities(jsonFile, country.getCode());
-        System.out.println("WeatherController - cityList:= " + cityList.size());  
-        return new ResponseEntity<>(result, HttpStatus.OK);   
+        System.out.println("WeatherController - cityList:= " + cities.size());  
+        return new ResponseEntity<>(cities, HttpStatus.OK);   
     }
 
     @RequestMapping(value = "/api/weather",  method={RequestMethod.POST})
-    public ResponseEntity<String> getWeatherData(@RequestBody Country country) throws IOException {
+    public ResponseEntity<String> getWeatherData(@RequestBody ICountry country) throws IOException {
         HttpURLConnection con = null ;
         InputStream is = null;
         String location = country.getName() + "," + country.getCode();
@@ -134,7 +120,7 @@ public class WeatherController {
     }
 
     @RequestMapping(value = "/api/forecast",  method={RequestMethod.POST})
-    public ResponseEntity<String> getWeatherForecast(@RequestBody Country country) throws IOException {
+    public ResponseEntity<String> getWeatherForecast(@RequestBody ICountry country) throws IOException {
         HttpURLConnection con = null ;
         InputStream is = null;
         String location = country.getName()+","+country.getCode();
