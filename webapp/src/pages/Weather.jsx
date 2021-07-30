@@ -4,7 +4,7 @@ import Card from './Card';
 
   const initialState = {
       city: 'Kabul',
-      code: "AF",
+      iso2: "AF",
       name: "Afghanistan",
       cities: null
   };
@@ -43,17 +43,19 @@ import Card from './Card';
     React.useEffect(() => {
       axios.get('/api/countries')
         .then(response => {
+            console.log(response);
             setCountries(response.data);
         }).catch(err => console.log(err));
 
          let country = {
               name: 'Kabul',
-              code: "AF",
+              iso2: "AF",
               cities: null
         };
  
       axios.post('/api/cities', country)
         .then(response => {
+            console.log(response);
             setCities(response.data);
             const cities = response.data;
             dispatch({ type: 'SET_CITIES', payload: cities });
@@ -68,7 +70,7 @@ import Card from './Card';
 
       const country = {
             name: state.city,
-            code: state.code,
+            iso2: state.iso2,
             cities: null
       };
 
@@ -89,26 +91,27 @@ import Card from './Card';
 
       let country = {
         name: state.name,
-        code: state.code,
+        iso2: state.iso2,
         cities: null
       };
 
       axios.post('/api/cities', country)
         .then(response => {  
+            console.log(response);
             setCities(response.data);
             const cities = response.data;
             dispatch({ type: 'SET_CITIES', payload: cities });
         }).catch(err => console.log(err));
 
-    }, [state.code]);
+    }, [state.iso2]);
 
     const handleChange = (event) => {
         if (event.target.name === "countryCode") {
             const filteredCountry = countries.find(country => {
-               return (country.code === event.target.value);
+               return (country.iso2 === event.target.value);
             });          
             let newCountry = { ...state, 
-                code: filteredCountry.code, 
+                iso2: filteredCountry.iso2, 
                 name: filteredCountry.name
             };
             dispatch({ type: 'SET_COUNTRY', payload: newCountry});
@@ -125,7 +128,7 @@ import Card from './Card';
 
         const country = {
             name: state.name,
-            code: state.code,
+            iso2: state.iso2,
             cities: null
         };
 
@@ -150,7 +153,7 @@ import Card from './Card';
           <select id="countryCode" name="countryCode" onChange={handleChange}>    
               <option value="none">Select Country</option>   
               {countries.map((country) => (
-                  <option value={country.code}>{country.name}</option>
+                  <option value={country.iso2}>{country.name}</option>
               ))}    
           </select>
           <select id="cityName" name="cityName" onChange={handleChange}>    
