@@ -9,7 +9,6 @@ import java.net.URI;
 
 import com.example.safarizote.model.City;
 import com.example.safarizote.model.Country;
-import com.example.safarizote.utils.WeatherClient;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,9 +45,6 @@ public class WeatherController {
     private static String BASE_URL = "http://api.openweathermap.org/data/2.5/weather?q=";
     private static String FORECAST_URL = "http://api.openweathermap.org/data/2.5/forecast/daily?q=";
     private static String IMG_URL = "http://openweathermap.org/img/w/";
-
-    @Autowired
-    private WeatherClient weatherClient;
 
     @RequestMapping(value = "/api/countries",  method={RequestMethod.GET})       
     public ResponseEntity<List<Country>> getCountries() throws Exception { 
