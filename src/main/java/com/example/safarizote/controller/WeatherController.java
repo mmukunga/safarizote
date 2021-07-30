@@ -94,7 +94,7 @@ public class WeatherController {
     public ResponseEntity<String> getWeatherData(@RequestBody Country country) throws IOException {
         HttpURLConnection con = null ;
         InputStream is = null;
-        String location = country.getName() + "," + country.getCode();
+        String location = country.getName() + "," + country.getIso2();
         
         con = (HttpURLConnection) ( new URL(BASE_URL + location + "&cnt=7" + "&units=metric" + "&APPID="+API_KEY)).openConnection();
         con.setRequestMethod("GET");
@@ -119,7 +119,7 @@ public class WeatherController {
     public ResponseEntity<String> getWeatherForecast(@RequestBody Country country) throws IOException {
         HttpURLConnection con = null ;
         InputStream is = null;
-        String location = country.getName()+","+country.getCode();
+        String location = country.getName()+","+country.getIso2();
         
         con = (HttpURLConnection) ( new URL(FORECAST_URL + location + "&units=metric" + "&APPID="+API_KEY)).openConnection();
         con.setRequestMethod("GET");
