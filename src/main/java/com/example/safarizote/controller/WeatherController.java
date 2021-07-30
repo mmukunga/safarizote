@@ -70,9 +70,9 @@ public class WeatherController {
     @RequestMapping(value="/api/cities",  method={RequestMethod.POST})       
     public ResponseEntity<List<City>> getCities(@RequestBody Country country) throws Exception { 
         System.out.println("10.WeatherController getCities()..");
-        String ciso = "KE";
-        System.out.println("10.WeatherController getCities().. country:= " + country);
-        URI uri = new URI("https://api.countrystatecity.in/v1/countries/"+ciso+"/cities");
+        String ciso = country.getIso2();
+        System.out.println("20.WeatherController getCities().. country:= " + country);
+        URI uri = new URI("https://api.countrystatecity.in/v1/countries/" + ciso + "/cities");
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.set("X-CSCAPI-KEY", "R3VrWVYzUWVtbHNjOGFEbGNhM3Rhb1dZcGpnQ3pQQkV3WlBPMmZHbA==");   
