@@ -105,7 +105,6 @@ public class MetricsController {
         }
     }
 
-
     System.out.println("JSON!! Mukunga Simon!!!!!");
 
     URL url_name2 = new URL("https://ipinfo.io/json");
