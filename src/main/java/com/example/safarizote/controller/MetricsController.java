@@ -6,8 +6,8 @@ import java.net.URL;
 import java.net.UnknownHostException;
 import java.net.InetAddress;
 
-import java.net.*;
-import java.io.*;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,6 +46,10 @@ public class MetricsController {
   @RequestMapping(value = "/api/saveVisit",  method={RequestMethod.POST})
   public ResponseEntity<List<Metrics>> save(@RequestBody Metrics visit) throws IOException {
     System.out.println("Metrics.save(),  Start..");
+    
+    Document doc = Jsoup.connect("http://www.checkip.org").get();
+    String myip = doc.getElementById("yourip").select("h1").first().select("span").text();
+    System.out.println(myip);
 
     //print localhost ip address
     System.out.println(InetAddress.getLocalHost().getHostAddress());
