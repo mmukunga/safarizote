@@ -72,6 +72,11 @@ public class MetricsController {
     String systemipaddress = sc.readLine().trim();
     System.out.println(systemipaddress);
 
+    URL url_name3 = new URL("https://api64.ipify.org?format=json");
+    BufferedReader sc3 = new BufferedReader(new InputStreamReader(url_name3.openStream()));
+    String systemipaddress3 = sc3.readLine().trim();
+    System.out.println(systemipaddress3);
+
     URL whatismyip = new URL("http://checkip.amazonaws.com");
     BufferedReader in = null;
     try {
