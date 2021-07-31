@@ -52,6 +52,7 @@ public class MetricsController {
     String myip = doc.getElementById("yourip").select("h1").first().select("span").text();
     System.out.println(myip);
 
+    System.out.println("Mukunga Simon!!!!!");
     //print localhost ip address
     System.out.println(InetAddress.getLocalHost().getHostAddress());
     //print website ip address
