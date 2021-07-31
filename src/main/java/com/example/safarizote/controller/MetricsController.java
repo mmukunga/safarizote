@@ -52,6 +52,17 @@ public class MetricsController {
     String myip = doc.getElementById("yourip").select("h1").first().select("span").text();
     System.out.println(myip);
 
+    //print localhost ip address
+    System.out.println(InetAddress.getLocalHost().getHostAddress());
+    //print website ip address
+    System.out.println(InetAddress.getByName("www.getinternet.no"));
+    //print all ip addresses for a website
+    InetAddress[] inetAddresses = InetAddress.getAllByName("www.getinternet.no");
+    for(InetAddress inet : inetAddresses){
+        System.out.println(inet);
+    }
+
+
     visit.setDateCreated(Instant.now());
     System.out.println(visit);
     if (!visit.getUrl().contains("googlebot.com")){
