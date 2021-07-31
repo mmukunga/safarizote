@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.net.InetAddress;
+import java.io.IOException;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
