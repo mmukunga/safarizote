@@ -22,11 +22,10 @@ public class HomeController {
   private SafariRepository repository;
 
   @RequestMapping(value = "/api/safaris",  method={RequestMethod.GET})
-  public ResponseEntity<List<Safari>> findSafaris(HttpServletRequest request){
+  public ResponseEntity<List<Safari>> findSafaris(){
     List<Safari> sourceSet = repository.findAll();
 
     System.out.println("Simple Java Safari for-loop Example.");
-    System.out.println(request.getRemoteAddr());
     System.out.println("HomeController.findSafaris() SIZE:= " + sourceSet.size());
     System.out.println("findSafaris() End OK!");
 
