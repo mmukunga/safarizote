@@ -57,21 +57,13 @@ public class WeatherController {
         ResponseEntity<List<Country>> responseEntity = restTemplate.exchange(uri, HttpMethod.GET, requestEntity, 
            new ParameterizedTypeReference<List<Country>>(){});
 
-        System.out.println("10.WeatherController getCountries()..");
-        System.out.println(responseEntity);
-        System.out.println("20.WeatherController getCountries()..");
         List<Country> countries = responseEntity.getBody();
-        System.out.println(countries);
-        System.out.println("30.WeatherController getCountries()..");
-
         return new ResponseEntity<>(countries, HttpStatus.OK);
     }
 
     @RequestMapping(value="/api/cities",  method={RequestMethod.POST})       
     public ResponseEntity<List<City>> getCities(@RequestBody Country country) throws Exception { 
-        System.out.println("10.WeatherController getCities()..");
         String ciso = country.getIso2();
-        System.out.println("20.WeatherController getCities().. country:= " + country);
         URI uri = new URI("https://api.countrystatecity.in/v1/countries/" + ciso + "/cities");
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
@@ -80,13 +72,7 @@ public class WeatherController {
         ResponseEntity<List<City>> responseEntity = restTemplate.exchange(uri, HttpMethod.GET, requestEntity, 
            new ParameterizedTypeReference<List<City>>(){});
 
-        System.out.println("10.WeatherController getCities()..");
-        System.out.println(responseEntity);
-        System.out.println("20.WeatherController getCities()..");
-        List<City> cities = responseEntity.getBody();
-        System.out.println(cities);
-        System.out.println("30.WeatherController getCities()..");
-        System.out.println("WeatherController - cityList:= " + cities.size());  
+        List<City> cities = responseEntity.getBody();  
         return new ResponseEntity<>(cities, HttpStatus.OK);   
     }
 
