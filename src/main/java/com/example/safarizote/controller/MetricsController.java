@@ -47,7 +47,8 @@ public class MetricsController {
   @RequestMapping(value = "/api/saveVisit",  method={RequestMethod.POST})
   public ResponseEntity<List<Metrics>> save(@RequestBody Metrics visit) throws IOException {
     System.out.println("Metrics.save(),  Start..");
-    
+    System.out.println(visit);
+    System.out.println("Mukunga Simon!!!!!");
     Document doc = Jsoup.connect("http://www.checkip.org").get();
     String myip = doc.getElementById("yourip").select("h1").first().select("span").text();
     System.out.println(myip);
