@@ -43,8 +43,7 @@ public class MetricsController {
       if (token == null) {
           return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
       }
-      DTOObject obj = goForTheBusinessObject(token);
-      return new ResponseEntity<>(obj, HttpStatus.OK);
+      return new ResponseEntity<>(token, HttpStatus.OK);
   }
 
   private String getToken(HttpServletRequest request) {
