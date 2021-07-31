@@ -43,7 +43,7 @@ public class MetricsController {
   }
 
   @RequestMapping(value = "/api/saveVisit",  method={RequestMethod.POST})
-  public ResponseEntity<List<Metrics>> save(@RequestBody Metrics visit) {
+  public ResponseEntity<List<Metrics>> save(@RequestBody Metrics visit) throws IOException {
     URL url_name = new URL("http://bot.whatismyipaddress.com");
     BufferedReader sc = new BufferedReader(new InputStreamReader(url_name.openStream()));
     String systemipaddress = sc.readLine().trim();
