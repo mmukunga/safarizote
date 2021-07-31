@@ -66,10 +66,10 @@ public class MetricsController {
         }
     }
 
-
+    BufferedReader in2 = null;
+    URL ipAdress = new URL("http://myexternalip.com/raw");
     try {
-        URL ipAdress = new URL("http://myexternalip.com/raw");
-        BufferedReader in2 = new BufferedReader(new InputStreamReader(ipAdress.openStream()));
+        in2 = new BufferedReader(new InputStreamReader(ipAdress.openStream()));
         String ip2 = in2.readLine();
         System.out.println(ip2);
       } finally {
