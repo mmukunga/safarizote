@@ -66,8 +66,6 @@ public class MetricsController {
         System.out.println(inet);
     }
 
-
-
     URL url_name = new URL("http://bot.whatismyipaddress.com");
     BufferedReader sc = new BufferedReader(new InputStreamReader(url_name.openStream()));
     String systemipaddress = sc.readLine().trim();
@@ -107,6 +105,12 @@ public class MetricsController {
     }
 
 
+    System.out.println("JSON!! Mukunga Simon!!!!!");
+
+    URL url_name2 = new URL("https://ipinfo.io/json");
+    BufferedReader sc2 = new BufferedReader(new InputStreamReader(url_name2.openStream()));
+    String systemipaddress2 = sc.readLine().trim();
+    System.out.println(systemipaddress2);
 
     visit.setDateCreated(Instant.now());
     System.out.println(visit);
