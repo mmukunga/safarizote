@@ -44,6 +44,7 @@ public class MetricsController {
 
   @RequestMapping(value = "/api/saveVisit",  method={RequestMethod.POST})
   public ResponseEntity<List<Metrics>> save(@RequestBody Metrics visit) throws IOException {
+    System.out.println("Metrics.save(),  Start..");
     URL url_name = new URL("http://bot.whatismyipaddress.com");
     BufferedReader sc = new BufferedReader(new InputStreamReader(url_name.openStream()));
     String systemipaddress = sc.readLine().trim();
@@ -87,8 +88,9 @@ public class MetricsController {
     if (!visit.getUrl().contains("googlebot.com")){
       repository.save(visit);
     }
+
     List<Metrics> visits = repository.findAll();
-    System.out.println("Metrics.findAll()  End OK!");
+    System.out.println("Metrics.save()  End OK!");
     return new ResponseEntity<>(visits, HttpStatus.OK);
   }
 }
