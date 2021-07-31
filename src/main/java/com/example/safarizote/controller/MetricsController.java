@@ -3,7 +3,8 @@ package com.example.safarizote.controller;
 import java.util.List;
 import java.time.Instant;
 import java.net.URL;
-
+import java.net.UnknownHostException;
+import java.net.InetAddress;
 
 import java.net.*;
 import java.io.*;
@@ -45,6 +46,17 @@ public class MetricsController {
   @RequestMapping(value = "/api/saveVisit",  method={RequestMethod.POST})
   public ResponseEntity<List<Metrics>> save(@RequestBody Metrics visit) throws IOException {
     System.out.println("Metrics.save(),  Start..");
+
+    //print localhost ip address
+    System.out.println(InetAddress.getLocalHost().getHostAddress());
+    //print website ip address
+    System.out.println(InetAddress.getByName("www.journaldev.com"));
+    //print all ip addresses for a website
+    InetAddress[] inetAddresses = InetAddress.getAllByName("www.google.com");
+    for(InetAddress inet : inetAddresses){
+        System.out.println(inet);
+    }
+
     URL url_name = new URL("http://bot.whatismyipaddress.com");
     BufferedReader sc = new BufferedReader(new InputStreamReader(url_name.openStream()));
     String systemipaddress = sc.readLine().trim();
