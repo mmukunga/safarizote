@@ -47,15 +47,20 @@ public class MetricsController {
   }
 
   @RequestMapping(value = "/api/saveVisit",  method={RequestMethod.POST})
-  public ResponseEntity<List<Metrics>> save(@RequestBody Metrics visit) throws IOException {
+  public ResponseEntity<List<Metrics>> save(@RequestBody Metrics visit, HttpServletRequest request) throws IOException {
     System.out.println("Metrics.save(),  Start..");
     System.out.println(visit);
-    System.out.println("Mukunga Simon!!!!!");
+    System.out.println("1.Mukunga Simon!!!!!");
+    System.out.println(request.getRemoteAddr());
+    InetAddress inet1 = InetAddress.getLocalHost(); 
+    System.out.println("2.Mukunga Simon!!!!!");
+    System.out.println(inet1.getHostAddress());  
+    System.out.println("3.Mukunga Simon!!!!!");
     Document doc = Jsoup.connect("http://www.checkip.org").get();
     String myip = doc.getElementById("yourip").select("h1").first().select("span").text();
     System.out.println(myip);
 
-    System.out.println("Mukunga Simon!!!!!");
+    System.out.println("4.Mukunga Simon!!!!!");
     //print localhost ip address
     System.out.println(InetAddress.getLocalHost().getHostAddress());
     //print website ip address
