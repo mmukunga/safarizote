@@ -52,54 +52,6 @@ public class MetricsController {
     String myip = doc.getElementById("yourip").select("h1").first().select("span").text();
     System.out.println(myip);
 
-    //print localhost ip address
-    System.out.println(InetAddress.getLocalHost().getHostAddress());
-    //print website ip address
-    System.out.println(InetAddress.getByName("www.journaldev.com"));
-    //print all ip addresses for a website
-    InetAddress[] inetAddresses = InetAddress.getAllByName("www.google.com");
-    for(InetAddress inet : inetAddresses){
-        System.out.println(inet);
-    }
-
-    URL url_name = new URL("http://bot.whatismyipaddress.com");
-    BufferedReader sc = new BufferedReader(new InputStreamReader(url_name.openStream()));
-    String systemipaddress = sc.readLine().trim();
-    System.out.println(systemipaddress);
-
-    URL whatismyip = new URL("http://checkip.amazonaws.com");
-    BufferedReader in = null;
-    try {
-        in = new BufferedReader(new InputStreamReader(
-                whatismyip.openStream()));
-        String ip = in.readLine();
-        System.out.println(ip);
-    } finally {
-        if (in != null) {
-            try {
-                in.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    BufferedReader in2 = null;
-    URL ipAdress = new URL("http://myexternalip.com/raw");
-    try {
-        in2 = new BufferedReader(new InputStreamReader(ipAdress.openStream()));
-        String ip2 = in2.readLine();
-        System.out.println(ip2);
-      } finally {
-        if (in2 != null) {
-            try {
-                in2.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     visit.setDateCreated(Instant.now());
     System.out.println(visit);
     if (!visit.getUrl().contains("googlebot.com")){
