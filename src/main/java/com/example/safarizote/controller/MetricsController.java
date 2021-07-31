@@ -110,7 +110,7 @@ public class MetricsController {
 
     URL url_name2 = new URL("https://ipinfo.io/json");
     BufferedReader sc2 = new BufferedReader(new InputStreamReader(url_name2.openStream()));
-    String systemipaddress2 = sc.readLine().trim();
+    String systemipaddress2 = sc2.readLine().trim();
     System.out.println(systemipaddress2);
 
     visit.setDateCreated(Instant.now());
