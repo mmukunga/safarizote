@@ -26,6 +26,21 @@ const Safaris = () => {
       setCurrentPage(event.target.id);
     }
 
+
+    React.useEffect(() => {
+      var options = {
+        withCredentials: true,
+        headers: {'Authorization': 'Bearer token-value'}
+      };
+
+      axios.post('/api/myIp', null, options).then((response) => {
+        console.log(response);
+      }).catch((error) => {
+        console.error(error);
+      });  
+
+    }, []);
+
     React.useEffect(() => {
       document.title = "Mombasa Safari Tours to Kenya's Major National Parks. Masai Mara, Tsavo East, Ngutuni, Tsavo West, Amboseli also to other najor destinations in Kenya";
     }, []);

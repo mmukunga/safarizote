@@ -36,6 +36,29 @@ public class MetricsController {
       return new ResponseEntity<>(status, HttpStatus.OK);
   }
 
+
+  @RequestMapping(value = "/api/myIp", produces = "application/json", method = RequestMethod.POST)
+  public ResponseEntity<?> getTargets(HttpServletRequest request, HttpServletResponse response) {
+      String token = getToken(request);
+      if (token == null) {
+          return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+      }
+      DTOObject obj = goForTheBusinessObject(token);
+      return new ResponseEntity<>(obj, HttpStatus.OK);
+  }
+
+  private String getToken(HttpServletRequest request) {
+      String header = request.getHeader("Authorization");
+      if (header == null || header.trim().equals("")) {
+          return null;
+      }
+      header = header.trim();
+      if (!header.startsWith("Bearer ")) {
+          return null;
+      }
+      return header.substring("Bearer ".length()).trim();
+  }
+
   @RequestMapping(value = "/api/allHits",  method={RequestMethod.GET})
   public ResponseEntity<List<Metrics>> findAll() {
     List<Metrics> visits = repository.findAll();
@@ -76,6 +99,11 @@ public class MetricsController {
     BufferedReader sc3 = new BufferedReader(new InputStreamReader(url_name3.openStream()));
     String systemipaddress3 = sc3.readLine().trim();
     System.out.println(systemipaddress3);
+
+    URL url_name34 = new URL("http://bot.whatismyipaddress.com");
+    BufferedReader sc34 = new BufferedReader(new InputStreamReader(url_name34.openStream()));
+    String systemipaddress34 = sc34.readLine().trim();
+    System.out.println(systemipaddress34);
 
     URL whatismyip = new URL("http://checkip.amazonaws.com");
     BufferedReader in = null;
