@@ -54,7 +54,14 @@ public class MetricsController {
   }
 
   private String getToken(ServerHttpRequest request) {
-      String header = request.getHeader("Authorization");
+      String header = request.getHeaders().getFirst("Authorization");
+
+      System.out.println("Before Handshake");
+      System.out.println(request.getHeaders().toString());
+      System.out.println("?:" + request.getURI());
+      System.out.println(":"  + request.getBody());
+
+
       System.out.println("4.Mukunga Simon!!!!!");
       if (header == null || header.trim().equals("")) {
           return null;
