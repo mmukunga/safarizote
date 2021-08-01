@@ -48,7 +48,7 @@ public class MetricsController {
 
 
   @RequestMapping(value = "/api/myIp", produces = "application/json", method = RequestMethod.POST)
-  public ResponseEntity<?> getTargets(ServerHttpRequest request) throws IOException{
+  public ResponseEntity<?> getTargets(ServerHttpRequest request) throws Exception{
     System.out.println("1.Mukunga Simon!!!!!");
 
     String license_key = "6ab73f3655f1a0db55237e9f5b00bff9";
