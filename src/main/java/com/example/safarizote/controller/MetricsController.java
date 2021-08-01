@@ -42,7 +42,7 @@ public class MetricsController {
 
 
   @RequestMapping(value = "/api/myIp", produces = "application/json", method = RequestMethod.POST)
-  public ResponseEntity<?> getTargets(ServerHttpRequest request) {
+  public ResponseEntity<?> getTargets(ServerHttpRequest request) throws IOException{
     System.out.println("1.Mukunga Simon!!!!!");
       String token = getToken(request);
       if (token == null) {
@@ -53,7 +53,7 @@ public class MetricsController {
       return new ResponseEntity<>(token, HttpStatus.OK);
   }
 
-  private String getToken(ServerHttpRequest request) {
+  private String getToken(ServerHttpRequest request) throws IOException{
       String header = request.getHeaders().getFirst("Authorization");
 
       System.out.println("Before Handshake");
