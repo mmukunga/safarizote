@@ -53,7 +53,7 @@ public class MetricsController {
       return new ResponseEntity<>(token, HttpStatus.OK);
   }
 
-  private String getToken(HttpServletRequest request) {
+  private String getToken(ServerHttpRequest request) {
       String header = request.getHeader("Authorization");
       System.out.println("4.Mukunga Simon!!!!!");
       if (header == null || header.trim().equals("")) {
