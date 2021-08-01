@@ -42,22 +42,29 @@ public class MetricsController {
 
   @RequestMapping(value = "/api/myIp", produces = "application/json", method = RequestMethod.POST)
   public ResponseEntity<?> getTargets(HttpServletRequest request, HttpServletResponse response) {
+    System.out.println("1.Mukunga Simon!!!!!");
       String token = getToken(request);
       if (token == null) {
+        System.out.println("2.Mukunga Simon!!!!!");
           return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
       }
+      System.out.println("3.Mukunga Simon!!!!!");
       return new ResponseEntity<>(token, HttpStatus.OK);
   }
 
   private String getToken(HttpServletRequest request) {
       String header = request.getHeader("Authorization");
+      System.out.println("4.Mukunga Simon!!!!!");
       if (header == null || header.trim().equals("")) {
           return null;
       }
+      System.out.println("5.Mukunga Simon!!!!!");
       header = header.trim();
       if (!header.startsWith("Bearer ")) {
           return null;
       }
+      System.out.println("6.Mukunga Simon!!!!!");
+      System.out.println("Metrics.getToken(),  End OK!");
       return header.substring("Bearer ".length()).trim();
   }
 
@@ -75,13 +82,13 @@ public class MetricsController {
   public ResponseEntity<List<Metrics>> save(@RequestBody Metrics visit) throws IOException {
     System.out.println("Metrics.save(),  Start..");
     System.out.println(visit);
-    System.out.println("1.Mukunga Simon!!!!!");
+    System.out.println("10.Mukunga Simon!!!!!");
     
     Document doc = Jsoup.connect("http://www.checkip.org").get();
     String myip = doc.getElementById("yourip").select("h1").first().select("span").text();
     System.out.println(myip);
 
-    System.out.println("4.Mukunga Simon!!!!!");
+    System.out.println("11.Mukunga Simon!!!!!");
     //print localhost ip address
     System.out.println(InetAddress.getLocalHost().getHostAddress());
     //print website ip address
