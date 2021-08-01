@@ -41,7 +41,7 @@ public class MetricsController {
 
 
   @RequestMapping(value = "/api/myIp", produces = "application/json", method = RequestMethod.POST)
-  public ResponseEntity<?> getTargets(HttpServletRequest request, HttpServletResponse response) {
+  public ResponseEntity<?> getTargets(ServerHttpRequest request) {
     System.out.println("1.Mukunga Simon!!!!!");
       String token = getToken(request);
       if (token == null) {
