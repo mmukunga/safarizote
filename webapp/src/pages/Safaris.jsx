@@ -28,9 +28,12 @@ const Safaris = () => {
 
 
     React.useEffect(() => {
+
       var options = {
-        withCredentials: true,
-        headers: {'Authorization': 'Bearer token-value'}
+        headers: {
+          'Content-Type':  'application/json',
+          'Authorization': 'Bearer token-value'
+        }
       };
 
       axios.post('/api/myIp', null, options).then((response) => {
