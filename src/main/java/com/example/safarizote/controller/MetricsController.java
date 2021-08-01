@@ -19,6 +19,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.maxmind.geoip2.WebServiceClient;
+import com.maxmind.geoip2.exception.GeoIp2Exception;
+import com.maxmind.geoip2.model.CountryResponse;
+import com.maxmind.geoip2.record.Country;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -44,6 +50,18 @@ public class MetricsController {
   @RequestMapping(value = "/api/myIp", produces = "application/json", method = RequestMethod.POST)
   public ResponseEntity<?> getTargets(ServerHttpRequest request) throws IOException{
     System.out.println("1.Mukunga Simon!!!!!");
+
+    String license_key = "6ab73f3655f1a0db55237e9f5b00bff9";
+    WebServiceClient client = new WebServiceClient.Builder(42, license_key).build();
+    InetAddress ipAddress = InetAddress.getByName("84.212.216.80");
+    // Do the lookup
+    CountryResponse response = client.country(ipAddress);
+    Country country = response.getCountry();
+    System.out.println(country.getIsoCode());            // 'US'
+    System.out.println(country.getName());               // 'United States'
+    System.out.println(country.getNames().get("zh-CN")); // '美国'
+
+
       String token = getToken(request);
       if (token == null) {
         System.out.println("2.Mukunga Simon!!!!!");

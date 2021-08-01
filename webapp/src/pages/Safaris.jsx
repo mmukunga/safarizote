@@ -28,8 +28,8 @@ const Safaris = () => {
 
 
     React.useEffect(() => {
-
       var options = {
+        withCredentials: true,
         headers: {
           'Content-Type':  'application/json',
           'Authorization': 'Bearer token-value'
