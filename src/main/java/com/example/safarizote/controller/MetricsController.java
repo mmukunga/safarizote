@@ -51,7 +51,7 @@ public class MetricsController {
   public ResponseEntity<?> getTargets(ServerHttpRequest request) throws Exception{
     System.out.println("1.Mukunga Simon!!!!!");
 
-    String license_key = "6ab73f3655f1a0db55237e9f5b00bff9";
+    String license_key = "R3VrWVYzUWVtbHNjOGFEbGNhM3Rhb1dZcGpnQ3pQQkV3WlBPMmZHbA==";
     WebServiceClient client = new WebServiceClient.Builder(42, license_key).build();
     InetAddress ipAddress = InetAddress.getByName("84.212.216.80");
     // Do the lookup
@@ -61,6 +61,12 @@ public class MetricsController {
     System.out.println(country.getName());               // 'United States'
     System.out.println(country.getNames().get("zh-CN")); // '美国'
 
+     // Postal info
+     Postal postal = response.getPostal();
+     System.out.println(postal.getCode()); // '55455'
+     Location location = response.getLocation(); 
+     System.out.println("Latitude: "+ location.getLatitude()); // 44.9733  
+     System.out.println("Longitude: "+ location.getLongitude()); // -93.2323
 
       String token = getToken(request);
       if (token == null) {
