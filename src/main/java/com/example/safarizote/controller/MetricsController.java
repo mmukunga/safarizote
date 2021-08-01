@@ -61,13 +61,6 @@ public class MetricsController {
     System.out.println(country.getName());               // 'United States'
     System.out.println(country.getNames().get("zh-CN")); // '美国'
 
-     // Postal info
-     Postal postal = response.getPostal();
-     System.out.println(postal.getCode()); // '55455'
-     Location location = response.getLocation(); 
-     System.out.println("Latitude: "+ location.getLatitude()); // 44.9733  
-     System.out.println("Longitude: "+ location.getLongitude()); // -93.2323
-
       String token = getToken(request);
       if (token == null) {
         System.out.println("2.Mukunga Simon!!!!!");
