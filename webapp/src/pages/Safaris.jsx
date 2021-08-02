@@ -37,10 +37,16 @@ const Safaris = () => {
       };
       
       const key = 'AIzaSyDqpMkSvDUmf4T100PKGnr5iVdeBiFHAZw';
-      axios.get('https://api.ipify.org')
-      .then(({response}) => axios.get(`https://api.ipstack.com/${response}?access_key=${key}`))
-      .then(({response}) => console.log(response))
-      .catch((err) => console.warn(err));
+      axios.get('https://ipinfo.io/json').then(response => {
+            console.log(response);
+            axios.get(`https://api.ipstack.com/${response}?access_key=${key}`)
+            .then(resp => {
+              console.log(resp);
+            });
+        }).catch(e => {
+            console.log(e);
+        })
+
 
       axios.post('/api/myIp', null, options).then((response) => {
         console.log(response);
