@@ -38,7 +38,7 @@ const Safaris = () => {
       
       const key = 'AIzaSyDqpMkSvDUmf4T100PKGnr5iVdeBiFHAZw';
       axios.get('https://api.ipify.org')
-      .then(({response}) => axios.get(`http://api.ipstack.com/${response}?access_key=${key}`))
+      .then(({response}) => axios.get(`https://api.ipstack.com/${response}?access_key=${key}`))
       .then(({response}) => console.log(response))
       .catch((err) => console.warn(err));
 
