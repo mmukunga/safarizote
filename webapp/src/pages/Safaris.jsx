@@ -39,7 +39,9 @@ const Safaris = () => {
       const key = '52422dae81a62d23abbbeca1498b494a';
       axios.get('https://ipinfo.io/json').then(response => {
             console.log(response);
-            axios.get(`http://api.ipstack.com/${response.data.ip}?access_key=${key}`)
+           // http://api.ipstack.com/84.212.216.80?access_key=52422dae81a62d23abbbeca1498b494a
+           // axios.get(`https://api.ipstack.com/${response.data.ip}?access_key=${key}`)
+           axios.get('http://api.ipstack.com/84.212.216.80?access_key=52422dae81a62d23abbbeca1498b494a')
             .then(resp => {
               console.log(resp);
             });
