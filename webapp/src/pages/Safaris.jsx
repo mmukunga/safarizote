@@ -43,9 +43,9 @@ const Safaris = () => {
 
       const key = '52422dae81a62d23abbbeca1498b494a';
       axios.get('https://ipinfo.io/json').then(response => {
-            console.log(response);
+            console.log(response.data);
            // http://api.ipstack.com/84.212.216.80?access_key=52422dae81a62d23abbbeca1498b494a
-            axios.get(`https://ipapi.co?q=${response.data.ip}?access_key=${key}`)
+            axios.get(`https://ipapi.co/json/?q=${response.data.ip}?access_key=${key}`)
             .then(resp => {
               console.log(resp.data);
             });
