@@ -27,7 +27,8 @@ const Safaris = () => {
       setCurrentPage(event.target.id);
     }
 
-
+    const options = {};
+    
     React.useEffect(() => {
       navigator.geolocation.getcurrentposition((pos) =>{
         console.log(pos.coords.latitude + " " + pos.coords.longitude) // display VALUE
@@ -39,7 +40,7 @@ const Safaris = () => {
         console.log(newUserPos) // Display your values
       }, (err) => {
             console.log(err);
-      },options);
+      }, options);
     }, []);
 
 
