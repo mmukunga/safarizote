@@ -36,7 +36,7 @@ const Safaris = () => {
         }
       };
       
-      const key = 'AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw';
+      const key = '52422dae81a62d23abbbeca1498b494a';
       axios.get('https://ipinfo.io/json').then(response => {
             console.log(response);
             axios.get(`https://api.ipstack.com/${response.data.ip}?access_key=${key}`)
@@ -46,7 +46,6 @@ const Safaris = () => {
         }).catch(e => {
             console.log(e);
         })
-
 
       axios.post('/api/myIp', null, options).then((response) => {
         console.log(response);
