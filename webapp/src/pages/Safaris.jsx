@@ -65,14 +65,11 @@ const Safaris = () => {
         });
       }
 
-      navigator.geolocation.getCurrentPosition(function(position) {
-        console.log(position);
-      });
-
-      navigator.geolocation.watchPosition(function(position) {
-        console.log("Latitude is :", position.coords.latitude);
-        console.log("Longitude is :", position.coords.longitude);
-      });
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          console.log(position);
+        });
+      }
 
       const key = '52422dae81a62d23abbbeca1498b494a';
       axios.get('https://ipinfo.io/json').then(response => {
