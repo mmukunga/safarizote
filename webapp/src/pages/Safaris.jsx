@@ -28,27 +28,6 @@ const Safaris = () => {
       setCurrentPage(event.target.id);
     }
 
-    const options = {};
-
-    React.useEffect(() => {
-      navigator.geolocation.getCurrentPosition((pos) =>{
-        console.log(pos.coords.latitude + " " + pos.coords.longitude) // display VALUE
-        const newUserPos = { 
-              lat: pos.coords.latitude,
-              long: pos.coords.longitude,
-         };
-         setPosition({
-          latitude: coords.latitude,
-          longitude: coords.longitude,
-        });
-        setUserPos(newUserPos) // store data in usestate
-        console.log(newUserPos) // Display your values
-      }, (err) => {
-            console.log(err);
-      }, options);
-    }, []);
-
-
     React.useEffect(() => {
       var options = {
         withCredentials: true,
@@ -57,19 +36,6 @@ const Safaris = () => {
           'Authorization': 'Bearer token-value'
         }
       };
-      
-      if (navigator.geolocation) {
-        navigator.geolocation.watchPosition(function(position) {
-          console.log("Latitude is :", position.coords.latitude);
-          console.log("Longitude is :", position.coords.longitude);
-        });
-      }
-
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          console.log(position);
-        });
-      }
 
       const key = '52422dae81a62d23abbbeca1498b494a';
       axios.get('https://ipinfo.io/json').then(response => {
@@ -77,7 +43,7 @@ const Safaris = () => {
            // http://api.ipstack.com/84.212.216.80?access_key=52422dae81a62d23abbbeca1498b494a
             axios.get(`https://ipapi.co?q=${response.data.ip}?access_key=${key}`)
             .then(resp => {
-              console.log(resp);
+              console.log(resp.data);
             });
         }).catch(e => {
             console.log(e);
