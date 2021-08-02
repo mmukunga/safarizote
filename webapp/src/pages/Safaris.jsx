@@ -20,6 +20,7 @@ const Safaris = () => {
     const [numberOfHits, setNumberOfHits] = useState([]);
     const [pageSize, setPageSize] = useState(2);
     const [userPos, setUserPos] = useState({lat: null, long: null});
+    const [position, setPosition] = useState({});
 
     const videoUrl = 'https://www.youtube.com/watch?v=3qW5z4xeiac';
 
@@ -28,14 +29,18 @@ const Safaris = () => {
     }
 
     const options = {};
-    
+
     React.useEffect(() => {
-      navigator.geolocation.getcurrentposition((pos) =>{
+      navigator.geolocation.getCurrentPosition((pos) =>{
         console.log(pos.coords.latitude + " " + pos.coords.longitude) // display VALUE
         const newUserPos = { 
               lat: pos.coords.latitude,
               long: pos.coords.longitude,
          };
+         setPosition({
+          latitude: coords.latitude,
+          longitude: coords.longitude,
+        });
         setUserPos(newUserPos) // store data in usestate
         console.log(newUserPos) // Display your values
       }, (err) => {
