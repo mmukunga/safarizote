@@ -19,12 +19,28 @@ const Safaris = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [numberOfHits, setNumberOfHits] = useState([]);
     const [pageSize, setPageSize] = useState(2);
+    const [userPos, setUserPos] = useState({lat: null, long: null});
 
     const videoUrl = 'https://www.youtube.com/watch?v=3qW5z4xeiac';
 
     const handleClick = (event) => {
       setCurrentPage(event.target.id);
     }
+
+
+    React.useEffect(() => {
+      navigator.geolocation.getcurrentposition((pos) =>{
+        console.log(pos.coords.latitude + " " + pos.coords.longitude) // display VALUE
+        const newUserPos = { 
+              lat: pos.coords.latitude,
+              long: pos.coords.longitude,
+         };
+        setUserPos(newUserPos) // store data in usestate
+        console.log(newUserPos) // Display your values
+      }, (err) => {
+            console.log(err);
+      },options);
+    }, []);
 
 
     React.useEffect(() => {
@@ -36,6 +52,12 @@ const Safaris = () => {
         }
       };
       
+      if (navigator.geolocation) {
+        navigator.geolocation.watchPosition(function(position) {
+          console.log("Latitude is :", position.coords.latitude);
+          console.log("Longitude is :", position.coords.longitude);
+        });
+      }
 
       navigator.geolocation.getCurrentPosition(function(position) {
         console.log(position);
