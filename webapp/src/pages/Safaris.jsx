@@ -39,7 +39,7 @@ const Safaris = () => {
       const key = 'AIzaSyDqpMkSvDUmf4T100PKGnr5iVdeBiFHAZw';
       axios.get('https://ipinfo.io/json').then(response => {
             console.log(response);
-            axios.get(`https://api.ipstack.com/${response}?access_key=${key}`)
+            axios.get(`https://api.ipstack.com/${response.data.ip}?access_key=${key}`)
             .then(resp => {
               console.log(resp);
             });
