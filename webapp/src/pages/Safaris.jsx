@@ -40,8 +40,7 @@ const Safaris = () => {
       axios.get('https://ipinfo.io/json').then(response => {
             console.log(response);
            // http://api.ipstack.com/84.212.216.80?access_key=52422dae81a62d23abbbeca1498b494a
-           // axios.get(`https://api.ipstack.com/${response.data.ip}?access_key=${key}`)
-           axios.post('https://cors-anywhere.herokuapp.com/http://api.ipstack.com/84.212.216.80?access_key=52422dae81a62d23abbbeca1498b494a&output=json')
+            axios.get(`https://ipapi.co/${response.data.ip}?access_key=${key}`)
             .then(resp => {
               console.log(resp);
             });
