@@ -37,6 +37,10 @@ const Safaris = () => {
         }
       };
 
+      axios.get('https://freegeoip.net/json/'+'84.212.216.80').then((response) => {
+          console.log(response);
+      });
+
       const key = '52422dae81a62d23abbbeca1498b494a';
       axios.get('https://ipinfo.io/json').then(response => {
             console.log(response);
