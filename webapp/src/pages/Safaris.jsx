@@ -28,6 +28,16 @@ const Safaris = () => {
       setCurrentPage(event.target.id);
     }
 
+
+      // get visitor's location
+    const getLocation = () => {
+      if (navigator.geolocation) {
+        return navigator.geolocation.getCurrentPosition(showPosition, handleError);
+      } else {
+        console.error("Geolocation is not supported by this browser.");
+      }
+    }
+
     React.useEffect(() => {
       var options = {
         withCredentials: true,
@@ -37,6 +47,8 @@ const Safaris = () => {
         }
       };
 
+      console.log(getLocation());
+      
       const key = '52422dae81a62d23abbbeca1498b494a';
       axios.get('https://ipinfo.io/json').then(response => {
             console.log(response.data);
