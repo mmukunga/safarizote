@@ -37,7 +37,12 @@ const Safaris = () => {
         }
       };
 
-      axios.get(`http://ip-api.com/json/`).then(res => {
+
+      axios.get('https://api.ipify.org?format=json', function(data){
+          console.log(data.ip);
+      });
+
+      axios.get(`https://ip-api.com/json/`).then(res => {
           console.log(res.data)
       }).catch(err => {
           console.error(err)
