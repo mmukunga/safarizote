@@ -38,6 +38,15 @@ const Safaris = () => {
       }
     }
 
+    function showPosition(position) {
+      console.log(`Latitude: ${position.coords.latitude}, longitude: ${position.coords.longitude}`;
+    }
+
+    function handleError(error) {
+      console.error('Error occurred: ' + error);
+    }
+
+
     React.useEffect(() => {
       var options = {
         withCredentials: true,
@@ -48,7 +57,7 @@ const Safaris = () => {
       };
 
       console.log(getLocation());
-      
+
       const key = '52422dae81a62d23abbbeca1498b494a';
       axios.get('https://ipinfo.io/json').then(response => {
             console.log(response.data);
