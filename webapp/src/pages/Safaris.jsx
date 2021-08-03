@@ -37,6 +37,12 @@ const Safaris = () => {
         }
       };
 
+      axios.get(`http://ip-api.com/json/`).then(res => {
+          console.log(res.data)
+      }).catch(err => {
+          console.error(err)
+      });
+
       axios.get('https://freegeoip.net/json/'+'84.212.216.80').then((response) => {
           console.log(response);
       });
