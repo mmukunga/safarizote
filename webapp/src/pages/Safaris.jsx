@@ -50,6 +50,11 @@ const Safaris = () => {
             console.log(e);
         })
 
+
+      axios.get('https://api.ipdata.co?api-key=fdca9306cc4ed694410cd4f81a7837de6f08361c39c0a7d3ea9853a3').then((data) => {
+          console.log(data);
+      });
+
       axios.post('/api/myIp', null, options).then((response) => {
         console.log(response);
       }).catch((error) => {
