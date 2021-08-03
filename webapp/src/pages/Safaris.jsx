@@ -39,7 +39,7 @@ const Safaris = () => {
     }
 
     function showPosition(position) {
-      console.log(`Latitude: ${position.coords.latitude}, longitude: ${position.coords.longitude}`;
+      console.log(`Latitude: ${position.coords.latitude}, longitude: ${position.coords.longitude}`);
     }
 
     function handleError(error) {
