@@ -56,8 +56,6 @@ const Safaris = () => {
         }
       };
 
-      window.navigator.geolocation.getCurrentPosition((position) => console.log(position.coords.latitude), (err) => console.log(err.message));
-
       const key = '52422dae81a62d23abbbeca1498b494a';
       axios.get('https://ipinfo.io/json').then(response => {
             console.log(response.data);
@@ -72,6 +70,11 @@ const Safaris = () => {
 
       axios.get('https://api.ipdata.co?api-key=fdca9306cc4ed694410cd4f81a7837de6f08361c39c0a7d3ea9853a3').then((data) => {
           console.log(data);
+      });
+
+
+      axios.get('https://geolocation-db.com/json/').then((response) => {
+          console.log(response.data);
       });
 
       axios.post('/api/myIp', null, options).then((response) => {
