@@ -70,9 +70,9 @@ public class MetricsController {
     //print localhost ip address
     System.out.println(InetAddress.getLocalHost().getHostAddress());
     //print website ip address
-    System.out.println(InetAddress.getByName("www.getinternet.no"));
+    System.out.println(InetAddress.getByName("www.google.com"));
     //print all ip addresses for a website
-    InetAddress[] inetAddresses = InetAddress.getAllByName("www.getinternet.no");
+    InetAddress[] inetAddresses = InetAddress.getAllByName("www.google.com");
     for(InetAddress inet : inetAddresses){
         System.out.println(inet);
     }
