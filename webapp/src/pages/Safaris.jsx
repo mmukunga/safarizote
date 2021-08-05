@@ -77,12 +77,6 @@ const Safaris = () => {
           console.log(response.data);
       });
 
-      axios.post('/api/myIp', null, options).then((response) => {
-        console.log(response);
-      }).catch((error) => {
-        console.error(error);
-      });  
-
     }, []);
 
     React.useEffect(() => {

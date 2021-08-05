@@ -46,53 +46,6 @@ public class MetricsController {
       return new ResponseEntity<>(status, HttpStatus.OK);
   }
 
-
-  @RequestMapping(value = "/api/myIp", produces = "application/json", method = RequestMethod.POST)
-  public ResponseEntity<?> getTargets(ServerHttpRequest request) throws Exception{
-    System.out.println("1.Mukunga Simon!!!!!");
-
-    String license_key = "R3VrWVYzUWVtbHNjOGFEbGNhM3Rhb1dZcGpnQ3pQQkV3WlBPMmZHbA==";
-    WebServiceClient client = new WebServiceClient.Builder(42, license_key).build();
-    InetAddress ipAddress = InetAddress.getByName("84.212.216.80");
-    // Do the lookup
-    CountryResponse response = client.country(ipAddress);
-    Country country = response.getCountry();
-    System.out.println(country.getIsoCode());            // 'US'
-    System.out.println(country.getName());               // 'United States'
-    System.out.println(country.getNames().get("zh-CN")); // '美国'
-
-      String token = getToken(request);
-      if (token == null) {
-        System.out.println("2.Mukunga Simon!!!!!");
-          return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-      }
-      System.out.println("3.Mukunga Simon!!!!!");
-      return new ResponseEntity<>(token, HttpStatus.OK);
-  }
-
-  private String getToken(ServerHttpRequest request) throws IOException{
-      String header = request.getHeaders().getFirst("Authorization");
-
-      System.out.println("Before Handshake");
-      System.out.println(request.getHeaders().toString());
-      System.out.println("?:" + request.getURI());
-      System.out.println(":"  + request.getBody());
-
-
-      System.out.println("4.Mukunga Simon!!!!!");
-      if (header == null || header.trim().equals("")) {
-          return null;
-      }
-      System.out.println("5.Mukunga Simon!!!!!");
-      header = header.trim();
-      if (!header.startsWith("Bearer ")) {
-          return null;
-      }
-      System.out.println("6.Mukunga Simon!!!!!");
-      System.out.println("Metrics.getToken(),  End OK!");
-      return header.substring("Bearer ".length()).trim();
-  }
-
   @RequestMapping(value = "/api/allHits",  method={RequestMethod.GET})
   public ResponseEntity<List<Metrics>> findAll() {
     List<Metrics> visits = repository.findAll();
