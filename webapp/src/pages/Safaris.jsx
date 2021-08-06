@@ -36,7 +36,7 @@ const Safaris = () => {
     React.useEffect(() => {
       const api_key = '94a2ea2cd89d43ea94b26702f95a9bb4';
       axios.get('https://ipinfo.io/json').then(response => {
-           console.log(response.data);
+           console.log(response.data.ip);
            axios.get(`https://ipgeolocation.abstractapi.com/v1/?api_key=${api_key}&ip_address=${response.data.ip}`)
             .then(resp => {
               console.log(resp.data);
@@ -48,7 +48,6 @@ const Safaris = () => {
               console.log(window.navigator.appName);
               console.log(window.location.pathname);
               console.log(window.navigator.geolocation);
-              console.log(window.location.cookieEnabled);
               console.log(window.navigator.platform);
               console.log(document.cookie.split(';'));
 
