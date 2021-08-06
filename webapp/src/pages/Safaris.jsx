@@ -67,8 +67,6 @@ const Safaris = () => {
 
     React.useEffect(() => {
       axios.get('https://ipinfo.io/json').then(response => {
-            const location = Bowser.parse(window.navigator.geoLocation);
-            console.log(location);
             const userBrowser = Bowser.parse(window.navigator.userAgent);
             console.log(userBrowser);
 
