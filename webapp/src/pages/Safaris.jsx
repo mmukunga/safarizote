@@ -79,6 +79,16 @@ const Safaris = () => {
             console.log(window.navigator.platform);
             console.log(document.cookie.split(';'));
 
+
+            const location = window.navigator && window.navigator.geolocation
+
+            if (location) {
+                location.getCurrentPosition(position => {
+                  console.log(position.coords.latitude);
+                  console.log(position.coords.longitude);
+              })
+            }
+
             axios.post('/api/saveVisit', {
               url: response.data.hostname,
               browser: userBrowser.name,
