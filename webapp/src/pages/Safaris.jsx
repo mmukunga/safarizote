@@ -57,10 +57,11 @@ const Safaris = () => {
       };
 
       //http://api.db-ip.com/v2/free/self/ipAddress
-      const key = '52422dae81a62d23abbbeca1498b494a';
+      //const key = '52422dae81a62d23abbbeca1498b494a';
+      const key = 'fdca9306cc4ed694410cd4f81a7837de6f08361c39c0a7d3ea9853a3';
       axios.get('https://ipinfo.io/json').then(response => {
             console.log(response.data);
-           axios.get(`https://ipapi.co/${response.data.ip}/latlong?access_key=${key}`)
+           axios.get(`https://ipapi.co/${response.data.ip}?access_key=${key}`)
             .then(resp => {
               console.log(resp);
             });
@@ -68,14 +69,8 @@ const Safaris = () => {
             console.log(e);
         })
 
-
-      axios.get('https://api.ipdata.co?api-key=fdca9306cc4ed694410cd4f81a7837de6f08361c39c0a7d3ea9853a3').then((data) => {
+      axios.get(`https://api.ipdata.co?api-key=${key}`).then((data) => {
           console.log(data);
-      });
-
-
-      axios.get('https://geolocation-db.com/json/').then((response) => {
-          console.log(response.data);
       });
 
     }, []);
