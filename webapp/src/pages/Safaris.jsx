@@ -43,10 +43,11 @@ const Safaris = () => {
       };
 
       //http://api.db-ip.com/v2/free/self/ipAddress
-      const key = '52422dae81a62d23abbbeca1498b494a';
+      //const key = '52422dae81a62d23abbbeca1498b494a';
+        const key = '94a2ea2cd89d43ea94b26702f95a9bb4';
       axios.get('https://ipinfo.io/json').then(response => {
-            console.log(response.data);
-           axios.get(`https://ipapi.co/${response.data.ip}/latlong?access_key=${key}`)
+           console.log(response.data);
+           axios.get(`https://ipgeolocation.abstractapi.com/v1/?api_key=${key}&ip_address=${response.data.ip}`)
             .then(resp => {
               console.log(resp);
             });
