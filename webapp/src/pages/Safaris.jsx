@@ -28,20 +28,6 @@ const Safaris = () => {
       setCurrentPage(event.target.id);
     }
 
-
-      // get visitor's location
-    const getLocation = () => {
-      if (navigator.geolocation) {
-        return navigator.geolocation.getCurrentPosition(showPosition, handleError);
-      } else {
-        console.error("Geolocation is not supported by this browser.");
-      }
-    }
-
-    function showPosition(position) {
-      console.log(`Latitude: ${position.coords.latitude}, longitude: ${position.coords.longitude}`);
-    }
-
     function handleError(error) {
       console.error('Error occurred: ' + error);
     }
@@ -57,11 +43,10 @@ const Safaris = () => {
       };
 
       //http://api.db-ip.com/v2/free/self/ipAddress
-      //const key = '52422dae81a62d23abbbeca1498b494a';
-      const key = 'fdca9306cc4ed694410cd4f81a7837de6f08361c39c0a7d3ea9853a3';
+      const key = '52422dae81a62d23abbbeca1498b494a';
       axios.get('https://ipinfo.io/json').then(response => {
             console.log(response.data);
-           axios.get(`https://ipapi.co/${response.data.ip}?access_key=${key}`)
+           axios.get(`https://ipapi.co/${response.data.ip}/latlong?access_key=${key}`)
             .then(resp => {
               console.log(resp);
             });
@@ -69,7 +54,8 @@ const Safaris = () => {
             console.log(e);
         })
 
-      axios.get(`https://api.ipdata.co?api-key=${key}`).then((data) => {
+      const api_key='fdca9306cc4ed694410cd4f81a7837de6f08361c39c0a7d3ea9853a3';
+      axios.get(`https://api.ipdata.co?api-key=${api_key}`).then((data) => {
           console.log(data);
       });
 
