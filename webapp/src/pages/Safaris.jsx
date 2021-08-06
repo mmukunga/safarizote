@@ -28,77 +28,43 @@ const Safaris = () => {
       setCurrentPage(event.target.id);
     }
 
-    function handleError(error) {
-      console.error('Error occurred: ' + error);
-    }
-
-
-    React.useEffect(() => {
-      var options = {
-        withCredentials: true,
-        headers: {
-          'Content-Type':  'application/json',
-          'Authorization': 'Bearer token-value'
-        }
-      };
-
-      //http://api.db-ip.com/v2/free/self/ipAddress
-      //const key = '52422dae81a62d23abbbeca1498b494a';
-        const key = '94a2ea2cd89d43ea94b26702f95a9bb4';
-      axios.get('https://ipinfo.io/json').then(response => {
-           console.log(response.data);
-           axios.get(`https://ipgeolocation.abstractapi.com/v1/?api_key=${key}&ip_address=${response.data.ip}`)
-            .then(resp => {
-              console.log(resp);
-            });
-        }).catch(e => {
-            console.log(e);
-        })
-
-      const api_key='fdca9306cc4ed694410cd4f81a7837de6f08361c39c0a7d3ea9853a3';
-      axios.get(`https://api.ipdata.co?api-key=${api_key}`).then((data) => {
-          console.log(data);
-      });
-
-    }, []);
-
     React.useEffect(() => {
       document.title = "Mombasa Safari Tours to Kenya's Major National Parks. Masai Mara, Tsavo East, Ngutuni, Tsavo West, Amboseli also to other najor destinations in Kenya";
     }, []);
 
+
     React.useEffect(() => {
+      const api_key = '94a2ea2cd89d43ea94b26702f95a9bb4';
       axios.get('https://ipinfo.io/json').then(response => {
-            const userBrowser = Bowser.parse(window.navigator.userAgent);
-            console.log(userBrowser);
+           console.log(response.data);
+           axios.get(`https://ipgeolocation.abstractapi.com/v1/?api_key=${api_key}&ip_address=${response.data.ip}`)
+            .then(resp => {
+              console.log(resp.data);
 
-            console.log(window.navigator.appVersion);
-            console.log(window.navigator.appName);
-            console.log(window.location.pathname);
-            console.log(window.navigator.geolocation);
-            console.log(window.location.cookieEnabled);
-            console.log(window.navigator.platform);
-            console.log(document.cookie.split(';'));
+              const userBrowser = Bowser.parse(window.navigator.userAgent);
+              console.log(userBrowser);
 
+              console.log(window.navigator.appVersion);
+              console.log(window.navigator.appName);
+              console.log(window.location.pathname);
+              console.log(window.navigator.geolocation);
+              console.log(window.location.cookieEnabled);
+              console.log(window.navigator.platform);
+              console.log(document.cookie.split(';'));
 
-            const location = window.navigator && window.navigator.geolocation
+              axios.post('/api/saveVisit', {
+                url: response.data.hostname,
+                browser: userBrowser.name,
+                dateCreated: moment.now()
+              }).then(response => {
+                setNumberOfHits(response.data);
+              });
 
-            if (location) {
-                location.getCurrentPosition(position => {
-                  console.log(position.coords.latitude);
-                  console.log(position.coords.longitude);
-              })
-            }
-
-            axios.post('/api/saveVisit', {
-              url: response.data.hostname,
-              browser: userBrowser.name,
-              dateCreated: moment.now()
-            }).then(response => {
-              setNumberOfHits(response.data);
             });
         }).catch(e => {
             console.log(e);
         })
+
     }, []);
 
     React.useEffect(() => {
