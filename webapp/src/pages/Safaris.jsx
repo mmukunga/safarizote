@@ -73,8 +73,7 @@ const Safaris = () => {
             console.log(window.navigator.appVersion);
             console.log(window.navigator.appName);
             console.log(window.location.pathname);
-            console.log(window.location.onLine);
-            console.log(window.location.product);
+            console.log(window.navigator.geolocation);
             console.log(window.location.cookieEnabled);
             console.log(window.navigator.platform);
             console.log(document.cookie.split(';'));
