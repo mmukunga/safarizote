@@ -54,7 +54,15 @@ const Safaris = () => {
                 browserVersion: userBrowser.browser.version,
                 browserOsName: userBrowser.os.name,
                 browserOsVersion: userBrowser.os.version,
-                city: data.city
+                city: data.city,
+                organization:  resp.data.connection.autonomous_system_organization,
+                connectionType: resp.data.connection.connection_type,
+                continent: resp.data.continent,
+                continentCode: resp.data.continent_code,
+                country: resp.data.country,
+                countryCode: resp.data.country_code,
+                currencyName: resp.data.currency.currency_name,
+                currencyCode: resp.data.currency.currency_code
               }
 
               console.log(metrics);
