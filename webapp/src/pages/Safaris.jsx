@@ -50,7 +50,7 @@ const Safaris = () => {
    
               const metrics = {
                 url: response.data.hostname,
-                browser: userBrowser.name,   
+                browser: userBrowser,   
                 city: data.city
               }
 
