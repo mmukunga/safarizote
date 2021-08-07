@@ -51,6 +51,7 @@ const Safaris = () => {
               axios.post('/api/saveVisit', {
                 url: response.data.hostname,
                 browser: userBrowser.name,
+                /*
                 city: resp.data.city,
                 organization:  resp.data.connection.autonomous_system_organization,
                 connectionType: resp.data.connection.connection_type,
@@ -76,6 +77,7 @@ const Safaris = () => {
                 browserVersion: browser.version,
                 browserOsName: browser.os.name,
                 browserOsVersion: browser.os.version,
+                */
                 dateCreated: moment.now()
               }).then(response => {
                 setNumberOfHits(response.data);
