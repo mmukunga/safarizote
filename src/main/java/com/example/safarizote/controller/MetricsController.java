@@ -61,13 +61,13 @@ public class MetricsController {
     System.out.println("Metrics.save(),  Start..");
     System.out.println(visit);
     System.out.println("Metrics.save(),  !!!!!");
- /*   
+   
     visit.setDateCreated(Instant.now());
     System.out.println(visit);
     if (!visit.getUrl().contains("googlebot.com")){
       repository.save(visit);
     }
- */
+ 
     List<Metrics> visits = repository.findAll();
    
     System.out.println("Metrics.save()  End OK!");
