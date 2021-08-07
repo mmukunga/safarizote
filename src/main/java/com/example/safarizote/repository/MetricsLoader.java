@@ -20,11 +20,11 @@ public class MetricsLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         // repository.deleteAll();
-  /*      
+        /*      
         if (repository.count() > 0) {
             return;
         }
-        
+        */    
         repository.save(Metrics.builder().url("www.wanja.co.ke").browser("Safari")
         .city("Oslo")
         .organization("Telia Norge AS") 
@@ -52,11 +52,12 @@ public class MetricsLoader implements CommandLineRunner {
         .browserOsName("Windows")
         .browserOsVersion("NT 10.0")
         .dateCreated(Instant.now()).build());
+
         //repository.save(Metrics.builder().url("http://kiwani.com").browser("Microsft Explorer Edge").dateCreated(Instant.now()).build());
         //repository.save(Metrics.builder().url("https://mahi.org").browser("Mozilla Firefox").dateCreated(Instant.now()).build());
         //repository.save(Metrics.builder().url("207.51-175-209.customer.lyse.net").browser("Android").dateCreated(Instant.now()).build());
         //repository.save(Metrics.builder().url("https://tulinambo.congo.env").browser("TikTok").dateCreated(Instant.now()).build());
-
+        /*
         repository.findAll().forEach((tracker) -> {
             logger.info("{}", tracker);
         });
