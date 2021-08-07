@@ -50,10 +50,9 @@ const Safaris = () => {
 
               axios.post('/api/saveVisit', {
                 url: response.data.hostname,
-                browser: userBrowser.name,
-                
+                browser: userBrowser.name,                
                 city: resp.data.city,
-                organization:  resp.data.connection.autonomous_system_organization,
+                /*organization:  resp.data.connection.autonomous_system_organization,
                 connectionType: resp.data.connection.connection_type,
                 continent: resp.data.continent,
                 continentCode: resp.data.continent_code,
@@ -61,7 +60,7 @@ const Safaris = () => {
                 countryCode: resp.data.country_code,
                 currencyName: resp.data.currency.currency_name,
                 currencyCode: resp.data.currency.currency_code,
-                /*emoji: resp.data.flag.emoji,
+                emoji: resp.data.flag.emoji,
                 flagPng: resp.data.flag.png,
                 flagSvg: resp.data.flag.svg,
                 ipAddress: resp.data.ip_address,
