@@ -20,11 +20,11 @@ public class MetricsLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         // repository.deleteAll();
-        
+  /*      
         if (repository.count() > 0) {
             return;
         }
-        
+     */   
         repository.save(Metrics.builder().url("www.wanja.co.ke").browser("Safari")
         .city("Oslo")
         .organization("Telia Norge AS") 
