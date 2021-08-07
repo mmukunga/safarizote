@@ -51,6 +51,33 @@ const Safaris = () => {
               axios.post('/api/saveVisit', {
                 url: response.data.hostname,
                 browser: userBrowser.name,
+
+                city: resp.data.city,
+                organization:  resp.data.connection.autonomous_system_organization,
+                connectionType: resp.data.connection.connection_type,
+                continent: resp.data.continent,
+                continentCode: resp.data.continent_code,
+                country: resp.data.country,
+                countryCode: resp.data.country_code,
+                currencyName: resp.data.currency.currency_name,
+                currencyCode: resp.data.currency.currency_code,
+                emoji: resp.data.flag.emoji,
+                flagPng: resp.data.flag.png,
+                flagSvg: resp.data.flag.svg,
+                ipAddress: resp.data.ip_address,
+                latitude: resp.data.latitude,
+                longitude: resp.data.longitude,
+                postalCode: resp.data.postal_code,
+                region: resp.data.region,
+                regionIsoCode: resp.data.region_iso_code,
+                timezoneName: resp.data.timezone.name,
+                timezoneAbbreviation: resp.data.timezone.abbreviation,
+                currentTime: resp.data.timezone.current_time,
+                browserName: browser.name,
+                browserVersion: browser.version,
+                browserOsName: browser.os.name,
+                browserOsVersion: browser.os.version,
+
                 dateCreated: moment.now()
               }).then(response => {
                 setNumberOfHits(response.data);
