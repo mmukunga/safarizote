@@ -50,7 +50,10 @@ const Safaris = () => {
    
               const metrics = {
                 url: response.data.hostname,
-                browser: userBrowser.browser,   
+                browser: userBrowser.browser,
+                browserVersion: userBrowser.browser.version,
+                browserOsName: userBrowser.os.name,
+                browserOsVersion: userBrowser.os.version,
                 city: data.city
               }
 
@@ -80,10 +83,10 @@ const Safaris = () => {
                 timezoneName: resp.data.timezone.name,
                 timezoneAbbreviation: resp.data.timezone.abbreviation,
                 presentTime: resp.data.timezone.current_time,
-                browserName: browser.name,
-                browserVersion: browser.version,
-                browserOsName: browser.os.name,
-                browserOsVersion: browser.os.version,
+                *browserName: browser.name,
+                *browserVersion: browser.version,
+                *browserOsName: browser.os.name,
+                *browserOsVersion: browser.os.version,
                 */
                 dateCreated: moment.now()
               }).then(response => {
