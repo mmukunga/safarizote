@@ -43,11 +43,9 @@ const Safaris = () => {
 
               const userBrowser = Bowser.parse(window.navigator.userAgent);
               console.log(userBrowser);
-
               console.log(window.navigator.appVersion);
               console.log(window.navigator.appName);
-              console.log(window.location.pathname);
-              console.log(window.navigator.geolocation);
+              console.log(window.navigator.geolocation.getCurrentPosition());
               console.log(window.navigator.platform);
 
               axios.post('/api/saveVisit', {
