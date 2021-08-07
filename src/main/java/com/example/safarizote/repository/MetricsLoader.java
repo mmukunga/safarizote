@@ -24,7 +24,7 @@ public class MetricsLoader implements CommandLineRunner {
         if (repository.count() > 0) {
             return;
         }
-     */   
+        
         repository.save(Metrics.builder().url("www.wanja.co.ke").browser("Safari")
         .city("Oslo")
         .organization("Telia Norge AS") 
@@ -60,5 +60,6 @@ public class MetricsLoader implements CommandLineRunner {
         repository.findAll().forEach((tracker) -> {
             logger.info("{}", tracker);
         });
+        */
     }
 }

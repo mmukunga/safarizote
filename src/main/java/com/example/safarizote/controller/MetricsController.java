@@ -61,7 +61,7 @@ public class MetricsController {
     System.out.println("Metrics.save(),  Start..");
     System.out.println(visit);
     System.out.println("Metrics.save(),  !!!!!");
-    
+ /*   
     visit.setDateCreated(Instant.now());
     System.out.println(visit);
     if (!visit.getUrl().contains("googlebot.com")){
@@ -69,6 +69,7 @@ public class MetricsController {
     }
 
     List<Metrics> visits = repository.findAll();
+    */
     System.out.println("Metrics.save()  End OK!");
     return new ResponseEntity<>(visits, HttpStatus.OK);
   }
