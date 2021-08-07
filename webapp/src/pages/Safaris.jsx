@@ -35,25 +35,6 @@ const Safaris = () => {
 
     React.useEffect(() => {
       const api_key = '94a2ea2cd89d43ea94b26702f95a9bb4';
-      
-      var options = {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 0
-      };
-      
-      function success(pos) {
-        var crd = pos.coords;
-      
-        console.log('Your current position is:');
-        console.log(`Latitude : ${crd.latitude}`);
-        console.log(`Longitude: ${crd.longitude}`);
-        console.log(`More or less ${crd.accuracy} meters.`);
-      }
-      
-      function error(err) {
-        console.warn(`ERROR(${err.code}): ${err.message}`);
-      }
 
       axios.get('https://ipinfo.io/json').then(response => {
            console.log(response.data);
@@ -65,7 +46,6 @@ const Safaris = () => {
               console.log(userBrowser);
               console.log(window.navigator.appVersion);
               console.log(window.navigator.appName);
-              console.log(window.navigator.geolocation.getCurrentPosition(success, error, options));
               console.log(window.navigator.platform);
 
               axios.post('/api/saveVisit', {
