@@ -67,9 +67,9 @@ public class MetricsController {
     if (!visit.getUrl().contains("googlebot.com")){
       repository.save(visit);
     }
-
+ */
     List<Metrics> visits = repository.findAll();
-    */
+   
     System.out.println("Metrics.save()  End OK!");
     return new ResponseEntity<>(visits, HttpStatus.OK);
   }
