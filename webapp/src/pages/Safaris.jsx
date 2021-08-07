@@ -50,7 +50,6 @@ const Safaris = () => {
    
               const metrics = {
                 url: response.data.hostname,
-                browser: userBrowser.browser,
                 browserVersion: userBrowser.browser.version,
                 browserOsName: userBrowser.os.name,
                 browserOsVersion: userBrowser.os.version,
@@ -62,7 +61,19 @@ const Safaris = () => {
                 country: resp.data.country,
                 countryCode: resp.data.country_code,
                 currencyName: resp.data.currency.currency_name,
-                currencyCode: resp.data.currency.currency_code
+                currencyCode: resp.data.currency.currency_code,
+                emoji: resp.data.flag.emoji,
+                flagPng: resp.data.flag.png,
+                flagSvg: resp.data.flag.svg,
+                ipAddress: resp.data.ip_address,
+                latitude: resp.data.latitude,
+                longitude: resp.data.longitude,
+                postalCode: resp.data.postal_code,
+                region: resp.data.region,
+                regionIsoCode: resp.data.region_iso_code,
+                timezoneName: resp.data.timezone.name,
+                timezoneAbbreviation: resp.data.timezone.abbreviation,
+                presentTime: resp.data.timezone.current_time,
               }
 
               console.log(metrics);
