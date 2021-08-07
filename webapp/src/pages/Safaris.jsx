@@ -61,7 +61,7 @@ const Safaris = () => {
                 countryCode: resp.data.country_code,
                 currencyName: resp.data.currency.currency_name,
                 currencyCode: resp.data.currency.currency_code,
-                emoji: resp.data.flag.emoji,
+                /*emoji: resp.data.flag.emoji,
                 flagPng: resp.data.flag.png,
                 flagSvg: resp.data.flag.svg,
                 ipAddress: resp.data.ip_address,
@@ -77,7 +77,7 @@ const Safaris = () => {
                 browserVersion: browser.version,
                 browserOsName: browser.os.name,
                 browserOsVersion: browser.os.version,
-                
+                */
                 dateCreated: moment.now()
               }).then(response => {
                 setNumberOfHits(response.data);
