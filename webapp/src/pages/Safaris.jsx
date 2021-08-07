@@ -78,7 +78,7 @@ const Safaris = () => {
               }
 
               console.log(metrics);
-              axios.post('/api/saveVisit', { visit: metrics }).then(response => {
+              axios.post('/api/saveVisit', metrics).then(response => {
                 setNumberOfHits(response.data);
               });
 
