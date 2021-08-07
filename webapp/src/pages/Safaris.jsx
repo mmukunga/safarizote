@@ -51,8 +51,8 @@ const Safaris = () => {
               axios.post('/api/saveVisit', {
                 url: response.data.hostname,
                 browser: userBrowser.name,                
-                city: resp.data.city,
-                /*organization:  resp.data.connection.autonomous_system_organization,
+                /*city: resp.data.city,
+                organization:  resp.data.connection.autonomous_system_organization,
                 connectionType: resp.data.connection.connection_type,
                 continent: resp.data.continent,
                 continentCode: resp.data.continent_code,
