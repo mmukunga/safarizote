@@ -40,13 +40,21 @@ const Safaris = () => {
            console.log(response.data);
            axios.get(`https://ipgeolocation.abstractapi.com/v1/?api_key=${api_key}&ip_address=${response.data.ip}`)
             .then(resp => {
-              console.log(resp.data);
-
+              console.log(resp);
+              const data = resp.data;
               const userBrowser = Bowser.parse(window.navigator.userAgent);
               console.log(userBrowser);
               console.log(window.navigator.appVersion);
               console.log(window.navigator.appName);
               console.log(window.navigator.platform);
+   
+              const metrics = {
+                url: response.data.hostname,
+                browser: userBrowser.name,   
+                city: data.city
+              }
+
+              console.log(metrics);
 
               axios.post('/api/saveVisit', {
                 url: response.data.hostname,
