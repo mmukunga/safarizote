@@ -41,7 +41,7 @@ public class Metrics {
   @NonNull String regionIsoCode;
   @NonNull String timezoneName;
   @NonNull String timezoneAbbreviation;
-  @NonNull String currentTime;
+  @NonNull String presentTime;
   @NonNull String browserName;
   @NonNull String browserVersion;
   @NonNull String browserOsName;

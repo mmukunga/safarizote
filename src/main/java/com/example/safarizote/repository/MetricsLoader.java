@@ -46,7 +46,7 @@ public class MetricsLoader implements CommandLineRunner {
         .regionIsoCode("03")
         .timezoneName("Europe/Oslo")
         .timezoneAbbreviation("CEST")
-        .currentTime("11:30:31")
+        .presentTime("11:30:31")
         .browserName("Chrome")
         .browserVersion("92.0.4515.131")
         .browserOsName("Windows")
