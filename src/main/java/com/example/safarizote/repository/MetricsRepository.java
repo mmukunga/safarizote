@@ -16,6 +16,6 @@ public interface MetricsRepository extends JpaRepository<Metrics, Long> {
     Set<Metrics> findByUrl(String url);
     @Transactional
     @Modifying
-    @Query("DELETE Metrics c WHERE c.url = :url")
-    void deleteByUrl(@Param("url") String url);
+    @Query("delete from Metrics c WHERE c.url=:url")
+    Set<Metrics> deleteByUrl(@Param("url") String url);
 }
