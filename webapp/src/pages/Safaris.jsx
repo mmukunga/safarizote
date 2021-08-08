@@ -37,17 +37,10 @@ const Safaris = () => {
       const api_key = '94a2ea2cd89d43ea94b26702f95a9bb4';
 
       axios.get('https://ipinfo.io/json').then(response => {
-           console.log(response.data);
            axios.get(`https://ipgeolocation.abstractapi.com/v1/?api_key=${api_key}&ip_address=${response.data.ip}`)
             .then(resp => {
-              console.log(resp);
               const data = resp.data;
               const userBrowser = Bowser.parse(window.navigator.userAgent);
-              console.log(userBrowser);
-              console.log(window.navigator.appVersion);
-              console.log(window.navigator.appName);
-              console.log(window.navigator.platform);
-   
               const metrics = {
                 url: response.data.hostname,
                 browser: userBrowser.browser.name,
@@ -78,7 +71,6 @@ const Safaris = () => {
                 dateCreated: moment.now()
               }
 
-              console.log(metrics);
               axios.post('/api/saveVisit', metrics).then(response => {
                 setNumberOfHits(response.data);
               });
