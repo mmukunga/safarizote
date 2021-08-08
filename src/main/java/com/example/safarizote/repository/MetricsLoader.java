@@ -20,7 +20,12 @@ public class MetricsLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         // repository.deleteAll();
-              
+        
+        Set<Metrics> metrics = repository.deleteByUrl("www.wanja.co.ke"); 
+        for(Metrics item : metrics){
+            System.out.println(item);
+         }
+         
         if (repository.count() > 0) {
             return;
         }
