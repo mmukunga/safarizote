@@ -10,5 +10,5 @@ import com.example.safarizote.model.Metrics;
 @Repository
 public interface MetricsRepository extends JpaRepository<Metrics, Long> {
     Set<Metrics> findByUrl(String url);
-    void deleteByUrl(String url);
+    List<Metrics> deleteByUrl(String url);
 }
