@@ -21,6 +21,9 @@ public class Metrics {
   @Id @GeneratedValue Long id;
   @NonNull String url;
   @NonNull String browser;
+  @NonNull String browserVersion;
+  @NonNull String browserOsName;
+  @NonNull String browserOsVersion;
   @NonNull String city;
   @NonNull String organization; 
   @NonNull String connectionType;
@@ -42,9 +45,5 @@ public class Metrics {
   @NonNull String timezoneName;
   @NonNull String timezoneAbbreviation;
   @NonNull String presentTime;
-  @NonNull String browserName;
-  @NonNull String browserVersion;
-  @NonNull String browserOsName;
-  @NonNull String browserOsVersion;
   @NonNull Instant dateCreated;
 }
