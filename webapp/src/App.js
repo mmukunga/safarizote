@@ -84,7 +84,7 @@ function App() {
     }, [selectedImage]);
 
     return (
-        <header style={imageStyles} className="App-header">  
+        <header className={`App-header ${imageStyles}`}>  
             <nav className="Navigation">
               <div className="NavMenu">
                 <a href="" className="Nav_link Logo"> 
@@ -97,10 +97,11 @@ function App() {
                 <NavLink to="/aboutUs" className="Nav_link">About&nbsp;Us</NavLink>
                 <Menu/>
                 <NavLink to="/signIn" className="Nav_link">Login</NavLink>
-                <a href="" className="Nav_link LogOut" onClick={handleLogout}></a>
+                <a href="" className="Nav_link LogOut" onClick={handleLogout}></a> 
+                {isLoggedIn!=null ? 'LoggedIn' : 'Please loggin!!'}
               </div>
             </nav> 
-            <div style={{width:'100%', color:'brown', textAlign:'right'}}>{isLoggedIn!=null ? 'LoggedIn' : 'Please loggin!!'}</div>
+            
             <p className="App-title">
               <span>The most revered of Africa’s safari destinations, Kenya is located in 
               East Africa and boasts the Masai Mara National Park, renowned for its 

@@ -13,7 +13,7 @@ img.resize {
   max-height:50%;
 }
 
-@media only screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
   .BackUps {
     margin: 5px;
     text-align: left;
