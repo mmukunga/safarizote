@@ -44,24 +44,24 @@
   background-size: cover;
   width:  20px;
   height: 20px;
-  color: #fff;
+  /*color: #fff;*/
   cursor: pointer;
 }
 
 
 .Nav_link:link {
-  color: white;
+  /*color: white;*/
   text-decoration: none;
 }
 
 .Nav_link:visited {
-  color: #ff0000;
+ /* color: #ff0000;*/
 }
 
 .Nav_link:hover {
-  color: #61dafb;
+  /* color: #61dafb;*/
 }
 
 .Nav_link:active {
-  color:  brown;
+  /*color:  brown;*/
 }

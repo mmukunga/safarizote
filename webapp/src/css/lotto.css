@@ -13,7 +13,7 @@ ul.Lotto {
 
   ul.Lotto > li {
     display: inline-block;
-    color:brown;
+    /*color:brown;*/
     text-align: center;
     width: 40px;
     padding: 2px;

@@ -24,13 +24,13 @@ function App() {
   const selectStyle = {
       width: '80px', 
       padding: '2px', 
-      color: 'white',
+      /*color: 'white',*/
       border: '2px solid #fefbd8',
       background: '#337ab7'
   };
 
   const displayHome = {
-    color: 'white'
+    /*color: 'white'*/
   }
 
   const DropDown = ({ history }) => {
@@ -107,7 +107,7 @@ function App() {
               East Africa and boasts the Masai Mara National Park, renowned for its 
               abundant wildlife and annual Great Migration.</span>
               <span>Common Trips <code>src/App.js</code> pluss the most preffered.</span>    
-              <span><Link to="/email" style={{color: 'white'}} activeStyle={{color: 'red'}}>Please Contact Us!</Link></span>   
+              <span><Link to="/email" style={{/*color: 'white'*/}} activeStyle={{/*color: 'red'*/}}>Please Contact Us!</Link></span>   
               <a
                 className="App-link"
                 href="https://safarizote.herokuapp.com"

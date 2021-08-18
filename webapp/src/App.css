@@ -7,7 +7,7 @@
 
 .App-title{
   font-size: 1.0em;
-  color:aliceblue;
+  /*color:aliceblue;*/
   font-weight: 600;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  /*color: #61dafb;*/
 }
 
 p { 
@@ -52,7 +52,7 @@ p span {
   margin:10px;
   display: block; 
   opacity: 0.5;
-  color: darkred;
+  /*color: darkred;*/
 }
 
 @keyframes App-logo-spin {
