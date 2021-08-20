@@ -24,7 +24,7 @@ function App() {
   const selectStyle = {
       width: '80px', 
       padding: '2px', 
-      /*color: 'white',*/
+      color: '#FFFFFF',
       border: '2px solid #fefbd8',
       background: '#337ab7'
   };

@@ -16,7 +16,7 @@
 }  
 
 .oddRow {
-  background: #f2f6fb;
+  /*background: #f2f6fb;*/
   border-top: 2px outset#90dff5;
   margin-top: 5px;
 }
@@ -27,7 +27,7 @@
 }
 
 .video-player {
-  background: rgba(0,0,0,.1);
+  /*background: rgba(0,0,0,.1);*/
   border: 0px solid green;
   width: 50%;
   margin: 0 auto;

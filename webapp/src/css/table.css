@@ -8,7 +8,7 @@
 .Spinner {
   text-align: center;
   /*color: brown;*/
-  background:silver;
+  /*background:silver;*/
   margin: auto;
   width: 40%;
   border: 3px solid #73AD21;
@@ -38,12 +38,12 @@
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #4CAF50;
+  /*background-color: #4CAF50;*/
   /*color: white;*/
 }
 
 table > tr > th {
-  background-color: #d0d;
+  /*background-color: #d0d;*/
 }
 
 td { 
@@ -51,17 +51,17 @@ td {
 }
 
 .Table tr:nth-child(even) {
-  background-color: #f4f1e7;
+  /*background-color: #f4f1e7;*/
 }
 
 .Table tr:hover {
-  background-color: #ddd;
+  /*background-color: #ddd;*/
 }
 
 .Table th {
   text-align: left;
   /*color: #4CAF50;*/
-  background: lightblue;
+  /*background: lightblue;*/
   font-weight: bold;
 }
 
