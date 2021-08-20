@@ -19,7 +19,6 @@
   display: inline-block;
   vertical-align: middle;
   border: 2px solid #fefbd8;
- /* background: #337ab7;*/
   font-weight: normal;
   border-radius: 10%;
   padding: 2px;
@@ -28,7 +27,6 @@
 
 .Logo {
   cursor:default;
-  /*background-color: transparent;*/
   border: 3px solid #fefbd8;
   border-radius: 50%;
   vertical-align: middle;
@@ -38,19 +36,16 @@
   margin: .5em;
   padding: 1px 2px;
   border: 2px outset #fefbd8;
-  /*background-color: #337ab7;*/
   background-image: url(../media/logout.png); 
   background-repeat: no-repeat;
   background-size: cover;
   width:  20px;
   height: 20px;
-  /*color: #fff;*/
   cursor: pointer;
 }
 
 
 .Nav_link:link {
-  /*color: white;*/
   text-decoration: none;
 }
 

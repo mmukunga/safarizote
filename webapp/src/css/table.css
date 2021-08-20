@@ -7,8 +7,6 @@
 
 .Spinner {
   text-align: center;
-  /*color: brown;*/
-  /*background:silver;*/
   margin: auto;
   width: 40%;
   border: 3px solid #73AD21;
@@ -38,8 +36,6 @@
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  /*background-color: #4CAF50;*/
-  /*color: white;*/
 }
 
 table > tr > th {
@@ -60,8 +56,6 @@ td {
 
 .Table th {
   text-align: left;
-  /*color: #4CAF50;*/
-  /*background: lightblue;*/
   font-weight: bold;
 }
 

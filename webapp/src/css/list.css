@@ -16,7 +16,6 @@ ul.vList li {
 
 ul.vList li::before {
   content: "\0BB \00a0";
-  /*color: brown;*/
   font-weight: bold;
   display: inline-block; 
 }
@@ -30,7 +29,6 @@ ul.vList li::before {
   margin-right: 0.3em;
   user-select: none;
   cursor: pointer;
-  /*color: blue;*/ 
 }
 
 @media screen and (max-width: 600px) {

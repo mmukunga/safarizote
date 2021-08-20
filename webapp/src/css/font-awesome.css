@@ -7,7 +7,6 @@
    
   .box {
     width: calc(100%-2px);
-    /*color: #333;*/
     border: 1px solid #ddd;
   }
   .title-box {
@@ -21,7 +20,6 @@
   .icon {
     width: 20px;
     display: flex;
-    /*color: #666;*/
     float: right;
   }
   .icon .fa {

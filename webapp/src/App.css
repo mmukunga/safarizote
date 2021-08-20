@@ -7,7 +7,6 @@
 
 .App-title{
   font-size: 1.0em;
-  /*color:aliceblue;*/
   font-weight: 600;
 }
 
@@ -15,7 +14,6 @@
   width: 6vmin;
   height: 6vmin;
   pointer-events: none;
-  /*background: transparent;*/
   background: white;
   border: 2px solid #fefbd8;
   border-radius: 50%;
@@ -52,7 +50,6 @@ p span {
   margin:10px;
   display: block; 
   opacity: 0.5;
-  /*color: darkred;*/
 }
 
 @keyframes App-logo-spin {
