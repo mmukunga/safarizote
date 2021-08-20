@@ -9,6 +9,7 @@
     width: calc(100%-2px);
     border: 1px solid #ddd;
   }
+  
   .title-box {
     cursor: pointer;
     padding: 15px;
@@ -17,16 +18,19 @@
   .title {
     width: calc(100% - 20px);
   }
+
   .icon {
     width: 20px;
     display: flex;
     float: right;
   }
+
   .icon .fa {
     font-size: 20px;
     transition: all 0.1s;
     transform: rotate(90deg);
   }
+
   .icon .fa.down {
     transform: rotate(0deg);
   }

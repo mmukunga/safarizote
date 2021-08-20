@@ -185,8 +185,8 @@ const Safaris = () => {
   return (
     <Card className="InnerCard" fontColor="black">
         <ul id="page-numbers">
-         <li style={{paddingLeft:'1em'/*,color:'black'*/,fontStyle: 'oblique'}}><span>Hits: { numberOfHits.length } </span></li> 
-         <li style={{paddingLeft:'1em'/*,color:'black'*/,fontStyle: 'oblique'}}><span>Our Safaris: </span></li> 
+         <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Hits: { numberOfHits.length } </span></li> 
+         <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Our Safaris: </span></li> 
          {renderPageNumbers}
         </ul>
 

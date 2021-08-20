@@ -25,7 +25,7 @@ function App() {
       width: '80px', 
       padding: '2px', 
       border: '2px solid #fefbd8',
-      background: '#337ab7'
+      /*background: '#337ab7'*/
   };
 
   const displayHome = {
