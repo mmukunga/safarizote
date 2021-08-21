@@ -11,7 +11,7 @@
 .NavMenu {
   display: inline-block;
   vertical-align: top;
-  border-top: 1px solid #fefeef;
+  border: 1px solid #fefeef;
   width: calc(100% - 2px);
 }
 
@@ -23,6 +23,7 @@
   border-radius: 10%;
   padding: 2px;
   margin: 1px;
+  color: white;
 }
 
 .Logo {
