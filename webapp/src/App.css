@@ -14,8 +14,7 @@
   width: 6vmin;
   height: 6vmin;
   pointer-events: none;
-  background: white;
-  border: 2px solid #fefbd8;
+  border: 2px solid red;
   border-radius: 50%;
   vertical-align: middle;
 }
