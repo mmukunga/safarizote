@@ -23,11 +23,7 @@
     border: 1px solid #ddd;
     cursor: pointer;
   }
-  
-  .form-inline button:hover {
-   /* background-color: royalblue; */
-  }
-  
+ 
   @media (max-width: 600px) {
     .form-inline {
       flex-direction: column;

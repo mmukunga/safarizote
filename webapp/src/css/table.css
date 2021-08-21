@@ -38,22 +38,6 @@
   text-align: left;
 }
 
-table > tr > th {
-  /*background-color: #d0d;*/
-}
-
-td { 
-  vertical-align: top; 
-}
-
-.Table tr:nth-child(even) {
-  /*background-color: #f4f1e7;*/
-}
-
-.Table tr:hover {
-  /*background-color: #ddd;*/
-}
-
 .Table th {
   text-align: left;
   font-weight: bold;

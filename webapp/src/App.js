@@ -28,7 +28,7 @@ function App() {
   };
 
   const displayHome = {
-    /*color: 'white'*/
+    color: 'purple'
   }
 
   const DropDown = ({ history }) => {
@@ -96,12 +96,12 @@ function App() {
                 <Menu/>
                 <NavLink to="/signIn" className="Nav_link">Login</NavLink>
                 <a href="" className="Nav_link LogOut" onClick={handleLogout}></a> 
-                {isLoggedIn!=null ? 'LoggedIn' : 'Please loggin!!'}
+                {isLoggedIn!=null ? 'Logged in!!' : 'Please loggin!!'}
               </div>
             </nav> 
             
             <p className="App-title">
-              Common Trips <code><Link to="/email" style={{/*color: 'white'*/}} activeStyle={{/*color: 'red'*/}}>src/App.js</Link></code>
+              Common Trips <code><Link to="/email">src/App.js </Link></code>
               <a
                 className="App-link"
                 href="https://safarizote.herokuapp.com"

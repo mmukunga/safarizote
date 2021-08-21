@@ -47,15 +47,3 @@
 .Nav_link:link {
   text-decoration: none;
 }
-
-.Nav_link:visited {
- /* color: #ff0000;*/
-}
-
-.Nav_link:hover {
-  /* color: #61dafb;*/
-}
-
-.Nav_link:active {
-  /*color:  brown;*/
-}
