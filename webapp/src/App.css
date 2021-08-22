@@ -92,3 +92,15 @@ p span {
     display: inline-block;
   }
 }
+
+@media (min-width: 600px) {
+  :root {
+    font-size: calc(1rem + ((1vw - 6px) * 1.8868));
+    min-height: 0vw;
+  }
+}
+@media (min-width: 1024px) {
+  :root {
+    font-size: 24px;
+  }
+}
