@@ -1,6 +1,5 @@
 package com.example.safarizote.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import com.example.safarizote.model.Email;

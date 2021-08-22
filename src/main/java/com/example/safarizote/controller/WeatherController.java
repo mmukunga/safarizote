@@ -1,10 +1,6 @@
 package com.example.safarizote.controller;
 
 import java.util.List;
-import java.util.ArrayList;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Collections;
 import java.net.URI;
 
 import com.example.safarizote.model.City;
@@ -15,14 +11,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.ParameterizedTypeReference;
 
 import java.io.BufferedReader;
@@ -32,12 +25,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
-
-import com.google.gson.Gson;
-import com.google.gson.stream.JsonReader;
-import java.io.Reader;
-import java.nio.charset.StandardCharsets;
 
 @RestController
 public class WeatherController {

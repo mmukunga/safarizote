@@ -6,7 +6,6 @@ import java.util.Date;
 
 import com.example.safarizote.model.Ticker;
 import com.example.safarizote.utils.StockClient;
-import com.google.gson.JsonObject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

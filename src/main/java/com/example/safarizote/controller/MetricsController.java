@@ -2,27 +2,10 @@ package com.example.safarizote.controller;
 
 import java.util.List;
 import java.time.Instant;
-import java.net.URL;
-import java.net.UnknownHostException;
-import java.net.InetAddress;
 import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
-import org.springframework.http.server.reactive.ServerHttpRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import com.maxmind.geoip2.WebServiceClient;
-import com.maxmind.geoip2.exception.GeoIp2Exception;
-import com.maxmind.geoip2.model.CountryResponse;
-import com.maxmind.geoip2.record.Country;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 

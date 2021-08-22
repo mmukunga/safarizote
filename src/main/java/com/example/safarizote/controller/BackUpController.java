@@ -1,16 +1,10 @@
 package com.example.safarizote.controller;
 
-import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Set;
-import java.util.Optional;
 
-import java.io.File;
-import java.io.InputStream;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 
@@ -33,17 +27,13 @@ import org.springframework.util.StreamUtils;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.MediaType;
-import org.springframework.http.HttpHeaders;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,19 +41,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.safarizote.model.BackUp;
 import com.example.safarizote.repository.BackUpRepository;
 
-import com.example.safarizote.utils.CopyDir;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.ByteBuffer;
-
 import java.util.concurrent.TimeUnit;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -80,13 +61,8 @@ public class BackUpController {
     @RequestMapping(value = "/api/categories",  method={RequestMethod.GET})
     public ResponseEntity<List<String>> findAll() throws IOException {
         System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
-        
-        String matchExpr = ".*2013 Disneyland Paris.*";
-        Pattern matchPattern = Pattern.compile(matchExpr);
 
-        String contentType = "application/octet-stream"; 
         String BUCKET_NAME = "sms_familie_album";
-        String OBJECT_NAME = "mail.jpg";
         String PROJECT_ID  = "familiealbum-sms";
 
         Resource resource = new ClassPathResource("credentials.json");
@@ -146,12 +122,9 @@ public class BackUpController {
         String matchExpr = ".*2013 Disneyland Paris.*";
         Pattern matchPattern = Pattern.compile(matchExpr);
 
-        String contentType = "application/octet-stream"; 
         String BUCKET_NAME = "sms_familie_album";
-        String OBJECT_NAME = "mail.jpg";
         String PROJECT_ID  = "familiealbum-sms";
 
-        List<BackUp> dbFolders = repository.findAll(); 
         System.out.println("An folder upload request has come in!!");
         System.out.println("Folder from Multipart:= " + folder);
         if (folder == null) {
@@ -186,7 +159,6 @@ public class BackUpController {
         String matchExpr = ".*2013 Disneyland Paris.*";
         Pattern matchPattern = Pattern.compile(matchExpr);
 
-        String contentType = "application/octet-stream"; 
         String BUCKET_NAME = "sms_familie_album";
         String OBJECT_NAME = "mail.jpg";
         String PROJECT_ID  = "familiealbum-sms";
@@ -194,7 +166,8 @@ public class BackUpController {
         String gcsFile = StreamUtils.copyToString(
             this.gcsFile.getInputStream(),
             Charset.defaultCharset()) + "\n";
-        
+        System.out.println("gcsFile : " +  gcsFile); 
+
         Resource resource = new ClassPathResource("credentials.json");
         GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
 
@@ -206,7 +179,9 @@ public class BackUpController {
         System.out.println("Image URL : " +  blob.getMediaLink());    
 
         long size = blob.getSize(); // no RPC call is required
+        System.out.println("size : " +  size); 
         byte[] content = blob.getContent(); // one or multiple RPC calls will be issued
+        System.out.println("content : " +  content); 
 
         Integer duration = 15;
         URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
