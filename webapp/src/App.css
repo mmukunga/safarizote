@@ -3,8 +3,8 @@
   margin: 0 auto;
 }
 
-.App-title{
- /* font-size: calc(16px + 1vmin);*/
+.App-title {
+  border:2px solid green;
 }
 
 .App-logo {
