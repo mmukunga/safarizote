@@ -82,7 +82,7 @@ const UserForm =
                         <textarea id="subject" 
                             name="subject" 
                             placeholder="Write something.." 
-                            style="height:200px">
+                            style={{height:'200px'}}>
                         </textarea>    
                     </div>    
                 </div>    

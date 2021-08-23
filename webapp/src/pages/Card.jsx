@@ -3,11 +3,10 @@ import React from 'react';
 const Card = (props) => {
   const { className, fontColor, children } = props;
   const labelStyles = {
-    fontFamily: 'Courier New, monospace',
-    fontSize: '13px',
-    
+    fontSize: '16px',    
     margin: '2px',
-    padding: '2px'
+    padding: '2px',
+    border: '2px solid red'
   };
 
   return (
