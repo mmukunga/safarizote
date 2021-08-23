@@ -92,15 +92,3 @@ p span {
     display: inline-block;
   }
 }
-
-@media (min-width: 600px) {
-  body {
-    font-size: calc(1rem + ((1vw - 6px) * 1.8868));
-    min-height: 0vw;
-  }
-}
-@media (min-width: 1024px) {
-  body {
-    font-size: 24px;
-  }
-}
