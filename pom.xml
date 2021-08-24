@@ -146,8 +146,9 @@
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<version>3.0.0</version>
-				<executions>
-					<execution>
+				<lifecycleMappingMetadata>
+                    <pluginExecutions>			  
+			          <pluginExecution>
 						<phase>generate-resources</phase>
 						<configuration>
 							<target>
@@ -159,8 +160,9 @@
 						<goals>
 							<goal>run</goal>
 						</goals>
-					</execution>
-				</executions>
+					  </pluginExecution>
+                    </pluginExecutions>
+                </lifecycleMappingMetadata>
 			</plugin>
 		</plugins>
 	</build>
