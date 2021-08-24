@@ -7,6 +7,10 @@
   border:2px solid green;
 }
 
+.divtext {
+  font-size: 2.5vw;
+}
+
 .App-logo {
   width: 6vmin;
   height: 6vmin;
