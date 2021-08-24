@@ -6,7 +6,7 @@
 ul.vList{
   margin: 0 auto;
   text-align: left;
-  font-size: 2.5vw;
+  /*font-size: 2.5vw;*/
 }
 
 ul.vList li {
