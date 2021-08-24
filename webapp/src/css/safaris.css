@@ -1,7 +1,13 @@
+
+.SafariTitle {
+  border: 2px solid rgb(165, 42, 89);
+}
+
 .SafariDetails {
   height: auto;
   text-align: left;
   margin: 2px;
+  font-size: 2.5vw;
 }
 
 .SafariSnap {
