@@ -91,6 +91,7 @@
 	</dependencies>
 
 	<build>
+	    <pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -143,27 +144,34 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-			    <groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>3.0.0</version>
+
+            <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.0.2</version>
 				<executions>
 					<execution>
+						<id>CopyPropertyFiles</id>
 						<phase>generate-resources</phase>
-						<configuration>
-							<target>
-								<copy todir="${project.build.directory}/classes/public">
-									<fileset dir="${project.basedir}/webapp/build"/>
-								</copy>
-							</target>
-						</configuration>
 						<goals>
-							<goal>run</goal>
+							<goal>copy-resources</goal>
 						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/classes/public</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${project.basedir}/webapp/build</directory>
+									<includes>
+										<include>version.txt</include>
+									</includes>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
 		</plugins>
+		</pluginManagement>
 	</build>
-
 </project>
