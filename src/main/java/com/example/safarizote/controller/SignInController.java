@@ -53,10 +53,10 @@ public class SignInController {
             }
         }
 
-        String token = getJWTToken(userAuth.getEmail());
-        System.out.println("SignInRepository END USER token!:= " + token);
+        //String token = getJWTToken(userAuth.getEmail());
+        //System.out.println("SignInRepository END USER token!:= " + token);
         System.out.println("SignInRepository END USER!:= " + authedUser);
-        authedUser.setToken(token);
+        //authedUser.setToken(token);
         System.out.println("SignInRepository END USER tokenized!:= " + authedUser);
         System.out.println("SignInRepository END OK!!");
         return new ResponseEntity<>(authedUser, HttpStatus.OK);
