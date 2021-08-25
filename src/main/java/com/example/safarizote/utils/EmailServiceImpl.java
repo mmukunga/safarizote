@@ -36,7 +36,8 @@ public class EmailServiceImpl implements IEmailService {
             mimeMessageHelper.setFrom(new InternetAddress(email.getEmail(), "safarizote.heroku.com"));
             mimeMessageHelper.setTo("mkunsim@gmail.com");
             mimeMessageHelper.setText(email.getMessage());
-
+            
+            logger.info(mimeMessageHelper.toString());
             getJavaMailSender().send(mimeMessageHelper.getMimeMessage());
 
         } catch (MessagingException e) {
