@@ -5,7 +5,8 @@ import { Redirect } from "react-router-dom";
 
 const initialState = {
     email: '',
-    password: ''
+    password: '',
+    token: ''
 };
 
 const reducer = (state, action) => {
@@ -35,6 +36,7 @@ const SignIn = (props) => {
             password: state.password
         }).then(response => {
             console.log(response);
+            localStorage.setItem("userInfo", JSON.stringify(response.data));
         }).catch(error => {
             console.log(error);
         });
