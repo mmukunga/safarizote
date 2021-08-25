@@ -17,10 +17,10 @@ import com.example.safarizote.model.UserAuth;
 import com.example.safarizote.repository.SignInRepository;
 
 import java.util.stream.Collectors;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+//import org.springframework.security.core.GrantedAuthority;
+//import org.springframework.security.core.authority.AuthorityUtils;
+//import io.jsonwebtoken.Jwts;
+//import io.jsonwebtoken.SignatureAlgorithm;
 
 @RestController
 public class SignInController { 
@@ -65,7 +65,7 @@ public class SignInController {
 
     private String getJWTToken(String username) {
 		String secretKey = "mySecretKey";
-		List<GrantedAuthority> grantedAuthorities = AuthorityUtils
+/*		List<GrantedAuthority> grantedAuthorities = AuthorityUtils
 				.commaSeparatedStringToAuthorityList("ROLE_USER");
 		
 		String token = Jwts
@@ -80,8 +80,8 @@ public class SignInController {
 				.setExpiration(new Date(System.currentTimeMillis() + 600000))
 				.signWith(SignatureAlgorithm.HS512,
 						secretKey.getBytes()).compact();
-
-		return "Bearer " + token;
+*/
+		return "Bearer " + "token";
 	}
 
 
