@@ -25,6 +25,7 @@ const reducer = (state, action) => {
 const SignIn = (props) => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
     const [count, setCount] = useState(0);
+    const [loginData, setLoginData] = useState({});
 
     const { from } = props.location.state || { from: { pathname: "/" } };
 
@@ -48,6 +49,7 @@ const SignIn = (props) => {
             localStorage.setItem('userAuth', userLogin);
             console.log(userLogin);
             setCount(prevCount => prevCount + 1);
+            setLoginData({...userLogin});
             console.log('counter count:= ' + count); 
         }).catch(error => {
             console.log(error);
@@ -57,6 +59,7 @@ const SignIn = (props) => {
     React.useEffect(() => {
         console.log('1.SignIn..');
         console.log(localStorage.getItem('userAuth'));
+        console.log(loginData);
         console.log('2.SignIn..');
         if (localStorage.getItem('userAuth') != null) {
             console.log('3A.SignIn..');
@@ -84,7 +87,7 @@ const SignIn = (props) => {
                 });
             }  
         }
-    }, [count]); // Only re-run the effect if count changes
+    }, [loginData]); // Only re-run the effect if count changes
 
 
     return (
