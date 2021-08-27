@@ -70,16 +70,16 @@ public class SignInController {
 
     
     @RequestMapping(value = "/api/verify",  method={RequestMethod.POST})
-    public ResponseEntity<Boolean> validateToken(String token, String username) {
-        System.out.println("1. SignInRepository validateToken() token!:= " + token);
-        System.out.println("2. SignInRepository validateToken() username!:= " + username);
+    public ResponseEntity<Boolean> validateToken(@RequestBody UserAuth user) {
+        System.out.println("1. SignInRepository validateToken() token!:= " + user.getToken());
+        System.out.println("2. SignInRepository validateToken() username!:= " + user.getEmail());
 
         // The part after "Bearer "
-        final String bearerToken = token.substring(7);
+        final String bearerToken = user.getToken().substring(7);
 
 		    String tokenUsername = getUsernameFromToken(bearerToken);
         System.out.println("3. SignInRepository validateToken() tokenUsername!:= " + tokenUsername);
-        Boolean isValid = tokenUsername.equals(username) && !isTokenExpired(bearerToken);
+        Boolean isValid = tokenUsername.equals(user.getEmail()) && !isTokenExpired(bearerToken);
         System.out.println("4. SignInRepository validateToken()! isValid!:= " + isValid);
 		return new ResponseEntity<>(isValid, HttpStatus.OK);
     }

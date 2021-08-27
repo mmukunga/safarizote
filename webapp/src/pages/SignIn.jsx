@@ -68,9 +68,10 @@ const SignIn = (props) => {
             console.log(token);
             console.log('3C.SignIn..');           
             console.log(state.email);
-            axios.post('/api/verify', {
+            axios.post('/api/verify', user = {
                 token: token,
-                username: state.email
+                username: state.email,
+                password: state.password
             }).then(response => {
                 console.log('1.verify..');
                 console.log(response);
