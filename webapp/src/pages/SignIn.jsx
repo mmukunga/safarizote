@@ -59,6 +59,9 @@ const SignIn = (props) => {
         const userAuth = localStorage.getItem('userAuth');
         console.log('3B.SignIn..');
         console.log(userAuth);
+        console.log(userAuth.username);
+        console.log(userAuth.password);
+        console.log(userAuth.token);
         console.log('3C.SignIn..');
         axios.post('/api/verify', {
             token: userAuth.token,
