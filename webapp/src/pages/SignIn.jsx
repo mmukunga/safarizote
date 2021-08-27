@@ -46,44 +46,46 @@ const SignIn = (props) => {
             };
             dispatch({ type: 'SET_TOKEN', payload: userLogin });
             localStorage.setItem('userAuth', userLogin);
+            console.log(userLogin);
+            setCount(prevCount => prevCount + 1);
+            console.log('counter count:= ' + count); 
         }).catch(error => {
             console.log(error);
-        });
-
-        setCount(prevCount => prevCount + 1);
-        console.log('counter count:= ' + count);       
+        });      
     };
     
-    console.log('1.SignIn..');
-    console.log(localStorage.getItem('userAuth'));
-    console.log('2.SignIn..');
+    React.useEffect(() => {
+        console.log('1.SignIn..');
+        console.log(localStorage.getItem('userAuth'));
+        console.log('2.SignIn..');
+        if (localStorage.getItem('userAuth') != null) {
+            console.log('3A.SignIn..');
+            const userAuth = localStorage.getItem('userAuth');
+            console.log('3B.SignIn..');
+            console.log(userAuth);
+            console.log(userAuth.username);
+            console.log(userAuth.password);
+            console.log(userAuth.token);
+            console.log('3C.SignIn..');
+            if (typeof(userAuth.token) !== 'undefined') {
+                axios.post('/api/verify', {
+                    token: userAuth.token,
+                    username: userAuth.email
+                }).then(response => {
+                    console.log('1.verify..');
+                    console.log(response);
+                    console.log(response.data);
+                    console.log('2.verify..');
+                    return <Redirect to={from} />;
+                }).catch(error => {
+                    console.log('1.ERROR..');
+                    console.log(error);
+                    console.log('2.ERROR..');
+                });
+            }  
+        }
+    }, [count]); // Only re-run the effect if count changes
 
-    if (localStorage.getItem('userAuth') != null) {
-        console.log('3A.SignIn..');
-        const userAuth = localStorage.getItem('userAuth');
-        console.log('3B.SignIn..');
-        console.log(userAuth);
-        console.log(userAuth.username);
-        console.log(userAuth.password);
-        console.log(userAuth.token);
-        console.log('3C.SignIn..');
-        if (typeof(userAuth.token) !== 'undefined') {
-            axios.post('/api/verify', {
-                token: userAuth.token,
-                username: userAuth.email
-            }).then(response => {
-                console.log('1.verify..');
-                console.log(response);
-                console.log(response.data);
-                console.log('2.verify..');
-                return <Redirect to={from} />;
-            }).catch(error => {
-                console.log('1.ERROR..');
-                console.log(error);
-                console.log('2.ERROR..');
-            });
-        }  
-    }
 
     return (
         <Card className="InnerCard" fontColor="black">
