@@ -49,9 +49,14 @@ const SignIn = (props) => {
         setCount(prevCount => prevCount + 1);
         console.log('counter count:= ' + count);       
     };
-
+    
+    console.log('1.SignIn..');
+    console.log(localStorage.getItem('userAuth'));
+    console.log('2.SignIn..');
+    
     if (localStorage.getItem('userAuth') != null) {
         const userAuth = localStorage.getItem('userAuth');
+        console.log(userAuth);
         axios.post('/api/verify', {
             token: userAuth.token,
             uasername: userAuth.email

@@ -49,7 +49,9 @@ function App() {
   const Menu = withRouter(DropDown);
   
   const handleLogout = () => {
+      console.log('1.handleLogout');
       localStorage.clear();
+      console.log('2.handleLogout');
   };
 
   const Toolbar = (props) => {

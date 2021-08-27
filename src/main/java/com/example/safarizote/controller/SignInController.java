@@ -71,10 +71,10 @@ public class SignInController {
     
     @RequestMapping(value = "/api/verify",  method={RequestMethod.POST})
     public ResponseEntity<Boolean> validateToken(String token, String username) {
-        System.out.println("1. SignInRepository validateToken()!:= " + token);
-        System.out.println("2. SignInRepository validateToken()!:= " + username);
+        System.out.println("1. SignInRepository validateToken() token!:= " + token);
+        System.out.println("2. SignInRepository validateToken() username!:= " + username);
 		    String tokenUsername = getUsernameFromToken(token);
-        System.out.println("3. SignInRepository validateToken()!:= " + tokenUsername);
+        System.out.println("3. SignInRepository validateToken() tokenUsername!:= " + tokenUsername);
         Boolean isValid = tokenUsername.equals(username) && !isTokenExpired(token);
         System.out.println("4. SignInRepository validateToken()! isValid!:= " + isValid);
 		return new ResponseEntity<>(isValid, HttpStatus.OK);
