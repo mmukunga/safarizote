@@ -88,14 +88,15 @@ public class SignInController {
           .builder()
           .setId("softtekJWT")
           .setSubject(username)
-                  .claim("authorities", new String[] { "dbuser", "admin" })
+          .claim("authorities", new String[] { "dbuser", "admin" })
           .setIssuedAt(new Date(System.currentTimeMillis()))
           .setExpiration(new Date(System.currentTimeMillis() + 600000))
           .signWith(SignatureAlgorithm.HS512,
               secretKey.getBytes()).compact();
       System.out.println("2. SignInRepository getJWTToken()! token!:= " + token);
 
-		return "Bearer " + token;
+		//return "Bearer " + token;
+    return token;
 	}
 
   public Date getExpirationDateFromToken(String token) {
@@ -112,6 +113,8 @@ public class SignInController {
 
   private Claims getAllClaimsFromToken(String token) {
     System.out.println("1. SignInRepository getAllClaimsFromToken token!:= " + token);
+    System.out.println(Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody());
+    System.out.println("1. SignInRepository getAllClaimsFromToken token!:= " + token);
 		return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
 	}
 
@@ -127,7 +130,7 @@ public class SignInController {
       try {
         System.out.println("1. SignInRepository getUsernameFromToken tokenized!:= " + token);
         final Claims claims = getAllClaimsFromToken(token);
-        System.out.println("2. SignInRepository getUsernameFromToken tokenized!:= " + token);
+        System.out.println("2. SignInRepository getUsernameFromToken claims!:= " + claims);
         username = claims.getSubject();
         System.out.println("3. SignInRepository getUsernameFromToken username!:= " + username);
       } catch (Exception e) {
