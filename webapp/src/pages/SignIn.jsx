@@ -63,7 +63,7 @@ const SignIn = (props) => {
         console.log(userAuth.password);
         console.log(userAuth.token);
         console.log('3C.SignIn..');
-        if (typeof(typeof(userAuth.token) !== 'undefined')) {
+        if (typeof(userAuth.token) !== 'undefined') {
             axios.post('/api/verify', {
                 token: userAuth.token,
                 username: userAuth.email
