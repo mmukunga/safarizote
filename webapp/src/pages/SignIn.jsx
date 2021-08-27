@@ -15,8 +15,8 @@ const reducer = (state, action) => {
             const { name, value } = action.payload;
             return { ...state, [name]: value };
         case 'SET_TOKEN':
-            const loginToken = action.payload.token;
-            return { ...state, token: loginToken };    
+            const loginData = action.payload;
+            return { ...state, loginData };    
         default:
             return state;
     }
