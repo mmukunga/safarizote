@@ -68,6 +68,13 @@ public class SignInController {
         return new ResponseEntity<>(authedUser, HttpStatus.OK);
     }
 
+    
+    @RequestMapping(value = "/api/verify",  method={RequestMethod.POST})
+    public ResponseEntity<Boolean> validateToken(String token, String username) {
+		final String tokeUsername = getUsernameFromToken(token);
+		return new ResponseEntity<>(tokeUsername.equals(username) && !isTokenExpired(token), HttpStatus.OK);
+    }
+
     private String getJWTToken(String username) {
 		//List<GrantedAuthority> grantedAuthorities = AuthorityUtils
 		//		.commaSeparatedStringToAuthorityList("ROLE_USER");
@@ -76,7 +83,7 @@ public class SignInController {
 				.builder()
 				.setId("softtekJWT")
 				.setSubject(username)
-                .claim("authorities", new String[] { "user", "admin" })
+                .claim("authorities", new String[] { "dbuser", "admin" })
 				.setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + 600000))
 				.signWith(SignatureAlgorithm.HS512,
@@ -115,10 +122,5 @@ public class SignInController {
         }
         return username;
       }
-
-    public Boolean validateToken(String token, String userDetails) {
-		final String username = getUsernameFromToken(token);
-		return (username.equals(userDetails) && !isTokenExpired(token));
-	}
 
 }

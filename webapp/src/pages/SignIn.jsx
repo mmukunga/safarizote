@@ -5,7 +5,8 @@ import { Redirect } from "react-router-dom";
 
 const initialState = {
     email: '',
-    password: ''
+    password: '',
+    token: ''
 };
 
 const reducer = (state, action) => {
@@ -13,6 +14,9 @@ const reducer = (state, action) => {
         case 'SET_EMAIL':
             const { name, value } = action.payload;
             return { ...state, [name]: value };
+        case 'SET_TOKEN':
+            const loginToken = action.payload.token;
+            return { ...state, token: loginToken };    
         default:
             return state;
     }
@@ -35,16 +39,31 @@ const SignIn = (props) => {
             password: state.password
         }).then(response => {
             console.log(response);
+            dispatch({ type: 'SET_TOKEN', payload: response.data })
         }).catch(error => {
             console.log(error);
         });
 
+        localStorage.setItem('userAuth', state);
+
         setCount(prevCount => prevCount + 1);
-        localStorage.setItem('token', state.email + count);
+        console.log('counter count:= ' + count);       
     };
 
-    if (localStorage.getItem('token') != null) {
-        const userToken = localStorage.getItem('token');
+    if (localStorage.getItem('userAuth') != null) {
+        const userAuth = localStorage.getItem('userAuth');
+        axios.post('/api/verify', {
+            token: userAuth.token,
+            uasername: userAuth.email
+        }).then(response => {
+            console.log('1.verify..');
+            console.log(response);
+            console.log(response.data);
+            console.log('2.verify..');
+        }).catch(error => {
+            console.log(error);
+        });
+
         return <Redirect to={from} />;
     }
 

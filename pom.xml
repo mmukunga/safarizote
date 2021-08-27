@@ -153,6 +153,7 @@
 				<version>3.0.0</version>
 				<executions>
 					<execution>
+					    <id>copy-resources</id>
 						<phase>generate-resources</phase>
 						<configuration>
 							<target>
@@ -162,7 +163,7 @@
 							</target>
 						</configuration>
 						<goals>
-							<goal>run</goal>
+							<goal>runtime</goal>
 						</goals>
 					</execution>
 				</executions>

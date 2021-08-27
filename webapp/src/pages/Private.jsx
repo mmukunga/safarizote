@@ -3,11 +3,29 @@ import { Redirect, Route } from 'react-router-dom';
 
 const Private = ({ component: Component, ...rest }) => {
   console.log('PrivateRoute...');
+
+  // auth.js
+const isValidUser = () => {
+  if (localStorage.getItem('userAuth') !== null) {
+    const userAuth = localStorage.getItem('userAuth');
+    axios.post('/api/verify', {
+        token: userAuth.token,
+        username: userAuth.username
+    }).then(response => {
+        console.log(response);
+        return true;
+    }).catch(error => {
+        console.log(error);
+        return false;
+    });
+  }
+}
+
   return (
     <Route
       {...rest}
       render={(props) =>
-        localStorage.getItem('token') ? (
+        isValidUser ? (
           <Component {...props} />
         ) : (
           <Redirect
