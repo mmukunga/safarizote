@@ -71,8 +71,11 @@ public class SignInController {
     
     @RequestMapping(value = "/api/verify",  method={RequestMethod.POST})
     public ResponseEntity<Boolean> validateToken(String token, String username) {
-		final String tokeUsername = getUsernameFromToken(token);
-		return new ResponseEntity<>(tokeUsername.equals(username) && !isTokenExpired(token), HttpStatus.OK);
+        System.out.println("1. SignInRepository END USER validateToken!:= " + token);
+        System.out.println("2. SignInRepository END USER validateToken!:= " + username);
+		final String tokenUsername = getUsernameFromToken(token);
+        System.out.println("3. SignInRepository END USER validateToken!:= " + tokenUsername);
+		return new ResponseEntity<>(tokenUsername.equals(username) && !isTokenExpired(token), HttpStatus.OK);
     }
 
     private String getJWTToken(String username) {
@@ -115,8 +118,11 @@ public class SignInController {
     public String getUsernameFromToken(String token) {
         String username;
         try {
+          System.out.println("1. SignInRepository END USER tokenized!:= " + token);
           final Claims claims = getAllClaimsFromToken(token);
+          System.out.println("2. SignInRepository END USER tokenized!:= " + token);
           username = claims.getSubject();
+          System.out.println("3. SignInRepository END USER username!:= " + username);
         } catch (Exception e) {
           username = null;
         }
