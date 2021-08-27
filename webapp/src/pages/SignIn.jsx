@@ -66,7 +66,8 @@ const SignIn = (props) => {
             const userAuth = localStorage.getItem('userAuth');
             console.log('3B.SignIn..');
             console.log(userAuth);
-            console.log(userAuth.username);
+            var loginItem = JSON.parse(localStorage.getItem('userAuth'));
+            console.log(loginItem);
             console.log(userAuth.password);
             console.log(userAuth.token);
             console.log('3C.SignIn..');
