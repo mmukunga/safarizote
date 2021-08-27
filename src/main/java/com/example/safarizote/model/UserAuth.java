@@ -22,5 +22,6 @@ public class UserAuth {
     @Id @GeneratedValue Long id;
     @NonNull String email;
     @NonNull String password;
+    @NonNull String token;
     @NonNull Instant dateCreated;
 }
