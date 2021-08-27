@@ -66,23 +66,23 @@ const SignIn = (props) => {
             const token = localStorage.getItem('userToken');
             console.log('3B.SignIn..');
             console.log(token);
-            console.log('3C.SignIn..');
-            if (typeof(token) !== 'undefined') {
-                axios.post('/api/verify', {
-                    token: token,
-                    username: state.email
-                }).then(response => {
-                    console.log('1.verify..');
-                    console.log(response);
-                    console.log(response.data);
-                    console.log('2.verify..');
-                    return <Redirect to={from} />;
-                }).catch(error => {
-                    console.log('1.ERROR..');
-                    console.log(error);
-                    console.log('2.ERROR..');
-                });
-            }  
+            console.log('3C.SignIn..');           
+            console.log(state.email);
+            axios.post('/api/verify', {
+                token: token,
+                username: state.email
+            }).then(response => {
+                console.log('1.verify..');
+                console.log(response);
+                console.log(response.data);
+                console.log('2.verify..');
+                return <Redirect to={from} />;
+            }).catch(error => {
+                console.log('1.ERROR..');
+                console.log(error);
+                console.log('2.ERROR..');
+            });
+            
         }
     }, [loginData]); // Only re-run the effect if count changes
 
