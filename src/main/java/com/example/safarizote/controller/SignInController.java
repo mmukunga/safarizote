@@ -46,89 +46,94 @@ public class SignInController {
         UserAuth authedUser = null;
         List<UserAuth> users = repository.findAll();
         for (UserAuth tempUser : users) {
-            System.out.println("SignInRepository FROM USER:= " + tempUser);
-            System.out.println("SignInRepository FROM DB:= " + userAuth);
+            System.out.println("SignInRepository logIn() FROM USER:= " + tempUser);
+            System.out.println("SignInRepository logIn() FROM DB:= " + userAuth);
             System.out.println("COMPARE1:= " + tempUser.getEmail() + " <> " + userAuth.getEmail());
             System.out.println("COMPARE2:= " + tempUser.getPassword() + " <> " + userAuth.getPassword());
 
             if (tempUser.getEmail().equals(userAuth.getEmail()) &&
                 tempUser.getPassword().equals(userAuth.getPassword()) ) {
                 authedUser = tempUser;
-                System.out.println("SignInRepository USER FOUND!!:= " + tempUser);
+                System.out.println("SignInRepository logIn() USER FOUND!!:= " + tempUser);
                 break;
             }
         }
 
         String token = getJWTToken(userAuth.getEmail());
-        System.out.println("SignInRepository END USER token!:= " + token);
-        System.out.println("SignInRepository END USER!:= " + authedUser);
+        System.out.println("SignInRepository logIn() END USER token!:= " + token);
+        System.out.println("SignInRepository logIn() END USER!:= " + authedUser);
         authedUser.setToken(token);
-        System.out.println("SignInRepository END USER tokenized!:= " + authedUser);
-        System.out.println("SignInRepository END OK!!");
+        System.out.println("SignInRepository logIn() END USER tokenized!:= " + authedUser);
+        System.out.println("SignInRepository logIn() END OK!!");
         return new ResponseEntity<>(authedUser, HttpStatus.OK);
     }
 
     
     @RequestMapping(value = "/api/verify",  method={RequestMethod.POST})
     public ResponseEntity<Boolean> validateToken(String token, String username) {
-        System.out.println("1. SignInRepository END USER validateToken!:= " + token);
-        System.out.println("2. SignInRepository END USER validateToken!:= " + username);
+        System.out.println("1. SignInRepository validateToken()!:= " + token);
+        System.out.println("2. SignInRepository validateToken()!:= " + username);
 		    String tokenUsername = getUsernameFromToken(token);
-        System.out.println("3. SignInRepository END USER validateToken!:= " + tokenUsername);
+        System.out.println("3. SignInRepository validateToken()!:= " + tokenUsername);
         Boolean isValid = tokenUsername.equals(username) && !isTokenExpired(token);
-        System.out.println("4. SignInRepository END USER isValid!:= " + isValid);
+        System.out.println("4. SignInRepository validateToken()! isValid!:= " + isValid);
 		return new ResponseEntity<>(isValid, HttpStatus.OK);
     }
 
     private String getJWTToken(String username) {
-		//List<GrantedAuthority> grantedAuthorities = AuthorityUtils
-		//		.commaSeparatedStringToAuthorityList("ROLE_USER");
-		
-		String token = Jwts
-				.builder()
-				.setId("softtekJWT")
-				.setSubject(username)
-                .claim("authorities", new String[] { "dbuser", "admin" })
-				.setIssuedAt(new Date(System.currentTimeMillis()))
-				.setExpiration(new Date(System.currentTimeMillis() + 600000))
-				.signWith(SignatureAlgorithm.HS512,
-						secretKey.getBytes()).compact();
+      //List<GrantedAuthority> grantedAuthorities = AuthorityUtils
+      //		.commaSeparatedStringToAuthorityList("ROLE_USER");
+      System.out.println("1. SignInRepository getJWTToken()! username!:= " + username);
+      String token = Jwts
+          .builder()
+          .setId("softtekJWT")
+          .setSubject(username)
+                  .claim("authorities", new String[] { "dbuser", "admin" })
+          .setIssuedAt(new Date(System.currentTimeMillis()))
+          .setExpiration(new Date(System.currentTimeMillis() + 600000))
+          .signWith(SignatureAlgorithm.HS512,
+              secretKey.getBytes()).compact();
+      System.out.println("2. SignInRepository getJWTToken()! token!:= " + token);
 
 		return "Bearer " + token;
 	}
 
-    public Date getExpirationDateFromToken(String token) {
-        Date expiration;
-        try {
-          final Claims claims = getAllClaimsFromToken(token);
-          expiration = claims.getExpiration();
-        } catch (Exception e) {
-          expiration = null;
-        }
-        return expiration;
+  public Date getExpirationDateFromToken(String token) {
+      Date expiration;
+       System.out.println("1. SignInRepository getExpirationDateFromToken token!:= " + token);
+      try {
+        final Claims claims = getAllClaimsFromToken(token);
+        expiration = claims.getExpiration();
+      } catch (Exception e) {
+        expiration = null;
       }
+      return expiration;
+    }
 
-    private Claims getAllClaimsFromToken(String token) {
+  private Claims getAllClaimsFromToken(String token) {
+    System.out.println("1. SignInRepository getAllClaimsFromToken token!:= " + token);
 		return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
 	}
 
 	private Boolean isTokenExpired(String token) {
+    System.out.println("1. SignInRepository isTokenExpired token!:= " + token);
 		final Date expiration = getExpirationDateFromToken(token);
+    System.out.println("2. SignInRepository isTokenExpired token!:= " + token);
 		return expiration.before(new Date());
 	}
 
-    public String getUsernameFromToken(String token) {
-        String username;
-        try {
-          System.out.println("1. SignInRepository END USER tokenized!:= " + token);
-          final Claims claims = getAllClaimsFromToken(token);
-          System.out.println("2. SignInRepository END USER tokenized!:= " + token);
-          username = claims.getSubject();
-          System.out.println("3. SignInRepository END USER username!:= " + username);
-        } catch (Exception e) {
-          username = null;
-        }
-        return username;
+  public String getUsernameFromToken(String token) {
+      String username;
+      try {
+        System.out.println("1. SignInRepository getUsernameFromToken tokenized!:= " + token);
+        final Claims claims = getAllClaimsFromToken(token);
+        System.out.println("2. SignInRepository getUsernameFromToken tokenized!:= " + token);
+        username = claims.getSubject();
+        System.out.println("3. SignInRepository getUsernameFromToken username!:= " + username);
+      } catch (Exception e) {
+        username = null;
       }
+      return username;
+    }
 
 }
