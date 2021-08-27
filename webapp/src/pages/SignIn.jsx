@@ -63,21 +63,22 @@ const SignIn = (props) => {
         console.log(userAuth.password);
         console.log(userAuth.token);
         console.log('3C.SignIn..');
-        axios.post('/api/verify', {
-            token: userAuth.token,
-            uasername: userAuth.email
-        }).then(response => {
-            console.log('1.verify..');
-            console.log(response);
-            console.log(response.data);
-            console.log('2.verify..');
-        }).catch(error => {
-            console.log('1.ERROR..');
-            console.log(error);
-            console.log('2.ERROR..');
-        });
-
-        return <Redirect to={from} />;
+        if (typeof(typeof(userAuth.token) !== 'undefined')) {
+            axios.post('/api/verify', {
+                token: userAuth.token,
+                username: userAuth.email
+            }).then(response => {
+                console.log('1.verify..');
+                console.log(response);
+                console.log(response.data);
+                console.log('2.verify..');
+                return <Redirect to={from} />;
+            }).catch(error => {
+                console.log('1.ERROR..');
+                console.log(error);
+                console.log('2.ERROR..');
+            });
+        }  
     }
 
     return (
