@@ -46,7 +46,7 @@ const SignIn = (props) => {
                token: response.data.token
             };
             dispatch({ type: 'SET_TOKEN', payload: userLogin });
-            localStorage.setItem('userAuth', userLogin);
+            localStorage.setItem('userToken', response.data.token);
             console.log(userLogin);
             setCount(prevCount => prevCount + 1);
             setLoginData({...userLogin});
@@ -58,23 +58,19 @@ const SignIn = (props) => {
     
     React.useEffect(() => {
         console.log('1.SignIn..');
-        console.log(localStorage.getItem('userAuth'));
+        console.log(localStorage.getItem('userToken'));
         console.log(loginData);
         console.log('2.SignIn..');
-        if (localStorage.getItem('userAuth') != null) {
+        if (localStorage.getItem('userToken') != null) {
             console.log('3A.SignIn..');
-            const userAuth = localStorage.getItem('userAuth');
+            const token = localStorage.getItem('userToken');
             console.log('3B.SignIn..');
-            console.log(userAuth);
-            var loginItem = JSON.parse(localStorage.getItem('userAuth'));
-            console.log(loginItem);
-            console.log(userAuth.password);
-            console.log(userAuth.token);
+            console.log(token);
             console.log('3C.SignIn..');
-            if (typeof(userAuth.token) !== 'undefined') {
+            if (typeof(token) !== 'undefined') {
                 axios.post('/api/verify', {
-                    token: userAuth.token,
-                    username: userAuth.email
+                    token: token,
+                    username: state.email
                 }).then(response => {
                     console.log('1.verify..');
                     console.log(response);
