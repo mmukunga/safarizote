@@ -73,9 +73,11 @@ public class SignInController {
     public ResponseEntity<Boolean> validateToken(String token, String username) {
         System.out.println("1. SignInRepository END USER validateToken!:= " + token);
         System.out.println("2. SignInRepository END USER validateToken!:= " + username);
-		final String tokenUsername = getUsernameFromToken(token);
+		    String tokenUsername = getUsernameFromToken(token);
         System.out.println("3. SignInRepository END USER validateToken!:= " + tokenUsername);
-		return new ResponseEntity<>(tokenUsername.equals(username) && !isTokenExpired(token), HttpStatus.OK);
+        Boolean isValid = tokenUsername.equals(username) && !isTokenExpired(token);
+        System.out.println("4. SignInRepository END USER isValid!:= " + isValid);
+		return new ResponseEntity<>(isValid, HttpStatus.OK);
     }
 
     private String getJWTToken(String username) {
