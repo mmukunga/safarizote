@@ -47,7 +47,7 @@ public class SignInController {
         List<UserAuth> users = repository.findAll();
         for (UserAuth tempUser : users) {
             System.out.println("SignInRepository logIn() FROM USER:= " + tempUser);
-            System.out.println("SignInRepository logIn() FROM DB:= " + userAuth);
+            System.out.println("SignInRepository logIn() FROM DB:= " + userAuth.getToken());
             System.out.println("COMPARE1:= " + tempUser.getEmail() + " <> " + userAuth.getEmail());
             System.out.println("COMPARE2:= " + tempUser.getPassword() + " <> " + userAuth.getPassword());
 
@@ -72,15 +72,16 @@ public class SignInController {
     @RequestMapping(value = "/api/verify",  method={RequestMethod.POST})
     public ResponseEntity<Boolean> validateToken(@RequestBody UserAuth userAuth) {
         System.out.println("1. SignInRepository validateToken() token!:= " + userAuth.getToken());
-        System.out.println("2. SignInRepository validateToken() username!:= " + userAuth.getEmail());
-
+        System.out.println("2. SignInRepository validateToken() email!:= " + userAuth.getEmail());
+        System.out.println("3. SignInRepository validateToken() password!:= " + userAuth.getPassword());
+        System.out.println("4. SignInRepository validateToken() password!:= " + userAuth.getDateCreated());
         // The part after "Bearer "
         final String bearerToken = userAuth.getToken().substring(7);
 
 		    String tokenUsername = getUsernameFromToken(bearerToken);
-        System.out.println("3. SignInRepository validateToken() tokenUsername!:= " + tokenUsername);
+        System.out.println("5. SignInRepository validateToken() tokenUsername!:= " + tokenUsername);
         Boolean isValid = tokenUsername.equals(userAuth.getEmail()) && !isTokenExpired(bearerToken);
-        System.out.println("4. SignInRepository validateToken()! isValid!:= " + isValid);
+        System.out.println("6. SignInRepository validateToken()! isValid!:= " + isValid);
 		return new ResponseEntity<>(isValid, HttpStatus.OK);
     }
 

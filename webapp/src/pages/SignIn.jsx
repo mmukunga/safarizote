@@ -6,7 +6,8 @@ import { Redirect } from "react-router-dom";
 const initialState = {
     email: '',
     password: '',
-    token: ''
+    token: '',
+    dateCreated: new Date()
 };
 
 const reducer = (state, action) => {
@@ -40,16 +41,17 @@ const SignIn = (props) => {
             password: state.password
         }).then(response => {
             console.log(response);
-            const userLogin = {
+            const userAuth = {
                email: response.data.email,
                password: response.data.password,
-               token: response.data.token
+               token: response.data.token,
+               dateCreated: new Date()
             };
-            dispatch({ type: 'SET_TOKEN', payload: userLogin });
+            dispatch({ type: 'SET_TOKEN', payload: userAuth });
             localStorage.setItem('userToken', response.data.token);
-            console.log(userLogin);
+            console.log(userAuth);
             setCount(prevCount => prevCount + 1);
-            setLoginData({...userLogin});
+            setLoginData({...userAuth});
             console.log('counter count:= ' + count); 
         }).catch(error => {
             console.log(error);
@@ -71,7 +73,8 @@ const SignIn = (props) => {
             const userAuth = {
                 email: state.email,
                 password: state.password,
-                token: token
+                token: token,
+                dateCreated: new Date()
             };
             console.log(userAuth);   
             axios.post('/api/verify', userAuth).then(response => {
