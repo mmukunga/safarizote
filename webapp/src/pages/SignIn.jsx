@@ -53,10 +53,13 @@ const SignIn = (props) => {
     console.log('1.SignIn..');
     console.log(localStorage.getItem('userAuth'));
     console.log('2.SignIn..');
-    
+
     if (localStorage.getItem('userAuth') != null) {
+        console.log('3A.SignIn..');
         const userAuth = localStorage.getItem('userAuth');
+        console.log('3B.SignIn..');
         console.log(userAuth);
+        console.log('3C.SignIn..');
         axios.post('/api/verify', {
             token: userAuth.token,
             uasername: userAuth.email
@@ -66,7 +69,9 @@ const SignIn = (props) => {
             console.log(response.data);
             console.log('2.verify..');
         }).catch(error => {
+            console.log('1.ERROR..');
             console.log(error);
+            console.log('2.ERROR..');
         });
 
         return <Redirect to={from} />;
