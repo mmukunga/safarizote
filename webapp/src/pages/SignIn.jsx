@@ -39,12 +39,16 @@ const SignIn = (props) => {
             password: state.password
         }).then(response => {
             console.log(response);
-            dispatch({ type: 'SET_TOKEN', payload: response.data })
+            const userLogin = {
+               email: response.data.email,
+               password: response.data.password,
+               token: response.data.token
+            };
+            dispatch({ type: 'SET_TOKEN', payload: userLogin });
+            localStorage.setItem('userAuth', userLogin);
         }).catch(error => {
             console.log(error);
         });
-
-        localStorage.setItem('userAuth', state);
 
         setCount(prevCount => prevCount + 1);
         console.log('counter count:= ' + count);       
