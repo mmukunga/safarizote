@@ -91,19 +91,26 @@ public class SignInController {
 		return new ResponseEntity<>(isValid, HttpStatus.OK);
     }
 
-    private String getJWTToken(String username) {
+    private String getJWTToken(String subject) {
       //List<GrantedAuthority> grantedAuthorities = AuthorityUtils
       //		.commaSeparatedStringToAuthorityList("ROLE_USER");
-      System.out.println("1. SignInRepository getJWTToken()! username!:= " + username);
-      String token = Jwts
+      System.out.println("1. SignInRepository getJWTToken()! subject!:= " + subject);
+      Map<String, Object> claims = new HashMap<>();
+      claims.put("isAdmin", true);
+
+     /* String token = Jwts
           .builder()
           .setId("softtekJWT")
-          .setSubject(username)
+          .setSubject(subject)
           .claim("authorities", new String[] { "dbuser", "admin" })
           .setIssuedAt(new Date(System.currentTimeMillis()))
           .setExpiration(new Date(System.currentTimeMillis() + 600000))
           .signWith(SignatureAlgorithm.HS512,
-              secretKey.getBytes()).compact();
+              secretKey.getBytes()).compact(); */
+
+              String token = Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
+              .setExpiration(new Date(System.currentTimeMillis() + 600000))
+              .signWith(SignatureAlgorithm.HS512, secretKey).compact();        
       System.out.println("2. SignInRepository getJWTToken()! token!:= " + token);
 
 		return "Bearer " + token;
@@ -124,7 +131,7 @@ public class SignInController {
   private Claims getAllClaimsFromToken(String token) {
     System.out.println("1A. SignInRepository getAllClaimsFromToken token!:= " + token);
     System.out.println("1B. SignInRepository getAllClaimsFromToken token!:= " + token);
-
+/*
     Map<String, Object> claims = new HashMap<>();
     claims.put("isAdmin", true);
 
@@ -133,19 +140,20 @@ public class SignInController {
     String tokenTemp = Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + jwtExpirationInMs))
 				.signWith(SignatureAlgorithm.HS512, secretKey).compact();
-
-    Claims claimsTEmp = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(tokenTemp).getBody();
+*/
+    Claims claimsTEmp = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
     System.out.println("CB. SignInRepository getAllClaimsFromToken subject!:= " + claimsTEmp.getSubject());
 
 
 
-    String userId = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
+    /*String userId = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
     System.out.println("2. SignInRepository getAllClaimsFromToken userId!:= " + userId);
     String issuer = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getIssuer();
     System.out.println("3. SignInRepository getAllClaimsFromToken userId!:= " + issuer);
     System.out.println(Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject());
-    System.out.println("4. SignInRepository getAllClaimsFromToken token!:= " + token);
-		return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
+    System.out.println("4. SignInRepository getAllClaimsFromToken token!:= " + token);*/
+		//return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
+    return claimsTEmp;
 	}
 
 	private Boolean isTokenExpired(String token) {
