@@ -26,6 +26,7 @@ const reducer = (state, action) => {
 const SignIn = (props) => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
     const [count, setCount] = useState(0);
+    const [verified, setVerified] = useState(false);
     const [loginData, setLoginData] = useState({});
 
     const { from } = props.location.state || { from: { pathname: "/" } };
@@ -82,6 +83,7 @@ const SignIn = (props) => {
                 console.log('1.verify..');
                 console.log(response);
                 console.log(response.data);
+                setVerified(true);
                 console.log('2.verify..');
                 return <Redirect to={from} />;
             }).catch(error => {
@@ -93,6 +95,10 @@ const SignIn = (props) => {
         }
     }, [loginData]); // Only re-run the effect if count changes
 
+    if (verified) {
+        console.log('1.VERIFIED!!');
+        return <Redirect to={from} />;
+    }
 
     return (
         <Card className="InnerCard" fontColor="black">
