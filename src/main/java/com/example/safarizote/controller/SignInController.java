@@ -117,15 +117,16 @@ public class SignInController {
 
   private Claims getAllClaimsFromToken(String token) {
     System.out.println("1. SignInRepository getAllClaimsFromToken token!:= " + token);
+    System.out.println(Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token));
     System.out.println(Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody());
-    System.out.println("1. SignInRepository getAllClaimsFromToken token!:= " + token);
+    System.out.println("2. SignInRepository getAllClaimsFromToken token!:= " + token);
 		return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
 	}
 
 	private Boolean isTokenExpired(String token) {
     System.out.println("1. SignInRepository isTokenExpired token!:= " + token);
 		final Date expiration = getExpirationDateFromToken(token);
-    System.out.println("2. SignInRepository isTokenExpired token!:= " + token);
+    System.out.println("2. SignInRepository isTokenExpired expiration!:= " + expiration);
 		return expiration.before(new Date());
 	}
 
