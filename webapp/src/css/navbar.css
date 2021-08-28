@@ -26,6 +26,11 @@
   color: white;
 }
 
+.Link_link {
+  text-decoration: none;
+  color:#39C0ED; 
+};
+
 .Logo {
   cursor:default;
   border: 3px solid #fefbd8;

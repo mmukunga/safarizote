@@ -103,7 +103,7 @@ function App() {
             </nav> 
             
             <p className="App-title">
-              Common Trips <code><Link to="/email">src/App.js </Link></code>
+              Common Trips <code><Link to="/email" className="Link_link">src/App.js </Link></code>
               <a
                 className="App-link"
                 href="https://safarizote.herokuapp.com"
