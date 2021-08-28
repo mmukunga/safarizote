@@ -116,7 +116,8 @@ public class SignInController {
     }
 
   private Claims getAllClaimsFromToken(String token) {
-    System.out.println("1. SignInRepository getAllClaimsFromToken token!:= " + token);
+    System.out.println("1A. SignInRepository getAllClaimsFromToken token!:= " + token);
+    System.out.println("1B. SignInRepository getAllClaimsFromToken token!:= " + token);
     String userId = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
     System.out.println("2. SignInRepository getAllClaimsFromToken userId!:= " + userId);
     String issuer = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getIssuer();
