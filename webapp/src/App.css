@@ -7,6 +7,10 @@
   border:2px solid green;
 }
 
+.App-link { 
+  color:#39C0ED; 
+}
+
 .App-logo {
   width: 6vmin;
   height: 6vmin;
