@@ -63,20 +63,21 @@ const SignIn = (props) => {
         console.log(localStorage.getItem('userToken'));
         console.log(loginData);
         console.log('2.SignIn..');
-        if (localStorage.getItem('userToken') != null) {
+        if (state.email != null && localStorage.getItem('userToken') != null) {
             console.log('3A.SignIn..');
             const token = localStorage.getItem('userToken');
             console.log('3B.SignIn..');
             console.log(token);
             console.log('3C.SignIn..');           
             console.log(state.email);
+            console.log(loginData);  
             const userAuth = {
                 email: state.email,
                 password: state.password,
                 token: token,
                 dateCreated: new Date()
             };
-            console.log(userAuth);   
+            console.log(userAuth);            
             axios.post('/api/verify', userAuth).then(response => {
                 console.log('1.verify..');
                 console.log(response);
