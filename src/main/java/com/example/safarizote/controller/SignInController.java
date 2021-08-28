@@ -25,6 +25,12 @@ import io.jsonwebtoken.Claims;
 //import io.jsonwebtoken.Jws;
 //import io.jsonwebtoken.Jwts;
 //import io.jsonwebtoken.SignatureAlgorithm;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 public class SignInController { 
@@ -118,6 +124,21 @@ public class SignInController {
   private Claims getAllClaimsFromToken(String token) {
     System.out.println("1A. SignInRepository getAllClaimsFromToken token!:= " + token);
     System.out.println("1B. SignInRepository getAllClaimsFromToken token!:= " + token);
+
+    Map<String, Object> claims = new HashMap<>();
+    claims.put("isAdmin", true);
+
+    String subject = "m@gmail.com";
+    int jwtExpirationInMs = 6000;
+    String tokenTemp = Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
+				.setExpiration(new Date(System.currentTimeMillis() + jwtExpirationInMs))
+				.signWith(SignatureAlgorithm.HS512, secretKey).compact();
+
+    Claims claimsTEmp = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(tokenTemp).getBody();
+    System.out.println("CB. SignInRepository getAllClaimsFromToken subject!:= " + claimsTEmp.getSubject());
+
+
+
     String userId = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
     System.out.println("2. SignInRepository getAllClaimsFromToken userId!:= " + userId);
     String issuer = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getIssuer();
