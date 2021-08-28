@@ -60,8 +60,7 @@ public class SignInController {
         System.out.println("SignInRepository logIn() END OK!!");
         return new ResponseEntity<>(authedUser, HttpStatus.OK);
     }
-
-    
+     
     @RequestMapping(value = "/api/verify",  method={RequestMethod.POST})
     public ResponseEntity<Boolean> validateToken(@RequestBody UserAuth userAuth) {
         // The part after "Bearer "
@@ -71,21 +70,20 @@ public class SignInController {
 		return new ResponseEntity<>(isValid, HttpStatus.OK);
     }
 
-    private String getJWTToken(String subject) {
-      System.out.println("SignInRepository getJWTToken()! subject!:= " + subject);
-      Map<String, Object> claims = new HashMap<>();
-      claims.put("isAdmin", true);
+  private String getJWTToken(String subject) {
+        System.out.println("SignInRepository getJWTToken()! subject!:= " + subject);
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("isAdmin", true);
+        String token = Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
+          .setExpiration(new Date(System.currentTimeMillis() + 600000))
+          .signWith(SignatureAlgorithm.HS512, secretKey).compact();    
 
-      String token = Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
-        .setExpiration(new Date(System.currentTimeMillis() + 600000))
-        .signWith(SignatureAlgorithm.HS512, secretKey).compact();    
+        System.out.println("SignInRepository getJWTToken()! token!:= " + token);
 
-      System.out.println("SignInRepository getJWTToken()! token!:= " + token);
-
-		return "Bearer " + token;
+		  return "Bearer " + token;
 	}
 
-  public Date getExpirationDateFromToken(String token) {
+  private Date getExpirationDateFromToken(String token) {
       Date expiration;
       try {
         final Claims claims = getAllClaimsFromToken(token);
@@ -94,19 +92,19 @@ public class SignInController {
         expiration = null;
       }
       return expiration;
-    }
+  }
 
   private Claims getAllClaimsFromToken(String token) {
-    Claims claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
-    return claims;
+      Claims claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
+      return claims;
 	}
 
 	private Boolean isTokenExpired(String token) {
-		final Date expiration = getExpirationDateFromToken(token);
-		return expiration.before(new Date());
+		  final Date expiration = getExpirationDateFromToken(token);
+		  return expiration.before(new Date());
 	}
 
-  public String getUsernameFromToken(String token) {
+  private String getUsernameFromToken(String token) {
       String username;
       try {
         final Claims claims = getAllClaimsFromToken(token);
