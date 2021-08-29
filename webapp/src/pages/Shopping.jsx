@@ -55,7 +55,7 @@ const Shopping = () => {
   },[]);
 
     return (
-      <Card className="InnerCard" fontColor="black">
+      <Card className="InnerCard" fontSize="16px">
         <p>Shoppings!!</p>
         <form className="form-container" onSubmit={handleSubmit}>
           <div className="row">

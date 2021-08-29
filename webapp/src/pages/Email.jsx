@@ -52,7 +52,7 @@ const Email = (props) => {
         });
     }
     return (
-        <Card className="InnerCard" fontColor="black" >
+        <Card className="InnerCard" fontSize="16px" >
             <p>Contact Us!!</p>
             <div className="form-container">
             <form onSubmit={handleSubmit}>

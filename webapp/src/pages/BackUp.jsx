@@ -137,7 +137,7 @@ const reducer = (state, action) => {
    
 
     return (
-      <Card className="InnerCard" fontColor="black">
+      <Card className="InnerCard" fontSize="16px">
         <strong>Upload Files!!</strong>
         <form onSubmit={uploadSubmit}>
           <div className="BackUps">  

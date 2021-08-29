@@ -39,7 +39,7 @@ const Metrics = () => {
     }, []);
 
     return (
-        <Card className="InnerCard" fontColor="black">
+        <Card className="InnerCard" fontSize="16px">
             <h4 style={{ margin: '20px', fontStyle: 'bold', textAlign: 'left'}}>Safari Zote!</h4>
             <p style={{ margin: '20px', textAlign: 'left'}}>People also ask about this</p>
             <ul className="vList">

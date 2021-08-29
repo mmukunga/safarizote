@@ -82,7 +82,7 @@ const SignIn = (props) => {
     }
 
     return (
-        <Card className="InnerCard" fontColor="black">
+        <Card className="InnerCard" fontSize="16px">
             Please Login Here!!
             <form class="form-inline" onSubmit={handleSubmit}>
                 <input type="email" id="email" name="email" placeholder="Enter email"

@@ -113,7 +113,7 @@ const Stock = () => {
     };
     
     return (
-      <Card className="InnerCard" fontColor="black">
+      <Card className="InnerCard" fontSize="16px">
         <p>Stock!!</p>
         <form onSubmit={handleSubmit} className="StockWrapper">
         <ul className="StockList">

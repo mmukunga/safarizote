@@ -10,7 +10,7 @@ const AboutUs = () => {
 
 
     return (
-        <Card className="InnerCard" fontColor="black" >
+        <Card className="InnerCard" fontSize="16px" >
            <h4>About Us!</h4>
            <p>16 years in the Safari industry offered an opportunity to gain a wealth of experience, knowledge, 
               enthusiasm and immense passion. Today Tufayn Mangal stands proud as a Professional Photographer,
