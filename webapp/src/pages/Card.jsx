@@ -24,13 +24,11 @@ const Card = (props) => {
   };
 
   const divStyle = {
-      height: "400px",
-      width: "400px",
-      backgroundColor: "red",
+      width: "800px",
+      backgroundColor: "purple",
       margin: "auto",
       "@media (max-width: 600px)": {
-          height: "200px",
-          width: "200px",
+          width:  "400px",
           backgroundColor: "green",
           margin: "auto"
       }
