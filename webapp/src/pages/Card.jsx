@@ -16,9 +16,9 @@ const Card = (props) => {
 
   return (
     <div className={className}>
-      <div style={CardWrapper}>
-        {children}
-      </div>
+        <CardWrapper>
+            {children}
+        </CardWrapper>
     </div>
   )
 }
