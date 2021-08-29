@@ -22,5 +22,11 @@
 
   .InnerCard {
     border: 4px solid rgb(163, 3, 25);
+    font-size: calc(0.75em + 1vmin);
+  }
+
+  .InnerCard > div {
+    border: 4px solid rgb(163, 3, 25);
+    font-size: calc(0.75em + 1vmin);
   }
 }
