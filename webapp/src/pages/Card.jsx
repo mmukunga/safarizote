@@ -23,6 +23,19 @@ const Card = (props) => {
     return maxStyles;
   };
 
+  const divStyle = {
+      height: "400px",
+      width: "400px",
+      backgroundColor: "red",
+      margin: "auto",
+      "@media (max-width: 600px)": {
+          height: "200px",
+          width: "200px",
+          backgroundColor: "green",
+          margin: "auto"
+      }
+  };
+
   const styles = {
     hideThisOnBigScreens: {
       display: 'block',
@@ -48,6 +61,11 @@ const Card = (props) => {
           One of the jobs of developers is to try to find the most performant 
           solution that won't take a lot of time to implement and also help 
           build a strong, resilient application in the long-term.
+        </div>
+        <div style={divStyle}>
+          In React, inline styles are not specified as a string. Instead they 
+          are specified with an object whose key is the camelCased version of 
+          the style name, and whose value is the style’s value, usually a string.
         </div>
       </div>
     </div>
