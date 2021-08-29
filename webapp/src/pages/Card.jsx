@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 const Card = (props) => {
-  const { className, fontSize, children } = props;
+  const { className, fontColor, children } = props;
   const labelStyles = styled.div`
       fontSize: '2.5vw',
       margin: '2px',

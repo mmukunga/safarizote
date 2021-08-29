@@ -17,7 +17,7 @@ const Lotto = () => {
   },[]);
 
     return (
-      <Card className="InnerCard" fontSize="16px">
+      <Card className="InnerCard" fontColor="black">
         <p>Lotto Kupong!!</p>
         <div className="Rekke">
           {data.map(rekke => 
