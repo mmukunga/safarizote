@@ -3,12 +3,12 @@ import styled, { css } from 'styled-components';
 
 const Card = (props) => {
   const { className, fontColor, children } = props;
-  const labelStyles = styled.div`
+  const CardWrapper = styled.div`
       fontSize: '2.5vw';
       margin: '2px';
       padding: '2px';
       border: '2px solid red';
-      
+
       @media screen and (max-width: 600px) {
           font-size: '30px';
       }
@@ -16,7 +16,7 @@ const Card = (props) => {
 
   return (
     <div className={className}>
-      <div style={labelStyles}>
+      <div style={CardWrapper}>
         {children}
       </div>
     </div>
