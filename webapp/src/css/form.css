@@ -40,7 +40,7 @@ label {
   display: inline-block;
 }    
     
-input[type=submit] {    
+input[type=submit], button {    
   background-color: #45a049;
   border: none;  
   width: 98%;
