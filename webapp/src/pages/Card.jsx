@@ -4,10 +4,11 @@ import styled, { css } from 'styled-components';
 const Card = (props) => {
   const { className, fontColor, children } = props;
   const labelStyles = styled.div`
-      fontSize: '2.5vw',
-      margin: '2px',
-      padding: '2px',
-      border: '2px solid red',
+      fontSize: '2.5vw';
+      margin: '2px';
+      padding: '2px';
+      border: '2px solid red';
+      
       @media screen and (max-width: 600px) {
           font-size: '30px';
       }
