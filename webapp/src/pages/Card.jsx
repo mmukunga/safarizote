@@ -30,7 +30,8 @@ const Card = (props) => {
       "@media (max-width: 600px)": {
           width:  "400px",
           backgroundColor: "green",
-          margin: "auto"
+          margin: "auto",
+          fontSize: "24px"
       }
   };
 
