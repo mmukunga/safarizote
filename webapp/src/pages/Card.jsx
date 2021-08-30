@@ -1,23 +1,28 @@
 import React from 'react';
+import Radium, {StyleRoot} from 'radium';
 
 const Card = (props) => {
   const { className, fontColor, children } = props;
   const labelStyles = {
-    fontSize: '2.5vw',
-    margin: '2px',
-    padding: '2px',
-    border: '2px solid red',
-    '@media (max-width: 600px)': {
-        backgroundColor: 'green',
-        fontSize: '24px'
+    divStyle: {
+      fontSize: '2.5vw',
+      margin: '2px',
+      padding: '2px',
+      border: '2px solid red',
+      '@media (max-width: 600px)': {
+          backgroundColor: 'green',
+          fontSize: '24px'
+      }
     }
   };
+  
+  const StyleRoot = Radium.StyleRoot;
 
   return (
     <div className={className}>
-      <div style={labelStyles}>
+      <StyleRoot style={labelStyles.divStyle}>
         {children}
-      </div>
+      </StyleRoot>
     </div>
   )
 }
