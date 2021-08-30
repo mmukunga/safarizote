@@ -26,69 +26,51 @@ const reducer = (state, action) => {
   }
 }
 
-  const BackUp = () => {
-    const [state, dispatch] = useReducer(reducer, initialState);
-    
-    React.useEffect(() => {
-      axios.get("/api/categories").then(response => {
-          console.log(response.data);
+const BackUp = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  
+  React.useEffect(() => {
+    axios.get("/api/categories").then(response => {
+        console.log(response.data);
 
-              const fileName = 'http://www.hyperlinkcode.com/images/sample-image.jpg';
-              const date = new Date();
-              const unixTimeStamp = Math.floor(date.getTime() / 1000);
-              const File = {
-                  lastModified: unixTimeStamp,
-                  lastModifiedDate: date,
-                  name: fileName,
-                  size: 8000,
-                  type: "image/jpeg",
-                  webkitRelativePath: ""
-              };
+            const fileName = 'http://www.hyperlinkcode.com/images/sample-image.jpg';
+            const date = new Date();
+            const unixTimeStamp = Math.floor(date.getTime() / 1000);
+            const File = {
+                lastModified: unixTimeStamp,
+                lastModifiedDate: date,
+                name: fileName,
+                size: 8000,
+                type: "image/jpeg",
+                webkitRelativePath: ""
+            };
 
-              const gcsData = {file: File, id: state.files.length+1, src: `${fileName}`}
-              dispatch({ type: 'add_item', payload: gcsData });
+            const gcsData = {file: File, id: state.files.length+1, src: `${fileName}`}
+            dispatch({ type: 'add_item', payload: gcsData });
 
 
-      }).catch(error => {
-          console.log(error);
-      });
-    }, []);  
+    }).catch(error => {
+        console.log(error);
+    });
+  }, []);  
 
-    const onChange = (e) => {
-      if (e.target.files.length) {
-        const arrFiles = Array.from(e.target.files)
-        const files = arrFiles.map((file, index) => {
-          console.log(file);
-          const src = window.URL.createObjectURL(file);
-          console.log(src);
-          return { file, id: index, src }
-        })
-        dispatch({ type: 'load', payload: files })
-      }
+  const onChange = (e) => {
+    if (e.target.files.length) {
+      const arrFiles = Array.from(e.target.files)
+      const files = arrFiles.map((file, index) => {
+        console.log(file);
+        const src = window.URL.createObjectURL(file);
+        console.log(src);
+        return { file, id: index, src }
+      })
+      dispatch({ type: 'load', payload: files })
     }
+  }
 
-    const uploadSubmit = async (e) => {
+  const uploadSubmit = async (e) => {
       e.preventDefault();
       
-      let AuthUser = function(id) {
-        console.log("ID:= " + id);
-        const index = 200;
-        return axios.get(`/api/upload/${index}`).then(response => { 
-          console.log(response);
-          return response.data;
-        });
-      }
-      
-      const sendData = async (e) => {
-        const myData = [];
-          /*for (const value of category) {
-            let result = await AuthUser(value.id);
-            myData.push(result );
-          }*/
-        return myData;
-      }
-     
-      sendData(e).then((result) => {
+      ValidateUser(e).then((result) => {
           console.log(result);
           console.log(state);
           console.log(state.files);
@@ -133,30 +115,47 @@ const reducer = (state, action) => {
           
       console.log("Submited OK!!");
   }
-
-   
-
-    return (
-      <Card className="InnerCard" fontColor="black">
-        <strong>Upload Files!!</strong>
-        <form onSubmit={uploadSubmit}>
-          <div className="BackUps">  
-            <input type="file" name="file" multiple className="lg-button btn-primary"  onChange={onChange} />
-          </div>
-          <div>
-            {state.files.map(({ file, src, id }, index) => (
-              <div key={`thumb${index}`} className="thumbnail-wrapper">
-                <img className="thumbnail" src={src}  className="resize" alt={"GCS Image!!"} />
-                <div className="thumbnail-caption">{file.name.substring(
-                      file.name.lastIndexOf("sms_familie_album"), 
-                      file.name.lastIndexOf("?")
-                  )}</div>
-              </div>
-            ))}
-          </div>
-        </form>
-      </Card>
-    );
+        
+  const ValidateUser = async (e) => {
+    //const myData = [];
+    const token = localStorage.getItem('userToken');
+    let result = await AuthUser(token);
+    //myData.push(result );
+    //  }
+    return myData;
   }
 
-  export default BackUp;
+  const AuthUser = async(token) => {
+    console.log("TOKEN:= " + token);
+    axios.get(`/api/userByToken/${token}`).then(response => { 
+      console.log(response);
+      return response.data;
+    });
+  }
+
+
+
+  return (
+    <Card className="InnerCard" fontColor="black">
+      <strong>Upload Files!!</strong>
+      <form onSubmit={uploadSubmit}>
+        <div className="BackUps">  
+          <input type="file" name="file" multiple className="lg-button btn-primary"  onChange={onChange} />
+        </div>
+        <div>
+          {state.files.map(({ file, src, id }, index) => (
+            <div key={`thumb${index}`} className="thumbnail-wrapper">
+              <img className="thumbnail" src={src}  className="resize" alt={"GCS Image!!"} />
+              <div className="thumbnail-caption">{file.name.substring(
+                    file.name.lastIndexOf("sms_familie_album"), 
+                    file.name.lastIndexOf("?")
+                )}</div>
+            </div>
+          ))}
+        </div>
+      </form>
+    </Card>
+  );
+}
+
+export default BackUp;

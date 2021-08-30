@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.safarizote.model.UserAuth;
 import com.example.safarizote.repository.SignInRepository;
@@ -69,6 +70,18 @@ public class SignInController {
         Boolean isValid = tokenUsername.equals(userAuth.getEmail()) && !isTokenExpired(bearerToken);
 		return new ResponseEntity<>(isValid, HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/api/userByToken/{token}", method = RequestMethod.GET)
+    public String getUsernameFromToken(@PathVariable("token") String token) {
+      String username;
+      try {
+        final Claims claims = getAllClaimsFromToken(token);
+        username = claims.getSubject();
+      } catch (Exception e) {
+        username = null;
+      }
+      return username;
+    }
 
   private String getJWTToken(String subject) {
         System.out.println("SignInRepository getJWTToken()! subject!:= " + subject);
@@ -103,15 +116,4 @@ public class SignInController {
 		  final Date expiration = getExpirationDateFromToken(token);
 		  return expiration.before(new Date());
 	}
-
-  private String getUsernameFromToken(String token) {
-      String username;
-      try {
-        final Claims claims = getAllClaimsFromToken(token);
-        username = claims.getSubject();
-      } catch (Exception e) {
-        username = null;
-      }
-      return username;
-    }
 }
