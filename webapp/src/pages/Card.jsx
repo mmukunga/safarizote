@@ -5,7 +5,7 @@ const Card = (props) => {
   const { className, fontColor, children } = props;
   const labelStyles = {
     divStyle: {
-      fontSize: '2.0vw',
+      fontSize: '1.5vw',
       margin: '2px',
       padding: '2px',
       border: '2px solid red',
