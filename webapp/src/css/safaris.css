@@ -69,20 +69,6 @@
    border-top: 1px solid #ddd;
  }
 
- ul#page-numbers {
-    padding: 0;
-  }
-
- ul#page-numbers li {
-    padding-left:1em;
-  }
-
-  ul#page-numbers li span {
-    display:block;
-    margin-left:-0.5em;
-}
- 
-
  @media screen and (max-width: 600px) {
     .SafariSnap {
       float: inherit; 
