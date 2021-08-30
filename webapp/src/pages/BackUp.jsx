@@ -122,7 +122,7 @@ const BackUp = () => {
     let result = await AuthUser(token);
     //myData.push(result );
     //  }
-    return myData;
+    return result;
   }
 
   const AuthUser = async(token) => {
