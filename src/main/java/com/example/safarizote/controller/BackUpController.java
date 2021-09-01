@@ -18,20 +18,60 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
+import java.util.List;
+import java.util.ArrayList;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.channels.Channels;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.net.URL;
+
 import org.springframework.core.io.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.io.BufferedReader;
 
+import com.example.safarizote.model.BackUp;
+import com.example.safarizote.repository.BackUpRepository;
+
 @RestController
 class BackUpController {
     private static final int BUFFER_SIZE = 64 * 1024;
+    final Logger logger = LoggerFactory.getLogger(BackUpController.class);
+
+  @Autowired
+  private BackUpRepository repository;
+  
+ 
+  @Value("gs://${gcs-resource-test-bucket}/mail.jpg")
+  private Resource gcsFile;
+    
+  @RequestMapping(value = "/api/categories",  method={RequestMethod.GET})
+  public ResponseEntity<List<String>> findAll() throws IOException {
+      System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
+
+      String BUCKET_NAME = "sms_familie_album";
+      String PROJECT_ID  = "familiealbum-sms";
+
+      Resource resource = new ClassPathResource("credentials.json");
+      GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
+
+      // Get specific file from specified bucket
+      Storage storage = StorageOptions.newBuilder().setProjectId(PROJECT_ID).setCredentials(credentials).build().getService();
+      List<String> imageUrls = new ArrayList<>();
+      System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
+      System.out.println("BackUp.findAll()  End OK!");
+      return new ResponseEntity<>(imageUrls, HttpStatus.OK);
+  }    
+
 
     @RequestMapping(value = "/api/upload", method = RequestMethod.POST)
     public String uploadFile(@RequestParam("file") MultipartFile fileStream ) throws Exception {
