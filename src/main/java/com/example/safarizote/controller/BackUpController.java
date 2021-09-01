@@ -7,6 +7,7 @@ import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
 import com.google.cloud.storage.StorageOptions;
 import com.google.cloud.ReadChannel; 
+import com.google.api.gax.paging.Page;
 
 import com.google.auth.oauth2.GoogleCredentials;
 
@@ -67,6 +68,12 @@ class BackUpController {
       // Get specific file from specified bucket
       Storage storage = StorageOptions.newBuilder().setProjectId(PROJECT_ID).setCredentials(credentials).build().getService();
       List<String> imageUrls = new ArrayList<>();
+      Page<Blob> blobs = storage.list(BUCKET_NAME);
+
+      for (Blob blob : blobs.iterateAll()) {
+        System.out.println(blob.getName());
+      }
+
       System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
       System.out.println("BackUp.findAll()  End OK!");
       return new ResponseEntity<>(imageUrls, HttpStatus.OK);

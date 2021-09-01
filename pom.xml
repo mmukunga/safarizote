@@ -93,6 +93,12 @@
 			<version>1.2.8.RELEASE</version>
 		</dependency>
 		<dependency>
+			<groupId>com.google.api</groupId>
+			<artifactId>gax-bom</artifactId>
+			<version>1.58.0</version>
+			<type>pom</type>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
