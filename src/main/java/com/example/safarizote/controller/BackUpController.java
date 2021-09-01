@@ -1,65 +1,43 @@
 package com.example.safarizote.controller;
 
-import java.util.Date;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Random;
-
-import java.io.IOException;
-import java.net.URL;
-
-import java.util.regex.Pattern;
-
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.Bucket;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.BlobId;
+import com.google.cloud.storage.BlobInfo;
 import com.google.cloud.storage.StorageOptions;
+import com.google.cloud.ReadChannel; 
+
 import com.google.auth.oauth2.GoogleCredentials;
 
-import java.io.OutputStream;
-import java.nio.charset.Charset;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Date;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.nio.channels.Channels;
+
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.WritableResource;
-import org.springframework.util.StreamUtils;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.io.BufferedReader;
 
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import com.example.safarizote.model.BackUp;
-import com.example.safarizote.repository.BackUpRepository;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.util.concurrent.TimeUnit;
-
-@CrossOrigin(origins = "*")
 @RestController
-public class BackUpController { 
-  final Logger logger = LoggerFactory.getLogger(BackUpController.class);
+class BackUpController {
+    private static final int BUFFER_SIZE = 64 * 1024;
 
-  @Autowired
-  private BackUpRepository repository;
-  
-  //@Value("https://${gcs-resource-test-bucket}/2013%20Disneyland%20Paris/05.08.2013/DSC00945.JPG?authuser=0")
-  @Value("gs://${gcs-resource-test-bucket}/mail.jpg")
-  private Resource gcsFile;
-  
-    @RequestMapping(value = "/api/categories",  method={RequestMethod.GET})
-    public ResponseEntity<List<String>> findAll() throws IOException {
+    @RequestMapping(value = "/api/upload", method = RequestMethod.POST)
+    public String uploadFile(@RequestParam("file") MultipartFile fileStream ) throws Exception {
+        //File filePath = fileStream.; 
+        String blobName = fileStream.getName(); 
+        //File uploadCreds;
         System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
 
         String BUCKET_NAME = "sms_familie_album";
@@ -70,151 +48,52 @@ public class BackUpController {
 
         // Get specific file from specified bucket
         Storage storage = StorageOptions.newBuilder().setProjectId(PROJECT_ID).setCredentials(credentials).build().getService();
-        List<String> imageUrls = new ArrayList<>();
+
+        //String bucketName = "bucketName"; 
         Bucket bucket = storage.get(BUCKET_NAME);
-        for (Blob blob : bucket.list().iterateAll()) {
-            System.out.println("PATH blob.getName() : " + blob.getName());
-            //String path = blob.getName().substring(blob.getName().indexOf("sms_familie_album"), blob.getName().indexOf("?"));
-            //System.out.println("PATH path : " + path);
-            // Passing Substring    
-            if (blob.getName().indexOf("/") != -1) {     
-                String folder = blob.getName().substring( 0, blob.getName().indexOf("/"));
-                System.out.println("FOLDER folder : " + folder);
-                boolean found = false;
-                for (String imageUrl : imageUrls) {
-                    if (!imageUrl.contains(folder)) {
-                        found = true;
-                    }
-                }
+        BlobId blobId = BlobId.of(bucket.getName(), blobName);
+        InputStream inputStream = fileStream.getInputStream();
+        BlobInfo blobInfo = BlobInfo.newBuilder(blobId).setContentType("image/jpeg").build();
 
-                if (found == false) {
-                    System.out.println("FOLDER FOUND : " + folder);
-                    imageUrls.add(folder);
-                }
-            }
-        }
+        Blob blob = storage.createFrom(blobInfo, inputStream);
 
-        System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
-        System.out.println("BackUp.findAll()  End OK!");
-        return new ResponseEntity<>(imageUrls, HttpStatus.OK);
+        System.out.println("Image URL : " +  blob.getMediaLink());
+
+        return  blob.getMediaLink();
+
     }
 
-    @RequestMapping(value = "/api/upload/{id}",  method={RequestMethod.GET})
-    public ResponseEntity<String> getUpload(@PathVariable Long id) {
-        System.out.println("BackUpController: getBackUp FolderID:= " + id);
-        List<BackUp> categories = repository.findAll();
-
-        Random randomGenerator = new Random();
-        int index = randomGenerator.nextInt(categories.size());
-
-        BackUp backUp = categories.get(index);
-        backUp.setChildren(null);
-        System.out.println("Managers choice this week" + backUp + "our recommendation to you");
-        
-        return new ResponseEntity<>("backUp", HttpStatus.OK);
-    }
-
-
-    @RequestMapping(value="/api/gcsDownloadAll", method={RequestMethod.GET})
-    public ResponseEntity<Object> readGcsFiles(@RequestParam("folder") String folder) throws Exception {
-        System.out.println(folder);
-
-        String matchExpr = ".*2013 Disneyland Paris.*";
-        Pattern matchPattern = Pattern.compile(matchExpr);
-
+    @RequestMapping(value = "/api/download", method = RequestMethod.GET)
+    public ResponseEntity<String> downloadFile(@PathVariable String fileName ) throws Exception {
         String BUCKET_NAME = "sms_familie_album";
         String PROJECT_ID  = "familiealbum-sms";
-
-        System.out.println("An folder upload request has come in!!");
-        System.out.println("Folder from Multipart:= " + folder);
-        if (folder == null) {
-            return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
-        }
-
+        
         Resource resource = new ClassPathResource("credentials.json");
         GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
 
-        // Get specific file from specified bucket
-        Storage storage = StorageOptions.newBuilder().setProjectId(PROJECT_ID).setCredentials(credentials).build().getService();
-        List<String> imageUrls = new ArrayList<>();
-        Bucket bucket = storage.get(BUCKET_NAME);
-        for (Blob blob : bucket.list().iterateAll()) {
-            if (matchPattern.matcher(blob.getName()).matches()) {
-                System.out.println(blob.getName());
-                Integer duration = 15;
-                URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
-                String imageUrl = signedUrl.toExternalForm();
-                System.out.println("Generated IMAGE URL 3 : " + imageUrl);
-                imageUrls.add(imageUrl);
-            }
-        }
+        String OBJECT_NAME = "my-object";
 
-        return ResponseEntity.ok().build();
-    }
+        StorageOptions options = StorageOptions.newBuilder()
+                    .setProjectId(PROJECT_ID)
+                    .setCredentials(credentials).build();
 
-    @RequestMapping(value = "/api/gcsDownload", method = RequestMethod.GET)
-	public ResponseEntity<?> readGcsFile(@RequestParam("image") String image) throws IOException {
-        System.out.println("1.Image/gcsFile from GoogleCloud Storage:= " + image);
+        Storage storage = options.getService();
+        Blob blob = storage.get(BUCKET_NAME, OBJECT_NAME);
+        ReadChannel r = blob.reader();
+
+        BufferedReader br = new BufferedReader(Channels.newReader(r,"UTF-8"));
         
-        String matchExpr = ".*2013 Disneyland Paris.*";
-        Pattern matchPattern = Pattern.compile(matchExpr);
-
-        String BUCKET_NAME = "sms_familie_album";
-        String OBJECT_NAME = "mail.jpg";
-        String PROJECT_ID  = "familiealbum-sms";
-
-        String gcsFile = StreamUtils.copyToString(
-            this.gcsFile.getInputStream(),
-            Charset.defaultCharset()) + "\n";
-        System.out.println("gcsFile : " +  gcsFile); 
-
-        Resource resource = new ClassPathResource("credentials.json");
-        GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
-
-        // Get specific file from specified bucket
-        Storage storage = StorageOptions.newBuilder().setProjectId(PROJECT_ID).setCredentials(credentials).build().getService();
-        BlobId blobId = BlobId.of(BUCKET_NAME, OBJECT_NAME);
-        Blob blob = storage.get(blobId);
-
-        System.out.println("Image URL : " +  blob.getMediaLink());    
-
-        long size = blob.getSize(); // no RPC call is required
-        System.out.println("size : " +  size); 
-        byte[] content = blob.getContent(); // one or multiple RPC calls will be issued
-        System.out.println("content : " +  content); 
-
-        Integer duration = 15;
-        URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
-        String imageUrl = signedUrl.toExternalForm();
-        System.out.println("Generated IMAGE URL XX : " + imageUrl);
-
-        Bucket bucket = storage.get(BUCKET_NAME);
-        for (Blob b : bucket.list().iterateAll()) {
-            if (matchPattern.matcher(b.getName()).matches()) {
-                System.out.println("Generated IMAGE URL 1 : " + imageUrl);
-                System.out.println(b.getName());
-            }    
+        ByteBuffer bytes = ByteBuffer.allocate(BUFFER_SIZE);
+        while (r.read(bytes) > 0) {
+            bytes.flip();
+            // do something with bytes
+            bytes.clear();
         }
 
-        return new ResponseEntity<>(imageUrl, HttpStatus.OK); 
-	}
-   
+        String fileContent = new String(blob.getContent()); 
+        System.out.println(fileContent);
 
-	@RequestMapping(value = "/api/gcsUpload", method = RequestMethod.POST)
-	String writeGcs(@RequestBody String data) throws IOException {
-		try (OutputStream os = ((WritableResource) this.gcsFile).getOutputStream()) {
-			os.write(data.getBytes());
-		}
-		return "file was updated\n";
-	}
-
-    public void displayList(BackUp category, StringBuffer indentation){
-        indentation.append(" ");
-        for (BackUp temp : category.getChildren()) {
-            System.out.println(indentation.toString() + temp.getName() + " " + temp.getDateCreated());
-            if (temp.getChildren().size() > 0){
-                displayList(temp, indentation);
-            }
-        }
+        return new ResponseEntity<>(fileContent, HttpStatus.OK);
     }
+
 }
