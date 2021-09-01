@@ -29,7 +29,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.net.URL;
 
 import org.springframework.core.io.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,17 +39,10 @@ import org.springframework.http.ResponseEntity;
 
 import java.io.BufferedReader;
 
-import com.example.safarizote.model.BackUp;
-import com.example.safarizote.repository.BackUpRepository;
-
 @RestController
 class BackUpController {
     private static final int BUFFER_SIZE = 64 * 1024;
     final Logger logger = LoggerFactory.getLogger(BackUpController.class);
-
-  @Autowired
-  private BackUpRepository repository;
-  
  
   @Value("gs://${gcs-resource-test-bucket}/mail.jpg")
   private Resource gcsFile;
@@ -71,7 +63,8 @@ class BackUpController {
       Page<Blob> blobs = storage.list(BUCKET_NAME);
 
       for (Blob blob : blobs.iterateAll()) {
-        System.out.println(blob.getName());
+           System.out.println(blob.getName());
+           imageUrls.add(blob.getName());
       }
 
       System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
