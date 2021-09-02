@@ -89,7 +89,7 @@ public class BackUpController {
 
   @RequestMapping(value = "/api/categories",  method={RequestMethod.GET})
   public ResponseEntity<List<URL>> findCategory() throws IOException {
-      System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
+      System.out.println("findCategory.findAll(), the time at the server is now " + new Date());
 
       String BUCKET_NAME = "sms_familie_album";
       String PROJECT_ID  = "familiealbum-sms";
@@ -113,8 +113,8 @@ public class BackUpController {
             System.out.println("BackUpController.signedUrl:= " + signedUrl);
         }
 
-      System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
-      System.out.println("BackUp.findAll()  End OK!");
+      System.out.println("findCategory.findAll(), the time at the server is now " + new Date());
+      System.out.println("findCategory.findAll()  End OK!");
       return new ResponseEntity<>(imageUrls, HttpStatus.OK);
     }    
 
