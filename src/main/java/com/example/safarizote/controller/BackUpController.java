@@ -48,7 +48,7 @@ public class BackUpController {
   @Value("gs://${gcs-resource-test-bucket}/mail.jpg")
   private Resource gcsFile;
     
-  @RequestMapping(value = "/api/categories",  method={RequestMethod.GET})
+  @RequestMapping(value = "/api/listAll",  method={RequestMethod.GET})
   public ResponseEntity<List<String>> findAll() throws IOException {
       System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
 
@@ -69,12 +69,47 @@ public class BackUpController {
            imageUrls.add(blob.getName());
       }
 
+      String directoryPrefix = "2017 Olaug";
 
-      Page<Blob> listObjects = storage.list(BUCKET_NAME);
+      Page<Blob> listObjects = storage.list(BUCKET_NAME,
+            Storage.BlobListOption.prefix(directoryPrefix),
+            Storage.BlobListOption.currentDirectory());
+
       Iterable<Blob> myBlobs = listObjects.iterateAll();
       for(Blob object : myBlobs) {
             System.out.println(object.getName() + " (" + object.getSize() + " bytes)");
             URL signedUrl = object.signUrl(14, TimeUnit.DAYS);
+            System.out.println("BackUpController.signedUrl:= " + signedUrl);
+        }
+
+      System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
+      System.out.println("BackUp.findAll()  End OK!");
+      return new ResponseEntity<>(imageUrls, HttpStatus.OK);
+    }    
+
+  @RequestMapping(value = "/api/categories",  method={RequestMethod.GET})
+  public ResponseEntity<List<URL>> findCategory() throws IOException {
+      System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
+
+      String BUCKET_NAME = "sms_familie_album";
+      String PROJECT_ID  = "familiealbum-sms";
+
+      Resource resource = new ClassPathResource("credentials.json");
+      GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
+
+      // Get specific file from specified bucket
+      Storage storage = StorageOptions.newBuilder().setProjectId(PROJECT_ID).setCredentials(credentials).build().getService();
+      List<URL> imageUrls = new ArrayList<>();
+      String directoryPrefix = "2017 Olaug";
+
+      Page<Blob> listObjects = storage.list(BUCKET_NAME,
+            Storage.BlobListOption.prefix(directoryPrefix),
+            Storage.BlobListOption.currentDirectory());
+
+      Iterable<Blob> blobs = listObjects.iterateAll();
+      for(Blob blob : blobs) {
+            URL signedUrl = blob.signUrl(14, TimeUnit.DAYS);
+            imageUrls.add(signedUrl);
             System.out.println("BackUpController.signedUrl:= " + signedUrl);
         }
 
