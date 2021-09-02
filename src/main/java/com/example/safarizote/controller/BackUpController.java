@@ -105,6 +105,7 @@ public class BackUpController {
       Page<Blob> listObjects = storage.list(BUCKET_NAME,
             Storage.BlobListOption.prefix(directoryPrefix),
             Storage.BlobListOption.currentDirectory());
+      System.out.println("1.BackUpController.listObjects " + listObjects);
 
       Iterable<Blob> blobs = listObjects.iterateAll();
       for(Blob blob : blobs) {
