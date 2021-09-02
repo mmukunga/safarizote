@@ -100,7 +100,7 @@ public class BackUpController {
       // Get specific file from specified bucket
       Storage storage = StorageOptions.newBuilder().setProjectId(PROJECT_ID).setCredentials(credentials).build().getService();
       List<URL> imageUrls = new ArrayList<>();
-      String directoryPrefix = "Olaug";
+      String directoryPrefix = "2017%20Olaug/";
 
       Page<Blob> listObjects = storage.list(BUCKET_NAME,
             Storage.BlobListOption.prefix(directoryPrefix),
