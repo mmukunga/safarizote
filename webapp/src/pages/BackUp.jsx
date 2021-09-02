@@ -28,7 +28,7 @@ const reducer = (state, action) => {
 
 const BackUp = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [images, setImages] = useReducer([]);
+  const [images, setImages] = React.useState([]);
 
   React.useEffect(() => {
     axios.get("/api/categories").then(response => {
