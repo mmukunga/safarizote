@@ -28,27 +28,27 @@ const reducer = (state, action) => {
 
 const BackUp = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  
+  const [images, setImages] = useReducer([]);
+
   React.useEffect(() => {
     axios.get("/api/categories").then(response => {
         console.log(response.data);
+        setImages(response.data);
 
-            const fileName = 'http://www.hyperlinkcode.com/images/sample-image.jpg';
-            const date = new Date();
-            const unixTimeStamp = Math.floor(date.getTime() / 1000);
-            const File = {
-                lastModified: unixTimeStamp,
-                lastModifiedDate: date,
-                name: fileName,
-                size: 8000,
-                type: "image/jpeg",
-                webkitRelativePath: ""
-            };
+        const fileName = 'http://www.hyperlinkcode.com/images/sample-image.jpg';
+        const date = new Date();
+        const unixTimeStamp = Math.floor(date.getTime() / 1000);
+        const File = {
+            lastModified: unixTimeStamp,
+            lastModifiedDate: date,
+            name: fileName,
+            size: 8000,
+            type: "image/jpeg",
+            webkitRelativePath: ""
+        };
 
-            const gcsData = {file: File, id: state.files.length+1, src: `${fileName}`}
-            dispatch({ type: 'add_item', payload: gcsData });
-
-
+        const gcsData = {file: File, id: state.files.length+1, src: `${fileName}`}
+        dispatch({ type: 'add_item', payload: gcsData });
     }).catch(error => {
         console.log(error);
     });
@@ -153,6 +153,19 @@ const BackUp = () => {
             </div>
           ))}
         </div>
+
+        <div className="photo-gallery">
+          <ul className="thumbs-list">
+            {images && images.map((imgSrc, indx) => {
+              return (
+                <li key={ indx }>
+                  <img src={ imgSrc } alt="Shet!!" />
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+
       </form>
     </Card>
   );

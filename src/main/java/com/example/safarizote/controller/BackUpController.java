@@ -109,10 +109,9 @@ public class BackUpController {
 
       Iterable<Blob> blobs = listObjects.iterateAll();
       for(Blob blob : blobs) {
-            URL signedUrl = blob.signUrl(14, TimeUnit.DAYS);
-            imageUrls.add(signedUrl);
-            System.out.println("BackUpController.signedUrl:= " + signedUrl);
-        }
+        URL signedUrl = blob.signUrl(14, TimeUnit.DAYS);
+        imageUrls.add(signedUrl);
+      }
 
       System.out.println("findCategory.findAll(), the time at the server is now " + new Date());
       System.out.println("findCategory.findAll()  End OK!");
