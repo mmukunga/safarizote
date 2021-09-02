@@ -159,7 +159,7 @@ const BackUp = () => {
             {images && images.map((imgSrc, indx) => {
               return (
                 <li key={ indx }>
-                  <img src={ imgSrc } alt="Shet!!" />
+                  <img src={ imgSrc } className="Thumbnail" alt="Shet!!" />
                 </li>
               );
             })}
