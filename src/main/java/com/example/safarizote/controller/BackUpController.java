@@ -20,10 +20,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.ArrayList;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.channels.Channels;
+import java.net.URL;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +33,6 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 
 import org.springframework.core.io.Resource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
@@ -40,7 +41,7 @@ import org.springframework.http.ResponseEntity;
 import java.io.BufferedReader;
 
 @RestController
-class BackUpController {
+public class BackUpController {
     private static final int BUFFER_SIZE = 64 * 1024;
     final Logger logger = LoggerFactory.getLogger(BackUpController.class);
  
@@ -61,17 +62,26 @@ class BackUpController {
       Storage storage = StorageOptions.newBuilder().setProjectId(PROJECT_ID).setCredentials(credentials).build().getService();
       List<String> imageUrls = new ArrayList<>();
       Page<Blob> blobs = storage.list(BUCKET_NAME);
-
+      
+      //https://storage.googleapis.com/${bucket.name}/${blob.name}
       for (Blob blob : blobs.iterateAll()) {
            System.out.println(blob.getName());
            imageUrls.add(blob.getName());
       }
 
+
+      Page<Blob> listObjects = storage.list(BUCKET_NAME);
+      Iterable<Blob> myBlobs = listObjects.iterateAll();
+      for(Blob object : myBlobs) {
+            System.out.println(object.getName() + " (" + object.getSize() + " bytes)");
+            URL signedUrl = object.signUrl(14, TimeUnit.DAYS);
+            System.out.println("BackUpController.signedUrl:= " + signedUrl);
+        }
+
       System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
       System.out.println("BackUp.findAll()  End OK!");
       return new ResponseEntity<>(imageUrls, HttpStatus.OK);
-  }    
-
+    }    
 
     @RequestMapping(value = "/api/upload", method = RequestMethod.POST)
     public String uploadFile(@RequestParam("file") MultipartFile fileStream ) throws Exception {
@@ -135,5 +145,4 @@ class BackUpController {
 
         return new ResponseEntity<>(fileContent, HttpStatus.OK);
     }
-
 }
