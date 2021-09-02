@@ -13,6 +13,16 @@ img.resize {
   max-height:50%;
 }
 
+.thumbs-list{
+  border: 2px solid burlywood;
+}
+
+.ThumbnailDiv {
+  padding: auto;
+  margin: 2px;
+  border: 2px solid orchid;
+}
+
 .Thumbnail {
   height: 200px;
   width: 200px;

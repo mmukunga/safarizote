@@ -155,15 +155,15 @@ const BackUp = () => {
         </div>
 
         <div className="photo-gallery">
-          <ul className="thumbs-list">
+          <div className="thumbs-list">
             {images && images.map((imgSrc, indx) => {
               return (
-                <li key={ indx }>
+                <div key={ indx } className="ThumbnailDiv">
                   <img src={ imgSrc } className="Thumbnail" alt="Shet!!" />
-                </li>
+                </div>
               );
             })}
-          </ul>
+          </div>
         </div>
 
       </form>
