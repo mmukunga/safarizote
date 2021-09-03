@@ -28,12 +28,12 @@ const reducer = (state, action) => {
 }
 
 const Spinner = () => {
-  <div className="post loading">
-    <h5>Loading..</h5>
+  <div className="Loading">
+    <strong>Loading..</strong>
   </div>
 }
 
-const Image = ({id, url}) => {
+const ReactImage = ({id, url}) => {
   <div className="post">
     <LazyLoad once={true} placeholder={<Spinner />} >
     <div key={ id } className="ThumbnailDiv">
@@ -173,7 +173,7 @@ const BackUp = () => {
           <div className="thumbs-list">
             {images && images.map((imgUrl, idx) => {
               return (
-              <LazyLoad height={200} offset={100}>  
+              <LazyLoad height={200} offset={100} placeholder={<Spinner/>}>  
               <div key={idx} className="ThumbnailDiv">
                   <img src={imgUrl} className="Thumbnail" alt="Shet!!" />
               </div>
