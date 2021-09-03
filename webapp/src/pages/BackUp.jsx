@@ -173,9 +173,9 @@ const BackUp = () => {
           <div className="thumbs-list">
             {images && images.map((imgSrc, idx) => {
               return (
-                <LazyLoad key={idx} height={100} offset={[-100, 100]} placeholder={<Spinner />}>
+                
                   <Image key={idx} id={idx} url={imgSrc} />
-                </LazyLoad>
+              
               );
             })}
           </div>
