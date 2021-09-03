@@ -33,11 +33,11 @@ const Spinner = () => {
   </div>
 }
 
-const ReactImage = ({id, url}) => {
+const LazyImage = ({src, alt}) => {
   <div className="post">
-    <LazyLoad once={true} placeholder={<Spinner />} >
-    <div key={ id } className="ThumbnailDiv">
-      <img src={ url } className="Thumbnail" alt="Shet!!" />
+    <LazyLoad once={true} >
+    <div className="ThumbnailDiv">
+      <img src={src} className="Thumbnail" alt={alt} />
     </div>
     </LazyLoad>
   </div>
@@ -174,9 +174,7 @@ const BackUp = () => {
             {images && images.map((imgUrl, idx) => {
               return (
               <LazyLoad height={200} offset={100}>  
-              <div key={idx} className="ThumbnailDiv">
-                  <img src={imgUrl} className="Thumbnail" alt="Shet!!" />
-              </div>
+                <LazyImage src={imgUrl} alt={idx} />
               </LazyLoad>
               );
             })}
