@@ -25,7 +25,8 @@
     "video-react": "^0.14.1",
     "font-awesome": "^4.7.0",
     "bowser": "^2.11.0",
-    "radium": "^0.26.1"
+    "radium": "^0.26.1",
+    "react-lazyload": "^3.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useReducer, useCallback  } from "react";
+import LazyLoad from "react-lazyload";
 import Card from './Card';
 import axios , { post } from 'axios';
 import 'react-checkbox-tree/lib/react-checkbox-tree.css';
@@ -24,6 +25,22 @@ const reducer = (state, action) => {
     default:
       return state
   }
+}
+
+const Spinner = () => {
+  <div className="post loading">
+    <h5>Loading..</h5>
+  </div>
+}
+
+const Image = ({id, url}) => {
+  <div className="post">
+    <LazyLoad once={true} placeholder={<Spinner />} >
+    <div key={ id } className="ThumbnailDiv">
+      <img src={ url } className="Thumbnail" alt="Shet!!" />
+    </div>
+    </LazyLoad>
+  </div>
 }
 
 const BackUp = () => {
@@ -154,11 +171,11 @@ const BackUp = () => {
 
         <div className="photo-gallery">
           <div className="thumbs-list">
-            {images && images.map((imgSrc, indx) => {
+            {images && images.map((imgSrc, idx) => {
               return (
-                <div key={ indx } className="ThumbnailDiv">
-                  <img src={ imgSrc } className="Thumbnail" alt="Shet!!" />
-                </div>
+                <LazyLoad key={idx} height={100} offset={[-100, 100]} placeholder={<Spinner />}>
+                  <Image key={idx} id={idx} url={imgSrc} />
+                </LazyLoad>
               );
             })}
           </div>
