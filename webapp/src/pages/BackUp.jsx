@@ -171,11 +171,11 @@ const BackUp = () => {
 
         <div className="photo-gallery">
           <div className="thumbs-list">
-            {images && images.map((imgSrc, idx) => {
+            {images && images.map((imgUrl, idx) => {
               return (
-                
-                  <Image key={idx} id={idx} url={imgSrc} />
-              
+              <div key={idx} className="ThumbnailDiv">
+                <img src={imgUrl} className="Thumbnail" alt="Shet!!" />
+              </div>
               );
             })}
           </div>
