@@ -174,7 +174,9 @@ const BackUp = () => {
             {images && images.map((imgUrl, idx) => {
               return (
               <div key={idx} className="ThumbnailDiv">
-                <img src={imgUrl} className="Thumbnail" alt="Shet!!" />
+                <LazyLoad height={200} offset={100}>
+                  <img src={imgUrl} className="Thumbnail" alt="Shet!!" />
+                </LazyLoad>
               </div>
               );
             })}
