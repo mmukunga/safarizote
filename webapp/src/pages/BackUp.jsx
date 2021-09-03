@@ -133,8 +133,6 @@ const BackUp = () => {
     });
   }
 
-
-
   return (
     <Card className="InnerCard" fontColor="black">
       <strong>Upload Files!!</strong>

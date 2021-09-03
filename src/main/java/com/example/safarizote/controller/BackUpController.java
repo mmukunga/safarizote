@@ -24,7 +24,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.ArrayList;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
-import java.nio.channels.Channels;
 import java.net.URL;
 
 import org.slf4j.Logger;
@@ -37,8 +36,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
-import java.io.BufferedReader;
 
 @RestController
 public class BackUpController {
@@ -123,7 +120,7 @@ public class BackUpController {
         //File filePath = fileStream.; 
         String blobName = fileStream.getName(); 
         //File uploadCreds;
-        System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
+        System.out.println("BackUpController.upload(), the time at the server is now " + new Date());
 
         String BUCKET_NAME = "sms_familie_album";
         String PROJECT_ID  = "familiealbum-sms";
@@ -142,17 +139,18 @@ public class BackUpController {
 
         Blob blob = storage.createFrom(blobInfo, inputStream);
 
-        System.out.println("Image URL : " +  blob.getMediaLink());
+        System.out.println("BackUpController Image URL : " +  blob.getMediaLink());
 
         return  blob.getMediaLink();
 
     }
 
-    @RequestMapping(value = "/api/download", method = RequestMethod.GET)
-    public ResponseEntity<String> downloadFile(@PathVariable String fileName ) throws Exception {
+    @RequestMapping(value = "/api/gcsDownload", method = RequestMethod.GET)
+    public ResponseEntity<String> downloadFile(@PathVariable String image ) throws Exception {
         String BUCKET_NAME = "sms_familie_album";
         String PROJECT_ID  = "familiealbum-sms";
-        
+        System.out.println("gcsDownload Image URL : " +  image);
+
         Resource resource = new ClassPathResource("credentials.json");
         GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
 
@@ -165,8 +163,6 @@ public class BackUpController {
         Storage storage = options.getService();
         Blob blob = storage.get(BUCKET_NAME, OBJECT_NAME);
         ReadChannel r = blob.reader();
-
-        BufferedReader br = new BufferedReader(Channels.newReader(r,"UTF-8"));
         
         ByteBuffer bytes = ByteBuffer.allocate(BUFFER_SIZE);
         while (r.read(bytes) > 0) {

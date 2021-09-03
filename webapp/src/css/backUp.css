@@ -19,6 +19,7 @@ img.resize {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    margin: 10px auto;
 
 }
 
@@ -28,6 +29,7 @@ img.resize {
   border: 2px solid orchid;
   width:210px; 
   height:210px;
+  display:inline-block;
 }
 
 .Thumbnail {
