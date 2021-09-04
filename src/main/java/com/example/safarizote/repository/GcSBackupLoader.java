@@ -1,6 +1,7 @@
 package com.example.safarizote.repository;
 
 import java.io.File;
+import java.net.URL;
 
 import com.example.safarizote.model.BackUp1;
 
@@ -30,13 +31,17 @@ import java.util.Arrays;
         public void run(String... args) throws Exception {
             System.out.println("The Directory is traversed.");
             System.out.println("GcSBackupLoader..BACKUP TO DB!!");
-            
+
             if (repository.count() > 0) {
                 System.out.println("BACKUP TABLE NOT EMPTY!!..");
                 return;
             }
 
-            FileInputStream fis = new FileInputStream(new File("/Temps/safarizote/src/main/resources/slettMeg.ser"));
+            
+
+            URL resource = getClass().getClassLoader().getResource("slettMeg.ser");
+            FileInputStream fis = new FileInputStream(new File(resource.toURI()));
+
             ObjectInputStream ois = new ObjectInputStream(fis);
             List<BackUp1> myList = (ArrayList<BackUp1>) Arrays.asList( (BackUp1[]) ois.readObject() );
     
