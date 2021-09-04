@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.io.InputStream;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 
@@ -37,10 +38,17 @@ import java.util.Arrays;
                 return;
             }
 
-            
+            Class cls = Class.forName("GcSBackupLoader");
+            // returns the ClassLoader object associated with this Class
+            ClassLoader cLoader = cls.getClassLoader();
 
-            URL resource = getClass().getClassLoader().getResource("slettMeg.ser");
-            FileInputStream fis = new FileInputStream(new File(resource.toURI()));
+            File file = new File(cLoader.getResource("slettMeg.ser").getFile());
+         
+        //File is found
+        System.out.println("File Found : " + file.exists());
+
+            //URL resource = getClass().getClassLoader().getResource("slettMeg.ser");
+            FileInputStream fis = new FileInputStream(file);
 
             ObjectInputStream ois = new ObjectInputStream(fis);
             List<BackUp1> myList = (ArrayList<BackUp1>) Arrays.asList( (BackUp1[]) ois.readObject() );
