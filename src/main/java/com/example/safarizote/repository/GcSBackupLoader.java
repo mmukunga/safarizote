@@ -41,14 +41,13 @@ import java.util.Arrays;
             ClassLoader classLoader = getClass().getClassLoader();
             File file = new File(classLoader.getResource("slettMeg.ser").getFile());
          
-        //File is found
-        System.out.println("File Found : " + file.exists());
+            //File is found
+            System.out.println("File Found : " + file.exists());
 
             //URL resource = getClass().getClassLoader().getResource("slettMeg.ser");
             FileInputStream fis = new FileInputStream(file);
-
             ObjectInputStream ois = new ObjectInputStream(fis);
-            List<BackUp1> myList = (ArrayList<BackUp1>) Arrays.asList( (BackUp1[]) ois.readObject() );
+            List<BackUp1> myList = (ArrayList<BackUp1>) Arrays.asList( (BackUp1[]) ois.readObject());
     
             for (BackUp1 backUp : myList) {
                 System.out.println(backUp);
