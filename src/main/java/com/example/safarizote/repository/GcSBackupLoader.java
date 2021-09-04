@@ -38,11 +38,8 @@ import java.util.Arrays;
                 return;
             }
 
-            Class cls = Class.forName("GcSBackupLoader");
-            // returns the ClassLoader object associated with this Class
-            ClassLoader cLoader = cls.getClassLoader();
-
-            File file = new File(cLoader.getResource("slettMeg.ser").getFile());
+            ClassLoader classLoader = getClass().getClassLoader();
+            File file = new File(classLoader.getResource("slettMeg.ser").getFile());
          
         //File is found
         System.out.println("File Found : " + file.exists());
