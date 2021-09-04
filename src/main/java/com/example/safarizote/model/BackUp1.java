@@ -23,7 +23,9 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BackUp1 {
+public class BackUp1 implements java.io.Serializable {
+    private static final long serialVersionUID = 7829136421241571165L;
+     
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     Long id;
