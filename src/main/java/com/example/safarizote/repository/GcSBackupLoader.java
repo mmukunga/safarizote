@@ -19,6 +19,9 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.springframework.util.ResourceUtils;
+import org.springframework.core.io.Resource;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
 
     
     @Component
@@ -35,18 +38,20 @@ import org.springframework.util.ResourceUtils;
             System.out.println("GcSBackupLoader..BACKUP TO DB!!");
 
             if (repository.count() > 0) {
-                System.out.println("BACKUP TABLE NOT EMPTY!!..");
+                System.out.println("BACKUP TABLE NOT EMPTY!!");
                 return;
             }
 
             //ClassLoader classLoader = getClass().getClassLoader();
             //File file = new File(getClass().getResource("slettMeg.ser").getFile());
-            File file = ResourceUtils.getFile("classpath:slettMeg.ser");
-            System.out.println("File Found : " + file.exists());
-
+            //File file = ResourceUtils.getFile("classpath:slettMeg.ser");
+            Resource resource = new ClassPathResource("slettMeg.ser");
+            InputStream in = resource.getInputStream();
+           // System.out.println("File Found : " + file.exists());
+            ObjectInputStream ois = new ObjectInputStream(in);
             //URL resource = getClass().getClassLoader().getResource("slettMeg.ser");
-            FileInputStream fis = new FileInputStream(file);
-            ObjectInputStream ois = new ObjectInputStream(fis);
+            //FileInputStream fis = new FileInputStream(file);
+            //ObjectInputStream ois = new ObjectInputStream(fis);
             List<BackUp1> myList = (ArrayList<BackUp1>) Arrays.asList( (BackUp1[]) ois.readObject());
     
             for (BackUp1 backUp : myList) {
