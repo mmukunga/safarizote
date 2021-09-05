@@ -46,16 +46,16 @@ import org.springframework.core.io.ClassPathResource;
             //File file = new File(getClass().getResource("slettMeg.ser").getFile());
             //File file = ResourceUtils.getFile("classpath:slettMeg.ser");
             Resource resource = new ClassPathResource("slettMeg.ser");
-            //InputStream in = resource.getInputStream();
-            File file = resource.getFile();
+            InputStream in = resource.getInputStream();
+            //File file = resource.getInputStream();
            // System.out.println("File Found : " + file.exists());
             //ObjectInputStream ois = new ObjectInputStream(in);
             //URL resource = getClass().getClassLoader().getResource("slettMeg.ser");
-            FileInputStream fis = new FileInputStream(file);
+            //FileInputStream fis = new FileInputStream(file);
             //ObjectInputStream ois = new ObjectInputStream(fis);
 
           
-            InputStream in = getClass().getResourceAsStream("slettMeg.ser");
+            //InputStream in = getClass().getResourceAsStream("slettMeg.ser");
             ObjectInputStream ois = new ObjectInputStream(in);
 
             List<BackUp1> myList = (ArrayList<BackUp1>) Arrays.asList( (BackUp1[]) ois.readObject());
