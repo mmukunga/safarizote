@@ -39,7 +39,7 @@ import java.util.Arrays;
             }
 
             ClassLoader classLoader = getClass().getClassLoader();
-            File file = new File(classLoader.getResource("/slettMeg.ser").getFile());
+            File file = new File(getClass().getResource("slettMeg.ser").getFile());
             System.out.println("File Found : " + file.exists());
 
             //URL resource = getClass().getClassLoader().getResource("slettMeg.ser");
