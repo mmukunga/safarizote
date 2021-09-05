@@ -18,6 +18,7 @@ import java.io.ObjectInputStream;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
+import org.springframework.util.ResourceUtils;
 
     
     @Component
@@ -38,8 +39,9 @@ import java.util.Arrays;
                 return;
             }
 
-            ClassLoader classLoader = getClass().getClassLoader();
-            File file = new File(getClass().getResource("slettMeg.ser").getFile());
+            //ClassLoader classLoader = getClass().getClassLoader();
+            //File file = new File(getClass().getResource("slettMeg.ser").getFile());
+            File file = ResourceUtils.getFile("classpath:slettMeg.ser");
             System.out.println("File Found : " + file.exists());
 
             //URL resource = getClass().getClassLoader().getResource("slettMeg.ser");
