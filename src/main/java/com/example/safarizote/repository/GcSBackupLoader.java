@@ -52,7 +52,12 @@ import org.springframework.core.io.ClassPathResource;
             //ObjectInputStream ois = new ObjectInputStream(in);
             //URL resource = getClass().getClassLoader().getResource("slettMeg.ser");
             FileInputStream fis = new FileInputStream(file);
-            ObjectInputStream ois = new ObjectInputStream(fis);
+            //ObjectInputStream ois = new ObjectInputStream(fis);
+
+          
+            InputStream in = getClass().getResourceAsStream("slettMeg.ser");
+            ObjectInputStream ois = new ObjectInputStream(in);
+
             List<BackUp1> myList = (ArrayList<BackUp1>) Arrays.asList( (BackUp1[]) ois.readObject());
     
             for (BackUp1 backUp : myList) {
