@@ -62,7 +62,7 @@ public class DirectoryLoader implements CommandLineRunner {
         logger.info("Application started with command-line arguments: {} . \n To kill this application, press Ctrl + C.", 
         Arrays.toString(args));
        
-        String fileName = "src/resources/sample.txt";
+        String fileName = "src/resources/config/sample.txt";
        // returns the Class object for this class
        try (InputStream fis = new FileInputStream(fileName);
                 InputStreamReader isr = new InputStreamReader(fis,
