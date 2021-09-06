@@ -63,14 +63,12 @@ public class DirectoryLoader implements CommandLineRunner {
         Arrays.toString(args));
        
         String fileName = "src/resources/config/sample.txt";
-       // returns the Class object for this class
-       try (InputStream fis = new FileInputStream(fileName);
-                InputStreamReader isr = new InputStreamReader(fis,
-                        StandardCharsets.UTF_8);
-                BufferedReader br = new BufferedReader(isr)) {
-
-            br.lines().forEach(line -> System.out.println(line));
-        }
+        InputStream inputStream = getClass()
+                .getClassLoader().getResourceAsStream("sample.txt");
+        InputStreamReader isr = new InputStreamReader(inputStream,
+                StandardCharsets.UTF_8);    
+        BufferedReader br = new BufferedReader(isr);   
+        br.lines().forEach(line -> System.out.println(line));         
         
     }
 }
