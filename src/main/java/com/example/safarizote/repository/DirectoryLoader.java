@@ -56,7 +56,7 @@ public class DirectoryLoader implements CommandLineRunner {
 
         ClassLoader classLoader = getClass().getClassLoader();
  
-        File file = new File(classLoader.getResource("folders/thermopylae.txt").getFile());
+        File file = new File(classLoader.getResource("config/sample.txt").getFile());
          
         //File is found
         System.out.println("File Found : " + file.exists());
@@ -66,7 +66,7 @@ public class DirectoryLoader implements CommandLineRunner {
         System.out.println(content);
 
 
-        File file2 = ResourceUtils.getFile("classpath:folders/thermopylae.txt");
+        File file2 = ResourceUtils.getFile("classpath:config/sample.txt");
         //File is found
         System.out.println("File Found : " + file2.exists());
         
