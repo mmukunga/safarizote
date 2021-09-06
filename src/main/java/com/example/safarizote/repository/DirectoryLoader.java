@@ -54,25 +54,20 @@ public class DirectoryLoader implements CommandLineRunner {
         logger.info("Application started with command-line arguments: {} . \n To kill this application, press Ctrl + C.", 
         Arrays.toString(args));
 
-        ClassLoader classLoader = getClass().getClassLoader();
+       // returns the Class object for this class
+       Class myClass = Class.forName("DirectoryLoader");
+  
+       System.out.println("Class represented by myClass: "
+                          + myClass.toString());
  
-        File file = new File(classLoader.getResource("config/sample.txt").getFile());
-         
-        //File is found
-        System.out.println("File Found : " + file.exists());
-         
-        //Read File Content
-        String content = new String(Files.readAllBytes(file.toPath()));
-        System.out.println(content);
+       String resourceName = "sample.txt";
+ 
+       // Get the resource of myClass
+       // using getResourceAsStream() method
+       System.out.println(
+           resourceName + " resource of myClass: "
+           + myClass.getResourceAsStream(resourceName));
 
-
-        File file2 = ResourceUtils.getFile("classpath:config/sample.txt");
-        //File is found
-        System.out.println("File Found : " + file2.exists());
-        
-        //Read File Content
-        String content2 = new String(Files.readAllBytes(file2.toPath()));
-        System.out.println(content2);
         
     }
 }
