@@ -55,8 +55,8 @@ public class DirectoryLoader implements CommandLineRunner {
         Arrays.toString(args));
 
         ClassPathResource resource = new ClassPathResource("classpath:thermopylae.txt");
-        File file = resource.getFile();
-        System.out.println(file.getAbsolutePath());
+        //File file = resource.getFile();
+        //System.out.println(file.getAbsolutePath());
         InputStream inputStream = resource.getInputStream();
         try {
             byte[] bdata = FileCopyUtils.copyToByteArray(inputStream);
