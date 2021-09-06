@@ -54,27 +54,25 @@ public class DirectoryLoader implements CommandLineRunner {
         logger.info("Application started with command-line arguments: {} . \n To kill this application, press Ctrl + C.", 
         Arrays.toString(args));
 
-        List<String> lines = Files.readAllLines(Paths.get(res.getURI()),
-                StandardCharsets.UTF_8);
-        for (String line : lines) {
-            System.out.println(line);
-        }
+        ClassLoader classLoader = getClass().getClassLoader();
+ 
+        File file = new File(classLoader.getResource("folders/thermopylae.txt").getFile());
+         
+        //File is found
+        System.out.println("File Found : " + file.exists());
+         
+        //Read File Content
+        String content = new String(Files.readAllBytes(file.toPath()));
+        System.out.println(content);
 
-        ClassPathResource resource = new ClassPathResource("thermopylae.txt");
-        //File file = resource.getFile();
-        //System.out.println(file.getAbsolutePath());
-        InputStream inputStream = resource.getInputStream();
-        try {
-            byte[] bdata = FileCopyUtils.copyToByteArray(inputStream);
-            String data = new String(bdata, StandardCharsets.UTF_8);
-            System.out.println(data);
-        } catch (IOException e) {
-            System.out.println(e);
-        }
 
-        File folder= ResourceUtils.getFile("classpath:folders");
-        System.out.println(folder.getAbsolutePath());
-
+        File file2 = ResourceUtils.getFile("classpath:folders/thermopylae.txt");
+        //File is found
+        System.out.println("File Found : " + file2.exists());
+        
+        //Read File Content
+        String content2 = new String(Files.readAllBytes(file2.toPath()));
+        System.out.println(content2);
         
     }
 }
