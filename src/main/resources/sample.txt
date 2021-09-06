@@ -1,4 +1,50 @@
-sdas rert bcv øææø
-
-
-|12|12
+2005_Elias, Path: D:\Bilder, DateCreated: 1598379408680, Parent: com.example.safarizote.utils.Folder@6ad5c04e
+2005_Chapter04, Path: D:\Bilder\2005_Elias, DateCreated: 1598376497925, Parent: com.example.safarizote.utils.Folder@6833ce2c
+2005_Chapter_00, Path: D:\Bilder\2005_Elias, DateCreated: 1598375572180, Parent: com.example.safarizote.utils.Folder@6833ce2c
+2005_Chapter_01, Path: D:\Bilder\2005_Elias, DateCreated: 1598375701646, Parent: com.example.safarizote.utils.Folder@6833ce2c
+2005_Chapter_02, Path: D:\Bilder\2005_Elias, DateCreated: 1598375834852, Parent: com.example.safarizote.utils.Folder@6833ce2c
+2005_Chapter_03BD, Path: D:\Bilder\2005_Elias, DateCreated: 1598376129558, Parent: com.example.safarizote.utils.Folder@6833ce2c
+2005.05.16 barnedåp, Path: D:\Bilder\2005_Elias\2005_Chapter_03BD, DateCreated: 1598376219084, Parent: com.example.safarizote.utils.Folder@725bef66       
+2005_Høsten, Path: D:\Bilder\2005_Elias, DateCreated: 1598376736121, Parent: com.example.safarizote.utils.Folder@6833ce2c
+2005_Jul, Path: D:\Bilder\2005_Elias, DateCreated: 1598376906320, Parent: com.example.safarizote.utils.Folder@6833ce2c
+2005_Kenya, Path: D:\Bilder\2005_Elias, DateCreated: 1598377011232, Parent: com.example.safarizote.utils.Folder@6833ce2c
+2006_Vinter, Path: D:\Bilder\2005_Elias, DateCreated: 1598377348797, Parent: com.example.safarizote.utils.Folder@6833ce2c
+2006_vinterOg_207, Path: D:\Bilder\2005_Elias, DateCreated: 1598377478318, Parent: com.example.safarizote.utils.Folder@6833ce2c
+2006_Vår_og_Somer, Path: D:\Bilder\2005_Elias, DateCreated: 1598377205160, Parent: com.example.safarizote.utils.Folder@6833ce2c
+2007_HøstOg_Vinter, Path: D:\Bilder\2005_Elias, DateCreated: 1598377642110, Parent: com.example.safarizote.utils.Folder@6833ce2c
+2007_Kenya, Path: D:\Bilder\2005_Elias, DateCreated: 1598378042749, Parent: com.example.safarizote.utils.Folder@6833ce2c
+2007_Rally_Norway, Path: D:\Bilder\2005_Elias, DateCreated: 1598378160134, Parent: com.example.safarizote.utils.Folder@6833ce2c
+2007_VårOg_Sommer, Path: D:\Bilder\2005_Elias, DateCreated: 1598378341575, Parent: com.example.safarizote.utils.Folder@6833ce2c
+2008_Hovden, Path: D:\Bilder\2005_Elias, DateCreated: 1598378461703, Parent: com.example.safarizote.utils.Folder@6833ce2c
+2008_Jul, Path: D:\Bilder\2005_Elias, DateCreated: 1598378709516, Parent: com.example.safarizote.utils.Folder@6833ce2c
+2008_sommerferie, Path: D:\Bilder\2005_Elias, DateCreated: 1598378843530, Parent: com.example.safarizote.utils.Folder@6833ce2c
+2008_Vinter_2007_Høst, Path: D:\Bilder\2005_Elias, DateCreated: 1598377759063, Parent: com.example.safarizote.utils.Folder@6833ce2c
+2009_Mombasa_Olaug, Path: D:\Bilder\2005_Elias, DateCreated: 1598379279203, Parent: com.example.safarizote.utils.Folder@6833ce2c
+2009_Påske, Path: D:\Bilder\2005_Elias, DateCreated: 1598378935041, Parent: com.example.safarizote.utils.Folder@6833ce2c
+2010_Januar, Path: D:\Bilder\2005_Elias, DateCreated: 1598379371964, Parent: com.example.safarizote.utils.Folder@6833ce2c
+2011 Elias, Path: D:\Bilder\2005_Elias, DateCreated: 1598379492014, Parent: com.example.safarizote.utils.Folder@6833ce2c
+2005_EliasBkUp, Path: D:\Bilder, DateCreated: 1598379764400, Parent: com.example.safarizote.utils.Folder@6ad5c04e
+2005_Chapter04, Path: D:\Bilder\2005_EliasBkUp, DateCreated: 1598379763964, Parent: com.example.safarizote.utils.Folder@2aaf7cc2
+2005_Chapter_00, Path: D:\Bilder\2005_EliasBkUp, DateCreated: 1598379763992, Parent: com.example.safarizote.utils.Folder@2aaf7cc2
+2005_Chapter_01, Path: D:\Bilder\2005_EliasBkUp, DateCreated: 1598379764078, Parent: com.example.safarizote.utils.Folder@2aaf7cc2
+2005_Chapter_02, Path: D:\Bilder\2005_EliasBkUp, DateCreated: 1598379764101, Parent: com.example.safarizote.utils.Folder@2aaf7cc2
+2005_Chapter_03BD, Path: D:\Bilder\2005_EliasBkUp, DateCreated: 1598379764114, Parent: com.example.safarizote.utils.Folder@2aaf7cc2
+2005.05.16 barnedåp, Path: D:\Bilder\2005_EliasBkUp\2005_Chapter_03BD, DateCreated: 1598379764127, Parent: com.example.safarizote.utils.Folder@6e3c1e69   
+2005_Høsten, Path: D:\Bilder\2005_EliasBkUp, DateCreated: 1598379764145, Parent: com.example.safarizote.utils.Folder@2aaf7cc2
+2005_Jul, Path: D:\Bilder\2005_EliasBkUp, DateCreated: 1598379764157, Parent: com.example.safarizote.utils.Folder@2aaf7cc2
+2005_Kenya, Path: D:\Bilder\2005_EliasBkUp, DateCreated: 1598379764176, Parent: com.example.safarizote.utils.Folder@2aaf7cc2
+2006_Vinter, Path: D:\Bilder\2005_EliasBkUp, DateCreated: 1598379764194, Parent: com.example.safarizote.utils.Folder@2aaf7cc2
+2006_vinterOg_207, Path: D:\Bilder\2005_EliasBkUp, DateCreated: 1598379764202, Parent: com.example.safarizote.utils.Folder@2aaf7cc2
+2006_Vår_og_Somer, Path: D:\Bilder\2005_EliasBkUp, DateCreated: 1598379764230, Parent: com.example.safarizote.utils.Folder@2aaf7cc2
+2007_HøstOg_Vinter, Path: D:\Bilder\2005_EliasBkUp, DateCreated: 1598379764248, Parent: com.example.safarizote.utils.Folder@2aaf7cc2
+2007_Kenya, Path: D:\Bilder\2005_EliasBkUp, DateCreated: 1598379764275, Parent: com.example.safarizote.utils.Folder@2aaf7cc2
+2007_Rally_Norway, Path: D:\Bilder\2005_EliasBkUp, DateCreated: 1598379764280, Parent: com.example.safarizote.utils.Folder@2aaf7cc2
+2007_VårOg_Sommer, Path: D:\Bilder\2005_EliasBkUp, DateCreated: 1598379764285, Parent: com.example.safarizote.utils.Folder@2aaf7cc2
+2008_Hovden, Path: D:\Bilder\2005_EliasBkUp, DateCreated: 1598379764298, Parent: com.example.safarizote.utils.Folder@2aaf7cc2
+2008_Jul, Path: D:\Bilder\2005_EliasBkUp, DateCreated: 1598379764312, Parent: com.example.safarizote.utils.Folder@2aaf7cc2
+2008_sommerferie, Path: D:\Bilder\2005_EliasBkUp, DateCreated: 1598379764329, Parent: com.example.safarizote.utils.Folder@2aaf7cc2
+2008_Vinter_2007_Høst, Path: D:\Bilder\2005_EliasBkUp, DateCreated: 1598379764333, Parent: com.example.safarizote.utils.Folder@2aaf7cc2
+2009_Mombasa_Olaug, Path: D:\Bilder\2005_EliasBkUp, DateCreated: 1598379764375, Parent: com.example.safarizote.utils.Folder@2aaf7cc2
+2009_Påske, Path: D:\Bilder\2005_EliasBkUp, DateCreated: 1598379764389, Parent: com.example.safarizote.utils.Folder@2aaf7cc2
+2010_Januar, Path: D:\Bilder\2005_EliasBkUp, DateCreated: 1598379764398, Parent: com.example.safarizote.utils.Folder@2aaf7cc2
+2011 Elias, Path: D:\Bilder\2005_EliasBkUp, DateCreated: 1598379764403, Parent: com.example.safarizote.utils.Folder@2aaf7cc2
