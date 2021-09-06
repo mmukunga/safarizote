@@ -54,7 +54,7 @@ public class DirectoryLoader implements CommandLineRunner {
         logger.info("Application started with command-line arguments: {} . \n To kill this application, press Ctrl + C.", 
         Arrays.toString(args));
 
-        ClassPathResource resource = new ClassPathResource("classpath:thermopylae.txt");
+        ClassPathResource resource = new ClassPathResource("thermopylae.txt");
         //File file = resource.getFile();
         //System.out.println(file.getAbsolutePath());
         InputStream inputStream = resource.getInputStream();
