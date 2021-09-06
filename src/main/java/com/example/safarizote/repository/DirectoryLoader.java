@@ -42,6 +42,14 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.util.FileCopyUtils; 
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+
+
 @Component
 public class DirectoryLoader implements CommandLineRunner {
     @Value("classpath:thermopylae.txt")
@@ -53,21 +61,16 @@ public class DirectoryLoader implements CommandLineRunner {
     public void run(String...args) throws Exception {
         logger.info("Application started with command-line arguments: {} . \n To kill this application, press Ctrl + C.", 
         Arrays.toString(args));
-
+       
+        String fileName = "src/resources/sample.txt";
        // returns the Class object for this class
-       Class myClass = Class.forName("DirectoryLoader");
-  
-       System.out.println("Class represented by myClass: "
-                          + myClass.toString());
- 
-       String resourceName = "sample.txt";
- 
-       // Get the resource of myClass
-       // using getResourceAsStream() method
-       System.out.println(
-           resourceName + " resource of myClass: "
-           + myClass.getResourceAsStream(resourceName));
+       try (InputStream fis = new FileInputStream(fileName);
+                InputStreamReader isr = new InputStreamReader(fis,
+                        StandardCharsets.UTF_8);
+                BufferedReader br = new BufferedReader(isr)) {
 
+            br.lines().forEach(line -> System.out.println(line));
+        }
         
     }
 }
