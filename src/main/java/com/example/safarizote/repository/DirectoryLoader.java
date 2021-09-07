@@ -1,58 +1,30 @@
 package com.example.safarizote.repository;
 
-//import java.time.Instant;
 import java.util.Arrays;
-//import java.util.Iterator;
-import java.util.List;
-//import java.util.Set;
-//import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-//import com.example.safarizote.model.BackUp;
-
-//import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.Files;
-
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
 import java.nio.charset.StandardCharsets; 
-import org.springframework.util.ResourceUtils;
-/*
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
-*/
-import java.io.File;
-import java.io.IOException;
+
+import java.util.Date;
 import java.io.InputStream;
 
-//import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ClassPathResource;
-
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-import org.springframework.util.FileCopyUtils; 
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 
+import com.google.gson.Gson;
+import com.example.safarizote.model.Folder;
 
 @Component
 public class DirectoryLoader implements CommandLineRunner {
-    @Value("classpath:thermopylae.txt")
+    @Value("classpath:example.txt")
     private Resource res;
     
     private static final Logger logger = LoggerFactory.getLogger(DirectoryLoader.class);
@@ -61,14 +33,31 @@ public class DirectoryLoader implements CommandLineRunner {
     public void run(String...args) throws Exception {
         logger.info("Application started with command-line arguments: {} . \n To kill this application, press Ctrl + C.", 
         Arrays.toString(args));
-       
-        Resource resource = new ClassPathResource("sample.txt");
+        System.out.println("1.After Format : " + new Date());
+        Resource resource = new ClassPathResource("example.txt");
         InputStream inputStream = resource.getInputStream();
-
+        System.out.println("2.After Format : " + new Date());
         InputStreamReader isr = new InputStreamReader(inputStream,
-                StandardCharsets.UTF_8);    
+                StandardCharsets.UTF_8);   
+                 
         BufferedReader br = new BufferedReader(isr);   
-        br.lines().forEach(line -> System.out.println(line));         
+        System.out.println("3.After Format : " + new Date());
+        br.lines().forEach(line -> System.out.println(line));      
+        System.out.println("4.After Format : " + new Date()); 
         
+        String line = null;
+        while ((line = br.readLine()) != null) {
+            String jsonString = line;
+            Gson gson = new Gson(); 
+            Folder folder = gson.fromJson(jsonString, Folder.class); 
+            System.out.println(folder);
+/*
+            String[] values = line.split(",");
+            for (String str : values) {
+                System.out.println(str);
+            }
+*/
+        }
+        br.close();
     }
 }

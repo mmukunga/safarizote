@@ -1,17 +1,25 @@
 package com.example.safarizote.utils;
 
 import java.io.File;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.ArrayList;
+import org.json.JSONObject;
+import com.example.safarizote.model.Folder;
 
-public class ListFoldersTest {
+public class ListFolders {
     static List<Folder> folders = new ArrayList<>();
-    public static void main(String args[]) {
-        ListFoldersTest lft = new ListFoldersTest();
+    public static void main(String args[]) throws Exception {
+        ListFolders lft = new ListFolders();
         String path = "D:/Bilder";
         File dir = new File(path);
         
+        File file = new File("D:/Temps/safarizote/src/main/resources/example.txt");
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
         System.out.println("After Format : " + sdf.format(dir.lastModified()));
 
@@ -26,13 +34,14 @@ public class ListFoldersTest {
 
         System.out.println("Hello, FOLDERS");
 
-        for (Folder folder : folders) {
-           // BackUp1 bkUp = repository.save(folder);
-            System.out.println(folder.name
-                + ", Path: "  + folder.path
-                + ", DateCreated: " + folder.dateCreated
-                + ", Parent: " + folder.parent);
+        for (Folder folder : folders) {; 
+            String jsonString = (folder.toString()).replace("\\", "/");
+            JSONObject obj = new JSONObject(jsonString);
+            bufferedWriter.write(obj.toString());
+            bufferedWriter.newLine();
         }
+        bufferedWriter.flush();
+        bufferedWriter.close();
     }
 
     public void traverseDir(String path, Folder parent) {
