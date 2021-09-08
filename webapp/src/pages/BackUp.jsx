@@ -53,7 +53,7 @@ const BackUp = () => {
         const data =  ['https://storage.googleapis.com/sms_familie_album/2…fdyOM9uvNZplb79UuLAZ1EdbfEaxectyITGRKrZySnQ%3D%3D'];
         console.log(data);
         //setImages([...data]);
-        setVehicleData(old => [...old, ...data]);
+        setVehicleData(old => [...old, ...response.data]);
         console.log('1.response');
         console.log(images);
         const fileName = 'http://www.hyperlinkcode.com/images/sample-image.jpg';
