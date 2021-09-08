@@ -46,7 +46,7 @@ const LazyImage = ({src, alt}) => {
 const BackUp = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [images, setImages] = React.useState([]);
-  const [vehicleData, setVehicleData] = React.useState<[]>([]);
+  const [vehicleData, setVehicleData] = React.useState([]);
 
   React.useEffect(() => {
     axios.get("/api/categories").then(response => {
