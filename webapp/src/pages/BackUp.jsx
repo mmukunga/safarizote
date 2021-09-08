@@ -49,12 +49,14 @@ const BackUp = () => {
 
   React.useEffect(() => {
     axios.get("/api/categories").then(response => {
-        console.log(response.data);
+        console.log(response);
         setImages(response.data);
-
+        console.log('1.response');
+        console.log(images);
         const fileName = 'http://www.hyperlinkcode.com/images/sample-image.jpg';
         const date = new Date();
         const unixTimeStamp = Math.floor(date.getTime() / 1000);
+        console.log('2.response');
         const File = {
             lastModified: unixTimeStamp,
             lastModifiedDate: date,
@@ -63,9 +65,11 @@ const BackUp = () => {
             type: "image/jpeg",
             webkitRelativePath: ""
         };
-
+        console.log('3.response');
         const gcsData = {file: File, id: state.files.length+1, src: `${fileName}`}
+        console.log('4.response');
         dispatch({ type: 'add_item', payload: gcsData });
+        console.log('5.response');
     }).catch(error => {
         console.log(error);
     });
