@@ -51,6 +51,8 @@ const BackUp = () => {
     axios.get("/api/categories").then(response => {
         console.log(response);
         console.log(response.data);
+        const data =  [...images, ...response.data];
+        console.log(data);
         setImages(images => [...images, ...response.data]);
         console.log('1.response');
         console.log(images);
