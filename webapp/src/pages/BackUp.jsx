@@ -51,7 +51,7 @@ const BackUp = () => {
     axios.get("/api/categories").then(response => {
         console.log(response);
         console.log(response.data);
-        const data =  [...images, ...response.data];
+        const data =  ['https://storage.googleapis.com/sms_familie_album/2…fdyOM9uvNZplb79UuLAZ1EdbfEaxectyITGRKrZySnQ%3D%3D', 'https://storage.googleapis.com/sms_familie_album/2…2Fc5jbPkdheOjJj7YvReL%2FphEcRLIb3aDPC79eIbA%3D%3D', 'https://storage.googleapis.com/sms_familie_album/2…uwxHcl0R0GBOfAZ1SPBuQs1bARPIDWyrAvFUduajeaw%3D%3D', 'https://storage.googleapis.com/sms_familie_album/2…jDmbccVhWVJo44Q5hySEaNT5XFUswhppISX%2Fdhcjw%3D%3D', 'https://storage.googleapis.com/sms_familie_album/2…pjFtxqC866SRPlGUwI3rHocdYLj6Iy1CE3LpdnplLwA%3D%3D', 'https://storage.googleapis.com/sms_familie_album/2…pSzVF2U%2FLuEcS1kan%2FU5BN5njJThoXyVGeHwn9A%3D%3D', 'https://storage.googleapis.com/sms_familie_album/2…VmaXsGlEiyFWiHSYiLrPdcuFtiJFf092sPYOJ38MWLQ%3D%3D'];
         console.log(data);
         setImages(images => [...images, ...data]);
         console.log('1.response');
