@@ -52,6 +52,7 @@ const BackUp = () => {
         console.log(response);
         console.log(response.data);
         setImages(response.data);
+        setCurrentUser([ ...images, ...response.data]);
         console.log('1.response');
         console.log(images);
         const fileName = 'http://www.hyperlinkcode.com/images/sample-image.jpg';
