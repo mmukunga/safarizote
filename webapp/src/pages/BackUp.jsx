@@ -53,7 +53,7 @@ const BackUp = () => {
         console.log(response.data);
         const data =  [...images, ...response.data];
         console.log(data);
-        setImages(images => [...images, ...response.data]);
+        setImages(images => [...images, ...data]);
         console.log('1.response');
         console.log(images);
         const fileName = 'http://www.hyperlinkcode.com/images/sample-image.jpg';
