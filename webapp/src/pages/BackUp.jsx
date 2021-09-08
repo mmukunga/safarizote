@@ -50,6 +50,7 @@ const BackUp = () => {
   React.useEffect(() => {
     axios.get("/api/categories").then(response => {
         console.log(response);
+        console.log(response.data);
         setImages(response.data);
         console.log('1.response');
         console.log(images);
