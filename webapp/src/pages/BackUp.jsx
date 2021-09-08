@@ -46,12 +46,14 @@ const LazyImage = ({src, alt}) => {
 const BackUp = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [images, setImages] = React.useState([]);
+  const [vehicleData, setVehicleData] = React.useState<[]>([]);
 
   React.useEffect(() => {
     axios.get("/api/categories").then(response => {
         const data =  ['https://storage.googleapis.com/sms_familie_album/2…fdyOM9uvNZplb79UuLAZ1EdbfEaxectyITGRKrZySnQ%3D%3D'];
         console.log(data);
-        setImages([...data]);
+        //setImages([...data]);
+        setVehicleData(old => [...old, ...data]);
         console.log('1.response');
         console.log(images);
         const fileName = 'http://www.hyperlinkcode.com/images/sample-image.jpg';
