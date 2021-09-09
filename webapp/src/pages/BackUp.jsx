@@ -52,11 +52,11 @@ const BackUp = () => {
         const data =  ['https://storage.googleapis.com/sms_familie_album/2…fdyOM9uvNZplb79UuLAZ1EdbfEaxectyITGRKrZySnQ%3D%3D'];
         console.log('1.data');
         console.log('2.response');
-        let combinedArray = [...vehicleData, ...response.data];
+        const combinedArray = [...response.data];
 
         console.log('3.combinedArray');
         console.log(response.data);
-        setVehicleData([response.data]);
+        setVehicleData([combinedArray]);
         console.log('4.combinedArray');
         
         //images.push(...combinedArray);
