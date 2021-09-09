@@ -55,7 +55,8 @@ const BackUp = () => {
         let combinedArray = [...vehicleData, ...response.data];
 
         console.log('3.combinedArray');
-        setVehicleData(old => [...old, ...response.data.data]);
+        console.log(response.data);
+        setVehicleData(old => [...old, ...response.data]);
         console.log('4.combinedArray');
         
         images.push(...combinedArray);
