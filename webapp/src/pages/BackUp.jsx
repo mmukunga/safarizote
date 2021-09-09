@@ -183,10 +183,9 @@ const BackUp = () => {
             {vehicleData && vehicleData.map((imgUrl, id) => {
               console.log(imgUrl);
               return (
-              /*<LazyLoad height={200} offset={100}>  
+              <LazyLoad height={200} offset={100}>  
                 <LazyImage src={imgUrl} alt={id} />
-              </LazyLoad>*/
-              imgUrl
+              </LazyLoad>
               );
             })}
           </div>
