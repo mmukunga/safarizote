@@ -4,7 +4,6 @@ import Card from './Card';
 import axios , { post } from 'axios';
 import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
-// Constants
 const LOADED = 'LOADED';
 
 const initialState = {
@@ -52,9 +51,7 @@ const BackUp = () => {
     axios.get("/api/categories").then(response => {
         const data =  ['https://storage.googleapis.com/sms_familie_album/2…fdyOM9uvNZplb79UuLAZ1EdbfEaxectyITGRKrZySnQ%3D%3D'];
         console.log(data);
-        //setImages([...data]);
         console.log(response);
-        //setVehicleData(data);
         setVehicleData(vehicleData => [...vehicleData, ...data]);
         console.log('1.response');
         console.log(images);
@@ -144,11 +141,8 @@ const BackUp = () => {
   }
         
   const ValidateUser = async (e) => {
-    //const myData = [];
     const token = localStorage.getItem('userToken');
     let result = await AuthUser(token);
-    //myData.push(result );
-    //  }
     return result;
   }
 
