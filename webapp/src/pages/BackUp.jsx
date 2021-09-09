@@ -84,17 +84,22 @@ const BackUp = () => {
   }, []);  
 
   const onChange = (e) => {
+    console.log('1');
     if (e.target.files.length) {
       const arrFiles = Array.from(e.target.files)
       const files = arrFiles.map((file, index) => {
         console.log(file);
+        console.log('2');
         const src = window.URL.createObjectURL(file);
-        console.log(src);
+        console.log('src');
         return { file, id: index, src }
       })
-      dispatch({ type: 'load', payload: files })
+      console.log('3');
+      dispatch({ type: 'load', payload: files });
+      return {}
     }
-  }
+    return {};
+  };
 
   const uploadSubmit = async (e) => {
       e.preventDefault();
@@ -181,7 +186,6 @@ const BackUp = () => {
         <div className="photo-gallery">
           <div className="thumbs-list">
             {vehicleData && vehicleData.map((imgUrl, id) => {
-              //console.log(imgUrl);
               return (
               <LazyLoad height={200} offset={100}>  
                 <LazyImage src={imgUrl} alt={id} />
