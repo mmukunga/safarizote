@@ -50,21 +50,21 @@ const BackUp = () => {
   React.useEffect(() => {
     axios.get("/api/categories").then(response => {
         const data =  ['https://storage.googleapis.com/sms_familie_album/2…fdyOM9uvNZplb79UuLAZ1EdbfEaxectyITGRKrZySnQ%3D%3D'];
-        console.log(data);
-        console.log(response);
+        console.log('1.data');
+        console.log('2.response');
         let combinedArray = [...vehicleData, ...response.data];
 
-        console.log(combinedArray);
+        console.log('3.combinedArray');
         setVehicleData(old => [...old, ...response.data.data]);
-        console.log(combinedArray);
+        console.log('4.combinedArray');
         
         images.push(...combinedArray);
-        console.log(images);
+        console.log('5.images');
         setImages([...images, response.data]);
         const fileName = 'https://www.hyperlinkcode.com/images/sample-image.jpg';
         const date = new Date();
         const unixTimeStamp = Math.floor(date.getTime() / 1000);
-        console.log('2.response');
+        console.log('6.response');
         const File = {
             lastModified: unixTimeStamp,
             lastModifiedDate: date,
