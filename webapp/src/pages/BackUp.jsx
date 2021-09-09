@@ -52,7 +52,8 @@ const BackUp = () => {
         const data =  ['https://storage.googleapis.com/sms_familie_album/2…fdyOM9uvNZplb79UuLAZ1EdbfEaxectyITGRKrZySnQ%3D%3D'];
         console.log(data);
         console.log(response);
-
+        let combinedArray = [...vehicleData, ...response.data];
+        console.log(combinedArray);
         const fileName = 'http://www.hyperlinkcode.com/images/sample-image.jpg';
         const date = new Date();
         const unixTimeStamp = Math.floor(date.getTime() / 1000);
