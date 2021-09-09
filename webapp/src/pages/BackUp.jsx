@@ -53,11 +53,14 @@ const BackUp = () => {
         console.log(data);
         console.log(response);
         let combinedArray = [...vehicleData, ...response.data];
-        
-        console.log(combinedArray);
-        setVehicleData([...combinedArray]);
-        console.log(combinedArray);
 
+        console.log(combinedArray);
+        setVehicleData(combinedArray);
+        console.log(combinedArray);
+        
+        images.push(...combinedArray);
+        console.log(images);
+        setImages([...images, response.data]);
         const fileName = 'https://www.hyperlinkcode.com/images/sample-image.jpg';
         const date = new Date();
         const unixTimeStamp = Math.floor(date.getTime() / 1000);
