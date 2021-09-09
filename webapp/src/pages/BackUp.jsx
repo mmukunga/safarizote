@@ -56,6 +56,7 @@ const BackUp = () => {
         setVehicleData(old => [...old, ...response.data]);
         console.log('1.response');
         console.log(images);
+        console.log(vehicleData);
         const fileName = 'http://www.hyperlinkcode.com/images/sample-image.jpg';
         const date = new Date();
         const unixTimeStamp = Math.floor(date.getTime() / 1000);
