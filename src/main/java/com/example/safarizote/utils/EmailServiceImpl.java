@@ -48,9 +48,6 @@ public class EmailServiceImpl implements IEmailService {
 
     }
 
-    /*
-     * Configure javamail sender with details.
-    */
     @Bean
     public JavaMailSender getJavaMailSender() throws UnknownHostException{
         JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
@@ -60,7 +57,6 @@ public class EmailServiceImpl implements IEmailService {
         javaMailSender.setUsername("mkunsim@gmail.com");
         javaMailSender.setPassword("Thufili002");
 
-        //Get email properties and set
         Properties props = javaMailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");
         props.put("mail.smtp.auth", "true");

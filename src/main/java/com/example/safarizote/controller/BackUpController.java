@@ -55,7 +55,6 @@ public class BackUpController {
       Resource resource = new ClassPathResource("credentials.json");
       GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
 
-      // Get specific file from specified bucket
       Storage storage = StorageOptions.newBuilder().setProjectId(PROJECT_ID).setCredentials(credentials).build().getService();
       List<String> imageUrls = new ArrayList<>();
       Page<Blob> blobs = storage.list(BUCKET_NAME);
@@ -94,7 +93,6 @@ public class BackUpController {
       Resource resource = new ClassPathResource("credentials.json");
       GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
 
-      // Get specific file from specified bucket
       Storage storage = StorageOptions.newBuilder().setProjectId(PROJECT_ID).setCredentials(credentials).build().getService();
       List<URL> imageUrls = new ArrayList<>();
       String directoryPrefix = "2012 MtKenya/";
@@ -117,9 +115,7 @@ public class BackUpController {
 
     @RequestMapping(value = "/api/upload", method = RequestMethod.POST)
     public String uploadFile(@RequestParam("file") MultipartFile fileStream ) throws Exception {
-        //File filePath = fileStream.; 
         String blobName = fileStream.getName(); 
-        //File uploadCreds;
         System.out.println("BackUpController.upload(), the time at the server is now " + new Date());
 
         String BUCKET_NAME = "sms_familie_album";
@@ -128,10 +124,8 @@ public class BackUpController {
         Resource resource = new ClassPathResource("credentials.json");
         GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
 
-        // Get specific file from specified bucket
         Storage storage = StorageOptions.newBuilder().setProjectId(PROJECT_ID).setCredentials(credentials).build().getService();
 
-        //String bucketName = "bucketName"; 
         Bucket bucket = storage.get(BUCKET_NAME);
         BlobId blobId = BlobId.of(bucket.getName(), blobName);
         InputStream inputStream = fileStream.getInputStream();
@@ -167,7 +161,6 @@ public class BackUpController {
         ByteBuffer bytes = ByteBuffer.allocate(BUFFER_SIZE);
         while (r.read(bytes) > 0) {
             bytes.flip();
-            // do something with bytes
             bytes.clear();
         }
 

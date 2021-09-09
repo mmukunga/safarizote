@@ -74,7 +74,6 @@ public class WeatherController {
         con.setDoInput(true);
         con.setDoOutput(true);
         con.connect();
-        // Let's read the response
         StringBuffer buffer = new StringBuffer();
         is = con.getInputStream();
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
@@ -99,7 +98,6 @@ public class WeatherController {
         con.setDoInput(true);
         con.setDoOutput(true);
         con.connect();
-        // Let's read the response
         StringBuffer buffer = new StringBuffer();
         is = con.getInputStream();
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
@@ -122,7 +120,6 @@ public class WeatherController {
         con.setDoOutput(true);
         con.connect();
 
-        // Let's read the response
         is = con.getInputStream();
         byte[] buffer = new byte[1024];
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

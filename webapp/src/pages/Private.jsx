@@ -5,7 +5,6 @@ import { Redirect, Route } from 'react-router-dom';
 const Private = ({ component: Component, ...rest }) => {
   console.log('PrivateRoute...');
 
-  // auth.js
 const isValidUser = () => {
   if (localStorage.getItem('userAuth') !== null) {
     const userAuth = localStorage.getItem('userAuth');

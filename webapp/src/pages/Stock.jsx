@@ -35,7 +35,6 @@ const reducer = (state, action) => {
 
 const Stock = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
-    //const [tickers, setTickers] = useState([]);
     const [timestamp, setTimestamp] = useState([]);
     const [close, setClose] = useState([]);
     const [high, setHigh] = useState([]);

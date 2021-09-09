@@ -19,7 +19,6 @@ public class SignInLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // repository.deleteAll();
         if (repository.count() > 0) {
             return;
         }

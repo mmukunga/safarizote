@@ -14,7 +14,6 @@ import Stock from './pages/Stock';
 import Private from './pages/Private';
 
 export default (
-	// Switch is added in v4 react-router
 	<Switch>
     <Route exact path="/" component={Safaris} />
 		<Route path="/metrics" component={Metrics} />

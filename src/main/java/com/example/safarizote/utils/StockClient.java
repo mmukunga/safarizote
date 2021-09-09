@@ -16,7 +16,6 @@ public class StockClient {
         String QUERYURL = "https://query1.finance.yahoo.com/v8/finance/chart/";
 		System.out.println("yahooHistory - SYMBOLS:= " + ticker);
        
-        //To get current quotes just load:
         String quoteSite = QUERYURL.concat(ticker).concat("?interval=1h");
         URL yahooFeed = new URL(quoteSite);
 
@@ -29,13 +28,11 @@ public class StockClient {
         }
 
         System.out.println(out.toString());
-        //JsonObject jsonObject = new Gson().fromJson(out.toString(), JsonObject.class);
 
 		return out.toString();
 	}
 	
 	public String yahooHistory(String ticker, long from, long to) throws Exception {
-        //long unixTime = System.currentTimeMillis() / 1000L;
         String QUERYURL = "https://query1.finance.yahoo.com/v7/finance/chart/";
         String quoteSite = QUERYURL.concat(ticker).concat("?")
                        + "symbol=" + ticker
@@ -56,7 +53,6 @@ public class StockClient {
 		scan.close();
 
         System.out.println(builder.toString());	
-        //JsonObject jsonObject = new Gson().fromJson(builder.toString(), JsonObject.class);
 
         return builder.toString();
 	}

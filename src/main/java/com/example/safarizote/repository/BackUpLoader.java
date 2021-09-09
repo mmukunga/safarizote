@@ -23,7 +23,6 @@ public class BackUpLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // repository.deleteAll();
         System.out.println("1.BackUpLoader..BACKUP!!");
         if (repository.count() > 0) {
            System.out.println("..BACK_UP TABLE NOT EMPTY!!..");

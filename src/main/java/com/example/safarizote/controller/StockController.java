@@ -39,7 +39,6 @@ public class StockController {
     @RequestMapping(value="/api/current", method = RequestMethod.POST)
     public ResponseEntity<String> getCurrentStock(@RequestBody Ticker ticker) throws Exception {
         System.out.println("Current Stock:" + ticker); 
-        // Validate Sticker
         if (repository.findById(ticker.getId()).isEmpty()) {
             throw new Exception();
         }
@@ -51,7 +50,6 @@ public class StockController {
     @RequestMapping(value="/api/history", method = RequestMethod.POST)
     public ResponseEntity<String> getStockHistory(@RequestBody Ticker ticker) throws Exception {
         System.out.println("Stock History:" + ticker); 
-        // Validate Sticker
         if (repository.findById(ticker.getId()).isEmpty()) {
             throw new Exception();
         }
@@ -63,7 +61,6 @@ public class StockController {
         cal.setTime(toTime);
         System.out.println(cal.get(Calendar.DAY_OF_MONTH));
         cal.add(Calendar.DATE, -24);
-        //Integer historyDAYS = 24;
         
         long from = cal.getTime().getTime() / 1000L;
         java.util.Date fromTime = new java.util.Date((long)from*1000);

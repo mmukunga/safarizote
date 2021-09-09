@@ -26,9 +26,6 @@ public class StockLoader implements CommandLineRunner {
    @Override
     public void run(String... args) throws Exception {
         logger.info("Application has started");
-
-        // repository.deleteAll();
-
         if (repository.findAll().isEmpty()) {    
             repository.save(Ticker.builder().name("NAS").symbol("NAS.OL").costPrice(913.0625).shares(4).description("NORWEGIAN AIR SHUT").selected(false).dateCreated(Instant.now()).build());
             repository.save(Ticker.builder().name("KIT").symbol("KIT.OL").costPrice(0.0).shares(0).description("Kitron ASA").selected(false).dateCreated(Instant.now()).build());

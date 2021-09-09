@@ -16,8 +16,6 @@ import com.example.safarizote.model.Rekke;
 
 @RestController
 public class LottoController { 
-    // Antall rekker
-    // 10 rekker a 7 tall
     int antallRekker = 10;
     int antallTrekk  =  7;
 
