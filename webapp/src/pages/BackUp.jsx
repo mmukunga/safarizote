@@ -54,7 +54,7 @@ const BackUp = () => {
         console.log(data);
         //setImages([...data]);
         console.log(response);
-        setVehicleData(old => [...old, ...data]);
+        setVehicleData(data);
         console.log('1.response');
         console.log(images);
         console.log(vehicleData);
