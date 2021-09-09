@@ -180,7 +180,7 @@ const BackUp = () => {
 
         <div className="photo-gallery">
           <div className="thumbs-list">
-            {images && images.map((imgUrl, idx) => {
+            {vehicleData && vehicleData.map((imgUrl, idx) => {
               return (
               <LazyLoad height={200} offset={100}>  
                 <LazyImage src={imgUrl} alt={idx} />
