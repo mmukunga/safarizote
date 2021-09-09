@@ -8,7 +8,7 @@ const Metrics = () => {
 
     async function findDate(data) {
         const mediaTypes = data.map(dataItem => dataItem.url) 
-        .filter((mediaType, index, array) => array.indexOf(mediaType) === index); // filter out duplicates
+        .filter((mediaType, index, array) => array.indexOf(mediaType) === index); 
         
         const aggregatedData = mediaTypes.map(dataItem => ({
             type: dataItem,

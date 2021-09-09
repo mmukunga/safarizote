@@ -75,7 +75,7 @@ const SignIn = (props) => {
             });
             
         }
-    }, [loginData]); // Only re-run the effect if count changes
+    }, [loginData]);
 
     if (verified) {
         return <Redirect to={from} />;
