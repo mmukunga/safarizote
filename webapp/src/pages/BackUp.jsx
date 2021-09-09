@@ -8,6 +8,7 @@ const LOADED = 'LOADED';
 
 const initialState = {
   files: [],
+  vehicleData: [],
   pending: [],
   next: null,
   uploading: false,
@@ -20,7 +21,9 @@ const reducer = (state, action) => {
     case 'load':
       return { ...state, files: action.payload, status: LOADED }
     case 'add_item' :
-      return { ...state, files: [...state.files, action.payload] }  
+      return { ...state, files: [...state.files, action.payload] } 
+    case 'add_item' :
+      return { ...state, files: [...state.files, action.payload] }    
     default:
       return state
   }
@@ -44,7 +47,6 @@ const LazyImage = ({src, alt}) => {
 
 const BackUp = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [images, setImages] = React.useState([]);
   const [vehicleData, setVehicleData] = React.useState([]);
 
   React.useEffect(() => {
@@ -55,13 +57,10 @@ const BackUp = () => {
         const combinedArray = [...response.data];
 
         console.log('3.combinedArray');
-        console.log(response.data);
         setVehicleData([combinedArray]);
         console.log('4.combinedArray');
         
-        //images.push(...combinedArray);
         console.log('5.images');
-        //setImages([...images, response.data]);
         const fileName = 'https://www.hyperlinkcode.com/images/sample-image.jpg';
         const date = new Date();
         const unixTimeStamp = Math.floor(date.getTime() / 1000);
@@ -182,7 +181,7 @@ const BackUp = () => {
         <div className="photo-gallery">
           <div className="thumbs-list">
             {vehicleData && vehicleData.map((imgUrl, id) => {
-              console.log(imgUrl);
+              //console.log(imgUrl);
               return (
               <LazyLoad height={200} offset={100}>  
                 <LazyImage src={imgUrl} alt={id} />
