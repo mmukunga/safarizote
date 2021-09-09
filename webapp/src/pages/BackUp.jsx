@@ -22,8 +22,8 @@ const reducer = (state, action) => {
       return { ...state, files: action.payload, status: LOADED }
     case 'add_item' :
       return { ...state, files: [...state.files, action.payload] } 
-    case 'add_item' :
-      return { ...state, files: [...state.files, action.payload] }    
+    case 'add_folders' :
+      return { ...state, vehicleData: [...state.vehicleData, action.payload] }    
     default:
       return state
   }
@@ -57,7 +57,7 @@ const BackUp = () => {
         const combinedArray = [...response.data];
 
         console.log('3.combinedArray');
-        setVehicleData([combinedArray]);
+        setVehicleData([...vehicleData, combinedArray]);
         console.log('4.combinedArray');
         
         console.log('5.images');
