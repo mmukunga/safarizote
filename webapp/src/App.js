@@ -36,6 +36,7 @@ function App() {
     const onChange = (e) => {
       console.log('What..');
       console.log(history);
+      console.log(props.history);
       history.push(`${e.target.value}`);
       console.log(history);
     };
