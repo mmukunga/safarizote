@@ -87,7 +87,7 @@ const SignIn = (props) => {
             <form class="form-inline" onSubmit={handleSubmit}>
                 <input type="email" id="email" name="email" placeholder="Enter email"
                     onChange={handleChange} required />
-                <input type="password" id="password" name="password" placeholder="Enter password"
+                <input type="password" id="password" name="password" autocomplete="current-password"
                     onChange={handleChange} required />
                 <input type="submit" name="Submit" />
             </form>
