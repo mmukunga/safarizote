@@ -3,8 +3,10 @@ import axios from 'axios';
 import { Redirect, Route } from 'react-router-dom';
 
 const Private = ({ component: Component, ...rest }) => {
-  console.log('PrivateRoute...');
-
+  console.log('1.PrivateRoute...');
+  const userAuth = localStorage.getItem('userAuth');
+  console.log('2.PrivateRoute...');
+  console.log(userAuth);
 const isValidUser = () => {
   console.log('..isValidUser..');
   if (localStorage.getItem('userAuth') !== null) {
