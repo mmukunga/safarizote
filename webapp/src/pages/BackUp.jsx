@@ -54,14 +54,14 @@ const BackUp = () => {
         const data =  ['https://storage.googleapis.com/sms_familie_album/2…fdyOM9uvNZplb79UuLAZ1EdbfEaxectyITGRKrZySnQ%3D%3D'];
         console.log('1.data');
         console.log('2.response');
-        const combinedArray = [...response.data];
+        const finalArray  = [...vehicleData, ...response.data];
 
         console.log('3.combinedArray');
         let arr1 = ['A', 'B', 'C'];
         let arr2 = ['X', 'Y', 'Z'];
         let result = [...arr1, ...arr2];
         console.log(result);
-        setVehicleData({...combinedArray});
+        setVehicleData([...finalArray]);
         console.log('2.data');
         setVehicleData(vehicleData => [...vehicleData, data[0]]);
         console.log('3.data');
@@ -72,7 +72,7 @@ const BackUp = () => {
           return [...prev, data[0]];
        });
 
-        console.log('4.combinedArray');
+        console.log('4.finalArray ');
         
         console.log('5.images');
         const fileName = 'https://www.hyperlinkcode.com/images/sample-image.jpg';
