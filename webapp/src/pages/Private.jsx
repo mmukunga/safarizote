@@ -32,7 +32,9 @@ const Private = ({ component: Component, ...rest }) => {
   if (!isValidUser()) { 
     console.log('40...PrivateRoute...');
     console.log('USER NOT VALID');
-   }
+  } else {
+    console.log('USER VALID. BINGO!!');
+  }
 
    return (
     <Route
