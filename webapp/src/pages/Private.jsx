@@ -28,13 +28,6 @@ const Private = ({ component: Component, ...rest }) => {
   console.log(isValidUser);
   console.log('30...PrivateRoute...');
 
-
-  if (isValidUser) { 
-    console.log('40...PrivateRoute...');
-    return 'Mukunga Macharia Simon';
-   }
-
-   const errorCondition = true;
    return (
     <Route
       {...rest}
