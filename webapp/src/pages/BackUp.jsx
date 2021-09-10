@@ -47,7 +47,7 @@ const LazyImage = ({src, alt}) => {
 
 const BackUp = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [vehicleData, setVehicleData] = React.useState(['Maji']);
+  const [vehicleData, setVehicleData] = React.useState(['https://storage.googleapis.com/sms_familie_album/2…fdyOM9uvNZplb79UuLAZ1EdbfEaxectyITGRKrZySnQ%3D%3D']);
 
   React.useEffect(() => {
     axios.get("/api/categories").then(response => {
@@ -63,13 +63,13 @@ const BackUp = () => {
         console.log(result);
         //setVehicleData(finalArray);
         console.log('2.data');
-        setVehicleData(vehicleData => [...vehicleData, data[0]]);
+        setVehicleData(vehicleData => [...vehicleData, finalArray]);
         console.log('3.data');
-        setVehicleData(prevState => [...prevState,  data[0]]);
+        setVehicleData(prevState => [...prevState,  vehicleData[0]]);
         console.log('4.data');
-        setVehicleData(x => [...x,  data[0]]);
+        setVehicleData(x => [...x,  vehicleData[0]]);
         setVehicleData((prev)=>{
-          return [...prev, data[0]];
+          return [...prev, vehicleData[0]];
        });
 
         console.log('4.finalArray ');
