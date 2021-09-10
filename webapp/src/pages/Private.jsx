@@ -30,12 +30,12 @@ const Private = ({ component: Component, ...rest }) => {
   console.log('20.PrivateRoute...');
   console.log(isValidUser);
   console.log('30.PrivateRoute...');
-  
+
   return (
     <Route
       {...rest}
       render={(props) =>
-        isValidUser ? (
+        true ? (
           <Component {...props} />
         ) : (
           <Redirect
