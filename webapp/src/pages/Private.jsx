@@ -28,11 +28,17 @@ const Private = ({ component: Component, ...rest }) => {
   console.log(isValidUser);
   console.log('30...PrivateRoute...');
 
+  var isLoggedIn =  isValidUser();
+  if (!isValidUser()) { 
+    console.log('40...PrivateRoute...');
+    console.log('USER NOT VALID');
+   }
+
    return (
     <Route
       {...rest}
       render={(props) => {
-        return isValidUser ? <Component {...props} /> : <Redirect to={{pathname: "/signIn", state: { from: props.location } }}
+        return isLoggedIn ? <Component {...props} /> : <Redirect to={{pathname: "/signIn", state: { from: props.location } }}
       />;
       }}
     />
