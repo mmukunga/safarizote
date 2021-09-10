@@ -61,10 +61,12 @@ const BackUp = () => {
         let arr2 = ['X', 'Y', 'Z'];
         let result = [...arr1, ...arr2];
         console.log(result);
-        setVehicleData(vehicleData => [...vehicleData, data[0]]);
+        setVehicleData({...combinedArray});
         console.log('2.data');
-        setVehicleData(prevState => [...prevState,  data[0]]);
+        setVehicleData(vehicleData => [...vehicleData, data[0]]);
         console.log('3.data');
+        setVehicleData(prevState => [...prevState,  data[0]]);
+        console.log('4.data');
         setVehicleData(x => [...x,  data[0]]);
         setVehicleData((prev)=>{
           return [...prev, data[0]];
