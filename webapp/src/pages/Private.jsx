@@ -6,8 +6,10 @@ const Private = ({ component: Component, ...rest }) => {
   console.log('PrivateRoute...');
 
 const isValidUser = () => {
+  console.log('..isValidUser..');
   if (localStorage.getItem('userAuth') !== null) {
     const userAuth = localStorage.getItem('userAuth');
+    console.log(userAuth);
     axios.post('/api/verify', {
         token: userAuth.token,
         username: userAuth.username
@@ -19,6 +21,8 @@ const isValidUser = () => {
         return false;
     });
   }
+  console.log('..isValidUser.. END!!');
+  return false;
 }
 
   return (
