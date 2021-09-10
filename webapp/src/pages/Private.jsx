@@ -37,6 +37,7 @@ const Private = ({ component: Component, ...rest }) => {
     return 'Mukunga Macharia Simon';
    }
 
+   const errorCondition = true;
   return (
     <div>
           <h1>Hello!</h1>
