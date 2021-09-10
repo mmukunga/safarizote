@@ -4,7 +4,7 @@ import { Redirect, Route } from 'react-router-dom';
 
 const Private = ({ component: Component, ...rest }) => {
   console.log('1...PrivateRoute...');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
   const userToken = localStorage.getItem('userToken')
   console.log('2...PrivateRoute...');
