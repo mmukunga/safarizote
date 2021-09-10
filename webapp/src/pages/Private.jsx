@@ -7,12 +7,21 @@ const Private = ({component: Component, ...rest}) => {
   const fakeAuth = {
     isAuthenticated: false,
     authenticate(cb) {
-      this.isAuthenticated = true
-      setTimeout(cb, 100)
+      const userToken = localStorage.getItem('userToken');
+
+      if (userToken !== null) {
+        console.log('!!IS AUTHENTICATED!!');
+      }  
+
+      console.log('1...PrivateRoute.fakeAuth()...');
+      console.log(userToken);
+      console.log('2...PrivateRoute.fakeAuth()...');
+      this.isAuthenticated = true;
+      setTimeout(cb, 100);
     },
     signout(cb) {
-      this.isAuthenticated = false
-      setTimeout(cb, 100)
+      this.isAuthenticated = false;
+      setTimeout(cb, 100);
     }
   }
 
