@@ -32,7 +32,7 @@ function App() {
     color: 'purple'
   }
 
-  const DropDown = ({ history }) => {
+  const DropDown = (props) => {
     const onChange = (e) => {
       console.log('What..');
       console.log(history);
@@ -50,7 +50,7 @@ function App() {
     );
   }
   
-  const Menu = withRouter(DropDown(history));
+  const Menu = withRouter(DropDown);
   
   const handleLogout = () => {
       console.log('1.handleLogout');
