@@ -35,13 +35,13 @@ function App() {
   const DropDown = (props) => {
     const onChange = (e) => {
       console.log('1.What..');
-      console.log(history);
+      console.log(props.history);
       console.log('2.What..');
       console.log(props.history);
       console.log('3.What..');
-      history.push(`${e.target.value}`);
+      props.history.push(`${e.target.value}`);
       console.log('4.What..');
-      console.log(history);
+      console.log(props.history);
       console.log('5.What..');
     };
 
