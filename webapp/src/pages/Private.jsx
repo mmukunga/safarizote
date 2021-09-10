@@ -3,9 +3,9 @@ import axios from 'axios';
 import { Redirect, Route } from 'react-router-dom';
 
 const Private = ({ component: Component, ...rest }) => {
-  console.log('1.PrivateRoute...');
+  console.log('1...PrivateRoute...');
   const userAuth = localStorage.getItem('userAuth');
-  console.log('2.PrivateRoute...');
+  console.log('2...PrivateRoute...');
   console.log(userAuth);
   const isValidUser = () => {
     console.log('..isValidUser..');
@@ -27,12 +27,24 @@ const Private = ({ component: Component, ...rest }) => {
     return false;
   }
 
-  console.log('20.PrivateRoute...');
+  console.log('20...PrivateRoute...');
   console.log(isValidUser);
-  console.log('30.PrivateRoute...');
+  console.log('30...PrivateRoute...');
+
+
+  if (isValidUser) { 
+    console.log('40...PrivateRoute...');
+    return 'Mukunga Macharia Simon';
+   }
 
   return (
-    <div>Simon</div>
+    <div>
+          <h1>Hello!</h1>
+          {errorCondition  
+             ? <div>This is an error</div>
+             : <div>Hey there bud! Nothing wrong here, carry on!</div>
+          }    
+        </div>
   );
 }
 
