@@ -175,6 +175,10 @@ const BackUp = () => {
       return response.data;
     });
   }
+  
+  if (!state.files) {
+    return null;
+  }
 
   return (
     <Card className="InnerCard" fontColor="black">
@@ -206,7 +210,6 @@ const BackUp = () => {
             })}
           </div>
         </div>
-
       </form>
     </Card>
   );
