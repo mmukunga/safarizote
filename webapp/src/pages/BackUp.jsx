@@ -47,7 +47,7 @@ const LazyImage = ({src, alt}) => {
 
 const BackUp = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [vehicleData, setVehicleData] = React.useState([]);
+  const [vehicleData, setVehicleData] = React.useState(['Maji']);
 
   React.useEffect(() => {
     axios.get("/api/categories").then(response => {
@@ -110,9 +110,7 @@ const BackUp = () => {
       })
       console.log('3');
       dispatch({ type: 'load', payload: files });
-      return {}
     }
-    return {};
   };
 
   const uploadSubmit = async (e) => {
