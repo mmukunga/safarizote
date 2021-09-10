@@ -33,7 +33,10 @@ function App() {
 
   const DropDown = ({ history }) => {
     const onChange = (e) => {
+      console.log('What..');
+      console.log(history);
       history.push(`${e.target.value}`);
+      console.log(history);
     };
 
     return (
