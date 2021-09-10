@@ -4,27 +4,24 @@ import { Redirect, Route } from 'react-router-dom';
 
 const Private = ({ component: Component, ...rest }) => {
   console.log('1...PrivateRoute...');
-  const userAuth = localStorage.getItem('userAuth');
+  const userToken = localStorage.getItem('userToken')
   console.log('2...PrivateRoute...');
-  console.log(userAuth);
+  console.log(userToken);
   const isValidUser = () => {
     console.log('..isValidUser..');
-    if (localStorage.getItem('userAuth') !== null) {
-      const userAuth = localStorage.getItem('userAuth');
-      console.log(userAuth);
-      axios.post('/api/verify', {
-          token: userAuth.token,
-          username: userAuth.username
+    if (localStorage.getItem('userToken') !== null) {
+      console.log(userToken);
+      return axios.post('/api/verify', {
+          token: userToken,
+          username: 'm@gmail.com'
       }).then(response => {
           console.log(response);
-          return true;
+         return true;
       }).catch(error => {
           console.log(error);
           return false;
       });
     }
-    console.log('..isValidUser.. END!!');
-    return false;
   }
 
   console.log('20...PrivateRoute...');
@@ -38,14 +35,14 @@ const Private = ({ component: Component, ...rest }) => {
    }
 
    const errorCondition = true;
-  return (
-    <div>
-          <h1>Hello!</h1>
-          {errorCondition  
-             ? <div>This is an error</div>
-             : <div>Hey there bud! Nothing wrong here, carry on!</div>
-          }    
-        </div>
+   return (
+    <Route
+      path={path}
+      {...rest}
+      render={(props) => {
+        return isValidUser ? <Component {...props} /> : <Redirect to="/" />;
+      }}
+    />
   );
 }
 
