@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch, NavLink, Link } from "react-router-dom";
-import { withRouter } from "react-router-dom";
+import { withRouter, useHistory  } from "react-router-dom";
 
 import logo from './logo.svg';
 import './App.css';
@@ -20,7 +20,8 @@ import Private from './pages/Private';
 
 function App() {
   const isLoggedIn = localStorage.getItem('token');
-
+  let history = useHistory();
+  
   const selectStyle = {
       width: '80px', 
       padding: '2px', 
@@ -49,7 +50,7 @@ function App() {
     );
   }
   
-  const Menu = withRouter(DropDown);
+  const Menu = withRouter(DropDown(history));
   
   const handleLogout = () => {
       console.log('1.handleLogout');
