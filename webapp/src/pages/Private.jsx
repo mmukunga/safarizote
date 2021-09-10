@@ -48,6 +48,7 @@ const Private = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) => {
+        console.log(props);
         return isLoggedIn ? <Component {...props} /> : <Redirect to={{pathname: "/signIn", state: { from: props.location } }}
       />;
       }}
