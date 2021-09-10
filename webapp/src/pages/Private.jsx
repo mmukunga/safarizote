@@ -37,10 +37,10 @@ const Private = ({ component: Component, ...rest }) => {
    const errorCondition = true;
    return (
     <Route
-      path={path}
       {...rest}
       render={(props) => {
-        return isValidUser ? <Component {...props} /> : <Redirect to="/" />;
+        return isValidUser ? <Component {...props} /> : <Redirect to={{pathname: "/signIn", state: { from: props.location } }}
+      />;
       }}
     />
   );
