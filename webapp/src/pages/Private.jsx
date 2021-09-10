@@ -4,6 +4,8 @@ import { Redirect, Route } from 'react-router-dom';
 
 const Private = ({ component: Component, ...rest }) => {
   console.log('1...PrivateRoute...');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const userToken = localStorage.getItem('userToken')
   console.log('2...PrivateRoute...');
   console.log(userToken);
@@ -16,11 +18,15 @@ const Private = ({ component: Component, ...rest }) => {
           username: 'm@gmail.com'
       }).then(response => {
           console.log(response);
+          setIsLoggedIn(true);
          return true;
       }).catch(error => {
           console.log(error);
+          setIsLoggedIn(true);
           return false;
       });
+    } else {
+      setIsLoggedIn(false);
     }
   }
 
@@ -28,13 +34,15 @@ const Private = ({ component: Component, ...rest }) => {
   console.log(isValidUser);
   console.log('30...PrivateRoute...');
 
-  var isLoggedIn =  isValidUser();
+  //var isLoggedIn =  isValidUser();
   if (!isValidUser()) { 
     console.log('40...PrivateRoute...');
     console.log('USER NOT VALID');
   } else {
     console.log('USER VALID. BINGO!!');
   }
+
+  console.log(isLoggedIn);
 
    return (
     <Route
