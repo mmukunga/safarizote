@@ -32,21 +32,7 @@ const Private = ({ component: Component, ...rest }) => {
   console.log('30.PrivateRoute...');
 
   return (
-    <Route
-      {...rest}
-      render={(props) =>
-        true ? (
-          <Component {...props} />
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/signIn",
-              state: { from: props.location }
-            }}
-          />
-        )
-      }
-    />
+    <div>Simon</div>
   );
 }
 
