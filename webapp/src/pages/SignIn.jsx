@@ -24,8 +24,8 @@ const reducer = (state, action) => {
 }
 
 const SignIn = (props) => {
-    const { state } = useLocation();
-    const { from } = state || { from: { pathname: "/" } };
+    const { location } = useLocation();
+    const { from } = location || { from: { pathname: "/" } };
     const [redirectToReferrer, setRedirectToReferrer] = useState(false);
 
     const [state, dispatch] = React.useReducer(reducer, initialState);
@@ -33,7 +33,6 @@ const SignIn = (props) => {
     const [verified, setVerified] = useState(false);
     const [loginData, setLoginData] = useState({});
 
-    //const { from } = props.location.state || { from: { pathname: "/" } };
     const login = () => {
         fakeAuth.authenticate(() => {
           setRedirectToReferrer(true);
@@ -56,51 +55,6 @@ const SignIn = (props) => {
         dispatch({ type: 'SET_EMAIL', payload: event.target })
     }
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        axios.post('/api/login', {
-            email: state.email,
-            password: state.password
-        }).then(response => {
-            const userAuth = {
-               email: response.data.email,
-               password: response.data.password,
-               token: response.data.token,
-               dateCreated: new Date()
-            };
-            dispatch({ type: 'SET_TOKEN', payload: userAuth });
-            localStorage.setItem('userToken', response.data.token);
-            setCount(prevCount => prevCount + 1);
-            setLoginData({...userAuth});
-        }).catch(error => {
-            console.log(error);
-        });      
-    };
-    
-    React.useEffect(() => {
-        console.log(localStorage.getItem('userToken'));
-        if (state.email != '' && localStorage.getItem('userToken') != null) {
-            const token = localStorage.getItem('userToken');
-            const userAuth = {
-                email: state.email,
-                password: state.password,
-                token: token,
-                dateCreated: new Date()
-            };
-                       
-            axios.post('/api/verify', userAuth).then(response => {
-                setVerified(true);
-                return <Redirect to={from} />;
-            }).catch(error => {
-                console.log(error);
-            });
-            
-        }
-    }, [loginData]);
-
-    if (verified) {
-        return <Redirect to={from} />;
-    }
 
     return (
         <Card className="InnerCard" fontColor="black">
