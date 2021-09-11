@@ -1,10 +1,13 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import Card from './Card';
 import UserService from './UserService';
 
 const SignIn = () => {
+    const { state } = useLocation();
+    const { from } = state || { from: { pathname: "/" } };
     const [loading, setLoading] = React.useState(false);
+    const [isLoggedIn, setIsLoggedIn] = React.useState(false);
     const [form, setForm] = React.useState({
         email: '',
         password: ''
@@ -23,11 +26,15 @@ const SignIn = () => {
         setLoading(true);
     
         UserService.loginUser(user).then(res => {
+            console.log(res);
             localStorage.setItem('access_token', res.token);
             setLoading(false);
+            console.log(res);
+            setIsLoggedIn(true);
             history.push('/');
           }).catch(err => {
             setError(err.message);
+            console.log(err);
             setLoading(false);
           });
     };
@@ -37,6 +44,11 @@ const SignIn = () => {
         setForm({...form,
             [event.target.name]: event.target.value});
     }
+
+
+    if (isLoggedIn) {
+        return <Redirect to={from} />;
+      }
 
     return (
         <Card className="InnerCard" fontColor="black">
