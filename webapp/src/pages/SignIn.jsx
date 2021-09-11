@@ -19,8 +19,8 @@ const SignIn = () => {
         e.preventDefault();
 
         const user = {
-          username: '',
-          password: '',
+          username: 'm@gmail.com',
+          password: '12345',
         };
     
         setLoading(true);
