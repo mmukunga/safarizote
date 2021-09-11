@@ -116,7 +116,6 @@ const BackUp = () => {
   const uploadSubmit = async (e) => {
       e.preventDefault();
       
-      console.log(result);
       console.log(state);
       console.log(state.files);
 
