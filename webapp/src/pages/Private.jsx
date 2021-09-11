@@ -29,7 +29,7 @@ const Private = ({component: Component, ...rest}) => {
     <Route {...rest} render={props => (            
       fakeAuth.isAuthenticated === true
         ? <Component {...props} />            
-        : <Redirect to="/signIn" />        
+        : <Redirect  to={{pathname: '/signIn', state: {from: props.location}}} />        
     )} />   
   );
 }
