@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect, Route, useLocation } from 'react-router-dom';
 
 const Private = ({component: Component, ...rest}) => {
-
+  const location = useLocation();
   const fakeAuth = {
     isAuthenticated: false,
     authenticate(cb) {
