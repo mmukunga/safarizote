@@ -116,64 +116,48 @@ const BackUp = () => {
   const uploadSubmit = async (e) => {
       e.preventDefault();
       
-      ValidateUser(e).then((result) => {
-          console.log(result);
-          console.log(state);
-          console.log(state.files);
+      console.log(result);
+      console.log(state);
+      console.log(state.files);
 
-          const formData = new FormData();
-          formData.append('file',state.files)
-          const config = {
-              headers: {
-                  'content-type': 'multipart/form-data'
-              }
+      const formData = new FormData();
+      formData.append('file',state.files)
+      const config = {
+          headers: {
+              'content-type': 'multipart/form-data'
           }
+      }
 
-          console.log(formData);
-          
-          var index = Math.floor(Math.random() * state.files.length);
-          console.log('INDEX: ' + index);
-          console.log(state.files[index]);
-          const image = state.files[index].src;
-          axios.get(`/api/gcsDownload?image=${image}`).then((response) => { 
-              console.log(response.data);
-              const date = new Date();
-              const unixTimeStamp = Math.floor(date.getTime() / 1000);
-              const File = {
-                  lastModified: unixTimeStamp,
-                  lastModifiedDate: date,
-                  name: response.data,
-                  size: 8000,
-                  type: "image/jpeg",
-                  webkitRelativePath: ""
-              };
+      console.log(formData);
+      
+      var index = Math.floor(Math.random() * state.files.length);
+      console.log('INDEX: ' + index);
+      console.log(state.files[index]);
+      const image = state.files[index].src;
+      axios.get(`/api/gcsDownload?image=${image}`).then((response) => { 
+        console.log(response.data);
+        const date = new Date();
+        const unixTimeStamp = Math.floor(date.getTime() / 1000);
 
-              const gcsData = {file: File, id: state.files.length+1, src: `${response.data}`}
-              dispatch({
-                type: 'add_item',
-                payload: gcsData
-              });
+        const File = {
+          lastModified: unixTimeStamp,
+          lastModifiedDate: date,
+          name: response.data,
+          size: 8000,
+          type: "image/jpeg",
+          webkitRelativePath: ""
+        };
 
-          }).catch(error => {
-              console.log(error);
-          });
+        const gcsData = {file: File, id: state.files.length+1, src: `${response.data}`}
+        dispatch({ type: 'add_item', payload: gcsData});
+
+      }).catch(error => {
+          console.log(error);
       });
+
+     
           
       console.log("Submited OK!!");
-  }
-        
-  const ValidateUser = async (e) => {
-    const token = localStorage.getItem('userToken');
-    let result = await AuthUser(token);
-    return result;
-  }
-
-  const AuthUser = async(token) => {
-    console.log("TOKEN:= " + token);
-    axios.get(`/api/userByToken/${token}`).then(response => { 
-      console.log(response);
-      return response.data;
-    });
   }
   
   if (!state.files) {
