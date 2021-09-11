@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Redirect, Route, useLocation } from 'react-router-dom';
+import UserService from './UserService';
 
 const Private = ({component: Component, ...rest}) => {
   const location = useLocation();
@@ -27,7 +28,7 @@ const Private = ({component: Component, ...rest}) => {
 
   return (
     <Route {...rest} render={props => (            
-      fakeAuth.isAuthenticated === true
+          UserService.isLoggedIn == true
         ? <Component {...props} />            
         : <Redirect  to={{pathname: '/signIn', state: {from: props.location}}} />        
     )} />   
