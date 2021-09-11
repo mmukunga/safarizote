@@ -4,8 +4,8 @@ import Card from './Card';
 import UserService from './UserService';
 
 const SignIn = () => {
-    const [loading, setLoading] = useState(false);
-    const [form, setForm] = useState({
+    const [loading, setLoading] = React.useState(false);
+    const [form, setForm] = React.useState({
         email: '',
         password: ''
       });
@@ -16,8 +16,8 @@ const SignIn = () => {
         e.preventDefault();
 
         const user = {
-          username,
-          password,
+          username = '',
+          password = '',
         };
     
         setLoading(true);
