@@ -49,7 +49,7 @@ const SignIn = () => {
         setForm({...form, [name]: value});
     }
 
-    if (localStorage.setItem('access_token')!=null) {
+    if (localStorage.getItem('access_token')!=null) {
         console.log('!!1.IS LOGGED IN!!');
         console.log(from);
         console.log(location.pathname); 
