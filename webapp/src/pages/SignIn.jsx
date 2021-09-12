@@ -4,8 +4,6 @@ import Card from './Card';
 import UserService from './UserService';
 
 const SignIn = () => {
-    const { state } = useLocation();
-    const { from } = state || { from: { pathname: "/" } };
     const [loading, setLoading] = React.useState(false);
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
     const [form, setForm] = React.useState({
@@ -13,8 +11,11 @@ const SignIn = () => {
         password: ''
       });
     const [error, setError] = React.useState(null);
-    const history = useHistory();
 
+    let history = useHistory();
+    let location = useLocation();  
+    const { from } = location.state || { from: { pathname: "/" } };
+    
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -31,7 +32,7 @@ const SignIn = () => {
             setLoading(false);
             console.log(res);
             setIsLoggedIn(true);
-            history.push('/');
+            history.replace(from);
           }).catch(err => {
             setError(err.message);
             console.log(err);
