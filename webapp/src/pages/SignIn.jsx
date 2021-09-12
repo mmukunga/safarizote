@@ -48,10 +48,19 @@ const SignIn = () => {
 
 
     if (isLoggedIn) {
-      console.log('!!1.IS LOGGED IN!!')
-      console.log(from);
-      console.log('!!2.IS LOGGED IN!!')
+        console.log('!!1.IS LOGGED IN!!');
+        console.log(from);
+        const location = useLocation();
+        console.log(location.pathname); 
+        console.log(location.search); 
+        console.log(location.state);
+        console.log('!!2.IS LOGGED IN!!');
         return <Redirect to={from} />;
+      } else {
+        console.log('!!1.IS LOGGED NOT IN!!');
+        console.log(from);
+        console.log(isLoggedIn); 
+        console.log('!!1.IS LOGGED NOT IN!!');  
       }
 
     return (
