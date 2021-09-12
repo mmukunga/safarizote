@@ -14,7 +14,14 @@ const SignIn = () => {
 
     let history = useHistory();
     let location = useLocation();  
-    
+
+    useEffect(() => {
+        const accessToken = localStorage.getItem('access_token');
+        console.log(accessToken);
+        const loggedIn = localStorage.getItem('userId')? true: false;
+        setIsLoggedIn(loggedIn);
+    }, []); 
+
     const { from } = location.state || { from: { pathname: "/" } };
     
     const handleSubmit = (e) => {
@@ -41,6 +48,15 @@ const SignIn = () => {
           });
     };
     
+
+    const logout = () => {
+      setIsLoggedIn(false);
+      setUser("");
+      localStorage.clear();
+      useHistory().push("/");
+      return (<div>Simon LogOut!!</div>);
+    }
+
     const handleChange = (event) => {
         const {name, value} = event.target;
         console.log('name: ' + name + ' value: ' + value);
