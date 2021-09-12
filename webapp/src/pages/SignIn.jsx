@@ -13,15 +13,6 @@ const SignIn = () => {
     let history = useHistory();
     let location = useLocation();  
 
-    React.useEffect(() => {
-        console.log('UseEffect.accessToken');
-        const accessToken = localStorage.getItem('access_token');
-        console.log(accessToken);
-        const loggedIn = localStorage.getItem('access_token');
-        console.log('loggedIn - accessToken');
-        console.log(loggedIn);
-    }, []); 
-
     const { from } = location.state || { from: { pathname: "/" } };
     
     const handleSubmit = (e) => {
@@ -36,7 +27,6 @@ const SignIn = () => {
           console.log(res);
           localStorage.setItem('access_token', res.token);
           console.log(res);
-          history.replace(from);
         }).catch(err => {
           setError(err.message);
           console.log(err);
