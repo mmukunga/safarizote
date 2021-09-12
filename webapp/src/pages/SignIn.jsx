@@ -4,6 +4,7 @@ import Card from './Card';
 import UserService from './UserService';
 
 const SignIn = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [form, setForm] = React.useState({
         email: '',
         password: ''
@@ -27,6 +28,7 @@ const SignIn = () => {
           console.log(res);
           console.log(res.token);
           localStorage.setItem('access_token', res.token);
+          setIsLoggedIn(!isLoggedIn);
           console.log(res);
         }).catch(err => {
           setError(err.message);
@@ -39,6 +41,17 @@ const SignIn = () => {
         console.log('name: ' + name + ' value: ' + value);
         setForm({...form, [name]: value});
     }
+
+
+    useEffect(() => {
+        console.log('!!1xxx.IS LOGGED IN!!');
+        console.log(from);
+        console.log(location.pathname); 
+        console.log(location.search); 
+        console.log(location.state);
+        console.log('!!2xxx.IS LOGGED IN!!');
+        return <Redirect to={from} />;
+    }, [isLoggedIn]);
 
 
     console.log(localStorage.getItem('access_token'));
