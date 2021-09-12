@@ -4,8 +4,6 @@ import Card from './Card';
 import UserService from './UserService';
 
 const SignIn = () => {
-    const [loading, setLoading] = React.useState(false);
-    const [isLoggedIn, setIsLoggedIn] = React.useState(false);
     const [form, setForm] = React.useState({
         email: '',
         password: ''
@@ -22,7 +20,6 @@ const SignIn = () => {
         const loggedIn = localStorage.getItem('access_token');
         console.log('loggedIn - accessToken');
         console.log(loggedIn);
-        setIsLoggedIn((loggedIn != null)? true : false);
     }, []); 
 
     const { from } = location.state || { from: { pathname: "/" } };
@@ -34,21 +31,16 @@ const SignIn = () => {
           username: 'm@gmail.com',
           password: '12345',
         };
-    
-        setLoading(true);
-    
+
         UserService.loginUser(user).then(res => {
-            console.log(res);
-            localStorage.setItem('access_token', res.token);
-            setLoading(false);
-            console.log(res);
-            setIsLoggedIn(true);
-            history.replace(from);
-          }).catch(err => {
-            setError(err.message);
-            console.log(err);
-            setLoading(false);
-          });
+          console.log(res);
+          localStorage.setItem('access_token', res.token);
+          console.log(res);
+          history.replace(from);
+        }).catch(err => {
+          setError(err.message);
+          console.log(err);
+        });
     };
 
     const handleChange = (event) => {
@@ -57,7 +49,7 @@ const SignIn = () => {
         setForm({...form, [name]: value});
     }
 
-    if (isLoggedIn) {
+    if (localStorage.setItem('access_token')!=null) {
         console.log('!!1.IS LOGGED IN!!');
         console.log(from);
         console.log(location.pathname); 
@@ -68,7 +60,6 @@ const SignIn = () => {
       } else {
         console.log('!!1.IS LOGGED NOT IN!!');
         console.log(from);
-        console.log(isLoggedIn); 
         console.log('!!1.IS LOGGED NOT IN!!');  
       }
 
