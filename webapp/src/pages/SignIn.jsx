@@ -16,10 +16,13 @@ const SignIn = () => {
     let location = useLocation();  
 
     React.useEffect(() => {
+        console.log('UseEffect.accessToken');
         const accessToken = localStorage.getItem('access_token');
         console.log(accessToken);
-        const loggedIn = localStorage.getItem('access_token')? true: false;
-        setIsLoggedIn(loggedIn);
+        const loggedIn = localStorage.getItem('access_token');
+        console.log('loggedIn - accessToken');
+        console.log(loggedIn);
+        setIsLoggedIn((loggedIn != null)? true : false);
     }, []); 
 
     const { from } = location.state || { from: { pathname: "/" } };
@@ -47,21 +50,12 @@ const SignIn = () => {
             setLoading(false);
           });
     };
-    
-
-    const logout = () => {
-      setIsLoggedIn(false);
-      localStorage.clear();
-      history.push("/");
-      return (<div>Simon LogOut!!</div>);
-    }
 
     const handleChange = (event) => {
         const {name, value} = event.target;
         console.log('name: ' + name + ' value: ' + value);
         setForm({...form, [name]: value});
     }
-
 
     if (isLoggedIn) {
         console.log('!!1.IS LOGGED IN!!');
