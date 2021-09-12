@@ -15,7 +15,7 @@ const SignIn = () => {
     let history = useHistory();
     let location = useLocation();  
 
-    useEffect(() => {
+    React.useEffect(() => {
         const accessToken = localStorage.getItem('access_token');
         console.log(accessToken);
         const loggedIn = localStorage.getItem('access_token')? true: false;
@@ -51,7 +51,6 @@ const SignIn = () => {
 
     const logout = () => {
       setIsLoggedIn(false);
-      setUser("");
       localStorage.clear();
       useHistory().push("/");
       return (<div>Simon LogOut!!</div>);
