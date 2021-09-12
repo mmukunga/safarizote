@@ -41,9 +41,9 @@ const SignIn = () => {
     };
     
     const handleChange = (event) => {
-        console.log(event.target);
-        setForm({...form,
-            [event.target.name]: event.target.value});
+        const {name, value} = event.target;
+        console.log('name: ' + name + ' value: ' + value);
+        setForm({...form, [name]: value});
     }
 
 
