@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch, NavLink, Link } from "react-router-dom";
-import { withRouter, useHistory  } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 import logo from './logo.svg';
 import './App.css';
@@ -20,7 +20,6 @@ import Private from './pages/Private';
 
 function App() {
   const isLoggedIn = localStorage.getItem('token');
-  let history = useHistory();
   
   const selectStyle = {
       width: '80px', 
@@ -35,14 +34,8 @@ function App() {
   const DropDown = (props) => {
     const onChange = (e) => {
       console.log('1.What..');
-      console.log(props.history);
-      console.log('2.What..');
-      console.log(props.history);
-      console.log('3.What..');
       props.history.push(`${e.target.value}`);
       console.log('4.What..');
-      console.log(props.history);
-      console.log('5.What..');
     };
 
     return (

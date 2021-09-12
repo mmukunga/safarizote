@@ -1,5 +1,5 @@
 import React from 'react';
-import {Redirect, useHistory, useLocation } from 'react-router-dom';
+import {Redirect, useLocation } from 'react-router-dom';
 import Card from './Card';
 import UserService from './UserService';
 
@@ -11,7 +11,6 @@ const SignIn = () => {
       });
     const [error, setError] = React.useState(null);
 
-    let history = useHistory();
     let location = useLocation();  
 
     const { from } = location.state || { from: { pathname: "/" } };
