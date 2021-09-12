@@ -8,7 +8,7 @@ const Private = ({component: Component, ...rest}) => {
   const fakeAuth = {
     isAuthenticated: false,
     authenticate(cb) {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = localStorage.getItem('access_token');
 
       if (userToken !== null) {
         console.log('!!IS AUTHENTICATED!!');
