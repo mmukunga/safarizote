@@ -47,6 +47,9 @@ const SignIn = () => {
 
 
     if (isLoggedIn) {
+      console.log('!!1.IS LOGGED IN!!')
+      console.log(from);
+      console.log('!!2.IS LOGGED IN!!')
         return <Redirect to={from} />;
       }
 
