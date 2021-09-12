@@ -52,7 +52,7 @@ const SignIn = () => {
     const logout = () => {
       setIsLoggedIn(false);
       localStorage.clear();
-      useHistory().push("/");
+      history.push("/");
       return (<div>Simon LogOut!!</div>);
     }
 
