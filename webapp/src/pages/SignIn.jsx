@@ -18,7 +18,7 @@ const SignIn = () => {
     useEffect(() => {
         const accessToken = localStorage.getItem('access_token');
         console.log(accessToken);
-        const loggedIn = localStorage.getItem('userId')? true: false;
+        const loggedIn = localStorage.getItem('access_token')? true: false;
         setIsLoggedIn(loggedIn);
     }, []); 
 
