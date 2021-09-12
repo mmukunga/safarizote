@@ -25,6 +25,7 @@ const SignIn = () => {
 
         UserService.loginUser(user).then(res => {
           console.log(res);
+          console.log(res.token);
           localStorage.setItem('access_token', res.token);
           console.log(res);
         }).catch(err => {
@@ -38,6 +39,11 @@ const SignIn = () => {
         console.log('name: ' + name + ' value: ' + value);
         setForm({...form, [name]: value});
     }
+
+
+    console.log(localStorage.getItem('access_token'));
+    console.log(localStorage.getItem('token'));
+
 
     if (localStorage.getItem('access_token')!=null) {
         console.log('!!1.IS LOGGED IN!!');
