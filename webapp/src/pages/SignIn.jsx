@@ -52,12 +52,10 @@ const SignIn = () => {
         return <Redirect to={from} />;
     }, [isLoggedIn]);
 
+    const token = localStorage.getItem('access_token');
+    console.log('token:= ' +  token);
 
-    console.log(localStorage.getItem('access_token'));
-    console.log(localStorage.getItem('token'));
-
-
-    if (localStorage.getItem('access_token')!=null) {
+    if (token != null) {
         console.log('!!1.IS LOGGED IN!!');
         console.log(from);
         console.log(location.pathname); 
