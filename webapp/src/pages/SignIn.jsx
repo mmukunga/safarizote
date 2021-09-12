@@ -14,6 +14,7 @@ const SignIn = () => {
 
     let history = useHistory();
     let location = useLocation();  
+    
     const { from } = location.state || { from: { pathname: "/" } };
     
     const handleSubmit = (e) => {
@@ -50,7 +51,6 @@ const SignIn = () => {
     if (isLoggedIn) {
         console.log('!!1.IS LOGGED IN!!');
         console.log(from);
-        const location = useLocation();
         console.log(location.pathname); 
         console.log(location.search); 
         console.log(location.state);
