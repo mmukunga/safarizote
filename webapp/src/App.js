@@ -34,7 +34,6 @@ function App() {
   const DropDown = (props) => {
     const onChange = (e) => {
       console.log('1.What..');
-      props.history.push(`${e.target.value}`);
       console.log('4.What..');
     };
 
