@@ -15,7 +15,6 @@ const SignIn = () => {
 
     const { from } = location.state || { from: { pathname: "/" } };
     console.log(location.state);
-    console.log(props.location.state.from);
     console.log(from);
 
     const handleSubmit = (e) => {
