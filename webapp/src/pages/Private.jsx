@@ -1,10 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-import { Redirect, Route, useLocation } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import UserService from './UserService';
 
 const Private = ({component: Component, ...rest}) => {
-
+  console.log('UserService.isLoggedIn? ' + UserService.isLoggedIn);
   return (
     <Route {...rest} render={props => (            
           UserService.isLoggedIn == true
