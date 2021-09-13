@@ -1,4 +1,5 @@
-import React from "react";
+
+const isLoggedIn = localStorage.getItem('access_token') !== null;
 
 const loginUser = async (user) => {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
