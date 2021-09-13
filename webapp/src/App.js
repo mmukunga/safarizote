@@ -1,6 +1,5 @@
 import React from 'react';
-import { Route, Switch, NavLink, Link } from "react-router-dom";
-import { withRouter } from "react-router-dom";
+import { Route, Switch, NavLink, Link, withRouter } from "react-router-dom";
 
 import logo from './logo.svg';
 import './App.css';
@@ -31,12 +30,12 @@ function App() {
     color: 'purple'
   }
 
-  const DropDown = (props) => {
+  const DropDown = props => {
+    const {history} = props;
+     
     const onChange = (e) => {
-      console.log('1.What..');
-      console.log('4.What..');
-    };
-
+       history.push(`${e.target.value}`);
+    }
     return (
       <select onChange={onChange} style={selectStyle}>
         <option value="/tipping">Tipping</option>
