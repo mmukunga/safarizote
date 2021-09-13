@@ -1,8 +1,8 @@
 import React from "react";
 
-const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-
 const loginUser = async (user) => {
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+
   const { username, password } = user;
   if (username === 'm@gmail.com' && password === '12345') {
     setIsLoggedIn(true);
