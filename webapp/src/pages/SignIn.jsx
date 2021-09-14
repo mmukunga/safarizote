@@ -27,10 +27,11 @@ const SignIn = () => {
         UserService.loginUser(user).then(res => {
           console.log(res);
           console.log(res.token);
+          localStorage.setItem('access_token', 'access_token');
           console.log('SignIn.isLoggedIn:= ' + UserService.isLoggedIn);
           setLoggedIn(true);
-          localStorage.setItem('access_token', 'access_token');
           console.log(res);
+          return <Redirect to={from} />;
         }).catch(err => {
           console.log(err);
         });
@@ -42,7 +43,7 @@ const SignIn = () => {
         setForm({...form, [name]: value});
     }
 
-    if (loggedIn && UserService.isLoggedIn == true) {
+    if (UserService.isLoggedIn == true) {
         console.log('!!1.IS LOGGED IN!!');
         console.log(from);
         console.log(location.pathname); 
