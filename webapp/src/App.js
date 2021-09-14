@@ -51,6 +51,7 @@ function App() {
   const handleLogout = () => {
       console.log('1.handleLogout');
       localStorage.clear();
+      history.replace('/');
       console.log('2.handleLogout');
   };
 
