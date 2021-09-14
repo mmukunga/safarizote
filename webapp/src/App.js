@@ -33,7 +33,7 @@ function App() {
   }
 
   const DropDown = props => {
-    const {history} = props;
+    //const {history} = props;
      
     const onChange = (e) => {
        history.replace(`${e.target.value}`);
@@ -48,7 +48,7 @@ function App() {
     );
   }
   
-  const Menu = withRouter(DropDown(history));
+  const Menu = withRouter(DropDown);
   
   const handleLogout = () => {
       console.log('1.handleLogout');
