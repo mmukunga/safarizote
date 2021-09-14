@@ -28,7 +28,8 @@ const SignIn = () => {
           console.log(res);
           console.log(res.token);
           console.log('SignIn.isLoggedIn:= ' + UserService.isLoggedIn);
-          setLoggedIn(!loggedIn);
+          setLoggedIn(true);
+          localStorage.setItem('access_token', 'access_token');
           console.log(res);
         }).catch(err => {
           console.log(err);
@@ -41,20 +42,7 @@ const SignIn = () => {
         setForm({...form, [name]: value});
     }
 
-    React.useEffect(() => {
-        console.log('!!1xxx.IS LOGGED IN!!');
-        console.log(from);
-        console.log(location.pathname); 
-        console.log(location.search); 
-        localStorage.setItem('access_token', 'access_token');
-        console.log(location.state);
-        console.log('!!2xxx.IS LOGGED IN!!');
-        console.log('SignIn.loggedIn:= ' + loggedIn);
-        return <Redirect to={from} />;
-    }, [loggedIn]);
-
-
-    if (UserService.isLoggedIn = true) {
+    if (loggedIn && UserService.isLoggedIn == true) {
         console.log('!!1.IS LOGGED IN!!');
         console.log(from);
         console.log(location.pathname); 
