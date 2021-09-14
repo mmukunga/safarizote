@@ -27,7 +27,7 @@ const SignIn = () => {
         UserService.loginUser(user).then(res => {
           console.log(res);
           console.log(res.token);
-          localStorage.setItem('access_token', res.token);
+          //localStorage.setItem('access_token', res.token);
           setIsLoggedIn(!isLoggedIn);
           console.log(res);
         }).catch(err => {
