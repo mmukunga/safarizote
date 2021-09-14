@@ -16,8 +16,7 @@ import Email from './pages/Email';
 import Weather from './pages/Weather';
 import Stock from './pages/Stock';
 import Private from './pages/Private';
-
-import UserService from './UserService';
+import UserService from './pages/UserService';
 
 function App() {
   //const isLoggedIn = localStorage.getItem('token');
