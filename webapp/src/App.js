@@ -17,8 +17,10 @@ import Weather from './pages/Weather';
 import Stock from './pages/Stock';
 import Private from './pages/Private';
 
+import UserService from './UserService';
+
 function App() {
-  const isLoggedIn = localStorage.getItem('token');
+  //const isLoggedIn = localStorage.getItem('token');
 
   let history = useHistory();
 
@@ -34,9 +36,8 @@ function App() {
 
   const DropDown = props => {
     //const {history} = props;
-     
     const onChange = (e) => {
-       history.replace(`${e.target.value}`);
+       props.history.replace(`${e.target.value}`);
     }
     return (
       <select onChange={onChange} style={selectStyle}>
@@ -101,7 +102,7 @@ function App() {
                 <Menu/>
                 <NavLink to="/signIn" className="Nav_link">Login</NavLink>
                 <a href="" className="Nav_link LogOut" onClick={handleLogout}></a> 
-                {isLoggedIn!=null ? 'Logged in!!' : 'Please login!!'}
+                {UserService.isLoggedIn!=true ? 'Logged in!!' : 'Please login!!'}
               </div>
             </nav> 
             

@@ -51,10 +51,10 @@ const SignIn = () => {
         return <Redirect to={from} />;
     }, [loggedIn]);
 
-    const token = localStorage.getItem('access_token');
+    const isLoggedIn = UserService.isLoggedIn;
     console.log('token:= ' +  token);
 
-    if (token != null) {
+    if (isLoggedIn = true) {
         console.log('!!1.IS LOGGED IN!!');
         console.log(from);
         console.log(location.pathname); 
