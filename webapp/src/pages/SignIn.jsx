@@ -51,10 +51,10 @@ const SignIn = () => {
         return <Redirect to={from} />;
     }, [loggedIn]);
 
-    const isLoggedIn = UserService.isLoggedIn;
-    console.log('isLoggedIn:= ' +  isLoggedIn);
+    const loggedIn = UserService.isLoggedIn;
+    console.log('isLoggedIn:= ' +  loggedIn);
 
-    if (isLoggedIn = true) {
+    if (loggedIn = true) {
         console.log('!!1.IS LOGGED IN!!');
         console.log(from);
         console.log(location.pathname); 
