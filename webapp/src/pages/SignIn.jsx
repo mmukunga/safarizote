@@ -52,7 +52,7 @@ const SignIn = () => {
     }, [loggedIn]);
 
     const isLoggedIn = UserService.isLoggedIn;
-    console.log('token:= ' +  token);
+    console.log('isLoggedIn:= ' +  isLoggedIn);
 
     if (isLoggedIn = true) {
         console.log('!!1.IS LOGGED IN!!');
