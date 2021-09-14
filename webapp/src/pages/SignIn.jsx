@@ -4,7 +4,7 @@ import Card from './Card';
 import UserService from './UserService';
 
 const SignIn = () => {
-    const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+    const [loggedIn, setLoggedIn] = React.useState(false);
     const [form, setForm] = React.useState({
         email: '',
         password: ''
@@ -27,7 +27,7 @@ const SignIn = () => {
         UserService.loginUser(user).then(res => {
           console.log(res);
           console.log(res.token);
-          setIsLoggedIn(!isLoggedIn);
+          setLoggedIn(!loggedIn);
           console.log(res);
         }).catch(err => {
           console.log(err);
