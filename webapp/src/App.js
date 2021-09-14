@@ -34,7 +34,7 @@ function App() {
     const {history} = props;
      
     const onChange = (e) => {
-       history.push(`${e.target.value}`);
+       history.update(`${e.target.value}`);
     }
     return (
       <select onChange={onChange} style={selectStyle}>
