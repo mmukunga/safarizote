@@ -4,12 +4,10 @@ import Card from './Card';
 import UserService from './UserService';
 
 const SignIn = () => {
-    const [isLoggedIn, setIsLoggedIn] = React.useState(false);
     const [form, setForm] = React.useState({
         email: '',
         password: ''
       });
-    const [error, setError] = React.useState(null);
 
     let location = useLocation();  
 
@@ -29,7 +27,6 @@ const SignIn = () => {
           console.log(res);
           console.log(res.token);
           localStorage.setItem('access_token', res.token);
-          setIsLoggedIn(!isLoggedIn);
           console.log(res);
         }).catch(err => {
           console.log(err);
