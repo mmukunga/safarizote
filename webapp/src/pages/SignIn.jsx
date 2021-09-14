@@ -27,7 +27,6 @@ const SignIn = () => {
         UserService.loginUser(user).then(res => {
           console.log(res);
           console.log(res.token);
-          //localStorage.setItem('access_token', res.token);
           setIsLoggedIn(!isLoggedIn);
           console.log(res);
         }).catch(err => {
@@ -46,6 +45,7 @@ const SignIn = () => {
         console.log(from);
         console.log(location.pathname); 
         console.log(location.search); 
+        localStorage.setItem('access_token', res.token);
         console.log(location.state);
         console.log('!!2xxx.IS LOGGED IN!!');
         return <Redirect to={from} />;
