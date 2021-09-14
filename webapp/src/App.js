@@ -19,7 +19,6 @@ import Private from './pages/Private';
 import UserService from './pages/UserService';
 
 function App() {
-  //const isLoggedIn = localStorage.getItem('token');
 
   let history = useHistory();
 
