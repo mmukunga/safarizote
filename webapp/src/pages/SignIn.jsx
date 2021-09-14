@@ -49,7 +49,7 @@ const SignIn = () => {
         console.log(location.state);
         console.log('!!2xxx.IS LOGGED IN!!');
         return <Redirect to={from} />;
-    }, [isLoggedIn]);
+    }, [loggedIn]);
 
     const token = localStorage.getItem('access_token');
     console.log('token:= ' +  token);
