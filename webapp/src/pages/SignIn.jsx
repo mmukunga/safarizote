@@ -32,7 +32,6 @@ const SignIn = () => {
           setIsLoggedIn(!isLoggedIn);
           console.log(res);
         }).catch(err => {
-          setError(err.message);
           console.log(err);
         });
     };
