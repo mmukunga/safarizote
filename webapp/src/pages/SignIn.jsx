@@ -45,7 +45,7 @@ const SignIn = () => {
         console.log(from);
         console.log(location.pathname); 
         console.log(location.search); 
-        localStorage.setItem('access_token', res.token);
+        localStorage.setItem('access_token', 'access_token');
         console.log(location.state);
         console.log('!!2xxx.IS LOGGED IN!!');
         return <Redirect to={from} />;
