@@ -37,7 +37,7 @@ const SignIn = () => {
           localStorage.setItem('access_token', res.token);
 
           const keys = Object.keys(localStorage),
-          var i = keys.length;
+          i = keys.length;
 
           while ( i-- ) {
               console.log(keys[i] + ' = ' + localStorage.getItem(keys[i]));
