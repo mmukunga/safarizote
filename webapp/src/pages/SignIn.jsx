@@ -34,7 +34,16 @@ const SignIn = () => {
           console.log("SET_IT!! SET_IT!! SET_IT!! SET_IT!! SET_IT!!");
           console.log(res);
           console.log(res.token);
-          localStorage.setItem('access_token', 'access_token');
+          localStorage.setItem('access_token', res.token);
+
+          const keys = Object.keys(localStorage),
+          const i = keys.length;
+
+          while ( i-- ) {
+              console.log(keys[i] + ' = ' + localStorage.getItem(keys[i]));
+          }
+
+          console.log('localStorage.setItem:= ' + localStorage.getItem('access_token'));
           console.log('SignIn.isLoggedIn:= ' + UserService.isLoggedIn);
           setLoggedIn(true);
           console.log(res);
