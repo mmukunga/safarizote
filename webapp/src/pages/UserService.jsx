@@ -3,9 +3,11 @@ const isLoggedIn = localStorage.getItem('access_token');
 
 const loginUser = async (user) => {
   const { username, password } = user;
+
   console.log('!!Deploy a GitHub branch!! ' + localStorage.getItem('access_token'));
   if (username === 'm@gmail.com' && password === '12345') {
     console.log('!!AUTHENTICATED!!');
+    localStorage.setItem('access_token', res.token);
     return { token: 'access_token' };
   } else {
     throw new Error('Wrong username or password');
