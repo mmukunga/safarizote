@@ -53,7 +53,7 @@ const SignIn = () => {
         });
     };
 
-    if (UserService.isLoggedIn == true) {
+    if (UserService.isLoggedIn == 'access_token') {
         console.log('!!1.IS LOGGED IN!!');
         console.log(from);
         console.log(location.pathname); 
