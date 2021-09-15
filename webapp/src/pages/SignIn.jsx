@@ -13,6 +13,9 @@ const SignIn = () => {
     let location = useLocation();  
 
     const { from } = location.state || { from: { pathname: "/" } };
+    console.log(location);
+    console.log(state);
+    console.log(state.location);
     console.log(location.state);
     console.log(from);
 
