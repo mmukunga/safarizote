@@ -46,25 +46,13 @@ const SignIn = () => {
           console.log('SignIn.isLoggedIn:= ' + UserService.isLoggedIn);
           setLoggedIn(true);
           console.log(res);
+          console.log(from);
           return <Redirect to={from} />;
         }).catch(err => {
           console.log(err);
         });
     };
 
-    if (UserService.isLoggedIn == 'access_token') {
-        console.log('!!1.IS LOGGED IN!!');
-        console.log(from);
-        console.log(location.pathname); 
-        console.log(location.search); 
-        console.log(location.state);
-        console.log('!!2.IS LOGGED IN!!');
-        return <Redirect to={from} />;
-      } else {
-        console.log('!!1.IS LOGGED NOT IN!!');
-        console.log(from);
-        console.log('!!1.IS LOGGED NOT IN!!');  
-      }
 
     return (
         <Card className="InnerCard" fontColor="black">
