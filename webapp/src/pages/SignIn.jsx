@@ -35,11 +35,12 @@ const SignIn = () => {
           console.log(res);
           console.log(res.token);
           localStorage.setItem('access_token', res.token);
-          let  keys = Object.keys(localStorage);
-          let i = keys.length;
 
-          while ( i-- ) {
-              console.log(keys[i] + ' = ' + localStorage.getItem(keys[i]));
+          var keys = Object.keys(localStorage),
+          i = 0, key;
+
+          for (; key = keys[i]; i++) {
+              console.log( key + ' XXX=XXX ' + localStorage.getItem(key));
           }
 
           console.log('localStorage.setItem:= ' + localStorage.getItem('access_token'));
