@@ -16,6 +16,12 @@ const SignIn = () => {
     console.log(location.state);
     console.log(from);
 
+    const handleChange = (event) => {
+      const {name, value} = event.target;
+      console.log('name: ' + name + ' value: ' + value);
+      setForm({...form, [name]: value});
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -36,12 +42,6 @@ const SignIn = () => {
           console.log(err);
         });
     };
-
-    const handleChange = (event) => {
-        const {name, value} = event.target;
-        console.log('name: ' + name + ' value: ' + value);
-        setForm({...form, [name]: value});
-    }
 
     if (UserService.isLoggedIn == true) {
         console.log('!!1.IS LOGGED IN!!');

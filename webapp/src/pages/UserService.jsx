@@ -2,7 +2,6 @@
 const isLoggedIn = localStorage.getItem('access_token') !== null;
 
 const loginUser = async (user) => {
-
   const { username, password } = user;
   if (username === 'm@gmail.com' && password === '12345') {
     console.log('!!AUTHENTICATED!!');
@@ -12,4 +11,10 @@ const loginUser = async (user) => {
   }
 }
 
-export default { isLoggedIn, loginUser };
+const logOut = () => {
+  console.log('1..UserService.logOut..');
+  localStorage.clear();
+  console.log('2...UserService.logOut..');
+}
+
+export default { isLoggedIn, loginUser, logOut };

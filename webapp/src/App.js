@@ -49,9 +49,13 @@ function App() {
   
   const Menu = withRouter(DropDown);
   
+  const logout = () => {
+    UserService.logOut();
+  }
+
   const handleLogout = () => {
       console.log('1.handleLogout');
-      localStorage.clear();
+      UserService.logOut();
       history.replace('/');
       console.log('2.handleLogout');
   };
