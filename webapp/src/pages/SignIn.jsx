@@ -31,6 +31,7 @@ const SignIn = () => {
         };
 
         UserService.loginUser(user).then(res => {
+          console.log("SET_IT!! SET_IT!! SET_IT!! SET_IT!! SET_IT!!");
           console.log(res);
           console.log(res.token);
           localStorage.setItem('access_token', 'access_token');
