@@ -31,7 +31,7 @@ const SignIn = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+/*
         const user = {
           username: 'm@gmail.com',
           password: '12345',
@@ -59,6 +59,8 @@ const SignIn = (props) => {
         }).catch(err => {
           console.log(err);
         });
+
+        */
     };
 
     
