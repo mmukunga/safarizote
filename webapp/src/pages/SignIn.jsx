@@ -3,7 +3,7 @@ import {Redirect, useLocation } from 'react-router-dom';
 import Card from './Card';
 import UserService from './UserService';
 
-const SignIn = () => {
+const SignIn = (props) => {
     const [loggedIn, setLoggedIn] = React.useState(false);
     const [form, setForm] = React.useState({
         email: '',
@@ -11,6 +11,12 @@ const SignIn = () => {
       });
 
     let location = useLocation();  
+
+
+    console.log(props.location);
+    console.log(props.location.state);
+    console.log(props.location.pathname);
+    console.log(from);
 
     const { from } = location.state || { from: { pathname: "/" } };
     console.log(location);
