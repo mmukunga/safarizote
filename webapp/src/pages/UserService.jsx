@@ -13,16 +13,14 @@ const loginUser = async (user) => {
 
    const userAuth = {
         id: UUID.v4(), 
-        email: 'm@gmail.com',
-        password: '12345',
+        email: username,
+        password: password,
         token: '',
         dateCreated: new Date()
    }
-   const axiosTest = () => {
+   const axiosTest = async () => {
       return axios.post('/api/login', userAuth).then(response => {
-          console.log('1.!!AUTHENTICATED!!');
           console.log(response);
-          console.log('2.!!AUTHENTICATED!!');
           localStorage.setItem('jwt_token', 'access_token');
           return { token: 'access_token' };
       }).catch(error => {
@@ -34,9 +32,7 @@ const loginUser = async (user) => {
 }
 
 const logOut = () => {
-  console.log('1..UserService.logOut..');
   localStorage.clear();
-  console.log('2...UserService.logOut..');
 }
 
 export default { isLoggedIn, loginUser, logOut };

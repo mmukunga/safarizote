@@ -33,9 +33,9 @@ function App() {
   }
 
   const DropDown = props => {
-    //const {history} = props;
+    const {history} = props;
     const onChange = (e) => {
-       props.history.replace(`${e.target.value}`);
+       history.replace(`${e.target.value}`);
     }
     return (
       <select onChange={onChange} style={selectStyle}>
@@ -54,10 +54,8 @@ function App() {
   }
 
   const handleLogout = () => {
-      console.log('1.handleLogout');
       UserService.logOut();
       history.replace('/');
-      console.log('2.handleLogout');
   };
 
   const Toolbar = (props) => {
