@@ -17,9 +17,9 @@ const SignIn = (props) => {
     console.log(props.location.state);
     console.log(props.location.pathname);
     const { from } = props.location.state || { from: { pathname: '/' } }
-    const { from2 } = props.location.state;
+    //const { from } = props.location.state;
     console.log(from);
-    console.log(from2);
+    console.log(from);
 
     const handleChange = (event) => {
       const {name, value} = event.target;
