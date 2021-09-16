@@ -61,7 +61,6 @@ const SignIn = (props) => {
         });
     };
 
-    if (loggedIn) {
         <Redirect to={{
           pathname: "/shopping",
           state: {
@@ -69,7 +68,6 @@ const SignIn = (props) => {
             user:'Mukunga' // user props
           }
         }} />
-    }
 
     return (
         <Card className="InnerCard" fontColor="black">
