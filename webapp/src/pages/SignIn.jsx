@@ -55,19 +55,21 @@ const SignIn = (props) => {
           setLoggedIn(true);
           console.log(res);
           console.log(from);
-          //return <Redirect to={from} />;
-          <Redirect to={{
-            pathname: "/shopping",
-            state: {
-              from: props.location,
-              user:'Simon' // user props
-            }
-          }} />
+          return <Redirect to='/shopping' />;
         }).catch(err => {
           console.log(err);
         });
     };
 
+    if (loggedIn) {
+        <Redirect to={{
+          pathname: "/shopping",
+          state: {
+            from: location,
+            user:'Mukunga' // user props
+          }
+        }} />
+    }
 
     return (
         <Card className="InnerCard" fontColor="black">
