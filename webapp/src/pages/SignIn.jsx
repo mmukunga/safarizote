@@ -12,13 +12,13 @@ const SignIn = (props) => {
 
     let location = useLocation();  
 
-
     console.log(props.location);
     console.log(props.location.state);
     console.log(props.location.pathname);
     console.log(from);
 
-    const { from } = location.state || { from: { pathname: "/" } };
+    //const { from } = location.state || { from: { pathname: "/" } };
+    const { from } = props.location.state;
     console.log(location);
     console.log(location.state);
     console.log(from);
