@@ -63,7 +63,7 @@ const SignIn = (props) => {
         */
     };
       
-    const rand = min + Math.random() * (1000 - 10);
+    const rand = 10 + Math.random() * (1000 - 10);
     
        if (true) {
          console.log('Mukunga '+ rand + ' ' + new Date());
