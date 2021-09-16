@@ -1,31 +1,31 @@
 import React from 'react';
-import {Redirect, useLocation } from 'react-router-dom';
+import {Redirect } from 'react-router-dom';
 import Card from './Card';
 import UserService from './UserService';
 
 const SignIn = (props) => {
     const [loggedIn, setLoggedIn] = React.useState(false);
-    const [redirctTo, setRedirctTo] = React.useState(false);
+    const [redirectTo, setRedirectTo] = React.useState(false);
     const [form, setForm] = React.useState({
         email: '',
         password: ''
       });
 
-    let location = useLocation();  
+    //let location = useLocation();  
 
     console.log(props.location);
     console.log(props.location.state);
     console.log(props.location.pathname);
-    console.log(from);
+    //console.log(from);
 
     //const { from } = location.state || { from: { pathname: "/" } };
     const { from } = props.location.state;
-    console.log(location);
-    console.log(location.state);
+    //console.log(location);
+    //console.log(location.state);
     console.log(from);
     
     localStorage.setItem('access_token', 'access_token');
-    
+
     const handleChange = (event) => {
       const {name, value} = event.target;
       console.log('name: ' + name + ' value: ' + value);
@@ -33,8 +33,8 @@ const SignIn = (props) => {
     }
 
     React.useEffect(() => {
-      if (true) {
-        setRedirctTo(true);
+      if (UserService.isLoggedIn() != null) {
+          setRedirectTo(true);
       }
     }, []);
 
@@ -44,7 +44,7 @@ const SignIn = (props) => {
         e.preventDefault();
 
         console.log('Mukunga '+ rand + ' ' + new Date());
-/*
+
         const user = {
           username: 'm@gmail.com',
           password: '12345',
@@ -64,7 +64,7 @@ const SignIn = (props) => {
           }
 
           console.log('localStorage.setItem:= ' + localStorage.getItem('access_token'));
-          console.log('SignIn.isLoggedIn:= ' + UserService.isLoggedIn);
+          console.log('SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
           setLoggedIn(true);
           console.log(res);
           console.log(from);
@@ -73,12 +73,12 @@ const SignIn = (props) => {
           console.log(err);
         });
 
-        */
+        
     };
       
-    if(redirctTo){
+    if(redirectTo){
       console.log('Mukunga '+ rand + ' ' + new Date());
-      return <Redirect to="/shopping" />
+      return <Redirect to={from} />
     } 
     
     return (
