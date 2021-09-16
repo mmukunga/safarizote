@@ -24,7 +24,7 @@ const SignIn = (props) => {
     //console.log(location.state);
     console.log(from);
     
-    localStorage.setItem('access_token', 'access_token');
+    localStorage.setItem('jwt_token', 'access_token');
 
     const handleChange = (event) => {
       const {name, value} = event.target;
@@ -54,7 +54,7 @@ const SignIn = (props) => {
           console.log("SET_IT!! SET_IT!! SET_IT!! SET_IT!! SET_IT!!");
           console.log(res);
           console.log(res.token);
-          localStorage.setItem('access_token', res.token);
+          localStorage.setItem('jwt_token', res.token);
 
           var keys = Object.keys(localStorage),
           i = 0, key;
@@ -63,7 +63,7 @@ const SignIn = (props) => {
               console.log( key + ' XXX=XXX ' + localStorage.getItem(key));
           }
 
-          console.log('localStorage.setItem:= ' + localStorage.getItem('access_token'));
+          console.log('localStorage.setItem:= ' + localStorage.getItem('jwt_token'));
           console.log('SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
           setLoggedIn(true);
           console.log(res);

@@ -1,16 +1,16 @@
 
 const isLoggedIn = () => {
-  localStorage.setItem('access_token', 'access_token');
-  return localStorage.getItem('access_token');
+  localStorage.setItem('jwt_token', 'access_token');
+  return localStorage.getItem('jwt_token');
 }
 
 const loginUser = async (user) => {
   const { username, password } = user;
 
-  console.log('!!Deploy a GitHub branch!! ' + localStorage.getItem('access_token'));
+  console.log('!!Deploy a GitHub branch!! ' + localStorage.getItem('jwt_token'));
   if (username === 'm@gmail.com' && password === '12345') {
     console.log('!!AUTHENTICATED!!');
-    localStorage.setItem('access_token', 'access_token');
+    localStorage.setItem('jwt_token', 'access_token');
     return { token: 'access_token' };
   } else {
     throw new Error('Wrong username or password');
