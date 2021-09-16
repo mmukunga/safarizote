@@ -64,13 +64,7 @@ const SignIn = (props) => {
     
        if (true) {
          console.log('Mukunga');
-        <Redirect to={{
-          pathname: "/shopping",
-          state: {
-            from: location,
-            user:'Mukunga' // user props
-          }
-        }} />
+        <Redirect to= "/shopping" />
        }
 
     return (
