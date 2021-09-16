@@ -12,7 +12,7 @@ const loginUser = async (user) => {
 
    const userAuth = {
         id: UUID.v4(), 
-        email: email,
+        email: username,
         password: password,
         token: '',
         dateCreated: new Date()
