@@ -5,6 +5,7 @@ import UserService from './UserService';
 
 const SignIn = (props) => {
     const [loggedIn, setLoggedIn] = React.useState(false);
+    const [redirctTo, setRedirctTo] = React.useState(false);
     const [form, setForm] = React.useState({
         email: '',
         password: ''
@@ -29,8 +30,18 @@ const SignIn = (props) => {
       setForm({...form, [name]: value});
     }
 
+    React.useEffect(() => {
+      if (true) {
+        setRedirctTo(true);
+      }
+    }, []);
+
+    const rand = 10 + Math.random() * (1000 - 10);
+
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        console.log('Mukunga '+ rand + ' ' + new Date());
 /*
         const user = {
           username: 'm@gmail.com',
@@ -63,13 +74,11 @@ const SignIn = (props) => {
         */
     };
       
-    const rand = 10 + Math.random() * (1000 - 10);
+    if(redirctTo){
+      console.log('Mukunga '+ rand + ' ' + new Date());
+      return <Redirect to="/shopping" />
+    } 
     
-       if (true) {
-         console.log('Mukunga '+ rand + ' ' + new Date());
-        <Redirect to= "/shopping" />
-       }
-
     return (
         <Card className="InnerCard" fontColor="black">
             Please Login Here!!
