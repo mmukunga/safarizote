@@ -1,36 +1,37 @@
-import axios from "axios";
 import {default as UUID} from "node-uuid";
 
 const isLoggedIn = () => {
+  localStorage.setItem('jwt_token', 'access_token');
   return localStorage.getItem('jwt_token');
 }
 
 const loginUser = async (user) => {
-   const { username, password } = user;
+  const { username, password } = user;
 
-   console.log('!!Deploy a GitHub branch!! ' + localStorage.getItem('jwt_token'));
+  console.log('!!Deploy a GitHub branch!! ' + localStorage.getItem('jwt_token'));
 
    const userAuth = {
         id: UUID.v4(), 
-        email: username,
+        email: email,
         password: password,
         token: '',
         dateCreated: new Date()
    }
-   const axiosTest = async () => {
-      return axios.post('/api/login', userAuth).then(response => {
-          console.log(response);
-          return { token: 'access_token' };
-      }).catch(error => {
-          console.error('There was an error!', error);
-          throw new Error('Wrong username or password');
-      });
-   } 
-   return axiosTest;
+
+
+  if (username === 'm@gmail.com' && password === '12345') {
+    console.log('!!AUTHENTICATED!!');
+    localStorage.setItem('jwt_token', 'access_token');
+    return { token: 'access_token' };
+  } else {
+    throw new Error('Wrong username or password');
+  }
 }
 
 const logOut = () => {
+  console.log('1..UserService.logOut..');
   localStorage.clear();
+  console.log('2...UserService.logOut..');
 }
 
 export default { isLoggedIn, loginUser, logOut };
