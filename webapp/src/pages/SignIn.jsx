@@ -55,7 +55,14 @@ const SignIn = (props) => {
           setLoggedIn(true);
           console.log(res);
           console.log(from);
-          return <Redirect to={from} />;
+          //return <Redirect to={from} />;
+          <Redirect to={{
+            pathname: "/shopping",
+            state: {
+              from: props.location,
+              user:'Simon' // user props
+            }
+          }} />
         }).catch(err => {
           console.log(err);
         });
