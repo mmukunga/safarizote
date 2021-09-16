@@ -2,7 +2,6 @@ import axios from "axios";
 import {default as UUID} from "node-uuid";
 
 const isLoggedIn = () => {
-  localStorage.setItem('jwt_token', 'access_token');
   return localStorage.getItem('jwt_token');
 }
 
@@ -21,7 +20,6 @@ const loginUser = async (user) => {
    const axiosTest = async () => {
       return axios.post('/api/login', userAuth).then(response => {
           console.log(response);
-          localStorage.setItem('jwt_token', 'access_token');
           return { token: 'access_token' };
       }).catch(error => {
           console.error('There was an error!', error);
