@@ -23,7 +23,9 @@ const SignIn = (props) => {
     console.log(location);
     console.log(location.state);
     console.log(from);
-
+    
+    localStorage.setItem('access_token', 'access_token');
+    
     const handleChange = (event) => {
       const {name, value} = event.target;
       console.log('name: ' + name + ' value: ' + value);
