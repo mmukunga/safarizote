@@ -104,7 +104,7 @@ function App() {
                 <Menu/>
                 <NavLink to="/signIn" className="Nav_link">Login</NavLink>
                 <a href="" className="Nav_link LogOut" onClick={handleLogout}></a> 
-                {UserService.isLoggedIn!=true ? 'Logged in!!' : 'Please login!!'}
+                {UserService.isLoggedIn() != null ? 'Is Logged in!!' : 'Please login!!'}
               </div>
             </nav> 
             
