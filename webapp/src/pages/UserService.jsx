@@ -1,6 +1,5 @@
 
 const isLoggedIn = () => {
-  //localStorage.setItem('jwt_token', 'access_token');
   return localStorage.getItem('jwt_token');
 }
 
@@ -10,7 +9,6 @@ const loginUser = async (user) => {
 
   if (username === 'm@gmail.com' && password === '12345') {
     console.log('!!AUTHENTICATED!!');
-    //localStorage.setItem('jwt_token', 'access_token');
     return { token: 'access_token' };
   } else {
     throw new Error('Wrong username or password');
