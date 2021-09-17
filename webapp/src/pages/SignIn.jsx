@@ -27,10 +27,13 @@ const SignIn = (props) => {
     }
 
     React.useEffect(() => {
-      console.log('SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
+      console.log('1SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
       if (UserService.isLoggedIn() != null) {
+        console.log('2SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
           setRedirectTo(true);
+          console.log('3SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
       }
+      console.log('4SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
     }, []);
 
     const handleSubmit = (e) => {
