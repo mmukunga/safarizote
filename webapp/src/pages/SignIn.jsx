@@ -47,6 +47,7 @@ const SignIn = (props) => {
         };
 
         UserService.loginUser(user).then(res => {
+          console.log('200** SignIn.isLoggedIn:= ' + res);
           localStorage.setItem('jwt_token', res);
           redirectTo(true);
           console.log(res);
