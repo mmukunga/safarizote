@@ -27,13 +27,13 @@ const SignIn = (props) => {
     }
 
     React.useEffect(() => {
-      console.log('1SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
+      console.log('1 SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
       if (UserService.isLoggedIn() != null) {
-        console.log('2SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
+        console.log('2 SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
           setRedirectTo(true);
-          console.log('3SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
+          console.log('3 SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
       }
-      console.log('4SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
+      console.log('4 SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
     }, []);
 
     const handleSubmit = (e) => {
@@ -58,6 +58,8 @@ const SignIn = (props) => {
       
     if (redirectTo) {
       console.log('Mukunga ' + new Date());
+      console.log('100** SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
+      console.log('100** SignIn.isLoggedIn  FORM!!:= ' + from);
       return <Redirect to={from} />
     } 
     
