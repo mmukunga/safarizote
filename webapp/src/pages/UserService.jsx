@@ -1,4 +1,3 @@
-import {default as UUID} from "node-uuid";
 
 const isLoggedIn = () => {
   localStorage.setItem('jwt_token', 'access_token');
