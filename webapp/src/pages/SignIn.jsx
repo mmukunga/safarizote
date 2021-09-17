@@ -48,7 +48,7 @@ const SignIn = (props) => {
 
         UserService.loginUser(user).then(res => {
           localStorage.setItem('jwt_token', res);
-          setLoggedIn(true);
+          redirectTo(true);
           console.log(res);
         }).catch(err => {
           console.log(err);
