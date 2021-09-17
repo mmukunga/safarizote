@@ -1,5 +1,6 @@
 import React from 'react';
 import {Redirect } from 'react-router-dom';
+import {default as UUID} from "node-uuid";
 import Card from './Card';
 import UserService from './UserService';
 
@@ -19,7 +20,6 @@ const SignIn = (props) => {
     const { from } = props.location.state || { from: { pathname: '/' } }
     //const { from } = props.location.state;
     console.log(from);
-    console.log(from);
 
     const handleChange = (event) => {
       const {name, value} = event.target;
@@ -27,8 +27,8 @@ const SignIn = (props) => {
       setForm({...form, [name]: value});
     }
 
-    console.log('SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
     React.useEffect(() => {
+      console.log('SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
       if (UserService.isLoggedIn() != null) {
           setRedirectTo(true);
       }
@@ -39,12 +39,15 @@ const SignIn = (props) => {
 
         console.log('Mukunga ' + new Date());
 
-        const user = {
-          username: 'm@gmail.com',
-          password: '12345',
+        const userAuth = {
+          id: UUID.v4(), 
+          email: form.email,
+          password: form.password,
+          token: '',
+          dateCreated: new Date()
         };
 
-        UserService.loginUser(user).then(res => {
+        UserService.loginUser(userAuth).then(res => {
           localStorage.setItem('jwt_token', res);
           setLoggedIn(true);
           console.log(res);
