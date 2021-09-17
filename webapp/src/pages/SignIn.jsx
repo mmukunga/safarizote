@@ -1,6 +1,5 @@
 import React from 'react';
 import {Redirect } from 'react-router-dom';
-import {default as UUID} from "node-uuid";
 import Card from './Card';
 import UserService from './UserService';
 
@@ -39,15 +38,12 @@ const SignIn = (props) => {
 
         console.log('Mukunga ' + new Date());
 
-        const userAuth = {
-          id: UUID.v4(), 
+        const user = {
           email: form.email,
-          password: form.password,
-          token: '',
-          dateCreated: new Date()
+          password: form.password
         };
 
-        UserService.loginUser(userAuth).then(res => {
+        UserService.loginUser(user).then(res => {
           localStorage.setItem('jwt_token', res);
           setLoggedIn(true);
           console.log(res);
