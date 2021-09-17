@@ -39,7 +39,7 @@ const SignIn = (props) => {
         console.log('Mukunga ' + new Date());
 
         const user = {
-          email: form.email,
+          username: form.email,
           password: form.password
         };
 
