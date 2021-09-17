@@ -46,14 +46,14 @@ const SignIn = (props) => {
           password: form.password
         };
 
-        UserService.loginUser(user).then(res => {
-          console.log('200** SignIn.isLoggedIn:= ' + res);
-          console.log(res);
-          console.log(res.token);
-          localStorage.setItem('jwt_token', res.token);
+        UserService.loginUser(user).then(response => {
+          console.log('200** SignIn.isLoggedIn:= ' + response);
+          console.log(response);
+          //console.log(response.token);
+          localStorage.setItem('jwt_token', 'access_token');
           redirectTo(true);
-          console.log(res.token);
-          console.log('201** SignIn.isLoggedIn:= ' + res);
+          //console.log(response.token);
+          console.log('201** SignIn.isLoggedIn:= ' + response);
         }).catch(err => {
           console.log(err);
         });
