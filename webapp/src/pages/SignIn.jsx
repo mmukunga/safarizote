@@ -50,8 +50,8 @@ const SignIn = (props) => {
           console.log('200** SignIn.isLoggedIn:= ' + response);
           console.log(response);
           //console.log(response.token);
-          localStorage.setItem('jwt_token', 'access_token');
-          redirectTo(true);
+          //localStorage.setItem('jwt_token', 'access_token');
+          //redirectTo(true);
           //console.log(response.token);
           console.log('201** SignIn.isLoggedIn:= ' + response);
         }).catch(err => {
