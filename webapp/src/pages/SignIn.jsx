@@ -5,7 +5,7 @@ import UserService from './UserService';
 
 const SignIn = (props) => {
     const [loggedIn, setLoggedIn] = React.useState(false);
-    const [counter, setCounter] = useState(0);
+    const [counter, setCounter] = React.useState(0);
     const [redirectTo, setRedirectTo] = React.useState('false');
     const [form, setForm] = React.useState({
         email: '',
