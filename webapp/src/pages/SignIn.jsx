@@ -5,7 +5,8 @@ import UserService from './UserService';
 
 const SignIn = (props) => {
     const [loggedIn, setLoggedIn] = React.useState(false);
-    const [redirectTo, setRedirectTo] = React.useState(false);
+    const [counter, setCounter] = useState(0);
+    const [redirectTo, setRedirectTo] = React.useState('false');
     const [form, setForm] = React.useState({
         email: '',
         password: ''
@@ -52,8 +53,9 @@ const SignIn = (props) => {
           //console.log(response.token);
           //localStorage.setItem('jwt_token', 'access_token');
           localStorage.setItem('rememberMe', 'Mulevi');
-          redirectTo(true);
+          setCounter(counter => counter + 1);
           //console.log(response.token);
+          localStorage.setItem('counterRef', counter);
           console.log('201** SignIn.isLoggedIn:= ' + response);
         }).catch(err => {
           console.log(err);
