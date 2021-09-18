@@ -10,15 +10,7 @@ const SignIn = (props) => {
         password: ''
       });
 
-    console.log('!!MKUN SIM!!')  
-    console.log(props);
-
-    console.log(props.location);
-    console.log(props.location.state);
-    console.log(props.location.pathname);
     const { from } = props.location.state || { from: { pathname: '/' } }
-    //const { from } = props.location.state;
-    console.log(from);
 
     const handleChange = (event) => {
       const {name, value} = event.target;
@@ -26,21 +18,8 @@ const SignIn = (props) => {
       setForm({...form, [name]: value});
     }
 
-    React.useEffect(() => {
-      console.log('1 SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
-      if (UserService.isLoggedIn() != null) {
-        console.log('2 SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
-          //setRedirectTo(true);
-          //localStorage.setItem('jwt_token', 'access_token');
-          console.log('3 SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
-      }
-      console.log('4 SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
-    }, []);
-
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        console.log('Mukunga ' + new Date());
 
         const user = {
           username: form.email,
@@ -48,27 +27,18 @@ const SignIn = (props) => {
         };
 
         UserService.loginUser(user).then(response => {
-          console.log('200** SignIn.isLoggedIn:= ' + response);
           console.log(response);
-          //console.log(response.token);
-          localStorage.setItem('jwt_token', 'access_token');
-          localStorage.setItem('rememberMe', 'Mulevi');
-          //console.log(response.token);
-          console.log('201** SignIn.isLoggedIn:= ' + response);
-          
+          localStorage.setItem('jwt_token', 'access_token');         
           setLoggedIn((prevState) => prevState + 1);
-
         }).catch(err => {
           console.log(err);
         });
         
     };
       
-    console.log('1.LOGGED iN COUNTER:=  ' + loggedIn);
     if (UserService.isLoggedIn() != 'PleaseLogIn') {
-      console.log('Mukunga ' + new Date());
-      console.log('100** SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
-      console.log('100** SignIn.isLoggedIn  FORM!!:= ' + from);
+      console.log('Login Date ' + new Date());
+      console.log('SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
       return <Redirect to={from} />
     } 
     
