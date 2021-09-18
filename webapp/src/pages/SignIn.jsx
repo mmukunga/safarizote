@@ -4,8 +4,6 @@ import Card from './Card';
 import UserService from './UserService';
 
 const SignIn = (props) => {
-    const [loggedIn, setLoggedIn] = React.useState(false);
-    const [redirectTo, setRedirectTo] = React.useState('false');
     const [form, setForm] = React.useState({
         email: '',
         password: ''
