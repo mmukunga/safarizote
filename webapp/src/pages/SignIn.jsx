@@ -52,7 +52,7 @@ const SignIn = (props) => {
           //console.log(response.token);
           //localStorage.setItem('jwt_token', 'access_token');
           localStorage.setItem('rememberMe', 'Mulevi');
-          //redirectTo(true);
+          redirectTo(true);
           //console.log(response.token);
           console.log('201** SignIn.isLoggedIn:= ' + response);
         }).catch(err => {
