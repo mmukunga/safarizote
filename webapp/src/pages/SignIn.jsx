@@ -30,7 +30,8 @@ const SignIn = (props) => {
       console.log('1 SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
       if (UserService.isLoggedIn() != null) {
         console.log('2 SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
-          setRedirectTo(true);
+          //setRedirectTo(true);
+          //localStorage.setItem('jwt_token', 'access_token');
           console.log('3 SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
       }
       console.log('4 SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
