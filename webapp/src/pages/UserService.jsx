@@ -5,7 +5,7 @@ const isLoggedIn = () => {
 
 const loginUser = async (user) => {
   const {username, password} = user;
-  console.log('UserService.jsx:= ' + localStorage.getItem('jwt_token'));
+  console.log('!!Deploy a GitHub branch!! ' + localStorage.getItem('jwt_token'));
 
   if (username === 'm@gmail.com' && password === '12345') {
     return { token: 'access_token' };
@@ -15,7 +15,7 @@ const loginUser = async (user) => {
 }
 
 const logOut = () => {
-  localStorage.setItem('jwt_token', 'null');
+  localStorage.setItem('jwt_token', 'PleaseLogIn');
 }
 
 export default { isLoggedIn, loginUser, logOut };
