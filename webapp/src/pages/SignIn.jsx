@@ -64,7 +64,7 @@ const SignIn = (props) => {
         
     };
       
-    console.log('1.LOGGED iN COUNTER:=  ' + counter);
+    console.log('1.LOGGED iN COUNTER:=  ' + loggedIn);
     if (UserService.isLoggedIn() != 'PleaseLogIn') {
       console.log('Mukunga ' + new Date());
       console.log('100** SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
