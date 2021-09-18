@@ -1,3 +1,4 @@
+import axios from 'axios';
 
 const isLoggedIn = () => {
   return localStorage.getItem('jwt_token');
@@ -6,6 +7,19 @@ const isLoggedIn = () => {
 const loginUser = async (user) => {
   const {username, password} = user;
   console.log('!!Deploy a GitHub branch!! ' + localStorage.getItem('jwt_token'));
+
+  const userAuth = { 
+    email: username,
+    password: password,
+    token: '',
+    dateCreated: new Date() 
+  };
+
+  axios.post('/api/login', userAuth).then((result) => {
+     console(result.data);
+   }).catch((error) => {
+     console.log(error);
+  });
 
   if (username === 'm@gmail.com' && password === '12345') {
     return { token: 'access_token' };
