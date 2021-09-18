@@ -53,7 +53,6 @@ const SignIn = (props) => {
           localStorage.setItem('jwt_token', 'access_token');
           localStorage.setItem('rememberMe', 'Mulevi');
           //console.log(response.token);
-          localStorage.setItem('counterRef', counter);
           console.log('201** SignIn.isLoggedIn:= ' + response);
         }).catch(err => {
           console.log(err);
