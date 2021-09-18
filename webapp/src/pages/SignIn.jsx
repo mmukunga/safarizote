@@ -62,7 +62,7 @@ const SignIn = (props) => {
         
     };
       
-    if (redirectTo) {
+    if (UserService.isLoggedIn() != 'PleaseLogIn') {
       console.log('Mukunga ' + new Date());
       console.log('100** SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
       console.log('100** SignIn.isLoggedIn  FORM!!:= ' + from);
