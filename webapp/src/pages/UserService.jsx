@@ -16,7 +16,7 @@ const loginUser = async (user) => {
   };
 
   axios.post('/api/login', userAuth).then((result) => {
-     console(result.data);
+     console.log(result.data);
    }).catch((error) => {
      console.log(error);
   });
