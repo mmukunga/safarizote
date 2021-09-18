@@ -17,6 +17,11 @@ const loginUser = async (user) => {
 
   axios.post('/api/login', userAuth).then((result) => {
      console.log(result.data);
+     console.log(result.data.token);
+     axios.post('/api/verify', userAuth).then(response => {
+        console.log(response);
+     });
+     console.log('Validate User!!');
    }).catch((error) => {
      console.log(error);
   });
