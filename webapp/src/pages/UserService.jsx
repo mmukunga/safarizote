@@ -17,7 +17,7 @@ const loginUser = async (user) => {
 
 const logOut = () => {
   console.log('1..UserService.logOut..');
-  localStorage.clear();
+  localStorage.setItem('jwt_token', 'PleaseLogIn');
   console.log('2...UserService.logOut..');
 }
 

@@ -51,7 +51,7 @@ const SignIn = (props) => {
           console.log('200** SignIn.isLoggedIn:= ' + response);
           console.log(response);
           //console.log(response.token);
-          //localStorage.setItem('jwt_token', 'access_token');
+          localStorage.setItem('jwt_token', 'access_token');
           localStorage.setItem('rememberMe', 'Mulevi');
           setCounter(counter => counter + 1);
           //console.log(response.token);
