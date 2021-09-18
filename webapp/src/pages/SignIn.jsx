@@ -4,6 +4,7 @@ import Card from './Card';
 import UserService from './UserService';
 
 const SignIn = (props) => {
+    const [loggedIn, setLoggedIn] = React.useState(0);
     const [form, setForm] = React.useState({
         email: '',
         password: ''
@@ -54,12 +55,16 @@ const SignIn = (props) => {
           localStorage.setItem('rememberMe', 'Mulevi');
           //console.log(response.token);
           console.log('201** SignIn.isLoggedIn:= ' + response);
+          
+          setLoggedIn((prevState) => prevState + 1);
+
         }).catch(err => {
           console.log(err);
         });
         
     };
       
+    console.log('1.LOGGED iN COUNTER:=  ' + counter);
     if (UserService.isLoggedIn() != 'PleaseLogIn') {
       console.log('Mukunga ' + new Date());
       console.log('100** SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
