@@ -17,7 +17,7 @@ const BackUp = () => {
           const response = await axios.get("/api/listAll");
           try {
               console.log(response);
-              setUsers(response.data);
+              setUsers(users => [...users, ...response.data]);
           } catch (err) {
               console.log(err);
           }
