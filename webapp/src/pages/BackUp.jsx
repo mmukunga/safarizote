@@ -55,10 +55,8 @@ const BackUp = () => {
       </form>
       <p>Welcome to my backUp!!</p>
       <div className="userList">
-            {users && users.map(user => (
-                <li key={user.login.uuid}>
-                    {user.name.first} {user.name.last}
-                </li>
+            {users && users.map((user, idx) => (
+                <li key={idx}>{user}</li>
             ))}
         </div>
     </div>
