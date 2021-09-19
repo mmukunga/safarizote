@@ -6,24 +6,20 @@ const BackUp = () => {
   const [value, setValue] = useState('');
   const [users, setUsers] = useState([]);
 
-  const [items] = React.useState([
-    { label: "Luke Skywalker", value: "Luke Skywalker" },
-    { label: "C-3PO", value: "C-3PO" },
-    { label: "R2-D2", value: "R2-D2" }
-  ]);
+  const [items, setItems] = React.useState([]);
 
     React.useEffect(() => {
-      const fetchUsers = async () => {
+      const fetchItems = async () => {
           const response = await axios.get("/api/listAll");
           try {
               console.log(response);
-              setUsers(users => [...users, ...response.data]);
+              setItems(items => [...items, ...response.data]);
           } catch (err) {
               console.log(err);
           }
       };
 
-      fetchUsers();
+      fetchItems();
     }, []);
 
   const onChange = (event) => {
@@ -39,12 +35,8 @@ const BackUp = () => {
       <h1>BackUp BackUp</h1>
       <form onSubmit={handleSubmit}>
         <select onChange={onChange}>
-          {items.map(item => (
-            <option 
-               key={item.value} 
-               value={item.value}>
-               {item.label}
-            </option>
+          {items.map((item, idx) => (
+            <option key={idx} value={item}>{item}</option>
           ))}
         </select>
         <div>Input value: {value}</div>
@@ -55,8 +47,8 @@ const BackUp = () => {
       </form>
       <p>Welcome to my backUp!!</p>
       <div className="userList">
-            {users && users.map((user, idx) => (
-                <li key={idx}>{user}</li>
+            {items && items.map((item, idx) => (
+                <li key={idx}>{item}</li>
             ))}
         </div>
     </div>
