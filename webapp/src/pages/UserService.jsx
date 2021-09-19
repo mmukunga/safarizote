@@ -1,9 +1,9 @@
+import React from 'react';
 import axios from 'axios';
 
 const isLoggedIn = () => {
   return localStorage.getItem('jwt_token');
 }
-
 
 const loginUser = async (user) => {
   const {username, password} = user;
