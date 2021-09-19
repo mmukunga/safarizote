@@ -11,18 +11,18 @@ const BackUp = () => {
   ]);
 
     React.useEffect(() => {
-        fetchUsers();
-    }, []);
+      const fetchUsers = async () => {
+          const response = await axios.get("/api/listAll");
+          try {
+              console.log(response);
+              setUsers(response.data);
+          } catch (err) {
+              console.log(err);
+          }
+      };
 
-    const fetchUsers = async () => {
-        const response = await axios.get("/api/listAll");
-        try {
-            console.log(response);
-            setUsers(response.data);
-        } catch (err) {
-            console.log(err);
-        }
-    };
+      fetchUsers();
+    }, []);
 
   const onChange = (event) => {
     setValue(event.target.value);
