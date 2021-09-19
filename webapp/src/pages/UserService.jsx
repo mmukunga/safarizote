@@ -4,8 +4,10 @@ const isLoggedIn = () => {
   return localStorage.getItem('jwt_token');
 }
 
+
 const loginUser = async (user) => {
   const {username, password} = user;
+  const [isSignedUp, setIsSignedUp] = React.useState({});
   console.log('!!Deploy a GitHub branch!! ' + localStorage.getItem('jwt_token'));
 
   const userAuth = { 
@@ -14,20 +16,29 @@ const loginUser = async (user) => {
     token: '',
     dateCreated: new Date() 
   };
+  
+  let authedUser = {};
+  axios.post('/api/login', userAuth).then((response) => {     
+      console.log(response);
+      console.log(response.data);
 
-  axios.post('/api/login', userAuth).then((result) => {
-     console.log(result.data);
-     console.log(result.data.token);
-     userAuth.token = result.data.token;
-     axios.post('/api/verify', userAuth).then(response => {
-        console.log(response);
-     }).catch((error) => {
-        console.log(error);
-     });
-     console.log('Validate User!!');
-   }).catch((error) => {
-     console.log(error);
+      userAuth.token = response.data.token;
+      
+      axios.post('/api/verify', userAuth).then((res) => {
+          authedUser = res;
+      }).catch(err => {
+          console.log(err);
+      });   
+
+  }).then(()=> {
+      setIsSignedUp(authedUser);
+  }).catch(err => {
+      console.log('error in catch', err);
   });
+  
+  console.log('1.authedUser');
+  console.log(isSignedUp);
+  console.log('2.authedUser')
 
   if (username === 'm@gmail.com' && password === '12345') {
     return { token: 'access_token' };
