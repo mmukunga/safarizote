@@ -16,21 +16,19 @@ const loginUser = async (user) => {
     dateCreated: new Date() 
   };
   
-  let authedUser = {};
   let isSignedUp = await axios.post('/api/login', userAuth).then((response) => {     
       console.log(response);
       console.log(response.data);
 
       userAuth.token = response.data.token;
       
-      authedUser = await axios.post('/api/verify', userAuth).then((res) => {
+      return await axios.post('/api/verify', userAuth).then((res) => {
+        console.log(res);
           return res;
       }).catch(err => {
           console.log(err);
       });   
 
-  }).then(()=> {
-    return authedUser;
   }).catch(err => {
       console.log('error in catch', err);
   });
