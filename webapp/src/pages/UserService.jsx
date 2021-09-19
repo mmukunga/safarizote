@@ -7,7 +7,6 @@ const isLoggedIn = () => {
 
 const loginUser = async (user) => {
   const {username, password} = user;
-  const [isSignedUp, setIsSignedUp] = React.useState({});
   console.log('!!Deploy a GitHub branch!! ' + localStorage.getItem('jwt_token'));
 
   const userAuth = { 
@@ -18,6 +17,7 @@ const loginUser = async (user) => {
   };
   
   let authedUser = {};
+  let isSignedUp = {};
   axios.post('/api/login', userAuth).then((response) => {     
       console.log(response);
       console.log(response.data);
@@ -31,7 +31,7 @@ const loginUser = async (user) => {
       });   
 
   }).then(()=> {
-      setIsSignedUp(authedUser);
+    isSignedUp = authedUser;
   }).catch(err => {
       console.log('error in catch', err);
   });
