@@ -17,21 +17,20 @@ const loginUser = async (user) => {
   };
   
   let authedUser = {};
-  let isSignedUp = {};
-  axios.post('/api/login', userAuth).then((response) => {     
+  let isSignedUp = await axios.post('/api/login', userAuth).then((response) => {     
       console.log(response);
       console.log(response.data);
 
       userAuth.token = response.data.token;
       
-      axios.post('/api/verify', userAuth).then((res) => {
-          authedUser = res;
+      authedUser = await axios.post('/api/verify', userAuth).then((res) => {
+          return res;
       }).catch(err => {
           console.log(err);
       });   
 
   }).then(()=> {
-    isSignedUp = authedUser;
+    return authedUser;
   }).catch(err => {
       console.log('error in catch', err);
   });
