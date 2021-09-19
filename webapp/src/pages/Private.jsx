@@ -6,7 +6,7 @@ const Private = ({component: Component, ...rest}) => {
   console.log('Private UserService.isLoggedIn? ' + UserService.isLoggedIn());
   return (
     <Route {...rest} render={props => (            
-      UserService.isLoggedIn() == 'true'
+      UserService.isLoggedIn() == 'access_token'
         ? <Component {...props} />            
         : <Redirect  to={{pathname: '/signIn', state: {from: props.location}}} />        
     )} />   
