@@ -15,10 +15,10 @@ const BackUp = () => {
     }, []);
 
     const fetchUsers = async () => {
-        const res = await fetch("/api/listAll");
-        const data = await res.json();
+        const response = await axios.get("/api/listAll");
         try {
-            setUsers(data.results);
+            console.log(response);
+            setUsers(response.data);
         } catch (err) {
             console.log(err);
         }
