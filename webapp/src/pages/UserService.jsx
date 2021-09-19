@@ -22,7 +22,7 @@ const loginUser = async (user) => {
 
       userAuth.token = response.data.token;
       
-      return await axios.post('/api/verify', userAuth).then((res) => {
+      return axios.post('/api/verify', userAuth).then((res) => {
         console.log(res);
           return res;
       }).catch(err => {
