@@ -47,7 +47,6 @@ public class BackUpController {
     
   @RequestMapping(value = "/api/listAll",  method={RequestMethod.GET})
   public ResponseEntity<List<String>> findAll() throws IOException {
-      System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
 
       String BUCKET_NAME = "sms_familie_album";
       String PROJECT_ID  = "familiealbum-sms";
