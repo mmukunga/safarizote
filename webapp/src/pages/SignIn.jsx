@@ -28,7 +28,7 @@ const SignIn = (props) => {
 
         UserService.loginUser(user).then(response => {
           console.log(response);
-          localStorage.setItem('jwt_token', response.token);         
+          localStorage.setItem('jwt_token', 'true');         
           setLoggedIn((prevState) => prevState + 1);
         }).catch(err => {
           console.log(err);

@@ -38,7 +38,7 @@ const loginUser = async (user) => {
   console.log('2.authedUser')
 
   if (username === 'm@gmail.com' && password === '12345') {
-    return { token: isSignedUp };
+    return { token: 'true' };
   } else {
     throw new Error('Wrong username or password');
   }
