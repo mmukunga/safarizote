@@ -15,7 +15,7 @@ const BackUp = () => {
     }, []);
 
     const fetchUsers = async () => {
-        const res = await fetch("https://randomuser.me/api/?results=10");
+        const res = await fetch("/api/listAll");
         const data = await res.json();
         try {
             setUsers(data.results);
