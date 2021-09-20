@@ -84,7 +84,7 @@ const BackUp = () => {
         <input type="submit" value="Submit" />
       </form>
       <p>WEKA HII to my backUp!!</p>
-      <img src="https://storage.googleapis.com/sms_familie_album/FrognerParken_Samuel.pdf?GoogleAccessId=safarizote-service-account@familiealbum-sms.iam.gserviceaccount.com&Expires=1650155798&Signature=Doh0Fcgsc1e9JxRFiAzdPTJhkAVsZcNPi6mSj43ugaa01D5hlPfGSxdSn%2BBjh2UIXycuGfVA5T4BoIck%2Fi3ZaK670Q%2FT%2FcEsb1h0OGbBszkVCVCVV%2BMB6FEUdhi0vH5a49i%2BHs9%2FCAlbmIxI3V94QiUCtaOCLMZEbI35%2F67MQ0n%2FTXpattkFzrqR688aFjXXYlBODhpZ8cM%2B6iTxJe5eF%2BSCeglkPqb3SuDQJxVxXrN9sJ%2BCKMnvXHJMvVrabrLo3DNDySkc82ayivwHjcM5A8EjWOEQYgL5NZ2daHBEGo6beA22K4SkjkwNawFQ1R1cluL%2BwGQAF%2F6G6vKIV%2FYjkA%3D%3D"
+      <img src="Elias%20Barnas%20Holmenkolldag%202009.jpg?GoogleAccessId=safarizote-service-account@familiealbum-sms.iam.gserviceaccount.com&Expires=1632168867&Signature=kTjdRBM2h6ZMKTx0ne5s%2By5rkGam5ts5aWpq9kUf7R68u%2FcaaJc3TqavAFyMdZWimAFijmwTK8lYzMgTP6G2OpIav2Eydg%2Ffwuicr4fPArJ7sJfeFR6Ssas6q1HsnPLHKkZ43iskQoKLzb7gmg4dbcgA6OWz%2BxqpygmfFyfwvrIC07Fv4KpzIWeT7Att5sGazY8u%2FHbfHZY%2FmUyBJ%2BL%2F5DWChX3zKVlcZ6ftwRz7lHSkvEGmZ4ImPTw8oVMPdOUNTvnBFm6LSyGizQowFBjA4p1bTvMLt5SFlEB2v9UQFXORhXx2CF2hKUw9JQRjaCtgoWHLfiuI3VQkeRITT%2FQPLg%3D%3D"
            alt="Samuel på Frogner parken"/>
       <p>Welcome to my backUp!!</p>
       {data}
