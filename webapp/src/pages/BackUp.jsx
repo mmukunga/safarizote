@@ -32,7 +32,7 @@ const BackUp = () => {
       const slice = data.slice(offset, offset + perPage);
       const postData = slice.map((pd,idx) => <div key={idx}>
           <p style={{fontSize:'15px'}}>{pd}</p>
-          <img src={"https://storage.googleapis.com/sms_familie_album/"+pd} alt=" S M S "/>
+          <img src={pd} alt=" S M S "/>
       </div>);
       setData(postData);
       setPageCount(Math.ceil(data.length / perPage));

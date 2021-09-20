@@ -61,11 +61,12 @@ public class BackUpController {
       System.out.println("BackUpController.Start..");
       //https://storage.googleapis.com/${bucket.name}/${blob.name}
       for (Blob blob : blobs.iterateAll()) {
-          // System.out.println(blob.getName());
-           imageUrls.add(blob.getName());
+           System.out.println(blob.getName());
+          //imageUrls.add(blob.getName());
            Integer duration = 120;
            URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
            String imageUrl = signedUrl.toExternalForm();
+           imageUrls.add(imageUrl);
            logger.info("Generated image url : " + imageUrl);
       }
 
