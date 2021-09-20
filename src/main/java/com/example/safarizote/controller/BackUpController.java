@@ -58,9 +58,10 @@ public class BackUpController {
       List<String> imageUrls = new ArrayList<>();
       Page<Blob> blobs = storage.list(BUCKET_NAME);
       
+      System.out.println("BackUpController.Start..");
       //https://storage.googleapis.com/${bucket.name}/${blob.name}
       for (Blob blob : blobs.iterateAll()) {
-           System.out.println(blob.getName());
+          // System.out.println(blob.getName());
            imageUrls.add(blob.getName());
            Integer duration = 5*60*1000;
            URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
