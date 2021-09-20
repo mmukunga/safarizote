@@ -1,12 +1,16 @@
-import React, { useState } from "react";
-import axios from 'axios';
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
+import ReactPaginate from 'react-paginate';
+
 
 const BackUp = () => {
   const [name,  setName]  = useState("");
   const [value, setValue] = useState('');
-  const [users, setUsers] = useState([]);
-
   const [items, setItems] = React.useState([]);
+  const [offset, setOffset] = useState(0);
+  const [data, setData] = useState([]);
+  const [perPage] = useState(10);
+  const [pageCount, setPageCount] = useState(0);
 
     React.useEffect(() => {
       const fetchItems = async () => {
@@ -21,6 +25,27 @@ const BackUp = () => {
 
       fetchItems();
     }, []);
+  
+    const getData = async() => {
+      const res = await axios.get(`/api/listAll`)
+      const data = res.data;
+      const slice = data.slice(offset, offset + perPage);
+      const postData = slice.map((pd,idx) => <div key={idx}>
+          <p>{pd}</p>
+          <img src={pd} alt=""/>
+      </div>);
+      setData(postData);
+      setPageCount(Math.ceil(data.length / perPage));
+  }
+
+  const handlePageClick = (e) => {
+      const selectedPage = e.selected;
+      setOffset(selectedPage + 1)
+  };
+
+  useEffect(() => {
+    getData()
+  }, [offset])
 
   const onChange = (event) => {
     setValue(event.target.value);
@@ -32,20 +57,34 @@ const BackUp = () => {
   }
   return (
     <div className='backUp'>
-      <h1>BackUp BackUp</h1>
+      <h3>Folders BackUp</h3>
+      <ReactPaginate
+          previousLabel={"prev"}
+          nextLabel={"next"}
+          breakLabel={"..."}
+          breakClassName={"break-me"}
+          pageCount={pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={handlePageClick}
+          containerClassName={"pagination"}
+          subContainerClassName={"pages pagination"}
+          activeClassName={"active"}/>
+      <h4>Select folder</h4>
       <form onSubmit={handleSubmit}>
         <select onChange={onChange}>
           {items.map((item, idx) => (
             <option key={idx} value={item}>{item}</option>
           ))}
         </select>
-        <div>Input value: {value}</div>
+        <div>Selected folder: {value}</div>
         <label>Frirst Name:
           <input type="text" value={name} onChange={e => setName(e.target.value)}/>
         </label>
         <input type="submit" value="Submit" />
       </form>
       <p>Welcome to my backUp!!</p>
+      {data}
       <div className="userList">
             {items && items.map((item, idx) => (
                 <li key={idx}>{item}</li>
