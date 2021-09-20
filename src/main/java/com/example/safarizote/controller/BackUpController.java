@@ -63,7 +63,7 @@ public class BackUpController {
       for (Blob blob : blobs.iterateAll()) {
           // System.out.println(blob.getName());
            imageUrls.add(blob.getName());
-           Integer duration = 10;
+           Integer duration = 120;
            URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
            String imageUrl = signedUrl.toExternalForm();
            logger.info("Generated image url : " + imageUrl);
