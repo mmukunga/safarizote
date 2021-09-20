@@ -62,6 +62,11 @@ public class BackUpController {
       for (Blob blob : blobs.iterateAll()) {
            System.out.println(blob.getName());
            imageUrls.add(blob.getName());
+           Integer duration = 5*60*1000;
+           URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
+           String imageUrl = signedUrl.toExternalForm();
+           logger.info("Generated image url : " + imageUrl);
+
       }
 
       String directoryPrefix = "2017 Olaug";
