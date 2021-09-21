@@ -48,9 +48,9 @@ const BackUp = () => {
   return (
     <div className='backUp'>
       {isLoading ? (
-        <p>Loading ...</p>
+        <div className={isLoading ? "loader" : undefined}><div className="spinner" /></div>
       ) : (
-        <p>Is Loaded!!</p>
+        <div>Is Loaded!!</div>
       )}
 
       <h3>Folders BackUp</h3>
