@@ -17,7 +17,7 @@ const BackUp = () => {
           const response = await axios.get("/api/listAll");
           try {
               console.log(response);
-              setItems(items => [...items, ...response.data]);
+              //setItems(items => [...items, ...response.data]);
           } catch (err) {
               console.log(err);
           }

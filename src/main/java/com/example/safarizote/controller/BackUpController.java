@@ -69,7 +69,7 @@ public class BackUpController {
            String imageUrl = signedUrl.toExternalForm();
            imageUrls.add(imageUrl);
            JSONObject entity = new JSONObject();
-           entity.put("aa", "bb");
+           entity.put(blob.getName(), imageUrls);
            entities.add(entity);
            //logger.info("Generated image url : " + imageUrl);
       }
