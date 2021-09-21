@@ -6,7 +6,7 @@ import ReactPaginate from 'react-paginate';
 const BackUp = () => {
   const [name,  setName]  = useState("");
   const [value, setValue] = useState('');
-  const [items, setItems] = React.useState([]);
+  //const [items, setItems] = React.useState([{}]);
   const [offset, setOffset] = useState(0);
   const [data, setData] = useState([]);
   const [perPage] = useState(10);
@@ -29,10 +29,10 @@ const BackUp = () => {
     const getData = async() => {
       const res = await axios.get(`/api/listAll`)
       const data = res.data;
-      const slice = data.slice(offset, offset + perPage);
-      const postData = slice.map((pd,idx) => <div key={idx}>
-          <p style={{fontSize:'15px'}}>{pd}</p>
-          <img src={pd}  width="250" height="300" alt=" S M S "/>
+      //const slice = data.slice(offset, offset + perPage);
+      const postData = Object.entries(data).map(([key, value]) => <div key={key}>
+          <p style={{fontSize:'15px'}}>{key}</p>
+          <img src={value}  width="250" height="300" alt=" S M S "/>
       </div>);
       setData(postData);
       setPageCount(Math.ceil(data.length / perPage));
