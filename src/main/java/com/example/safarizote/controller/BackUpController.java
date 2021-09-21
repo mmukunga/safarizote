@@ -56,20 +56,22 @@ public class BackUpController {
       GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
 
       Storage storage = StorageOptions.newBuilder().setProjectId(PROJECT_ID).setCredentials(credentials).build().getService();
-      List<String> imageUrls = new ArrayList<>();
+      //List<String> imageUrls = new ArrayList<>();
       Page<Blob> blobs = storage.list(BUCKET_NAME);
       List<JSONObject> entities = new ArrayList<JSONObject>();
       System.out.println("BackUpController.Start..");
+
+      Integer duration = 120;
+
       //https://storage.googleapis.com/${bucket.name}/${blob.name}
       for (Blob blob : blobs.iterateAll()) {
            //System.out.println(blob.getName());
            //imageUrls.add(blob.getName());
-           Integer duration = 120;
            URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
            String imageUrl = signedUrl.toExternalForm();
-           imageUrls.add(imageUrl);
+           //imageUrls.add(imageUrl);
            JSONObject entity = new JSONObject();
-           entity.put(blob.getName(), imageUrls);
+           entity.put(blob.getName(), imageUrl);
            entities.add(entity);
            //logger.info("Generated image url : " + imageUrl);
       }
