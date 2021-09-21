@@ -11,8 +11,10 @@ const BackUp = () => {
   const [data, setData] = useState([]);
   const [perPage] = useState(10);
   const [pageCount, setPageCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
   
     const getData = async() => {
+      setIsLoading(true);
       const res = await axios.get(`/api/listAll`);
 
       const data = res.data;
@@ -23,6 +25,7 @@ const BackUp = () => {
       </div>);
       setData(postData);
       setPageCount(Math.ceil(data.length / perPage));
+      setIsLoading(false);
   }
 
   const handlePageClick = (e) => {
@@ -44,6 +47,12 @@ const BackUp = () => {
   }
   return (
     <div className='backUp'>
+      {isLoading ? (
+        <p>Loading ...</p>
+      ) : (
+        <p>Is Loaded!!</p>
+      )}
+
       <h3>Folders BackUp</h3>
       <ReactPaginate
           previousLabel={"prev"}
