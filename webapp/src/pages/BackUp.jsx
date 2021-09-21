@@ -14,7 +14,7 @@ const BackUp = () => {
   
     const getData = async() => {
       const res = await axios.get(`/api/listAll`);
-      const data = res.data;
+      const data = [...res.data];
       const slice = data.slice(offset, offset + perPage);
       const keys = Object.keys(slice);
       setItems(items => [...items, ...keys]);
