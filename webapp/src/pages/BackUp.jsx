@@ -11,29 +11,12 @@ const BackUp = () => {
   const [data, setData] = useState([]);
   const [perPage] = useState(10);
   const [pageCount, setPageCount] = useState(0);
-
-    React.useEffect(() => {
-      const fetchItems = async () => {
-          const response = await axios.get("/api/listAll");
-          try {
-              console.log(response);
-              //setItems(items => [...items, ...response.data]);
-          } catch (err) {
-              console.log(err);
-          }
-      };
-
-      fetchItems();
-    }, []);
   
     const getData = async() => {
       const res = await axios.get(`/api/listAll`)
       const data = res.data;
       //const slice = data.slice(offset, offset + perPage);
       const keys = Object.keys(data);
-      console.log(keys);
-      const values = Object.values(data);
-      console.log(values);
       setItems(items => [...items, ...keys]);
       const postData = Object.entries(data).map(([key, value]) => <div key={key}>
           <p style={{fontSize:'15px'}}>{key}</p>
