@@ -39,6 +39,8 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import com.example.safarizote.model.DaoObject;
+
 @RestController
 public class BackUpController {
     private static final int BUFFER_SIZE = 64 * 1024;
@@ -48,7 +50,7 @@ public class BackUpController {
   private Resource gcsFile;
     
   @RequestMapping(value = "/api/listAll",  method={RequestMethod.GET})
-  public ResponseEntity<?> findAll() throws IOException {
+  public ResponseEntity<List<DaoObject>> findAll() throws IOException {
 
       String BUCKET_NAME = "sms_familie_album";
       String PROJECT_ID  = "familiealbum-sms";
@@ -58,7 +60,7 @@ public class BackUpController {
 
       Storage storage = StorageOptions.newBuilder().setProjectId(PROJECT_ID).setCredentials(credentials).build().getService();
       Page<Blob> blobs = storage.list(BUCKET_NAME);
-      Map<String, Object> map = new HashMap<>();
+      List<DaoObject> map = new ArrayList<>();
       System.out.println("BackUpController.Start..");
 
       Integer duration = 120;
@@ -67,7 +69,8 @@ public class BackUpController {
       for (Blob blob : blobs.iterateAll()) {
            URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
            String imageUrl = signedUrl.toExternalForm();
-           map.put(blob.getName(), imageUrl);
+           DaoObject obj = new DaoObject(blob.getName(), imageUrl);
+           map.add(obj);
       }
 
       System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
