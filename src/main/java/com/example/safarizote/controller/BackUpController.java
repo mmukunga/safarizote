@@ -1,5 +1,6 @@
 package com.example.safarizote.controller;
 
+import org.json.JSONObject;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.Bucket;
 import com.google.cloud.storage.Blob;
@@ -46,7 +47,7 @@ public class BackUpController {
   private Resource gcsFile;
     
   @RequestMapping(value = "/api/listAll",  method={RequestMethod.GET})
-  public ResponseEntity<List<String>> findAll() throws IOException {
+  public ResponseEntity<List<JSONObject>> findAll() throws IOException {
 
       String BUCKET_NAME = "sms_familie_album";
       String PROJECT_ID  = "familiealbum-sms";
@@ -57,7 +58,7 @@ public class BackUpController {
       Storage storage = StorageOptions.newBuilder().setProjectId(PROJECT_ID).setCredentials(credentials).build().getService();
       List<String> imageUrls = new ArrayList<>();
       Page<Blob> blobs = storage.list(BUCKET_NAME);
-      
+      List<JSONObject> entities = new ArrayList<JSONObject>();
       System.out.println("BackUpController.Start..");
       //https://storage.googleapis.com/${bucket.name}/${blob.name}
       for (Blob blob : blobs.iterateAll()) {
@@ -67,6 +68,9 @@ public class BackUpController {
            URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
            String imageUrl = signedUrl.toExternalForm();
            imageUrls.add(imageUrl);
+           JSONObject entity = new JSONObject();
+           entity.put("aa", "bb");
+           entities.add(entity);
            //logger.info("Generated image url : " + imageUrl);
       }
 
@@ -85,7 +89,7 @@ public class BackUpController {
       */
       System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
       System.out.println("BackUp.findAll()  End OK!");
-      return new ResponseEntity<>(imageUrls, HttpStatus.OK);
+      return new ResponseEntity<>(entities, HttpStatus.OK);
     }    
 
   @RequestMapping(value = "/api/categories",  method={RequestMethod.GET})
