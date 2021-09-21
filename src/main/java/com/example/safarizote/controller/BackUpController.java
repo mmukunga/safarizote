@@ -48,7 +48,7 @@ public class BackUpController {
   private Resource gcsFile;
     
   @RequestMapping(value = "/api/listAll",  method={RequestMethod.GET})
-  public ResponseEntity<Map> findAll() throws IOException {
+  public ResponseEntity<?> findAll() throws IOException {
 
       String BUCKET_NAME = "sms_familie_album";
       String PROJECT_ID  = "familiealbum-sms";
@@ -57,7 +57,6 @@ public class BackUpController {
       GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
 
       Storage storage = StorageOptions.newBuilder().setProjectId(PROJECT_ID).setCredentials(credentials).build().getService();
-      //List<String> imageUrls = new ArrayList<>();
       Page<Blob> blobs = storage.list(BUCKET_NAME);
       Map<String, Object> map = new HashMap<>();
       System.out.println("BackUpController.Start..");
@@ -66,30 +65,11 @@ public class BackUpController {
 
       //https://storage.googleapis.com/${bucket.name}/${blob.name}
       for (Blob blob : blobs.iterateAll()) {
-           //System.out.println(blob.getName());
-           //imageUrls.add(blob.getName());
            URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
            String imageUrl = signedUrl.toExternalForm();
-           //imageUrls.add(imageUrl);
-           //JSONObject entity = new JSONObject();
            map.put(blob.getName(), imageUrl);
-           //entities.add(entity);
-           //logger.info("Generated image url : " + imageUrl);
       }
 
-      /*
-      String directoryPrefix = "2017 Olaug";
-      Page<Blob> listObjects = storage.list(BUCKET_NAME,
-            Storage.BlobListOption.prefix(directoryPrefix),
-            Storage.BlobListOption.currentDirectory());
-
-      Iterable<Blob> myBlobs = listObjects.iterateAll();
-      for(Blob object : myBlobs) {
-            System.out.println(object.getName() + " (" + object.getSize() + " bytes)");
-            URL signedUrl = object.signUrl(14, TimeUnit.DAYS);
-            System.out.println("BackUpController.signedUrl:= " + signedUrl);
-        }
-      */
       System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
       System.out.println("BackUp.findAll()  End OK!");
       return new ResponseEntity<>(map, HttpStatus.OK);
