@@ -6,7 +6,7 @@ import ReactPaginate from 'react-paginate';
 const BackUp = () => {
   const [name,  setName]  = useState("");
   const [value, setValue] = useState('');
-  const [items, setItems] = React.useState([{}]);
+  const [items, setItems] = React.useState([]);
   const [offset, setOffset] = useState(0);
   const [data, setData] = useState([]);
   const [perPage] = useState(10);
@@ -31,6 +31,9 @@ const BackUp = () => {
       const data = res.data;
       //const slice = data.slice(offset, offset + perPage);
       const keys = Object.keys(data);
+      console.log(keys);
+      const values = Object.values(data);
+      console.log(values);
       setItems(items => [...items, ...keys]);
       const postData = Object.entries(data).map(([key, value]) => <div key={key}>
           <p style={{fontSize:'15px'}}>{key}</p>
