@@ -61,17 +61,17 @@ public class BackUpController {
       System.out.println("BackUpController.Start..");
       //https://storage.googleapis.com/${bucket.name}/${blob.name}
       for (Blob blob : blobs.iterateAll()) {
-           System.out.println(blob.getName());
-          //imageUrls.add(blob.getName());
+           //System.out.println(blob.getName());
+           //imageUrls.add(blob.getName());
            Integer duration = 120;
            URL signedUrl = storage.signUrl(blob, duration, TimeUnit.MINUTES);
            String imageUrl = signedUrl.toExternalForm();
            imageUrls.add(imageUrl);
-           logger.info("Generated image url : " + imageUrl);
+           //logger.info("Generated image url : " + imageUrl);
       }
 
+      /*
       String directoryPrefix = "2017 Olaug";
-
       Page<Blob> listObjects = storage.list(BUCKET_NAME,
             Storage.BlobListOption.prefix(directoryPrefix),
             Storage.BlobListOption.currentDirectory());
@@ -82,7 +82,7 @@ public class BackUpController {
             URL signedUrl = object.signUrl(14, TimeUnit.DAYS);
             System.out.println("BackUpController.signedUrl:= " + signedUrl);
         }
-
+      */
       System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
       System.out.println("BackUp.findAll()  End OK!");
       return new ResponseEntity<>(imageUrls, HttpStatus.OK);

@@ -84,12 +84,7 @@ const BackUp = () => {
         <input type="submit" value="Submit" />
       </form>
       <p>Welcome to my backUp!!</p>
-      {data}
-      <div className="userList">
-            {items && items.map((item, idx) => (
-                <li key={idx}>{item}</li>
-            ))}
-        </div>
+      { data }
     </div>
   );
 }
