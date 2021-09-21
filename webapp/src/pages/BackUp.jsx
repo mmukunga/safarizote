@@ -30,6 +30,8 @@ const BackUp = () => {
       const res = await axios.get(`/api/listAll`)
       const data = res.data;
       //const slice = data.slice(offset, offset + perPage);
+      const keys = Object.keys(data);
+      setItems(items => [...items, ...keys]);
       const postData = Object.entries(data).map(([key, value]) => <div key={key}>
           <p style={{fontSize:'15px'}}>{key}</p>
           <img src={value}  width="250" height="300" alt=" S M S "/>
