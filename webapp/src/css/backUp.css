@@ -85,7 +85,6 @@ div.thumbnail {
 div.thumbnail img {
   width: 20%;
   display: inline-block;
-  height: auto;
 }
 
 p.desc {
