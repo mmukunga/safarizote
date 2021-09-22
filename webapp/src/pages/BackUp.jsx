@@ -46,7 +46,7 @@ const BackUp = () => {
       alert(`Submitting Name ${name}`)
   }
   return (
-    <div className='backUp'>
+    <div className='BackUps'>
       {isLoading ? (
         <div className={isLoading ? "loader" : undefined}><div className="spinner" /></div>
       ) : (
