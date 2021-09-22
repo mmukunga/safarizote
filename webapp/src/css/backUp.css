@@ -68,7 +68,7 @@ div.thumbnail {
   margin: 0 auto; 
 }
 div.thumbnail img {
-  width: 20%;
+  width: 50%;
   display: inline-block;
   height: auto;
 }
