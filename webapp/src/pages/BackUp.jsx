@@ -19,7 +19,7 @@ const BackUp = () => {
 
       const data = res.data;
       const slice = data.slice(offset, offset + perPage);
-      const postData = slice.map((pd,id) => <div key={id} className="thumbnail">
+      const postData = slice.map((pd,id) => <div key={id} className="Thumbnail">
           <p className="desc">{pd.name}</p>
           <img src={pd.path} alt=" S M S "/>
       </div>);
