@@ -16,8 +16,11 @@ const BackUp = () => {
     const getData = async() => {
       setIsLoading(true);
       const res = await axios.get(`/api/categories`);
-
       const data = res.data;
+
+      const result = data.map(a => a.name);
+      setItems(prevItems => [...prevItems, ...result]);
+
       const slice = data.slice(offset, offset + perPage);
       const postData = slice.map((pd,id) => <div key={id} className="Thumbnail">
           <div className="gallery">
