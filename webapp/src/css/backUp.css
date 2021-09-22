@@ -76,6 +76,15 @@ img.resize {
   border-radius: unset
 }
 
+div.Thumbnail {
+  width: 100%;
+  margin: 0 auto; 
+}
+div.Thumbnail img {
+  width: 20%;
+  display: inline-block;
+  height: auto;
+  }
 
 .spinner {
   border: 4px solid rgba(255, 255, 255, 0.5);
@@ -114,3 +123,10 @@ div.loading .spinner {
     text-align: left;
   }
 }
+
+@media only screen and (max-width: 480px) {
+  div.Thumbnail img {
+    width: 100%;
+    display: inline-block;
+  }
+  }
