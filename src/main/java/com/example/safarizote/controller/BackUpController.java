@@ -77,7 +77,7 @@ public class BackUpController {
     }    
 
   @RequestMapping(value = "/api/categories",  method={RequestMethod.GET})
-  public ResponseEntity<List<URL>> findCategory() throws IOException {
+  public ResponseEntity<List<DaoObject>> findCategory() throws IOException {
       System.out.println("findCategory.findAll(), the time at the server is now " + new Date());
 
       String BUCKET_NAME = "sms_familie_album";
@@ -87,7 +87,7 @@ public class BackUpController {
       GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
 
       Storage storage = StorageOptions.newBuilder().setProjectId(PROJECT_ID).setCredentials(credentials).build().getService();
-      List<URL> imageUrls = new ArrayList<>();
+      //List<URL> imageUrls = new ArrayList<>();
       String directoryPrefix = "2012 MtKenya/";
 
       Page<Blob> listObjects = storage.list(BUCKET_NAME,
@@ -95,10 +95,14 @@ public class BackUpController {
             Storage.BlobListOption.currentDirectory());
       System.out.println("1.BackUpController.listObjects " + listObjects);
 
+      List<DaoObject> imageUrls = new ArrayList<>();
       Iterable<Blob> blobs = listObjects.iterateAll();
       for(Blob blob : blobs) {
         URL signedUrl = blob.signUrl(14, TimeUnit.DAYS);
-        imageUrls.add(signedUrl);
+        String imageUrl = signedUrl.toExternalForm();
+        
+        DaoObject obj = new DaoObject(blob.getName(), imageUrl);
+        imageUrls.add(obj);
       }
 
       System.out.println("findCategory.findAll(), the time at the server is now " + new Date());

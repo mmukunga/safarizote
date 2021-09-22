@@ -32,7 +32,7 @@ img.resize {
   display:inline-block;
 }
 
-.Thumbnail {
+.thumbnail {
   height: 200px;
   width: 200px;
 }
@@ -76,14 +76,21 @@ img.resize {
   border-radius: unset
 }
 
-div.Thumbnail {
+div.thumbnail {
   width: 100%;
+  border: 1px solid #ccc;
+  float: left;
   margin: 0 auto; 
 }
-div.Thumbnail img {
+div.thumbnail img {
   width: 20%;
   display: inline-block;
   height: auto;
+}
+
+p.desc {
+  padding: 15px;
+  text-align: center;
 }
 
 .spinner {
@@ -125,7 +132,7 @@ div.loading .spinner {
 }
 
 @media only screen and (max-width: 480px) {
-  div.Thumbnail img {
+  div.thumbnail img {
     width: 100%;
     display: inline-block;
   }

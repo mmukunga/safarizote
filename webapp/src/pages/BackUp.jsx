@@ -15,13 +15,13 @@ const BackUp = () => {
   
     const getData = async() => {
       setIsLoading(true);
-      const res = await axios.get(`/api/listAll`);
+      const res = await axios.get(`/api/categories`);
 
       const data = res.data;
       const slice = data.slice(offset, offset + perPage);
-      const postData = slice.map((pd,id) => <div key={id} className="Thumbnail">
-          <p style={{fontSize:'15px'}}>{pd.name}</p>
-          <img src={pd.path} width="250" height="300" alt=" S M S "/>
+      const postData = slice.map((pd,id) => <div key={id} className="thumbnail">
+          <p className="desc">{pd.name}</p>
+          <img src={pd.path} width="500" height="600" alt=" S M S "/>
       </div>);
       setData(postData);
       setPageCount(Math.ceil(data.length / perPage));
