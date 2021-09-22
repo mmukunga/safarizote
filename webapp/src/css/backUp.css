@@ -23,21 +23,6 @@ img.resize {
 
 }
 
-.ThumbnailDiv {
-  padding: auto;
-  margin: 2px;
-  border: 2px solid orchid;
-  width:210px; 
-  height:210px;
-  display:inline-block;
-}
-
-.thumbnail {
-  height: 200px;
-  width: 200px;
-}
-
-
 .pagination {
   margin: 15px auto;
   display: flex;
@@ -85,6 +70,7 @@ div.thumbnail {
 div.thumbnail img {
   width: 20%;
   display: inline-block;
+  height: auto;
 }
 
 p.desc {
