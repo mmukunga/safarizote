@@ -21,7 +21,7 @@ const BackUp = () => {
       const slice = data.slice(offset, offset + perPage);
       const postData = slice.map((pd,id) => <div key={id} className="thumbnail">
           <p className="desc">{pd.name}</p>
-          <img src={pd.path} width="500" height="600" alt=" S M S "/>
+          <img src={pd.path} alt=" S M S "/>
       </div>);
       setData(postData);
       setPageCount(Math.ceil(data.length / perPage));
