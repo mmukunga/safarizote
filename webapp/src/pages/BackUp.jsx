@@ -20,8 +20,10 @@ const BackUp = () => {
       const data = res.data;
       const slice = data.slice(offset, offset + perPage);
       const postData = slice.map((pd,id) => <div key={id} className="Thumbnail">
-          <p className="desc">{pd.name}</p>
-          <img src={pd.path} alt=" S M S "/>
+          <div className="gallery">
+            <p className="desc">{pd.name}</p>
+            <img src={pd.path} alt=" S M S "/>
+          </div>
       </div>);
       setData(postData);
       setPageCount(Math.ceil(data.length / perPage));
@@ -81,6 +83,7 @@ const BackUp = () => {
       </form>
       <p>Welcome to my backUp!!</p>
       { data }
+      <div class="clearfix"></div>
     </div>
   );
 }
