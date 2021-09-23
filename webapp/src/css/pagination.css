@@ -38,8 +38,7 @@
   }
   
 
-  /*--For small devices CSS--*/
-@media (max-width: 600px){
+@media screen and (max-width: 600px) {  
   .pagination {
     margin: 5px auto;
     display: flex;
