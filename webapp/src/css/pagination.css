@@ -39,7 +39,7 @@
   
 
   /*--For small devices CSS--*/
-@media (max-width: 767px){
+@media (max-width: 600px){
     .pagination ul li a {
         font-size: 18px;
         padding: 2px;
