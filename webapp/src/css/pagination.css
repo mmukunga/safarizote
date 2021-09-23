@@ -37,3 +37,27 @@
     border-radius: unset
   }
   
+
+  /*--For small devices CSS--*/
+@media (max-width: 767px){
+    .pagination ul li a {
+        font-size: 18px;
+        padding: 2px;
+        min-width: 20px;
+        height: 20px;
+    }
+    .pagination ul li span.current,
+    .pagination ul li span.disabled {
+      font-size: 18px;
+        padding: 2px;
+        min-width: 20px;
+        height: 20px;
+    }
+    .pagination ul li {
+        margin: 5px 4px;
+    }
+    .pagination ul li:first-child a,
+    .pagination ul li:last-child a {
+        line-height: 23px;
+    }
+  }
