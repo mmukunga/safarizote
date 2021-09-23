@@ -40,17 +40,23 @@
 
   /*--For small devices CSS--*/
 @media (max-width: 600px){
+  .pagination {
+    margin: 5px auto;
+    display: flex;
+    list-style: none;
+    outline: none;
+  }
     .pagination ul li a {
         font-size: 18px;
         padding: 2px;
-        min-width: 20px;
+        min-width: 10px;
         height: 20px;
     }
     .pagination ul li span.current,
     .pagination ul li span.disabled {
       font-size: 18px;
         padding: 2px;
-        min-width: 20px;
+        min-width: 10px;
         height: 20px;
     }
     .pagination ul li {
