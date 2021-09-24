@@ -10,4 +10,8 @@
  .container {
   border-bottom: #fff 2px ridge;
  }
-  
+ .pagination {
+  display: flex;
+  list-style: none;
+  outline: none;
+}
