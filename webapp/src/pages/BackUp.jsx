@@ -21,13 +21,14 @@ function BackUp() {
  
  const getAllPosts = async () => {
    setIsLoading(true);
-   const res = await axios.get(`/api/categories`)
+   const res = await axios.get(`/api/categories`);
+   console.log(res);
    const data = res.data;
    const slice = data.slice(offset - 1 , offset - 1 + postsPerPage);
- 
+   console.log(data);
    // For displaying Data
    const postData = getPostData(slice);
- 
+  console.log(postData);
    // Using Hooks to set value
    setAllPosts(postData);
    setPageCount(Math.ceil(data.length / postsPerPage));
