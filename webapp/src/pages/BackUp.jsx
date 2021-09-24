@@ -10,16 +10,16 @@ function BackUp() {
  
  const getPostData = (data) => {
    return (
-     data.map(post => <div className="container" key={post.id}>
-       <p>User ID: {post.id}</p>
-       <p>Title: {post.title}</p>
+     data.map(post => <div className="container" key={post.name}>
+       <p>User ID: {post.name}</p>
+       <img src={pd.path} alt=" S M S "/>
      </div>)
    )
  
  }
  
  const getAllPosts = async () => {
-   const res = await axios.get(`https://jsonplaceholder.typicode.com/posts`)
+   const res = await axios.get(`/api/categories`)
    const data = res.data;
    const slice = data.slice(offset - 1 , offset - 1 + postsPerPage)
  
@@ -48,7 +48,7 @@ function BackUp() {
  
      {/* Using React Paginate */}
      <ReactPaginate
-       previousLabel={"previous"}
+       previousLabel={"prev"}
        nextLabel={"next"}
        breakLabel={"..."}
        breakClassName={"break-me"}
