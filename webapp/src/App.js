@@ -20,13 +20,20 @@ import Private from './pages/Private';
 import UserService from './pages/UserService';
 
 function App() {
+  
+  const StylesDropDown = {
+      width: '80px', 
+      padding: '2px', 
+      border: '2px solid #fefbd8'
+  };
+  
   const DropDown = props => {
     const {history} = props;
     const onChange = (e) => {
        history.replace(`${e.target.value}`);
     }
     return (
-      <select onChange={onChange} style={selectStyle}>
+      <select onChange={onChange} style={StylesDropDown}>
         <option value="/tipping">Tipping</option>
         <option value="/shopping">Shopping</option>
         <option value="/stock">Stock Market</option>
@@ -34,7 +41,12 @@ function App() {
       </select>
     );
   }
-  
+
+  const logout = () => {
+    UserService.logOut();
+    history.replace('/');
+  }
+
   const AdminMenu = withRouter(DropDown);
 
   return (
@@ -52,7 +64,7 @@ function App() {
         >
           Learn React
         </a>
-        <a href="" className="Nav_link LogOut" onClick={handleLogout}></a> 
+        <a href="" className="Nav_link LogOut" onClick={logout}></a> 
         {UserService.isLoggedIn() != null ? 'Is Logged in!!' : 'Please login!!'}
       </header>
       <hr/>
