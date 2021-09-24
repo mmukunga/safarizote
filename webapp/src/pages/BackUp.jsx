@@ -11,9 +11,9 @@ function BackUp() {
  
  const getPostData = (data) => {
     return (
-      data.map(post => <div className="container" key={post.name}>
+      data.map(post => <div className="gallery" key={post.name}>
         <p>User ID: {post.name}</p>
-        <img src={post.path} className="gallery" alt='S M S'/>
+        <img src={post.path} className="cssImage" alt='S M S'/>
       </div>)
     )
   };
