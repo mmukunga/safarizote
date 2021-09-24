@@ -77,7 +77,7 @@
       border: 1px solid green;
     }  
 
-    img {
+    div.SafariSnap img {
       display:block;
       float:none;
       margin:0 auto 20px !important;
