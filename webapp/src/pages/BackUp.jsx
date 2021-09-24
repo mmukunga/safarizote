@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import ReactPaginate from 'react-paginate';
  
@@ -31,9 +31,7 @@ function BackUp() {
     setPageCount(Math.ceil(data.length / postsPerPage));
   }
 
-
- 
-  useEffect(() => {
+  React.useEffect(() => {
     getAllPosts();
   }, [offset]);
 
