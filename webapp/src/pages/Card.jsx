@@ -9,7 +9,7 @@ const Card = (props) => {
       margin: '2px',
       padding: '2px',
       border: '2px solid red',
-      '@media (max-width: 1366px)': {
+      '@media (max-width: 600px)': {
           backgroundColor: 'green',
           fontSize: '24px'
       }
