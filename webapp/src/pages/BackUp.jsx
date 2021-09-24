@@ -32,6 +32,7 @@ function BackUp() {
    setAllPosts(postData);
    setPageCount(Math.ceil(data.length / postsPerPage));
    setIsLoading(false);
+   console.log(posts);
  }
  
  const handlePageClick = (event) => {
@@ -43,6 +44,8 @@ function BackUp() {
    getAllPosts()
  }, [offset])
  
+ console.log(posts);
+
  return (
    <div style={{border:'2px solid purple'}}>
      {isLoading ? (
