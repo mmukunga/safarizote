@@ -8,7 +8,7 @@ const Posts = () => {
 
   React.useEffect(() => {
     axios
-      .get("http://jsonplaceholder.typicode.com/posts")
+      .get("https://jsonplaceholder.typicode.com/posts")
       .then((response) => setPosts(response.data));
   }, []);
 
