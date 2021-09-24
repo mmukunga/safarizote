@@ -1,10 +1,5 @@
 .main-app {
-  margin: 2% 10%;
-  border: 1px ridge #464141;
-  padding: 5%;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 20px;
-  color: #464141;
+  border: 2px ridge #464141;
  }
   
  .container {
