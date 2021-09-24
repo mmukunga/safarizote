@@ -38,8 +38,10 @@ function App() {
       </header>
       <hr/>
       <BrowserRouter>
+      <NavLink to={'/'}>Safaris</NavLink>  
+      <NavLink to={'/metrics'}>Metrics</NavLink>
         <Switch>
-          <Route path='/' component={Safaris}/>
+          <Route path='/' exact component={Safaris}/>
           <Route path='/metrics' component={Metrics}/>
         </Switch>
       </BrowserRouter> 
