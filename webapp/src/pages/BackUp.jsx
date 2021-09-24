@@ -9,7 +9,7 @@ function BackUp() {
  const [pageCount, setPageCount] = useState(0);
  const [isLoading, setIsLoading] = useState(false);
  
- const getPostData = (data) => {
+ const getPostData = async (data) => {
    return (
      data.map(post => {<div key={post.name}>
        <p>User ID: {post.name}</p>
@@ -28,7 +28,7 @@ function BackUp() {
        const slice = data.slice(offset - 1 , offset - 1 + postsPerPage);
        console.log(data);
        // For displaying Data
-       const postData = getPostData(slice);
+       const postData = await getPostData(slice);
        console.log(postData);
        // Using Hooks to set value
        setAllPosts(postData);
