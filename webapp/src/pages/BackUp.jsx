@@ -23,10 +23,8 @@ function BackUp() {
     const data = res.data;
     const slice = data.slice(offset - 1 , offset - 1 + postsPerPage)
 
-    // For displaying Data
     const postData = getPostData(slice)
 
-    // Using Hooks to set value
     setAllPosts(postData);
     setPageCount(Math.ceil(data.length / postsPerPage));
   }

@@ -7,7 +7,8 @@
 
 
 div.gallery {
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
+  width:20%;
 }
 
 div.gallery:hover {
