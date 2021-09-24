@@ -42,10 +42,6 @@ function BackUp() {
  
  return (
    <div className="main-app">
-    
-     {/* Display all the posts */}
-     {posts}
- 
      {/* Using React Paginate */}
      <ReactPaginate
        previousLabel={"prev"}
@@ -57,6 +53,8 @@ function BackUp() {
        containerClassName={"pagination"}
        subContainerClassName={"pages pagination"}
        activeClassName={"active"} />
+     {/* Display all the posts */}
+     {posts}   
    </div>
  );
 }
