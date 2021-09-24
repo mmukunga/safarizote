@@ -12,6 +12,7 @@
  }
  .pagination {
   display: flex;
+  justify-content: flex-start;
   list-style: none;
   outline: none;
 }
