@@ -13,7 +13,6 @@
 div.gallery {
   border: 2px solid #ccc;
   width: 25%;
-  float: left;
 }
 
 div.gallery:hover {
