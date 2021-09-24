@@ -6,6 +6,8 @@
   border-bottom: #fff 2px ridge;
  }
  .pagination {
+  margin-top: 45px;
+  margin-left: 5px;  
   display: flex;
   justify-content: flex-start;
   list-style: none;

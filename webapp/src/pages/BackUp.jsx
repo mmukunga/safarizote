@@ -10,9 +10,9 @@ function BackUp() {
  
  const getPostData = (data) => {
    return (
-     data.map(post => <div className="container" key={post.name}>
+     data.map(post => <div className="gallery" key={post.name}>
        <p>User ID: {post.name}</p>
-       <img src={post.path} alt=" S M S "/>
+       <img src={post.path} className="Thumbnail" alt=" S M S "/>
      </div>)
    )
  
@@ -41,7 +41,7 @@ function BackUp() {
  }, [offset])
  
  return (
-   <div className="main-app">
+   <div className="BackUps">
      {/* Using React Paginate */}
      <ReactPaginate
        previousLabel={"prev"}
