@@ -20,13 +20,13 @@ import Private from './pages/Private';
 import UserService from './pages/UserService';
 
 function App() {
-  
+  let history = useHistory();
   const StylesDropDown = {
       width: '80px', 
       padding: '2px', 
       border: '2px solid #fefbd8'
   };
-  
+
   const DropDown = props => {
     const {history} = props;
     const onChange = (e) => {
