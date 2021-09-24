@@ -11,7 +11,7 @@ const Card = (props) => {
       border: '2px solid red',
       '@media (max-width: 600px)': {
           backgroundColor: 'green',
-          fontSize: '24px'
+          fontSize: '16px'
       }
     }
   };
