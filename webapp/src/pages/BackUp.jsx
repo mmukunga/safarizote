@@ -9,49 +9,40 @@ function BackUp() {
  const [pageCount, setPageCount] = useState(0);
  const [isLoading, setIsLoading] = useState(false);
  
- const getPostData = async (data) => {
-   return (
-     data.map(post => {<div key={post.name}>
-       <p>User ID: {post.name}</p>
-       <img src={post.path} className="Thumbnail" alt=" S M S "/>
-     </div>})
-   )
- 
- }
- 
- const getAllPosts = async () => {
-   setIsLoading(true);
-   return axios.get(`/api/categories`).then(resp => {
-       console.log(resp.data);
-       console.log(resp);
-       const data  = resp.data;
-       const slice = data.slice(offset - 1 , offset - 1 + postsPerPage);
-       console.log(data);
-       // For displaying Data
-       const postData = await getPostData(slice);
-       console.log(postData);
-       // Using Hooks to set value
-       setAllPosts(postData);
-       setPageCount(Math.ceil(data.length / postsPerPage));
-       setIsLoading(false);
-       console.log(postData);
-       return postData;
-   }).catch(err => {
-       // Handle Error Here
-       console.error(err);
-   });
+ const getPostData = (data) => {
+    return (
+      data.map(post => <div className="container" key={post.id}>
+        <p>User ID: {post.id}</p>
+        <p>Title: {post.title}</p>
+      </div>)
+    )
+  };
 
- }
+  const getAllPosts = async () => {
+    const res = await axios.get(`https://jsonplaceholder.typicode.com/posts`)
+    const data = res.data;
+    const slice = data.slice(offset - 1 , offset - 1 + postsPerPage)
+
+    // For displaying Data
+    const postData = getPostData(slice)
+
+    // Using Hooks to set value
+    setAllPosts(postData);
+    setPageCount(Math.ceil(data.length / postsPerPage));
+  }
+
+
  
+  useEffect(() => {
+    getAllPosts();
+  }, [offset]);
+
  const handlePageClick = (event) => {
    const selectedPage = event.selected;
    setOffset(selectedPage + 1)
  };
- 
- useEffect(() => {
-   getAllPosts();
- }, [offset])
- 
+
+
  console.log(posts);
 
  return (
