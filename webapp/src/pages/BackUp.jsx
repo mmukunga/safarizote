@@ -62,9 +62,9 @@ function BackUp() {
        subContainerClassName={"pages pagination"}
        activeClassName={"active"} />
      {/* Display all the posts */}
-     Simon
+     <div className="thumbnails">
      {posts} 
-     Mukunga
+     </div>
    </div>
  );
 }
