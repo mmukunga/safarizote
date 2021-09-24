@@ -37,14 +37,15 @@ function App() {
         </a>
       </header>
       <hr/>
-      <BrowserRouter>
-      <NavLink to={'/'} className="Nav_link">Safaris</NavLink>  
-      <NavLink to={'/metrics'} className="Nav_link">Metrics</NavLink>
-      <NavLink to={'/email'} className="Nav_link">Email</NavLink>
-      <NavLink to={'/weather'} className="Nav_link">Weather</NavLink>
-      <NavLink to={'/metrics'} className="Nav_link">Metrics</NavLink>
-      <NavLink to={'/aboutUs'} className="Nav_link">About&nbsp;Us</NavLink>
-      <NavLink to={'/signIn'} className="Nav_link">LogIn</NavLink>
+      <Card className="OuterCard" fontColor="black">
+        <NavLink to={'/'} className="Nav_link">Safaris</NavLink>  
+        <NavLink to={'/metrics'} className="Nav_link">Metrics</NavLink>
+        <NavLink to={'/email'} className="Nav_link">Email</NavLink>
+        <NavLink to={'/weather'} className="Nav_link">Weather</NavLink>
+        <NavLink to={'/metrics'} className="Nav_link">Metrics</NavLink>
+        <NavLink to={'/aboutUs'} className="Nav_link">About&nbsp;Us</NavLink>
+        <NavLink to={'/signIn'} className="Nav_link">LogIn</NavLink>
+
         <Switch>
           <Route path='/' exact component={Safaris}/>
           <Route path='/metrics' component={Metrics}/>
@@ -54,7 +55,7 @@ function App() {
           <Route path="/email" component={Email} />
           <Route path="/weather" component={Weather} />
         </Switch>
-      </BrowserRouter> 
+      </Card> 
     </div>
   );
 }
