@@ -41,7 +41,7 @@ function BackUp() {
  }, [offset])
  
  return (
-   <div className="BackUps">
+   <div>
      {/* Using React Paginate */}
      <ReactPaginate
        previousLabel={"prev"}
@@ -54,7 +54,14 @@ function BackUp() {
        subContainerClassName={"pages pagination"}
        activeClassName={"active"} />
      {/* Display all the posts */}
-     {posts}   
+     {posts} 
+
+     20. jan. 2014 — Det er ikke så kaldt som jeg trodde det skulle være, det var en god overraskelse! Ler han. – Jeg bor hos en veldig bra vertsfamilie.
+     20. jan. 2014 — Det er ikke så kaldt som jeg trodde det skulle være, det var en god overraskelse! Ler han. – Jeg bor hos en veldig bra vertsfamilie.
+     20. jan. 2014 — Det er ikke så kaldt som jeg trodde det skulle være, det var en god overraskelse! Ler han. – Jeg bor hos en veldig bra vertsfamilie.
+     20. jan. 2014 — Det er ikke så kaldt som jeg trodde det skulle være, det var en god overraskelse! Ler han. – Jeg bor hos en veldig bra vertsfamilie.
+     20. jan. 2014 — Det er ikke så kaldt som jeg trodde det skulle være, det var en god overraskelse! Ler han. – Jeg bor hos en veldig bra vertsfamilie.
+     20. jan. 2014 — Det er ikke så kaldt som jeg trodde det skulle være, det var en god overraskelse! Ler han. – Jeg bor hos en veldig bra vertsfamilie.  
    </div>
  );
 }
