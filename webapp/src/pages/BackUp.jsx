@@ -6,29 +6,32 @@ function BackUp() {
  const [postsPerPage] = useState(5);
  const [offset, setOffset] = useState(1);
  const [posts, setAllPosts] = useState([]);
- const [pageCount, setPageCount] = useState(0)
+ const [pageCount, setPageCount] = useState(0);
+ const [isLoading, setIsLoading] = useState(false);
  
  const getPostData = (data) => {
    return (
-     data.map(post => <div key={post.name}>
+     data.map(post => {<div key={post.name}>
        <p>User ID: {post.name}</p>
        <img src={post.path} className="Thumbnail" alt=" S M S "/>
-     </div>)
+     </div>})
    )
  
  }
  
  const getAllPosts = async () => {
+   setIsLoading(true);
    const res = await axios.get(`/api/categories`)
    const data = res.data;
-   const slice = data.slice(offset - 1 , offset - 1 + postsPerPage)
+   const slice = data.slice(offset - 1 , offset - 1 + postsPerPage);
  
    // For displaying Data
-   const postData = getPostData(slice)
+   const postData = getPostData(slice);
  
    // Using Hooks to set value
-   setAllPosts(postData)
-   setPageCount(Math.ceil(data.length / postsPerPage))
+   setAllPosts(postData);
+   setPageCount(Math.ceil(data.length / postsPerPage));
+   setIsLoading(false);
  }
  
  const handlePageClick = (event) => {
@@ -41,8 +44,15 @@ function BackUp() {
  }, [offset])
  
  return (
-   <div>
-     {/* Using React Paginate */}
+   <div style={{border:'2px solid purple'}}>
+     {isLoading ? (
+        <div className={isLoading ? "loader" : undefined}> 
+            <div className="spinner"/> 
+        </div>
+      ) : (
+        <div>Is Loaded!!</div>
+      )}
+
      <ReactPaginate
        previousLabel={"prev"}
        nextLabel={"next"}
@@ -55,13 +65,6 @@ function BackUp() {
        activeClassName={"active"} />
      {/* Display all the posts */}
      {posts} 
-
-     20. jan. 2014 — Det er ikke så kaldt som jeg trodde det skulle være, det var en god overraskelse! Ler han. – Jeg bor hos en veldig bra vertsfamilie.
-     20. jan. 2014 — Det er ikke så kaldt som jeg trodde det skulle være, det var en god overraskelse! Ler han. – Jeg bor hos en veldig bra vertsfamilie.
-     20. jan. 2014 — Det er ikke så kaldt som jeg trodde det skulle være, det var en god overraskelse! Ler han. – Jeg bor hos en veldig bra vertsfamilie.
-     20. jan. 2014 — Det er ikke så kaldt som jeg trodde det skulle være, det var en god overraskelse! Ler han. – Jeg bor hos en veldig bra vertsfamilie.
-     20. jan. 2014 — Det er ikke så kaldt som jeg trodde det skulle være, det var en god overraskelse! Ler han. – Jeg bor hos en veldig bra vertsfamilie.
-     20. jan. 2014 — Det er ikke så kaldt som jeg trodde det skulle være, det var en god overraskelse! Ler han. – Jeg bor hos en veldig bra vertsfamilie.  
    </div>
  );
 }
