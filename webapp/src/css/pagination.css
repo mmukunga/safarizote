@@ -1,74 +1,37 @@
-
-
-
-.pagination > li > a{
-  border: 1px solid #47ccde ;
-  padding: 1px 2px;
+.main-app {
+  margin: 2% 10%;
+  border: 1px ridge #464141;
+  padding: 5%;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 20px;
+  color: #464141;
+ }
+  
+ .container {
+  border-bottom: #fff 2px ridge;
+ }
+  
+ .pagination {
+  margin-top: 45px;
+  margin-left: -40px;
+  display: flex;
+  list-style: none;
   outline: none;
-  cursor: pointer;
-}
-
-.pagination > .active > a{
-  background-color: #47ccde ;
-  border-color: #47ccde ;
+ }
+  
+ .pagination > .active > a {
+  background-color: #47ccde;
   color: #fff;
-}
-
-.pagination > li > a{
-  border: 1px solid #47ccde ;
-  padding: 1px 2px;
+ }
+  
+ .pagination > li > a {
+  border: 1px solid #47ccde;
+  padding: 5px 10px;
   outline: none;
   cursor: pointer;
-}
-
-.pagination > .active > a, 
-.pagination > .active > span, 
-.pagination > .active > a:hover, 
-.pagination > .active > span:hover, 
-.pagination > .active > a:focus, 
-.pagination > .active > span:focus {
-  background-color: #47ccde ;
-  border-color: #47ccde;
-  outline: none ;
-}
-
-.pagination > li > a, 
-.pagination > li > span{
-  color: #47ccde
-}
-
-.pagination > li:first-child > a, 
-.pagination > li:first-child > span, 
-.pagination > li:last-child > a, 
-.pagination > li:last-child > span {
-  border-radius: unset
-}
-
-@media screen and (max-width: 600px) {  
-  .pagination {
-    margin: 5px auto;
-    display: flex;
-    list-style: none;
-    outline: none;
-  }
-    .pagination ul li a {
-        font-size: 18px;
-        padding: 2px;
-        min-width: 10px;
-        height: 20px;
-    }
-    .pagination ul li span.current,
-    .pagination ul li span.disabled {
-      font-size: 18px;
-        padding: 2px;
-        min-width: 10px;
-        height: 20px;
-    }
-    .pagination ul li {
-        margin: 5px 4px;
-    }
-    .pagination ul li:first-child a,
-    .pagination ul li:last-child a {
-        line-height: 23px;
-    }
-  }
+ }
+  
+ .pagination > li > a, .pagination > li > span {
+  color: #47ccde;
+  background-color: azure;
+ }
