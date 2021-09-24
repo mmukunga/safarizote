@@ -20,6 +20,23 @@ import Private from './pages/Private';
 import UserService from './pages/UserService';
 
 function App() {
+  const DropDown = props => {
+    const {history} = props;
+    const onChange = (e) => {
+       history.replace(`${e.target.value}`);
+    }
+    return (
+      <select onChange={onChange} style={selectStyle}>
+        <option value="/tipping">Tipping</option>
+        <option value="/shopping">Shopping</option>
+        <option value="/stock">Stock Market</option>
+        <option value="/backUp">Dir BackUp</option>
+      </select>
+    );
+  }
+  
+  const AdminMenu = withRouter(DropDown);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -35,6 +52,8 @@ function App() {
         >
           Learn React
         </a>
+        <a href="" className="Nav_link LogOut" onClick={handleLogout}></a> 
+        {UserService.isLoggedIn() != null ? 'Is Logged in!!' : 'Please login!!'}
       </header>
       <hr/>
       <Card className="OuterCard" fontColor="black">
@@ -44,8 +63,8 @@ function App() {
         <NavLink to={'/weather'} className="Nav_link">Weather</NavLink>
         <NavLink to={'/metrics'} className="Nav_link">Metrics</NavLink>
         <NavLink to={'/aboutUs'} className="Nav_link">About&nbsp;Us</NavLink>
+        <AdminMenu />
         <NavLink to={'/signIn'} className="Nav_link">LogIn</NavLink>
-
         <Switch>
           <Route path='/' exact component={Safaris}/>
           <Route path='/metrics' component={Metrics}/>
@@ -54,6 +73,10 @@ function App() {
           <Route path="/signIn" component={SignIn} />
           <Route path="/email" component={Email} />
           <Route path="/weather" component={Weather} />
+          <Private path="/shopping" component={Shopping} exact/>
+          <Private path="/tipping" component={Lotto} exact/>
+          <Private path="/stock" component={Stock} exact/>
+          <Private path="/backUp" component={BackUp} exact/>
         </Switch>
       </Card> 
     </div>
