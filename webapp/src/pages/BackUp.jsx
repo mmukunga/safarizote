@@ -31,11 +31,11 @@ function BackUp() {
        const postData = getPostData(slice);
        console.log(postData);
        // Using Hooks to set value
-       setAllPosts((posts) => [...posts, ...postData]);
+       setAllPosts(postData);
        setPageCount(Math.ceil(data.length / postsPerPage));
        setIsLoading(false);
-       console.log(posts);
-       return posts;
+       console.log(postData);
+       return postData;
    }).catch(err => {
        // Handle Error Here
        console.error(err);
@@ -49,7 +49,7 @@ function BackUp() {
  };
  
  useEffect(() => {
-   getAllPosts()
+   getAllPosts();
  }, [offset])
  
  console.log(posts);
@@ -75,7 +75,9 @@ function BackUp() {
        subContainerClassName={"pages pagination"}
        activeClassName={"active"} />
      {/* Display all the posts */}
+     Simon
      {posts} 
+     Mukunga
    </div>
  );
 }
