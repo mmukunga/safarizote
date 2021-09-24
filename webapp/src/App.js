@@ -38,11 +38,21 @@ function App() {
       </header>
       <hr/>
       <BrowserRouter>
-      <NavLink to={'/'}>Safaris</NavLink>  
-      <NavLink to={'/metrics'}>Metrics</NavLink>
+      <NavLink to={'/'} className="Nav_link">Safaris</NavLink>  
+      <NavLink to={'/metrics'} className="Nav_link">Metrics</NavLink>
+      <NavLink to={'/email'} className="Nav_link">Email</NavLink>
+      <NavLink to={'/weather'} className="Nav_link">Weather</NavLink>
+      <NavLink to={'/metrics'} className="Nav_link">Metrics</NavLink>
+      <NavLink to={'/aboutUs'} className="Nav_link">About&nbsp;Us</NavLink>
+      <NavLink to={'/signIn'} className="Nav_link">LogIn</NavLink>
         <Switch>
           <Route path='/' exact component={Safaris}/>
           <Route path='/metrics' component={Metrics}/>
+          <Route path="/aboutUs" component={AboutUs} />
+          <Route path="/metrics" component={Metrics} />
+          <Route path="/signIn" component={SignIn} />
+          <Route path="/email" component={Email} />
+          <Route path="/weather" component={Weather} />
         </Switch>
       </BrowserRouter> 
     </div>
