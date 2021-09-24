@@ -1,10 +1,13 @@
 
+  #root {
+    border: 5px solid purple;
+  }
+  
   .loader-container {
     width: 100vw;
     height: 100vh;
     display: flex;
     overflow: hidden;
-    border: 5px solid purple;
   }
 
   .loader {
