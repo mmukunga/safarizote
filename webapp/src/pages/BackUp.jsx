@@ -12,7 +12,7 @@ function BackUp() {
    return (
      data.map(post => <div className="container" key={post.name}>
        <p>User ID: {post.name}</p>
-       <img src={pd.path} alt=" S M S "/>
+       <img src={post.path} alt=" S M S "/>
      </div>)
    )
  
