@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import ReactPaginate from 'react-paginate';
-import './App.css'
  
 function BackUp() {
  const [postsPerPage] = useState(5);
