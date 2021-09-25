@@ -27,6 +27,7 @@ function BackUp() {
 
     setAllPosts(postData);
     setPageCount(Math.ceil(data.length / postsPerPage));
+    setIsLoading(false);
   }
 
   React.useEffect(() => {
