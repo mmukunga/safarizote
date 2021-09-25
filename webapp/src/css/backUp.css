@@ -5,9 +5,8 @@
   border: 4px solid red;
 }
 
-.gallery {
+div.gallery {
     border: 4px solid greenyellow;
-    width: 95%;
     margin: 0 auto;
   }
 
@@ -24,7 +23,6 @@ div.thumbnail:hover {
 
 div.thumbnail img {
   width:100%;
-  max-width:400px;
   height: auto;
 }
 
@@ -76,11 +74,11 @@ div.loading .spinner {
   }
 
   div.gallery {
-    width: 100%;
+    margin: 0 auto;
   }
 
   div.thumbnail {
     display: block;
-    width: 100%;
+    width: 95%;
   }
 }
