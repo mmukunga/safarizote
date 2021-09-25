@@ -8,6 +8,8 @@
 
 .InnerCard {
   /*background-color: rgb(240, 255, 255);*/ 
+  background-color: #b3e5fc;
+  /*#b3e5fc*/
   border-radius: 10px; 
   margin: 10px auto; 
   padding: 1px; 
