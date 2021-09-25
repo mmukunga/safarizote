@@ -1,32 +1,15 @@
 .OuterCard { 
-  background-color: #87CEFA;
+  /*background-color: #87CEFA;*/
   border-radius: 10px; 
   margin: 10px auto; 
   padding: 1px; 
-  border: 0px solid rgb(163, 3, 25);
+  /*border: 0px solid rgb(163, 3, 25);*/
 }
 
 .InnerCard {
-  background-color: rgb(240, 255, 255); 
+  /*background-color: rgb(240, 255, 255);*/ 
   border-radius: 10px; 
   margin: 10px auto; 
   padding: 1px; 
-  border: 4px solid rgb(144, 223, 245);
-}
-
-@media screen and (max-width: 600px) {
-  .OuterCard { 
-    margin: 0 auto; 
-    border: 0 solid rgb(163, 3, 25);
-  }
-
-  .InnerCard {
-    border: 4px solid rgb(163, 3, 25);
-    /*font-size: calc(30px + 0.4vw);*/
-  }
-
-  .InnerCard > div {
-    border: 4px solid rgb(163, 3, 25);
-    /*font-size: calc(30px + 0.4vw);*/
-  }
+  /*border: 4px solid rgb(144, 223, 245);*/
 }

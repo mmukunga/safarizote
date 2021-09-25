@@ -22,8 +22,8 @@ function BackUp() {
 
  const getPostData = (data) => {
     return (
-      data.map(post => <div className="gallery" key={post.name}>
-        <img src={post.path} className="cssImage" alt='S M S'/>
+      data.map(post => <div className="thumbnail" key={post.name}>
+        <img src={post.path} className="CssImage" alt='S.M.S'/>
         <p className="desc">{post.name}</p>
       </div>)
     )
@@ -52,13 +52,13 @@ function BackUp() {
  };
 
  const onChange = (event) => {
-  setValue(event.target.value);
-};
+    setValue(event.target.value);
+  };
 
-const handleSubmit = (evt) => {
-    evt.preventDefault();
-    alert(`Submitting Name ${value}`)
-}
+  const handleSubmit = (evt) => {
+      evt.preventDefault();
+      alert(`Submitting Name ${value}`)
+  }
 
  return (
    <div style={{border:'2px solid purple'}}>
@@ -92,8 +92,8 @@ const handleSubmit = (evt) => {
        subContainerClassName={"pages pagination"}
        activeClassName={"active"} />
      {/* Display all the posts */}
-     <div className="thumbnails">
-     {posts} 
+     <div className="gallery">
+        {posts} 
      </div>
      <div class="newsbrief"> </div>
    </div>
