@@ -4,7 +4,7 @@ import ReactPaginate from 'react-paginate';
  
 function BackUp() {
  const [value, setValue] = useState(''); 
- const [folders, setFolders] = React.useState([]); 
+ const [options, setOptions] = React.useState([]); 
  const [postsPerPage] = useState(5);
  const [offset, setOffset] = useState(1);
  const [posts, setAllPosts] = useState([]);
@@ -15,10 +15,12 @@ function BackUp() {
    console.log('Her..');
     if (!posts.length) {
       console.log('Inne..');
-      const res = await axios.get(`/api/findAll`)
+      const res = await axios.get(`/api/listAll`)
       const data = res.data;
+      console.log(data);
       const result = data.map(a => a.name);
-      setFolders(prevFolders => [...prevFolders, ...result]);
+      console.log(result);
+      setOptions(result);
     }
 }, []);
 
@@ -63,7 +65,7 @@ const handleSubmit = (evt) => {
 }
 
  console.log(posts);
- console.log(folders);
+ console.log(options);
 
  return (
    <div style={{border:'2px solid purple'}}>
@@ -71,7 +73,7 @@ const handleSubmit = (evt) => {
      <form onSubmit={handleSubmit}>
        <select onChange={onChange}>
          <option value={'DefaultValue'}>{'..Select..'}</option>
-         {folders && folders.map((folder, idx) => (
+         {options && options.map((folder, idx) => (
            <option key={idx} value={folder}>{folder}</option>
          ))}
        </select>
