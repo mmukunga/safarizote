@@ -8,7 +8,7 @@ const Card = (props) => {
       fontSize: '2.5vh',
       margin: '2px',
       fontColor: `${fontColor}`,
-      backgroundColor: 'green',
+      backgroundColor: '#87CEFA',
       padding: '2px',
       border: '2px solid red',
       '@media and screen (max-width: 600px)': {
