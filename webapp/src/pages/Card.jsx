@@ -7,11 +7,12 @@ const Card = (props) => {
     divStyle: {
       fontSize: '2.5vh',
       margin: '2px',
+      fontColor: `${fontColor}`,
       padding: '2px',
       border: '2px solid red',
       '@media (max-width: 600px)': {
           backgroundColor: 'green',
-          fontSize: '2.5vw'
+          fontSize: '3.5vw'
       }
     }
   };
