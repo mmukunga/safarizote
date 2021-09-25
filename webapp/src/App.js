@@ -1,7 +1,6 @@
 // src/App.js
 import React from 'react';
-import { BrowserRouter, Route, Switch, NavLink, Link, withRouter, useHistory } from "react-router-dom";
-import Posts from "./pages/Posts";
+import { Route, Switch, NavLink, withRouter, useHistory } from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.css";
 
