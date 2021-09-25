@@ -10,7 +10,7 @@ function BackUp() {
  const [pageCount, setPageCount] = useState(0);
  const [isLoading, setIsLoading] = useState(false);
  
- React.useEffect( async () => {
+ React.useEffect(async () => {
     if (!posts) {
       const res = await axios.get(`/api/findAll`)
       const data = res.data;
