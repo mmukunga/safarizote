@@ -57,7 +57,7 @@ function BackUp() {
 
 const handleSubmit = (evt) => {
     evt.preventDefault();
-    alert(`Submitting Name ${name}`)
+    alert(`Submitting Name ${value}`)
 }
  console.log(posts);
 
