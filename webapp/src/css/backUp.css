@@ -6,8 +6,9 @@
 }
 
 .thumbnails {
-  border: 4px solid greenyellow;
-  width:100%;
+    border: 4px solid greenyellow;
+    width: 95%;
+    margin: 0 auto;
   }
 
 div.gallery {
