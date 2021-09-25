@@ -42,7 +42,7 @@ function BackUp() {
 
  console.log(posts);
 
- if (posts && posts.length > 0 ) {
+ if (posts && posts.length) {
    setIsLoading(false);
  }
 
