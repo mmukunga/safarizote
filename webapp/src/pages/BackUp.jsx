@@ -5,7 +5,7 @@ import ReactPaginate from 'react-paginate';
 function BackUp() {
  const [value, setValue] = useState(''); 
  const [options, setOptions] = React.useState([]); 
- const [postsPerPage] = useState(5);
+ const [postsPerPage] = useState(6);
  const [offset, setOffset] = useState(1);
  const [posts, setAllPosts] = useState([]);
  const [pageCount, setPageCount] = useState(0);
