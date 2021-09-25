@@ -12,7 +12,9 @@ function BackUp() {
  const [isLoading, setIsLoading] = useState(false);
  
  React.useEffect(async () => {
-    if (!posts) {
+   console.log('Her..');
+    if (!posts.length) {
+      console.log('Inne..');
       const res = await axios.get(`/api/findAll`)
       const data = res.data;
       const result = data.map(a => a.name);
