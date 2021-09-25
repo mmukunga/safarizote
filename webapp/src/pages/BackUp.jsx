@@ -42,10 +42,6 @@ function BackUp() {
 
  console.log(posts);
 
- if (posts && posts.length) {
-   setIsLoading(false);
- }
-
  return (
    <div style={{border:'2px solid purple'}}>
      {isLoading ? (
