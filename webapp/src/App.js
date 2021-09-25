@@ -26,6 +26,33 @@ function App() {
       padding: '2px', 
       border: '2px solid #fefbd8'
   };
+  
+  const images = [
+      './images/jeep.jpg',
+      './images/leopard.jpg',
+      './images/cheeter.jpg',
+      './images/cheeters.jpg',
+      './images/savannah.jpg',
+      './images/gnus.jpg',
+      './images/tourists.jpg',
+      './images/drought.jpg'
+  ];
+
+  const [selectedImage, setSelectedImage] = React.useState(images[0]);
+
+  const imageStyles = {
+    backgroundImage: `url(${selectedImage})`, 
+    display: props.displayHome
+  };
+
+  React.useEffect(() => {
+      const intervalID = setTimeout(() =>  {
+          const id = Math.floor(Math.random() * (7 - 0) + 0);
+          setSelectedImage(images[id]);
+      }, 3000);
+  
+      return () => clearInterval(intervalID);
+  }, [selectedImage]);
 
   const DropDown = props => {
     const {history} = props;
@@ -51,7 +78,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header className={`App-header ${imageStyles}`}> 
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.

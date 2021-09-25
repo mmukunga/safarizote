@@ -12,14 +12,10 @@ function BackUp() {
  const [isLoading, setIsLoading] = useState(false);
  
  React.useEffect(async () => {
-   console.log('Her..');
     if (!posts.length) {
-      console.log('Inne..');
       const res = await axios.get(`/api/listAll`)
       const data = res.data;
-      console.log(data);
       const result = data.map(a => a.name);
-      console.log(result);
       setOptions(result);
     }
 }, []);
@@ -63,9 +59,6 @@ const handleSubmit = (evt) => {
     evt.preventDefault();
     alert(`Submitting Name ${value}`)
 }
-
- console.log(posts);
- console.log(options);
 
  return (
    <div style={{border:'2px solid purple'}}>
