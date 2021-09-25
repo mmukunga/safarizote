@@ -40,9 +40,13 @@ function App() {
 
   const [selectedImage, setSelectedImage] = React.useState(images[0]);
 
+  const displayHome = {
+    color: 'purple'
+  }
+
   const imageStyles = {
     backgroundImage: `url(${selectedImage})`, 
-    display: props.displayHome
+    display: displayHome
   };
 
   React.useEffect(() => {
