@@ -61,14 +61,17 @@ const handleSubmit = (evt) => {
     evt.preventDefault();
     alert(`Submitting Name ${value}`)
 }
+
  console.log(posts);
+ console.log(folders);
 
  return (
    <div style={{border:'2px solid purple'}}>
      <h4>Select folder</h4>
      <form onSubmit={handleSubmit}>
        <select onChange={onChange}>
-         {folders.map((folder, idx) => (
+         <option value={'DefaultValue'}>{'..Select..'}</option>
+         {folders && folders.map((folder, idx) => (
            <option key={idx} value={folder}>{folder}</option>
          ))}
        </select>
