@@ -65,6 +65,7 @@ function BackUp() {
      <div className="thumbnails">
      {posts} 
      </div>
+     <div class="newsbrief"> </div>
    </div>
  );
 }
