@@ -3,6 +3,7 @@ import axios from 'axios'
 import ReactPaginate from 'react-paginate';
  
 function BackUp() {
+ const [value, setValue] = useState(''); 
  const [folders, setFolders] = React.useState([]); 
  const [postsPerPage] = useState(5);
  const [offset, setOffset] = useState(1);
@@ -50,6 +51,14 @@ function BackUp() {
    setOffset(selectedPage + 1)
  };
 
+ const onChange = (event) => {
+  setValue(event.target.value);
+};
+
+const handleSubmit = (evt) => {
+    evt.preventDefault();
+    alert(`Submitting Name ${name}`)
+}
  console.log(posts);
 
  return (
@@ -62,6 +71,7 @@ function BackUp() {
          ))}
        </select>
        <input type="submit" value="Submit" />
+       <div>Selected folder: {value}</div>
      </form>
      {isLoading ? (
         <div className={isLoading ? "loader" : undefined}> 
