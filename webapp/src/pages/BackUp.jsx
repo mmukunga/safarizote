@@ -3,12 +3,22 @@ import axios from 'axios'
 import ReactPaginate from 'react-paginate';
  
 function BackUp() {
+ const [folders, setFolders] = React.useState([]); 
  const [postsPerPage] = useState(5);
  const [offset, setOffset] = useState(1);
  const [posts, setAllPosts] = useState([]);
  const [pageCount, setPageCount] = useState(0);
  const [isLoading, setIsLoading] = useState(false);
  
+ React.useEffect(() => {
+    if (!posts) {
+      const res = await axios.get(`/api/findAll`)
+      const data = res.data;
+      const result = data.map(a => a.name);
+      setFolders(prevFolders => [...prevFolders, ...result]);
+    }
+}, []);
+
  const getPostData = (data) => {
     return (
       data.map(post => <div className="gallery" key={post.name}>
@@ -40,11 +50,19 @@ function BackUp() {
    setOffset(selectedPage + 1)
  };
 
-
  console.log(posts);
 
  return (
    <div style={{border:'2px solid purple'}}>
+     <h4>Select folder</h4>
+     <form onSubmit={handleSubmit}>
+       <select onChange={onChange}>
+         {folders.map((folder, idx) => (
+           <option key={idx} value={folder}>{folder}</option>
+         ))}
+       </select>
+       <input type="submit" value="Submit" />
+     </form>
      {isLoading ? (
         <div className={isLoading ? "loader" : undefined}> 
             <div className="spinner"/> 
