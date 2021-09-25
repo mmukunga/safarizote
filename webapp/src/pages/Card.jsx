@@ -5,13 +5,13 @@ const Card = (props) => {
   const { className, fontColor, children } = props;
   const labelStyles = {
     divStyle: {
-      fontSize: '1.8vh',
+      fontSize: '2.0vh',
       margin: '2px',
       padding: '2px',
       border: '2px solid red',
       '@media (max-width: 600px)': {
           backgroundColor: 'green',
-          fontSize: '1.8vw'
+          fontSize: '2.0vw'
       }
     }
   };
