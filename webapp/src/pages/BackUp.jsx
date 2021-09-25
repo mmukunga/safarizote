@@ -30,6 +30,7 @@ function BackUp() {
   }
 
   React.useEffect(() => {
+    setIsLoading(true);
     getAllPosts();
   }, [offset]);
 
@@ -40,6 +41,10 @@ function BackUp() {
 
 
  console.log(posts);
+
+ if (posts && posts.length > 0 ) {
+   setIsLoading(false);
+ }
 
  return (
    <div style={{border:'2px solid purple'}}>
