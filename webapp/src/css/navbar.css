@@ -18,12 +18,12 @@
 .Nav_link {
   display: inline-block;
   vertical-align: middle;
-  border: 2px solid #fefbd8;
+  border: 2px solid #fff;
   font-weight: normal;
   border-radius: 10%;
   padding: 2px;
   margin: 1px;
-  color: white;
+  color: #f00;
 }
 
 .Link_link {

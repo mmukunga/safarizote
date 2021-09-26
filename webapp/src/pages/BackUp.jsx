@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import Card from './Card';
 import ReactPaginate from 'react-paginate';
  
 function BackUp() {
@@ -61,7 +62,7 @@ function BackUp() {
   }
 
  return (
-   <div style={{border:'2px solid purple'}}>
+  <Card className="InnerCard" fontColor="black" >
       <div style={{border:'2px solid brown'}}>
         <strong>Select folder</strong>
         <form onSubmit={handleSubmit}>
@@ -98,7 +99,7 @@ function BackUp() {
         {posts} 
      </div>
      <div class="newsbrief"> </div>
-   </div>
+   </Card>
  );
 }
  
