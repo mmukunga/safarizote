@@ -1,5 +1,6 @@
 .OuterCard { 
   /*background-color: #87CEFA;*/
+  background-color: green;
   border-radius: 10px; 
   margin: 10px auto; 
   padding: 1px; 
@@ -9,6 +10,7 @@
 .InnerCard {
   /*background-color: rgb(240, 255, 255);  #b3e5fc    #80d8ff*/  
   background-color: #81d4fa;
+  background-color: #87CEFA;
   /*#b3e5fc*/
   border-radius: 10px; 
   margin: 10px auto; 
