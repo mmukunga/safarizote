@@ -8,11 +8,11 @@ const Card = (props) => {
       fontSize: '2.5vh',
       margin: '2px',
       fontColor: `${fontColor}`,
-      backgroundColor: '#87CEFA',
+      backgroundColor: 'green',
       padding: '2px',
       border: '2px solid red',
       '@media and screen (max-width: 600px)': {
-          backgroundColor: 'green',
+          backgroundColor: '#87CEFA',
           border: '2px solid rgb(163, 3, 25)',
           fontSize: '3.5vw',
           width: '500px',
