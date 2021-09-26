@@ -62,24 +62,26 @@ function BackUp() {
 
  return (
    <div style={{border:'2px solid purple'}}>
-     <h4>Select folder</h4>
-     <form onSubmit={handleSubmit}>
-       <select onChange={onChange}>
-         <option value={'DefaultValue'}>{'..Select..'}</option>
-         {options && options.map((folder, idx) => (
-           <option key={idx} value={folder}>{folder}</option>
-         ))}
-       </select>
-       <input type="submit" value="Submit" />
-       <div>Selected folder: {value}</div>
-     </form>
-     {isLoading ? (
-        <div className={isLoading ? "loader" : undefined}> 
-            <div className="spinner"/> 
-        </div>
-      ) : (
-        <div>Is Loaded!!</div>
-      )}
+      <div style={{border:'2px solid brown'}}>
+        <strong>Select folder</strong>
+        <form onSubmit={handleSubmit}>
+          <select onChange={onChange}>
+            <option value={'DefaultValue'}>{'..Select..'}</option>
+            {options && options.map((folder, idx) => (
+              <option key={idx} value={folder}>{folder}</option>
+            ))}
+          </select>
+          Selected folder: {value}
+          <input type="submit" value="Submit" />
+        </form>
+        {isLoading ? (
+            <div className={isLoading ? "loader" : undefined}> 
+                <div className="spinner"/> 
+            </div>
+          ) : (
+            <span>Is Loaded!!</span>
+          )}
+      </div>
 
      <ReactPaginate
        previousLabel={"prev"}
