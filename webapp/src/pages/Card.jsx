@@ -15,7 +15,7 @@ const Card = (props) => {
           backgroundColor: '#87CEFA',
           border: '2px solid rgb(163, 3, 25)',
           fontSize: '3.5vw',
-          width: '500px',
+          width: '100%',
       }
     }
   };
