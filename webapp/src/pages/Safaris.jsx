@@ -139,7 +139,10 @@ const Safaris = () => {
       return (
         <div className="containerX">
           <div className="floatedX">
-              <VideoPlayer video={video} className="VideoPlayer"/>
+              <video className="VideoPlayer" ref={videoRef} controls autoPlay loop muted>
+                {/* Of course it's the big buck bunny! */}
+                <source src={props.video} type="video/mp4"/>
+              </video>
           </div>
           ICON!! {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span> NOCI!!
           MMS {expand && <div>{children}</div>} SMSM
