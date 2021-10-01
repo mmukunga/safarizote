@@ -138,8 +138,11 @@ const Safaris = () => {
       const mod = idx % 2;
       return (
         <div className={`box ${mod!=0 ? 'oddRow' : ''}`}>
-          ......Videoddd....
-          {expand && <div>{children}</div>}
+          <div onClick={() => setExpand(expand => !expand)}>  
+            <VideoPlayer video={video} className="VideoPlayer"/>
+              ICON!! {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span> NOCI!!
+          </div>
+          MMS {expand && <div>{children}</div>} SMSM
         </div>
       )
     }
