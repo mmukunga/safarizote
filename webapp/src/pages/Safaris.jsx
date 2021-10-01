@@ -139,11 +139,11 @@ const Safaris = () => {
       return (
         <div className="SafariTours" >
           <div className="VideoPlayer">
-          <VideoPlayer video={video} className="video-player"/> 
+            <VideoPlayer video={video} className="video-player"/> 
           </div>
           {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>
           {expand && <div>{children}</div>}
-          <div style={{clear:'both'}}></div>
+          <div className='clearfix'></div>
         </div>
       )
     }
