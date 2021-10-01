@@ -137,16 +137,7 @@ const Safaris = () => {
       const videoRef = useRef(null);
       const mod = idx % 2;
       return (
-        <div className="containerX">
-          <div className="floatedX">
-              <video className="VideoPlayer" ref={videoRef} controls autoPlay loop muted>
-                {/* Of course it's the big buck bunny! */}
-                <source src={props.video} type="video/mp4"/>
-              </video>
-          </div>
-          ICON!! {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span> NOCI!!
-          MMS {expand && <div>{children}</div>} SMSM
-      </div>
+        <div className="video-wrap"><VideoPlayer video={video} className="VideoPlayer"/></div>
       )
     }
     
@@ -176,7 +167,7 @@ const Safaris = () => {
     return (
         <video className="VideoPlayer" ref={videoRef} controls autoPlay loop muted>
           {/* Of course it's the big buck bunny! */}
-          <source style={{width:'100px', height: 'auto'}} src={props.video} type="video/mp4"/>
+          <source src={props.video} type="video/mp4"/>
         </video>
     );
   };
