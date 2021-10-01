@@ -137,7 +137,7 @@ const Safaris = () => {
 
       const mod = idx % 2;
       return (
-        <div style={{width:'800px', margin:'2px', border:'2px solid yellow'}} >
+        <div style={{textAlign:'left', width:'800px', margin:'2px', border:'2px solid yellow'}} >
           <div style={{float:'right', width:'500px', border:'2px solid purple'}}>
           <VideoPlayer video={video} className="VideoPlayer"/> 
           </div>
