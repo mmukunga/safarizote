@@ -139,8 +139,8 @@ const Safaris = () => {
       return (
         <div onClick={() => setExpand(expand => !expand)} className={`Accordion ${mod!=0 ? 'oddRow' : ''}`}>
             <VideoPlayer video={video} className="VideoPlayer"/>
-              ICON!! {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span> NOCI!!
-          MMS {expand && <div>{children}</div>} SMSM
+            ICON!! {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span> NOCI!!
+            MMS {expand && <div>{children}</div>} SMSM
         </div>
       )
     }

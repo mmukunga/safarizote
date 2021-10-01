@@ -7,12 +7,12 @@
 .Accordion {
   display: flex;
   padding: 0 6px;
-  width: 49%;
+  width: 400px;
 }
 
 
 .VideoPlayer {
-  width: 400px;
+  width: 150px;
   border: 2px solid pink;
 }
 
