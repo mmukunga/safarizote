@@ -136,10 +136,12 @@ const Safaris = () => {
       const [expand, setExpand] = useState(isExpand);
       const [state, setState] = useState(false);
 
-      handleClick = (e) => {
+      const handleClick = (e) => {
         e.preventDefault();
         console.log('The link was clicked.');
         var content = e.target;
+        console.log('Click!!!!');
+        console.log(content);
         console.log('Click!!!!');
         setState(!state);
       }
