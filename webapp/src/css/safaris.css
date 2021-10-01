@@ -1,4 +1,26 @@
+
+.SafariTours {
+  border: 2px solid orange;
+  width: 50%;
+  display: flex
+}
+
 .VideoPlayer {
   width: 480px;
   border: 2px solid pink;
+}
+
+
+@media screen and (max-width: 600px) {
+  .VideoPlayer {
+    float: inherit; 
+    margin: 0px;
+    width: 100%;
+  }  
+
+  .VideoPlayer img {
+    display:block;
+    float:none;
+    margin:0 auto 20px !important;
+  }
 }

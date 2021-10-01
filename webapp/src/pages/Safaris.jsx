@@ -149,7 +149,7 @@ const Safaris = () => {
     
     const videos = props.videos;
     return (
-      <div style={{border:"2px solid grey"}}>
+      <div className="SafariTours">
         {props && props.data.map((card, idx) =>{ return (
           <Accordion isExpand={false} title={card.title} video={videos[idx]} idx={idx}>
             {parse(card.description)}
@@ -171,7 +171,7 @@ const Safaris = () => {
     }
     
     return (
-        <video className="VideoPlayer" ref={videoRef} controls autoPlay loop muted>
+        <video className={`${props.VideoPlayer}`} ref={videoRef} controls autoPlay loop muted>
           {/* Of course it's the big buck bunny! */}
           <source src={props.video} type="video/mp4"/>
         </video>
