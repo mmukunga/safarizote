@@ -38,6 +38,10 @@ div.desc {
   box-sizing: border-box;
 }
 
+.clearfix {
+  clear: both;
+}
+
 .clearfix:after {
   content: "";
   display: table;
