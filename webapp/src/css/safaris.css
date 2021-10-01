@@ -17,6 +17,18 @@ div.SafariDetails img {
   height: auto;
 }
 
+
+.VideoWrapper {
+  margin: 0 auto;
+  border: 2px solid red; 
+}
+
+.video-player {
+  border: 0px solid green;
+  width: 50%;
+  margin: 0 auto;
+}
+
 div.desc {
   padding: 15px;
   text-align: center;
