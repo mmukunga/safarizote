@@ -4,6 +4,17 @@
   width: 100%;
 }
 
+.containerX{
+  width: 400px;
+  background: yellow;
+}
+.floatedX{
+  float: left;
+  width: 150px;
+  background: red;
+  border: 2px solid pink;
+}
+
 .Accordion {
   display: flex;
   padding: 0 6px;
