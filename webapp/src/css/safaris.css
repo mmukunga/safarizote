@@ -7,6 +7,7 @@
 
 .SafariTitle {
   border: 0px solid rgb(165, 42, 89);
+  font-size:24px;
 }
 
 .SafariDetails {
@@ -80,6 +81,18 @@
  }
 
  @media screen and (max-width: 600px) {
+    .VideoPlayer {
+      float: inherit; 
+      margin: 0px;
+      width: 100%;
+    }  
+    
+    .VideoPlayer img {
+      display:block;
+      float:none;
+      margin:0 auto 20px !important;
+    }
+
     .SafariSnap {
       float: inherit; 
       margin: 0px;
