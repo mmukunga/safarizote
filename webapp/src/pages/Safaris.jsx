@@ -137,11 +137,9 @@ const Safaris = () => {
 
       const mod = idx % 2;
       return (
-        <div className={`box ${mod!=0 ? 'oddRow' : ''}`}>
-          <div onClick={() => setExpand(expand => !expand)}>  
+        <div onClick={() => setExpand(expand => !expand)} className={`Accordion ${mod!=0 ? 'oddRow' : ''}`}>
             <VideoPlayer video={video} className="VideoPlayer"/>
               ICON!! {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span> NOCI!!
-          </div>
           MMS {expand && <div>{children}</div>} SMSM
         </div>
       )
@@ -171,7 +169,7 @@ const Safaris = () => {
     }
     
     return (
-        <video className={`${props.VideoPlayer}`} ref={videoRef} controls autoPlay loop muted>
+        <video className="VideoPlayer" ref={videoRef} controls autoPlay loop muted>
           {/* Of course it's the big buck bunny! */}
           <source src={props.video} type="video/mp4"/>
         </video>
