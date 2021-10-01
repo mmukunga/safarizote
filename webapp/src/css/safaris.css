@@ -17,7 +17,7 @@ div.SafariDetails img {
   height: auto;
 }
 
-div.SafariSnap {
+.SafariSnap {
   float: right; 
   margin: 5px;
   width: 450px;
@@ -66,13 +66,13 @@ div.desc {
   .box {
     width: 100%;
   }
-  div.SafariSnap {
+  .SafariSnap {
     float: inherit; 
     margin: 0px;
     width: 100%;
   }  
 
-  div.SafariSnap img {
+  .SafariSnap img {
     display:block;
     float:none;
     margin:0 auto 20px !important;
