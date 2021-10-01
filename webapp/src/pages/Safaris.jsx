@@ -134,7 +134,7 @@ const Safaris = () => {
   const SafariTours = props => {
     const Accordion = ({ children, title, isExpand = false, video, idx}) => {
       const [expand, setExpand] = useState(isExpand);
-
+      const videoRef = useRef(null);
       const mod = idx % 2;
       return (
         <div className="containerX">
