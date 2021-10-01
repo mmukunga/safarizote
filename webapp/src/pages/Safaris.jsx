@@ -138,7 +138,7 @@ const Safaris = () => {
       const mod = idx % 2;
       return (
         <p>Sample codes 
-          <iframe style="float: left; width: 720px; height: 405px;" src="your video link"/>
+          <video src={video}/>
           some other text to wrap the video. etc...</p>
       )
     }
