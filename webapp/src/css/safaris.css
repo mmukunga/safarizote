@@ -1,3 +1,9 @@
+.SafariTours {
+  text-align: left;
+  width: 800px;
+  margin: 2px;
+  border: 2px solid yellow;
+}
 
 .SafariTitle {
   border: 0px solid rgb(165, 42, 89);
@@ -26,10 +32,14 @@
   border: 2px solid red; 
 }
 
+.VideoPlayer {
+  float: right;
+  width: 500px; 
+  border: 2px solid purple;
+}
+
 .video-player {
-  border: 0px solid green;
-  width: 50%;
-  margin: 0 auto;
+  border: 2px solid salmon;
 }
 
 .clearfix {

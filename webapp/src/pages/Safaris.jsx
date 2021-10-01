@@ -137,9 +137,9 @@ const Safaris = () => {
 
       const mod = idx % 2;
       return (
-        <div style={{textAlign:'left', width:'800px', margin:'2px', border:'2px solid yellow'}} >
-          <div style={{float:'right', width:'500px', border:'2px solid purple'}}>
-          <VideoPlayer video={video} className="VideoPlayer"/> 
+        <div className="SafariTours" >
+          <div className="VideoPlayer">
+          <VideoPlayer video={video} className="video-player"/> 
           </div>
           {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>
           {expand && <div>{children}</div>}
