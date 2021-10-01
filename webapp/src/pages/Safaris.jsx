@@ -139,7 +139,9 @@ const Safaris = () => {
       return (
         <div class="videoWrapperOuter">
           <div class="videoWrapperInner">
-             <VideoPlayer video={video} className="VideoPlayer"/> sdsdasdasadasd
+             <VideoPlayer video={video} className="VideoPlayer"/> 
+             ICON!! {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span> NOCI!!
+             MMS {expand && <div>{children}</div>} SMSM
           </div>
         </div>
       )
