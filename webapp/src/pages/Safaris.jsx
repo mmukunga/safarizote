@@ -137,11 +137,11 @@ const Safaris = () => {
 
       const mod = idx % 2;
       return (
-        <div>
+        <div style={{float:'left', width:'800px', border:'2px solid yellow'}} >
           <div style={{float:'left', width:'300px'}}>
           <VideoPlayer video={video} className="VideoPlayer"/> 
           </div>
-          <div style={{float:'right',width:'500px', margin:'2px', border:'2px solid purple'}}>
+          <div style={{float:'right',width:'400px', margin:'2px', border:'2px solid purple'}}>
           {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>
           {expand && <div>{children}</div>}
           </div>
