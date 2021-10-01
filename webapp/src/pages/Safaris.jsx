@@ -137,13 +137,9 @@ const Safaris = () => {
       const videoRef = useRef(null);
       const mod = idx % 2;
       return (
-        <div class="videoWrapperOuter">
-          <div class="videoWrapperInner">
-             <VideoPlayer video={video} className="VideoPlayer"/> 
-             ICON!! {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span> NOCI!!
-             MMS {expand && <div>{children}</div>} SMSM
-          </div>
-        </div>
+        <p>Sample codes 
+          <iframe style="float: left; width: 720px; height: 405px;" src="your video link"/>
+          some other text to wrap the video. etc...</p>
       )
     }
     
