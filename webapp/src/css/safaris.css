@@ -17,6 +17,13 @@ div.SafariDetails img {
   height: auto;
 }
 
+div.SafariSnap {
+  float: right; 
+  margin: 5px;
+  width: 450px;
+  border: 0px solid brown;
+}
+
 
 .VideoWrapper {
   margin: 0 auto;
@@ -58,5 +65,16 @@ div.desc {
 @media screen and (max-width: 600px) {
   .box {
     width: 100%;
+  }
+  div.SafariSnap {
+    float: inherit; 
+    margin: 0px;
+    width: 100%;
+  }  
+
+  div.SafariSnap img {
+    display:block;
+    float:none;
+    margin:0 auto 20px !important;
   }
 }
