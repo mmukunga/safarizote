@@ -138,10 +138,7 @@ const Safaris = () => {
       const mod = idx % 2;
       return (
         <div className={`box ${mod!=0 ? 'oddRow' : ''}`}>
-          <div onClick={() => setExpand(expand => !expand)} class='SafariDetails'>  
-            <VideoPlayer video={video}/>{parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>
-            <div className="clearfix"></div>
-          </div>
+          ......Videoddd....
           {expand && <div>{children}</div>}
         </div>
       )
@@ -150,14 +147,11 @@ const Safaris = () => {
     const videos = props.videos;
     return (
       <div style={{border:"2px solid grey"}}>
-        Short Message Service (SMS) er en tjeneste som er tilgjengelig på de fleste moderne mobiltelefoner.
-         Tjenesten gjør det mulig å sende korte meldinger (oftest ...Short Message Service (SMS) er en 
-         tjeneste som er tilgjengelig på de fleste moderne mobiltelefoner. Tjenesten gjør det mulig å sende 
-         korte meldinger (oftest ...Short Message Service (SMS) er en tjeneste som er tilgjengelig på de fleste 
-         moderne mobiltelefoner. Tjenesten gjør det mulig å sende korte meldinger (oftest ...Short Message 
-         Service (SMS) er en tjeneste som er tilgjengelig på de fleste moderne mobiltelefoner. Tjenesten gjør 
-         det mulig å sende korte meldinger (oftest ...Short Message Service (SMS) er en tjeneste som er 
-        tilgjengelig på de fleste moderne mobiltelefoner. Tjenesten gjør det mulig å sende korte meldinger (oftest ...
+        {props && props.data.map((card, idx) =>{ return (
+          <Accordion isExpand={false} title={card.title} video={videos[idx]} idx={idx}>
+            {parse(card.description)}
+          </Accordion>
+        ); })}
       </div>
     );
   } 
