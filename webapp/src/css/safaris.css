@@ -1,84 +1,46 @@
-
-.SafariTitle {
-  border: 0px solid rgb(165, 42, 89);
+.box {
+  padding: 0 6px;
+  float: left;
+  width: 25%;
 }
 
-.SafariDetails {
+div.SafariDetails {
+  border: 1px solid #ccc;
+}
+
+div.SafariDetails:hover {
+  border: 1px solid #777;
+}
+
+div.SafariDetails img {
+  width: 100%;
   height: auto;
-  text-align: left;
-  margin: 2px;
 }
 
-.SafariSnap {
-  float: right; 
-  margin: 5px;
-  width: 450px;
-  border: 0px solid brown;
+div.desc {
+  padding: 15px;
+  text-align: center;
 }
 
-.oddRow {
-  border-top: 2px outset#90dff5;
-  margin-top: 5px;
+* {
+  box-sizing: border-box;
 }
 
-.VideoWrapper {
-  margin: 0 auto;
-  border: 2px solid red; 
-}
-
-.video-player {
-  border: 0px solid green;
-  width: 50%;
-  margin: 0 auto;
-}
-
-.clearfix {
+.clearfix:after {
+  content: "";
+  display: table;
   clear: both;
 }
 
-.fa {
-  display:inline-block;
-  text-rendering:auto;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale
-}
-
-.fa-lg{
-  line-height:.75em;
-  vertical-align:-15%
-}
-
-.fa-play-circle:before{content:"\f144"}
-.fa-play-circle-o:before{content:"\f01d"}
-
-.fa-play-circle:before{
-   content:"\f144";
-}
-
-.icon .fa {
-  transition: all 0.1s;
-  transform: rotate(90deg);
-}
-
-.icon .fa.down {
-   transform: rotate(0deg);
-}
-   
-.content {
-   padding: 15px;
-   border-top: 1px solid #ddd;
- }
-
- @media screen and (max-width: 600px) {
-    .SafariSnap {
-      float: inherit; 
-      margin: 0px;
-      width: 100%;
-    }  
-
-    div.SafariSnap img {
-      display:block;
-      float:none;
-      margin:0 auto 20px !important;
-    }
+@media screen and (max-width: 700px) {
+  .box {
+    width: 50%;
+    margin: 6px 0;
   }
+}
+
+@media screen and (max-width: 600px) {
+  .box {
+    width: 100%;
+  }
+}
