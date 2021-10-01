@@ -137,9 +137,16 @@ const Safaris = () => {
       const videoRef = useRef(null);
       const mod = idx % 2;
       return (
-        <p>Sample codes 
-          <video src={video}/>
-          some other text to wrap the video. etc...</p>
+        <div>
+          <div style={{float:'left', width:'300px'}}>
+          <VideoPlayer video={video} className="VideoPlayer"/> 
+            </div>
+            <div style={{float:'right',width:'500px'}}>
+            ICON!! {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span> NOCI!!
+             MMS {expand && <div>{children}</div>} SMSM
+            </div>
+            <div style="clear:both"></div>
+        </div>
       )
     }
     
