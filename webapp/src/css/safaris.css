@@ -1,54 +1,84 @@
 
-.SafariTours {
-  border: 2px solid orange;
-  width: 100%;
+.SafariTitle {
+  border: 0px solid rgb(165, 42, 89);
 }
 
-video.VideoPlayer {
-  display: block;
+.SafariDetails {
+  height: auto;
+  text-align: left;
+  margin: 2px;
 }
 
-.video-wrap {
-  float: left;
-  margin: 0 20px 5px 0;
-  border:4px solid royalblue;
-  }
-
-
-  .videoWrapperOuter {
-    max-width:640px; 
-    margin-left:auto;
-    margin-right:auto;
-  }
-  .videoWrapperInner {
-    float: none;
-    clear: both;
-    width: 100%;
-    position: relative;
-    padding-bottom: 50%;
-    padding-top: 25px;
-    height: 0;
-  }
-  .videoWrapperInner video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-
-.containerX{
-  width: 400px;
-  background: yellow;
-  border:4px solid royalblue;
-  margin:2px;
-  display:flex;
-}
-.floatedX{
-  float: left;
-  width: 150px;
-  background: red;
-  border: 2px solid pink;
+.SafariSnap {
+  float: right; 
+  margin: 5px;
+  width: 450px;
+  border: 0px solid brown;
 }
 
+.oddRow {
+  border-top: 2px outset#90dff5;
+  margin-top: 5px;
+}
+
+.VideoWrapper {
+  margin: 0 auto;
+  border: 2px solid red; 
+}
+
+.video-player {
+  border: 0px solid green;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.fa {
+  display:inline-block;
+  text-rendering:auto;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale
+}
+
+.fa-lg{
+  line-height:.75em;
+  vertical-align:-15%
+}
+
+.fa-play-circle:before{content:"\f144"}
+.fa-play-circle-o:before{content:"\f01d"}
+
+.fa-play-circle:before{
+   content:"\f144";
+}
+
+.icon .fa {
+  transition: all 0.1s;
+  transform: rotate(90deg);
+}
+
+.icon .fa.down {
+   transform: rotate(0deg);
+}
+   
+.content {
+   padding: 15px;
+   border-top: 1px solid #ddd;
+ }
+
+ @media screen and (max-width: 600px) {
+    .SafariSnap {
+      float: inherit; 
+      margin: 0px;
+      width: 100%;
+    }  
+
+    div.SafariSnap img {
+      display:block;
+      float:none;
+      margin:0 auto 20px !important;
+    }
+  }

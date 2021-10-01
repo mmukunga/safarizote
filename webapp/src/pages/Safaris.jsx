@@ -134,25 +134,25 @@ const Safaris = () => {
   const SafariTours = props => {
     const Accordion = ({ children, title, isExpand = false, video, idx}) => {
       const [expand, setExpand] = useState(isExpand);
-      const videoRef = useRef(null);
+
       const mod = idx % 2;
       return (
         <div>
           <div style={{float:'left', width:'300px'}}>
           <VideoPlayer video={video} className="VideoPlayer"/> 
-            </div>
-            <div style={{float:'right',width:'500px'}}>
-            ICON!! {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span> NOCI!!
-             MMS {expand && <div>{children}</div>} SMSM
-            </div>
-            <div style="clear:both"></div>
+          </div>
+          <div style={{float:'right',width:'500px'}}>
+          {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>
+          {expand && <div>{children}</div>}
+          </div>
+          <div style={{clear:'both'}}></div>
         </div>
       )
     }
     
     const videos = props.videos;
     return (
-      <div className="SafariTours">
+      <div>
         {props && props.data.map((card, idx) =>{ return (
           <Accordion isExpand={false} title={card.title} video={videos[idx]} idx={idx}>
             {parse(card.description)}
@@ -174,10 +174,12 @@ const Safaris = () => {
     }
     
     return (
-        <video className="VideoPlayer" ref={videoRef} controls autoPlay loop muted>
+      <div>
+        <video ref={videoRef} controls autoPlay loop muted className='SafariSnap'>
           {/* Of course it's the big buck bunny! */}
           <source src={props.video} type="video/mp4"/>
         </video>
+      </div>
     );
   };
 
