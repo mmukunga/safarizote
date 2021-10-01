@@ -149,12 +149,15 @@ const Safaris = () => {
     
     const videos = props.videos;
     return (
-      <div>
-        {props && props.data.map((card, idx) =>{ return (
-          <Accordion isExpand={false} title={card.title} video={videos[idx]} idx={idx}>
-            {parse(card.description)}
-          </Accordion>
-        ); })}
+      <div style={{border:"2px solid grey"}}>
+        Short Message Service (SMS) er en tjeneste som er tilgjengelig på de fleste moderne mobiltelefoner.
+         Tjenesten gjør det mulig å sende korte meldinger (oftest ...Short Message Service (SMS) er en 
+         tjeneste som er tilgjengelig på de fleste moderne mobiltelefoner. Tjenesten gjør det mulig å sende 
+         korte meldinger (oftest ...Short Message Service (SMS) er en tjeneste som er tilgjengelig på de fleste 
+         moderne mobiltelefoner. Tjenesten gjør det mulig å sende korte meldinger (oftest ...Short Message 
+         Service (SMS) er en tjeneste som er tilgjengelig på de fleste moderne mobiltelefoner. Tjenesten gjør 
+         det mulig å sende korte meldinger (oftest ...Short Message Service (SMS) er en tjeneste som er 
+        tilgjengelig på de fleste moderne mobiltelefoner. Tjenesten gjør det mulig å sende korte meldinger (oftest ...
       </div>
     );
   } 
