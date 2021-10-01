@@ -134,11 +134,20 @@ const Safaris = () => {
   const SafariTours = props => {
     const Accordion = ({ children, title, isExpand = false, video, idx}) => {
       const [expand, setExpand] = useState(isExpand);
+      const [state, setState] = useState(false);
+
+      handleClick = (e) => {
+        e.preventDefault();
+        console.log('The link was clicked.');
+        var content = e.target;
+        console.log('Click!!!!');
+        setState(!state);
+      }
 
       const mod = idx % 2;
       return (
         <div className="SafariTours" >
-          <div className="VideoPlayer">
+          <div className="VideoPlayer" onClick={handleClick}>
             <VideoPlayer video={video} className="video-player"/> 
           </div>
           {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>

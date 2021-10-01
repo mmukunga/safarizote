@@ -28,14 +28,10 @@
   margin-top: 5px;
 }
 
-.VideoWrapper {
-  margin: 0 auto;
-  border: 2px solid red; 
-}
-
 .VideoPlayer {
   float: right;
   width: 500px; 
+  margin: 0 auto;
   border: 2px solid purple;
 }
 
