@@ -7,6 +7,9 @@
 .containerX{
   width: 400px;
   background: yellow;
+  border:4px solid royalblue;
+  margin:2px;
+  display:flex;
 }
 .floatedX{
   float: left;
