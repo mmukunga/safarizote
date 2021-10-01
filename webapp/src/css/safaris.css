@@ -6,10 +6,6 @@
 
 video.VideoPlayer {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100px;  
-  height: auto;
 }
 
 .video-wrap {
