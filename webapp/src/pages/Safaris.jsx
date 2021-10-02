@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import ReactDOM from 'react-dom';
 import parse from "html-react-parser";
 import moment from 'moment';
 import Bowser from "bowser";
@@ -136,7 +137,7 @@ const Safaris = () => {
       const [expand, setExpand] = useState(isExpand);
       const [state, setState] = useState(false);
 
-      const handleClick = (e) => {
+      const handleVideoClick = (e) => {
         e.preventDefault();
         console.log('The link was clicked.');
         var content = e.target;
@@ -144,12 +145,13 @@ const Safaris = () => {
         console.log(content);
         console.log('Click!!!!');
         setState(!state);
+        popup("Text within modal", {type: "info", timeout: 1000}); 
       }
 
       const mod = idx % 2;
       return (
-        <div className="SafariTours" >
-          <div className="VideoPlayer" onClick={handleClick}>
+        <div className="SafariTours" onClick={handleVideoClick}>
+          <div className="VideoPlayer">
             <VideoPlayer video={video} className="video-player"/> 
           </div>
           {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>
@@ -189,6 +191,39 @@ const Safaris = () => {
         </video>
     );
   };
+
+
+  const node = document.createElement("div");
+  const popup = (message, {type, timeout}) => {
+    document.body.appendChild(node);
+    const PopupContent = () => {
+      return (
+        <Popup type={type} open={true} timeout={timeout}>
+          {message}
+          <button
+            onClick={clear}
+          >Close</button>
+        </Popup >
+      );
+    };
+  
+    const clear = () => {
+      ReactDOM.unmountComponentAtNode(node);
+      node.remove();
+    }
+    
+    ReactDOM.render(<PopupContent/>, node);
+  };
+ 
+  const Popup = (props) => {
+    return(
+      <div style={{zIndex:props.open?"-100":"100", transition: `all ${props.timeout / 
+            1000}s`, opacity: props.open?1:0}}>
+          {props.children}
+      </div>
+    )
+  }
+ 
 
   const videos = [ Big_Buck_Bunny, kenya_safari, kilimanjaro, MOV_FILE, preview, the_globe ];
   return (

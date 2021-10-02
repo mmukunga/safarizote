@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import ReactDOM from 'react-dom';
 import axios from 'axios'
 import Card from './Card';
 import ReactPaginate from 'react-paginate';
@@ -12,38 +11,6 @@ function BackUp() {
  const [posts, setAllPosts] = useState([]);
  const [pageCount, setPageCount] = useState(0);
  const [isLoading, setIsLoading] = useState(false);
- 
- const node = document.createElement("div");
- const popup = (message, {type, timeout}) => {
-   document.body.appendChild(node);
-   const PopupContent = () => {
-     return (
-       <Popup type={type} open={true} timeout={timeout}>
-         {message}
-         <button
-           onClick={clear}
-         >Close</button>
-       </Popup >
-     );
-   };
- 
-   const clear = () => {
-     ReactDOM.unmountComponentAtNode(node);
-     node.remove();
-   }
-   
-   ReactDOM.render(<PopupContent/>, node);
- };
-
- const Popup = (props) => {
-  return(
-    <div style={{zIndex:props.open?"-100":"100", transition: `all ${props.timeout / 
-         1000}s`, opacity: props.open?1:0}}>
-        {props.children}
-    </div>
-  )
-}
-
 
  React.useEffect(async () => {
     if (!posts.length) {
@@ -84,7 +51,6 @@ function BackUp() {
  const handlePageClick = (event) => {
    const selectedPage = event.selected;
    setOffset(selectedPage + 1)
-   popup("Text within modal", {type: "info", timeout: 1000}); 
  };
 
  const onChange = (event) => {
