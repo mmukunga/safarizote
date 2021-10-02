@@ -38,6 +38,7 @@
 
 .video-player {
   border: 2px solid salmon;
+  width: 300px;
 }
 
 .clearfix {
