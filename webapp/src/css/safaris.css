@@ -77,6 +77,10 @@
  }
 
  @media screen and (max-width: 600px) {
+  video {
+    width: 100%;
+    height: auto;
+}
     .VideoPlayer {
       float: inherit; 
       margin: 0px;
