@@ -183,12 +183,10 @@ const Safaris = () => {
     }
     
     return (
-      <div>
-        <video ref={videoRef} controls autoPlay loop muted className='SafariSnap'>
+        <video ref={videoRef} controls autoPlay loop muted>
           {/* Of course it's the big buck bunny! */}
           <source src={props.video} type="video/mp4"/>
         </video>
-      </div>
     );
   };
 

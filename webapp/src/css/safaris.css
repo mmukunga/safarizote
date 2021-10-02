@@ -29,6 +29,7 @@
 }
 
 .VideoPlayer {
+  display:block;
   float: right;
   width: 500px; 
   margin: 0 auto;
@@ -77,10 +78,6 @@
  }
 
  @media screen and (max-width: 600px) {
-  video {
-    width: 100%;
-    height: auto;
-}
     .VideoPlayer {
       float: inherit; 
       margin: 0px;
@@ -88,18 +85,6 @@
     }  
     
     .VideoPlayer img {
-      display:block;
-      float:none;
-      margin:0 auto 20px !important;
-    }
-
-    .SafariSnap {
-      float: inherit; 
-      margin: 0px;
-      width: 100%;
-    }  
-
-    div.SafariSnap img {
       display:block;
       float:none;
       margin:0 auto 20px !important;
