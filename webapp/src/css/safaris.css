@@ -1,6 +1,7 @@
 .SafariTours {
   text-align: left;
-  width: 800px;
+  display:inline-block;
+  width: 450px;
   margin: 2px;
   border: 2px solid yellow;
 }
@@ -16,13 +17,6 @@
   margin: 2px;
 }
 
-.SafariSnap {
-  float: right; 
-  margin: 5px;
-  width: 450px;
-  border: 0px solid brown;
-}
-
 .oddRow {
   border-top: 2px outset#90dff5;
   margin-top: 5px;
@@ -31,7 +25,7 @@
 .VideoPlayer {
   display:block;
   float: right;
-  width: 500px; 
+  width: 350px; 
   margin: 0 auto;
   border: 2px solid purple;
 }
@@ -79,6 +73,11 @@
  }
 
  @media screen and (max-width: 600px) {
+    .SafariTours {
+      display:inline-block;
+      width: 100%;
+    }
+
     .VideoPlayer {
       float: inherit; 
       margin: 0px;
