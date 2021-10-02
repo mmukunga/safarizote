@@ -12,6 +12,29 @@ function BackUp() {
  const [pageCount, setPageCount] = useState(0);
  const [isLoading, setIsLoading] = useState(false);
  
+
+ const node = document.createElement("div");
+ const popup = (message, {type, timeout}) => {
+   document.body.appendChild(node);
+   const PopupContent = () => {
+     return (
+       <Popup type={type} open={true} timeout={timeout}>
+         {message}
+         <button
+           onClick={clear}
+         >Close</button>
+       </Popup >
+     );
+   };
+ 
+   const clear = () => {
+     ReactDOM.unmountComponentAtNode(node);
+     node.remove();
+   }
+   
+   ReactDOM.render(<PopupContent/>, node);
+ };
+
  React.useEffect(async () => {
     if (!posts.length) {
       const res = await axios.get(`/api/listAll`)
@@ -43,7 +66,7 @@ function BackUp() {
       setPageCount(Math.ceil(data.length / postsPerPage));
       setIsLoading(false);
     }
-    
+
     setIsLoading(true);
     getAllPosts();
   }, [offset]);
@@ -51,6 +74,7 @@ function BackUp() {
  const handlePageClick = (event) => {
    const selectedPage = event.selected;
    setOffset(selectedPage + 1)
+   popup("Text within modal", {type: "info", timeout: 1000}); 
  };
 
  const onChange = (event) => {
