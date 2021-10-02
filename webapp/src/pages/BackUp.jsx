@@ -21,28 +21,29 @@ function BackUp() {
     }
 }, []);
 
- const getPostData = (data) => {
-    return (
-      data.map(post => <div className="thumbnail" key={post.name}>
-        <img src={post.path} className="CssImage" alt='S.M.S'/>
-        <p className="desc">{post.name}</p>
-      </div>)
-    )
-  };
-
-  const getAllPosts = async () => {
-    const res = await axios.get(`/api/categories`)
-    const data = res.data;
-    const slice = data.slice(offset - 1 , offset - 1 + postsPerPage)
-
-    const postData = getPostData(slice)
-
-    setAllPosts(postData);
-    setPageCount(Math.ceil(data.length / postsPerPage));
-    setIsLoading(false);
-  }
 
   React.useEffect(() => {
+    const getPostData = (data) => {
+      return (
+        data.map(post => <div className="thumbnail" key={post.name}>
+          <img src={post.path} className="CssImage" alt='S.M.S'/>
+          <p className="desc">{post.name}</p>
+        </div>)
+      )
+    };
+  
+    const getAllPosts = async () => {
+      const res = await axios.get(`/api/categories`)
+      const data = res.data;
+      const slice = data.slice(offset - 1 , offset - 1 + postsPerPage)
+  
+      const postData = getPostData(slice)
+  
+      setAllPosts(postData);
+      setPageCount(Math.ceil(data.length / postsPerPage));
+      setIsLoading(false);
+    }
+    
     setIsLoading(true);
     getAllPosts();
   }, [offset]);
