@@ -1,8 +1,8 @@
 .SafariTours {
   text-align: left;
-  display:inline-block;
-  height: 100%;
-  vertical-align: middle;
+  display:table-cell;
+  height: auto;
+  vertical-align: top;
   width: 450px;
   margin: 2px;
   border: 2px solid yellow;
