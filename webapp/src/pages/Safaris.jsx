@@ -198,11 +198,11 @@ const Safaris = () => {
          <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Our Safaris: </span></li> 
          {renderPageNumbers}
         </ul>
-        <div className="SafariRow">
+        
         {currentItems && currentItems.length > 0 
            ? <SafariTours data={currentItems} videos={videos}/> 
            : <p>No Data Found!!</p>}  
-        </div>             
+                     
     </Card>
   );
 };

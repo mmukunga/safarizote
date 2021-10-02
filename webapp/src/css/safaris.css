@@ -1,9 +1,7 @@
-.SafariRow {
-  display: flex;
-}
 .SafariTours {
   text-align: left;
-  flex: 1; 
+  display:inline-block;
+  height: 100%;
   vertical-align: top;
   width: 450px;
   margin: 2px;
