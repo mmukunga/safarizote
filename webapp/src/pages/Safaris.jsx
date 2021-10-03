@@ -134,6 +134,7 @@ const Safaris = () => {
     });
 
   const SafariTours = props => {
+    console.log(props);
     const Accordion = ({children, title, isExpand = false, video, idx}) => {
       const [expand, setExpand] = useState(isExpand);
       const [state, setState] = useState(false);
@@ -147,7 +148,7 @@ const Safaris = () => {
           </div>
           {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>
            SIMON!!! {expand && <div>{children}</div>}         
-          <Modal onClose={() =>setShow(false)} show={show} title="My Modal" children={children}>
+          <Modal onClose={() =>setShow(false)} show={show} title="My Modal">
             <p>This is Modal content</p>
             MUKUNGA!!! {expand && <div>{children}</div>}        
           </Modal>
