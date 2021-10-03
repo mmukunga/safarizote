@@ -38,6 +38,12 @@ ul#page-numbers li span {
   margin-left:-0.5em;
 }
 
+.CssLink {
+  cursor: pointer;
+  color: #a2dffb;
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 600px) {
   u.vList {
     padding: 0 5px 0 5px;

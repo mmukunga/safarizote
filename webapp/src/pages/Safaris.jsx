@@ -14,6 +14,7 @@ import the_globe from "../media/the_globe.mov";
 
 import axios from 'axios';
 import Card from './Card';
+import Modal from "./Modal";
 
 const Safaris = () => {
     const [safaris, setSafaris] = useState([]);
@@ -22,6 +23,7 @@ const Safaris = () => {
     const [pageSize, setPageSize] = useState(2);
     const [userPos, setUserPos] = useState({lat: null, long: null});
     const [position, setPosition] = useState({});
+
 
     const videoUrl = 'https://www.youtube.com/watch?v=3qW5z4xeiac';
 
@@ -123,7 +125,7 @@ const Safaris = () => {
     
     const renderPageNumbers = pageNumbers.map(number => {
       return (
-        <li
+        <li className="CssLink"
           key={number}
           id={number}
           onClick={handleClick}>
@@ -133,27 +135,27 @@ const Safaris = () => {
     });
 
   const SafariTours = props => {
+
     const Accordion = ({ children, title, isExpand = false, video, idx}) => {
       const [expand, setExpand] = useState(isExpand);
       const [state, setState] = useState(false);
-
-      const handleVideoClick = (e) => {
-        e.preventDefault();
+      const [modal, setModal] = useState(false);
+      const Toggle = (e) => {
+        setModal(!modal);
         console.log('The link was clicked.');
         var content = e.target;
         console.log('Click!!!!');
         console.log(content);
         console.log('Click!!!!');
-        setState(!state);
-        popup("Text within modal", {type: "info", timeout: 1000}); 
-      }
+      } 
 
       const mod = idx % 2;
       return (
-        <div className="SafariTours" onClick={handleVideoClick}>
+        <div className="SafariTours" onClick={() => Toggle()}>
           <div className="VideoPlayer">
             <VideoPlayer video={video} className="video-player"/> 
           </div>
+          <Modal show={modal} title="My Modal" close={Toggle}>This is Modal content</Modal>
           {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>
           {expand && <div>{children}</div>}
           <div className='clearfix'></div>
@@ -164,6 +166,7 @@ const Safaris = () => {
     const videos = props.videos;
     return (
       <div>
+        <Modal show={modal} />
         {props && props.data.map((card, idx) =>{ return (
           <Accordion isExpand={false} title={card.title} video={videos[idx]} idx={idx}>
             {parse(card.description)}
@@ -190,40 +193,7 @@ const Safaris = () => {
           <source src={props.video} type="video/mp4"/>
         </video>
     );
-  };
-
-
-  const node = document.createElement("div");
-  const popup = (message, {type, timeout}) => {
-    document.body.appendChild(node);
-    const PopupContent = () => {
-      return (
-        <Popup type={type} open={true} timeout={timeout}>
-          {message}
-          <button
-            onClick={clear}
-          >Close</button>
-        </Popup >
-      );
-    };
-  
-    const clear = () => {
-      ReactDOM.unmountComponentAtNode(node);
-      node.remove();
-    }
-    
-    ReactDOM.render(<PopupContent/>, node);
-  };
- 
-  const Popup = (props) => {
-    return(
-      <div style={{zIndex:props.open?"-100":"100", transition: `all ${props.timeout / 
-            1000}s`, opacity: props.open?1:0}}>
-          {props.children}
-      </div>
-    )
-  }
- 
+  }; 
 
   const videos = [ Big_Buck_Bunny, kenya_safari, kilimanjaro, MOV_FILE, preview, the_globe ];
   return (
