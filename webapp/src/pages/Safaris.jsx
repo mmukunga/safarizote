@@ -141,7 +141,7 @@ const Safaris = () => {
 
       const mod = idx % 2;
       return (
-        <div className="SafariTours" onClick={() => setShow(true)}>
+        <div className="SafariTours">
           <div className="VideoPlayer">
             <VideoPlayer video={video} className="video-player"/> 
           </div>
@@ -149,7 +149,7 @@ const Safaris = () => {
             <p>This is Modal content</p>
           </Modal>
           {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>
-          {expand && <div>{children}</div>}
+          {expand && <div onClick={() => setShow(true)}>{children}</div>}
           <div className='clearfix'></div>
         </div>
       )
