@@ -1,29 +1,21 @@
 import React from 'react';
 
-const Modal = ({ show, close }) => {
+const Modal = (props) => {
+    if(!props.show) {return null;}
     return (
-      <div>
-       { show ? <div className="modalContainer" onClick={() => close()} >
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <header className="modal_header">
-              <h2 className="modal_header-title">Modal Title</h2>
-              <button className="modal_close" onClick={() => close()}>
-                <span style={{color:'red', fontSize:'24px'}}>X</span>
-              </button>
+       <div className={`modal ${props.show ? 'show':''}`} onClick={() => close()} >
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <header className="modal-header">
+              <h2 className="modal-title">{props.title}</h2> 
             </header>
-            <main className="modal_content">This is modal content</main>
-            <footer className="modal_footer">
-              <button className="modal_close" onClick={() => close()}>
-                Cancel
-              </button>
-  
-              <button className="modal_submit">Submit</button>
+            <main className="modal-body">
+                {props.children}
+            </main>
+            <footer className="modal-footer">
+              <button className="modal-button" onClick={props.onClose}>Close</button>
             </footer>
           </div>
         </div>
-        : null
-       }
-      </div>
     );
   };
 
