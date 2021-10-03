@@ -147,9 +147,8 @@ const Safaris = () => {
           </div>
           {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>
           {expand && <div>{children}</div>}         
-          <Modal onClose={() =>setShow(false)} show={show} title="My Modal" >
-            <p>This is Modal content</p>
-            {expand && <div>{children}</div>}      
+          <Modal onClose={() =>setShow(false)} show={show} title="My Modal" children={children}>
+            <p>This is Modal content</p>    
           </Modal>
           <div className='clearfix'></div>
         </div>

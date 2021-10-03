@@ -19,6 +19,7 @@ const Modal = (props) => {
             </header>
             <main className="modal-body">
                 <p>Simon Test</p>
+                Simon 2:= {props.children}
             </main>
             <footer className="modal-footer">
               <button className="modal-button" onClick={props.onClose}>Close</button>
