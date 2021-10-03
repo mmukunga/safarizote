@@ -137,7 +137,7 @@ const Safaris = () => {
     const Accordion = ({ children, title, isExpand = false, video, idx}) => {
       const [expand, setExpand] = useState(isExpand);
       const [state, setState] = useState(false);
-      const [show, setShow] = useState(true);
+      const [show, setShow] = useState(false);
 
       const mod = idx % 2;
       return (
@@ -147,8 +147,9 @@ const Safaris = () => {
           </div>
           {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>
           {expand && <div>{children}</div>}         
-          <Modal onClose={() =>setShow(false)} show={show} title="My Modal">
+          <Modal onClose={() =>setShow(false)} show={show} title="My Modal" >
             <p>This is Modal content</p>
+            {expand && <div>{children}</div>}      
           </Modal>
           <div className='clearfix'></div>
         </div>
