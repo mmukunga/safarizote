@@ -13,10 +13,7 @@ const Modal = (props) => {
               <h2 className="modal-title">{props.title}</h2> 
             </header>
             <main className="modal-body">
-                Les mer i Aftenposten: Bjørndalen og Hanevold ikke tøffe nok. 
-                Her er listen over de 60 tøffeste idrettene: 1. Boksing 2. Ishockey 3. Amerikansk fotball
-                Les mer i Aftenposten: Bjørndalen og Hanevold ikke tøffe nok. 
-                Her er listen over de 60 tøffeste idrettene: 1. Boksing 2. Ishockey 3. Amerikansk fotball
+                <p>Simon Test</p>
             </main>
             <footer className="modal-footer">
               <button className="modal-button" onClick={props.onClose}>Close</button>
