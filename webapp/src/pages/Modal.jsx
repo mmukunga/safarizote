@@ -3,7 +3,7 @@ import React from 'react';
 const Modal = (props) => {
     if(!props.show) {return null;}
     return (
-       <div className={`modal ${props.show ? 'show':''}`} onClick={() => close()} >
+       <div className={`modal ${props.show ? 'show':''}`} onClick={props.onClose} >
           <div className="modal-content" onClick={e => e.stopPropagation()}>
             <header className="modal-header">
               <h2 className="modal-title">{props.title}</h2> 
