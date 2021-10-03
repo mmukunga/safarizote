@@ -1,11 +1,16 @@
 import React from 'react';
 
 const Modal = (props) => {
-    console.log('Modal - Click!!!!');
-    console.log(props.title);
+    
     console.log(props.children);
     console.log('Modal - Click!!!!');
-    if(!props.show) {return null;}
+
+    if(!props.show) {
+      console.log('Modal - Null Shit!!!');
+      console.log(props.title);
+      return null;
+    }
+
     return (
        <div className={`modal ${props.show ? 'show':''}`} onClick={props.onClose} >
           <div className="modal-content" onClick={e => e.stopPropagation()}>

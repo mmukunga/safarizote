@@ -141,7 +141,7 @@ const Safaris = () => {
 
       const mod = idx % 2;
       return (
-        <div className="SafariTours" onClick={() => setShow(true)}>
+        <div className="SafariTours" onClick={() => {setShow(true); console.log("!!true!!")}}>
           <div className="VideoPlayer">
             <VideoPlayer video={video} className="video-player"/> 
           </div>
