@@ -145,10 +145,10 @@ const Safaris = () => {
           <div className="VideoPlayer">
             <VideoPlayer video={video} className="video-player"/> 
           </div>
-          {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>
-          {expand && <div>{children}</div>}         
+          {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>        
           <Modal onClose={() =>setShow(false)} show={show} title="My Modal">
             <p>This is Modal content</p>
+            {expand && <div>{children}</div>} 
           </Modal>
           <div className='clearfix'></div>
         </div>

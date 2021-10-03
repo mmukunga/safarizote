@@ -8,11 +8,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    pointer-events: none;
 }
 
 .modal-content {
     background:  #ccc;
-    width:500px;
+    width:400px;
 }
 
 .modal-header, .modal-footer {

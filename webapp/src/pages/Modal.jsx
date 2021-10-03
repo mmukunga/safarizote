@@ -7,7 +7,7 @@ const Modal = (props) => {
        <div className={`modal ${props.show ? 'show':''}`} onClick={props.onClose} >
           <div className="modal-content" onClick={e => e.stopPropagation()}>
             <header className="modal-header">
-              <h2 className="modal-title">MMS {props.title}</h2> 
+              <h4 className="modal-title">MMS {props.title}</h4> 
             </header>
             <main className="modal-body">
                 {props.children}
