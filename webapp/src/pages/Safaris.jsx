@@ -138,18 +138,10 @@ const Safaris = () => {
       const [expand, setExpand] = useState(isExpand);
       const [state, setState] = useState(false);
       const [show, setShow] = useState(false);
-      const Toggle = (e) => {
-        setShow(true);
-        console.log('The link was clicked.');
-        var content = e.target;
-        console.log('Click!!!!');
-        console.log(content);
-        console.log('Click!!!!');
-      } 
 
       const mod = idx % 2;
       return (
-        <div className="SafariTours" onClick={() => Toggle()}>
+        <div className="SafariTours">
           <div className="VideoPlayer">
             <VideoPlayer video={video} className="video-player"/> 
           </div>
