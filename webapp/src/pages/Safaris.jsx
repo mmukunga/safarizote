@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-import ReactDOM from 'react-dom';
 import parse from "html-react-parser";
 import moment from 'moment';
 import Bowser from "bowser";
@@ -166,7 +165,6 @@ const Safaris = () => {
     const videos = props.videos;
     return (
       <div>
-        <Modal show={modal} />
         {props && props.data.map((card, idx) =>{ return (
           <Accordion isExpand={false} title={card.title} video={videos[idx]} idx={idx}>
             {parse(card.description)}
