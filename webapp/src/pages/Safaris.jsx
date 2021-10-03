@@ -137,7 +137,7 @@ const Safaris = () => {
     const Accordion = ({ children, title, isExpand = false, video, idx}) => {
       const [expand, setExpand] = useState(isExpand);
       const [state, setState] = useState(false);
-      const [show, setShow] = useState(false);
+      const [show, setShow] = useState(true);
 
       const mod = idx % 2;
       return (
