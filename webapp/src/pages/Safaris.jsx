@@ -148,7 +148,6 @@ const Safaris = () => {
           {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>
           SIMON!!! {expand && <div>{children}</div>}         
           <input type="button" onClick={() => setShow(true)} value="Show Details"/>
-          <div id="portal"></div>
           <Modal show={show} setShow={setShow}>
             This is inside the modal!
           </Modal>
@@ -191,6 +190,7 @@ const Safaris = () => {
   const videos = [ Big_Buck_Bunny, kenya_safari, kilimanjaro, MOV_FILE, preview, the_globe ];
   return (
     <Card className="InnerCard" fontColor="black">
+        <div id="portal"></div>
         <ul id="page-numbers">
          <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Hits: { numberOfHits.length } </span></li> 
          <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Our Safaris: </span></li> 
