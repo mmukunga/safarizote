@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 
 const Modal = ({ children, show, setShow}) => {
   const modal = show && (
-      <div className="popup-box">
-        <div className="box">
+      <div className="model">
+        <div className="model-content">
           <input type="button" value="Close Me!" className="close-icon" onClick={() => setShow(false)}/>
           {children}
         </div>
