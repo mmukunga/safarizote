@@ -1,8 +1,8 @@
 import React from 'react';
-import ReactDOM, { createPortal } from 'react-dom';
+import ReactDOM from 'react-dom';
 
-const Modal = ({ children, show, setShow }) => {
-  const content = show && (
+const Modal = ({ children, show, setShow}) => {
+  const modal = show && (
       <div className="overlay">
         <div className="modal">
           <input type="button" value="Close Me!" className="modal-close" onClick={() => setShow(false)}/>
@@ -11,7 +11,7 @@ const Modal = ({ children, show, setShow }) => {
       </div>
     );
   
-    return createPortal(content, document.getElementById("portal"));
+    return ReactDOM.createPortal(modal, document.getElementById("modal-root"));
 }
 
 export default Modal;
