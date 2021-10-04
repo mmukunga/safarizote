@@ -1,24 +1,14 @@
 .overlay {
-    z-index: 98;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
+    width: 400px;
+    background-color: rgba(0,0,0,.3);
   }
   
   .modal {
     z-index: 99;
-    /* Everything below is optional styling */
     position: relative;
+    color:black;
     width: 100%;
     max-width: 320px;
-    max-height: 100%;
     margin: 0 auto;
   }
   

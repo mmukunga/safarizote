@@ -137,7 +137,6 @@ const Safaris = () => {
     console.log(props);
     const Accordion = ({children, title, isExpand = false, video, idx}) => {
       const [expand, setExpand] = useState(isExpand);
-      const [state, setState] = useState(false);
       const [show, setShow] = useState(false);
 
       const mod = idx % 2;
@@ -148,7 +147,7 @@ const Safaris = () => {
           </div>
           {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>
           SIMON!!! {expand && <div>{children}</div>}         
-          <button type="button" onClick={() => setShow(true)}>Show Modal</button>
+          <input type="button" onClick={() => setShow(true)} value="Show Details"/>
           <Modal show={show} setShow={setShow}>
             This is inside the modal!
           </Modal>
