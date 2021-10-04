@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 
 const Modal = ({ children, show, setShow}) => {
   const modal = show && (
-      <div className="overlay">
-        <div className="modal">
-          <input type="button" value="Close Me!" className="modal-close" onClick={() => setShow(false)}/>
-          <div className="modal-body">{children}</div>
+      <div className="popup-box">
+        <div className="box">
+          <input type="button" value="Close Me!" className="close-icon" onClick={() => setShow(false)}/>
+          {children}
         </div>
       </div>
     );
