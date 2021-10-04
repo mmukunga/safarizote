@@ -147,10 +147,10 @@ const Safaris = () => {
             <VideoPlayer video={video} className="video-player"/> 
           </div>
           {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>
-           SIMON!!! {expand && <div>{children}</div>}         
-          <Modal onClose={() =>setShow(false)} show={show} title="My Modal">
-            <p>This is Modal content</p>
-            MUKUNGA!!! {expand && <div>{children}</div>}        
+          SIMON!!! {expand && <div>{children}</div>}         
+          <button type="button" onClick={() => setShow(true)}>Show Modal</button>
+          <Modal show={show} setShow={setShow}>
+            This is inside the modal!
           </Modal>
           <div className='clearfix'></div>
         </div>
@@ -196,7 +196,7 @@ const Safaris = () => {
          <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Our Safaris: </span></li> 
          {renderPageNumbers}
         </ul>
-        
+        <div id="portal"></div>
         {currentItems && currentItems.length > 0 
            ? <SafariTours data={currentItems} videos={videos}/> 
            : <p>No Data Found!!</p>}  
