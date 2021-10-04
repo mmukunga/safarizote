@@ -135,7 +135,7 @@ const Safaris = () => {
 
   const SafariTours = props => {
     console.log(props);
-    const Accordion = ({title, isExpand = false, video, idx}) => {
+    const Accordion = ({children, title, isExpand = false, video, idx}) => {
       const [expand, setExpand] = useState(isExpand);
       const [state, setState] = useState(false);
       const [show, setShow] = useState(false);
@@ -162,7 +162,7 @@ const Safaris = () => {
       <div>
         {props && props.data.map((card, idx) =>{ return (
           <Accordion isExpand={false} title={card.title} video={videos[idx]} idx={idx}>
-            {parse(card.description)}
+            {parse(card.description)} fsdfdfdsfsd  erwerwerw    cxvxcvxvgfd
           </Accordion>
         ); })}
       </div>
