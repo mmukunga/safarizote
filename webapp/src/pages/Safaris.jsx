@@ -148,6 +148,7 @@ const Safaris = () => {
           {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>
           SIMON!!! {expand && <div>{children}</div>}         
           <input type="button" onClick={() => setShow(true)} value="Show Details"/>
+          <div id="portal"></div>
           <Modal show={show} setShow={setShow}>
             This is inside the modal!
           </Modal>
@@ -195,7 +196,6 @@ const Safaris = () => {
          <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Our Safaris: </span></li> 
          {renderPageNumbers}
         </ul>        
-        <div id="portal"></div>
         {currentItems && currentItems.length > 0 
            ? <SafariTours data={currentItems} videos={videos}/> 
            : <p>No Data Found!!</p>}                   
