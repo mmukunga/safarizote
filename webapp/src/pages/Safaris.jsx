@@ -147,10 +147,10 @@ const Safaris = () => {
             <VideoPlayer video={video} className="video-player"/> 
           </div>
           {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>
-           SIMON!!! {expand && <div>{props.children}</div>}         
+           SIMON!!! {expand && <div>{children}</div>}         
           <Modal onClose={() =>setShow(false)} show={show} title="My Modal">
             <p>This is Modal content</p>
-            MUKUNGA!!! {expand && <div>{props.children}</div>}        
+            MUKUNGA!!! {expand && <div>{children}</div>}        
           </Modal>
           <div className='clearfix'></div>
         </div>
