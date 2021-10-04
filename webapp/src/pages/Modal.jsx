@@ -5,7 +5,7 @@ const Modal = ({ children, show, setShow }) => {
   const content = show && (
       <div className="overlay">
         <div className="modal">
-          <button className="modal-close" type="button" onClick={() => setShow(false)}>X</button>
+          <input type="button" value="Close Me!" className="modal-close" onClick={() => setShow(false)}/>
           <div className="modal-body">{children}</div>
         </div>
       </div>

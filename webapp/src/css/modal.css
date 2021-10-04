@@ -1,6 +1,5 @@
 .overlay {
     z-index: 98;
-    position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
@@ -24,7 +23,6 @@
   }
   
   .modal-close {
-    position: absolute;
     top: -24px;
     right: 0;
     padding: 5px;

@@ -191,12 +191,12 @@ const Safaris = () => {
   const videos = [ Big_Buck_Bunny, kenya_safari, kilimanjaro, MOV_FILE, preview, the_globe ];
   return (
     <Card className="InnerCard" fontColor="black">
+        <div id="portal"></div>
         <ul id="page-numbers">
          <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Hits: { numberOfHits.length } </span></li> 
          <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Our Safaris: </span></li> 
          {renderPageNumbers}
         </ul>
-        <div id="portal"></div>
         {currentItems && currentItems.length > 0 
            ? <SafariTours data={currentItems} videos={videos}/> 
            : <p>No Data Found!!</p>}  
