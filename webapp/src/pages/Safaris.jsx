@@ -146,10 +146,10 @@ const Safaris = () => {
             <VideoPlayer video={video} className="video-player"/> 
           </div>
           {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>
-          SIMON!!! {expand && <div>{children}</div>}         
+          {expand && <div>{children}</div>}         
           <input type="button" onClick={() => setShow(true)} value="Show Details"/>
           <Modal show={show} setShow={setShow} content={parse(title)}>
-            This is inside the modal! {parse(title)}
+            {parse(title)}
           </Modal>
           <div className='clearfix'></div>
         </div>
@@ -160,7 +160,7 @@ const Safaris = () => {
     return (
       <div>
         {props && props.data.map((card, idx) =>{ return (
-          <Accordion isExpand={false} title={card.title} video={videos[idx]} idx={idx}>
+          <Accordion isExpand={true} title={card.title} video={videos[idx]} idx={idx}>
             {parse(card.description)} fsdfdfdsfsd  erwerwerw    cxvxcvxvgfd
           </Accordion>
         ); })}
