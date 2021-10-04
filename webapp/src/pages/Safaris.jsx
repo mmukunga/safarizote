@@ -147,7 +147,7 @@ const Safaris = () => {
           </div>
           {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>
           {expand && <div>{children}</div>}         
-          <input type="button" onClick={() => setShow(true)} value="Show Details"/>
+          <span className='sub' onClick={() => setShow(true)} >Show Details</span>
           <Modal show={show} setShow={setShow} content={parse(title)}>
             {parse(title)}
           </Modal>

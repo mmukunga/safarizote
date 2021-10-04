@@ -38,3 +38,8 @@
   border: 1px solid #999;
   font-size: 20px;
 }
+
+.sub {
+  cursor: pointer;
+  color: blue;
+}
