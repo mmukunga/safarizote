@@ -135,7 +135,7 @@ const Safaris = () => {
 
   const SafariTours = props => {
     console.log(props);
-    const Accordion = ({children, title, isExpand = false, video, idx}) => {
+    const Accordion = ({title, isExpand = false, video, idx}) => {
       const [expand, setExpand] = useState(isExpand);
       const [state, setState] = useState(false);
       const [show, setShow] = useState(false);
@@ -147,10 +147,10 @@ const Safaris = () => {
             <VideoPlayer video={video} className="video-player"/> 
           </div>
           {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>
-           SIMON!!! {expand && <div>{children}</div>}         
+           SIMON!!! {expand && <div>{props.children}</div>}         
           <Modal onClose={() =>setShow(false)} show={show} title="My Modal">
             <p>This is Modal content</p>
-            MUKUNGA!!! {expand && <div>{children}</div>}        
+            MUKUNGA!!! {expand && <div>{props.children}</div>}        
           </Modal>
           <div className='clearfix'></div>
         </div>
