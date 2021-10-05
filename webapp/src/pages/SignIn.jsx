@@ -4,6 +4,7 @@ import Card from './Card';
 import UserService from './UserService';
 
 const SignIn = (props) => {
+    const [loggedIn, setLoggedIn] = React.useState(0);
     const [form, setForm] = React.useState({
         email: '',
         password: ''
