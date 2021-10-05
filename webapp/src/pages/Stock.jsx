@@ -45,8 +45,6 @@ const Stock = () => {
     const [stockCompany, setStockCompany] = useState('');
     
     const handleSelectItem = (event) => {
-      const { name, value } = event.target;
-
       let tickers = state.tickers;
       for (var i = 0; i < tickers.length; i++) { 
         if (event.target.name===tickers[i].name) {
@@ -65,7 +63,7 @@ const Stock = () => {
       const tickers = state.tickers;
 
       for (var i = 0; i < tickers.length; i++) { 
-          if (tickers[i].selected==true){
+          if (tickers[i].selected === true){
               ticker = tickers[i];
           }
       }
