@@ -7,19 +7,19 @@ const Modal = ({ children, show, setShow}) => {
         <div className="model-content">
           <input type="button" value="Close Me!" className="close-icon" onClick={() => setShow(false)}/>
           <div>{children}
-            <CENTER><IMG SRC="clouds.jpg" ALIGN="BOTTOM"/> </CENTER>
-            <HR/>
+            <center><img src="clouds.jpg" align="BOTTOM"/> </center>
+            <hr/>
             <a href="http://somegreatsite.com">Link Name</a>
             is a link to another nifty site
-            <H1>This is a Header</H1>
-            <H2>This is a Medium Header</H2>
+            <h1>This is a Header</h1>
+            <h2>This is a Medium Header</h2>
             Send me mail at <a href="mailto:support@yourcompany.com">
             support@yourcompany.com</a>.
-            <P> This is a new paragraph!</P>
-            <P> <B>This is a new paragraph!</B> </P>
-            <BR/> 
-            <B><I>This is a new sentence without a paragraph break, in bold italics.</I></B>
-            <HR/>
+            <p>This is a new paragraph!</p>
+            <p><b>This is a new paragraph!</b></p>
+            <br/> 
+            <b><i>This is a new sentence without a paragraph break, in bold italics.</i></b>
+            <hr/>
           </div>
         </div>
       </div>
