@@ -137,7 +137,6 @@ const Safaris = () => {
   const SafariTours = props => {
     console.log(props);
     const Accordion = ({children, title, summary, video, idx}) => {
-      const [expand, setExpand] = useState(isExpand);
       const [show, setShow] = useState(false);
 
       const mod = idx % 2;
