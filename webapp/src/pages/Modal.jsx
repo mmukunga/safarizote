@@ -6,7 +6,7 @@ const Modal = ({ children, show, setShow}) => {
       <div className="model">
         <div className="model-content">
           <input type="button" value="Close Me!" className="close-icon" onClick={() => setShow(false)}/>
-          {children}
+          <div dangerouslySetInnerHTML={{__html: children}} />
         </div>
       </div>
     );

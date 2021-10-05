@@ -146,10 +146,10 @@ const Safaris = () => {
           <div className="VideoPlayer">
             <VideoPlayer video={video} className="video-player"/> 
           </div>
-          {summary}     
+          <div dangerouslySetInnerHTML={{__html: summary}} />  
           <span className='sub' onClick={() => setShow(true)} >Show Details</span>
           <Modal show={show} setShow={setShow} title={parse(title)}>
-            {children}
+              {children} 
           </Modal>
           <div className='clearfix'></div>
         </div>
