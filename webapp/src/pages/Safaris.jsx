@@ -136,7 +136,7 @@ const Safaris = () => {
 
   const SafariTours = props => {
     console.log(props);
-    const Accordion = ({children, title, isExpand = false, video, idx}) => {
+    const Accordion = ({children, title, summary, video, idx}) => {
       const [expand, setExpand] = useState(isExpand);
       const [show, setShow] = useState(false);
 
@@ -146,11 +146,10 @@ const Safaris = () => {
           <div className="VideoPlayer">
             <VideoPlayer video={video} className="video-player"/> 
           </div>
-          {parse(title)} <span className="icon"><i className={`fa fa-play-circle${!expand ? ' down' : ''}`}></i></span>
-          {expand && <div>{children}</div>}         
+          {parse(summary)}     
           <span className='sub' onClick={() => setShow(true)} >Show Details</span>
-          <Modal show={show} setShow={setShow} content={parse(title)}>
-            {parse(title)}
+          <Modal show={show} setShow={setShow} title={parse(title)}>
+            {parse(children)}
           </Modal>
           <div className='clearfix'></div>
         </div>
@@ -161,8 +160,8 @@ const Safaris = () => {
     return (
       <div>
         {props && props.data.map((card, idx) =>{ return (
-          <Accordion isExpand={true} title={card.title} video={videos[idx]} idx={idx}>
-            {parse(card.description)} fsdfdfdsfsd  erwerwerw    cxvxcvxvgfd
+          <Accordion isExpand={true} title={card.title} summary={card.summary} video={videos[idx]} idx={idx}>
+            {parse(card.details)} 
           </Accordion>
         ); })}
       </div>

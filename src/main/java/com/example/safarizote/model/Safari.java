@@ -29,7 +29,9 @@ public class Safari {
   @Column(columnDefinition="TEXT")
   @NonNull String title;
   @Column(columnDefinition="TEXT")
-  @NonNull String description;
+  @NonNull String summary;
+  @Column(columnDefinition="TEXT")
+  @NonNull String details;
   @NonNull Double price;
   @NonNull Instant dateCreated;
   @OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
