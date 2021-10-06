@@ -87,8 +87,8 @@ function App() {
   console.log(imageStyles);
   console.log('imageStyles');
   return (
-    <div className="App">
-      <header className="App-header" style={imageStyles}> 
+    <div className="App" style={imageStyles}>
+      <header className="App-header"> 
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
