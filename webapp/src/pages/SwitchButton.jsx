@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "./ThemeContext";
-import "./App.css";
 
 export default function SwitchButton() {
   const theme = useContext(ThemeContext);
