@@ -2,7 +2,7 @@
 import React from 'react';
 import { Route, Switch, NavLink, withRouter, useHistory } from "react-router-dom";
 import {ThemeContext} from "./pages/ThemeContext";
-import SwitchButton from "./pages/Button";
+import SwitchButton from "./pages/SwitchButton";
 import logo from "./logo.svg";
 import "./App.css";
 
