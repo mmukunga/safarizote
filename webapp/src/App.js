@@ -19,6 +19,7 @@ import Weather from './pages/Weather';
 import Stock from './pages/Stock';
 import Private from './pages/Private';
 import UserService from './pages/UserService';
+import background from "./images/jeep.jpg";
 
 function App() {
   let history = useHistory();
@@ -49,9 +50,9 @@ function App() {
   }
 
   const imageStyles = {
-    backgroundImage: `url(${selectedImage})`, 
-    display: displayHome
-  };
+    backgroundImage: `url(${background})`,
+    backgroundColor: displayHome.color
+};
 
   React.useEffect(() => {
       const intervalID = setTimeout(() =>  {
