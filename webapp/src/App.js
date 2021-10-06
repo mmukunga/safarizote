@@ -83,7 +83,9 @@ function App() {
   }
 
   const AdminMenu = withRouter(DropDown);
-
+  console.log('imageStyles');
+  console.log(imageStyles);
+  console.log('imageStyles');
   return (
     <div className="App">
       <header className={`App-header ${imageStyles}`}> 
