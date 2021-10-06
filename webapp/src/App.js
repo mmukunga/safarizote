@@ -1,7 +1,7 @@
 // src/App.js
 import React from 'react';
 import { Route, Switch, NavLink, withRouter, useHistory } from "react-router-dom";
-import {ThemeContext} from "./ThemeContext";
+import {ThemeContext} from "./pages/ThemeContext";
 import SwitchButton from "./Button";
 import logo from "./logo.svg";
 import "./App.css";
