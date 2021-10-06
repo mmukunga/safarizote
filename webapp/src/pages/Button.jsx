@@ -12,10 +12,10 @@ export default function SwitchButton() {
       theme.dispatch({ type: "DARKMODE" });
     }
   };
-
+ 
   return (
-    <button className={`btn ${darkMode ? "btn-dark" : "btn-light"}`} onClick={onClick}>
-      {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-    </button>
+    <input type="button" className={`btn ${darkMode ? "btn-dark" : "btn-light"}`} onClick={onClick} 
+        value={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}/>
+     
   );
 }
