@@ -50,7 +50,7 @@ function App() {
 
   const imageStyles = {
     backgroundImage: `url(${process.env.PUBLIC_URL + "/images/jeep.jpg"})`,
-    backgroundColor: displayHome.color
+    color: displayHome.color
 };
 
   React.useEffect(() => {
@@ -88,7 +88,7 @@ function App() {
   console.log('imageStyles');
   return (
     <div className="App">
-      <header className="App-header"  style={{backgroundImage: `url(${imageStyles.backgroundImage})`}}> 
+      <header className="App-header" style={imageStyles}> 
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
