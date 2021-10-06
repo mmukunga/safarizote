@@ -101,6 +101,7 @@ function App() {
         </a>
         <a href="" className="Nav_link LogOut" onClick={logout}></a> 
         {UserService.isLoggedIn() != null ? 'Is Logged in!!' : 'Please login!!'}
+        <SwitchButton />
       </header>
       <hr/>
       <Card className={`OuterCard ${darkMode ? "bg-dark" : "bg-light"}`} fontColor="black">
