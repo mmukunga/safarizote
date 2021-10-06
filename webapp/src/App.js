@@ -1,6 +1,8 @@
 // src/App.js
 import React from 'react';
 import { Route, Switch, NavLink, withRouter, useHistory } from "react-router-dom";
+import {ThemeContext} from "./ThemeContext";
+import SwitchButton from "./Button";
 import logo from "./logo.svg";
 import "./App.css";
 
@@ -20,6 +22,9 @@ import UserService from './pages/UserService';
 
 function App() {
   let history = useHistory();
+  const theme = useContext(ThemeContext);
+  const darkMode = theme.state.darkMode;
+
   const StylesDropDown = {
       width: '80px', 
       padding: '2px', 
@@ -98,7 +103,7 @@ function App() {
         {UserService.isLoggedIn() != null ? 'Is Logged in!!' : 'Please login!!'}
       </header>
       <hr/>
-      <Card className="OuterCard" fontColor="black">
+      <Card className={`OuterCard ${darkMode ? "bg-dark" : "bg-light"}`} fontColor="black">
         <NavLink to={'/'} className="Nav_link">Safaris</NavLink>  
         <NavLink to={'/metrics'} className="Nav_link">Metrics</NavLink>
         <NavLink to={'/email'} className="Nav_link">Email</NavLink>

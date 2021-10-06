@@ -12,3 +12,12 @@
   margin: 10px auto; 
   padding: 1px; 
 }
+
+.bg-light {
+  background-color: green;
+}
+
+.bg-dark {
+  background-color: #222;
+}
+
