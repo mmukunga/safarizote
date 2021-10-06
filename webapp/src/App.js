@@ -88,7 +88,7 @@ function App() {
   console.log('imageStyles');
   return (
     <div className="App">
-      <header className={`App-header ${imageStyles}`}> 
+      <header className="App-header"  style={{backgroundImage: `url(${imageStyles.backgroundImage})`}}> 
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
