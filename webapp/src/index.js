@@ -5,10 +5,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { ThemeProvider } from "./ThemeContext";
 ReactDOM.render(
   <HashRouter>
     <React.StrictMode>
+    <ThemeProvider>
         <App />
+    </ThemeProvider>    
     </React.StrictMode>
   </HashRouter>,
   document.getElementById('root')
