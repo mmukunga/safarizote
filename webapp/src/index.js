@@ -5,7 +5,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { ThemeProvider } from "./ThemeContext";
+import { ThemeProvider } from "./pages/ThemeContext";
 ReactDOM.render(
   <HashRouter>
     <React.StrictMode>
