@@ -50,9 +50,13 @@ p span {
   opacity: 0.5;
 }
 
-.FlexRow {
-  display: flex;
-  flex-direction: row;
+.TopMenu {
+  display: inline-block;
+  padding: 5px;
+  border: 1px solid blue;    
+  background-color: yellow; 
+  vertical-align: top;
+	height: auto;
 }
 
 @keyframes App-logo-spin {

@@ -89,7 +89,7 @@ function App() {
   return (
     <div className="App" style={imageStyles}>
       <header className="App-header"> 
-        <div class="FlexRow">
+        <div class="TopMenu">
           <div><img src={logo} className="App-logo" alt="logo" /></div>
           <div style={{width:'50%'}}>
           <a href="" className="Nav_link LogOut" onClick={logout}></a> 
