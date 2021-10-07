@@ -51,9 +51,9 @@ p span {
 }
 
 .TopMenu {
-  width: 100%; 
-  overflow: hidden;
   display: block;
+  overflow: hidden;
+  margin: 0 auto;
   padding: 5px;
   border: 1px solid blue;
 	height: auto;
