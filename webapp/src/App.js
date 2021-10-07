@@ -93,7 +93,7 @@ function App() {
           <div class="item"><img src={logo} className="App-logo" alt="logo" /></div>
           <div class="item">
           <a href="" className="Nav_link LogOut" onClick={logout}></a> 
-            {UserService.isLoggedIn() != null ? 'Is Logged in!!' : 'Please login!!'}
+            {UserService.isLoggedIn() != null ? 'Is Logged in!' : 'Please login!'}
           </div>
           <div class="item"><SwitchButton /></div>
         </div>
