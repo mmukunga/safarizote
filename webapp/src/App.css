@@ -51,11 +51,11 @@ p span {
 }
 
 .TopMenu {
-  display: inline-block;
-  width: 99%;
+  width: 100%; 
+  overflow: hidden;
+  display: block;
   padding: 5px;
-  border: 1px solid blue;    
-  vertical-align: top;
+  border: 1px solid blue;
 	height: auto;
 }
 
@@ -64,7 +64,7 @@ p span {
   box-sizing: border-box;
   vertical-align: top;
   border: 1px solid yellow; 
-  height: auto;
+  height: 100%;
 }
 
 @keyframes App-logo-spin {
