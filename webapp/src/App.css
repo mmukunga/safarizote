@@ -52,6 +52,7 @@ p span {
 
 .TopMenu {
   display: inline-block;
+  width: 95%;
   padding: 5px;
   border: 1px solid blue;    
   background-color: yellow; 
@@ -62,6 +63,7 @@ p span {
 .TopMenu .item {
   width: 25%; 
   display: inline-block;
+  box-sizing: border-box;
   vertical-align: top;
   height: auto;
 }
