@@ -104,8 +104,8 @@ function App() {
           </div>
           <div class="item divPad"><SwitchButton /></div>
           <div class="item right">
-          {UserService.isLoggedIn() != null ? 'Is Logged in!' : 'Please login!'} &nbsp; 
-          <a href="" className="Nav_link LogOut" onClick={logout}></a> 
+           &nbsp;{UserService.isLoggedIn() != null ? 'Is Logged in!' : 'Please login!'}  
+           &nbsp;<a href="" className="Nav_link LogOut" onClick={logout}></a> 
           </div>
         </div>
       </header>
