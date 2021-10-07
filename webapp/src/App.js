@@ -95,6 +95,8 @@ function App() {
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
+        </div>
+        <div>    
           <a
             className="App-link"
             href="https://reactjs.org"
@@ -103,11 +105,11 @@ function App() {
           >
             Learn React
           </a>
-          <a href="" className="Nav_link LogOut" onClick={logout}></a> 
-          {UserService.isLoggedIn() != null ? 'Is Logged in!!' : 'Please login!!'}
-        </div>
+        </div>  
         <div><SwitchButton /></div>
-        </div>
+      </div>
+      <a href="" className="Nav_link LogOut" onClick={logout}></a> 
+      {UserService.isLoggedIn() != null ? 'Is Logged in!!' : 'Please login!!'}
       </header>
       <hr/>
       <Card className={`OuterCard ${darkMode ? "bg-dark" : "bg-light"}`} fontColor="black">
