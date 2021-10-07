@@ -89,27 +89,25 @@ function App() {
   return (
     <div className="App" style={imageStyles}>
       <header className="App-header"> 
-      <div class="FlexRow">
-        <div><img src={logo} className="App-logo" alt="logo" /></div>
-        <div style={{width:'70%'}}>
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
+        <div class="FlexRow">
+          <div><img src={logo} className="App-logo" alt="logo" /></div>
+          <div style={{width:'70%'}}>
+          <a href="" className="Nav_link LogOut" onClick={logout}></a> 
+            {UserService.isLoggedIn() != null ? 'Is Logged in!!' : 'Please login!!'}
+          </div>
+          <div><SwitchButton /></div>
         </div>
-        <div>    
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </div>  
-        <div><SwitchButton /></div>
-      </div>
-      <a href="" className="Nav_link LogOut" onClick={logout}></a> 
-      {UserService.isLoggedIn() != null ? 'Is Logged in!!' : 'Please login!!'}
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>  
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
       </header>
       <hr/>
       <Card className={`OuterCard ${darkMode ? "bg-dark" : "bg-light"}`} fontColor="black">
