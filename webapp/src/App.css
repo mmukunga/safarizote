@@ -59,6 +59,13 @@ p span {
 	height: auto;
 }
 
+.TopMenu .item {
+  width: 25%; 
+  display: inline-block;
+  vertical-align: top;
+  height: auto;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
