@@ -96,18 +96,19 @@ function App() {
             {UserService.isLoggedIn() != null ? 'Is Logged in!' : 'Please login!'}
           </div>
           <div class="item"><SwitchButton /></div>
+        
+          <div class="item">
+            Edit <code>src/App.js</code> and save to reload.  
+            <a
+              className="App-link"
+              href="https://reactjs.org"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Learn React
+            </a>
+          </div>
         </div>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.  
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
       </header>
       <hr/>
       <Card className={`OuterCard ${darkMode ? "bg-dark" : "bg-light"}`} fontColor="black">
