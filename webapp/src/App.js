@@ -90,7 +90,7 @@ function App() {
     <div className="App" style={imageStyles}>
       <header className="App-header"> 
         <div class="TopMenu">
-          <div class="item"><img src={logo} className="App-logo" alt="logo" /></div>
+          <div class="item left"><img src={logo} className="App-logo" alt="logo" /></div>
           <div class="item">
             Edit <code>src/App.js</code> and save to reload.  
             <a
@@ -106,7 +106,7 @@ function App() {
           <div class="item">
             {UserService.isLoggedIn() != null ? 'Is Logged in!' : 'Please login!'}
           </div>
-          <div class="item">
+          <div class="item right">
              <a href="" className="Nav_link LogOut" onClick={logout}></a> 
           </div>
         </div>
