@@ -92,14 +92,6 @@ function App() {
         <div class="TopMenu">
           <div class="item"><img src={logo} className="App-logo" alt="logo" /></div>
           <div class="item">
-          <a href="" className="Nav_link LogOut" onClick={logout}></a> 
-          </div>
-          <div class="item">
-            {UserService.isLoggedIn() != null ? 'Is Logged in!' : 'Please login!'}
-          </div>
-          <div class="item"><SwitchButton /></div>
-        
-          <div class="item">
             Edit <code>src/App.js</code> and save to reload.  
             <a
               className="App-link"
@@ -109,6 +101,13 @@ function App() {
             >
               Learn React
             </a>
+          </div>
+          <div class="item"><SwitchButton /></div>
+          <div class="item">
+            {UserService.isLoggedIn() != null ? 'Is Logged in!' : 'Please login!'}
+          </div>
+          <div class="item">
+             <a href="" className="Nav_link LogOut" onClick={logout}></a> 
           </div>
         </div>
       </header>
