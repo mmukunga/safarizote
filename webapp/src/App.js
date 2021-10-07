@@ -91,7 +91,7 @@ function App() {
       <header className="App-header"> 
         <div class="TopMenu">
           <div class="item left"><img src={logo} className="App-logo" alt="logo" /></div>
-          <div class="item">
+          <div class="item divPad">
             Edit <code>src/App.js</code> and save to reload.  
             <a
               className="App-link"
@@ -102,8 +102,8 @@ function App() {
               Learn React
             </a>
           </div>
-          <div class="item"><SwitchButton /></div>
-          <div class="item">
+          <div class="item divPad"><SwitchButton /></div>
+          <div class="item divPad">
             {UserService.isLoggedIn() != null ? 'Is Logged in!' : 'Please login!'}
           </div>
           <div class="item right">

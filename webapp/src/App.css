@@ -75,6 +75,8 @@ p span {
   float: right;
 } 
 
+.divPad { padding: 5px;}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
