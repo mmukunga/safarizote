@@ -92,7 +92,7 @@ function App() {
         <div class="TopMenu">
           <div class="item left"><img src={logo} className="App-logo" alt="logo" /></div>
           <div class="item divPad">
-            Edit <code>src/App.js</code> and save to reload.  
+            Edit <code>src/App.js</code> and save to reload.&nbsp;&nbsp;  
             <a
               className="App-link"
               href="https://reactjs.org"

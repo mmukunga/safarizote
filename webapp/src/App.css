@@ -75,7 +75,10 @@ p span {
   float: right;
 } 
 
-.divPad { padding: 5px;}
+.divPad { 
+  padding: 5px;
+  margin: 5px;
+}
 
 @keyframes App-logo-spin {
   from {
