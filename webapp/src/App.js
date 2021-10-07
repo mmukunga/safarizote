@@ -91,7 +91,7 @@ function App() {
       <header className="App-header"> 
       <div class="FlexRow">
         <div><img src={logo} className="App-logo" alt="logo" /></div>
-        <div>
+        <div style={{width:'70%'}}>
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
