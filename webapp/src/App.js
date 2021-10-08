@@ -32,26 +32,27 @@ function App() {
   };
   
   const images = [
-      './images/jeep.jpg',
-      './images/leopard.jpg',
-      './images/cheeter.jpg',
-      './images/cheeters.jpg',
-      './images/savannah.jpg',
-      './images/gnus.jpg',
-      './images/tourists.jpg',
-      './images/drought.jpg'
+      '/images/jeep.jpg',
+      '/images/leopard.jpg',
+      '/images/cheeter.jpg',
+      '/images/cheeters.jpg',
+      '/images/savannah.jpg',
+      '/images/gnus.jpg',
+      '/images/tourists.jpg',
+      '/images/drought.jpg'
   ];
 
-  const [selectedImage, setSelectedImage] = React.useState(images[0]);
+  const imgId = Math.floor(Math.random() * images.length);
+  const [selectedImage, setSelectedImage] = React.useState(images[imgId]);
 
   const displayHome = {
     color: 'purple'
   }
 
   const imageStyles = {
-    backgroundImage: `url(${process.env.PUBLIC_URL + "/images/jeep.jpg"})`,
-    color: displayHome.color
-};
+      backgroundImage: `url(${process.env.PUBLIC_URL + selectedImage})`,
+      color: displayHome.color
+  };
 
   React.useEffect(() => {
       const intervalID = setTimeout(() =>  {

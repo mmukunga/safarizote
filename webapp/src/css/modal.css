@@ -41,5 +41,6 @@
 
 .sub {
   cursor: pointer;
-  color: rgb(104, 104, 243);
+  color: #0fc0fc;
+  text-decoration: underline;
 }
