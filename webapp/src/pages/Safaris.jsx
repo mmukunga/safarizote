@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import {Router, Route, Link } from "react-router-dom";
+import {Link } from "react-router-dom";
 import Email from './Email';
 
 import parse from "html-react-parser";
@@ -149,11 +149,8 @@ const Safaris = () => {
           <div dangerouslySetInnerHTML={{__html: summary}} />  
           <span className='sub' onClick={() => setShow(true)}>View Details</span>
           <Modal show={show} setShow={setShow} title={parse(title)}>
-              Please book Here
-              <Router>
-                <Link to="/email">Book Her!</Link>
-                <Route path="/email" component={Email} />
-              </Router>
+              Please book Here 
+              <Link to='/email'>Go to Booking</Link>
               End of booking
               {children} 
           </Modal>
