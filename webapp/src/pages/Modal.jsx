@@ -11,6 +11,8 @@ const Modal = ({ children, show, setShow}) => {
           Please book Here 
               <Link to='/email'>Go to Booking</Link>
               End of booking
+              <Link to={{ pathname: "/email", state: { modal: true }, }} className="link">View Photo</Link>
+              End of booking      
         </div>
       </div>
     );
