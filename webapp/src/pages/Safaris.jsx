@@ -1,4 +1,7 @@
 import React, { useState, useRef } from 'react';
+import {Router, Route, Link } from "react-router-dom";
+import Email from './Email';
+
 import parse from "html-react-parser";
 import moment from 'moment';
 import Bowser from "bowser";
@@ -19,8 +22,6 @@ const Safaris = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [numberOfHits, setNumberOfHits] = useState([]);
     const [pageSize, setPageSize] = useState(2);
-    const [userPos, setUserPos] = useState({lat: null, long: null});
-    const [position, setPosition] = useState({});
 
 
     const videoUrl = 'https://www.youtube.com/watch?v=3qW5z4xeiac';
@@ -148,6 +149,12 @@ const Safaris = () => {
           <div dangerouslySetInnerHTML={{__html: summary}} />  
           <span className='sub' onClick={() => setShow(true)}>View Details</span>
           <Modal show={show} setShow={setShow} title={parse(title)}>
+              Please book Here
+              <Router>
+                <Link to="/email">Book Her!</Link>
+                <Route path="/email" component={Email} />
+              </Router>
+              End of booking
               {children} 
           </Modal>
           <div className='clearfix'></div>
