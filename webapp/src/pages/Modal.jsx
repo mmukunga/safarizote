@@ -8,10 +8,12 @@ const Modal = ({ children, show, setShow}) => {
       <div className="model">
         <div className="model-content">
           <input type="button" value="Close Me!" className="close-icon" onClick={() => setShow(false)}/>
+          Please book Here
           <Router>
             <Link to="/email">Book Her!</Link>
             <Route path="/email" component={Email} />
           </Router>
+          End of booking
           <div dangerouslySetInnerHTML={{__html: children}} />
         </div>
       </div>
