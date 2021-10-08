@@ -1,0 +1,45 @@
+
+.TopMenu {
+    display: block;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 5px;
+    border: 1px solid blue;
+      height: auto;
+  }
+  
+  .TopMenu .item {
+    display: inline-block;
+    box-sizing: border-box;
+    vertical-align: middle;
+    border: 1px solid yellow; 
+    height: 100%;
+  }
+  
+  .left {
+    float: left;
+  } 
+  
+  .right {
+    float: right;
+  } 
+  
+  .divPad { 
+    padding: 5px;
+    margin: 5px;
+  }
+
+
+  @media screen and (max-width: 600px) {
+    .TopMenu {
+      text-align: left;
+      margin: 0;
+    }
+
+    .TopMenu .item {
+        float: none;
+        display: block;
+        text-align: left;
+      }
+  }
+  

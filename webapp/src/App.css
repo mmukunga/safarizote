@@ -50,35 +50,6 @@ p span {
   opacity: 0.5;
 }
 
-.TopMenu {
-  display: block;
-  overflow: hidden;
-  margin: 0 auto;
-  padding: 5px;
-  border: 1px solid blue;
-	height: auto;
-}
-
-.TopMenu .item {
-  display: inline-block;
-  box-sizing: border-box;
-  vertical-align: middle;
-  border: 1px solid yellow; 
-  height: 100%;
-}
-
-.left {
-  float: left;
-} 
-
-.right {
-  float: right;
-} 
-
-.divPad { 
-  padding: 5px;
-  margin: 5px;
-}
 
 @keyframes App-logo-spin {
   from {
@@ -107,6 +78,7 @@ p span {
 @import url("./css/stock.css");
 @import url("./css/spinner.css");
 @import url("./css/navbar.css");
+@import url("./css/topMenu.css");
 @import url("./css/backUp.css");
 @import url("./css/modal.css");
 @import url("./css/pagination.css");

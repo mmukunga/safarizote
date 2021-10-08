@@ -77,7 +77,8 @@
  @media screen and (max-width: 600px) {
     .SafariTours {
       display: block;
-      width: 98%;
+      width: 95%;
+      padding: 2px;
     }
 
     .VideoPlayer {
