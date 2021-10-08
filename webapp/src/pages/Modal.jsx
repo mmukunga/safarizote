@@ -7,12 +7,11 @@ const Modal = ({ children, show, setShow}) => {
       <div className="model">
         <div className="model-content">
           <input type="button" value="Close Me!" className="close-icon" onClick={() => setShow(false)}/>
-          <div dangerouslySetInnerHTML={{__html: children}} />
-          Please book Here 
-              <Link to='/email'>Go to Booking</Link>
-              End of booking
-              <Link to={{ pathname: "/email", state: { modal: true }, }} className="link">View Photo</Link>
-              End of booking      
+          <div dangerouslySetInnerHTML={{__html: children}} /> 
+             <p>             
+              <Link to='/email'>You can book Here </Link> &nbsp; Or &nbsp; 
+              <Link to={{ pathname: "/email", state: { modal: true }, }} className="link">Here</Link>
+             </p>  
         </div>
       </div>
     );

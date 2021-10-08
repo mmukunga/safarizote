@@ -149,9 +149,6 @@ const Safaris = () => {
           <div dangerouslySetInnerHTML={{__html: summary}} />  
           <span className='sub' onClick={() => setShow(true)}>View Details</span>
           <Modal show={show} setShow={setShow} title={parse(title)}>
-              Please book Here 
-              <Link to='/email'>Go to Booking</Link>
-              End of booking
               {children} 
           </Modal>
           <div className='clearfix'></div>
