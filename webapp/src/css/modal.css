@@ -2,22 +2,29 @@
 .model {
   position: fixed;
   background: #00000050;
-  width: 50%;
+  width: 75%;
   height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
   top: 0;
+  right: 0;
   left: 0;
+  bottom: 0;
   color:black;
   font-size: 14px;
 }
  
 .model-content {
+  width: 100%;
   position: relative;
   margin: 0 auto;
   height: auto;
   margin-top: calc(100vh - 85vh - 20px);
   background: rgb(158, 231, 169);
   border-radius: 4px;
-  padding: 20px;
+  padding: 1rem;
   border: 2px solid #966;
   overflow: auto;
 }

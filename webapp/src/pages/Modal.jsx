@@ -10,7 +10,7 @@ const Modal = ({ children, show, setShow}) => {
           <input type="button" value="Close Me!" className="close-icon" onClick={() => setShow(false)}/>
           Close Me2
           <div dangerouslySetInnerHTML={{__html: children}} /> 
-             <p>             
+             <p style={{fontSize:'24px'}}>             
               <Link to='/email'>You can book Here </Link> &nbsp; Or &nbsp; 
               <Link to={{ pathname: "/email", state: { modal: true }, }} className="link">Here</Link>
              </p>  
