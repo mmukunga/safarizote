@@ -2,8 +2,8 @@
 .model {
   position: fixed;
   background: #00000050;
-  width: 100%;
-  height: 100vh;
+  width: 50%;
+  height: auto;
   top: 0;
   left: 0;
   color:black;
@@ -19,7 +19,7 @@
   background: rgb(158, 231, 169);
   border-radius: 4px;
   padding: 20px;
-  border: 1px solid #966;
+  border: 2px solid #966;
   overflow: auto;
 }
  
