@@ -1,5 +1,5 @@
 /* Popup style */
-.model {
+.modalOverlay {
   position: fixed;
   background: #00000050;
   width: 50%;
@@ -16,7 +16,7 @@
   font-size: 14px;
 }
  
-.model-content {
+.model {
   width: 100%;
   position: relative;
   margin: 0 auto;
