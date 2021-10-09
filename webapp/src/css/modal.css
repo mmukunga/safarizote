@@ -2,7 +2,7 @@
 .model {
   position: fixed;
   background: #00000050;
-  width: 75%;
+  width: 50%;
   height: auto;
   display: flex;
   align-items: center;
@@ -30,6 +30,10 @@
 }
  
 .close-icon {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
   content: 'x';
   cursor: pointer;
   right: calc(15% - 30px);
