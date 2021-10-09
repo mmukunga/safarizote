@@ -6,7 +6,9 @@ const Modal = ({ children, show, setShow}) => {
   const modal = show && (
       <div className="model">
         <div className="model-content">
+          Close Me1
           <input type="button" value="Close Me!" className="close-icon" onClick={() => setShow(false)}/>
+          Close Me2
           <div dangerouslySetInnerHTML={{__html: children}} /> 
              <p>             
               <Link to='/email'>You can book Here </Link> &nbsp; Or &nbsp; 
