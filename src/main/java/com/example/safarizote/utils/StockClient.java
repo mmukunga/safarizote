@@ -14,7 +14,6 @@ public class StockClient {
 
     public String yahooCurrent(String ticker) throws Exception {
         String QUERYURL = "https://query1.finance.yahoo.com/v8/finance/chart/";
-		System.out.println("yahooHistory - SYMBOLS:= " + ticker);
        
         String quoteSite = QUERYURL.concat(ticker).concat("?interval=1h");
         URL yahooFeed = new URL(quoteSite);
@@ -26,9 +25,6 @@ public class StockClient {
         while ((brLine = br.readLine()) != null) {
             out.append(brLine);
         }
-
-        System.out.println(out.toString());
-
 		return out.toString();
 	}
 	
@@ -41,18 +37,16 @@ public class StockClient {
                        + "&interval=1d&indicators=quote&includeTimestamps=true";
         StringBuilder STOCK_URL = new StringBuilder(quoteSite);
         URL url = new URL(STOCK_URL.toString());
-        System.out.println("QuoteSite QuoteSite:= " + quoteSite);
 		InputStream is = url.openStream();
 		StringBuilder builder = new StringBuilder();
 	    Scanner scan = new Scanner(is);
+        
 		while(scan.hasNextLine()){
 			String line = scan.nextLine();
 			builder.append(line);
 		}
 	
 		scan.close();
-
-        System.out.println(builder.toString());	
 
         return builder.toString();
 	}

@@ -6,12 +6,6 @@ import java.nio.file.*;
 import java.nio.file.attribute.*;
 import org.slf4j.Logger;
 
-/**
- * This program copies a whole directory (including its sub files and
- * sub directories) to another, using the Java NIO API.
- *
- * @author www.codejava.net
- */
 public class CopyDir extends SimpleFileVisitor<Path> {
     private static final Logger log = LoggerFactory.getLogger(CopyDir.class);
     private Path fromPath;
@@ -67,13 +61,10 @@ public class CopyDir extends SimpleFileVisitor<Path> {
             Path dir, IOException exc)  throws IOException {
 
         Path targetPath = toPath.resolve(fromPath.relativize(dir));
-        String folderType = null;
         try {
             if (dir.toFile().lastModified() != targetPath.toFile().lastModified()) {
                 final FileTime lastModified = FileTime.fromMillis(dir.toFile().lastModified());
                 Files.setLastModifiedTime(targetPath, lastModified);
-                folderType = "NEW";
-                System.out.println("folderType:= " + folderType);
             }
 
             if(System.currentTimeMillis()-startTime > 1000) {

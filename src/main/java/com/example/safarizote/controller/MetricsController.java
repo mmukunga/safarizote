@@ -31,28 +31,17 @@ public class MetricsController {
   @RequestMapping(value = "/api/allHits",  method={RequestMethod.GET})
   public ResponseEntity<List<Metrics>> findAll() {
     List<Metrics> visits = repository.findAll();
-    for (Metrics temp : visits) {
-        System.out.println(temp);
-    }
-    System.out.println("Metrics.findAll(),  End OK!");
     return new ResponseEntity<>(visits, HttpStatus.OK);
   }
 
   @RequestMapping(value = "/api/saveVisit",  method={RequestMethod.POST})
   public ResponseEntity<List<Metrics>> save(@RequestBody Metrics visit) throws IOException {
-    System.out.println("Metrics.save(),  Start..");
-    System.out.println(visit);
-    System.out.println("Metrics.save(),  !!!!!");
-   
     visit.setDateCreated(Instant.now());
-    System.out.println(visit);
     if (!visit.getUrl().contains("googlebot.com")){
       repository.save(visit);
     }
  
     List<Metrics> visits = repository.findAll();
-   
-    System.out.println("Metrics.save()  End OK!");
     return new ResponseEntity<>(visits, HttpStatus.OK);
   }
 }

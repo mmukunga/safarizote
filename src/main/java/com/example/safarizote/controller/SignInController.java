@@ -31,8 +31,6 @@ public class SignInController {
     @RequestMapping(value = "/api/findAll",  method={RequestMethod.GET})
     public ResponseEntity<List<UserAuth>> findAll() {
         List<UserAuth> users = repository.findAll();
-        System.out.println("Login, the time at the server is now " + new Date());
-        System.out.println("findAll() End OK!");
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
@@ -41,24 +39,15 @@ public class SignInController {
         UserAuth authedUser = null;
         List<UserAuth> users = repository.findAll();
         for (UserAuth tempUser : users) {
-            System.out.println("SignInRepository logIn() FROM USER:= " + tempUser);
-            System.out.println("SignInRepository logIn() FROM DB:= " + userAuth.getToken());
-            System.out.println("COMPARE1:= " + tempUser.getEmail() + " <> " + userAuth.getEmail());
-            System.out.println("COMPARE2:= " + tempUser.getPassword() + " <> " + userAuth.getPassword());
-
             if (tempUser.getEmail().equals(userAuth.getEmail()) &&
                 tempUser.getPassword().equals(userAuth.getPassword()) ) {
                 authedUser = tempUser;
-                System.out.println("SignInRepository logIn() USER FOUND!!:= " + tempUser);
                 break;
             }
         }
 
         String token = getJWTToken(userAuth.getEmail());
         authedUser.setToken(token);
-
-        System.out.println("SignInRepository logIn() END USER tokenized!:= " + authedUser);
-        System.out.println("SignInRepository logIn() END OK!!");
         return new ResponseEntity<>(authedUser, HttpStatus.OK);
     }
      
@@ -84,15 +73,11 @@ public class SignInController {
     }
 
   private String getJWTToken(String subject) {
-        System.out.println("SignInRepository getJWTToken()! subject!:= " + subject);
-        Map<String, Object> claims = new HashMap<>();
-        claims.put("isAdmin", true);
-        String token = Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
+      Map<String, Object> claims = new HashMap<>();
+      claims.put("isAdmin", true);
+      String token = Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
           .setExpiration(new Date(System.currentTimeMillis() + 600000))
-          .signWith(SignatureAlgorithm.HS512, secretKey).compact();    
-
-        System.out.println("SignInRepository getJWTToken()! token!:= " + token);
-
+          .signWith(SignatureAlgorithm.HS512, secretKey).compact(); 
 		  return "Bearer " + token;
 	}
 

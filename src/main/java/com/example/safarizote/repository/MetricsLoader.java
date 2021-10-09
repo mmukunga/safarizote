@@ -1,8 +1,6 @@
 package com.example.safarizote.repository;
 
 import java.time.Instant;
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +18,7 @@ public class MetricsLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        List<Metrics> rms = repository.deleteByUrl("www.wanja.co.ke"); 
-        System.out.println(rms);
+        repository.deleteByUrl("www.wanja.co.ke"); 
         if (repository.count() > 0) {
             return;
         }

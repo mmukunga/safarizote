@@ -14,7 +14,6 @@ const SignIn = (props) => {
 
     const handleChange = (event) => {
       const {name, value} = event.target;
-      console.log('name: ' + name + ' value: ' + value);
       setForm({...form, [name]: value});
     }
 
@@ -37,7 +36,6 @@ const SignIn = (props) => {
     };
       
     if (UserService.isLoggedIn() != 'PleaseLogIn') {
-      console.log('Login Date ' + new Date());
       console.log('SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
       return <Redirect to={from} />
     } 

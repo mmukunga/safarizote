@@ -84,10 +84,7 @@ public class SafariLoader implements CommandLineRunner {
             .dateCreated(Instant.now())
             .build());
         
-        List<Booking> bookings = createBookings();
-        for (int i = 0; i < bookings.size(); i++) {
-            System.out.println("New Booking:= " + bookings.get(i));
-        }
+        createBookings();
 
         repository.findAll().forEach((Safari) -> {
             logger.info("{}", Safari);
@@ -106,15 +103,11 @@ public class SafariLoader implements CommandLineRunner {
         Set<Booking> hSet = new HashSet<Booking>(bookings);
 
         List<Safari> safaris = repository.findAll(); 
-        System.out.println("Add Bookings");
         for (int i = 0; i < safaris.size(); i++) {
-            System.out.println(safaris.get(i));
             Safari safari = safaris.get(i);
             safari.setBookings(hSet);
             repository.save(safari);
         }
- 
-        System.out.println("Bookings inserted OK!");
 
         return bookings;
     }

@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.ArrayList;
@@ -59,7 +58,6 @@ public class BackUpController {
       Storage storage = StorageOptions.newBuilder().setProjectId(PROJECT_ID).setCredentials(credentials).build().getService();
       Page<Blob> blobs = storage.list(BUCKET_NAME);
       List<DaoObject> map = new ArrayList<>();
-      System.out.println("BackUpController.Start..");
 
       Integer duration = 120;
 
@@ -71,15 +69,11 @@ public class BackUpController {
            map.add(obj);
       }
 
-      System.out.println("BackUp.findAll(), the time at the server is now " + new Date());
-      System.out.println("BackUp.findAll()  End OK!");
       return new ResponseEntity<>(map, HttpStatus.OK);
     }    
 
   @RequestMapping(value = "/api/categories",  method={RequestMethod.GET})
   public ResponseEntity<List<DaoObject>> findCategory() throws IOException {
-      System.out.println("findCategory.findAll(), the time at the server is now " + new Date());
-
       String BUCKET_NAME = "sms_familie_album";
       String PROJECT_ID  = "familiealbum-sms";
 
@@ -93,7 +87,6 @@ public class BackUpController {
       Page<Blob> listObjects = storage.list(BUCKET_NAME,
             Storage.BlobListOption.prefix(directoryPrefix),
             Storage.BlobListOption.currentDirectory());
-      System.out.println("1.BackUpController.listObjects " + listObjects);
 
       List<DaoObject> imageUrls = new ArrayList<>();
       Iterable<Blob> blobs = listObjects.iterateAll();
@@ -105,15 +98,12 @@ public class BackUpController {
         imageUrls.add(obj);
       }
 
-      System.out.println("findCategory.findAll(), the time at the server is now " + new Date());
-      System.out.println("findCategory.findAll()  End OK!");
-      return new ResponseEntity<>(imageUrls, HttpStatus.OK);
+       return new ResponseEntity<>(imageUrls, HttpStatus.OK);
     }    
 
     @RequestMapping(value = "/api/upload", method = RequestMethod.POST)
     public String uploadFile(@RequestParam("file") MultipartFile fileStream ) throws Exception {
         String blobName = fileStream.getName(); 
-        System.out.println("BackUpController.upload(), the time at the server is now " + new Date());
 
         String BUCKET_NAME = "sms_familie_album";
         String PROJECT_ID  = "familiealbum-sms";
@@ -129,9 +119,6 @@ public class BackUpController {
         BlobInfo blobInfo = BlobInfo.newBuilder(blobId).setContentType("image/jpeg").build();
 
         Blob blob = storage.createFrom(blobInfo, inputStream);
-
-        System.out.println("BackUpController Image URL : " +  blob.getMediaLink());
-
         return  blob.getMediaLink();
 
     }
@@ -140,8 +127,6 @@ public class BackUpController {
     public ResponseEntity<String> downloadFile(@PathVariable String image ) throws Exception {
         String BUCKET_NAME = "sms_familie_album";
         String PROJECT_ID  = "familiealbum-sms";
-        System.out.println("gcsDownload Image URL : " +  image);
-
         Resource resource = new ClassPathResource("credentials.json");
         GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());
 
@@ -162,7 +147,6 @@ public class BackUpController {
         }
 
         String fileContent = new String(blob.getContent()); 
-        System.out.println(fileContent);
 
         return new ResponseEntity<>(fileContent, HttpStatus.OK);
     }

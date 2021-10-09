@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.ArrayList;
 import org.json.JSONObject;
@@ -19,10 +18,6 @@ public class ListFolders {
         
         File file = new File("D:/Temps/safarizote/src/main/resources/example.txt");
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
-
-        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-        System.out.println("After Format : " + sdf.format(dir.lastModified()));
-
         Folder parent = Folder.builder()
             .name(dir.getName())
             .path(dir.getAbsolutePath())
@@ -31,8 +26,6 @@ public class ListFolders {
             .build(); 
 
         lft.traverseDir(path, parent);
-
-        System.out.println("Hello, FOLDERS");
 
         for (Folder folder : folders) {; 
             String jsonString = (folder.toString()).replace("\\", "/");

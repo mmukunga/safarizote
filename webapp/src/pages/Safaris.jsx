@@ -86,7 +86,6 @@ const Safaris = () => {
 
     React.useEffect(() => {
         axios.get('/api/safaris').then(response => {
-          console.log(response);
           setSafaris(response.data);
           /* Map each item of nodes to a nested array where each is a row of two columns */
           const safarisArray = safaris.map((safari) => [safari.url, safari.browser]);

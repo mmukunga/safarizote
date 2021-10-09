@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import com.example.safarizote.model.Ticker;
@@ -25,31 +24,26 @@ public class StockController {
 
     @RequestMapping(value="/api/tickers", method = RequestMethod.GET)
     public ResponseEntity<List<Ticker>> getTickers() throws Exception {
-        System.out.println("Current Stock, the time at the server is now " + new Date() + "\n");
         List<Ticker> tickers = repository.findAll();
         
         if (tickers.isEmpty()) {
             throw new Exception();
         }
         
-        System.out.println("Tickers:" + tickers ) ;
         return new ResponseEntity<>(tickers, HttpStatus.OK);
     }
 
     @RequestMapping(value="/api/current", method = RequestMethod.POST)
     public ResponseEntity<String> getCurrentStock(@RequestBody Ticker ticker) throws Exception {
-        System.out.println("Current Stock:" + ticker); 
         if (repository.findById(ticker.getId()).isEmpty()) {
             throw new Exception();
         }
         String jsonObject = stockClient.yahooCurrent(ticker.getSymbol());
-        System.out.println("Current Stock:" + jsonObject );
         return new ResponseEntity<>(jsonObject, HttpStatus.OK);
     }
 
     @RequestMapping(value="/api/history", method = RequestMethod.POST)
     public ResponseEntity<String> getStockHistory(@RequestBody Ticker ticker) throws Exception {
-        System.out.println("Stock History:" + ticker); 
         if (repository.findById(ticker.getId()).isEmpty()) {
             throw new Exception();
         }
@@ -59,18 +53,10 @@ public class StockController {
         Calendar cal = Calendar.getInstance();
 
         cal.setTime(toTime);
-        System.out.println(cal.get(Calendar.DAY_OF_MONTH));
         cal.add(Calendar.DATE, -24);
         
         long from = cal.getTime().getTime() / 1000L;
-        java.util.Date fromTime = new java.util.Date((long)from*1000);
-        System.out.println("**TO:= " + toTime);
-        System.out.println("**FROM:= " + fromTime);
-
-        String jsonObject = stockClient.yahooHistory(ticker.getSymbol(), from, to);
-
-        System.out.println("Stock History:" + jsonObject ) ;
-        
+        String jsonObject = stockClient.yahooHistory(ticker.getSymbol(), from, to);      
         return new ResponseEntity<>(jsonObject, HttpStatus.OK);
     }
 }

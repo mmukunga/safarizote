@@ -22,9 +22,6 @@ public class ShoppingController {
   @RequestMapping(value = "/api/shopping",  method={RequestMethod.GET})
   public ResponseEntity<List<Shopping>> shopping(){
     List<Shopping> sourceSet = repository.findAll();
-    for (int i = 0; i < sourceSet.size(); i++) {
-        System.out.println(sourceSet.get(i));
-    }
     return new ResponseEntity<>(sourceSet, HttpStatus.OK);
   }
 }

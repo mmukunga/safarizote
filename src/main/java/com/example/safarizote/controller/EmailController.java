@@ -25,13 +25,11 @@ public class EmailController {
     @RequestMapping(value="/api/email",  method={RequestMethod.GET})
     public ResponseEntity<List<Email>> emails() {
         List<Email> emails = repository.findAll();
-        System.out.println("Emails() End OK!");
         return new ResponseEntity<>(emails, HttpStatus.OK);
     }
 
     @RequestMapping(value="/api/sendEmail",  method={RequestMethod.POST})
     public ResponseEntity<Email> sendEmail(@RequestBody Email email) {
-        System.out.println("Email " + email);
         try {
             emailService.sendEmail(email);
         } catch (Exception e) {
@@ -39,7 +37,6 @@ public class EmailController {
         }
 
         repository.save(email);
-        System.out.println("Emails() Saved End OK!");
         return new ResponseEntity<>(email, HttpStatus.OK);
     }
 }

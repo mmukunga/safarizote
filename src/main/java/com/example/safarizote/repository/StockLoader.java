@@ -46,9 +46,7 @@ public class StockLoader implements CommandLineRunner {
         Date now = new Date();
         long period2 = now.getTime() / 1000L;
 
-        String jsonObjectHist = stockClient.yahooHistory(ticker, period1, period2);
-        System.out.println("jsonObjectHist:= " + jsonObjectHist);
-        String jsonObject = stockClient.yahooCurrent(ticker); 
-        System.out.println("jsonObject:= " + jsonObject);          
+        stockClient.yahooHistory(ticker, period1, period2);
+        stockClient.yahooCurrent(ticker);      
     }
 }
