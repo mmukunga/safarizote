@@ -14,7 +14,7 @@ export default function SwitchButton() {
   };
  
   return ( 
-    <label>Switch to
+    <label>Switch to: 
       <input type="button" className={`btn ${darkMode ? "btn-dark" : "btn-light"}`} onClick={onClick} 
             value={darkMode ? "Light Mode" : "Dark Mode"}/>
     </label>  
