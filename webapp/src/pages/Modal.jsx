@@ -5,9 +5,9 @@ import {Link } from "react-router-dom";
 const Modal = ({ children, show, setShow}) => {
   const modal = show && (
         <div className="model">
-             <input type="button" value="X" className="close-icon" onClick={() => setShow(false)}/>
+             <input type="button" value="x" className="close-icon" onClick={() => setShow(false)}/>
              <div dangerouslySetInnerHTML={{__html: children}} /> 
-             <p style={{fontSize:'24px'}}>             
+             <p className="sub">             
                 <Link to='/email'>You can book Here </Link> &nbsp; Or &nbsp; 
                 <Link to={{ pathname: "/email", state: { modal: true }, }} className="link">Here</Link>
              </p>  
