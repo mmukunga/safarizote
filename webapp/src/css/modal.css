@@ -11,6 +11,7 @@
   border: 2px solid #966;
   overflow: auto;
   width: 500px;
+  transition: 0.0s;
 }
  
 .close-icon {
@@ -37,5 +38,6 @@
 @media screen and (max-width: 600px) { 
   .modal { 
     width:90%; 
+    left: 10%;
   }
 }
