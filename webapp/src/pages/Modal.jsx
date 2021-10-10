@@ -4,7 +4,6 @@ import {Link } from "react-router-dom";
 
 const Modal = ({ children, show, setShow}) => {
   const modal = show && (
-      <div className="modalOverlay">
         <div className="model">
              <input type="button" value="X" className="close-icon" onClick={() => setShow(false)}/>
              <div dangerouslySetInnerHTML={{__html: children}} /> 
@@ -13,7 +12,6 @@ const Modal = ({ children, show, setShow}) => {
                 <Link to={{ pathname: "/email", state: { modal: true }, }} className="link">Here</Link>
              </p>  
         </div>
-      </div>
     );
   
     return ReactDOM.createPortal(modal, document.getElementById("modal-root"));
