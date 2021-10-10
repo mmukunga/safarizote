@@ -179,7 +179,7 @@ const Safaris = () => {
     }
     
     return (
-        <video ref={videoRef} controls autoPlay muted className="video-player">
+        <video ref={videoRef} controls  muted className="video-player">
           {/* Of course it's the big buck bunny! */}
           <source src={props.video} type="video/mp4"/>
         </video>
