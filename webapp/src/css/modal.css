@@ -24,10 +24,7 @@
   text-align: center;
   border: 1px solid #900;
   z-index: 1;
-  
-  content: 'x';
   cursor: pointer;
-
   color: #900;
   top: 0;
   right: 0;
