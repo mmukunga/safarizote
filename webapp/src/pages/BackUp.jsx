@@ -65,15 +65,16 @@ function BackUp() {
  return (
   <Card className="InnerCard" fontColor="black" >
       <div style={{border:'2px solid brown'}}>
-        <strong>Select folder</strong>
-        <form onSubmit={handleSubmit}>
-          <select onChange={onChange}>
-            <option value={'DefaultValue'}>{'..Select..'}</option>
-            {options && options.map((folder, idx) => (
-              <option key={idx} value={folder}>{folder}</option>
-            ))}
-          </select>
-          Selected folder: {value}
+        <strong>Folders</strong>
+        <form onSubmit={handleSubmit} className="CssForm">
+          <lable>Selected folder: {value}
+            <select onChange={onChange}>
+              <option value={'DefaultValue'}>{'..Select..'}</option>
+              {options && options.map((folder, idx) => (
+                <option key={idx} value={folder}>{folder}</option>
+              ))}
+            </select>
+          </lable>
           <input type="submit" value="Submit" />
         </form>
         {isLoading ? (

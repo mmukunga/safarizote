@@ -73,6 +73,19 @@ div.loading .spinner {
     text-align: left;
   }
 
+  .CssForm  label {
+    display: block;
+    width: 100%;
+  }
+
+  .CssForm  select {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    width: 100%;
+    border: 2px solid orchid;
+  }
+ 
   div.gallery {
     margin: 0 auto;
   }
