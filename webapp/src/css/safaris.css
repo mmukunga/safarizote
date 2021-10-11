@@ -1,7 +1,11 @@
+.SafariContainer {
+  overflow: hidden;
+  border: 2px solid rgb(236, 146, 10);
+}
+
 .SafariTours {
-  text-align: left;
-  display:table-cell;
-  height: auto;
+  text-align: center;
+  display: inline-block;
   vertical-align: top;
   width: 450px;
   padding: 5px;

@@ -157,7 +157,7 @@ const Safaris = () => {
     
     const videos = props.videos;
     return (
-      <div>
+      <div className="SafariContainer"> 
         {props && props.data.map((card, idx) =>{ return (
           <Accordion title={card.title} summary={card.summary} video={videos[idx]} idx={idx}>
             {card.details} 
