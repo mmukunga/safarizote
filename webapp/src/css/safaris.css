@@ -1,14 +1,12 @@
-.SafarisWrap {
-  overflow: auto;
+.divContainer {
+  display: flex;
   border: 2px solid rgb(236, 146, 10);
   height: 50vh;
 }
 
 .SafariTours {
   text-align: left;
-  display: inline-block;
-  height: 100%;
-  vertical-align: top;
+  display: block;
   width: 450px;
   padding: 5px;
   margin: 0 20px;
