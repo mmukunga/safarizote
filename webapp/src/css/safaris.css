@@ -6,7 +6,7 @@
 
 .SafariTours {
   display: table-cell;
-  vertical-align: middle;
+  vertical-align: top;
   margin: 0 auto;
   width: 450px;
   padding: 5px;
@@ -26,6 +26,14 @@
 .oddRow {
   border-top: 2px outset#90dff5;
   margin-top: 5px;
+}
+
+.sub {
+  cursor: pointer;
+  color: #0fc0fc;
+  text-decoration: underline;
+  font-size: 18px;
+  float: left;
 }
 
 .VideoPlayer {
