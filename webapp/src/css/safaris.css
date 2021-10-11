@@ -1,11 +1,13 @@
 .divsContainer {
   display: table;
+  margin: 0 auto;
   border: 2px solid rgb(236, 146, 10);
 }
 
 .SafariTours {
   display: table-cell;
   vertical-align: middle;
+  margin: 0 auto;
   width: 450px;
   padding: 5px;
   border: 2px solid yellow;
@@ -80,6 +82,7 @@
  @media screen and (max-width: 600px) {
     .SafariTours {
       display: block;
+      margin: 0 auto;
       width: 95%;
       padding: 2px;
     }
