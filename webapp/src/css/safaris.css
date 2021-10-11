@@ -1,15 +1,11 @@
 .divsContainer {
-  box-sizing: border-box;
-  margin: 0 auto;
-  align-items: center;
-  justify-content: center;
+  display: table;
   border: 2px solid rgb(236, 146, 10);
-  height: 50vh;
 }
 
 .SafariTours {
-  box-sizing: border-box;
-  display: inline-block;
+  display: table-cell;
+  vertical-align: middle;
   width: 450px;
   padding: 5px;
   border: 2px solid yellow;
