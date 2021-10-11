@@ -1,15 +1,15 @@
-.SafariContainer {
-  overflow: hidden;
+.SafarisWrap {
+  overflow: auto;
   border: 2px solid rgb(236, 146, 10);
-  height: 100%;
+  height: 100%
 }
 
 .SafariTours {
   text-align: left;
   display: inline-block;
+  height: auto;
   vertical-align: top;
   width: 450px;
-  height: 100%;
   padding: 5px;
   border: 2px solid yellow;
 }
