@@ -1,5 +1,7 @@
 .divContainer {
   display: flex;
+  align-items: center;
+  justify-content: center;
   border: 2px solid rgb(236, 146, 10);
   height: 50vh;
 }
@@ -7,7 +9,7 @@
 .SafariTours {
   width: 450px;
   padding: 5px;
-  margin: 0 20px;
+  margin: auto;
   border: 2px solid yellow;
 }
 
