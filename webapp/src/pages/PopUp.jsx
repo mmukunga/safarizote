@@ -10,7 +10,9 @@ const PopUp = (props) => {
     <div className='overlay'>
       <div className='popUp'>
         <p>Hello World!</p>
-        <button onClick={props.handleClose}>Close Me!</button>
+        <label>Close Me!
+           <input type="button" onClick={props.handleClose}/>
+        </label>
       </div>
     </div>,
     document.getElementById('portal')
