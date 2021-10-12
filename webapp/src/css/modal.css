@@ -15,15 +15,19 @@
 }
  
 .close-icon {
-  position: absolute;
+  position: relative;
   background: #ededed;
-  text-align: center;
-  border: 1px solid #900;
-  z-index: 1;
+  text-align: right;
+  border: 2px solid #900;
+  border-radius: 15%;
+  width: 5%;
+  float: right;
+  z-index: auto;
   cursor: pointer;
   color: #900;
   top: 0;
   right: 0;
+
   font-size: 20px;
   font-weight: bold;
 }
