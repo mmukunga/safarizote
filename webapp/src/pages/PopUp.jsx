@@ -13,7 +13,9 @@ const PopUp = (props) => {
         <label>Close Me!
            <input type="button" onClick={props.handleClose}/>
         </label>
-        <div dangerouslySetInnerHTML={{__html: props.children}} /> 
+        <div class="popUp-body">
+           <div dangerouslySetInnerHTML={{__html: props.children}} /> 
+        </div>
       </div>
     </div>,
     document.getElementById('portal')
