@@ -159,7 +159,7 @@ const Safaris = () => {
           <Modal show={show} setShow={setShow} title={parse(title)}>
               {children} 
           </Modal>
-          <PopUp open={open} handleClose={handleClose}/>
+          <PopUp open={open} handleClose={handleClose}>{children}</PopUp>
           <div className='clearfix'></div>
         </div>
       )
