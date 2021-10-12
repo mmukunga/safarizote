@@ -4,7 +4,7 @@ import {Link } from "react-router-dom";
 
 const Modal = ({ children, show, setShow}) => {
   const modal = show && (
-        <div className="model">
+        <div className="modal">
              <input type="button" value="x" className="close-icon" onClick={() => setShow(false)}/>
              <div dangerouslySetInnerHTML={{__html: children}} /> 
              <span className="sub">             

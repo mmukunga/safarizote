@@ -34,5 +34,13 @@
     top: 5%;
     left: 10%;
     padding: 1px;
+    border: 1px solid #009;
+  }
+  .modal {
+    left: 50%;
+    top: 50%;
+    width: 50%;
+    height: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
   }
 }
