@@ -151,8 +151,10 @@ const Safaris = () => {
           <div className="VideoPlayer">
             <VideoPlayer video={video} className="video-player"/> 
           </div>
-          <div dangerouslySetInnerHTML={{__html: summary}} />  
-          <button onClick={() => setOpen(true)}> Open Me! </button>
+          <div dangerouslySetInnerHTML={{__html: summary}} /> 
+          <label> Open Me!
+             <input type="button" onClick={() => setOpen(true)}/>
+          </label>
           <span className='sub' onClick={() => setShow(true)}>View Details and Prices</span>
           <Modal show={show} setShow={setShow} title={parse(title)}>
               {children} 
