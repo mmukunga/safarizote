@@ -152,7 +152,7 @@ const Safaris = () => {
             <VideoPlayer video={video} className="video-player"/> 
           </div>
           <div dangerouslySetInnerHTML={{__html: summary}} /> 
-          <label> Open Me!
+          <label>Open Me!
              <input type="button" onClick={() => setOpen(true)}/>
           </label>
           <span className='sub' onClick={() => setShow(true)}>View Details and Prices</span>
