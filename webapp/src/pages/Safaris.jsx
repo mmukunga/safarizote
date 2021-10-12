@@ -16,6 +16,7 @@ import the_globe from "../media/the_globe.mov";
 import axios from 'axios';
 import Card from './Card';
 import Modal from "./Modal";
+import PopUp from "./PopUp";
 
 const Safaris = () => {
     const [safaris, setSafaris] = useState([]);
@@ -138,6 +139,11 @@ const Safaris = () => {
     console.log(props);
     const Accordion = ({children, title, summary, video, idx}) => {
       const [show, setShow] = useState(false);
+      const [open, setOpen] = useState(false);
+
+      const handleClose = () => {
+        setOpen(false)
+      }
 
       const mod = idx % 2;
       return (
@@ -146,10 +152,12 @@ const Safaris = () => {
             <VideoPlayer video={video} className="video-player"/> 
           </div>
           <div dangerouslySetInnerHTML={{__html: summary}} />  
+          <button onClick={() => setOpen(true)}> Open Me! </button>
           <span className='sub' onClick={() => setShow(true)}>View Details and Prices</span>
           <Modal show={show} setShow={setShow} title={parse(title)}>
               {children} 
           </Modal>
+          <PopUp open={open} handleClose={handleClose}/>
           <div className='clearfix'></div>
         </div>
       )
@@ -190,6 +198,7 @@ const Safaris = () => {
   return (
     <Card className="InnerCard" fontColor="black">
         <div id="modal-root"></div>
+        <div id='portal'></div>
         <ul id="page-numbers">
          <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Hits: { numberOfHits.length } </span></li> 
          <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Our Safaris: </span></li> 
