@@ -10,7 +10,7 @@ const PopUp = (props) => {
     <div className='overlay'>
       <div className='popUp'>
         <input type="button" value="x" className="close-icon" onClick={props.handleClose}/>
-        <div class="popUp-body">
+        <div class="popUp-content">
            <div dangerouslySetInnerHTML={{__html: props.children}} /> 
         </div>
       </div>
