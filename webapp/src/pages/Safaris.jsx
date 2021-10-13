@@ -1,6 +1,4 @@
 import React, { useState, useRef } from 'react';
-import {Link } from "react-router-dom";
-import Email from './Email';
 
 import parse from "html-react-parser";
 import moment from 'moment';
@@ -15,7 +13,6 @@ import the_globe from "../media/the_globe.mov";
 
 import axios from 'axios';
 import Card from './Card';
-import Modal from "./Modal";
 import PopUp from "./PopUp";
 
 const Safaris = () => {
@@ -23,7 +20,6 @@ const Safaris = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [numberOfHits, setNumberOfHits] = useState([]);
     const [pageSize, setPageSize] = useState(2);
-
 
     const videoUrl = 'https://www.youtube.com/watch?v=3qW5z4xeiac';
 
@@ -138,7 +134,6 @@ const Safaris = () => {
   const SafariTours = props => {
     console.log(props);
     const Accordion = ({children, title, summary, video, idx}) => {
-      const [show, setShow] = useState(false);
       const [open, setOpen] = useState(false);
 
       const handleClose = () => {
@@ -152,12 +147,8 @@ const Safaris = () => {
             <VideoPlayer video={video} className="video-player"/> 
           </div>
           <div dangerouslySetInnerHTML={{__html: summary}} /> 
-          <span className='sub' onClick={() => setOpen(true)}>View Details and Prices1</span>
-          <span className='sub' onClick={() => setShow(true)}>View Details and Prices2</span>
-          <Modal show={show} setShow={setShow} title={parse(title)}>
-              {children} 
-          </Modal>
-          <PopUp open={open} handleClose={handleClose}>{children}</PopUp>
+          <span className='sub' onClick={() => setOpen(true)}>View Details and Prices</span>
+          <PopUp open={open} title={parse(title)} handleClose={handleClose}>{children}</PopUp>
           <div className='clearfix'></div>
         </div>
       )
