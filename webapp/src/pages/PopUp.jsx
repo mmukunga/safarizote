@@ -11,7 +11,7 @@ const PopUp = (props) => {
      <div className='overlay'>
         <div className='popUp'>
           <div style={{width:'100%'}}>
-            <input type="button" style={{padding:'4px',float:'right',borderRadius:'8px',color:'red'}} value="X" onClick={props.handleClose}/>
+            <input type="button" style={{padding:'4px',float:'right',borderRadius:'4px',color:'red'}} value="X" onClick={props.handleClose}/>
           </div>
           <div class="popUp-content">
             <div dangerouslySetInnerHTML={{__html: props.children}} /> 
