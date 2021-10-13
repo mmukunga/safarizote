@@ -11,7 +11,7 @@ const PopUp = (props) => {
      <div className='overlay'>
         <div className='popUp'>
           <div style={{width:'100%'}}>
-            <input type="button" className="CloseMe" value="X" onClick={props.handleClose}/>
+            <input type="button" className="CloseMe" value="x" onClick={props.handleClose}/>
           </div>
           <div class="popUp-content">
             <strong>{props.title}</strong>
