@@ -10,10 +10,10 @@ const PopUp = (props) => {
   const modal = props.open && (
      <div className='overlay'>
         <div className='popUp'>
+          <div class="popUp-content">            
           <div style={{width:'100%'}}>
             <input type="button" className="CloseMe" value="x" onClick={props.handleClose}/>
           </div>
-          <div class="popUp-content">
             <strong>{props.title}</strong>
             <div dangerouslySetInnerHTML={{__html: props.children}} /> 
             <span className="sub">  
