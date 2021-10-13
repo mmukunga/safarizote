@@ -9,8 +9,8 @@ const PopUp = (props) => {
   return ReactDOM.createPortal(
     <div className='overlay'>
       <div className='popUp'>
-        <div style={{width:'100%', textAlign:'right'}}>
-          <input type="button" value="X" onClick={props.handleClose}/>
+        <div style={{width:'100%'}}>
+          <input type="button" style={{float:'right'}} value="X" onClick={props.handleClose}/>
         </div>
         <div class="popUp-content">
            <div dangerouslySetInnerHTML={{__html: props.children}} /> 
