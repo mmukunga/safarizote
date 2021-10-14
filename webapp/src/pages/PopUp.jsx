@@ -14,7 +14,7 @@ const PopUp = (props) => {
             <a href="#" className="CloseMe" onClick={props.handleClose}>x</a>
           </div>
           <div class="popUp-content">  
-            <strong>{props.title}</strong>          
+            <h3>{props.title}</h3>          
             <span className="sub">  
                 <Link to={{ pathname: "/email", state: { modal: true }, }} className="link">You can book Here</Link>
               </span>  
