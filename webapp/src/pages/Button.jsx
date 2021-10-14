@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { ThemeContext } from "./ThemeContext";
 
 export default function SwitchButton() {
-  const [isToggled, setIsToggled] = useState(false);
+  const [isToggled, setIsToggled] = React.useState(false);
   const theme = useContext(ThemeContext);
   const darkMode = theme.state.darkMode;
 
