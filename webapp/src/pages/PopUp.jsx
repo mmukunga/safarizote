@@ -10,11 +10,13 @@ const PopUp = (props) => {
   const modal = props.open && (
      <div className='overlay'>
         <div className='popUp'>          
-          <div style={{width:'100%'}}>
-            <a href="#" className="CloseMe" onClick={props.handleClose}>x</a>
+          <div classNme="popUpHeader">
+            <div className="CloseMe">
+              <a href="#" onClick={props.handleClose}>x</a>
+            </div>
+            <div style={{border:'1px solid white'}}>{props.title}</div>
           </div>
-          <div class="popUp-content">  
-            <h3>{props.title}</h3>          
+          <div class="popUp-content">            
             <span className="sub">  
                 <Link to={{ pathname: "/email", state: { modal: true }, }} className="link">You can book Here</Link>
               </span>  
