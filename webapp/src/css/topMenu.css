@@ -4,8 +4,9 @@
     overflow: hidden;
     margin: 0 auto;
     padding: 5px;
-    border: 1px solid blue;
-      height: auto;
+    border: 2px solid #ec920a;
+    border-radius: 2%;
+    height: auto;
   }
   
   .TopMenu .item {
