@@ -7,10 +7,11 @@
 .SafariTours {
   display: table-cell;
   vertical-align: top;
-  margin: 0 auto;
+  margin: 2px auto;
   width: 450px;
   padding: 5px;
-  border: 2px solid yellow;
+  border-radius: 2%;
+  border: 2px solid silver;
 }
 
 .SafariTitle {

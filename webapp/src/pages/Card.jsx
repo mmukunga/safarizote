@@ -9,9 +9,9 @@ const Card = (props) => {
       margin: '2px',
       fontColor: `${fontColor}`,
       padding: '2px',
-      border: '2px solid red',
+      border: '0px solid red',
       '@media and screen (max-width: 600px)': {
-          border: '2px solid rgb(163, 3, 25)',
+          border: '0px solid rgb(163, 3, 25)',
           fontSize: '3.5vw',
           width: '100%',
       }
