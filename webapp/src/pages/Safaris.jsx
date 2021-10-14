@@ -132,7 +132,6 @@ const Safaris = () => {
     });
 
   const SafariTours = props => {
-    console.log(props);
     const Accordion = ({children, title, summary, video, idx}) => {
       const [open, setOpen] = useState(false);
 
