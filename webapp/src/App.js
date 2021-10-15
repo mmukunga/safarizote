@@ -22,7 +22,7 @@ import UserService from './pages/UserService';
 
 function App() {
   let history = useHistory();
-  const [isToggled, setIsToggled] = useState(false);
+  const [isToggled, setIsToggled] = React.useState(false);
   const theme = useContext(ThemeContext);
   const darkMode = theme.state.darkMode;
 
