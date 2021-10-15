@@ -16,7 +16,7 @@ export default function SwitchButton({isToggled, onToggle}) {
  
   return ( 
     <label className="toggle-switch">
-      adsda <input type="checkbox" checked={isToggled} onChange={switchToggle} />  gdfgdfg
+     <input type="checkbox" checked={isToggled} onChange={switchToggle} />
     <span className="switch" />
   </label>
   );
