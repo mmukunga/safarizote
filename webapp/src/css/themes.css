@@ -1,7 +1,9 @@
 .toggle-switch {
   position: relative;
-  border: 2px solid #6699cc;
+  border: 2px solid #69c;
+  border-radius: 5px;
   display: inline-block;
+  vertical-align: middle;
   width: 50px;
   height: 15px;
 }

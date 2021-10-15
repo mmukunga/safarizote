@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "./ThemeContext";
 
-export default function SwitchButton({isToggled, onToggle}) {
+export default function SwitchButton() {
   const theme = React.useContext(ThemeContext);
   const darkMode = theme.state.darkMode;
 
   const switchToggle = () => {
-    onToggle();
     if (darkMode) {
       theme.dispatch({ type: "LIGHTMODE" });
     } else {
@@ -16,7 +15,7 @@ export default function SwitchButton({isToggled, onToggle}) {
  
   return ( 
     <label className="toggle-switch">
-     <input type="checkbox" checked={isToggled} onChange={switchToggle} />
+     <input type="checkbox" checked={isToggled} className={`btn ${darkMode ? "btn-dark" : "btn-light"}`}  onChange={switchToggle} />
     <span className="switch" />
   </label>
   );

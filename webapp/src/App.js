@@ -22,7 +22,6 @@ import UserService from './pages/UserService';
 
 function App() {
   let history = useHistory();
-  const [isToggled, setIsToggled] = React.useState(false);
   const theme = useContext(ThemeContext);
   const darkMode = theme.state.darkMode;
 
@@ -102,7 +101,7 @@ function App() {
             </a>
           </div>
           <div class="item right">
-          <SwitchButton isToggled={isToggled} onToggle={() => setIsToggled(!isToggled)}/>
+          <SwitchButton/>
            &nbsp;{UserService.isLoggedIn() != null ? 'Is Logged in!' : 'Please login!'}  
            &nbsp;<a href="" className="Nav_link LogOut" onClick={logout}></a> 
           </div>
