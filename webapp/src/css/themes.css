@@ -5,7 +5,7 @@
   display: inline-block;
   vertical-align: middle;
   width: 50px;
-  height: 15px;
+  height: 5px;
 }
 .toggle-switch input[type="checkbox"] {
   /*display: none;*/
