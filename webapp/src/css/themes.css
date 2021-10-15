@@ -15,7 +15,7 @@
 .toggle-switch .switch {
   position: absolute;
   cursor: pointer;
-  background-color: #ccc;
+  background-color: #cfc;
   border: 2px solid blue;
   border-radius: 25px;
   top: 0;
