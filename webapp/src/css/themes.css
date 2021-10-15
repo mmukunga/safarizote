@@ -1,3 +1,11 @@
+.toggle-switch {
+  width: 50px;
+  height: 25px;
+}
+.toggle-switch input[type="checkbox"] {
+  display: none;
+}
+
 .toggle-switch .switch {
   cursor: pointer;
   background-color: #ccc;
