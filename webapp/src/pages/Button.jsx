@@ -15,7 +15,7 @@ export default function SwitchButton() {
  
   return ( 
     <label className="toggle-switch">
-     <input type="checkbox" checked={isToggled} className={`btn ${darkMode ? "btn-dark" : "btn-light"}`}  onChange={switchToggle} />
+     <input type="checkbox" checked={darkMode} className={`btn ${darkMode ? "btn-dark" : "btn-light"}`}  onChange={switchToggle} />
     <span className="switch" />
   </label>
   );
