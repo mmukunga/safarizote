@@ -1,17 +1,20 @@
 .toggle-switch {
-  border: 1px solid #6699cc;
+  position: relative;
+  border: 2px solid #6699cc;
   display: inline-block;
   width: 150px;
   height: 25px;
 }
 .toggle-switch input[type="checkbox"] {
   /*display: none;*/
-  border: 1px solid green;
+  border: 2px solid green;
 }
 
 .toggle-switch .switch {
+  position: absolute;
   cursor: pointer;
   background-color: #ccc;
+  border: 2px solid blue;
   border-radius: 25px;
   top: 0;
   right: 0;
@@ -21,6 +24,7 @@
 }
 
 .toggle-switch .switch::before {
+  position: absolute;
   content: "";
   left: 2px;
   top: 2px;
