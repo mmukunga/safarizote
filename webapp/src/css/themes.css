@@ -1,3 +1,10 @@
+.toggle-switch .switch {
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 25px;
+  transition: background-color 0.2s ease;
+}
+
 .toggle-switch .switch::before {
   content: "";
   width: 21px;
