@@ -1,9 +1,10 @@
 .toggle-switch {
-  width: 50px;
+  width: 150px;
   height: 25px;
 }
 .toggle-switch input[type="checkbox"] {
-  display: none;
+  /*display: none;*/
+  border: 1px solid green;
 }
 
 .toggle-switch .switch {
