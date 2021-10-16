@@ -141,7 +141,7 @@ import Card from './Card';
 
         axios.post('/api/forecast', country, headers).then(response => {
             console.log(response);
-            setList(response.data);
+            setList(response.data.list);
             setForecast(response.data);
         }).catch(err => {
             console.log(err);
