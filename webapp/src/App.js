@@ -88,17 +88,12 @@ function App() {
     <div className="App" style={imageStyles}>
       <header className="App-header"> 
         <div class="TopMenu">
-          <div class="item left"><img src={logo} className="App-logo" alt="logo" /></div>
+          <div class="item left"><img src={logo} className="App-logo" alt="logo"/></div>
           <div class="item divPad">
-            Edit <code>src/App.js</code> and save to reload.&nbsp;&nbsp;  
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
+            Africa Safari! <code>Like Masaai Mara.</code> The most out-there tour anywhere &nbsp;&nbsp;  
+            <Link to={{pathname: "/email"}}>
+              Learn more
+            </Link>
           </div>
           <div class="item right">
           <SwitchButton/>

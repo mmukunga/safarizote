@@ -19,6 +19,9 @@ const AboutUs = () => {
 
     return (
         <Card className="InnerCard" fontColor="black" >
+           <h3>Africa Safari</h3>
+           <h4>The most out-there tour anywhere</h4>
+           <p>Its name means "sunny place" in the Berber tongue, but "Africa" may as well be a synonym for "vastness". A truly massive continent comprising over 20% of the planet’s available land, Africa is home to the world’s largest desert, its longest river, its hottest temperatures, and hundreds of dialects and cultures spread among a billion people. But as mind-boggling as it seems at first, you’ll be amazed how intimate it feels once you get to know it. This is adventure’s last great frontier. Come blaze some trails.</p>
            <h4>About Us!</h4>
            <p>16 years in the Safari industry offered an opportunity to gain a wealth of experience, knowledge, 
               enthusiasm and immense passion. Today Tufayn Mangal stands proud as a Professional Photographer,
