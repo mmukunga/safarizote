@@ -17,9 +17,9 @@
     border-radius: 8px;
     border: 2px solid white;
     position: fixed;
-    top: 50%;
+    top: 52%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-52%, -50%);
     z-index: 1000;
     display: flex;
     flex-direction: column;
