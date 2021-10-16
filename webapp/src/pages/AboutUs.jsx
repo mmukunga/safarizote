@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
-import { usePosition } from 'use-position';
+import useGeolocation from "react-hook-geolocation";
 
 import Card from './Card';
 
 const AboutUs = () => {
     const [names, setNames] = useState(["Simon Mukunga", "steve", "carol"]);
-    const { latitude, longitude, error } = usePosition();
+    const geolocation = useGeolocation();
 
     React.useEffect(() => {
       document.title = "Kenya Safari Specialist and a Professional Safari Guide in flora and fauna"; 
       console.log('About Us!!')
-      if (latitude && longitude && !error) {
-        // Fetch weather data here.
-        console.log('latitude:= '  + latitude);
-        console.log('longitude:= ' + longitude);
-      }
+      var coords = {
+         lat: geolocation.latitude,
+         lng: geolocation.longitude,
+       };
+       console.log(coords);
     }, []);
 
 

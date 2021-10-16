@@ -47,5 +47,6 @@
   @media screen and (max-width: 700px) {
     .popUp {
       background-color: #A40000;
+      padding: 0 1vw 0 1vw
     }
   }
