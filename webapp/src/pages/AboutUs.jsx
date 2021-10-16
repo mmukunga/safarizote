@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
-import useGeolocation from "react-hook-geolocation";
 
 import Card from './Card';
 
 const AboutUs = () => {
     const [names, setNames] = useState(["Simon Mukunga", "steve", "carol"]);
-    const geolocation = useGeolocation();
+    const [ip, setIP] = useState('');
+
+    const getData = async () => {
+      const res = await axios.get('https://geolocation-db.com/json/')
+      console.log(res.data);
+      setIP(res.data.IPv4)
+    }
 
     React.useEffect(() => {
       document.title = "Kenya Safari Specialist and a Professional Safari Guide in flora and fauna"; 
       console.log('About Us!!')
-      var coords = {
-         lat: geolocation.latitude,
-         lng: geolocation.longitude,
-       };
-       console.log(coords);
+      getData();
+      console.log('IP:= ' + ip);
     }, []);
 
 
