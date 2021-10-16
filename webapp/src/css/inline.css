@@ -3,7 +3,9 @@
     flex-direction: row; 
     justify-content: center; 
     align-items: center; 
-    border: 4px dotted white; 
+    margin: 1px;
+    border: 1px dotted #c00;
+    border-radius: 10px;
   }
   
   .form-inline label {
@@ -32,5 +34,6 @@
 
     .form-inline input[type=text], select {
       margin: 10px 0;
+      width: 95%
     }
   }
