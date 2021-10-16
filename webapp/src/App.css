@@ -94,12 +94,4 @@ p span {
   .Logo {
     height: 28px;
   }
-
-  .NavMenu {
-    text-align: center;
-  }
-
-  .NavMenu .Nav_link {
-    display: inline-block;
-  }
 }

@@ -18,12 +18,16 @@
 .Nav_link {
   display: inline-block;
   vertical-align: middle;
-  border: 2px solid #fff;
+  border: 1px dotted #c00;
   font-weight: normal;
   border-radius: 10%;
   padding: 2px;
-  margin: 1px;
+  margin: 2px;
   color: #f00;
+}
+
+.Nav_link:link {
+  text-decoration: none;
 }
 
 .Link_link {
@@ -50,6 +54,12 @@
   cursor: pointer;
 }
 
-.Nav_link:link {
-  text-decoration: none;
+@media screen and (max-width: 600px) {
+  .NavMenu {
+    text-align: center;
+  }
+
+  .NavMenu .Nav_link {
+    display: inline-block;
+  }
 }
