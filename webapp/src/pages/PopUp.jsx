@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Link } from "react-router-dom";
+import {NavLink } from "react-router-dom";
 
 const PopUp = (props) => {
   if (!props.open) { 
@@ -17,7 +17,7 @@ const PopUp = (props) => {
             <div style={{border:'1px solid white'}}>
               {props.title}                      
               <p className="sub">  
-                FOR RESERVATION ENQUIRIES - Send us an <Link to={{ pathname: "/email", state: { modal: true }, }} className="link">E-Mail</Link> 
+                FOR RESERVATION ENQUIRIES - Send us an <NavLink to={{ pathname: "/email", state: { modal: true }, }} className="Nav_link">E-Mail</NavLink> 
                 with your queries.
               </p>  
             </div>
