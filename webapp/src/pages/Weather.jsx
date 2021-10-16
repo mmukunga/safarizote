@@ -81,7 +81,7 @@ import Card from './Card';
 
       axios.post('/api/forecast', country, headers)
         .then(response => {
-          setList(response.data.list);
+          setList([...response.data]);
           setForecast(response.data);
        }).catch(err => {console.log(err)});
 
@@ -139,7 +139,7 @@ import Card from './Card';
         });
 
         axios.post('/api/forecast', country, headers).then(response => {
-            setList(response.data.list);
+            setList([...response.data]);
             setForecast(response.data);
         }).catch(err => {
             console.log(err);
@@ -148,7 +148,7 @@ import Card from './Card';
 
     return (
         <Card className="InnerCard" fontColor="black">
-        {state ? `${state.cityName} - ${state.countryName}, ${state.countryCode}` : ''}
+        {state ? `${state.city} - ${state.name}, ${state.iso2}` : ''}
         <form class="form-inline"  onSubmit={handleSubmit}>
           <select id="countryCode" name="countryCode" onChange={handleChange}>    
               <option value="none">Select Country</option>   
