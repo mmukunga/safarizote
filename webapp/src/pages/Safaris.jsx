@@ -189,10 +189,9 @@ const Safaris = () => {
     <Card className="InnerCard" fontColor="black">
         <div id="modal-root"></div>
         <div id='portal'></div>
-        <ul id="page-numbers">
-         <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Hits: { numberOfHits.length } </span></li> 
-         <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Our Safaris: </span></li> 
-         {renderPageNumbers}
+        <ul id="page-numbers"> 
+         <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Our Safaris: {renderPageNumbers}</span></li> 
+         <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Hits: {numberOfHits.length}</span></li>
         </ul>        
         {currentItems && currentItems.length > 0 
            ? <SafariTours data={currentItems} videos={videos}/> 
