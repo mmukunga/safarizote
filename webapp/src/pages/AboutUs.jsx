@@ -9,6 +9,7 @@ const AboutUs = () => {
 
     React.useEffect(() => {
       document.title = "Kenya Safari Specialist and a Professional Safari Guide in flora and fauna"; 
+      console.log('About Us!!')
       if (latitude && longitude && !error) {
         // Fetch weather data here.
         console.log('latitude:= '  + latitude);
