@@ -81,6 +81,7 @@ import Card from './Card';
 
       axios.post('/api/forecast', country, headers)
         .then(response => {
+          console.log(response);
           setList([...response.data]);
           setForecast(response.data);
        }).catch(err => {console.log(err)});
@@ -139,6 +140,7 @@ import Card from './Card';
         });
 
         axios.post('/api/forecast', country, headers).then(response => {
+            console.log(response);
             setList([...response.data]);
             setForecast(response.data);
         }).catch(err => {
