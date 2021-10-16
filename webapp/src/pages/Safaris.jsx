@@ -190,7 +190,8 @@ const Safaris = () => {
         <div id="modal-root"></div>
         <div id='portal'></div>
         <ul id="page-numbers"> 
-         <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Our Safaris: {renderPageNumbers}</span></li> 
+         <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Our Safaris:</span></li> 
+         {renderPageNumbers}
          <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Hits: {numberOfHits.length}</span></li>
         </ul>        
         {currentItems && currentItems.length > 0 
