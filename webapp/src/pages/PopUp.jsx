@@ -14,12 +14,15 @@ const PopUp = (props) => {
             <div className="CloseMe">
               <a href="#" onClick={props.handleClose}>x</a>
             </div>
-            <div style={{border:'1px solid white'}}>{props.title}</div>
+            <div style={{border:'1px solid white'}}>
+              {props.title}                      
+              <p className="sub">  
+                FOR RESERVATION ENQUIRIES - Send us an <Link to={{ pathname: "/email", state: { modal: true }, }} className="link">E-Mail</Link> 
+                with your queries.
+              </p>  
+            </div>
           </div>
-          <div class="popUp-content">            
-            <p className="sub">  
-              <Link to={{ pathname: "/email", state: { modal: true }, }} className="link">RESERVATION ENQUIRIES. Send us an e-mail with your queries</Link>
-            </p>  
+          <div class="popUp-content">
             <div dangerouslySetInnerHTML={{__html: props.children}} /> 
           </div>
         </div>
