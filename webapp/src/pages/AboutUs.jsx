@@ -22,6 +22,8 @@ const AboutUs = () => {
     return (
         <Card className="InnerCard" fontColor="black" >
            <h3>Africa Safari</h3>
+           <h4>Your IP Address is</h4>
+           <h4>{ip}</h4>
            <h4>The most out-there tour anywhere</h4>
            <p>Its name means "sunny place" in the Berber tongue, but "Africa" may as well be a synonym for "vastness".
               A truly massive continent comprising over 20% of the planet’s available land, Africa is home to the world’s 
