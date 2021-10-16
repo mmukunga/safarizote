@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
+import { usePosition } from 'use-position';
+
 import Card from './Card';
 
 const AboutUs = () => {
     const [names, setNames] = useState(["Simon Mukunga", "steve", "carol"]);
-    
+    const { latitude, longitude, error } = usePosition();
+
     React.useEffect(() => {
       document.title = "Kenya Safari Specialist and a Professional Safari Guide in flora and fauna";
+    }, []);
+
+    useEffect(() => {
+      if (latitude && longitude && !error) {
+        // Fetch weather data here.
+        console.log('latitude:= '  + latitude);
+        console.log('longitude:= ' + longitude);
+      }
     }, []);
 
 

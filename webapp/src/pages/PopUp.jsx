@@ -17,9 +17,9 @@ const PopUp = (props) => {
             <div style={{border:'1px solid white'}}>{props.title}</div>
           </div>
           <div class="popUp-content">            
-            <span className="sub">  
+            <p className="sub">  
               <Link to={{ pathname: "/email", state: { modal: true }, }} className="link">You can book Here</Link>
-            </span>  
+            </p>  
             <div dangerouslySetInnerHTML={{__html: props.children}} /> 
           </div>
         </div>
