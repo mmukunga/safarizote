@@ -148,7 +148,7 @@ import Card from './Card';
 
     return (
         <Card className="InnerCard" fontColor="black">
-        {state.cityName} - {state.countryName}, {state.countryCode} 
+        {state ? `${state.cityName} - ${state.countryName}, ${state.countryCode}` : ''}
         <form class="form-inline"  onSubmit={handleSubmit}>
           <select id="countryCode" name="countryCode" onChange={handleChange}>    
               <option value="none">Select Country</option>   
