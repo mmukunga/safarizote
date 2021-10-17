@@ -5,9 +5,32 @@ import Card from './Card';
 const AboutUs = () => {
     const [names, setNames] = useState(["Simon Mukunga", "steve", "carol"]);
     const [ip, setIP] = useState('');
-
+    const IpData = {
+         IPv4: "84.212.216.80",
+         city: "Oslo",
+         country_code: "NO",
+         country_name: "Norway",
+         latitude: 59.9127,
+         longitude: 10.7461,
+         postal: "0171",
+         state: "Oslo County"
+    };
     const getData = async () => {
       const res = await axios.get('https://geolocation-db.com/json/')
+      console.log(res.data);
+      setIP(res.data.IPv4);
+      const api_key = '94a2ea2cd89d43ea94b26702f95a9bb4'; 
+      const res = await axios.get(`https://ipgeolocation.abstractapi.com/v1/?api_key=${api_key}&ip_address=${res.data.IPv4}`)
+      console.log(res.data);
+      const ip = '84.212.216.80';
+      const request = await fetch(`https://ipinfo.io/${ip}/json?token=$TOKEN`)
+      const json = await request.json();
+      console.log(json);
+    }
+
+    const getAddress = async (ip) => {
+      const api_key = '94a2ea2cd89d43ea94b26702f95a9bb4'; 
+      const res = await axios.get(`https://ipgeolocation.abstractapi.com/v1/?api_key=${api_key}&ip_address=${ip}`)
       console.log(res.data);
       setIP(res.data.IPv4)
     }
@@ -17,6 +40,7 @@ const AboutUs = () => {
       console.log('About Us!!')
       getData();
       console.log('IP:= ' + ip);
+      
     }, []);
 
     return (
