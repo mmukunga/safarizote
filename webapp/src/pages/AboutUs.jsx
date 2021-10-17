@@ -22,8 +22,8 @@ const AboutUs = () => {
       const api_key = '94a2ea2cd89d43ea94b26702f95a9bb4'; 
       const res = await axios.get(`https://ipgeolocation.abstractapi.com/v1/?api_key=${api_key}&ip_address=${res.data.IPv4}`)
       console.log(res.data);
-      const ip = '84.212.216.80';
-      const request = await fetch(`https://ipinfo.io/${ip}/json?token=$TOKEN`)
+      const TOKEN = '88c4d9e730db43';
+      const request = await fetch(`https://ipinfo.io/${ip}/json?token=${TOKEN}`)
       const json = await request.json();
       console.log(json);
     }
