@@ -36,9 +36,11 @@ const Safaris = () => {
       const api_key = '94a2ea2cd89d43ea94b26702f95a9bb4';
 
       axios.get('https://ipinfo.io/json').then(response => {
+           console.log(response);
            axios.get(`https://ipgeolocation.abstractapi.com/v1/?api_key=${api_key}&ip_address=${response.data.ip}`)
             .then(resp => {
               const data = resp.data;
+              console.log(resp);
               const userBrowser = Bowser.parse(window.navigator.userAgent);
               const metrics = {
                 url: response.data.hostname,
