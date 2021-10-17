@@ -21,10 +21,10 @@ const AboutUs = () => {
       const ipaddress = {...res.data};
       setIP(ipaddress.IPv4);
       const api_key = '94a2ea2cd89d43ea94b26702f95a9bb4'; 
-      const res = await axios.get(`https://ipgeolocation.abstractapi.com/v1/?api_key=${api_key}&ip_address=${ipaddress.IPv4}`)
-      console.log(res.data);
+      const resp = await axios.get(`https://ipgeolocation.abstractapi.com/v1/?api_key=${api_key}&ip_address=${ipaddress.IPv4}`)
+      console.log(resp.data);
       const TOKEN = '88c4d9e730db43';
-      const request = await fetch(`https://ipinfo.io/${ip}/json?token=${TOKEN}`)
+      const request = await fetch(`https://ipinfo.io/${ipaddress.IPv4}/json?token=${TOKEN}`)
       const json = await request.json();
       console.log(json);
     }
