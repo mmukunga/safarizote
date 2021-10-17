@@ -74,14 +74,14 @@ const Safaris = () => {
         axios.get('/api/safaris').then(response => {
           setSafaris(response.data);
           /* Map each item of nodes to a nested array where each is a row of two columns */
-          const safarisArray = safaris.map((safari) => [safari.url, safari.browser]);
+          const safarisArray = safaris.map((safari) => [safari.hostname, safari.org]);
           var result = [];
           safarisArray.reduce(function(res, value) {
-            if (!res[value.url]) {
-              res[value.url] = { Url: value.url, Url: value.browser, qty: 0 };
-              result.push(res[value.url])
+            if (!res[value.hostname]) {
+              res[value.hostname] = { Hostname: value.hostname, Org: value.org, qty: 0 };
+              result.push(res[value.hostname])
             }
-            res[value.url].qty += 1;
+            res[value.hostname].qty += 1;
             return res;
           }, {});
 

@@ -7,13 +7,13 @@ const Metrics = () => {
    const [totalCount, setTotalCount] = useState(0);
 
     async function findDate(data) {
-        const mediaTypes = data.map(dataItem => dataItem.url) 
+        const mediaTypes = data.map(dataItem => dataItem.hostname) 
         .filter((mediaType, index, array) => array.indexOf(mediaType) === index); 
         
         const aggregatedData = mediaTypes.map(dataItem => ({
             type: dataItem,
-            dateCreated: data.filter(item => item.url == dataItem)[0].dateCreated.split('.')[0],
-            count: data.filter(item => item.url == dataItem).length
+            dateCreated: data.filter(item => item.hostname == dataItem)[0].dateCreated.split('.')[0],
+            count: data.filter(item => item.hostname == dataItem).length
         }));
         
         return aggregatedData;
@@ -41,7 +41,7 @@ const Metrics = () => {
     return (
         <Card className="InnerCard" fontColor="black">
             <h4 style={{ margin: '20px', fontStyle: 'bold', textAlign: 'left'}}>Safari Zote!</h4>
-            <p style={{ margin: '20px', textAlign: 'left'}}>People also ask about this</p>
+             <p style={{ margin: '20px', textAlign: 'left'}}>People also ask about this</p>
             <ul className="vList">
                <li>How much does a safari cost in Kenya?</li>
                <li>What is the best safari in Kenya?</li>
@@ -51,7 +51,7 @@ const Metrics = () => {
             <table className="Table">  
               <tr>
                 <th>ID</th>
-                <th>URL</th>
+                <th>HOSTNAME</th>
                 <th>Last Visited</th>
                 <th>HITS</th>
               </tr>        
