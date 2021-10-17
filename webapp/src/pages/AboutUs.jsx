@@ -18,10 +18,10 @@ const AboutUs = () => {
     const getData = async () => {
       const res = await axios.get('https://geolocation-db.com/json/')
       console.log(res.data);
-      const ipaddress = res.data.IPv4;
-      setIP(ipaddress);
+      const ipaddress = {...res.data};
+      setIP(ipaddress.IPv4);
       const api_key = '94a2ea2cd89d43ea94b26702f95a9bb4'; 
-      const res = await axios.get(`https://ipgeolocation.abstractapi.com/v1/?api_key=${api_key}&ip_address=${ipaddress}`)
+      const res = await axios.get(`https://ipgeolocation.abstractapi.com/v1/?api_key=${api_key}&ip_address=${ipaddress.IPv4}`)
       console.log(res.data);
       const TOKEN = '88c4d9e730db43';
       const request = await fetch(`https://ipinfo.io/${ip}/json?token=${TOKEN}`)
