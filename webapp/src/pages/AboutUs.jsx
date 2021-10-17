@@ -23,7 +23,7 @@ const AboutUs = () => {
       console.log(response.data);
       const initData = {...ipData, ...response.data};
       const TOKEN = '88c4d9e730db43';
-      const request = await fetch(`https://ipinfo.io/${ipaddress.IPv4}/json?token=${TOKEN}`)
+      const request = await fetch(`https://ipinfo.io/${initData.IPv4}/json?token=${TOKEN}`)
       const json = await request.json();
       console.log(json);
       initData = {...initData, hostname: json.hostname, org: json.org, timezone: json.timezone};
