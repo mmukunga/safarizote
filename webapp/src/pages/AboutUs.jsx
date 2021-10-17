@@ -21,22 +21,21 @@ const AboutUs = () => {
     const getData = async () => {
       const response = await axios.get('https://geolocation-db.com/json/')
       console.log(response.data);
-      var initData = {...ipData, ...response.data};
+      setIPData({...ipData, ...response.data});
       const TOKEN = '88c4d9e730db43';
       const request = await fetch(`https://ipinfo.io/${initData.IPv4}/json?token=${TOKEN}`)
       const json = await request.json();
       console.log(json);
-      initData = {...initData, hostname: json.hostname, org: json.org, timezone: json.timezone};
-      setIPData(initData);
+      setIPData({...ipData, hostname: json.hostname, org: json.org, timezone: json.timezone});
     }
 
     React.useEffect(() => {
       document.title = "Kenya Safari Specialist and a Professional Safari Guide in flora and fauna"; 
       console.log('About Us!!')
-      getData();
-      console.log('ipData:= ' + ipData); 
+      getData().then(() => console.log(ipData));    
     }, []);
 
+    console.log()
     return (
         <Card className="InnerCard" fontColor="black" >
            <h3>Africa Safari</h3>
