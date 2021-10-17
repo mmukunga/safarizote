@@ -4,50 +4,44 @@ import Card from './Card';
 
 const AboutUs = () => {
     const [names, setNames] = useState(["Simon Mukunga", "steve", "carol"]);
-    const [ip, setIP] = useState('');
-    const IpData = {
-         IPv4: "84.212.216.80",
-         city: "Oslo",
-         country_code: "NO",
-         country_name: "Norway",
-         latitude: 59.9127,
-         longitude: 10.7461,
-         postal: "0171",
-         state: "Oslo County"
-    };
+    const [ipData, setIPData] = useState({
+            IPv4: "84.212.216.80",
+            hostname: "cm-84.212.216.80.get.no",
+            org: "AS41164 Telia Norge AS",
+            timezone: "Europe/Oslo",
+            city: "Oslo",
+            country_code: "NO",
+            country_name: "Norway",
+            latitude: 59.9127,
+            longitude: 10.7461,
+            postal: "0171",
+            state: "Oslo County"
+      });
+   
     const getData = async () => {
-      const res = await axios.get('https://geolocation-db.com/json/')
-      console.log(res.data);
-      const ipaddress = {...res.data};
-      setIP(ipaddress.IPv4);
-      const api_key = '94a2ea2cd89d43ea94b26702f95a9bb4'; 
-      const resp = await axios.get(`https://ipgeolocation.abstractapi.com/v1/?api_key=${api_key}&ip_address=${ipaddress.IPv4}`)
-      console.log(resp.data);
+      const response = await axios.get('https://geolocation-db.com/json/')
+      console.log(response.data);
+      const initData = {...ipData, ...response.data};
       const TOKEN = '88c4d9e730db43';
       const request = await fetch(`https://ipinfo.io/${ipaddress.IPv4}/json?token=${TOKEN}`)
       const json = await request.json();
       console.log(json);
-    }
-
-    const getAddress = async (ip) => {
-      const api_key = '94a2ea2cd89d43ea94b26702f95a9bb4'; 
-      const res = await axios.get(`https://ipgeolocation.abstractapi.com/v1/?api_key=${api_key}&ip_address=${ip}`)
-      console.log(res.data);
-      setIP(res.data.IPv4)
+      initData = {...initData, hostname: json.hostname, org: json.org, timezone: json.timezone};
+      setIPData(initData);
     }
 
     React.useEffect(() => {
       document.title = "Kenya Safari Specialist and a Professional Safari Guide in flora and fauna"; 
       console.log('About Us!!')
       getData();
-      console.log('IP:= ' + ip); 
+      console.log('ipData:= ' + ipData); 
     }, []);
 
     return (
         <Card className="InnerCard" fontColor="black" >
            <h3>Africa Safari</h3>
            <h4>Your IP Address is</h4>
-           <h4>{ip}</h4>
+           <h4>{ipData.IPv4}</h4>
            <h4>The most out-there tour anywhere</h4>
            <p>Its name means "sunny place" in the Berber tongue, but "Africa" may as well be a synonym for "vastness".
               A truly massive continent comprising over 20% of the planet’s available land, Africa is home to the world’s 
