@@ -21,7 +21,7 @@ const AboutUs = () => {
     const getData = async () => {
       const response = await axios.get('https://geolocation-db.com/json/')
       console.log(response.data);
-      const initData = {...ipData, ...response.data};
+      var initData = {...ipData, ...response.data};
       const TOKEN = '88c4d9e730db43';
       const request = await fetch(`https://ipinfo.io/${initData.IPv4}/json?token=${TOKEN}`)
       const json = await request.json();
