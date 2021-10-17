@@ -40,8 +40,7 @@ const AboutUs = () => {
       document.title = "Kenya Safari Specialist and a Professional Safari Guide in flora and fauna"; 
       console.log('About Us!!')
       getData();
-      console.log('IP:= ' + ip);
-      
+      console.log('IP:= ' + ip); 
     }, []);
 
     return (
