@@ -1,7 +1,6 @@
 package com.example.safarizote.model;
 
 import java.time.Instant;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,31 +18,16 @@ import lombok.NonNull;
 @Builder
 public class Metrics {
   @Id @GeneratedValue Long id;
-  @NonNull String url;
-  @NonNull String browser;
-  @NonNull String browserVersion;
-  @NonNull String browserOsName;
-  @NonNull String browserOsVersion;
+  @NonNull String iPv4;
+  @NonNull String hostname;
+  @NonNull String org;
+  @NonNull String timezone;
   @NonNull String city;
-  @NonNull String organization; 
-  @NonNull String connectionType;
-  @NonNull String continent;
-  @NonNull String continentCode;
-  @NonNull String country;
   @NonNull String countryCode;
-  @NonNull String currencyName;
-  @NonNull String currencyCode;
-  @NonNull String emoji;
-  @NonNull String flagPng;
-  @NonNull String flagSvg;
-  @NonNull String ipAddress;
+  @NonNull String countryName;
   @NonNull String latitude;
   @NonNull String longitude;
-  @NonNull String postalCode;
-  @NonNull String region;
-  @NonNull String regionIsoCode;
-  @NonNull String timezoneName;
-  @NonNull String timezoneAbbreviation;
-  @NonNull String presentTime;
+  @NonNull String postal;
+  @NonNull String state;
   @NonNull Instant dateCreated;
 }

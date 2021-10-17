@@ -1,46 +1,12 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import Card from './Card';
 
 const AboutUs = () => {
-    const [names, setNames] = useState(["Simon Mukunga", "steve", "carol"]);
-    const [ipData, setIPData] = useState({
-            IPv4: "84.212.216.80",
-            hostname: "cm-84.212.216.80.get.no",
-            org: "AS41164 Telia Norge AS",
-            timezone: "Europe/Oslo",
-            city: "Oslo",
-            country_code: "NO",
-            country_name: "Norway",
-            latitude: 59.9127,
-            longitude: 10.7461,
-            postal: "0171",
-            state: "Oslo County"
-      });
-   
-    const getData = async () => {
-      const response = await axios.get('https://geolocation-db.com/json/')
-      console.log(response.data);
-      setIPData({...ipData, ...response.data}); 
-      const TOKEN = '88c4d9e730db43';
-      const request = await fetch(`https://ipinfo.io/${ipData.IPv4}/json?token=${TOKEN}`)
-      const json = await request.json();
-      console.log(json);
-      setIPData({...ipData, hostname: json.hostname, org: json.org, timezone: json.timezone});
-    }
-
-    React.useEffect(() => {
-      document.title = "Kenya Safari Specialist and a Professional Safari Guide in flora and fauna"; 
-      console.log('About Us!!')
-      getData().then(() => console.log(ipData));    
-    }, []);
-
+    const [names, setNames] = useState(["Simon Mukunga", "Stevo Kiprotich", "Mwanjama Wa Mwamzadi"]);
     console.log()
     return (
         <Card className="InnerCard" fontColor="black" >
            <h3>Africa Safari</h3>
-           <h4>Your IP Address is</h4>
-           <h4>{ipData.IPv4}</h4>
            <h4>The most out-there tour anywhere</h4>
            <p>Its name means "sunny place" in the Berber tongue, but "Africa" may as well be a synonym for "vastness".
               A truly massive continent comprising over 20% of the planet’s available land, Africa is home to the world’s 

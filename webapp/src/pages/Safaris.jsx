@@ -20,6 +20,20 @@ const Safaris = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [numberOfHits, setNumberOfHits] = useState([]);
     const [pageSize, setPageSize] = useState(2);
+    const [metrics, setMetrics] = useState({
+          iPv4: "84.212.216.80",
+          hostname: "cm-84.212.216.80.get.no",
+          org: "AS41164 Telia Norge AS",
+          timezone: "Europe/Oslo",
+          city: "Oslo",
+          country_code: "NO",
+          country_name: "Norway",
+          latitude: 59.9127,
+          longitude: 10.7461,
+          postal: "0171",
+          state: "Oslo County",
+          dateCreated:  moment.now()
+    });
 
     const videoUrl = 'https://www.youtube.com/watch?v=3qW5z4xeiac';
 
@@ -32,55 +46,28 @@ const Safaris = () => {
     }, []);
 
 
+    const getData = async () => {
+      const response = await axios.get('https://geolocation-db.com/json/')
+      console.log(response.data);
+      setMetrics({...metrics, ...response.data}); 
+      const TOKEN = '88c4d9e730db43';
+      const request = await fetch(`https://ipinfo.io/${metrics.IPv4}/json?token=${TOKEN}`)
+      const json = await request.json();
+      console.log(json);
+      setMetrics({...metrics, hostname: json.hostname, org: json.org, timezone: json.timezone});
+    }
+
     React.useEffect(() => {
-      const api_key = '94a2ea2cd89d43ea94b26702f95a9bb4';
-
-      axios.get('https://ipinfo.io/json').then(response => {
-           console.log(response);
-           axios.get(`https://ipgeolocation.abstractapi.com/v1/?api_key=${api_key}&ip_address=${response.data.ip}`)
-            .then(resp => {
-              const data = resp.data;
-              console.log(resp);
-              const userBrowser = Bowser.parse(window.navigator.userAgent);
-              const metrics = {
-                url: response.data.hostname,
-                browser: userBrowser.browser.name,
-                browserVersion: userBrowser.browser.version,
-                browserOsName: userBrowser.os.name,
-                browserOsVersion: userBrowser.os.version,
-                city: data.city,
-                organization:  resp.data.connection.autonomous_system_organization,
-                connectionType: resp.data.connection.connection_type,
-                continent: resp.data.continent,
-                continentCode: resp.data.continent_code,
-                country: resp.data.country,
-                countryCode: resp.data.country_code,
-                currencyName: resp.data.currency.currency_name,
-                currencyCode: resp.data.currency.currency_code,
-                emoji: resp.data.flag.emoji,
-                flagPng: resp.data.flag.png,
-                flagSvg: resp.data.flag.svg,
-                ipAddress: resp.data.ip_address,
-                latitude: resp.data.latitude,
-                longitude: resp.data.longitude,
-                postalCode: resp.data.postal_code,
-                region: resp.data.region,
-                regionIsoCode: resp.data.region_iso_code,
-                timezoneName: resp.data.timezone.name,
-                timezoneAbbreviation: resp.data.timezone.abbreviation,
-                presentTime: resp.data.timezone.current_time,
-                dateCreated: moment.now()
-              }
-
-              axios.post('/api/saveVisit', metrics).then(response => {
-                setNumberOfHits(response.data);
-              });
-
-            });
+      document.title = "Kenya Safari Specialist and a Professional Safari Guide in flora and fauna"; 
+      console.log('About Us!!')
+      getData().then(() => {
+        console.log(metrics);
+        axios.post('/api/saveVisit', metrics).then(response => {
+          setNumberOfHits(response.data);
         }).catch(e => {
-            console.log(e);
-        })
-
+          console.log(e);
+        });
+      });    
     }, []);
 
     React.useEffect(() => {
