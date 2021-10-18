@@ -40,7 +40,7 @@
 }
 
 .VideoPlayer {
-  display:block;
+  display: block;
   float: right;
   width: 350px; 
   margin: 0 auto;
@@ -58,22 +58,22 @@
 }
 
 .fa {
-  display:inline-block;
-  text-rendering:auto;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale
+  display: inline-block;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale
 }
 
 .fa-lg{
-  line-height:.75em;
-  vertical-align:-15%
+  line-height: .75em;
+  vertical-align: -15%
 }
 
-.fa-play-circle:before{content:"\f144"}
-.fa-play-circle-o:before{content:"\f01d"}
+.fa-play-circle:before{content: "\f144"}
+.fa-play-circle-o:before{content: "\f01d"}
 
 .fa-play-circle:before{
-   content:"\f144";
+   content: "\f144";
 }
 
 .icon .fa {
@@ -105,12 +105,14 @@
     }  
     
     .video-player {
-      width: 100%;
+      width: 95%;
+      border-radius: 2%;
+      margin: 0 auto;
     }
 
     .VideoPlayer img {
-      display:block;
-      float:none;
-      margin:0 auto 20px !important;
+      display: block;
+      float: none;
+      margin: 0 auto 20px !important;
     }
   }
