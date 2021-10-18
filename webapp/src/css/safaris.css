@@ -1,5 +1,7 @@
 .divsContainer {
   display: table;
+  border-collapse: separate;
+  border-spacing: 5px;
   margin: 0 auto;
   border: 0px solid rgb(236, 146, 10);
 }
