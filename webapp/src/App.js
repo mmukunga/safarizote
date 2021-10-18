@@ -90,7 +90,7 @@ function App() {
         <div class="TopMenu">
           <div class="item left"><img src={logo} className="App-logo" alt="logo"/></div>
           <div class="item divPad">
-            Africa Safari! <code>Like Masaai Mara.</code> The most out-there tour anywhere &nbsp;&nbsp;  
+            Africa Safari! <code>Like Masaai Mara</code>  
             <NavLink to={{pathname: "/email"}} className="Nav_link"> Learn more</NavLink>
           </div>
           <div class="item right">
