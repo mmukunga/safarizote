@@ -51,7 +51,7 @@ const Safaris = () => {
       console.log(response.data);
       setMetrics({...metrics, ...response.data}); 
       const TOKEN = '88c4d9e730db43';
-      const request = await fetch(`https://ipinfo.io/${metrics.IPv4}/json?token=${TOKEN}`)
+      const request = await fetch(`https://ipinfo.io/${metrics.iPv4}/json?token=${TOKEN}`)
       const json = await request.json();
       console.log(json);
       setMetrics({...metrics, hostname: json.hostname, org: json.org, timezone: json.timezone});
