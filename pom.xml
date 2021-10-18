@@ -169,6 +169,7 @@
 				<inherited>false</inherited>
 				<executions>
 					<execution>
+						<?m2e execute onConfiguration?>
 					    <id>copy-resources</id>
 						<phase>generate-resources</phase>
 						<configuration>
