@@ -46,7 +46,7 @@ function App() {
   const [selectedImage, setSelectedImage] = React.useState(images[imgId]);
 
   const displayHome = {
-    color: 'purple'
+    color: 'orange'
   }
 
   const imageStyles = {
