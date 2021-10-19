@@ -48,7 +48,7 @@
 }
 
 .video-player {
-  border: 2px solid salmon;
+  border: 2px solid rgb(1, 68, 62);
   width: 340px;
   margin: 0 auto;
 }
