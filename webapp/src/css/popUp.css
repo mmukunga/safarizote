@@ -11,9 +11,8 @@
   .popUp {
     color: white;
     background-color: #81d4fa;
-    padding: 0vw;
-    padding-left: 2vw;
-    font-size: 3vw;
+    padding: 0 2vw;
+    font-size: 2vw;
     border-radius: 8px;
     border: 2px solid white;
     position: fixed;
@@ -28,7 +27,7 @@
   .popUp-content{
     display: block;
     background-color: #45a049;  
-    height: 80vh;
+    height: auto;
     overflow-y: scroll;
   }
 
@@ -47,6 +46,9 @@
   @media screen and (max-width: 700px) {
     .popUp {
       background-color: #A40000;
-      padding: 0 1vw 0 1vw
+      padding: 0 1vw;
+      height:auto;
+      bottom:0;
+      overflow:auto;
     }
   }
