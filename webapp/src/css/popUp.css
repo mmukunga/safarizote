@@ -26,7 +26,7 @@
 
   .popUp-content{
     display: block;
-    background-color: #45a049;  
+    background-color: rgb(2,118,107); 
     height: auto;
     overflow-y: scroll;
   }
