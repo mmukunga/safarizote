@@ -14,6 +14,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.core.ParameterizedTypeReference;
 
@@ -62,7 +63,7 @@ public class WeatherController {
         return new ResponseEntity<>(cities, HttpStatus.OK);   
     }
 
-    @GetMapping("/api/weather")
+    @PostMapping("/api/weather")
     public ResponseEntity<String> getWeatherData(@RequestBody Country country) throws IOException {
         HttpURLConnection con = null ;
         InputStream is = null;
@@ -86,7 +87,7 @@ public class WeatherController {
 
     }
 
-    @GetMapping("/api/forecast")
+    @PostMapping("/api/forecast")
     public ResponseEntity<String> getWeatherForecast(@RequestBody Country country) throws IOException {
         HttpURLConnection con = null ;
         InputStream is = null;
