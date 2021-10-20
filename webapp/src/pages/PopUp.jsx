@@ -13,7 +13,7 @@ const PopUp = (props) => {
           <div class="pHeader">
             <div class="pChild">{props.title} <br/>     
                 For reservation and enquires - Send us <NavLink to={{ pathname: "/email", state: { modal: true }, }} className="Nav_link">Message/E-Mail</NavLink>.</div>
-            <div class="pChild"><a href="#" onClick={props.handleClose}>x</a></div>
+            <div class="pChild closeMe"><a href="#" onClick={props.handleClose}>x</a></div>
           </div>        
           <div class="popUp-content">
             <div dangerouslySetInnerHTML={{__html: props.children}} /> 

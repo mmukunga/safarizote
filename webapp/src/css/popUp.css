@@ -48,11 +48,8 @@
     border:2px solid brown; 
   }
 
-  .CloseMe {
-    padding: 4px;
-    float: right;
-    border-radius: 4px;
-    color: #A40000;
+  .closeMe {
+    width: 2%;
   }
 
   @media screen and (max-width: 700px) {
