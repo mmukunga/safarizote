@@ -48,7 +48,7 @@ public class WeatherController {
         return new ResponseEntity<>(countries, HttpStatus.OK);
     }
 
-    @GetMapping("/api/cities")       
+    @PostMapping("/api/cities")       
     public ResponseEntity<List<City>> getCities(@RequestBody Country country) throws Exception { 
         String ciso = country.getIso2();
         URI uri = new URI("https://api.countrystatecity.in/v1/countries/" + ciso + "/cities");

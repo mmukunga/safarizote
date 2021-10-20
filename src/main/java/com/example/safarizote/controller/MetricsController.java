@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.safarizote.model.Metrics;
@@ -33,7 +34,7 @@ public class MetricsController {
     return new ResponseEntity<>(visits, HttpStatus.OK);
   }
 
-  @GetMapping("/api/saveVisit")
+  @PostMapping("/api/saveVisit")
   public ResponseEntity<List<Metrics>> save(@RequestBody Metrics visit) throws IOException {
     visit.setDateCreated(Instant.now());
     if (!visit.getHostname().contains("googlebot.com")){
