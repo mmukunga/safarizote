@@ -9,19 +9,12 @@ const PopUp = (props) => {
 
   const modal = props.open && (
      <div className='overlay'>
-        <div className='popUp'>          
-          <div classNme="popUpHeader">
-            <div className="CloseMe">
-              <a href="#" onClick={props.handleClose}>x</a>
-            </div>
-            <div style={{border:'1px solid white'}}>
-              {props.title}                      
-              <p className="sub">  
-                FOR RESERVATION ENQUIRIES - Send us an <NavLink to={{ pathname: "/email", state: { modal: true }, }} className="Nav_link">E-Mail</NavLink> 
-                with your queries.
-              </p>  
-            </div>
-          </div>
+        <div className='popUp'>  
+          <div class="pHeader">
+            <div class="pChild">{props.title} <br/>     
+                For reservation and enquires - Send us <NavLink to={{ pathname: "/email", state: { modal: true }, }} className="Nav_link">Message/E-Mail</NavLink>.</div>
+            <div class="pChild"><a href="#" onClick={props.handleClose}>x</a></div>
+          </div>        
           <div class="popUp-content">
             <div dangerouslySetInnerHTML={{__html: props.children}} /> 
           </div>

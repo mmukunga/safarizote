@@ -12,13 +12,13 @@
     color: white;
     background-color: #81d4fa;
     padding: 0 2vw;
-    font-size: 2vw;
+    font-size: 1.5vw;
     border-radius: 8px;
     border: 2px solid white;
     position: fixed;
     top: 52%;
     left: 50%;
-    height: 400px;
+    height: 550px;
     transform: translate(-52%, -50%);
     z-index: 1000;
     display: flex;
@@ -29,12 +29,23 @@
   .popUp-content{
     display: block;
     background-color: rgb(2,118,107); 
-    overflow: scroll;
+    overflow-y: scroll;
   }
 
   .popUpHeader {
      background-color: #A40000;
      width:100%;
+  }
+
+  div.pHeader {
+    border: 1px solid purple;
+    display: flex;
+  }
+  
+  
+  div.pChild {
+    flex: 1; 
+    border:2px solid brown; 
   }
 
   .CloseMe {
