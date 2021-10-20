@@ -6,8 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Set;
 
@@ -19,7 +18,7 @@ public class LottoController {
     int antallRekker = 10;
     int antallTrekk  =  7;
 
-    @RequestMapping(value = "/api/tipping",  method={RequestMethod.GET})
+    @GetMapping("/api/tipping")
     public ResponseEntity<Set<Rekke>> tipping() {
         Random random = new Random();
         int kupongId = random.nextInt((2040 - 1970) + 1) + 1970;

@@ -8,8 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.safarizote.model.Shopping;
 import com.example.safarizote.repository.ShoppingRepository;
@@ -19,7 +18,7 @@ public class ShoppingController {
   @Autowired
   private ShoppingRepository repository;
 
-  @RequestMapping(value = "/api/shopping",  method={RequestMethod.GET})
+  @GetMapping("/api/shopping")
   public ResponseEntity<List<Shopping>> shopping(){
     List<Shopping> sourceSet = repository.findAll();
     return new ResponseEntity<>(sourceSet, HttpStatus.OK);

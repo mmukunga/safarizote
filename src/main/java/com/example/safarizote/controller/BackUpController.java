@@ -14,8 +14,8 @@ import com.google.auth.oauth2.GoogleCredentials;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -46,7 +46,7 @@ public class BackUpController {
   @Value("gs://${gcs-resource-test-bucket}/mail.jpg")
   private Resource gcsFile;
     
-  @RequestMapping(value = "/api/listAll",  method={RequestMethod.GET})
+  @GetMapping("/api/listAll")
   public ResponseEntity<List<DaoObject>> findAll() throws IOException {
 
       String BUCKET_NAME = "sms_familie_album";
@@ -72,7 +72,7 @@ public class BackUpController {
       return new ResponseEntity<>(map, HttpStatus.OK);
     }    
 
-  @RequestMapping(value = "/api/categories",  method={RequestMethod.GET})
+  @GetMapping("/api/categories")
   public ResponseEntity<List<DaoObject>> findCategory() throws IOException {
       String BUCKET_NAME = "sms_familie_album";
       String PROJECT_ID  = "familiealbum-sms";
@@ -101,7 +101,7 @@ public class BackUpController {
        return new ResponseEntity<>(imageUrls, HttpStatus.OK);
     }    
 
-    @RequestMapping(value = "/api/upload", method = RequestMethod.POST)
+    @PostMapping("/api/upload")
     public String uploadFile(@RequestParam("file") MultipartFile fileStream ) throws Exception {
         String blobName = fileStream.getName(); 
 
@@ -123,7 +123,7 @@ public class BackUpController {
 
     }
 
-    @RequestMapping(value = "/api/gcsDownload", method = RequestMethod.GET)
+    @GetMapping("/api/gcsDownload")
     public ResponseEntity<String> downloadFile(@PathVariable String image ) throws Exception {
         String BUCKET_NAME = "sms_familie_album";
         String PROJECT_ID  = "familiealbum-sms";

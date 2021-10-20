@@ -10,9 +10,8 @@ import org.springframework.http.ResponseEntity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.safarizote.model.UserAuth;
@@ -28,13 +27,13 @@ public class SignInController {
   
   String secretKey = "MTIzNDU2Nzg=";
 
-    @RequestMapping(value = "/api/findAll",  method={RequestMethod.GET})
+    @GetMapping("/api/findAll")
     public ResponseEntity<List<UserAuth>> findAll() {
         List<UserAuth> users = repository.findAll();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/api/login",  method={RequestMethod.POST})
+    @GetMapping("/api/login")
     public ResponseEntity<UserAuth> logIn(@RequestBody UserAuth userAuth) {
         UserAuth authedUser = null;
         List<UserAuth> users = repository.findAll();
@@ -51,7 +50,7 @@ public class SignInController {
         return new ResponseEntity<>(authedUser, HttpStatus.OK);
     }
      
-    @RequestMapping(value = "/api/verify",  method={RequestMethod.POST})
+    @GetMapping("/api/verify")
     public ResponseEntity<Boolean> validateToken(@RequestBody UserAuth userAuth) {
         // The part after "Bearer "
         final String bearerToken = userAuth.getToken().substring(7);
@@ -60,7 +59,7 @@ public class SignInController {
 		return new ResponseEntity<>(isValid, HttpStatus.OK);
     }
     
-    @RequestMapping(value = "/api/userByToken/{token}", method = RequestMethod.GET)
+    @GetMapping("/api/userByToken/{token}")
     public String getUsernameFromToken(@PathVariable("token") String token) {
       String username;
       try {

@@ -13,8 +13,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.core.ParameterizedTypeReference;
 
@@ -33,7 +32,7 @@ public class WeatherController {
     private static String FORECAST_URL = "http://api.openweathermap.org/data/2.5/forecast/daily?q=";
     private static String IMG_URL = "http://openweathermap.org/img/w/";
 
-    @RequestMapping(value = "/api/countries",  method={RequestMethod.GET})       
+    @GetMapping("/api/countries")       
     public ResponseEntity<List<Country>> getCountries() throws Exception { 
 
         URI uri = new URI("https://api.countrystatecity.in/v1/countries");
@@ -48,7 +47,7 @@ public class WeatherController {
         return new ResponseEntity<>(countries, HttpStatus.OK);
     }
 
-    @RequestMapping(value="/api/cities",  method={RequestMethod.POST})       
+    @GetMapping("/api/cities")       
     public ResponseEntity<List<City>> getCities(@RequestBody Country country) throws Exception { 
         String ciso = country.getIso2();
         URI uri = new URI("https://api.countrystatecity.in/v1/countries/" + ciso + "/cities");
@@ -63,7 +62,7 @@ public class WeatherController {
         return new ResponseEntity<>(cities, HttpStatus.OK);   
     }
 
-    @RequestMapping(value = "/api/weather",  method={RequestMethod.POST})
+    @GetMapping("/api/weather")
     public ResponseEntity<String> getWeatherData(@RequestBody Country country) throws IOException {
         HttpURLConnection con = null ;
         InputStream is = null;
@@ -87,7 +86,7 @@ public class WeatherController {
 
     }
 
-    @RequestMapping(value = "/api/forecast",  method={RequestMethod.POST})
+    @GetMapping("/api/forecast")
     public ResponseEntity<String> getWeatherForecast(@RequestBody Country country) throws IOException {
         HttpURLConnection con = null ;
         InputStream is = null;

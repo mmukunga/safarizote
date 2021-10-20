@@ -8,8 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.safarizote.model.Safari;
 import com.example.safarizote.repository.SafariRepository;
@@ -19,7 +18,7 @@ public class HomeController {
   @Autowired
   private SafariRepository repository;
 
-  @RequestMapping(value = "/api/safaris",  method={RequestMethod.GET})
+  @GetMapping(value = "/api/safaris")
   public ResponseEntity<List<Safari>> findSafaris(){
     List<Safari> sourceSet = repository.findAll();
     return new ResponseEntity<>(sourceSet, HttpStatus.OK);

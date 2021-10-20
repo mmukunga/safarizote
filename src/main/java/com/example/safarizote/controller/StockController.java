@@ -4,8 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Calendar;
@@ -22,7 +21,7 @@ public class StockController {
     @Autowired
     private StockRepository repository;
 
-    @RequestMapping(value="/api/tickers", method = RequestMethod.GET)
+    @GetMapping("/api/tickers")
     public ResponseEntity<List<Ticker>> getTickers() throws Exception {
         List<Ticker> tickers = repository.findAll();
         
@@ -33,7 +32,7 @@ public class StockController {
         return new ResponseEntity<>(tickers, HttpStatus.OK);
     }
 
-    @RequestMapping(value="/api/current", method = RequestMethod.POST)
+    @GetMapping("/api/current")
     public ResponseEntity<String> getCurrentStock(@RequestBody Ticker ticker) throws Exception {
         if (repository.findById(ticker.getId()).isEmpty()) {
             throw new Exception();
@@ -42,7 +41,7 @@ public class StockController {
         return new ResponseEntity<>(jsonObject, HttpStatus.OK);
     }
 
-    @RequestMapping(value="/api/history", method = RequestMethod.POST)
+    @GetMapping("/api/history")
     public ResponseEntity<String> getStockHistory(@RequestBody Ticker ticker) throws Exception {
         if (repository.findById(ticker.getId()).isEmpty()) {
             throw new Exception();
