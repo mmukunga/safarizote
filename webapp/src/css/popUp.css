@@ -18,6 +18,7 @@
     position: fixed;
     top: 52%;
     left: 50%;
+    height: 400px;
     transform: translate(-52%, -50%);
     z-index: 1000;
     display: flex;
@@ -28,7 +29,6 @@
   .popUp-content{
     display: block;
     background-color: rgb(2,118,107); 
-    height: 400px;
     overflow: scroll;
   }
 
