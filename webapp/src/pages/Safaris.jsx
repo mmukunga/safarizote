@@ -135,7 +135,7 @@ const Safaris = () => {
             <VideoPlayer video={video} className="video-player"/> 
           </div>
           <div dangerouslySetInnerHTML={{__html: summary}} /> 
-          <span className='sub' onClick={() => setOpen(true)}>View Details and Prices</span>
+          <span className='sub' onClick={() => setOpen(true)}>Details and Offers</span>
           <PopUp open={open} title={parse(title)} handleClose={handleClose}>{children}</PopUp>
           <div className='clearfix'></div>
         </div>
