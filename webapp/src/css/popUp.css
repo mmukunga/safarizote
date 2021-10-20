@@ -37,13 +37,13 @@
      width:100%;
   }
 
-  div.pHeader {
+  .pHeader {
     border: 1px solid purple;
     display: flex;
   }
   
   
-  div.pChild {
+  .pChild {
     flex: 1; 
     border:2px solid brown; 
   }
