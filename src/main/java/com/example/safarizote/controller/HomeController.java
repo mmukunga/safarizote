@@ -21,8 +21,7 @@ public class HomeController {
   @Autowired
   private SafariRepository repository;
 
-  @Autowired
-	private Map<Integer, Safari> catalog;
+  private Map<Integer, Safari> catalog = new Hashmap<>();
 
   @Autowired
 	private CartService service;
