@@ -4,7 +4,6 @@ import java.util.List;
 import java.time.Instant;
 import java.io.IOException;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,13 +24,13 @@ public class MetricsController {
   @GetMapping("/api/healthCheck")
   public ResponseEntity<String> healthCheck() {
       String status = "healthCheck: OK!!";
-      return new ResponseEntity<>(status, HttpStatus.OK);
+      return ResponseEntity.ok().body(status);
   }
 
   @GetMapping("/api/allHits")
   public ResponseEntity<List<Metrics>> findAll() {
     List<Metrics> visits = repository.findAll();
-    return new ResponseEntity<>(visits, HttpStatus.OK);
+    return ResponseEntity.ok().body(visits);
   }
 
   @PostMapping("/api/saveVisit")
@@ -42,6 +41,6 @@ public class MetricsController {
     }
  
     List<Metrics> visits = repository.findAll();
-    return new ResponseEntity<>(visits, HttpStatus.OK);
+    return ResponseEntity.ok().body(visits);
   }
 }

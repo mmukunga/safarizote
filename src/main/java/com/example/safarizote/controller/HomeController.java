@@ -2,7 +2,6 @@ package com.example.safarizote.controller;
 
 import java.util.List;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +20,6 @@ public class HomeController {
   @GetMapping(value = "/api/safaris")
   public ResponseEntity<List<Safari>> findSafaris(){
     List<Safari> sourceSet = repository.findAll();
-    return new ResponseEntity<>(sourceSet, HttpStatus.OK);
+    return ResponseEntity.ok().body(sourceSet);
   }
 }

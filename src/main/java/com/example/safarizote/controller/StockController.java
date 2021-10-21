@@ -1,7 +1,6 @@
 package com.example.safarizote.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,25 +26,25 @@ public class StockController {
         List<Ticker> tickers = repository.findAll();
         
         if (tickers.isEmpty()) {
-            throw new Exception();
+            return ResponseEntity.notFound().build();
         }
         
-        return new ResponseEntity<>(tickers, HttpStatus.OK);
+        return ResponseEntity.ok().body(tickers);
     }
 
     @PostMapping("/api/current")
     public ResponseEntity<String> getCurrentStock(@RequestBody Ticker ticker) throws Exception {
         if (repository.findById(ticker.getId()).isEmpty()) {
-            throw new Exception();
+            return ResponseEntity.notFound().build();
         }
         String jsonObject = stockClient.yahooCurrent(ticker.getSymbol());
-        return new ResponseEntity<>(jsonObject, HttpStatus.OK);
+        return ResponseEntity.ok().body(jsonObject);
     }
 
     @GetMapping("/api/history")
     public ResponseEntity<String> getStockHistory(@RequestBody Ticker ticker) throws Exception {
         if (repository.findById(ticker.getId()).isEmpty()) {
-            throw new Exception();
+            return ResponseEntity.notFound().build();
         }
 
         long to = System.currentTimeMillis() / 1000L;
@@ -57,6 +56,6 @@ public class StockController {
         
         long from = cal.getTime().getTime() / 1000L;
         String jsonObject = stockClient.yahooHistory(ticker.getSymbol(), from, to);      
-        return new ResponseEntity<>(jsonObject, HttpStatus.OK);
+        return ResponseEntity.ok().body(jsonObject);
     }
 }

@@ -33,7 +33,6 @@ import java.io.IOException;
 import org.springframework.core.io.Resource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.example.safarizote.model.DaoObject;
@@ -69,7 +68,8 @@ public class BackUpController {
            map.add(obj);
       }
 
-      return new ResponseEntity<>(map, HttpStatus.OK);
+      return ResponseEntity.ok().body(map);
+
     }    
 
   @GetMapping("/api/categories")
@@ -98,7 +98,7 @@ public class BackUpController {
         imageUrls.add(obj);
       }
 
-       return new ResponseEntity<>(imageUrls, HttpStatus.OK);
+      return ResponseEntity.ok().body(imageUrls);
     }    
 
     @PostMapping("/api/upload")
@@ -148,6 +148,6 @@ public class BackUpController {
 
         String fileContent = new String(blob.getContent()); 
 
-        return new ResponseEntity<>(fileContent, HttpStatus.OK);
+        return ResponseEntity.ok().body(fileContent);
     }
 }

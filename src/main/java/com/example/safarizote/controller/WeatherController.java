@@ -6,7 +6,6 @@ import java.net.URI;
 import com.example.safarizote.model.City;
 import com.example.safarizote.model.Country;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -45,7 +44,7 @@ public class WeatherController {
            new ParameterizedTypeReference<List<Country>>(){});
 
         List<Country> countries = responseEntity.getBody();
-        return new ResponseEntity<>(countries, HttpStatus.OK);
+        return ResponseEntity.ok().body(countries);
     }
 
     @PostMapping("/api/cities")       
@@ -60,7 +59,7 @@ public class WeatherController {
            new ParameterizedTypeReference<List<City>>(){});
 
         List<City> cities = responseEntity.getBody();  
-        return new ResponseEntity<>(cities, HttpStatus.OK);   
+        return ResponseEntity.ok().body(cities);
     }
 
     @PostMapping("/api/weather")
@@ -83,7 +82,7 @@ public class WeatherController {
 
         is.close();
         con.disconnect(); 
-        return new ResponseEntity<>(buffer.toString(), HttpStatus.OK);
+        return ResponseEntity.ok().body(buffer.toString());
 
     }
 
@@ -107,7 +106,7 @@ public class WeatherController {
 
         is.close();
         con.disconnect();
-        return new ResponseEntity<>(buffer.toString(), HttpStatus.OK);
+        return ResponseEntity.ok().body(buffer.toString());
     }
 
     public byte[] getImage(String code) throws IOException {
@@ -127,7 +126,6 @@ public class WeatherController {
         while ( is.read(buffer) != -1)
             baos.write(buffer);
 
-        return baos.toByteArray();
-      
+        return baos.toByteArray();      
     }
 }    

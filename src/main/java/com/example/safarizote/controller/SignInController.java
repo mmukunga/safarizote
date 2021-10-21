@@ -5,9 +5,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +28,7 @@ public class SignInController {
     @GetMapping("/api/findAll")
     public ResponseEntity<List<UserAuth>> findAll() {
         List<UserAuth> users = repository.findAll();
-        return new ResponseEntity<>(users, HttpStatus.OK);
+        return ResponseEntity.ok().body(users);
     }
 
     @GetMapping("/api/login")
@@ -47,7 +45,7 @@ public class SignInController {
 
         String token = getJWTToken(userAuth.getEmail());
         authedUser.setToken(token);
-        return new ResponseEntity<>(authedUser, HttpStatus.OK);
+        return ResponseEntity.ok().body(authedUser);
     }
      
     @GetMapping("/api/verify")
@@ -56,17 +54,16 @@ public class SignInController {
         final String bearerToken = userAuth.getToken().substring(7);
 		    String tokenUsername = getUsernameFromToken(bearerToken);
         Boolean isValid = tokenUsername.equals(userAuth.getEmail()) && !isTokenExpired(bearerToken);
-		return new ResponseEntity<>(isValid, HttpStatus.OK);
+        return ResponseEntity.ok().body(isValid);
     }
     
-    @GetMapping("/api/userByToken/{token}")
     public String getUsernameFromToken(@PathVariable("token") String token) {
       String username;
       try {
         final Claims claims = getAllClaimsFromToken(token);
         username = claims.getSubject();
       } catch (Exception e) {
-        username = null;
+        return null;
       }
       return username;
     }

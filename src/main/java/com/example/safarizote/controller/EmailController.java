@@ -7,7 +7,6 @@ import com.example.safarizote.repository.EmailRepository;
 import com.example.safarizote.utils.IEmailService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +23,7 @@ public class EmailController {
     @GetMapping("/api/email")
     public ResponseEntity<List<Email>> emails() {
         List<Email> emails = repository.findAll();
-        return new ResponseEntity<>(emails, HttpStatus.OK);
+        return ResponseEntity.ok().body(emails);
     }
 
     @GetMapping("/api/sendEmail")
@@ -36,6 +35,6 @@ public class EmailController {
         }
 
         repository.save(email);
-        return new ResponseEntity<>(email, HttpStatus.OK);
+        return ResponseEntity.ok().body(email);
     }
 }
