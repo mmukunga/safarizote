@@ -46,11 +46,12 @@
     width: 20px;
     float: right;
     color: #A40000;
-    background-color: #eee;
+    background: #eee;
   }
 
   .urlStyle { 
-    background-color: #eee;
+    background: #eee;
+    color: #40c4ff;
     font-weight: 200;
   }
 
