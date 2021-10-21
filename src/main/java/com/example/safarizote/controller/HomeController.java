@@ -17,6 +17,7 @@ import com.example.safarizote.model.Safari;
 import com.example.safarizote.repository.SafariRepository;
 import com.example.safarizote.utils.CartService;
 
+
 @RestController
 public class HomeController { 
   @Autowired
