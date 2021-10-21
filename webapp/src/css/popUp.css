@@ -50,7 +50,7 @@
 
   .pCloseMe {
     flex: 1; 
-    width: 2%;
+    width: 20px;
     float: right;
     border:2px solid brown;
     color: #A40000;
