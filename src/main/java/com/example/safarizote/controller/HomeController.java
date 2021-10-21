@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.ui.Model;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.safarizote.model.Safari;
 import com.example.safarizote.repository.SafariRepository;
 import com.example.safarizote.utils.CartService;
-
 
 @RestController
 public class HomeController { 
