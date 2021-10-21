@@ -38,7 +38,6 @@
     background-color: #A40000;
   }
   
-  
   .pChild, .pCloseMe {
     border:2px solid brown; 
   }
@@ -47,6 +46,11 @@
     width: 20px;
     float: right;
     color: #A40000;
+  }
+
+  .urlStyle {
+    color: blue; 
+    font-weight:200;
   }
 
   @media screen and (max-width: 700px) {
