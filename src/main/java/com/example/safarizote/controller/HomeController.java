@@ -1,5 +1,6 @@
 package com.example.safarizote.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -21,7 +22,7 @@ public class HomeController {
   @Autowired
   private SafariRepository repository;
 
-  private Map<Integer, Safari> catalog = new Hashmap<>();
+  private Map<Integer, Safari> catalog = new HashMap<>();
 
   @Autowired
 	private CartService service;
