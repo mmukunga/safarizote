@@ -32,27 +32,20 @@
     overflow-y: scroll;
   }
 
-  .popUpHeader {
-     background-color: #A40000;
-     width:100%;
-  }
-
   .pHeader {
     border: 1px solid purple;
     display: flex;
+    background-color: #A40000;
   }
   
   
-  .pChild {
-    flex: 1; 
+  .pChild, .pCloseMe {
     border:2px solid brown; 
   }
 
   .pCloseMe {
-    flex: 1; 
     width: 20px;
     float: right;
-    border:2px solid brown;
     color: #A40000;
   }
 
