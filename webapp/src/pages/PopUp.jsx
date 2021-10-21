@@ -12,8 +12,8 @@ const PopUp = (props) => {
         <div className='popUp'>  
           <div class="pHeader">
             <div class="pChild">{props.title}     
-                For reservation and enquires - Send us 
-                <NavLink to={{ pathname: "/email", state: { modal: true }, }} className="Nav_link urlStyle">Message/E-Mail</NavLink>
+                For reservation and enquires - Send us a 
+                <NavLink to={{ pathname: "/email", state: { modal: true }, }} className="Nav_link urlStyle">Message or E-Mail</NavLink>
               </div>
             <div class="pCloseMe"><a href="#" onClick={props.handleClose}>x</a></div>
           </div>        
