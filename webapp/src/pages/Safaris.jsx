@@ -149,13 +149,13 @@ const Safaris = () => {
       }
 
       console.log(cart);
-      
+      const summaryHTML = '<span className=\'Summary\'>' + safari.summary + '<span>';
       return (
         <div className="SafariTours">
           <div className="VideoPlayer">
             <VideoPlayer video={video} className="video-player"/> 
           </div>
-          <div dangerouslySetInnerHTML={{__html: <span className="Summary">summary</span>}} /> 
+          <div dangerouslySetInnerHTML={{__html: summaryHTML}} /> 
           <span className='sub' onClick={() => setOpen(true)}>Details and Offers</span>
           <PopUp data={data} open={open} title={parse(title)} addToCart={props.addToCart} removeFromCart={props.removeFromCart} handleClose={handleClose}>{children}</PopUp>
           <div className='clearfix'></div>
