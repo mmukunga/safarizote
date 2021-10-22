@@ -38,6 +38,7 @@ public class HomeController {
       catalog.put(Id, safari);
     });
 
+    service.setCatalog(catalog);
     return ResponseEntity.ok().body(sourceSet);
   }
 

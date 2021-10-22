@@ -15,7 +15,6 @@ public class CartServiceImpl implements CartService {
     @Autowired
     private CartRepository repository;
 
-    @Value("#{catalog}")
     private Map<Integer, Safari> catalog;
 
     @Value("${contactEmail}")
@@ -33,6 +32,10 @@ public class CartServiceImpl implements CartService {
     public String getContactEmail() {
         return contactEmail;
     }
+
+   public void setCatalog(Map<Integer, Safari> _catalog){
+       catalog = _catalog;
+   }
 
     public void addItemToCart(int id, int quantity) {
         if (catalog.containsKey(id)) {
