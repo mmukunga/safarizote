@@ -42,7 +42,7 @@ function App() {
       '/images/drought.jpg'
   ];
 
-  const imgId = Math.floor(Math.random() * images.length);
+  const imgId = Math.floor(Math.random() * (images.length - 0) + 0);
   const [selectedImage, setSelectedImage] = React.useState(images[imgId]);
 
   const displayHome = {
@@ -53,15 +53,6 @@ function App() {
       backgroundImage: `url(${process.env.PUBLIC_URL + selectedImage})`,
       color: displayHome.color
   };
-
-  React.useEffect(() => {
-      const intervalID = setTimeout(() =>  {
-          const id = Math.floor(Math.random() * (7 - 0) + 0);
-          setSelectedImage(images[id]);
-      }, 3000);
-  
-      return () => clearInterval(intervalID);
-  }, [selectedImage]);
 
   const DropDown = props => {
     const {history} = props;

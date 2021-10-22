@@ -37,7 +37,9 @@ const Safaris = () => {
     });
 
     const addToCart = (el) => {
-      setCart([...cart, el]);
+      if (!(cart.filter(e => e.id === el.id).length > 0)) {
+        setCart([...cart, el]);
+      }
     };
   
     const removeFromCart = (el) => {
