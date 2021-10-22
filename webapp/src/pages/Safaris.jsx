@@ -194,6 +194,9 @@ const Safaris = () => {
   }; 
 
   const videos = [ Big_Buck_Bunny, kenya_safari, kilimanjaro, MOV_FILE, preview, the_globe ];
+  
+  console.log(cart);
+
   return (
     <Card className="InnerCard" fontColor="black">
         <div id="modal-root"></div>
