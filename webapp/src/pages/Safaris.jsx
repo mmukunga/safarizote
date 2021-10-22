@@ -194,7 +194,7 @@ const Safaris = () => {
   }; 
 
   const videos = [ Big_Buck_Bunny, kenya_safari, kilimanjaro, MOV_FILE, preview, the_globe ];
-  
+
   console.log(cart);
 
   return (
@@ -208,9 +208,11 @@ const Safaris = () => {
         </ul>  
        asa
         <div>
-          { cart.map(({ id, title }) => (
-            <p key={id}>Cart {id}: {title}</p>
-          ))}
+          { cart.map((item) => {
+            console.log('dasdasd');
+            return (<p key={item.id}>Cart {item.id}: {item.title}</p>);
+          }
+          )}
         </div> 
              
         {currentItems && currentItems.length > 0 
