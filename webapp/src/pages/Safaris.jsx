@@ -17,6 +17,7 @@ import PopUp from "./PopUp";
 
 const Safaris = () => {
     const [safaris, setSafaris] = useState([]);
+    const [cart, setCart] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [numberOfHits, setNumberOfHits] = useState([]);
     const [pageSize, setPageSize] = useState(2);
@@ -43,6 +44,11 @@ const Safaris = () => {
 
     React.useEffect(() => {
       document.title = "Mombasa Safari Tours to Kenya's Major National Parks. Masai Mara, Tsavo East, Ngutuni, Tsavo West, Amboseli also to other najor destinations in Kenya";
+      axios.get('/api/showCart').then(response => {
+        setCart(response.data);
+      }).catch(e => {
+        console.log(e);
+      });
     }, []);
 
 
@@ -90,10 +96,11 @@ const Safaris = () => {
       });
     }, []);
 
-    var array_nodes = [];
+    var catalog = [];
 
     safaris.forEach(function(safari) {
-        array_nodes.push({
+        catalog.push({
+          id: safari.id,
           title: '<span className=\'SafariTitle\'>'+ safari.title  + '<span>',
           summary: '<span className=\'Summary\'>' + safari.summary + '<span>',
           details: safari.details + ' <p>USD ' + safari.price + '<p>',
@@ -102,10 +109,10 @@ const Safaris = () => {
     
     const indexOfLastItem = currentPage * pageSize;
     const indexOfFirstItem = indexOfLastItem - pageSize;
-    const currentItems = array_nodes.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = catalog.slice(indexOfFirstItem, indexOfLastItem);
 
     const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(array_nodes.length / pageSize); i++) {
+    for (let i = 1; i <= Math.ceil(catalog.length / pageSize); i++) {
       pageNumbers.push(i);
     }
     
@@ -121,14 +128,13 @@ const Safaris = () => {
     });
 
   const SafariTours = props => {
-    const Accordion = ({children, title, summary, video, idx}) => {
+    const Accordion = ({children, title, summary, video}) => {
       const [open, setOpen] = useState(false);
 
       const handleClose = () => {
         setOpen(false)
       }
 
-      const mod = idx % 2;
       return (
         <div className="SafariTours">
           <div className="VideoPlayer">
@@ -145,8 +151,8 @@ const Safaris = () => {
     const videos = props.videos;
     return (
       <div className="divsContainer"> 
-        {props && props.data.map((card, idx) =>{ return (
-          <Accordion title={card.title} summary={card.summary} video={videos[idx]} idx={idx}>
+        {props && props.data.map((card) =>{ return (
+          <Accordion title={card.title} summary={card.summary} video={videos[card.id]}>
             {card.details} 
           </Accordion>
         ); })}

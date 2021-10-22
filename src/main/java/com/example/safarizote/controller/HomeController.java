@@ -1,15 +1,16 @@
 package com.example.safarizote.controller;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.springframework.ui.Model;
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -33,54 +34,50 @@ public class HomeController {
     return ResponseEntity.ok().body(sourceSet);
   }
 
-  @RequestMapping("/api/addToCart")
-  public String addItemToCart(Model model, @RequestParam("id") Integer id, @RequestParam("quantity") Integer quantity) {
+  @RequestMapping("/api/addToCart?id={id}&quantity={quantity}")
+  public ResponseEntity<Collection<Safari>> addItemToCart(@RequestParam Integer id, @RequestParam Integer quantity) {
       if (id != null && quantity != null) {
-      service.addItemToCart(id, quantity);
-      model.addAttribute("message", 
-                      String.format("Added to cart: %s [x%d]", catalog.get(id).getSummary(), quantity));
+        service.addItemToCart(id, quantity);
+        System.out.println(String.format("Added to cart: %s [x%d]", catalog.get(id).getSummary(), quantity));
       }
-      return "catalog";
+      return getAllItems();
   }
 
-  @RequestMapping("/api/showCart")
-  public String showCart(Model model) {
-    model.addAttribute("cart", service.getAllItemsInCart());  
-    model.addAttribute("cartCost", String.format("£%.2f", service.calculateCartCost()));
-    model.addAttribute("salesTax", String.format("£%.2f", service.calculateSalesTax()));
-    model.addAttribute("deliveryCharge", String.format("£%.2f", service.calculateDeliveryCharge()));
-    return "cart";
-  }
-
-  @RequestMapping("/api/removeFromCart")
-  public String removeItemFromCart(Model model, @RequestParam("id") Integer id) {
-      if (id != null) {
-      service.removeItemFromCart(id);
-      }
-      return showCart(model);
-  }
-
-  @GetMapping(value="/api/cartItems", produces={"application/json","application/xml"})
-  public List<Safari> getAllItems() {
-    return service.getAllItemsInCart()
+  @GetMapping(value="/api/showCart", produces={"application/json","application/xml"})
+  public ResponseEntity<Collection<Safari>> getAllItems() {
+    List<Safari> cart = service.getAllItemsInCart()
               .keySet()
               .stream()
               .map(id -> catalog.get(id))
               .collect(Collectors.toList());
+
+    if (cart == null) {
+        return ResponseEntity.notFound().build();
+    } else {
+        return ResponseEntity.ok().body(cart);
+    }          
+  }
+
+  @RequestMapping("/api/removeFromCart/{id}")
+  public ResponseEntity<Collection<Safari>> removeItemFromCart(@PathVariable Integer id) {
+      if (id != null) {
+      service.removeItemFromCart(id);
+      }
+      return getAllItems();
   }
 
   @GetMapping(value="/api/cartCost", produces={"application/json","application/xml"})
-  public double getCartCost() {
-    return service.calculateCartCost();
+  public ResponseEntity<Double> getCartCost() {
+    return ResponseEntity.ok().body(service.calculateCartCost());
   }
 
   @GetMapping(value="/api/quantity", produces={"application/json","application/xml"})
-  public int getQuantityForItem() {
+  public ResponseEntity<Integer> getQuantityForItem() {
     Integer quantity = service.getAllItemsInCart().get(0);
     if (quantity != null) {
-      return quantity;
+      return ResponseEntity.ok().body(quantity);
     } else {
-      return 0;
+      return ResponseEntity.notFound().build();
     }
   }
 }
