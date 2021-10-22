@@ -149,7 +149,7 @@ const Safaris = () => {
       }
 
       console.log(cart);
-      const summaryHTML = '<span className=\'Summary\'>' + safari.summary + '<span>';
+      const summaryHTML = '<span className=\'Summary\'>' + summary + '<span>';
       return (
         <div className="SafariTours">
           <div className="VideoPlayer">
