@@ -31,6 +31,13 @@ public class HomeController {
   @GetMapping(value = "/api/safaris")
   public ResponseEntity<List<Safari>> findSafaris(){
     List<Safari> sourceSet = repository.findAll();
+
+    sourceSet.forEach(safari -> {
+      System.out.println(safari);
+      Integer Id = Integer.valueOf(safari.getId().intValue());
+      catalog.put(Id, safari);
+    });
+
     return ResponseEntity.ok().body(sourceSet);
   }
 
