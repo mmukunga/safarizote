@@ -129,8 +129,19 @@ const Safaris = () => {
     });
 
   const SafariTours = props => {
-    const Accordion = ({children, title, summary, video}) => {
+    const Accordion = ({children, data, title, summary, video}) => {
       const [open, setOpen] = useState(false);
+      const [cart, setCart] = useState([]);
+
+      const addToCart = (el) => {
+          setCart([...cart, el]);
+      };
+
+      const removeFromCart = (el) => {
+        let hardCopy = [...cart];
+        hardCopy = hardCopy.filter((cartItem) => cartItem.id !== el.id);
+        setCart(hardCopy);
+      };
 
       const handleClose = () => {
         setOpen(false)
@@ -143,7 +154,7 @@ const Safaris = () => {
           </div>
           <div dangerouslySetInnerHTML={{__html: summary}} /> 
           <span className='sub' onClick={() => setOpen(true)}>Details and Offers</span>
-          <PopUp open={open} title={parse(title)} handleClose={handleClose}>{children}</PopUp>
+          <PopUp data={data} open={open} title={parse(title)} addToCart={addToCart} removeFromCart={removeFromCart} handleClose={handleClose}>{children}</PopUp>
           <div className='clearfix'></div>
         </div>
       )
@@ -153,7 +164,7 @@ const Safaris = () => {
     return (
       <div className="divsContainer"> 
         {props && props.data.map((card) =>{ return (
-          <Accordion title={card.title} summary={card.summary} video={videos[card.id]}>
+          <Accordion data={card} title={card.title} summary={card.summary} video={videos[card.id]}>
             {card.details} 
           </Accordion>
         ); })}
