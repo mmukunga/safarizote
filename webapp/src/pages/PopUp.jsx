@@ -10,10 +10,10 @@ const PopUp = (props) => {
   }
   
   const toggleChange  = (e) => {
-    setChecked(!e.target.checked);
+    setChecked(!checked);
     let isChecked = e.target.checked;
     console.log('Checked:= ' + checked);
-
+    console.log('isChecked:= ' + isChecked);
     if (isChecked) { 
       props.addToCart(props.data)
     } else {
