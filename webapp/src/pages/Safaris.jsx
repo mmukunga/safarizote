@@ -45,6 +45,7 @@ const Safaris = () => {
     React.useEffect(() => {
       document.title = "Mombasa Safari Tours to Kenya's Major National Parks. Masai Mara, Tsavo East, Ngutuni, Tsavo West, Amboseli also to other najor destinations in Kenya";
       axios.get('/api/showCart').then(response => {
+        console.log(response);
         setCart(response.data);
       }).catch(e => {
         console.log(e);
