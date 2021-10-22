@@ -208,7 +208,7 @@ const Safaris = () => {
         </ul>  
        asa
         <div>
-          { cart.map((item) => {
+          { cart && cart.map((item) => {
             console.log('dasdasd');
             return (<p key={item.id}>Cart {item.id}: {item.title}</p>);
           }
