@@ -202,7 +202,14 @@ const Safaris = () => {
          <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Our Safaris:</span></li> 
          {renderPageNumbers}
          <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Hits: {numberOfHits.length}</span></li>
-        </ul>        
+        </ul>  
+
+        <div>
+          { cart.map(({ id, title }) => (
+            <p key={id}>Cart {id}: {title}</p>
+          ))}
+        </div> 
+             
         {currentItems && currentItems.length > 0 
            ? <SafariTours data={currentItems} videos={videos}/> 
            : <p>No Data Found!!</p>}                   
