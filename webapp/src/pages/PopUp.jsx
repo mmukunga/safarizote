@@ -25,7 +25,7 @@ const PopUp = (props) => {
      <div className='overlay'>
         <div className='popUp'>  
           <div class="pHeader">
-            <div class="pChild">{props.title}     
+            <div class="pChild"><span className="SafariTitle">{props.title}</span>     
                 For reservation and enquires - Send us a 
                 <NavLink to={{ pathname: "/email", state: { modal: true }, }} className="Nav_link urlStyle">Message or E-Mail</NavLink>
                 <label>

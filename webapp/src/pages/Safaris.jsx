@@ -114,8 +114,8 @@ const Safaris = () => {
     safaris.forEach(function(safari) {
         catalog.push({
           id: safari.id,
-          title: '<span className=\'SafariTitle\'>'+ safari.title  + '<span>',
-          summary: '<span className=\'Summary\'>' + safari.summary + '<span>',
+          title: safari.title,
+          summary: safari.summary,
           details: safari.details + ' <p>USD ' + safari.price + '<p>',
         });
     });
@@ -155,7 +155,7 @@ const Safaris = () => {
           <div className="VideoPlayer">
             <VideoPlayer video={video} className="video-player"/> 
           </div>
-          <div dangerouslySetInnerHTML={{__html: summary}} /> 
+          <div dangerouslySetInnerHTML={{__html: <span className="Summary">summary</span>}} /> 
           <span className='sub' onClick={() => setOpen(true)}>Details and Offers</span>
           <PopUp data={data} open={open} title={parse(title)} addToCart={props.addToCart} removeFromCart={props.removeFromCart} handleClose={handleClose}>{children}</PopUp>
           <div className='clearfix'></div>
