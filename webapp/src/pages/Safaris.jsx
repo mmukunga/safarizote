@@ -134,9 +134,9 @@ const Safaris = () => {
       const [cart, setCart] = useState([]);
 
       const addToCart = (el) => {
-          setCart([...cart, el]);
+        setCart([...cart, el]);
       };
-
+    
       const removeFromCart = (el) => {
         let hardCopy = [...cart];
         hardCopy = hardCopy.filter((cartItem) => cartItem.id !== el.id);
@@ -147,6 +147,8 @@ const Safaris = () => {
         setOpen(false)
       }
 
+      console.log(cart);
+      
       return (
         <div className="SafariTours">
           <div className="VideoPlayer">
