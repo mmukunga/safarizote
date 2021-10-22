@@ -203,7 +203,7 @@ const Safaris = () => {
          {renderPageNumbers}
          <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Hits: {numberOfHits.length}</span></li>
         </ul>  
-
+       asa
         <div>
           { cart.map(({ id, title }) => (
             <p key={id}>Cart {id}: {title}</p>
