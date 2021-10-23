@@ -233,7 +233,7 @@ const Safaris = () => {
          <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Hits: {numberOfHits.length}</span></li>
          <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}>
             <form ref="form" onSubmit={handleSubmit}>
-                Booked Items: { cart && cart.length}
+                Booked Items:
                 <button type="submit">Send Booking</button>
             </form> 
          </li>
