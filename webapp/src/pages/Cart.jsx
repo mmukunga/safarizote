@@ -14,8 +14,8 @@ const Cart = ({ cart, removeFromCart }) => {
   <div>
     Cart
     <ul>
-      {cart.map((product, index) =>
-        <li key={index}>{product.name} {product.price} <button type="button" onClick={() => removeFromCart(index)}>Remove from cart</button></li>
+      {cart.map((product) =>
+        <li key={product.id}>{product.title} {product.price} <button type="button" onClick={() => removeFromCart(product)}>Remove from cart</button></li>
       )}
     </ul>
     {!cart.length && <span>No products in cart.</span>}
