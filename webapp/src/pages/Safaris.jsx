@@ -11,7 +11,6 @@ import MOV_FILE from "../media/MOV_FILE.mov";
 import preview from "../media/preview.mp4";
 import the_globe from "../media/the_globe.mov";
 
-import axios from 'axios';
 import Card from './Card';
 import PopUp from "./PopUp";
 import Cart from "./Cart";
