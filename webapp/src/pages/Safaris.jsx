@@ -145,6 +145,7 @@ const Safaris = () => {
     const Accordion = ({children, data, title, summary, video}) => {
       const [open, setOpen] = useState(false);
       const [openCart, setOpenCart] = useState(false);
+      const [checked, setChecked] = React.useState(false);
 
       const handleClose = () => {
         setOpen(false)
@@ -156,6 +157,7 @@ const Safaris = () => {
 
       const handleCart  = (e) => {
         let isChecked = e.target.checked;
+        setChecked(isChecked);
         console.log('isChecked:= ' + isChecked);
         if (isChecked) { 
           props.addToCart(data)

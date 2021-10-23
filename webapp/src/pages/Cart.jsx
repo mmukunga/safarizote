@@ -2,19 +2,11 @@ import React from 'react';
 
 const Cart = ({ cart, removeFromCart }) => {
   const handleSubmit = async() => {
-    // store the states in the form data
-    const loginFormData = new FormData();
-    loginFormData.append("username", formValue.email)
-    loginFormData.append("password", formValue.password)
-  
     try {
-      // make axios post request
-      const response = await axios({
-        method: "post",
-        url: "/api/booking",
-        data: loginFormData,
+      const response = await axios.post({url: "/api/booking", data: cart,
         headers: { "Content-Type": "multipart/form-data" },
       });
+      console.log(response);
     } catch(error) {
       console.log(error)
     }
