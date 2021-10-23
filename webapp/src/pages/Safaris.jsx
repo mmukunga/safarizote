@@ -165,7 +165,8 @@ const Safaris = () => {
     
       }
 
-      console.log(cart);
+      console.log(data);
+      
       const summaryHTML = '<span className=\'Summary\'>' + summary + '<span>';
       return (
         <div className="SafariTours">
@@ -173,10 +174,7 @@ const Safaris = () => {
             <VideoPlayer video={video} className="video-player"/> 
           </div>
           <div dangerouslySetInnerHTML={{__html: summaryHTML}} /> 
-          <span className='sub' onClick={() => setOpen(true)}>Details and Offers</span>&nbsp; 
-          <label className='sub'><input type="checkbox" name="check" checked={checked} onClick={handleCart}/>Add To Cart</label>&nbsp; 
-          <span className='sub' onClick={() => setOpenCart(true)}>Checkout Cart</span>
-          <Cart cart={cart} removeFromCart={props.removeFromCart} handleClose={handleCloseCart}/>
+          <span className='sub' onClick={() => setOpen(true)}>Details and Offers</span
           <PopUp data={data} open={open} title={parse(title)} handleClose={handleClose}>{children}</PopUp>
           <div className='clearfix'></div>
         </div>
