@@ -166,7 +166,7 @@ const Safaris = () => {
       }
 
       console.log(data);
-      
+
       const summaryHTML = '<span className=\'Summary\'>' + summary + '<span>';
       return (
         <div className="SafariTours">
@@ -174,7 +174,7 @@ const Safaris = () => {
             <VideoPlayer video={video} className="video-player"/> 
           </div>
           <div dangerouslySetInnerHTML={{__html: summaryHTML}} /> 
-          <span className='sub' onClick={() => setOpen(true)}>Details and Offers</span
+          <span className='sub' onClick={() => setOpen(true)}>Details and Offers</span>
           <PopUp data={data} open={open} title={parse(title)} handleClose={handleClose}>{children}</PopUp>
           <div className='clearfix'></div>
         </div>
