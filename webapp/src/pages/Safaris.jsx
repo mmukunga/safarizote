@@ -16,12 +16,12 @@ import PopUp from "./PopUp";
 import Cart from "./Cart";
 
 const Safaris = () => {
-  const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [numberOfHits, setNumberOfHits] = useState([]);
-  const [pageSize, setPageSize] = useState(2);
-  const [metrics, setMetrics] = useState({
+  const [products, setProducts] = React.useState([]);
+  const [cart, setCart] = React.useState([]);
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [numberOfHits, setNumberOfHits] = React.useState([]);
+  const [pageSize, setPageSize] = React.useState(2);
+  const [metrics, setMetrics] = React.useState({
         iPv4: "84.212.216.80",
         hostname: "cm-84.212.216.80.get.no",
         org: "AS41164 Telia Norge AS",
@@ -142,8 +142,8 @@ const Safaris = () => {
 
   const SafariTours = props => {
     const Accordion = ({children, data, title, summary, video}) => {
-      const [open, setOpen] = useState(false);
-      const [openCart, setOpenCart] = useState(false);
+      const [open, setOpen] = React.useState(false);
+      const [openCart, setOpenCart] = React.useState(false);
       const [checked, setChecked] = React.useState(false);
 
       const handleClose = () => {
