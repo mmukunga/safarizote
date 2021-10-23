@@ -14,6 +14,7 @@ import the_globe from "../media/the_globe.mov";
 import axios from 'axios';
 import Card from './Card';
 import PopUp from "./PopUp";
+import Cart from "./Cart";
 
 const Safaris = () => {
     const [safaris, setSafaris] = useState([]);
@@ -143,9 +144,25 @@ const Safaris = () => {
   const SafariTours = props => {
     const Accordion = ({children, data, title, summary, video}) => {
       const [open, setOpen] = useState(false);
+      const [openCart, setOpenCart] = useState(false);
 
       const handleClose = () => {
         setOpen(false)
+      }
+
+      const handleCloseCart = () => {
+        setOpenCart(false)
+      }
+
+      const handleCart  = (e) => {
+        let isChecked = e.target.checked;
+        console.log('isChecked:= ' + isChecked);
+        if (isChecked) { 
+          props.addToCart(data)
+        } else {
+          props.removeFromCart(data)
+        }
+    
       }
 
       console.log(cart);
@@ -156,8 +173,11 @@ const Safaris = () => {
             <VideoPlayer video={video} className="video-player"/> 
           </div>
           <div dangerouslySetInnerHTML={{__html: summaryHTML}} /> 
-          <span className='sub' onClick={() => setOpen(true)}>Details and Offers</span>
-          <PopUp data={data} open={open} title={parse(title)} addToCart={props.addToCart} removeFromCart={props.removeFromCart} handleClose={handleClose}>{children}</PopUp>
+          <span className='sub' onClick={() => setOpen(true)}>Details and Offers</span>&nbsp; 
+          <label className='sub'><input type="checkbox" name="check" checked={checked} onClick={handleCart}/>Add To Cart</label>&nbsp; 
+          <span className='sub' onClick={() => setOpenCart(true)}>Checkout Cart</span>
+          <Cart cart={cart} removeFromCart={props.removeFromCart} handleClose={handleCloseCart}/>
+          <PopUp data={data} open={open} title={parse(title)} handleClose={handleClose}>{children}</PopUp>
           <div className='clearfix'></div>
         </div>
       )
@@ -174,6 +194,12 @@ const Safaris = () => {
       </div>
     );
   } 
+
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log(`Form submitted, ${name}`);    
+  }
+
 
   const VideoPlayer = (props) => {
     const videoRef = useRef(null);
@@ -206,15 +232,15 @@ const Safaris = () => {
          <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Our Safaris:</span></li> 
          {renderPageNumbers}
          <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Hits: {numberOfHits.length}</span></li>
+         <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Hits: {numberOfHits.length}</span></li>
         </ul>  
-       asa
-        <div>
-          { cart && cart.map((item) => {
-            console.log('dasdasd');
-            return (<p key={item.id}>Cart {item.id}: {item.title}</p>);
-          }
-          )}
-        </div> 
+        <form ref="form" onSubmit={handleSubmit}>
+            { cart && cart.map((item) => {
+              return (<p key={item.id}>Cart {item.id}: {item.title}</p>);
+            }
+            )}
+            <button type="submit">Send Enquire</button>
+        </form> 
              
         {currentItems && currentItems.length > 0 
            ? <SafariTours data={currentItems} addToCart={addToCart} removeFromCart={removeFromCart} videos={videos}/> 

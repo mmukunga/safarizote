@@ -9,18 +9,6 @@ const PopUp = (props) => {
       return null;
   }
   
-  const toggleChange  = (e) => {
-    setChecked(!checked);
-    let isChecked = e.target.checked;
-    console.log('Checked:= ' + checked);
-    console.log('isChecked:= ' + isChecked);
-    if (isChecked) { 
-      props.addToCart(props.data)
-    } else {
-      props.removeFromCart(props.data)
-    }
-
-  }
   const modal = props.open && (
      <div className='overlay'>
         <div className='popUp'>  
@@ -28,10 +16,6 @@ const PopUp = (props) => {
             <div class="pChild"><span className="SafariTitle">{props.title}</span>     
                 For reservation and enquires - Send us a 
                 <NavLink to={{ pathname: "/email", state: { modal: true }, }} className="Nav_link urlStyle">Message or E-Mail</NavLink>
-                <label>
-                  <input type="checkbox" name="check" checked={checked} onChange={toggleChange}/>
-                  Safari - Add to Cart!
-                </label>
               </div>
             <div class="pCloseMe"><a href="#" onClick={props.handleClose}>X</a></div>
           </div>        
