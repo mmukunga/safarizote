@@ -3,15 +3,12 @@ import axios from 'axios';
 
 
 const Cart = ({ cart, removeFromCart }) => {
-  const handleSubmit = async() => {
-    try {
-      const response = await axios.post({url: "/api/booking", data: cart,
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+  const handleSubmit = () => {
+    axios.post("/api/booking", { params: { data: cart } }).then((response) => {
       console.log(response);
-    } catch(error) {
-      console.log(error)
-    }
+    }).catch((err) => {
+      console.error(err);
+    });
   }
   return (
   <div>

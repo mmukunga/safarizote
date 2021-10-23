@@ -88,4 +88,9 @@ public class HomeController {
       return ResponseEntity.notFound().build();
     }
   }
+
+  @GetMapping(value="/api/booking", produces={"application/json","application/xml"})
+  public ResponseEntity<Double> sendBooking(@RequestParam List<Safari> data) {
+    return ResponseEntity.ok().body(service.calculateCartCost());
+  }
 }

@@ -233,15 +233,13 @@ const Safaris = () => {
          <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Our Safaris:</span></li> 
          {renderPageNumbers}
          <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Hits: {numberOfHits.length}</span></li>
-         <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Hits: {numberOfHits.length}</span></li>
+         <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}>
+            <form ref="form" onSubmit={handleSubmit}>
+                Booked Items: { cart && cart.length}
+                <button type="submit">Send Booking</button>
+            </form> 
+         </li>
         </ul>  
-        <form ref="form" onSubmit={handleSubmit}>
-            { cart && cart.map((item) => {
-              return (<p key={item.id}>Cart {item.id}: {item.title}</p>);
-            }
-            )}
-            <button type="submit">Send Enquire</button>
-        </form> 
              
         {currentItems && currentItems.length > 0 
            ? <SafariTours data={currentItems} addToCart={addToCart} removeFromCart={removeFromCart} videos={videos}/> 
