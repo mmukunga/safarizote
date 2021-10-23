@@ -199,7 +199,8 @@ const Safaris = () => {
 
   const handleSubmit = (e) => {
       e.preventDefault();
-      console.log(`Form submitted, ${name}`);    
+      const { name, value } = e.target;
+      console.log(`Form submitted, Name: ${name}, Value: ${value}`);    
   }
 
 
