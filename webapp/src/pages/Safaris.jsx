@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-
+import axios from 'axios';
 import parse from "html-react-parser";
 import moment from 'moment';
 import Bowser from "bowser";
@@ -64,7 +64,6 @@ const Safaris = () => {
         console.log(e);
       });
     }, []);
-
 
     const getData = async () => {
       const response = await axios.get('https://geolocation-db.com/json/')
