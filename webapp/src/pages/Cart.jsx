@@ -6,7 +6,7 @@ const Cart = (props) => {
   
   if (!props.show) { 
     console.log('SHOW!! ' + props.show);
-    return ReactDOM.createPortal(null, document.getElementById("portal"));
+    return null;
   }
    
   const modalCart = props.show && (
