@@ -13,12 +13,24 @@ const Cart = (props) => {
 
   console.log('!!SHOW TRUE!! ' + props.show);
 
-  return ReactDOM.createPortal(
-    <div>
-        Modal content goes here
-    </div>,
-    document.getElementById('cart_portal')
-)
+  const modalCart = props.show && ( 
+  <div className='overlay'>
+    <div className='popUp'>  
+        <div class="pHeader">
+          <div class="pChild"><span className="SafariTitle">Cart</span></div>
+          <div class="pCloseMe"><a href="#" onClick={props.handleShow}>X</a></div>
+        </div>        
+        <div class="popUp-content">
+        {props.cart.length > 0 ? 
+            props.cart.map((item) => <div key={item.id}>{item.id} {item.title}</div>)
+            : 'No items in Cart'}
+        </div>
+      </div>
+    </div> 
+  );
+
+
+  return ReactDOM.createPortal(modalCart, document.getElementById('cart_portal'));
 }
 
 export default Cart;
