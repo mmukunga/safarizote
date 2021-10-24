@@ -251,6 +251,7 @@ const Safaris = () => {
       <Card className="InnerCard" fontColor="black">
         <div id="modal-root"></div>
         <div id='portal'></div>
+        <div id='cart_portal'></div>
         <ul id="page-numbers"> 
          <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Our Safaris:</span></li> 
          {renderPageNumbers}
