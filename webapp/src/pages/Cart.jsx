@@ -23,7 +23,7 @@ const Cart = (props) => {
       <div class="pCloseMe"><a href="#" onClick={props.handleShow}>X</a></div>
     </div>        
     <div class="popUp-content">
-         content HERE {props.children}
+         content HERE
          {props.cart.length > 0 ? props.cart.map((item) => <div key={item.id}>{item.id} {item.title}</div>): 'No items in Cart'
           }
     </div>
