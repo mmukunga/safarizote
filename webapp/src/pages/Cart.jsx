@@ -5,8 +5,8 @@ import { NavLink } from "react-router-dom";
 const Cart = (props) => {
   
   if (!props.show) { 
-    console.log('OPEN!! ' + props.show);
-    return null;
+    console.log('SHOW!! ' + props.show);
+    return ReactDOM.createPortal(null, document.getElementById("portal"));
   }
    
   const modalCart = props.show && (
@@ -21,11 +21,11 @@ const Cart = (props) => {
          </div>        
          <div class="popUp-content">
          <ul>
-            {props.cart.map((item) =>
+            {props.cart.length > 0? props.cart.map((item) =>
               <li key={item.id}>{item.id} {item.title} <input type="button" onClick={() => props.removeFromCart(item)}>Remove</input></li>
-            )}
+            ): <span>No items in cart.</span>
+          }
           </ul>
-          {!props.cart.length && <span>No items in cart.</span>}
          </div>
        </div>
      </div>
