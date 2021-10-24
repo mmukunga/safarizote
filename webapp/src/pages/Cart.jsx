@@ -32,7 +32,7 @@ const Cart = (props) => {
 
   console.log('!!modalCart!! ' + modalCart);
 
-  return ReactDOM.createPortal('modalCart', document.getElementById("portal"));
+  return (<div>!!modalCart!!</div>);
 }
 
 export default Cart;
