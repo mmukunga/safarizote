@@ -175,7 +175,9 @@ const Safaris = () => {
             <VideoPlayer video={video} className="video-player"/> 
           </div>
           <div dangerouslySetInnerHTML={{__html: summaryHTML}} /> 
-          <span className='sub' onClick={() => setOpen(true)}>Details and Offers</span>
+          <span className='sub' onClick={() => setOpen(true)}>Details and Offers</span>|
+          <label className='sub'><input type="checkbox" name="check" checked={checked} onClick={handleCart}/>Add To Cart</label>
+          <Cart cart={cart} removeFromCart={props.removeFromCart} handleClose={handleCloseCart}/>
           <PopUp data={data} open={open} title={parse(title)} handleClose={handleClose}>{children}</PopUp>
           <div className='clearfix'></div>
         </div>
