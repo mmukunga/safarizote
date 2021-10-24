@@ -39,7 +39,9 @@ const Safaris = () => {
   const videoUrl = 'https://www.youtube.com/watch?v=3qW5z4xeiac';
 
   const addToCart = (el) => {
+     console.log(el);
     if (!(cart.filter(e => e.id === el.id).length > 0)) {
+      console.log('!!ADD TO CARD!!');
       setCart([...cart, el]);
     }
   };
