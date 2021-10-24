@@ -9,7 +9,7 @@ const Cart = (props) => {
     return null;
   }
    
-  const modal = props.show && (
+  const modalCart = props.show && (
     <div className='overlay'>
        <div className='popUp'>  
          <div class="pHeader">
@@ -31,7 +31,7 @@ const Cart = (props) => {
      </div>
    );
 
-  return ReactDOM.createPortal(modal, document.getElementById("portal"));
+  return ReactDOM.createPortal(modalCart, document.getElementById("portal"));
 }
 
 export default Cart;
