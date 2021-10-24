@@ -57,7 +57,7 @@
   input[type=button] {    
     background-color: rgb(37, 116, 161);  
     border: none;  
-    width: 50px;
+    width: 100px;
     padding: 12px 20px;
     border-radius: 4px;
     cursor: pointer;
