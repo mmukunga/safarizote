@@ -40,9 +40,12 @@ const Safaris = () => {
 
   const addToCart = (el) => {
     console.log('!!1.ADD TO CARD!!');
+    console.log(el);
+    console.log('!!2.ADD TO CARD!!');
     if (!(cart.filter(e => e.id === el.id).length > 0)) {
-      console.log('!!2.ADD TO CARD!!');
+      console.log('!!3a.ADD TO CARD!!');
       setCart([...cart, el]);
+      console.log('!!3b.ADD TO CARD!!');
     }
   };
 
@@ -163,8 +166,10 @@ const Safaris = () => {
         setChecked(isChecked);
         
         if (isChecked) { 
-          props.addToCart(data)
+          console.log('ADD ITEM!!');
+          props.addToCart(data);
         } else {
+          console.log('REMOVE ITEM!!');
           props.removeFromCart(data)
         }
       }
