@@ -186,7 +186,7 @@ const Safaris = () => {
           <span className='sub' onClick={() => setOpen(true)}>Details and Offers</span>|
           <label className='sub'><input type="checkbox" name="check" checked={checked} onClick={handleCart}/>Add To Cart</label>|  
           <span className='sub' onClick={() => setShow(true)}>Show Cart</span>       
-          {cart.length && <form onSubmit={handleSubmit}><button type="submit">Send Us a Booking</button></form>}
+          {cart.length && <form onSubmit={handleSubmit}><button type="submit" style={{width:'50px'}}>Send Booking</button></form>}
           <Cart cart={cart} show={show} removeFromCart={props.removeFromCart} handleShow={handleShow}/>
           <PopUp data={data} open={open} title={parse(title)} handleClose={handleClose}>{children}</PopUp>
           <div className='clearfix'></div>
