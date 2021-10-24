@@ -226,9 +226,19 @@ const Safaris = () => {
 
  return (
     <>
-      Safaris
-      <hr />
-      Test
+      <Card className="InnerCard" fontColor="black">
+        <div id="modal-root"></div>
+        <div id='portal'></div>
+        <ul id="page-numbers"> 
+         <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Our Safaris:</span></li> 
+         {renderPageNumbers}
+         <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Hits: {numberOfHits.length}</span></li>
+        </ul>  
+             
+        {currentItems && currentItems.length > 0 
+           ? <SafariTours data={currentItems} addToCart={addToCart} removeFromCart={removeFromCart} videos={videos}/> 
+           : <p>No Data Found!!</p>}                   
+    </Card>
       </>
   );
 };
