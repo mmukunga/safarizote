@@ -197,7 +197,6 @@ const Safaris = () => {
               <span className='sub' onClick={() => setShow(true)}>Show Cart</span>       
               {cart.length < 1? ' Cart is Empty' : <input type="button" onClick={() => handleSubmit()}>Send Booking</input>}
               <PopUp data={data} open={open} title={parse(title)} handleClose={handleClose}>{children}</PopUp>
-              <Cart cart={cart} show={show} removeFromCart={props.removeFromCart} handleShow={handleShow}/>
           </div>
           <div className='clearfix'></div>
         </div>
