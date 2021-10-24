@@ -150,9 +150,12 @@ const Safaris = () => {
         setOpen(false)
       }
 
+      const handleShow = () => {
+        setShow(false)
+      }
+
       const handleCart  = (e) => {
         let isChecked = e.target.checked;
-        setShow(isChecked);
         console.log('isChecked:= ' + isChecked);
         if (isChecked) { 
           props.addToCart(data)
@@ -184,7 +187,7 @@ const Safaris = () => {
           <label className='sub'><input type="checkbox" name="check" checked={checked} onClick={handleCart}/>Add To Cart</label>|  
           <span className='sub' onClick={() => setShow(true)}>Show Cart</span>       
           {cart.length && <form onSubmit={handleSubmit}><button type="submit">Send Us a Booking</button></form>}
-          <Cart cart={cart} show={show} removeFromCart={props.removeFromCart} handleClose={handleClose}/>
+          <Cart cart={cart} show={show} removeFromCart={props.removeFromCart} handleShow={handleShow}/>
           <PopUp data={data} open={open} title={parse(title)} handleClose={handleClose}>{children}</PopUp>
           <div className='clearfix'></div>
         </div>
