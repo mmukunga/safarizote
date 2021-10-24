@@ -11,8 +11,15 @@ const Cart = ({ cart, removeFromCart }) => {
     });
   }
   return (
-  <div>
+    <div>
     Cart
+    <ul>
+      {cart.map((item) =>
+        <li key={item.id}>{item.title} {item.price} <button type="button" onClick={() => removeFromCart(item)}>Remove from cart</button></li>
+      )}
+    </ul>
+    {!cart.length && <span>No items in cart.</span>}
+    {cart.length && <form onSubmit={handleSubmit}><button type="submit">Send Us a Booking</button></form>}
   </div>
   )};
 
