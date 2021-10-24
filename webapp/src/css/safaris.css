@@ -53,6 +53,12 @@
   margin: 0 auto;
 }
 
+.sFooter {
+  display: flex; /* or inline-flex */
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .clearfix {
   clear: both;
 }
