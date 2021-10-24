@@ -187,8 +187,8 @@ const Safaris = () => {
               <label className='sub'><input type="checkbox" name="check" checked={checked} onClick={handleCart}/>Add To Cart</label>  
               <span className='sub' onClick={() => setShow(true)}>Show Cart</span>       
               {cart.length < 1? ' Cart is Empty' : <input type="button" onClick={() => handleSubmit()}>Send Booking</input>}
+              <PopUp data={data} open={open} title={parse(title)} handleClose={handleClose}>{children}</PopUp>
           </div>
-         
           <div className='clearfix'></div>
         </div>
       )
