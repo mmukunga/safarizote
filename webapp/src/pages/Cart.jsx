@@ -20,12 +20,7 @@ const Cart = (props) => {
            <div class="pCloseMe"><a href="#" onClick={props.handleShow}>X</a></div>
          </div>        
          <div class="popUp-content">
-         <ul>
-            {props.cart.length > 0? props.cart.map((item) =>
-              <li key={item.id}>{item.id} {item.title} <input type="button" onClick={() => props.removeFromCart(item)}>Remove</input></li>
-            ): <span>No items in cart.</span>
-          }
-          </ul>
+         content HERE
          </div>
        </div>
      </div>
