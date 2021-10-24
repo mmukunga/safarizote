@@ -24,6 +24,8 @@ const Cart = (props) => {
     </div>        
     <div class="popUp-content">
          content HERE {props.children}
+         {props.cart.length > 0 ? props.cart.map((item) =>' add things '): 'No items in Cart'
+          }
     </div>
   </div>
 </div> );
