@@ -18,7 +18,7 @@ const Cart = (props) => {
     <div>
         Modal content goes here
     </div>,
-    document.getElementById('portal-root')
+    document.getElementById('cart_portal')
 )
 }
 
