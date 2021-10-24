@@ -159,13 +159,14 @@ const Safaris = () => {
       const handleCart  = (e) => {
         let isChecked = e.target.checked;
         console.log('isChecked:= ' + isChecked);
-        props.addToCart(data);
-        /*
+        //props.addToCart(data);
+        setChecked(isChecked);
+        
         if (isChecked) { 
           props.addToCart(data)
         } else {
           props.removeFromCart(data)
-        }*/
+        }
       }
 
       const handleSubmit = () => {
