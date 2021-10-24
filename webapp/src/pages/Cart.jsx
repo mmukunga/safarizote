@@ -4,11 +4,12 @@ import { NavLink } from "react-router-dom";
 
 const Cart = (props) => {
   
-  if (!props.open) { 
+  if (!props.show) { 
+    console.log('OPEN!! ' + props.show);
     return null;
   }
    
-  const modal = props.open && (
+  const modal = props.show && (
     <div className='overlay'>
        <div className='popUp'>  
          <div class="pHeader">
