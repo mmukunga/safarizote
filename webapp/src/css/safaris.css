@@ -54,10 +54,10 @@
 }
 
 .sFooter {
-  display: flex; /* or inline-flex */
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: flex;
+  flex-flow: row wrap;
   align-items: center;
+  justify-content: space-around;
   border: 2px solid purple;
 }
 
