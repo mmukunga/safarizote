@@ -17,12 +17,15 @@ const Cart = (props) => {
   <div className='overlay'>
     <div className='popUp'>  
         <div class="pHeader">
-          <div class="pChild"><span className="SafariTitle">Cart</span></div>
+          <div class="pChild">
+            <span className="SafariTitle">For enquiries - Please Send us an 
+            <NavLink to={{ pathname: "/email", state: { modal: true }, }} className="Nav_link urlStyle">E-Mail</NavLink></span>
+          </div>
           <div class="pCloseMe"><a href="#" onClick={props.handleShow}>X</a></div>
         </div>        
         <div class="popUp-content">
         {props.cart.length > 0 ? 
-            props.cart.map((item) => <div key={item.id}>{item.id} {item.title}</div>)
+            props.cart.map((item) => <div key={item.id}>{item.id} {item.title} <label>Remove from cart <input type="button" onClick={() => props.removeFromCart(product)}/></label></div>)
             : 'No items in Cart'}
         </div>
       </div>
