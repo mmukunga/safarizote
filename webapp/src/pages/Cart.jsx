@@ -25,7 +25,7 @@ const Cart = (props) => {
         </div>        
         <div class="popUp-content">
         {props.cart.length > 0 ? 
-            props.cart.map((item) => <div key={item.id}>{item.id} {item.title} <label>Remove from cart <input type="button" onClick={() => props.removeFromCart(item)}/></label></div>)
+            props.cart.map((item) => <div key={item.id}>{item.id} {item.title} <input type="button" value="Delete" onClick={() => props.removeFromCart(item)}/></div>)
             : 'No items in Cart'}
         </div>
       </div>
