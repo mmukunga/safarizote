@@ -26,7 +26,7 @@ const Cart = (props) => {
         <div class="popUp-content" style={{textAlign: 'center'}}>
         <ul className="CartList">  
         {props.cart.length > 0 ? 
-            props.cart.map((item) => <li key={item.id}>{item.title} <input type="button" value="Delete" onClick={() => props.removeFromCart(item)}/></li>)
+            props.cart.map((booking) => <li key={booking.safariId}>{booking.name} {booking.email} {booking.phone} <input type="button" value="Delete" onClick={() => props.removeFromCart(booking)}/></li>)
             : <li>No items in Cart</li>}
         </ul>
         </div>

@@ -43,7 +43,7 @@ const Safaris = () => {
     console.log('!!1.ADD TO CARD!!');
     console.log(el);
     console.log('!!2.ADD TO CARD!!');
-    if (!(cart.filter(e => e.id === el.id).length > 0)) {
+    if (!(cart.filter(e => e.safariId === el.safariId).length > 0)) {
       console.log('!!3a.ADD TO CARD!!');
       setCart([...cart, el]);
       console.log('!!3b.ADD TO CARD!!');
@@ -52,7 +52,7 @@ const Safaris = () => {
 
   const removeFromCart = (el) => {
     let hardCopy = [...cart];
-    hardCopy = hardCopy.filter((cartItem) => cartItem.id !== el.id);
+    hardCopy = hardCopy.filter((cartItem) => cartItem.safariId !== el.safariId);
     setCart(hardCopy);
   };
 
