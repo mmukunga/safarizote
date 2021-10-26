@@ -188,11 +188,11 @@ const Safaris = () => {
           </div>
           <div dangerouslySetInnerHTML={{__html: summaryHTML}} /> 
           <div className="sFooter">
-              <span className='sub' onClick={() => setOpen(true)}>Details and Offers</span>
-              <span className='sub' onClick={() => setShowForm(true)}>Make A Booking</span>
+              <span className='sub' onClick={() => setOpen(true)}>Tour Details</span>
+              <span className='sub' onClick={() => setShowForm(true)}>Tour Booking</span>
               <Booking safariId={data.id} showForm={showForm} parentCallback={callback} handleShowForm={handleShowForm}/>  
-              <span className='sub' onClick={() => setShow(true)}>Show Cart</span>       
-              {cart.length < 1? ' Cart is Empty' : <input type="button" value="Send Booking" onClick={() => handleSubmit()}/>}
+              <span className='sub' onClick={() => setShow(true)}>Tour Cart</span>       
+              {cart.length < 1? ' Empty Cart' : <input type="button" value="Send Booking" onClick={() => handleSubmit()}/>}
               <PopUp data={data} open={open} title={parse(title)} handleClose={handleClose}>{children}</PopUp>
               <Cart cart={cart} show={show} removeFromCart={props.removeFromCart} handleShow={handleShow}/>
           </div>
