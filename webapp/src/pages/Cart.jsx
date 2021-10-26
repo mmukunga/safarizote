@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { NavLink } from "react-router-dom";
 
 const Cart = (props) => {
-  
+  const cart = props.cart;
   console.log(props);
 
   if (!props.show) { 
@@ -26,7 +26,7 @@ const Cart = (props) => {
         <div class="popUp-content" style={{textAlign: 'center'}}>
         <ul className="CartList">  
         {props.cart.length > 0 ? 
-            props.cart.map((booking) => <li key={booking.safariId}>{booking.name} {booking.email} {booking.phone} <input type="button" value="Delete" onClick={() => props.removeFromCart(booking)}/></li>)
+            cart.map((booking) => <li key={booking.safariId}>{booking.name} {booking.email} {booking.phone} <input type="button" value="Delete" onClick={() => props.removeFromCart(booking)}/></li>)
             : <li>No items in Cart</li>}
         </ul>
         </div>
