@@ -274,8 +274,8 @@ const Safaris = () => {
         {currentItems && currentItems.length > 0 
            ? <SafariTours data={currentItems} addToCart={addToCart} removeFromCart={removeFromCart} videos={videos}/> 
            : <p>No Data Found!!</p>}                   
-    </Card>
-      </>
+      </Card>
+    </>
   );
 };
 
