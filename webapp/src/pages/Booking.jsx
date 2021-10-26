@@ -47,12 +47,12 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
             </div>        
             <div class="popUp-content" style={{textAlign: 'center'}}>
               <form onSubmit={handleSubmit}>
-                <div class="form-element"><label for="name">Name</label><input name="name"  onChange={handleChange}/></div>
-                <div class="form-element"><label for="email">Email</label><input name="email" onChange={handleChange}/></div>
-                <div class="form-element"><label for="phone">Phone</label><input name="phone" onChange={handleChange}/></div>
-                <div class="form-element"><label for="date">Date</label><input name="date"  onChange={handleChange}/></div>
-                <div class="form-element"><label for="adults">Adults</label><input name="adults" onChange={handleChange}/></div>
-                <div class="form-element"><label for="children">Children</label><input name="children" onChange={handleChange}/></div>
+                <div class="form-element"><label for="name">Names</label><input name="name"  onChange={handleChange}/></div>
+                <div class="form-element"><label for="email">Email Address</label><input name="email" onChange={handleChange}/></div>
+                <div class="form-element"><label for="phone">Phone Number</label><input name="phone" onChange={handleChange}/></div>
+                <div class="form-element"><label for="date">Arrival Date</label><input name="date"  onChange={handleChange}/></div>
+                <div class="form-element"><label for="adults">Number Of Adults</label><input name="adults" onChange={handleChange}/></div>
+                <div class="form-element"><label for="children">Number Of Children</label><input name="children" onChange={handleChange}/></div>
                 <div class="form-element"><textarea name="comments" rows={10} cols={30}  onChange={handleChange} form="usrform">Message...</textarea></div> 
                 <button type="submit">Submit</button>
               </form>
