@@ -21,7 +21,7 @@ const Cart = (props) => {
             <span className="SafariTitle">For enquiries - Please Send us an 
             <NavLink to={{ pathname: "/email", state: { modal: true }, }} className="Nav_link urlStyle">E-Mail</NavLink></span>
           </div>
-          <div class="pCloseMe"><a href="#" onClick={props.handleShow}>X</a></div>
+          <div class="pCloseMe"><a href="#" onClick={props.handleShow}><i class="fa fa-close"></i></a></div>
         </div>        
         <div class="popUp-content" style={{textAlign: 'center'}}>
         <ul className="CartList">  
