@@ -170,21 +170,6 @@ const Safaris = () => {
         setShowForm(false)
       }
 
-      const handleCart  = (e) => {
-        let isChecked = e.target.checked;
-        console.log('isChecked:= ' + isChecked);
-        //props.addToCart(data);
-        setChecked(isChecked);
-        
-        if (isChecked) { 
-          console.log('ADD ITEM!!');
-          props.addToCart(data);
-        } else {
-          console.log('REMOVE ITEM!!');
-          props.removeFromCart(data)
-        }
-      }
-
       const handleSubmit = () => {
         axios.post("/api/booking", { params: { data: cart } }).then((response) => {
           console.log(response);
@@ -204,7 +189,6 @@ const Safaris = () => {
           <div dangerouslySetInnerHTML={{__html: summaryHTML}} /> 
           <div className="sFooter">
               <span className='sub' onClick={() => setOpen(true)}>Details and Offers</span>
-              <label className='sub'><input type="checkbox" name="check" checked={checked} onClick={handleCart}/>Add To Cart</label>
               <span className='sub' onClick={() => setShowForm(true)}>Make A Booking</span>
               <Booking safariId={data.id} showForm={showForm} parentCallback={callback} handleShowForm={handleShowForm}/>  
               <span className='sub' onClick={() => setShow(true)}>Show Cart</span>       
