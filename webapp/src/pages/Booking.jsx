@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { NavLink } from "react-router-dom";
 
 function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = React.useState({
       safariId: safariId,  
       name: '',
       email: '',
