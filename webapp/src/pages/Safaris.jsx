@@ -13,7 +13,8 @@ import the_globe from "../media/the_globe.mov";
 
 import Card from './Card';
 import PopUp from "./PopUp";
-import Cart from "./Cart";
+import Booking from "./Booking";
+import Cart from './Cart';
 
 const Safaris = () => {
   const [products, setProducts] = React.useState([]);
@@ -34,7 +35,7 @@ const Safaris = () => {
         postal: "0171",
         state: "Oslo County",
         dateCreated:  moment.now()
-  }); 
+  });
 
   const videoUrl = 'https://www.youtube.com/watch?v=3qW5z4xeiac';
 
@@ -149,7 +150,13 @@ const Safaris = () => {
     const Accordion = ({children, data, title, summary, video}) => {
       const [open, setOpen] = React.useState(false);
       const [show, setShow] = React.useState(false);
-      const [checked, setChecked] = React.useState(false);
+      const [showForm, setShowForm] = React.useState(false);
+      const [checked, setChecked] = React.useState(false); 
+     
+      const callback = React.useCallback((booking) => {
+        console.log('ADD BOOKING TO CART!!');
+        props.addToCart(booking);
+      }, []);
 
       const handleClose = () => {
         setOpen(false)
@@ -157,6 +164,10 @@ const Safaris = () => {
 
       const handleShow = () => {
         setShow(false)
+      }
+      
+      const handleShowForm = () => {
+        setShowForm(false)
       }
 
       const handleCart  = (e) => {
@@ -193,7 +204,9 @@ const Safaris = () => {
           <div dangerouslySetInnerHTML={{__html: summaryHTML}} /> 
           <div className="sFooter">
               <span className='sub' onClick={() => setOpen(true)}>Details and Offers</span>
-              <label className='sub'><input type="checkbox" name="check" checked={checked} onClick={handleCart}/>Add To Cart</label>  
+              <label className='sub'><input type="checkbox" name="check" checked={checked} onClick={handleCart}/>Add To Cart</label>
+              <span className='sub' onClick={() => setShowForm(true)}>Make A Booking</span>
+              <Booking safariId={data.id} showForm={showForm} parentCallback={callback} handleShowForm={handleShowForm}/>  
               <span className='sub' onClick={() => setShow(true)}>Show Cart</span>       
               {cart.length < 1? ' Cart is Empty' : <input type="button" value="Send Booking" onClick={() => handleSubmit()}/>}
               <PopUp data={data} open={open} title={parse(title)} handleClose={handleClose}>{children}</PopUp>
