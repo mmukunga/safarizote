@@ -34,6 +34,7 @@
   .pHeader {
     border: 1px solid purple;
     display: flex;
+    justify-content: space-between;
     background-color: #A40000;
   }
   
@@ -43,10 +44,9 @@
 
   .pCloseMe {
     width: 50px;
-    font-size: 0.53em;
-    float: right;
+    font-size: 0.73em;
     color: #A40000;
-    background: #555;
+    background: #eee;
   }
 
   .urlStyle { 
