@@ -183,19 +183,19 @@ const Safaris = () => {
       const summaryHTML = '<span className=\'Summary\'>' + summary + '<span>';
       return (
         <div className="SafariTours">
+        <div className="sFooter">
+            <span className='sub' onClick={() => setOpen(true)}>Tour Details</span>
+            <span className='sub' onClick={() => setShowForm(true)}>Tour Booking</span>
+            <Booking safariId={data.id} showForm={showForm} parentCallback={callback} handleShowForm={handleShowForm}/>  
+            <span className='sub' onClick={() => setShow(true)}>🛒Cart</span>       
+            {cart.length < 1? ' Empty Cart' : <input type="button" value="Send Booking" onClick={() => handleSubmit()}/>}
+            <PopUp data={data} open={open} title={parse(title)} handleClose={handleClose}>{children}</PopUp>
+            <Cart cart={cart} show={show} removeFromCart={props.removeFromCart} handleShow={handleShow}/>
+        </div>
           <div className="VideoPlayer">
             <VideoPlayer video={video} className="video-player"/> 
           </div>
           <div dangerouslySetInnerHTML={{__html: summaryHTML}} /> 
-          <div className="sFooter">
-              <span className='sub' onClick={() => setOpen(true)}>Tour Details</span>
-              <span className='sub' onClick={() => setShowForm(true)}>Tour Booking</span>
-              <Booking safariId={data.id} showForm={showForm} parentCallback={callback} handleShowForm={handleShowForm}/>  
-              <span className='sub' onClick={() => setShow(true)}>🛒Cart</span>       
-              {cart.length < 1? ' Empty Cart' : <input type="button" value="Send Booking" onClick={() => handleSubmit()}/>}
-              <PopUp data={data} open={open} title={parse(title)} handleClose={handleClose}>{children}</PopUp>
-              <Cart cart={cart} show={show} removeFromCart={props.removeFromCart} handleShow={handleShow}/>
-          </div>
           <div className='clearfix'></div>
         </div>
       )
