@@ -191,7 +191,7 @@ const Safaris = () => {
               <span className='sub' onClick={() => setOpen(true)}>Tour Details</span>
               <span className='sub' onClick={() => setShowForm(true)}>Tour Booking</span>
               <Booking safariId={data.id} showForm={showForm} parentCallback={callback} handleShowForm={handleShowForm}/>  
-              <span className='sub' onClick={() => setShow(true)}>Tour Cart</span>       
+              <span className='sub' onClick={() => setShow(true)}>🛒Cart</span>       
               {cart.length < 1? ' Empty Cart' : <input type="button" value="Send Booking" onClick={() => handleSubmit()}/>}
               <PopUp data={data} open={open} title={parse(title)} handleClose={handleClose}>{children}</PopUp>
               <Cart cart={cart} show={show} removeFromCart={props.removeFromCart} handleShow={handleShow}/>
