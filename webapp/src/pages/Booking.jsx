@@ -43,7 +43,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                 <span className="SafariTitle">For enquiries - Please Send us an 
                 <NavLink to={{ pathname: "/email", state: { modal: true }, }} className="Nav_link urlStyle">E-Mail</NavLink></span>
               </div>
-              <div class="pCloseMe"><a href="#" onClick={handleShowForm}>❌</a></div>
+              <div class="pCloseMe"><a href="#" onClick={handleShowForm}>❌✖</a></div>
             </div>        
             <div class="popUp-content" style={{textAlign: 'center'}}>
               <form onSubmit={handleSubmit}>

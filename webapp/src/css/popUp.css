@@ -42,10 +42,11 @@
   }
 
   .pCloseMe {
-    width: 20px;
+    width: 50px;
+    font-size: 0.53em;
     float: right;
     color: #A40000;
-    background: #eee;
+    background: #555;
   }
 
   .urlStyle { 
