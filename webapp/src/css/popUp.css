@@ -33,6 +33,7 @@
 
   .pHeader {
     border: 1px solid purple;
+    border-radius: 8px;
     display: flex;
     justify-content: space-between;
     background-color: #A40000;
@@ -58,7 +59,7 @@
   input[type=button] {    
     background-color: rgb(37, 116, 161);  
     border: none;  
-    width: 30px;
+    width: 90px;
     padding: 3px 5px;
     border-radius: 4px;
     cursor: pointer;
