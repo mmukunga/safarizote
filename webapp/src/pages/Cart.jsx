@@ -23,7 +23,7 @@ const Cart = (props) => {
           </div>
           <div class="pCloseMe"><a href="#" onClick={props.handleShow}>❌</a></div>
         </div>        
-        <div class="popUp-content" style={{textAlign: 'center', fontSize:'24px'}}>
+        <div class="popUp-content">
         <ul className="CartList">  
         {props.cart.length > 0 ? 
             cart.map((booking) => <li key={booking.safariId}>{booking.safariId} {booking.name} {booking.email} {booking.phone} <input type="button" value="🗑️" onClick={() => props.removeFromCart(booking)}/></li>)

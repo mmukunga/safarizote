@@ -80,7 +80,7 @@
       text-align: right;
   }
 
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 600px) {
     .popUp {
       padding: 0 1vw;
       bottom: 10px;
@@ -88,7 +88,7 @@
     }
     .popUp-content{
       text-align: center;
-      font-size: 24px;
+      font-size: 18px;
     }
 
     input[type=button] {
