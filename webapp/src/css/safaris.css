@@ -101,7 +101,7 @@
    border-top: 1px solid #ddd;
  }
 
- @media screen and (max-width: 768px) {
+ @media screen and (max-width: 600px) {
     .SafariTours {
       display: block;
       margin: 0 auto;
@@ -129,5 +129,6 @@
 
     .sFooter {
       justify-content: space-around;
+      width: 95%;
     }
   }
