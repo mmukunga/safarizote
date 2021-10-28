@@ -84,8 +84,13 @@
     .popUp {
       padding: 0 1vw;
       bottom: 10px;
-      overflow:auto;
+      overflow: auto;
     }
+    .popUp-content{
+      text-align: center;
+      font-size: 24px;
+    }
+
     input[type=button] {
       width: 100%;
       margin-top: 0;
