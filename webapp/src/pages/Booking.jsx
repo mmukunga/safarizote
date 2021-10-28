@@ -49,38 +49,70 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
               <form onSubmit={handleSubmit}>
                 <div class="row">
                   <div class="col-25">
-                    <label for="fname">First Name</label>
+                    <label for="names">Names</label>
                   </div>
                   <div class="col-75">
-                    <input type="text" id="fname" name="firstname" placeholder="Your name.."/>
+                    <input type="text" id="names" name="names" placeholder="Your names.."/>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-25">
-                    <label for="lname">Last Name</label>
+                    <label for="gender">Gender</label>
                   </div>
                   <div class="col-75">
-                    <input type="text" id="lname" name="lastname" placeholder="Your last name.."/>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-25">
-                    <label for="country">Country</label>
-                  </div>
-                  <div class="col-75">
-                    <select id="country" name="country">
-                      <option value="australia">Australia</option>
-                      <option value="canada">Canada</option>
-                      <option value="usa">USA</option>
+                    <select id="gender" name="gender">
+                      <option value="M">Male</option>
+                      <option value="F">Female</option>
+                      <option value="NA">Other</option>
                     </select>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-25">
-                    <label for="subject">Subject</label>
+                    <label for="email">E-Mail</label>
                   </div>
                   <div class="col-75">
-                    <textarea id="subject" name="subject" placeholder="Write something.."  style={{height:'200px'}}></textarea>
+                    <input type="text" id="email" name="email" placeholder="Your e-mail.."/>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-25">
+                    <label for="phone">Phone</label>
+                  </div>
+                  <div class="col-75">
+                    <input type="text" id="phone" name="phone" placeholder="Your phone.."/>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-25">
+                    <label for="date">Arrival Date</label>
+                  </div>
+                  <div class="col-75">
+                    <input type="text" id="date" name="date" placeholder="Arrival Date.."/>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-25">
+                    <label for="adults">Number Of Adults</label>
+                  </div>
+                  <div class="col-75">
+                    <input type="text" id="adults" name="adults" placeholder="Number Of Adults.."/>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-25">
+                    <label for="children">Number Of Children</label>
+                  </div>
+                  <div class="col-75">
+                    <input type="text" id="children" name="children" placeholder="Number Of Children.."/>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-25">
+                    <label for="comments">Comments</label>
+                  </div>
+                  <div class="col-75">
+                    <textarea id="comments" name="comments" placeholder="Write message.."  style={{height:'200px'}}></textarea>
                   </div>
                 </div>
                 <div class="row">
