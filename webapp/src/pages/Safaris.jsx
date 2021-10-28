@@ -72,6 +72,12 @@ const Safaris = () => {
     setShow(false)
   }
 
+  const handleChange = (e) => {
+      e.preventDefault();
+      const { name, value } = e.target;
+      console.log(`Form submitted, Name: ${name}, Value: ${value}`);    
+  }
+
   const handleSubmit = () => {
     axios.post("/api/booking", { params: { data: cart } }).then((response) => {
       console.log(response);
@@ -205,12 +211,6 @@ const Safaris = () => {
       </div>
     );
   } 
-
-  const handleSubmit = (e) => {
-      e.preventDefault();
-      const { name, value } = e.target;
-      console.log(`Form submitted, Name: ${name}, Value: ${value}`);    
-  }
 
   const VideoPlayer = (props) => {
     const videoRef = React.useRef(null);
