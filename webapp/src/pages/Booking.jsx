@@ -47,14 +47,45 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
             </div>        
             <div class="popUp-content" style={{textAlign: 'center'}}>
               <form onSubmit={handleSubmit}>
-                <div class="form-element"><label for="name">Names</label><input name="name"  onChange={handleChange}/></div>
-                <div class="form-element"><label for="email">Email Address</label><input name="email" onChange={handleChange}/></div>
-                <div class="form-element"><label for="phone">Phone Number</label><input name="phone" onChange={handleChange}/></div>
-                <div class="form-element"><label for="date">Arrival Date</label><input name="date"  onChange={handleChange}/></div>
-                <div class="form-element"><label for="adults">Number Of Adults</label><input name="adults" onChange={handleChange}/></div>
-                <div class="form-element"><label for="children">Number Of Children</label><input name="children" onChange={handleChange}/></div>
-                <div class="form-element"><textarea name="comments" rows={10} cols={30}  onChange={handleChange} form="usrform">Message...</textarea></div> 
-                <button type="submit">Submit</button>
+                <div class="row">
+                  <div class="col-25">
+                    <label for="fname">First Name</label>
+                  </div>
+                  <div class="col-75">
+                    <input type="text" id="fname" name="firstname" placeholder="Your name.."/>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-25">
+                    <label for="lname">Last Name</label>
+                  </div>
+                  <div class="col-75">
+                    <input type="text" id="lname" name="lastname" placeholder="Your last name.."/>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-25">
+                    <label for="country">Country</label>
+                  </div>
+                  <div class="col-75">
+                    <select id="country" name="country">
+                      <option value="australia">Australia</option>
+                      <option value="canada">Canada</option>
+                      <option value="usa">USA</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-25">
+                    <label for="subject">Subject</label>
+                  </div>
+                  <div class="col-75">
+                    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                  </div>
+                </div>
+                <div class="row">
+                  <input type="submit" value="Submit"/>
+                </div>
               </form>
             </div>
           </div>
