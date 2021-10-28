@@ -35,7 +35,7 @@ const Cart = (props) => {
   );
 
 
-  return ReactDOM.createPortal(modalCart, document.getElementById('portal'));
+  return ReactDOM.createPortal(modalCart, document.getElementById('modal_root'));
 }
 
 export default Cart;

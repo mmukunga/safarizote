@@ -19,6 +19,7 @@ import Cart from './Cart';
 const Safaris = () => {
   const [products, setProducts] = React.useState([]);
   const [cart, setCart] = React.useState([]);
+  const [show, setShow] = React.useState(false);
   const [currentPage, setCurrentPage] = React.useState(1);
   const [numberOfHits, setNumberOfHits] = React.useState([]);
   const [pageSize, setPageSize] = React.useState(2);
@@ -40,13 +41,9 @@ const Safaris = () => {
   const videoUrl = 'https://www.youtube.com/watch?v=3qW5z4xeiac';
 
   const addToCart = (el) => {
-    console.log('!!1.ADD TO CARD!!');
     console.log(el);
-    console.log('!!2.ADD TO CARD!!');
     if (!(cart.filter(e => e.safariId === el.safariId).length > 0)) {
-      console.log('!!3a.ADD TO CARD!!');
       setCart([...cart, el]);
-      console.log('!!3b.ADD TO CARD!!');
     }
   };
 
@@ -69,6 +66,18 @@ const Safaris = () => {
 
   const handleClick = (event) => {
     setCurrentPage(event.target.id);
+  }
+
+  const handleShow = () => {
+    setShow(false)
+  }
+
+  const handleSubmit = () => {
+    axios.post("/api/booking", { params: { data: cart } }).then((response) => {
+      console.log(response);
+    }).catch((err) => {
+      console.error(err);
+    });
   }
 
   React.useEffect(() => {
@@ -149,9 +158,7 @@ const Safaris = () => {
   const SafariTours = props => {
     const Accordion = ({children, data, title, summary, video}) => {
       const [open, setOpen] = React.useState(false);
-      const [show, setShow] = React.useState(false);
       const [showForm, setShowForm] = React.useState(false);
-      const [checked, setChecked] = React.useState(false); 
      
       const callback = React.useCallback((booking) => {
         console.log('ADD BOOKING TO CART!!');
@@ -161,21 +168,9 @@ const Safaris = () => {
       const handleClose = () => {
         setOpen(false)
       }
-
-      const handleShow = () => {
-        setShow(false)
-      }
       
       const handleShowForm = () => {
         setShowForm(false)
-      }
-
-      const handleSubmit = () => {
-        axios.post("/api/booking", { params: { data: cart } }).then((response) => {
-          console.log(response);
-        }).catch((err) => {
-          console.error(err);
-        });
       }
 
       console.log(data);
@@ -187,10 +182,8 @@ const Safaris = () => {
             <span className='sub' onClick={() => setOpen(true)}>Tour Details</span>
             <span className='sub' onClick={() => setShowForm(true)}>Tour Booking</span>
             <Booking safariId={data.id} showForm={showForm} parentCallback={callback} handleShowForm={handleShowForm}/>  
-            <span className='sub' onClick={() => setShow(true)}>🛒Cart</span>       
-            {cart.length < 1? ' Empty Cart' : <input type="button" value="Send Booking" onClick={() => handleSubmit()}/>}
+            <span className='sub' onClick={() => setShow(true)}>Add to🛒Cart</span>
             <PopUp data={data} open={open} title={parse(title)} handleClose={handleClose}>{children}</PopUp>
-            <Cart cart={cart} show={show} removeFromCart={props.removeFromCart} handleShow={handleShow}/>
         </div>
           <div className="VideoPlayer">
             <VideoPlayer video={video} className="video-player"/> 
@@ -219,7 +212,6 @@ const Safaris = () => {
       console.log(`Form submitted, Name: ${name}, Value: ${value}`);    
   }
 
-
   const VideoPlayer = (props) => {
     const videoRef = React.useRef(null);
    
@@ -246,13 +238,13 @@ const Safaris = () => {
  return (
     <>
       <Card className="InnerCard" fontColor="black">
-        <div id="modal-root"></div>
-        <div id='portal'></div>
-        <div id='cart_portal'></div>
+        <div id='modal_root'></div>
         <ul id="page-numbers"> 
          <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Our Safaris:</span></li> 
          {renderPageNumbers}
          <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Hits: {numberOfHits.length}</span></li>
+         <li>{cart.length < 1? ' Empty Cart' : <input type="button" value="Send Booking" onClick={() => handleSubmit()}/>}</li>      
+         <Cart cart={cart} show={show} removeFromCart={removeFromCart} handleShow={handleShow}/>
         </ul>  
              
         {currentItems && currentItems.length > 0 

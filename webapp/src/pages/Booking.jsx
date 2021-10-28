@@ -61,7 +61,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
         </div> 
       );
     
-      return ReactDOM.createPortal(modalCart, document.getElementById('portal'));
+      return ReactDOM.createPortal(modalCart, document.getElementById('modal_root'));
   }
 
   export default Booking;

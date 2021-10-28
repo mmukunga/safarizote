@@ -26,7 +26,7 @@ const PopUp = (props) => {
       </div>
     );
 
-  return ReactDOM.createPortal(modal, document.getElementById("portal"));
+  return ReactDOM.createPortal(modal, document.getElementById("modal_root"));
 }
 
 export default PopUp;
