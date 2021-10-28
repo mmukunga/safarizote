@@ -186,9 +186,9 @@ const Safaris = () => {
         <div className="SafariTours">
         <div className="sFooter">
             <span className='sub' onClick={() => setOpen(true)}>Tour Details</span>
-            <span className='sub' onClick={() => setShowForm(true)}>Tour Booking</span>
+            <span className='sub' onClick={() => setShowForm(true)}>Add To Cart</span>
             <Booking safariId={data.id} showForm={showForm} parentCallback={callback} handleShowForm={handleShowForm}/>  
-            <span className='sub' onClick={() => setShow(true)}>Add to Cart</span>
+            <span className='sub' onClick={() => setShow(true)}>View Cart Items</span>
             <PopUp data={data} open={open} title={parse(title)} handleClose={handleClose}>{children}</PopUp>
         </div>
           <div className="VideoPlayer">
