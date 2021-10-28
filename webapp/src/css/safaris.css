@@ -57,8 +57,9 @@
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  justify-content: space-around;
   border: 2px solid purple;
+  border-radius: 4px;
+  margin-bottom: 5px;
 }
 
 .clearfix {
@@ -127,5 +128,4 @@
     .sFooter {
       justify-content: space-around;
     }
-
   }
