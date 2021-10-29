@@ -90,7 +90,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                     <label for="date">Arrival Date</label>
                   </div>
                   <div class="col-75">
-                    <DatePicker value={date} onChange={date => setCurrentDate(date)}/>
+                    <DatePicker value={formData.date} onChange={date => setCurrentDate(date)}/>
                   </div>
                 </div>
                 <div class="row">
