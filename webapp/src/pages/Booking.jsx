@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { NavLink } from "react-router-dom";
-import "react-modern-calendar-datepicker/lib/DatePicker.css";
-import { Calendar } from "react-modern-calendar-datepicker";
+
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
   const [startDate, setStartDate] = React.useState(new Date());
@@ -91,8 +92,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                     <label for="date">Arrival Date</label>
                   </div>
                   <div class="col-75">
-                      <Calendar value={startDate}  onChange={date => setStartDate(date)} calendarClassName="responsive-calendar" 
-                          shouldHighlightWeekends/>
+                  <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
                   </div>
                 </div>
                 <div class="row">
