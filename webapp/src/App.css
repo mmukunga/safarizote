@@ -50,7 +50,6 @@ p span {
   opacity: 0.5;
 }
 
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -75,6 +74,7 @@ p span {
 @import url("./css/safaris.css");
 @import url("./css/weather.css");
 @import url("./css/stock.css");
+@import url("./css/booking.css");
 @import url("./css/spinner.css");
 @import url("./css/navbar.css");
 @import url("./css/topMenu.css");

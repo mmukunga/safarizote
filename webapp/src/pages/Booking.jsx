@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { NavLink } from "react-router-dom";
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
-    const [currentDate, setCurrentDate] = React.useState(new Date());
+  const [startDate, setStartDate] = React.useState(new Date());
     const [formData, setFormData] = React.useState({
       safariId: safariId,  
       name: '',
@@ -90,7 +91,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                     <label for="date">Arrival Date</label>
                   </div>
                   <div class="col-75">
-                    <DatePicker value={currentDate}  onChange={date => setCurrentDate(date)}/>
+                  <DatePicker selected={startDate}  onChange={date => setStartDate(date)} />
                   </div>
                 </div>
                 <div class="row">
