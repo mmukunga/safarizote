@@ -151,7 +151,7 @@ import Card from './Card';
     return (
         <Card className="InnerCard" fontColor="black">
         {state ? `${state.city} - ${state.name}, ${state.iso2}` : ''}
-        <form class="form-inline"  onSubmit={handleSubmit}>
+        <form className="form-container"  onSubmit={handleSubmit}>
           <select id="countryCode" name="countryCode" onChange={handleChange}>    
               <option value="none">Select Country</option>   
               {countries.map((country) => (

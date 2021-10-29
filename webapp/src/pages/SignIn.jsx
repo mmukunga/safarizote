@@ -43,7 +43,7 @@ const SignIn = (props) => {
     return (
         <Card className="InnerCard" fontColor="black">
             Please Login Here!!
-            <form class="form-inline" onSubmit={handleSubmit}>
+            <form className="form-container" onSubmit={handleSubmit}>
                 <input type="email" id="email" name="email" placeholder="Enter email"
                     onChange={handleChange} required />
                 <input type="password" id="password" name="password" autocomplete="current-password"

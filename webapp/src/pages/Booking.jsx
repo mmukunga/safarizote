@@ -48,7 +48,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
               <div class="pCloseMe"><a href="#" onClick={handleShowForm}>&#x274C;</a></div>
             </div>        
             <div class="popUp-content" style={{textAlign: 'center'}}>
-              <form onSubmit={handleSubmit}>
+              <form className="form-container" onSubmit={handleSubmit}>
                 <div class="row">
                   <div class="col-25">
                     <label for="names">Names</label>
@@ -90,7 +90,6 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                     <label for="date">Arrival Date</label>
                   </div>
                   <div class="col-75">
-                    <input type="text" id="date" name="date" placeholder="Arrival Date.."/>
                     <DatePicker showTimeInput selected={currentDate}  onChange={date => setCurrentDate(date)}/>
                   </div>
                 </div>
