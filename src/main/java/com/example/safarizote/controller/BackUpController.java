@@ -1,41 +1,36 @@
 package com.example.safarizote.controller;
 
-import com.google.cloud.storage.Storage;
-import com.google.cloud.storage.Bucket;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import com.example.safarizote.model.DaoObject;
+import com.google.api.gax.paging.Page;
+import com.google.auth.oauth2.GoogleCredentials;
+import com.google.cloud.ReadChannel;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
+import com.google.cloud.storage.Bucket;
+import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
-import com.google.cloud.ReadChannel; 
-import com.google.api.gax.paging.Page;
-
-import com.google.auth.oauth2.GoogleCredentials;
-
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.ArrayList;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.net.URL;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.IOException;
-
-import org.springframework.core.io.Resource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
-
-import com.example.safarizote.model.DaoObject;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 public class BackUpController {

@@ -2,7 +2,6 @@ import React from "react";
 import axios from 'axios';
 import parse from "html-react-parser";
 import moment from 'moment';
-import Bowser from "bowser";
 
 import Big_Buck_Bunny from "../media/Big_Buck_Bunny.mp4";
 import kenya_safari from "../media/kenya-safari.mp4";
