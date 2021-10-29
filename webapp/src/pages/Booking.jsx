@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { NavLink } from "react-router-dom";
-import {DatePicker} from 'react-responsive-ui';
+import DatePicker from "react-datepicker";
 
 function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
-  const [currentDate, setCurrentDate] = React.useState(new Date());
+    const [currentDate, setCurrentDate] = React.useState(new Date());
     const [formData, setFormData] = React.useState({
       safariId: safariId,  
       name: '',
       email: '',
       phone: '',
-      date: '',
+      date: new Date(),
       adults: '',
       children: '',
       comments:''
@@ -90,7 +90,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                     <label for="date">Arrival Date</label>
                   </div>
                   <div class="col-75">
-                    <DatePicker value={formData.date} onChange={date => setCurrentDate(date)}/>
+                    <DatePicker showTimeInput selected={formData.date}  onChange={date => setCurrentDate(date)}/>
                   </div>
                 </div>
                 <div class="row">
