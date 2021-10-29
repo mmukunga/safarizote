@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { NavLink } from "react-router-dom";
-import DatePicker from "react-datepicker";
+import {DatePicker} from 'react-responsive-ui';
 
 function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
   const [currentDate, setCurrentDate] = React.useState(new Date());
@@ -90,7 +90,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                     <label for="date">Arrival Date</label>
                   </div>
                   <div class="col-75">
-                    <DatePicker showTimeInput selected={currentDate}  onChange={date => setCurrentDate(date)}/>
+                    <DatePicker value={date} onChange={date => setCurrentDate(date)}/>
                   </div>
                 </div>
                 <div class="row">
