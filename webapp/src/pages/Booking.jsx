@@ -91,8 +91,8 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                     <label for="date">Arrival Date</label>
                   </div>
                   <div class="col-75">
-                  <Calendar value={startDate}  onChange={date => setStartDate(date)} calendarClassName="responsive-calendar" 
-      shouldHighlightWeekends/>
+                      <Calendar value={startDate}  onChange={date => setStartDate(date)} calendarClassName="responsive-calendar" 
+                          shouldHighlightWeekends/>
                   </div>
                 </div>
                 <div class="row">
