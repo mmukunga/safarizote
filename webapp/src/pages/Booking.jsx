@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { NavLink } from "react-router-dom";
+import DatePicker from "react-datepicker";
 
 function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
+  const [currentDate, setCurrentDate] = React.useState(new Date());
     const [formData, setFormData] = React.useState({
       safariId: safariId,  
       name: '',
@@ -52,7 +54,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                     <label for="names">Names</label>
                   </div>
                   <div class="col-75">
-                    <input type="text" id="names" name="names" placeholder="Your names.."/>
+                    <input type="text" id="names" name="names"  onChange={handleChange} placeholder="Your names.."/>
                   </div>
                 </div>
                 <div class="row">
@@ -72,7 +74,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                     <label for="email">E-Mail</label>
                   </div>
                   <div class="col-75">
-                    <input type="text" id="email" name="email" placeholder="Your e-mail.."/>
+                    <input type="text" id="email" name="email"  onChange={handleChange} placeholder="Your e-mail.."/>
                   </div>
                 </div>
                 <div class="row">
@@ -80,7 +82,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                     <label for="phone">Phone</label>
                   </div>
                   <div class="col-75">
-                    <input type="text" id="phone" name="phone" placeholder="Your phone.."/>
+                    <input type="text" id="phone" name="phone"  onChange={handleChange} placeholder="Your phone.."/>
                   </div>
                 </div>
                 <div class="row">
@@ -89,6 +91,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                   </div>
                   <div class="col-75">
                     <input type="text" id="date" name="date" placeholder="Arrival Date.."/>
+                    <DatePicker showTimeInput selected={currentDate}  onChange={date => setCurrentDate(date)}/>
                   </div>
                 </div>
                 <div class="row">
@@ -96,7 +99,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                     <label for="adults">Number Of Adults</label>
                   </div>
                   <div class="col-75">
-                    <input type="text" id="adults" name="adults" placeholder="Number Of Adults.."/>
+                    <input type="text" id="adults" name="adults" onChange={handleChange} placeholder="Number Of Adults.."/>
                   </div>
                 </div>
                 <div class="row">
@@ -104,7 +107,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                     <label for="children">Number Of Children</label>
                   </div>
                   <div class="col-75">
-                    <input type="text" id="children" name="children" placeholder="Number Of Children.."/>
+                    <input type="text" id="children" name="children" onChange={handleChange} placeholder="Number Of Children.."/>
                   </div>
                 </div>
                 <div class="row">
@@ -112,7 +115,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                     <label for="comments">Comments</label>
                   </div>
                   <div class="col-75">
-                    <textarea id="comments" name="comments" placeholder="Write message.."  style={{height:'200px'}}></textarea>
+                    <textarea id="comments" name="comments" onChange={handleChange} placeholder="Write message.."  style={{height:'200px'}}></textarea>
                   </div>
                 </div>
                 <div class="row">
