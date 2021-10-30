@@ -1,7 +1,5 @@
 .form-container {    
-  border-radius: 5px;    
-  border: 4px solid#f2f2f2;    
-  padding: 20px; 
+  padding: 5px;
   box-sizing: border-box;
 }    
     
@@ -43,7 +41,7 @@ label {
 input[type=submit], button {    
   background-color: rgb(37, 116, 161);  
   border: none;  
-  width: 95%;
+  width: 99%;
   padding: 12px 20px;
   border-radius: 4px;
   cursor: pointer;
