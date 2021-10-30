@@ -21,6 +21,20 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
     const handleSubmit = (event) => {
       event.preventDefault();
       parentCallback(formData);
+
+      const validate = (formdata) => {
+          const errors = {};
+          if (!formdata.name) {
+            errors.name = "Required";
+          }
+          if (!formdata.email && formdata.email === "test") {
+            errors.email = "Required";
+          }
+          return errors;
+      }
+
+      console.log(validate (formData));
+
     };
   
     const handleChange = event => {
@@ -53,7 +67,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
               <form className="form-container" onSubmit={handleSubmit}>
                 <div class="row">
                   <div class="col-25">
-                    <label for="names">Names</label>
+                    <label for="names">Names*</label>
                   </div>
                   <div class="col-75">
                     <input type="text" id="names" name="names"  onChange={handleChange} placeholder="Your names.."/>
@@ -73,7 +87,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                 </div>
                 <div class="row">
                   <div class="col-25">
-                    <label for="email">E-Mail</label>
+                    <label for="email">E-Mail*</label>
                   </div>
                   <div class="col-75">
                     <input type="text" id="email" name="email"  onChange={handleChange} placeholder="Your e-mail.."/>
@@ -89,7 +103,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                 </div>
                 <div class="row">
                   <div class="col-25">
-                    <label for="date">Arrival Date</label>
+                    <label for="date">Arrival Date*</label>
                   </div>
                   <div class="col-75">
                   <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
@@ -97,7 +111,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                 </div>
                 <div class="row">
                   <div class="col-25">
-                    <label for="adults">Adults</label>
+                    <label for="adults">Adults*</label>
                   </div>
                   <div class="col-75">
                     <input type="text" id="adults" name="adults" onChange={handleChange} placeholder="Number Of Adults.."/>
