@@ -16,7 +16,7 @@
     border-radius: 8px;
     border: 2px solid white;
     position: fixed;
-    top: 52%;
+    top: 60%;
     left: 50%;
     transform: translate(-52%, -50%);
     z-index: 1000;
@@ -37,6 +37,7 @@
     display: flex;
     justify-content: space-between;
     background-color: #A40000;
+    font-size: 18px;
   }
   
   .pChild, .pCloseMe {
@@ -44,10 +45,15 @@
   }
 
   .pCloseMe {
-    width: 20px;
+    width: 15px;
     font-size: 0.73em;
     color: #A40000;
     background: #eee;
+  }
+
+  .pCloseMe a {
+    text-decoration: none;
+    font-size: 16px;
   }
 
   .urlStyle { 
