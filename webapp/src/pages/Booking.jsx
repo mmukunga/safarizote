@@ -97,7 +97,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                 </div>
                 <div class="row">
                   <div class="col-25">
-                    <label for="adults">Number Of Adults</label>
+                    <label for="adults">Adults</label>
                   </div>
                   <div class="col-75">
                     <input type="text" id="adults" name="adults" onChange={handleChange} placeholder="Number Of Adults.."/>
@@ -105,7 +105,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                 </div>
                 <div class="row">
                   <div class="col-25">
-                    <label for="children">Number Of Children</label>
+                    <label for="children">Children</label>
                   </div>
                   <div class="col-75">
                     <input type="text" id="children" name="children" onChange={handleChange} placeholder="Number Of Children.."/>
@@ -116,7 +116,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                     <label for="comments">Comments</label>
                   </div>
                   <div class="col-75">
-                    <textarea id="comments" name="comments" onChange={handleChange} placeholder="Write message.."  style={{height:'200px'}}></textarea>
+                    <textarea id="comments" name="comments" onChange={handleChange} placeholder="Write message.."  style={{height:'150px'}}></textarea>
                   </div>
                 </div>
                 <div class="row">
