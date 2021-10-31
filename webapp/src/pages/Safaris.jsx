@@ -239,10 +239,10 @@ const Safaris = () => {
       <Card className="InnerCard" fontColor="black">
         <div id='modal_root'></div>
         <ul id="page-numbers"> 
-         <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Our Safaris:</span></li> 
+         <li><span>Our Safaris:</span></li> 
          {renderPageNumbers}
-         <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Hits: {numberOfHits.length}</span></li>
-         <li>{cart.length < 1? ' Empty 🛒Cart' : <input type="button" value="Send🛒Booking" onClick={() => handleSubmit()}/>}</li>      
+         <li><span>Hits: {numberOfHits.length}</span></li>
+         <li>{cart.length < 1? 'Empty 🛒Cart' : <input type="button" value="Send🛒Booking" onClick={() => handleSubmit()}/>}</li>      
          <Cart cart={cart} show={show} removeFromCart={removeFromCart} handleShow={handleShow}/>
         </ul>  
              
