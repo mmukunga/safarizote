@@ -68,15 +68,15 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
               <form className="form-container" onSubmit={handleSubmit}>
                 <div class="row">
                   <div class="col-25">
-                    <label for="names">Names*</label>
+                    <label className="modalLabel" for="names">Names*</label>
                   </div>
                   <div class="col-75">
-                    <input type="text" id="names" name="names"  onChange={handleChange} required aria-required="true" placeholder="Your names.."/>
+                    <input type="text" id="names" name="names" className="modalInput" onChange={handleChange} required aria-required="true" placeholder="Your names.."/>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-25">
-                    <label for="gender">Gender</label>
+                    <label className="modalLabel" for="gender">Gender</label>
                   </div>
                   <div class="col-75">
                     <select id="gender" name="gender">
@@ -88,23 +88,23 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                 </div>
                 <div class="row">
                   <div class="col-25">
-                    <label for="email">E-Mail*</label>
+                    <label className="modalLabel" for="email">E-Mail*</label>
                   </div>
                   <div class="col-75">
-                    <input type="text" id="email" name="email" onChange={handleChange} required aria-required="true" placeholder="Your e-mail.."/>
+                    <input type="text" id="email" name="email" className="modalInput" onChange={handleChange} required aria-required="true" placeholder="Your e-mail.."/>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-25">
-                    <label for="phone">Phone</label>
+                    <label className="modalLabel" for="phone">Phone</label>
                   </div>
                   <div class="col-75">
-                    <input type="text" id="phone" name="phone" onChange={handleChange} placeholder="Your phone.."/>
+                    <input type="text" id="phone" name="phone" className="modalInput" onChange={handleChange} placeholder="Your phone.."/>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-25">
-                    <label for="date">Arrival Date*</label>
+                    <label className="modalLabel" for="date">Arrival Date*</label>
                   </div>
                   <div class="col-75">
                   <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} required aria-required="true"/>
@@ -112,26 +112,26 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                 </div>
                 <div class="row">
                   <div class="col-25">
-                    <label for="adults">Adults*</label>
+                    <label className="modalLabel" for="adults">Adults*</label>
                   </div>
                   <div class="col-75">
-                    <input type="text" id="adults" name="adults" onChange={handleChange} required aria-required="true" placeholder="Number Of Adults.."/>
+                    <input type="text" id="adults" name="adults" className="modalInput" onChange={handleChange} required aria-required="true" placeholder="Number Of Adults.."/>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-25">
-                    <label for="children">Children</label>
+                    <label className="modalLabel" for="children">Children</label>
                   </div>
                   <div class="col-75">
-                    <input type="text" id="children" name="children" onChange={handleChange} placeholder="Number Of Children.."/>
+                    <input type="text" id="children" name="children" className="modalInput" onChange={handleChange} placeholder="Number Of Children.."/>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-25">
-                    <label for="comments">Comments</label>
+                    <label className="modalLabel" for="comments">Comments</label>
                   </div>
                   <div class="col-75">
-                    <textarea id="comments" name="comments" onChange={handleChange} placeholder="Write message.."  style={{height:'150px'}}></textarea>
+                    <textarea id="comments" name="comments" className="modalInput" onChange={handleChange} placeholder="Write message.."  style={{height:'150px'}}></textarea>
                   </div>
                 </div>
                 <div class="row">
