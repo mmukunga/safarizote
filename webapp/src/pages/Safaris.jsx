@@ -232,9 +232,9 @@ const Safaris = () => {
 
   const videos = [ Big_Buck_Bunny, kenya_safari, kilimanjaro, MOV_FILE, preview, the_globe ];
 
-  console.log(cart);  
-
- return (
+  console.log(cart); 
+  
+ return (  
     <>
       <Card className="InnerCard" fontColor="black">
         <div id='modal_root'></div>
@@ -242,7 +242,7 @@ const Safaris = () => {
          <li><span>Our Safaris:</span></li> 
          {renderPageNumbers}
          <li><span>Hits: {numberOfHits.length}</span></li>
-         <li>{cart.length < 1? 'Empty 🛒Cart' : <input type="button" value="Send🛒Booking" onClick={() => handleSubmit()}/>}</li>      
+         <li>{cart.length < 1? '🛒' : <input type="button" value={`🛒${cart.length}`} onClick={() => handleSubmit()}/>}</li>      
          <Cart cart={cart} show={show} removeFromCart={removeFromCart} handleShow={handleShow}/>
         </ul>  
              
