@@ -19,7 +19,7 @@ select,textarea {
   padding: 12px; 
   resize: vertical;
   box-sizing: border-box;  
-  border: 1px solid #ccc;
+  border: 1px solid rgb(128, 75, 75);
   border-radius: 4px;
   resize: vertical;
 }  
