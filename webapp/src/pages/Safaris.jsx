@@ -233,7 +233,7 @@ const Safaris = () => {
   const videos = [ Big_Buck_Bunny, kenya_safari, kilimanjaro, MOV_FILE, preview, the_globe ];
 
   console.log(cart); 
-  
+
  return (  
     <>
       <Card className="InnerCard" fontColor="black">
@@ -244,8 +244,7 @@ const Safaris = () => {
          <li><span>Hits: {numberOfHits.length}</span></li>
          <li>{cart.length < 1? '🛒' : <input type="button" value={`🛒${cart.length}`} onClick={() => handleSubmit()}/>}</li>      
          <Cart cart={cart} show={show} removeFromCart={removeFromCart} handleShow={handleShow}/>
-        </ul>  
-             
+        </ul>              
         {currentItems && currentItems.length > 0 
            ? <SafariTours data={currentItems} addToCart={addToCart} removeFromCart={removeFromCart} videos={videos}/> 
            : <p>No Data Found!!</p>}                   
