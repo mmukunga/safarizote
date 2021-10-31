@@ -159,7 +159,6 @@ const Safaris = () => {
     );
   });
 
-
   const SafariTours = props => {
     const Accordion = ({children, data, title, summary, video}) => {
       const [open, setOpen] = React.useState(false);
