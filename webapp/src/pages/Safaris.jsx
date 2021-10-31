@@ -204,8 +204,8 @@ const Safaris = () => {
 
     return (
       <div className="divsContainer"> 
-        {props && props.data.map((card) =>{ console.log(card.id); console.log(videos[card.id]); return (
-          <Accordion data={card} title={card.title} summary={card.summary} video={videos[card.id]}>
+        {props && props.data.map((card, id) =>{ console.log(card.id); console.log(videos[id]); return (
+          <Accordion data={card} title={card.title} summary={card.summary} video={videos[id]}>
             {card.details} 
           </Accordion>
         ); })}
