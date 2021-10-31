@@ -200,9 +200,11 @@ const Safaris = () => {
     }
     
     const videos = props.videos;
+    console.log(videos);
+
     return (
       <div className="divsContainer"> 
-        {props && props.data.map((card) =>{ return (
+        {props && props.data.map((card) =>{ console.log(card.id); console.log(videos[card.id]); return (
           <Accordion data={card} title={card.title} summary={card.summary} video={videos[card.id]}>
             {card.details} 
           </Accordion>
@@ -223,7 +225,7 @@ const Safaris = () => {
     }
     
     return (
-        <video ref={videoRef} controls  muted className="video-player">
+        <video ref={videoRef} controls autoPlay loop muted className="video-player">
           {/* Of course it's the big buck bunny! */}
           <source src={props.video} type="video/mp4"/>
         </video>
