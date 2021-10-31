@@ -62,7 +62,8 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                 <NavLink to={{ pathname: "/email", state: { modal: true }, }} className="Nav_link urlStyle">E-Mail</NavLink></span>
               </div>
               <div class="pCloseMe"><a href="#" onClick={handleShowForm}>&#x274C;</a></div>
-            </div>        
+            </div>    
+            <p id="formInstructions">Fields marked with an asterisk (*) are required.</p>    
             <div class="popUp-content" style={{textAlign: 'center'}}>
               <form className="form-container" onSubmit={handleSubmit}>
                 <div class="row">
@@ -70,7 +71,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                     <label for="names">Names*</label>
                   </div>
                   <div class="col-75">
-                    <input type="text" id="names" name="names"  onChange={handleChange} placeholder="Your names.."/>
+                    <input type="text" id="names" name="names"  onChange={handleChange} required aria-required="true" placeholder="Your names.."/>
                   </div>
                 </div>
                 <div class="row">
@@ -90,7 +91,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                     <label for="email">E-Mail*</label>
                   </div>
                   <div class="col-75">
-                    <input type="text" id="email" name="email"  onChange={handleChange} placeholder="Your e-mail.."/>
+                    <input type="text" id="email" name="email" onChange={handleChange} required aria-required="true" placeholder="Your e-mail.."/>
                   </div>
                 </div>
                 <div class="row">
@@ -98,7 +99,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                     <label for="phone">Phone</label>
                   </div>
                   <div class="col-75">
-                    <input type="text" id="phone" name="phone"  onChange={handleChange} placeholder="Your phone.."/>
+                    <input type="text" id="phone" name="phone" onChange={handleChange} placeholder="Your phone.."/>
                   </div>
                 </div>
                 <div class="row">
@@ -106,7 +107,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                     <label for="date">Arrival Date*</label>
                   </div>
                   <div class="col-75">
-                  <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+                  <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} required aria-required="true"/>
                   </div>
                 </div>
                 <div class="row">
@@ -114,7 +115,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                     <label for="adults">Adults*</label>
                   </div>
                   <div class="col-75">
-                    <input type="text" id="adults" name="adults" onChange={handleChange} placeholder="Number Of Adults.."/>
+                    <input type="text" id="adults" name="adults" onChange={handleChange} required aria-required="true" placeholder="Number Of Adults.."/>
                   </div>
                 </div>
                 <div class="row">

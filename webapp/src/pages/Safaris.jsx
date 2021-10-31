@@ -28,8 +28,8 @@ const Safaris = () => {
         org: "AS41164 Telia Norge AS",
         timezone: "Europe/Oslo",
         city: "Oslo",
-        country_code: "NO",
-        country_name: "Norway",
+        countryCode: "NO",
+        countryName: "Norway",
         latitude: 59.9127,
         longitude: 10.7461,
         postal: "0171",
@@ -55,7 +55,20 @@ const Safaris = () => {
   const getData = async () => {
     const response = await axios.get('https://geolocation-db.com/json/')
     console.log(response.data);
-    setMetrics({...metrics, ...response.data}); 
+    const data = {...response.data};
+    const userData = {
+      city: data.city,
+      countryCode: data.country_code,
+      countryName: data.country_name,
+      dateCreated: data.dateCreated,
+      iPv4: data.iPv4,
+      latitude: data.latitude,
+      longitude: data.longitude,
+      postal: data.postal,
+      state: data.state
+    };
+
+    setMetrics({...userData}); 
     const TOKEN = '88c4d9e730db43';
     const request = await fetch(`https://ipinfo.io/${metrics.iPv4}/json?token=${TOKEN}`)
     const json = await request.json();
