@@ -64,6 +64,7 @@
 
   input[type=button] {    
     background-color: rgb(37, 116, 161);  
+    color: red;
     border: none;  
     width: 90px;
     padding: 3px 5px;
@@ -98,7 +99,7 @@
     }
 
     input[type=button] {
-      width: 100%;
       margin-top: 0;
+      width: 90%;
     }
   }
