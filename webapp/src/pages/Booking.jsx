@@ -88,7 +88,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                 </div>
                 <div class="row">
                   <div class="col-25">
-                    <label style={{padding: '2px 2px 2px 0'}} for="email">E-Mail*</label>
+                    <label class="required" style={{padding: '2px 2px 2px 0'}} for="email">E-Mail</label>
                   </div>
                   <div class="col-75">
                     <input type="text" id="email" name="email" style={{padding: '2px'}} onChange={handleChange} required aria-required="true" placeholder="Your e-mail.."/>
@@ -104,7 +104,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                 </div>
                 <div class="row">
                   <div class="col-25">
-                    <label style={{padding: '2px 2px 2px 0'}} for="date">Arrival Date*</label>
+                    <label class="required" style={{padding: '2px 2px 2px 0'}} for="date">Arrival Date</label>
                   </div>
                   <div class="col-75">
                   <DatePicker selected={startDate} className="cssDate" onChange={(date) => setStartDate(date)} required aria-required="true"/>
@@ -112,7 +112,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                 </div>
                 <div class="row">
                   <div class="col-25">
-                    <label style={{padding: '2px 2px 2px 0'}} for="adults">Adults*</label>
+                    <label class="required" style={{padding: '2px 2px 2px 0'}} for="adults">Adults</label>
                   </div>
                   <div class="col-75">
                     <input type="text" id="adults" name="adults" style={{padding: '2px'}} onChange={handleChange} required aria-required="true" placeholder="Number Of Adults.."/>
