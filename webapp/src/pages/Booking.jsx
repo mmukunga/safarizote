@@ -79,7 +79,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                     <label style={{padding: '2px 2px 2px 0'}} for="gender">Gender</label>
                   </div>
                   <div class="col-75">
-                    <select id="gender" name="gender">
+                    <select id="gender" name="gender" style={{padding: '2px'}}>
                       <option value="M">Male</option>
                       <option value="F">Female</option>
                       <option value="NA">Other</option>
@@ -107,7 +107,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                     <label style={{padding: '2px 2px 2px 0'}} for="date">Arrival Date*</label>
                   </div>
                   <div class="col-75">
-                  <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} required aria-required="true"/>
+                  <DatePicker selected={startDate} className="cssDate" onChange={(date) => setStartDate(date)} required aria-required="true"/>
                   </div>
                 </div>
                 <div class="row">

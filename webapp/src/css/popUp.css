@@ -59,6 +59,10 @@
   .urlStyle { 
     color: #40c4ff;
   }
+  
+  .cssDate {
+    border:1px solid red;
+  }
 
   input[type=button] {    
     background-color: rgb(37, 116, 161);  
