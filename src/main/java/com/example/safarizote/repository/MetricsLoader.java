@@ -23,7 +23,8 @@ public class MetricsLoader implements CommandLineRunner {
             return;
         }
            
-        repository.save(Metrics.builder().hostname("www.wanja.co.ke")
+        repository.save(Metrics.builder()
+            .hostname("www.wanja.co.ke")
             .city("Oslo")
             .org("Telia Norge AS") 
             .countryName("Norway")
@@ -32,6 +33,7 @@ public class MetricsLoader implements CommandLineRunner {
             .latitude("59.955")
             .longitude("10.859")
             .postal("0458")
+            .state("Oslo County")
             .timezone("Europe/Oslo")
             .dateCreated(Instant.now())
             .build());
