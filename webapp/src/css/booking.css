@@ -18,6 +18,12 @@
     font-size: 18px;
   }
 
+  .required:after {
+    content:" *";
+    color: red;
+  }
+
+
   @media screen and (max-width: 600px) {
     .react-datepicker-popper {
       font-size: 8px !important;

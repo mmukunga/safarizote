@@ -68,7 +68,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
               <form className="form-container" onSubmit={handleSubmit}>
                 <div class="row">
                   <div class="col-25">
-                    <label style={{padding: '2px 2px 2px 0'}} for="names">Names*</label>
+                    <label class="required" style={{padding: '2px 2px 2px 0'}} for="names">Names</label>
                   </div>
                   <div class="col-75">
                     <input type="text" id="names" name="names" style={{padding: '2px'}} onChange={handleChange} required aria-required="true" placeholder="Your names.."/>
