@@ -8,7 +8,7 @@ const initialState = {
     price: 0.0,
     quantity: 0.0,
     name:'Mkunsim',
-    dateCreated: new Date()
+    dateCreated: '2021-12-03T10:15:30Z'
 };
 
 const reducer = (state, action) => {
@@ -45,7 +45,7 @@ const Shopping = () => {
    
   const handleSubmit = (e) => {
       e.preventDefault();
-      const shopping = { ...state };
+      const shopping = { ...state, dateCreated: '2022-12-03T10:15:30Z' };
       console.log(shopping);
 
       axios.post('/api/newShopping', shopping)
