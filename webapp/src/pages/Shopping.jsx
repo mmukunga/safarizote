@@ -24,7 +24,7 @@ const reducer = function (state, action) {
 const Shopping = () => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
   const [data, setData] = useState([]);
-  const [posted, setPosted] = useState(true);
+  const [posted, setPosted] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,7 +36,7 @@ const Shopping = () => {
       }
     }
     fetchData();
-  },[]);
+  },[posted]);
 
   const handleChange = (event) => {
       dispatch({type: 'SHOPPING_UPDATE', payload: event.target})
@@ -49,8 +49,8 @@ const Shopping = () => {
 
       axios.post('/api/newShopping', shopping)
       .then(response => {
-        console.log(response.data);
-        setPosted(response.data);
+        console.log(response);
+        setPosted(true);
       });
   }
 
