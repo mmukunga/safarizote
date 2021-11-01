@@ -29,7 +29,7 @@ public class ShoppingController {
   @PostMapping(value="/api/newShopping",
                consumes={"application/json","application/xml"},
 			         produces={"application/json","application/xml"})
-	public ResponseEntity<Shopping> insertShopping(@RequestBody Shopping shopping) {
+	public ResponseEntity<?> insertShopping(@RequestBody Shopping shopping) {
     System.out.println("1. New Shopping!!");
     System.out.println(shopping);
     System.out.println("2. New Shopping!!");
