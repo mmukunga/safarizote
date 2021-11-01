@@ -39,7 +39,7 @@ const Shopping = () => {
         name: state.name,
         dateCreated: state.dateCreated
     }).then(response => {
-        console.log(response)
+        console.log(response.data)
     });
 }
   useEffect(() => {

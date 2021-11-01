@@ -6,8 +6,6 @@ const isLoggedIn = () => {
 
 const loginUser = async (user) => {
   const {username, password} = user;
-  console.log('!!Deploy a GitHub branch!! ' + localStorage.getItem('jwt_token'));
-
   const userAuth = { 
     email: username,
     password: password,
@@ -26,8 +24,6 @@ const loginUser = async (user) => {
   }).catch(err => {
       console.log('error in catch', err);
   });
-  
-  console.log(isSignedUp);
 
   if (username === 'm@gmail.com' && password === '12345') {
     return { token: 'true' };

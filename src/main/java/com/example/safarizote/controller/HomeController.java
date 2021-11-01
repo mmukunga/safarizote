@@ -33,7 +33,6 @@ public class HomeController {
     List<Safari> sourceSet = repository.findAll();
 
     sourceSet.forEach(safari -> {
-      System.out.println(safari);
       Integer Id = Integer.valueOf(safari.getId().intValue());
       catalog.put(Id, safari);
     });

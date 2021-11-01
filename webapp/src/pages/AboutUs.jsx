@@ -3,7 +3,6 @@ import Card from './Card';
 
 const AboutUs = () => {
     const [names, setNames] = useState(["Simon Mukunga", "Stevo Kiprotich", "Mwanjama Wa Mwamzadi"]);
-    console.log()
     return (
         <Card className="InnerCard" fontColor="black" >
            <h3>Africa Safari</h3>

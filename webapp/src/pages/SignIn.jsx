@@ -26,7 +26,6 @@ const SignIn = (props) => {
         };
 
         UserService.loginUser(user).then(response => {
-          console.log(response);
           localStorage.setItem('jwt_token', 'true');         
           setLoggedIn((prevState) => prevState + 1);
         }).catch(err => {
@@ -36,7 +35,6 @@ const SignIn = (props) => {
     };
       
     if (UserService.isLoggedIn() != 'PleaseLogIn') {
-      console.log('SignIn.isLoggedIn:= ' + UserService.isLoggedIn());
       return <Redirect to={from} />
     } 
     

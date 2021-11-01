@@ -33,7 +33,6 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
           return errors;
       }
 
-      console.log(validate (formData));
 
     };
   
@@ -45,11 +44,8 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
         [name]: value,
       }))
     }
-  
-    console.log('Booking.ShowForm:= ' + showForm);
 
     if (!showForm) { 
-      console.log('!!SHOW-FORM!! ' + showForm);
       return null;
     }
 

@@ -140,7 +140,6 @@ import Card from './Card';
         });
 
         axios.post('/api/forecast', country, headers).then(response => {
-            console.log(response);
             setList(response.data.list);
             setForecast(response.data);
         }).catch(err => {

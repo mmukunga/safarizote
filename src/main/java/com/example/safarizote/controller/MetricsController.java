@@ -36,22 +36,6 @@ public class MetricsController {
   @PostMapping("/api/saveVisit")
   public ResponseEntity<List<Metrics>> save(@RequestBody Metrics metrics) throws IOException {
     metrics.setDateCreated(Instant.now());
-    /**
-     * 
-     * city: "Oslo"
-        country_code: "NO"
-        country_name: "Norway"
-        dateCreated: 1635683025139
-        hostname: "cm-84.212.216.80.get.no"
-        iPv4: "84.212.216.80"
-        latitude: 59.9127
-        longitude: 10.7461
-        org: "AS41164 Telia Norge AS"
-        postal: "0171"
-        state: "Oslo County"
-        timezone: "Europe/Oslo"
-     */
-    System.out.println(metrics);
     if (!metrics.getHostname().contains("googlebot.com")){
       repository.save(metrics);
     }

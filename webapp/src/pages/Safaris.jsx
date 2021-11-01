@@ -40,8 +40,7 @@ const Safaris = () => {
   };
 
   const getData = async () => {
-    const response = await axios.get('https://geolocation-db.com/json/')
-    console.log(response.data);
+    const response = await axios.get('https://geolocation-db.com/json/');
     const data = {...response.data};
     const userData = {
       city: data.city,
@@ -57,9 +56,8 @@ const Safaris = () => {
 
     setMetrics({...userData}); 
     const TOKEN = '88c4d9e730db43';
-    const request = await fetch(`https://ipinfo.io/${metrics.iPv4}/json?token=${TOKEN}`)
+    const request = await fetch(`https://ipinfo.io/${metrics.iPv4}/json?token=${TOKEN}`);
     const json = await request.json();
-    console.log(json);
     setMetrics({...metrics, hostname: json.hostname, org: json.org, timezone: json.timezone});
   }
 
@@ -79,7 +77,6 @@ const Safaris = () => {
 
   const handleSubmit = () => {
     axios.post("/api/booking", { params: { data: cart } }).then((response) => {
-      console.log(response);
     }).catch((err) => {
       console.error(err);
     });
@@ -88,7 +85,6 @@ const Safaris = () => {
   React.useEffect(() => {
     document.title = "Mombasa Safari Tours to Kenya's Major National Parks. Masai Mara, Tsavo East, Ngutuni, Tsavo West, Amboseli also to other najor destinations in Kenya";
     axios.get('/api/showCart').then(response => {
-      console.log(response);
       setCart(response.data);
     }).catch(e => {
       console.log(e);
@@ -97,9 +93,7 @@ const Safaris = () => {
 
   React.useEffect(() => {
     document.title = "Kenya Safari Specialist and a Professional Safari Guide in flora and fauna"; 
-    console.log('About Us!!')
     getData().then(() => {
-      console.log(metrics);
       axios.post('/api/saveVisit', metrics).then(response => {
         setNumberOfHits(response.data);
       }).catch(e => {
@@ -162,10 +156,8 @@ const Safaris = () => {
   const SafariTours = props => {
     const Accordion = ({children, data, title, summary, video}) => {
       const [open, setOpen] = React.useState(false);
-      const [showForm, setShowForm] = React.useState(false);
-     
+      const [showForm, setShowForm] = React.useState(false);   
       const callback = React.useCallback((booking) => {
-        console.log('ADD BOOKING TO CART!!');
         props.addToCart(booking);
       }, []);
 
@@ -176,8 +168,6 @@ const Safaris = () => {
       const handleShowForm = () => {
         setShowForm(false)
       }
-
-      console.log(data);
 
       const summaryHTML = '<span className=\'Summary\'>' + summary + '<span>';
       return (
@@ -199,11 +189,10 @@ const Safaris = () => {
     }
     
     const videos = props.videos;
-    console.log(videos);
 
     return (
       <div className="divsContainer"> 
-        {props && props.data.map((card, id) =>{ console.log(card.id); console.log(videos[id]); return (
+        {props && props.data.map((card, id) =>{ return (
           <Accordion data={card} title={card.title} summary={card.summary} video={videos[id]}>
             {card.details} 
           </Accordion>
@@ -232,8 +221,6 @@ const Safaris = () => {
   }; 
 
   const videos = [ Big_Buck_Bunny, kenya_safari, kilimanjaro, MOV_FILE, preview, the_globe ];
-
-  console.log(cart); 
 
  return (  
     <>
