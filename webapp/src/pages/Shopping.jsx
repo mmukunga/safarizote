@@ -11,11 +11,11 @@ const initialState = {
     dateCreated: new Date()
 };
 
-const reducer = function (state, action) {
+const reducer = function (currentState, action) {
     switch(action.type) {
         case 'SHOPPING_UPDATE':
             const {name, value} = action.payload;
-            return {...state, [name]: value};
+            return {...currentState, [name]: value};
         default:
             return state;
     }
@@ -24,7 +24,7 @@ const reducer = function (state, action) {
 const Shopping = () => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
   const [data, setData] = useState([]);
-  const [posted, setPosted] = useState(false);
+  const [status, setStatus] = useState(-1);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,7 +36,7 @@ const Shopping = () => {
       }
     }
     fetchData();
-  },[posted]);
+  },[status]);
 
   const handleChange = (event) => {
       dispatch({type: 'SHOPPING_UPDATE', payload: event.target})
@@ -50,7 +50,7 @@ const Shopping = () => {
       axios.post('/api/newShopping', shopping)
       .then(response => {
         console.log(response);
-        setPosted(true);
+        setStatus(response.status);
       });
   }
 
@@ -92,7 +92,7 @@ const Shopping = () => {
             <button type="submit">Send</button> 
           </div>
         </form> 
-        <p>New Shoppings - Registered: {posted? 'true': 'false'}</p>
+        <p>New Shoppings - Registered: {status==200? 'OK': 'Error'}</p>
         <table className="Table">
             <tr>
               <th>Product</th> 
