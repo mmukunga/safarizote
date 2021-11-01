@@ -99,9 +99,9 @@ public class SafariLoader implements CommandLineRunner {
 
         int id = (int) ((Math.random() * (myArray.length - 0)) + 0);
 
-        bookings.add(Booking.builder().safariId(Long.valueOf(id)).name("Jack Maji Moto Smith").email("m@gmail.com").phone("415 22 386").address("21 Jump street").dateCreated(Instant.now()).build());
-        bookings.add(Booking.builder().safariId(Long.valueOf(id)).name("Adam Moto Wake").email("maji@gmail.com").phone("915 22 111").address("Grefsen Platåen").dateCreated(Instant.now()).build());
-        bookings.add(Booking.builder().safariId(Long.valueOf(id)).name("Johnson Katana Ndovu").email("moto@hotmail.com").phone("222 22 222").address("Maridalsveien").dateCreated(Instant.now()).build());
+        bookings.add(Booking.builder().safariId(Long.valueOf(id)).name("Jack Maji Moto Smith").email("m@gmail.com").phone("415 22 386").address("21 Jump street").message("Twende Kenya ndugu yangu!!").dateCreated(Instant.now()).build());
+        bookings.add(Booking.builder().safariId(Long.valueOf(id)).name("Adam Moto Wake").email("maji@gmail.com").phone("915 22 111").address("Grefsen Platåen").message("Twende Mombasa tukaogelee!!").dateCreated(Instant.now()).build());
+        bookings.add(Booking.builder().safariId(Long.valueOf(id)).name("Johnson Katana Ndovu").email("moto@hotmail.com").phone("222 22 222").address("Maridalsveien").message("Twende Safari tukaone wanyama!!").dateCreated(Instant.now()).build());
         bookings.add(Booking.builder().safariId(Long.valueOf(id)).name("Peter Ngara Mwendwa").email("kazi@online.no").phone("911 22 911").address("Number 10").dateCreated(Instant.now()).build());
         bookings.add(Booking.builder().safariId(Long.valueOf(id)).name("Masinde Murilo David").email("sverige@kora.se").phone("+44 510 22 777").address("Downings Street").dateCreated(Instant.now()).build());
         
