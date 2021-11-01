@@ -5,9 +5,7 @@ import java.time.Instant;
 import java.io.IOException;
 
 import org.springframework.http.ResponseEntity;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,17 +28,13 @@ public class MetricsController {
   @GetMapping("/api/allHits")
   public ResponseEntity<List<Metrics>> findAll() {
     List<Metrics> visits = repository.findAll();
-
-
-
-    
     return ResponseEntity.ok().body(visits);
   }
 
   @PostMapping("/api/saveVisit")
   public ResponseEntity<List<Metrics>> save(@RequestBody Metrics metrics) throws IOException {
     System.out.println(metrics);
-    
+
     metrics.setDateCreated(Instant.now());
     if (!metrics.getHostname().contains("googlebot.com")){
       repository.save(metrics);

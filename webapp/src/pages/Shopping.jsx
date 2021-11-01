@@ -24,24 +24,8 @@ const reducer = function (state, action) {
 const Shopping = () => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
   const [data, setData] = useState([]);
+  const [posted, setPosted] = useState(false);
 
-  const handleChange = (event) => {
-      dispatch({type: 'SET_SHOPPING', payload: event.target})
-  }
-   
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios.post('/api/newShopping', {
-        store: state.store,
-        product: state.product,
-        price: state.price,
-        quantity: state.quatity,
-        name: state.name,
-        dateCreated: state.dateCreated
-    }).then(response => {
-        console.log(response.data)
-    });
-}
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -54,9 +38,27 @@ const Shopping = () => {
     fetchData();
   },[]);
 
+  const handleChange = (event) => {
+      dispatch({type: 'SET_SHOPPING', payload: event.target})
+  }
+   
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      axios.post('/api/newShopping', {
+          store: state.store,
+          product: state.product,
+          price: state.price,
+          quantity: state.quatity,
+          name: state.name,
+          dateCreated: state.dateCreated
+      }).then(response => {
+        setPosted(response.data);
+      });
+  }
+
     return (
       <Card className="InnerCard" fontColor="black">
-        <p>Shoppings!!</p>
+        <p>Shoppings!! Posetd: {posted}</p>
         <form className="form-container" onSubmit={handleSubmit}>
           <div className="row">
             <div className="leftColumn"> 
