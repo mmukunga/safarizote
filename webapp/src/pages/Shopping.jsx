@@ -48,7 +48,7 @@ const Shopping = () => {
           store: state.store,
           product: state.product,
           price: state.price,
-          quantity: state.quatity,
+          quantity: state.quantity,
           name: state.name,
           dateCreated: state.dateCreated
       };
