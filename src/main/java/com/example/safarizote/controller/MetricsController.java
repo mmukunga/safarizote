@@ -39,6 +39,8 @@ public class MetricsController {
 
   @PostMapping("/api/saveVisit")
   public ResponseEntity<List<Metrics>> save(@RequestBody Metrics metrics) throws IOException {
+    System.out.println(metrics);
+    
     metrics.setDateCreated(Instant.now());
     if (!metrics.getHostname().contains("googlebot.com")){
       repository.save(metrics);
