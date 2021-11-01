@@ -30,11 +30,13 @@ public class ShoppingController {
                consumes={"application/json","application/xml"},
 			         produces={"application/json","application/xml"})
 	public ResponseEntity<Shopping> insertShopping(@RequestBody Shopping shopping) {
+    System.out.println("1. dsdfsdfsdfsdfsdfsdf");
     System.out.println(shopping);
+    System.out.println("2. dsdfsdfsdfsdfsdfsdf");
 		Shopping s = repository.save(shopping);
-		shopping.setId(s.getId());
-    Optional<Shopping> sdb = repository.findById(s.getId());
-    if (!sdb.isPresent()) {
+		//shopping.setId(s.getId());
+    Optional<Shopping> sh = repository.findById(s.getId());
+    if (!sh.isPresent()) {
 			return ResponseEntity.notFound().build();
 		} else {
 			return ResponseEntity.ok().build();

@@ -3,17 +3,17 @@ import axios from 'axios';
 import Card from './Card';
 
 const initialState = {
-    store: '',
-    product: "",
-    price: '',
-    quantity: '',
-    name:'',
+    store: 'Joka',
+    product: "Maji Waters",
+    price: 0.0,
+    quantity: 0.0,
+    name:'Mkunsim',
     dateCreated: new Date()
 };
 
 const reducer = function (state, action) {
     switch(action.type) {
-        case 'SET_SHOPPING':
+        case 'SHOPPING_UPDATE':
             const {name, value} = action.payload;
             return {...state, [name]: value};
         default:
@@ -39,19 +39,21 @@ const Shopping = () => {
   },[]);
 
   const handleChange = (event) => {
-      dispatch({type: 'SET_SHOPPING', payload: event.target})
+      dispatch({type: 'SHOPPING_UPDATE', payload: event.target})
   }
    
   const handleSubmit = (e) => {
       e.preventDefault();
-      axios.post('/api/newShopping', {
+      const shopping = {
           store: state.store,
           product: state.product,
           price: state.price,
           quantity: state.quatity,
           name: state.name,
           dateCreated: state.dateCreated
-      }).then(response => {
+      };
+      axios.post('/api/newShopping', shopping)
+      .then(response => {
         console.log(response.data);
         setPosted(response.data);
       });
