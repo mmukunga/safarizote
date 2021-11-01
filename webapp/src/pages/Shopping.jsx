@@ -85,7 +85,7 @@ const Shopping = () => {
               <input type="text" name="name" placeholder="Name" onChange={handleChange}/>
             </div>
             <div className="rightColumn"> 
-              Date Createdd
+              Date Created
               <input type="text" name="dateCreated" placeholder="Date Createdd" onChange={handleChange}/>
             </div>
           </div>
@@ -93,14 +93,14 @@ const Shopping = () => {
             <button type="submit">Send</button> 
           </div>
         </form> 
-        <p>New Shoppings - Registered: {status==200? 'OK': 'Error'}</p>
+        <p>New Shoppings - Registered: {status==200? 'OK': 'NO!'}</p>
         <table className="Table">
             <tr>
               <th>Product</th> 
               <th>Price</th>  
               <th>Store</th> 
               <th>Quantity</th> 
-              <th>Name</th>  
+              <th>Customer</th>  
               <th>DateCreated</th> 
             </tr>
             {data.map(item => {
