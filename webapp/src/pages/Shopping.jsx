@@ -24,7 +24,7 @@ const reducer = function (state, action) {
 const Shopping = () => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
   const [data, setData] = useState([]);
-  const [posted, setPosted] = useState(false);
+  const [posted, setPosted] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
