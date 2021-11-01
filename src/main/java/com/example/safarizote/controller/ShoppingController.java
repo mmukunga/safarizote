@@ -40,10 +40,4 @@ public class ShoppingController {
 		}
 	}
 
- @DeleteMapping
-	public ResponseEntity<?> delete(@PathVariable("id") Long id) {
-    	repository.deleteById(id);
-		return ResponseEntity.ok().build();
-	}
-
 }
