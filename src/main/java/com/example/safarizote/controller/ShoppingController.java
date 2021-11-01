@@ -22,20 +22,15 @@ public class ShoppingController {
 
   @GetMapping("/api/shopping")
   public ResponseEntity<List<Shopping>> shopping(){
-    List<Shopping> sourceSet = repository.findAll();
-    return ResponseEntity.ok().body(sourceSet);
+    List<Shopping> shoppings = repository.findAll();
+    return ResponseEntity.ok().body(shoppings);
   }
 
   @PostMapping(value="/api/newShopping",
                consumes={"application/json","application/xml"},
 			         produces={"application/json","application/xml"})
 	public ResponseEntity<?> insertShopping(@RequestBody Shopping shopping) {
-    System.out.println("1. New Shopping!!");
-    System.out.println(shopping);
-    System.out.println("2. New Shopping!!");
 		Shopping s = repository.save(shopping);
-    System.out.println(s);
-    System.out.println("3. New Shopping!!");
     Optional<Shopping> sh = repository.findById(s.getId());
     if (!sh.isPresent()) {
 			return ResponseEntity.notFound().build();
