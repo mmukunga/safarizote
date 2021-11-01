@@ -30,6 +30,7 @@ public class ShoppingController {
                consumes={"application/json","application/xml"},
 			         produces={"application/json","application/xml"})
 	public ResponseEntity<Shopping> insertShopping(@RequestBody Shopping shopping) {
+    System.out.println(shopping);
 		Shopping s = repository.save(shopping);
 		shopping.setId(s.getId());
     Optional<Shopping> sdb = repository.findById(s.getId());

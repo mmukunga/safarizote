@@ -63,25 +63,31 @@ const Shopping = () => {
         <form className="form-container" onSubmit={handleSubmit}>
           <div className="row">
             <div className="leftColumn"> 
+            Store
               <input type="text" id="store" placeholder="Store" onChange={handleChange}/>
             </div>
             <div className="rightColumn"> 
+            Product
               <input type="text" id="product" placeholder="Product" onChange={handleChange}/>
             </div>
           </div>
           <div className="row">
             <div className="leftColumn"> 
+              Price
               <input type="text" id="price" placeholder="Price" onChange={handleChange}/>
             </div>
             <div className="rightColumn"> 
+              Quantity
               <input type="text" id="quantity" placeholder="Quantity" onChange={handleChange}/>
             </div>
           </div>
           <div className="row">
             <div className="leftColumn"> 
+              Customer
               <input type="text" id="name" placeholder="Name" onChange={handleChange}/>
             </div>
             <div className="rightColumn"> 
+            Date Createdd
               <input type="text" id="dateCreated" placeholder="Date Createdd" onChange={handleChange}/>
             </div>
           </div>
