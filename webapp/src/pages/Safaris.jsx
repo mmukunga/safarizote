@@ -22,7 +22,20 @@ const Safaris = () => {
   const [currentPage, setCurrentPage] = React.useState(1);
   const [numberOfHits, setNumberOfHits] = React.useState([]);
   const [pageSize, setPageSize] = React.useState(2);
-  const [metrics, setMetrics] = React.useState({});
+  const [metrics, setMetrics] = React.useState({
+    iPv4: "84.212.216.80",
+    hostname: "cm-84.212.216.80.get.no",
+    org: "AS41164 Telia Norge AS",
+    timezone: "Europe/Oslo",
+    city: "Oslo",
+    country_code: "NO",
+    country_name: "Norway",
+    latitude: 59.9127,
+    longitude: 10.7461,
+    postal: "0171",
+    state: "Oslo County",
+    dateCreated:  moment.now()
+});
 
   const videoUrl = 'https://www.youtube.com/watch?v=3qW5z4xeiac';
 
@@ -41,17 +54,17 @@ const Safaris = () => {
 
   const getData = async () => {
     const response = await axios.get('https://geolocation-db.com/json/');
-    const data = {...response.data};
+    const data = {...metrics, ...response.data};
     const userData = {
       city: data.city,
       countryCode: data.country_code,
       countryName: data.country_name,
-      dateCreated: moment.now(),
       iPv4: data.iPv4,
       latitude: data.latitude,
       longitude: data.longitude,
       postal: data.postal,
-      state: data.state
+      state: data.state,
+      dateCreated: moment.now()
     };
 
     setMetrics({...userData}); 
