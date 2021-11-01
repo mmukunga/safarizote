@@ -14,7 +14,6 @@ const initialState = {
 const reducer = (state, action) => {
     switch(action.type) {
         case 'SHOPPING_UPDATE':
-            console.log(action.payload);
             const {name, value} = action.payload;
             return {...state, [name]: value};
         default:
@@ -46,11 +45,7 @@ const Shopping = () => {
   const handleSubmit = (e) => {
       e.preventDefault();
       const shopping = { ...state, dateCreated: '2022-12-03T10:15:30Z' };
-      console.log(shopping);
-
-      axios.post('/api/newShopping', shopping)
-      .then(response => {
-        console.log(response);
+      axios.post('/api/newShopping', shopping).then(response => {
         setStatus(response.status);
       });
   }

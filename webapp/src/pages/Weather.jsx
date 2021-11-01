@@ -42,20 +42,18 @@ import Card from './Card';
 
     React.useEffect(() => {
       axios.get('/api/countries')
-        .then(response => {
-            console.log(response);
-            setCountries(response.data);
-        }).catch(err => console.log(err));
+      .then(response => {
+          setCountries(response.data);
+      }).catch(err => console.log(err));
 
-         let country = {
-              name: 'Kabul',
-              iso2: "AF",
-              cities: null
-        };
+      let country = {
+          name: 'Kabul',
+          iso2: "AF",
+          cities: null
+      };
  
       axios.post('/api/cities', country)
         .then(response => {
-            console.log(response);
             setCities(response.data);
             const cities = response.data;
             dispatch({ type: 'SET_CITIES', payload: cities });
@@ -69,9 +67,9 @@ import Card from './Card';
       };
 
       const country = {
-            name: state.city,
-            iso2: state.iso2,
-            cities: null
+        name: state.city,
+        iso2: state.iso2,
+        cities: null
       };
 
       axios.post('/api/weather', country, headers)
@@ -81,7 +79,6 @@ import Card from './Card';
 
       axios.post('/api/forecast', country, headers)
         .then(response => {
-          console.log(response.data);
           setList(response.data.list);
           setForecast(response.data);
        }).catch(err => {console.log(err)});
@@ -97,8 +94,7 @@ import Card from './Card';
       };
 
       axios.post('/api/cities', country)
-        .then(response => {  
-            console.log(response);
+        .then(response => { 
             setCities(response.data);
             const cities = response.data;
             dispatch({ type: 'SET_CITIES', payload: cities });

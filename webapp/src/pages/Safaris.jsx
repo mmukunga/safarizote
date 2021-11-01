@@ -40,7 +40,6 @@ const Safaris = () => {
   const videoUrl = 'https://www.youtube.com/watch?v=3qW5z4xeiac';
 
   const addToCart = (el) => {
-    console.log(el);
     if (!(cart.filter(e => e.safariId === el.safariId).length > 0)) {
       setCart([...cart, el]);
     }
