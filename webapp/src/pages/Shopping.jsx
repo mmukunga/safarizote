@@ -44,14 +44,9 @@ const Shopping = () => {
    
   const handleSubmit = (e) => {
       e.preventDefault();
-      const shopping = {
-          store: state.store,
-          product: state.product,
-          price: state.price,
-          quantity: state.quantity,
-          name: state.name,
-          dateCreated: state.dateCreated
-      };
+      const shopping = { ...state };
+      console.log(shopping);
+
       axios.post('/api/newShopping', shopping)
       .then(response => {
         console.log(response.data);
