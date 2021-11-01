@@ -11,11 +11,12 @@ const initialState = {
     dateCreated: new Date()
 };
 
-const reducer = function (currentState, action) {
+const reducer = (state, action) => {
     switch(action.type) {
         case 'SHOPPING_UPDATE':
+            console.log(action.payload);
             const {name, value} = action.payload;
-            return {...currentState, [name]: value};
+            return {...state, [name]: value};
         default:
             return state;
     }
