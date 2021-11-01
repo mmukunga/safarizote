@@ -61,15 +61,15 @@ const Shopping = () => {
 
     return (
       <Card className="InnerCard" fontColor="black">
-        <p>Shoppings!! Posetd: {posted}</p>
+        <p>Shoppings!!</p>
         <form className="form-container" onSubmit={handleSubmit}>
           <div className="row">
             <div className="leftColumn"> 
-            Store
+              Store
               <input type="text" id="store" placeholder="Store" onChange={handleChange}/>
             </div>
             <div className="rightColumn"> 
-            Product
+              Product
               <input type="text" id="product" placeholder="Product" onChange={handleChange}/>
             </div>
           </div>
@@ -89,7 +89,7 @@ const Shopping = () => {
               <input type="text" id="name" placeholder="Name" onChange={handleChange}/>
             </div>
             <div className="rightColumn"> 
-            Date Createdd
+              Date Createdd
               <input type="text" id="dateCreated" placeholder="Date Createdd" onChange={handleChange}/>
             </div>
           </div>
@@ -97,6 +97,7 @@ const Shopping = () => {
             <button type="submit">Send</button> 
           </div>
         </form> 
+        <p>New Shoppings - Registered: {posted? 'true': 'false'}</p>
         <table className="Table">
             <tr>
               <th>Product</th> 
