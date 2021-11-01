@@ -24,7 +24,7 @@ const reducer = function (state, action) {
 const Shopping = () => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
   const [data, setData] = useState([]);
-  const [posted, setPosted] = useState({});
+  const [posted, setPosted] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,6 +52,7 @@ const Shopping = () => {
           name: state.name,
           dateCreated: state.dateCreated
       }).then(response => {
+        console.log(response.data);
         setPosted(response.data);
       });
   }
