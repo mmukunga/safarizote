@@ -131,7 +131,7 @@ function Booking({ safariId, showForm, parentCallback, handleShowForm }) {
                   </div>
                 </div>
                 <div class="row">
-                  <input type="submit" value="Submit"/>
+                  <input type="submit" value="Add To 🛒Cart"/>
                 </div>
               </form>
             </div>

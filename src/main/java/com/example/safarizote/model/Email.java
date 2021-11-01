@@ -19,6 +19,7 @@ import lombok.NonNull;
 @Builder
 public class Email {
     @Id @GeneratedValue Long id;
+    @NonNull Long safariId;
     @NonNull String name;
     @NonNull String title;
     @NonNull String email;

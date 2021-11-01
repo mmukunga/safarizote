@@ -76,7 +76,7 @@ const Safaris = () => {
   }
 
   const handleSubmit = () => {
-    axios.post("/api/booking", { params: { data: cart } }).then((response) => {
+    axios.post("/api/booking", { params: { safaris: cart } }).then((response) => {
     }).catch((err) => {
       console.error(err);
     });
@@ -157,6 +157,7 @@ const Safaris = () => {
     const Accordion = ({children, data, title, summary, video}) => {
       const [open, setOpen] = React.useState(false);
       const [showForm, setShowForm] = React.useState(false);   
+      
       const callback = React.useCallback((booking) => {
         props.addToCart(booking);
       }, []);
@@ -174,7 +175,7 @@ const Safaris = () => {
         <div className="SafariTours">
         <div className="sFooter">
             <span className='sub' onClick={() => setOpen(true)}>Tour Details</span>
-            <span className='sub' onClick={() => setShowForm(true)}>Add To Cart</span>
+            <span className='sub' onClick={() => setShowForm(true)}>Book Safari</span>
             <Booking safariId={data.id} showForm={showForm} parentCallback={callback} handleShowForm={handleShowForm}/>  
             <span className='sub' onClick={() => setShow(true)}>View Cart Items</span>
             <PopUp data={data} open={open} title={parse(title)} handleClose={handleClose}>{children}</PopUp>
@@ -230,7 +231,7 @@ const Safaris = () => {
          <li><span>Our Safaris:</span></li> 
          {renderPageNumbers}
          <li><span>Hits: {numberOfHits.length}</span></li>
-         <li>{cart.length < 1? '🛒' : <input type="button" value={`🛒${cart.length}`} onClick={() => handleSubmit()}/>}</li>      
+         <li>{cart.length > 0? <input type="button" value={`Cart🛒${cart.length}`} onClick={() => handleSubmit()}/>:'Empty🛒'}</li>      
          <Cart cart={cart} show={show} removeFromCart={removeFromCart} handleShow={handleShow}/>
         </ul>              
         {currentItems && currentItems.length > 0 

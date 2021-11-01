@@ -19,9 +19,11 @@ import lombok.NonNull;
 @Builder
 public class Booking {
   @Id @GeneratedValue Long id;
+  @NonNull Long safariId;
   @NonNull String name;
   @NonNull String email;
   @NonNull String phone;
   @NonNull String address;
+  @NonNull String message;
   @NonNull Instant dateCreated;
 }

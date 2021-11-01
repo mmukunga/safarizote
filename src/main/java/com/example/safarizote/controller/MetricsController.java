@@ -30,6 +30,10 @@ public class MetricsController {
   @GetMapping("/api/allHits")
   public ResponseEntity<List<Metrics>> findAll() {
     List<Metrics> visits = repository.findAll();
+
+
+
+    
     return ResponseEntity.ok().body(visits);
   }
 
