@@ -100,14 +100,14 @@ public class HomeController {
   }
 
   @PostMapping(value="/api/booking", produces={"application/json","application/xml"})
-  public ResponseEntity<Double> sendBooking(@RequestBody List<Safari> safaris) throws MailException, UnknownHostException {
+  public ResponseEntity<Double> sendBooking(@RequestBody List<Safari> cart) throws MailException, UnknownHostException {
     System.out.println("1.Booking STARTED!!");
-    for (Safari safari : safaris) {
+    for (Safari safari : cart) {
       System.out.println(safari);
     }
     System.out.println("2. Booking STARTED!!");
 
-    for (Safari safari : safaris) {
+    for (Safari safari : cart) {
       System.out.println(safari);
       repository.save(safari);    
       Set<Booking> bookings = safari.getBookings();
