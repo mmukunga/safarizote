@@ -88,7 +88,7 @@ const Safaris = () => {
   }
 
   const handleSubmit = () => {
-    axios.post("/api/booking", { params: { safaris: cart } }).then((response) => {
+    axios.post("/api/booking", {safaris: cart }).then((response) => {
     }).catch((err) => {
       console.error(err);
     });

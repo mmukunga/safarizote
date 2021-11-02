@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -99,7 +100,7 @@ public class HomeController {
   }
 
   @PostMapping(value="/api/booking", produces={"application/json","application/xml"})
-  public ResponseEntity<Double> sendBooking(@RequestParam List<Safari> safaris) throws MailException, UnknownHostException {
+  public ResponseEntity<Double> sendBooking(@RequestBody List<Safari> safaris) throws MailException, UnknownHostException {
     System.out.println("1.Booking STARTED!!");
     for (Safari safari : safaris) {
       System.out.println(safari);
