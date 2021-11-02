@@ -99,6 +99,12 @@ public class HomeController {
 
   @GetMapping(value="/api/booking", produces={"application/json","application/xml"})
   public ResponseEntity<Double> sendBooking(@RequestParam List<Safari> safaris) throws MailException, UnknownHostException {
+    System.out.println("1.Booking STARTED!!");
+    for (Safari safari : safaris) {
+      System.out.println(safari);
+    }
+    System.out.println("2. Booking STARTED!!");
+
     for (Safari safari : safaris) {
       System.out.println(safari);
       repository.save(safari);    
