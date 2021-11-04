@@ -114,11 +114,12 @@ public class SafariLoader implements CommandLineRunner {
         bookings.add(Booking.builder().safaris(safarisSet).name("Masinde Murilo David").email("sverige@kora.se").phone("+44 510 22 777").address("Downings Street").adults("2").children("1").message("Twende Safari tukaone Simba na wenzake!!").date(Instant.now()).build());
         
         Set<Booking> hSet = new HashSet<Booking>(bookings);
-
+        Booking b = hSet.stream().findFirst().get();
+        System.out.println(b);
         safaris = repository.findAll(); 
         for (int i = 0; i < safaris.size(); i++) {
             Safari safari = safaris.get(i);
-            safari.setBookings(hSet);
+            safari.setBooking(b);
             repository.save(safari);
         }
 

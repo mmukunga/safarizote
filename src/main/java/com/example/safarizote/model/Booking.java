@@ -34,6 +34,6 @@ public class Booking {
   @NonNull String children;
   @NonNull String message;
   @NonNull Instant date;
-  @OneToMany(mappedBy="safari_id", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+  @OneToMany(mappedBy="booking", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
   Set<Safari> safaris;
 }
