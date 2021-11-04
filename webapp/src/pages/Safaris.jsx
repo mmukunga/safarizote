@@ -29,9 +29,9 @@ const reducer = (state, action) => {
 
 const Safaris = () => {
   const [state, dispatch] = React.useReducer(reducer, initialState);  
-  const Tour = ({ nextId, tour, onRemove }) => {
+  const Tour = ({ nextId, title, onRemove }) => {
     console.log('1..tour..');
-    console.log(tour);
+    console.log(title);
     console.log('2..tour..');
     return (
       <div>
@@ -41,15 +41,15 @@ const Safaris = () => {
     );
   }
   const el = {nextId: 1010, title: 'Masai Mara'};
-  
+
   console.log(state);
   console.log(state.tours);
 
   return (
     <>
       <button onClick={() => dispatch({ type: 'ADD_TOUR', payload: el })}>Add Tour</button>
-      {state.tours.map(({ nextId, tour }) => (
-        <Tour key={nextId} tour={tour}
+      {state.tours.map(({ nextId, title }) => (
+        <Tour key={nextId} title={title}
           onRemove={() => dispatch({ type: 'REMOVE_TOUR', nextId })}
         />
       ))}
