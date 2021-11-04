@@ -1,15 +1,15 @@
 package com.example.safarizote.utils;
 
+import java.util.List;
 import java.util.Map;
 
+import com.example.safarizote.model.Booking;
 import com.example.safarizote.model.Safari;
 
 public interface CartService {
-    void setCatalog(Map<Integer, Safari> _catalog);
-    void addItemToCart(int id, int quantity);
-    void removeItemFromCart(int id);
-    Map<Integer, Integer> getAllItemsInCart();
-    double calculateCartCost();
-    double calculateSalesTax();
-    double calculateDeliveryCharge();
+    void setCatalog(Map<Long, Safari> _catalog);
+    void addItemToCart(Booking booking);
+    void removeItemFromCart(Booking booking);
+    List<Booking> getAllItemsInCart();
+    Double calculateCartCost();
 }

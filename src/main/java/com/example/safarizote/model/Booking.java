@@ -12,6 +12,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+
+import javax.persistence.OneToMany;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+
+
 @Data
 @Entity
 @NoArgsConstructor
@@ -19,11 +26,14 @@ import lombok.NonNull;
 @Builder
 public class Booking {
   @Id @GeneratedValue Long id;
-  @NonNull Long safariId;
   @NonNull String name;
   @NonNull String email;
   @NonNull String phone;
   @NonNull String address;
+  @NonNull String adults;
+  @NonNull String children;
   @NonNull String message;
-  @NonNull Instant dateCreated;
+  @NonNull Instant date;
+  @OneToMany(mappedBy="safari_id", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+  Set<Safari> safaris;
 }

@@ -4,8 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+import com.example.safarizote.model.Booking;
 import com.example.safarizote.model.Safari;
 import com.example.safarizote.repository.CartRepository;
 
@@ -15,7 +18,7 @@ public class CartServiceImpl implements CartService {
     @Autowired
     private CartRepository repository;
 
-    private Map<Integer, Safari> catalog;
+    private Map<Long, Safari> catalog;
 
     @Value("${contactEmail}")
     private String contactEmail;
@@ -33,49 +36,23 @@ public class CartServiceImpl implements CartService {
         return contactEmail;
     }
 
-   public void setCatalog(Map<Integer, Safari> _catalog){
+   public void setCatalog(Map<Long, Safari> _catalog){
        catalog = _catalog;
    }
 
-    public void addItemToCart(int id, int quantity) {
-        if (catalog.containsKey(id)) {
-            repository.add(id, quantity);
-        }
+    public void addItemToCart(Booking booking) {
+        repository.save(booking);
     }
 
-    public void removeItemFromCart(int id) {
-        if (catalog.containsKey(id)) {
-            repository.remove(id);
-        }
+    public void removeItemFromCart(Booking booking) {
+            repository.delete(booking);
     }
 
-    public Map<Integer, Integer> getAllItemsInCart() {
-        return repository.getAll();
+    public List<Booking> getAllItemsInCart() {
+        return repository.findAll();
     }
 
-    public double calculateCartCost() {
-        Map<Integer, Integer> items = repository.getAll();
-
-        double totalCost = 0;
-        for (Map.Entry<Integer, Integer> item : items.entrySet()) {
-            int id = item.getKey();
-            int quantity = item.getValue();
-            double itemCost = catalog.get(id).getPrice() * quantity;
-            totalCost += itemCost;
-        }
-        return totalCost;
-    }
-
-    public double calculateSalesTax() {
-        return salesTaxRate * calculateCartCost();
-    }
-
-    public double calculateDeliveryCharge() {
-        double totalCost = calculateCartCost();
-        if (totalCost == 0 || totalCost >= deliveryChargeThreshold) {
-            return 0;
-        } else {
-            return standardDeliveryCharge;
-        }
+    public Double calculateCartCost() {
+        return 0.0;
     }
 }

@@ -1,11 +1,16 @@
 package com.example.safarizote.repository;
 
-import java.util.Map;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
 
-public interface CartRepository {
-    void add(int itemId, int quantity);
+import java.util.Set;
 
-    void remove(int itemId);
+import org.springframework.data.jpa.repository.JpaRepository;
 
-    Map<Integer, Integer> getAll();
+import com.example.safarizote.model.Booking;
+
+@Component
+@SessionScope
+public interface CartRepository extends JpaRepository<Booking, Long> {
+    Set<Booking> findBySafariId(String safariId);
 }
