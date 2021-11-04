@@ -36,10 +36,10 @@ const Safaris = () => {
       </div>
     );
   }
-
+  const el = {nextId: 1010, title: 'Masai Mara'};
   return (
     <>
-      <button onClick={() => dispatch({ type: 'ADD_TOUR' })}>Add Tour</button>
+      <button onClick={() => dispatch({ type: 'ADD_TOUR', payload: el })}>Add Tour</button>
       {tours.map(({ nextId, tour }) => (
         <Tour key={nextId} tour={tour}
           onRemove={() => dispatch({ type: 'REMOVE_TOUR', nextId })}
