@@ -56,7 +56,7 @@ public class HomeController {
   public ResponseEntity<Collection<Booking>> addItemToCart(@RequestBody Booking booking) {
       if (booking.getId() != null) {
         service.addItemToCart(booking);
-        System.out.println(String.format("Added to cart: %s [x%d]", catalog.get(booking.getSafariId()).getSummary(), booking.getAdults()));
+        System.out.println(String.format("Added to cart: %s [x%d]", catalog.get(booking.getId()).getSummary(), booking.getAdults()));
       }
       return getAllItems();
   }
@@ -105,7 +105,7 @@ public class HomeController {
         .append("\t" + booking.getMessage());
 
       Email email = Email.builder()
-        .safariId(booking.getSafari().getId())
+        .safariId(booking.getId())
         .name(booking.getName())
         .email(booking.getEmail())
         .dateCreated(booking.getDate())
