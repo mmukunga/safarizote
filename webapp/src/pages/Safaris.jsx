@@ -39,15 +39,15 @@ const Safaris = () => {
 
   return (
     <>
-      <Button onClick={() => dispatch({ type: 'ADD_TOUR' })}>Add Tour</Button>
+      <button onClick={() => dispatch({ type: 'ADD_TOUR' })}>Add Tour</button>
       {tours.map(({ nextId, tour }) => (
         <Tour key={nextId} tour={tour}
           onRemove={() => dispatch({ type: 'REMOVE_TOUR', nextId })}
         />
       ))}
 
-    {state.safaris.map((safari, index) => (
-        <p>Hello, {safari.nextId} from {person.country}!</p>
+    {tours.map((tour, index) => (
+        <p>Hello, {tour.nextId} from {tour.title}!</p>
     ))}
 
     </>
