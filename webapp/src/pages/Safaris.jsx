@@ -2,7 +2,7 @@ import React from "react";
 
 const initialState = {
   nextId: 0,
-  tours: [],
+  tours: [{nextId: 0, title:'Masaai Mara' }],
 };
 
 const reducer = (state, action) => {
@@ -10,6 +10,7 @@ const reducer = (state, action) => {
     case 'ADD_TOUR': {
       const nextId = state.nextId + 1;
       const {name, value} = action.payload;
+      console.log(action.payload);
       return {
         nextId,
         tours: [...state.tours, { nextId: nextId, [name]: value }],
@@ -27,7 +28,7 @@ const reducer = (state, action) => {
 };
 
 const Safaris = () => {
-  const [{ tours }, dispatch] = React.useReducer(reducer, initialState);  
+  const [state, dispatch] = React.useReducer(reducer, initialState);  
   const Tour = ({ nextId, tour, onRemove }) => {
     console.log('1..tour..');
     console.log(tour);
@@ -43,13 +44,13 @@ const Safaris = () => {
   return (
     <>
       <button onClick={() => dispatch({ type: 'ADD_TOUR', payload: el })}>Add Tour</button>
-      {tours.map(({ nextId, tour }) => (
+      {state.tours.map(({ nextId, tour }) => (
         <Tour key={nextId} tour={tour}
           onRemove={() => dispatch({ type: 'REMOVE_TOUR', nextId })}
         />
       ))}
 
-    {tours.map((tour, index) => (
+    {state.tours.map((tour, index) => (
         <p>Hello, {tour.nextId} from {tour.title}!</p>
     ))}
 
