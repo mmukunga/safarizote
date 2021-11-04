@@ -29,6 +29,9 @@ const reducer = (state, action) => {
 const Safaris = () => {
   const [{ tours }, dispatch] = React.useReducer(reducer, initialState);  
   const Tour = ({ nextId, tour, onRemove }) => {
+    console.log('1..tour..');
+    console.log(tour);
+    console.log('2..tour..');
     return (
       <div>
         Tour: nextId-{tour.nextId} Title-{tour.title}
