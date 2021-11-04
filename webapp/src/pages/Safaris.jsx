@@ -31,7 +31,7 @@ const Safaris = () => {
   const Tour = ({ nextId, tour, onRemove }) => {
     return (
       <div>
-        {tour}
+        Tour: nextId-{tour.nextId} Title-{tour.title}
         <button onClick={() => onRemove(nextId)}>X</button>
       </div>
     );
