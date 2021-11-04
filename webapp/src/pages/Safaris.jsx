@@ -41,6 +41,10 @@ const Safaris = () => {
     );
   }
   const el = {nextId: 1010, title: 'Masai Mara'};
+  
+  console.log(state);
+  console.log(state.tours);
+
   return (
     <>
       <button onClick={() => dispatch({ type: 'ADD_TOUR', payload: el })}>Add Tour</button>
