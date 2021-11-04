@@ -1,7 +1,6 @@
 package com.example.safarizote.repository;
 
 import java.util.List;
-import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
 
@@ -113,15 +112,20 @@ public class SafariLoader implements CommandLineRunner {
         */
         
         List<Safari> safaris = repository.findAll();
-        Safari[] myArray = new Safari[safaris.size()];
-        safaris.toArray(myArray);
+        safaris.toArray(new Safari[safaris.size()]);
         Set<Safari> safarisSet = new HashSet<>(safaris);
 
-        bookingRepository.save(Booking.builder().safaris(safarisSet).name("Jack Maji Moto Smith").email("m@gmail.com").phone("415 22 386").address("21 Jump street").adults("2").children("1").message("Twende Kenya ndugu yangu!!").date(Instant.now()).build());
-        bookingRepository.save(Booking.builder().safaris(safarisSet).name("Adam Moto Wake").email("maji@gmail.com").phone("915 22 111").address("Grefsen Platåen").adults("2").children("1").message("Twende Mombasa tukaogelee!!").date(Instant.now()).build());
-        bookingRepository.save(Booking.builder().safaris(safarisSet).name("Johnson Katana Ndovu").email("moto@hotmail.com").phone("222 22 222").address("Maridalsveien").adults("2").children("1").message("Twende Safari tukaone wanyama!!").date(Instant.now()).build());
-        bookingRepository.save(Booking.builder().safaris(safarisSet).name("Peter Ngara Mwendwa").email("kazi@online.no").phone("911 22 911").address("Number 10").adults("2").children("1").message("Twende Safari tukaone Ndovu!!").date(Instant.now()).build());
-        bookingRepository.save(Booking.builder().safaris(safarisSet).name("Masinde Murilo David").email("sverige@kora.se").phone("+44 510 22 777").address("Downings Street").adults("2").children("1").message("Twende Safari tukaone Simba na wenzake!!").date(Instant.now()).build());
+        bookingRepository.save(Booking.builder().name("Jack Maji Moto Smith").email("m@gmail.com").phone("415 22 386").address("21 Jump street").adults("2").children("1").message("Twende Kenya ndugu yangu!!").date(Instant.now()).build());
+        bookingRepository.save(Booking.builder().name("Adam Moto Wake").email("maji@gmail.com").phone("915 22 111").address("Grefsen Platåen").adults("2").children("1").message("Twende Mombasa tukaogelee!!").date(Instant.now()).build());
+        bookingRepository.save(Booking.builder().name("Johnson Katana Ndovu").email("moto@hotmail.com").phone("222 22 222").address("Maridalsveien").adults("2").children("1").message("Twende Safari tukaone wanyama!!").date(Instant.now()).build());
+        bookingRepository.save(Booking.builder().name("Peter Ngara Mwendwa").email("kazi@online.no").phone("911 22 911").address("Number 10").adults("2").children("1").message("Twende Safari tukaone Ndovu!!").date(Instant.now()).build());
+        bookingRepository.save(Booking.builder().name("Masinde Murilo David").email("sverige@kora.se").phone("+44 510 22 777").address("Downings Street").adults("2").children("1").message("Twende Safari tukaone Simba na wenzake!!").date(Instant.now()).build());
+        
+        List<Booking> bookings = bookingRepository.findAll();
+            Booking b = bookings.get(0);
+            b.setSafaris(safarisSet);
+            bookingRepository.save(b);
+        
         /*       
         Set<Booking> hSet = new HashSet<Booking>(bookings);
         Booking b = hSet.stream().findFirst().get();
@@ -133,7 +137,7 @@ public class SafariLoader implements CommandLineRunner {
             repository.save(safari);
         }
         */
-        List<Booking> bookings = bookingRepository.findAll();
+       // List<Booking> bookings = bookingRepository.findAll();
 
         return bookings;
     }
