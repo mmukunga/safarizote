@@ -68,10 +68,10 @@ const Safaris = () => {
 
     // We pass a callback to Child
     return ( 
-    <CustomContext.Provider value={providerState} >
+    <CustomContext.Provider value={providerState} onChange={handleChange} >
         <h2>Count {name}</h2>
         (Count should be updated from child)
-        <Bookings initialState={initialState} onChange={handleChange}/>
+        <Bookings/>
     </CustomContext.Provider>
     );
 }
