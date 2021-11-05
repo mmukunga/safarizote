@@ -2,6 +2,13 @@ import React from "react";
 
 const initialState = {
   nextId: 0,
+  name: '',
+  email: '',
+  phone: '',
+  address: '',
+  adults: '',
+  children: '',
+  message: '',
   tours: [{nextId: 0, title:'Masaai Mara' }],
 };
 
@@ -14,7 +21,7 @@ const reducer = (state, action) => {
       console.log(action.payload);
       return {
         ...state,
-        [name]: value ,
+        [name]: value,
       };
     }
     case 'ADD_TOUR': {
