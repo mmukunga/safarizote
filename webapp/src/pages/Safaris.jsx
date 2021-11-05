@@ -42,6 +42,8 @@ const reducer = (state, action) => {
         tours: [...result],
       };
     }
+    default:
+      return state;
   }
 };
 
