@@ -5,6 +5,7 @@ import Bookings from './Bookings';
 const Safaris = () => {
     const [count, setCount] = React.useState(0);
     const handleChange = (newValue) => {
+        console.log(newValue);
         setCount(count + newValue);
     }
 
