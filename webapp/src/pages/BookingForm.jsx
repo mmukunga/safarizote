@@ -13,6 +13,17 @@ const BookingForm = (props) => {
 
   const [isOpen, setIsOpen] = useState(false);
  
+  const options = [
+    {
+      nextId: 0,
+      title: "Masaai Mara",
+    },
+    {
+      nextId: 1,
+      title: "Kilimanjaro",
+    }
+  ];
+
   const togglePopup = () => {
     setIsOpen(!isOpen);
   }
@@ -71,18 +82,6 @@ const BookingForm = (props) => {
     e.preventDefault();
     console.log('Submit');
   }
-
-  const options = [
-    {
-      nextId: 0,
-      title: "Masaai Mara",
-    },
-    {
-      nextId: 1,
-      title: "Kilimanjaro",
-    }
-  ];
-
   console.log(state);
 
   return (
