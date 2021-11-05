@@ -89,7 +89,9 @@ const Bookings = ({ onChange, initialState }) => {
 
   return (
     <div>
-      <button onClick={onChange}> Click me {state.name} </button>
+      <label>Click me {state.name}
+         <input name={state.name} onClick={onChange}/>
+      </label>
       <form onSubmit={handleSubmit}>
         <div>
           <label>
