@@ -2,19 +2,31 @@ import React, { useState } from 'react';
 import Bookings from './Bookings';
 
 
+const initialState = {
+    nextId: 0,
+    name: '',
+    email: '',
+    phone: '',
+    address: '',
+    adults: '',
+    children: '',
+    message: '',
+    tours: [{nextId: 0, title:'Masaai Mara' }],
+  };
+
 const Safaris = () => {
-    const [count, setCount] = React.useState(0);
+    const [name, setName] = React.useState('');
     const handleChange = (newValue) => {
         console.log(newValue);
-        setCount(count + 1);
+        setName(newValue);
     }
 
 // We pass a callback to Child
     return ( 
     <div>
-        <h2>Count {count}</h2>
+        <h2>Count {name}</h2>
         (Count should be updated from child)
-        <Bookings count={count} onChange={handleChange}/>
+        <Bookings initialState={initialState} onChange={handleChange}/>
     </div>
     );
 }

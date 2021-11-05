@@ -1,17 +1,5 @@
 import React from "react";
 
-const initialState = {
-  nextId: 0,
-  name: '',
-  email: '',
-  phone: '',
-  address: '',
-  adults: '',
-  children: '',
-  message: '',
-  tours: [{nextId: 0, title:'Masaai Mara' }],
-};
-
 const reducer = (state, action) => {
   switch (action.type) {
     case 'INIT_BOOKING': {
@@ -53,7 +41,7 @@ const reducer = (state, action) => {
   }
 };
 
-const Bookings = ({ onChange, count }) => {
+const Bookings = ({ onChange, initialState }) => {
   const [state, dispatch] = React.useReducer(reducer, initialState);  
   const Tour = ({ nextId, title, onRemove }) => {
     console.log('1..tour..');
@@ -101,7 +89,7 @@ const Bookings = ({ onChange, count }) => {
 
   return (
     <div>
-      <button onClick={onChange}> Click me {count} </button>
+      <button onClick={onChange}> Click me {state.name} </button>
       <form onSubmit={handleSubmit}>
         <div>
           <label>
