@@ -59,6 +59,10 @@ const Bookings = ({ onChange, initialState }) => {
   console.log(state);
   console.log(state.tours);
 
+  const handleClick = el => {
+    onChange(el); 
+  }
+
   const handleChange = el => {
     const { name, value } = el.target;
     if (el.target.type === "select") {
@@ -90,7 +94,7 @@ const Bookings = ({ onChange, initialState }) => {
   return (
     <div>
       <label>Click me {state.name}
-         <input name={state.name} onClick={onChange}/>
+         <input name={state.name} onClick={handleClick}/>
       </label>
       <form onSubmit={handleSubmit}>
         <div>
