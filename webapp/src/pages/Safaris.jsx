@@ -8,6 +8,7 @@ const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case 'ADD_TOUR': {
+      console.log(action);
       const nextId = state.nextId + 1;
       const {name, value} = action.payload;
       console.log(action.payload);
