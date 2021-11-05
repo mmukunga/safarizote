@@ -86,7 +86,7 @@ const BookingForm = (props) => {
 
   return (
     <div>
-      <h1>Hello!! {this.state.name}</h1>
+      <h1>Hello!! {state.name}</h1>
       <input type="button" value="Click to Open Popup" onClick={togglePopup}/>
     {isOpen && <Modal
       content={
