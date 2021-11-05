@@ -80,8 +80,8 @@ const Safaris = () => {
       <form onSubmit={handleSubmit}>
         <div>
           <label>
-            Username:
-            <input id='username' name="username" onChange={handleChange} />
+            Name:
+            <input id='name' name="name" onChange={handleChange} />
           </label>
         </div>
         <div>
