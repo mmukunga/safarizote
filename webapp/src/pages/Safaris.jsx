@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CustomContext from './CustomContext';
-import Bookings from './Bookings';
+import Bookings from './BookingForm';
 
 
 const initialState = {
@@ -64,7 +64,7 @@ const Safaris = () => {
     <CustomContext.Provider value={providerState}>
         <h2>Count {name}</h2>
         (Count should be updated from child)
-        <Bookings/>
+        <BookingForm/>
         <ul>
            <li>Name: {state.name}</li>
            <li>Email: {state.email}</li>

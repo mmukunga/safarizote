@@ -1,8 +1,39 @@
 import React from "react";
 import { useCustomContext } from './CustomContext';
+import Modal from "./Modal";
 
-const Bookings = (props) => {
+const BookingForm = (props) => {
   const {state, dispatch} = useCustomContext(); 
+
+  const [status, setStatus] = React.useState({
+    modal: false,
+    name: '',
+    modalInputName: ''
+  });
+
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    setStatus({
+      [name]: value
+    });
+  }
+
+  const handleSubmit = (e) => {
+    setStatus({ name: status.modalInputName });
+    modalClose();
+  }
+
+  const modalOpen = () => {
+    setStatus({ modal: true });
+  }
+
+  const modalClose = () => {
+    setStatus({
+      modalInputName: "",
+      modal: false
+    });
+  }
+
   const Tour = ({ nextId, title, onRemove }) => {
     console.log('1..tour..');
     console.log(title);
@@ -25,8 +56,7 @@ const Bookings = (props) => {
       dispatch({ type: 'ADD_SAFARI', payload: el.target });
     } else {
       dispatch({ type: 'INIT_BOOKING', payload: el.target });
-    }  
-    
+    }    
   }
 
   const handleSubmit = e => {
@@ -49,6 +79,28 @@ const Bookings = (props) => {
 
   return (
     <div>
+      <h1>Hello!! {this.state.name}</h1>
+      <input type="button" value="Click to Open Popup" onClick={togglePopup}/>
+    {isOpen && <Modal
+      content={
+      <>
+        <b>Design your Popup</b>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+           incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+           exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
+           irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
+           officia deserunt mollit anim id est laborum.
+        </p>
+        <button>Test button</button>
+      </>
+      }
+      handleClose={togglePopup}
+    />
+    }
+
+
+
       <form onSubmit={handleSubmit}>        
         <div>
           <label>Going<input type="checkbox" id='isGoing' name="isGoing" onChange={handleChange}/></label>
@@ -83,4 +135,4 @@ const Bookings = (props) => {
   );
 }
 
-export default Bookings;
+export default BookingForm;
