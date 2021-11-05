@@ -68,7 +68,7 @@ const Safaris = () => {
 
     // We pass a callback to Child
     return ( 
-    <CustomContext.Provider value={providerState} onChange={handleChange} >
+    <CustomContext.Provider value={providerState}>
         <h2>Count {name}</h2>
         (Count should be updated from child)
         <Bookings/>
