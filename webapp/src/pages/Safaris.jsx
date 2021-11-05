@@ -18,7 +18,7 @@ const Safaris = () => {
     const [name, setName] = React.useState('');
     const handleChange = (newValue) => {
         console.log(newValue);
-        setName(newValue);
+        //setName(newValue);
     }
 
 // We pass a callback to Child
