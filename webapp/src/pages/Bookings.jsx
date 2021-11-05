@@ -2,7 +2,7 @@ import React from "react";
 import { useCustomContext } from './CustomContext';
 
 const Bookings = (props) => {
-  const [state, dispatch] = useCustomContext(); 
+  const {state, dispatch} = useCustomContext(); 
   const Tour = ({ nextId, title, onRemove }) => {
     console.log('1..tour..');
     console.log(title);
