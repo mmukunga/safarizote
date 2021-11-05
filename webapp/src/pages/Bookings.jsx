@@ -93,10 +93,6 @@ const Bookings = (props) => {
           onRemove={() => dispatch({ type: 'REMOVE_TOUR', nextId })}
         />
       ))}
-
-      {state.tours.map((tour, index) => (
-          <p>Hello, {tour.nextId} from {tour.title}!</p>
-      ))}
     </div>
   );
 }

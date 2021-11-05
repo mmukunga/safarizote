@@ -71,6 +71,10 @@ const Safaris = () => {
         <h2>Count {name}</h2>
         (Count should be updated from child)
         <Bookings/>
+        
+        {state.tours.map((tour, index) => (
+            <p>Hello, {tour.nextId} from {tour.title}!</p>
+        ))}
     </CustomContext.Provider>
     );
 }
