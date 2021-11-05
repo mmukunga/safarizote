@@ -59,19 +59,21 @@ const Safaris = () => {
     const [name, setName] = React.useState('');
     const [state, dispatch ] = React.useReducer(bookingsReducer, initialState);
     const providerState = { state, dispatch };
-/*
-    const onChange = (el) => {
-        const {name, value} = el.target;
-        console.log(name + ': ' + value);
-        setName(value);
-    }
-*/
+
     return ( 
     <CustomContext.Provider value={providerState}>
         <h2>Count {name}</h2>
         (Count should be updated from child)
         <Bookings/>
-        
+        <ul>
+           <li>Name: {state.name}</li>
+           <li>Email: {state.email}</li>
+           <li>Phone: {state.phone}</li>
+           <li>Address: {state.address}</li>
+           <li>Adults: {state.adults}</li>
+           <li>Children: {state.children}</li>
+           <li>Message: {state.message}</li>
+        </ul>
         {state.tours.map((tour, index) => (
             <p>Hello, {tour.nextId} from {tour.title}!</p>
         ))}

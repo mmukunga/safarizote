@@ -19,10 +19,6 @@ const Bookings = (props) => {
   console.log(state);
   console.log(state.tours);
 
-  const handleClick = el => {
-    console.log(el); 
-  }
-
   const handleChange = el => {
     const { name, value } = el.target;
     if (el.target.type === "select") {
@@ -53,36 +49,27 @@ const Bookings = (props) => {
 
   return (
     <div>
-      <label>Click me {state.name}
-         <input name={state.name} onClick={handleClick}/>
-      </label>
       <form onSubmit={handleSubmit}>
+        
         <div>
-          <label>
-            Name:
-            <input id='name' name="name" onChange={handleChange}/>
-          </label>
+          <label>Going<input type="checkbox" id='isGoing' name="isGoing" onChange={handleChange}/></label>
         </div>
         <div>
-          <label>
-            Email:
-            <input id='email' name="email" onChange={handleChange}/>
-          </label>
+          <label>Full Names<input id='name' name="name" onChange={handleChange}/></label>
         </div>
         <div>
-          <label>
-            Safaris:
+          <label>Email<input id='email' name="email" onChange={handleChange}/></label>
+        </div>
+        <div>
+          <label>Message<textarea id='message' name="message" onChange={handleChange}/></label>
+        </div>
+        <div>
+          <label>Safaris
             <select id="safari" name="safari" onChange={handleChange}>
               {options.map((option) => (
                 <option value={option.nextId}>{option.title}</option>
               ))}
             </select>
-          </label>
-        </div>
-        <div>
-          <label>
-            Is Going:
-            <input type="checkbox" id='isGoing' name="isGoing" onChange={handleChange}/>
           </label>
         </div>
         <button>Submit</button>
