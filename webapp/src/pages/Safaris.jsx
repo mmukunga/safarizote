@@ -7,6 +7,16 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case 'INIT_BOOKING': {
+      console.log(action);
+      const nextId = state.nextId + 1;
+      const {name, value} = action.payload;
+      console.log(action.payload);
+      return {
+        ...state,
+        [name]: value ,
+      };
+    }
     case 'ADD_TOUR': {
       console.log(action);
       const nextId = state.nextId + 1;
@@ -42,13 +52,40 @@ const Safaris = () => {
     );
   }
   const el = {nextId: 1010, title: 'Masai Mara'};
-
+  
   console.log(state);
   console.log(state.tours);
 
+  const handleChange = el => {
+    const { name, value } = el.target;
+    dispatch({ type: 'INIT_BOOKING', payload: el.target });
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console,log('Submit');
+  }
+
+  console.log(state);
+  
   return (
     <>
-      <button onClick={() => dispatch({ type: 'ADD_TOUR', payload: el })}>Add Tour</button>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>
+            Username:
+            <input id='username' name="username" onChange={handleChange} />
+          </label>
+        </div>
+        <div>
+          <label>
+            Email:
+            <input id='email' name="email" onChange={handleChange} />
+          </label>
+        </div>
+        <button>Submit</button>
+      </form>  
+      
       {state.tours.map(({ nextId, title }) => (
         <Tour key={nextId} title={title}
           onRemove={() => dispatch({ type: 'REMOVE_TOUR', nextId })}
