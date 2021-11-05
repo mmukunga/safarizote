@@ -11,7 +11,7 @@ const BookingForm = (props) => {
     modalInputName: ''
   });
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
  
   const options = [
     {
