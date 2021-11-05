@@ -17,7 +17,6 @@ const BookingForm = (props) => {
     setIsOpen(!isOpen);
   }
 
-
   const handleBooking = (e) => {
     const {name, value} = e.target;
     setStatus({
@@ -25,21 +24,23 @@ const BookingForm = (props) => {
     });
   }
 
-  const handleSubmit = (e) => {
-    setStatus({ name: status.modalInputName });
-    modalClose();
-  }
+  /*
+    const handleSubmit = (e) => {
+      setStatus({ name: status.modalInputName });
+      modalClose();
+    }
 
-  const modalOpen = () => {
-    setStatus({ modal: true });
-  }
+    const modalOpen = () => {
+      setStatus({ modal: true });
+    }
 
-  const modalClose = () => {
-    setStatus({
-      modalInputName: "",
-      modal: false
-    });
-  }
+    const modalClose = () => {
+      setStatus({
+        modalInputName: "",
+        modal: false
+      });
+    }
+  */
 
   const Tour = ({ nextId, title, onRemove }) => {
     console.log('1..tour..');
