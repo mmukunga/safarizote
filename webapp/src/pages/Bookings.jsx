@@ -20,7 +20,7 @@ const Bookings = (props) => {
   console.log(state.tours);
 
   const handleClick = el => {
-    props.onChange(el); 
+    console.log(el); 
   }
 
   const handleChange = el => {

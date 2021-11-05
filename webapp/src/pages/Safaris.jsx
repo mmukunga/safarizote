@@ -58,14 +58,14 @@ const initialState = {
 const Safaris = () => {
     const [name, setName] = React.useState('');
     const [state, dispatch ] = React.useReducer(bookingsReducer, initialState);
-    const providerState = { state, dispatch, onChange };
-
+    const providerState = { state, dispatch };
+/*
     const onChange = (el) => {
         const {name, value} = el.target;
         console.log(name + ': ' + value);
         setName(value);
     }
-
+*/
     return ( 
     <CustomContext.Provider value={providerState}>
         <h2>Count {name}</h2>
