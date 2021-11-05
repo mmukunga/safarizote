@@ -63,11 +63,11 @@ const Safaris = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console,log('Submit');
+    console.log('Submit');
   }
 
   console.log(state);
-  
+
   return (
     <>
       <form onSubmit={handleSubmit}>
