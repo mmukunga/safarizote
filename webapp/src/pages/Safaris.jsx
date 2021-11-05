@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CustomContext from './CustomContext';
-import Bookings from './BookingForm';
+import BookingForm from './BookingForm';
 
 
 const initialState = {
