@@ -17,6 +17,12 @@ const reducer = (state, action) => {
     case 'INIT_BOOKING': {
       console.log(action);
       const nextId = state.nextId + 1;
+      if (action.payload.type === "checkbox") {
+        return {
+          ...state,
+        [action.payload.name]: action.payload.checked
+        }
+      }
       const {name, value} = action.payload;
       console.log(action.payload);
       return {
@@ -67,13 +73,29 @@ const Safaris = () => {
 
   const handleChange = el => {
     const { name, value } = el.target;
-    dispatch({ type: 'INIT_BOOKING', payload: el.target });
+    if (el.target.type === "select") {
+      dispatch({ type: 'ADD_SAFARI', payload: el.target });
+    } else {
+      dispatch({ type: 'INIT_BOOKING', payload: el.target });
+    }  
+    
   }
 
   const handleSubmit = e => {
     e.preventDefault();
     console.log('Submit');
   }
+
+  const options = [
+    {
+      nextId: 0,
+      title: "Masaai Mara",
+    },
+    {
+      nextId: 1,
+      title: "Kilimanjaro",
+    }
+  ];
 
   console.log(state);
 
@@ -83,13 +105,29 @@ const Safaris = () => {
         <div>
           <label>
             Name:
-            <input id='name' name="name" onChange={handleChange} />
+            <input id='name' name="name" onChange={handleChange}/>
           </label>
         </div>
         <div>
           <label>
             Email:
-            <input id='email' name="email" onChange={handleChange} />
+            <input id='email' name="email" onChange={handleChange}/>
+          </label>
+        </div>
+        <div>
+          <label>
+            Safaris:
+            <select id="safari" name="safari" onChange={handleChange}>
+              {options.map((option) => (
+                <option value={option.nextId}>{option.title}</option>
+              ))}
+            </select>
+          </label>
+        </div>
+        <div>
+          <label>
+            Is Going:
+            <input type="checkbox" id='isGoing' name="isGoing" onChange={handleChange}/>
           </label>
         </div>
         <button>Submit</button>
