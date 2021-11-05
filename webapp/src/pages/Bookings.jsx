@@ -49,8 +49,7 @@ const Bookings = (props) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        
+      <form onSubmit={handleSubmit}>        
         <div>
           <label>Going<input type="checkbox" id='isGoing' name="isGoing" onChange={handleChange}/></label>
         </div>
