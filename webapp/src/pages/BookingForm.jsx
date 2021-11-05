@@ -11,7 +11,14 @@ const BookingForm = (props) => {
     modalInputName: ''
   });
 
-  const handleChange = (e) => {
+  const [isOpen, setIsOpen] = useState(false);
+ 
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  }
+
+
+  const handleBooking = (e) => {
     const {name, value} = e.target;
     setStatus({
       [name]: value
@@ -99,7 +106,7 @@ const BookingForm = (props) => {
     />
     }
 
-
+      <label>SAfarsi<input type="checkbox" id='safari' name="safari" onChange={handleBooking}/></label>
 
       <form onSubmit={handleSubmit}>        
         <div>
