@@ -61,7 +61,7 @@ const Bookings = (props) => {
     const { name, value } = el.target;
     console.log(el.target.type);
     if (el.target.type === "select") {
-      dispatch({ type: 'ADD_SAFARI', payload: el.target });
+      dispatch({ type: 'ADD_TOUR', payload: el.target });
     } else {
       dispatch({ type: 'INIT_BOOKING', payload: el.target });
     }    
