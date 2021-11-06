@@ -6,8 +6,7 @@ const Modal = (props) => props.isOpen ?
       <div className="PopUp-Container">
         <div className="PopUp-Content">
           <span className="close-icon" onClick={props.toggle}>x</span>
-          {props.content}
-          
+          {props.content}          
           <form onSubmit={props.handleSubmit}> 
             <div class="row">
               <div class="col-25">
