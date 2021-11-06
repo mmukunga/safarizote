@@ -8,7 +8,7 @@ const initialState = {
     name: '',
     email: '',
     phone: '',
-    date: new Date(),
+    date: '',
     address: '',
     adults: '',
     children: '',
