@@ -71,7 +71,7 @@ const Modal = (props) => props.isOpen ?
               </div>
               <div class="col-75">
               <select id="safari" name="safari" onChange={props.handleChange}>
-                  {options.map((option) => (
+                  {props.options.map((option) => (
                     <option value={option.id}>{option.title}</option>
                   ))}
                 </select>
