@@ -18,30 +18,88 @@ const Modal = (props) => props.isOpen ?
         <div className="PopUp-Content">
           <span className="close-icon" onClick={props.toggle}>x</span>
           {props.content}
-          <form onSubmit={props.handleSubmit}>        
-            <div>
-              <label>Going<input type="checkbox" id='isGoing' name="isGoing" onChange={props.handleChange}/></label>
+          
+          <form onSubmit={props.handleSubmit}> 
+            <div class="row">
+              <div class="col-25">
+                <label for="name">Full Names</label>
+              </div>
+              <div class="col-75">
+                <input id='name' name="name" onChange={props.handleChange}/>
+              </div>
             </div>
-            <div>
-              <label>Full Names<input id='name' name="name" onChange={props.handleChange}/></label>
+            <div class="row">
+              <div class="col-25">
+                <label for="email">Email</label>
+              </div>
+              <div class="col-75">
+              <input id='email' name="email" onChange={props.handleChange}/>
+              </div>
             </div>
-            <div>
-              <label>Email<input id='email' name="email" onChange={props.handleChange}/></label>
+            <div class="row">
+              <div class="col-25">
+                <label for="date">Arrival Date</label>
+              </div>
+              <div class="col-75">
+              <input id='date' name="date" onChange={props.handleChange}/>
+              </div>
             </div>
-            <div>
-              <label>Message<textarea id='message' name="message" onChange={props.handleChange}/></label>
+            <div class="row">
+              <div class="col-25">
+                <label for="address">Address</label>
+              </div>
+              <div class="col-75">
+              <input id='address' name="address" onChange={props.handleChange}/>
+              </div>
             </div>
-            <div>
-              <label>Safaris
-                <select id="safari" name="safari" onChange={props.handleChange}>
+            <div class="row">
+              <div class="col-25">
+                <label for="adults">Number of Adults</label>
+              </div>
+              <div class="col-75">
+                <input id='adults' name="adults" onChange={props.handleChange}/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="children">Number of Children</label>
+              </div>
+              <div class="col-75">
+                <input id='children' name="children" onChange={props.handleChange}/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="isGoing">Is Going</label>
+              </div>
+              <div class="col-75">
+              <input type="checkbox" id='isGoing' name="isGoing" onChange={props.handleChange}/>
+              </div>
+            </div>     
+            <div class="row">
+              <div class="col-25">
+                <label for="safaris">Safaris</label>
+              </div>
+              <div class="col-75">
+              <select id="safari" name="safari" onChange={props.handleChange}>
                   {options.map((option) => (
                     <option value={option.nextId}>{option.title}</option>
                   ))}
                 </select>
-              </label>
+              </div>
             </div>
-            <button>Submit</button>
-          </form> 
+            <div class="row">
+              <div class="col-25">
+                <label for="message">Message</label>
+              </div>
+              <div class="col-75">
+                <textarea id="message" name="message" placeholder="Write something.." style={{height:"200px"}}></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <input type="submit" value="Submit"/>
+            </div>
+          </form>
         </div>
       </div>
     , document.body) 

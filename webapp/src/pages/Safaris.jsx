@@ -8,6 +8,7 @@ const initialState = {
     name: '',
     email: '',
     phone: '',
+    date: new Date(),
     address: '',
     adults: '',
     children: '',
@@ -66,12 +67,13 @@ const Safaris = () => {
         (Count should be updated from child)
         <Bookings/>
         <ul>
-           <li>Name:  {state.name}</li>
+           <li>Name: {state.name}</li>
            <li>Email: {state.email}</li>
            <li>Phone: {state.phone}</li>
+           <li>Arrival Date: {state.date}</li>
            <li>Address: {state.address}</li>
-           <li>Adults:  {state.adults}</li>
-           <li>Children:{state.children}</li>
+           <li>Number of Adults: {state.adults}</li>
+           <li>Number of Children:{state.children}</li>
            <li>Message: {state.message}</li>
         </ul>
         {state.tours.map((tour, index) => (
