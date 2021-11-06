@@ -37,8 +37,10 @@ const initialState = {
       case 'ADD_TOUR': {
         console.log(action);
         const nextId = state.nextId + 1;
-        const {name, value} = action.payload;
         console.log(action.payload);
+        const {name, value} = action.payload;
+        console.log(name);
+        console.log(value);
         return {
           nextId,
           tours: [...state.tours, { nextId: nextId, [name]: value }],
