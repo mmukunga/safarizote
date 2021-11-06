@@ -59,6 +59,7 @@ const Bookings = (props) => {
 
   const handleChange = el => {
     const { name, value } = el.target;
+    console.log(el.target.type);
     if (el.target.type === "select") {
       dispatch({ type: 'ADD_SAFARI', payload: el.target });
     } else {
@@ -71,7 +72,7 @@ const Bookings = (props) => {
     console.log('...Submited...');
     toggle();
   }
-  
+
   console.log(state);
 
   return (
