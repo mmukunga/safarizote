@@ -10,7 +10,7 @@ const Modal = (props) => props.isOpen ?
           <p>You can put extras too</p>
         </div>
       </div>
-    ) 
-    : null;
+   ) 
+   : null;
 
 export default Modal;
