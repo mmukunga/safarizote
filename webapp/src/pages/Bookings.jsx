@@ -87,35 +87,10 @@ const Bookings = (props) => {
     <div>
       <h1>Hello!! {state.name}</h1>
       <input type="button" style={{border:'2px solid red'}} value="Start Booking" onClick={() => setIsOpen(true)}/>
-      <Modal isOpen={isOpen} toggle={toggle} />
+      <Modal isOpen={isOpen} toggle={toggle} handleChange={handleChange} handleSubmit={handleSubmit}/>
 
       <label>Safari<input type="checkbox" id='safari' name="safari" onChange={handleBooking}/></label>
 
-      <form onSubmit={handleSubmit}>        
-        <div>
-          <label>Going<input type="checkbox" id='isGoing' name="isGoing" onChange={handleChange}/></label>
-        </div>
-        <div>
-          <label>Full Names<input id='name' name="name" onChange={handleChange}/></label>
-        </div>
-        <div>
-          <label>Email<input id='email' name="email" onChange={handleChange}/></label>
-        </div>
-        <div>
-          <label>Message<textarea id='message' name="message" onChange={handleChange}/></label>
-        </div>
-        <div>
-          <label>Safaris
-            <select id="safari" name="safari" onChange={handleChange}>
-              {options.map((option) => (
-                <option value={option.nextId}>{option.title}</option>
-              ))}
-            </select>
-          </label>
-        </div>
-        <button>Submit</button>
-      </form>  
-      
       {state.tours.map(({ nextId, title }) => (
         <Tour key={nextId} title={title}
           onRemove={() => dispatch({ type: 'REMOVE_TOUR', nextId })}
