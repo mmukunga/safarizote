@@ -34,7 +34,8 @@ select,textarea {
 }
 
 label {
-  padding: 12px 12px 12px 0;
+  /*padding: 12px 12px 12px 0;*/
+  padding: 2px 2px 2px 0;
   display: inline-block;
   vertical-align: text-top;
 }    
@@ -42,7 +43,7 @@ label {
 input[type=submit], button {    
   background-color: rgb(37, 116, 161);  
   border: none;  
-  width: 99%;
+  width: 100%;
   padding: 12px 20px;
   border-radius: 4px;
   cursor: pointer;
@@ -88,7 +89,7 @@ input[type=submit]:hover {
 }
 
 table, th, td {
-  border: 1px solid #90DFF5;
+  border: 1px solid#90DFF5;
   border-collapse: collapse;
 }
 
@@ -99,7 +100,7 @@ table, th, td {
 }
 
 .btn-primary{
-  border:4px solid #2e6da4
+  border:4px solid#2e6da4
 }
 
 .btn-primary.focus,
