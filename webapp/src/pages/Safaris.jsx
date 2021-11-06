@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import Card from './Card';
 import CustomContext from './CustomContext';
 import Bookings from './Bookings';
-
 
 const initialState = {
     nextId: 0,
@@ -62,24 +62,26 @@ const Safaris = () => {
     const providerState = { state, dispatch };
 
     return ( 
-    <CustomContext.Provider value={providerState}>
-        <h2>Count {name}</h2>
-        (Count should be updated from child)
-        <Bookings/>
-        <ul>
-           <li>Name: {state.name}</li>
-           <li>Email: {state.email}</li>
-           <li>Phone: {state.phone}</li>
-           <li>Arrival Date: {state.date}</li>
-           <li>Address: {state.address}</li>
-           <li>Number of Adults: {state.adults}</li>
-           <li>Number of Children:{state.children}</li>
-           <li>Message: {state.message}</li>
-        </ul>
-        {state.tours.map((tour, index) => (
-            <p>Hello, {tour.nextId} from {tour.title}!</p>
-        ))}
-    </CustomContext.Provider>
+    <Card className="InnerCard" fontColor="black">  
+      <CustomContext.Provider value={providerState}>
+          <h2>Count {name}</h2>
+          (Count should be updated from child)
+          <Bookings/>
+          <ul>
+            <li>Name: {state.name}</li>
+            <li>Email: {state.email}</li>
+            <li>Phone: {state.phone}</li>
+            <li>Arrival Date: {state.date}</li>
+            <li>Address: {state.address}</li>
+            <li>Number of Adults: {state.adults}</li>
+            <li>Number of Children:{state.children}</li>
+            <li>Message: {state.message}</li>
+          </ul>
+          {state.tours.map((tour, index) => (
+              <p>Hello, {tour.nextId} from {tour.title}!</p>
+          ))}
+      </CustomContext.Provider>
+    </Card>
     );
 }
 
