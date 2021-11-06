@@ -1,4 +1,5 @@
 import React from "react";
+import axios from 'axios';
 import { useCustomContext } from './CustomContext';
 import Modal from "./Modal";
 
@@ -30,7 +31,7 @@ const Bookings = (props) => {
         const nodes = [...response.data];
         console.log(nodes);
         const optionsArray = nodes.map(({ id, title }) => [id, title]);
-        console.log(array);
+        console.log(optionsArray);
         setOptions([...optionsArray]);
 
       }).catch(err => {
