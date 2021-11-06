@@ -38,9 +38,10 @@ const initialState = {
         console.log(action);
         const id = state.id + 1;
         console.log(action.payload);
-        const {name, value} = action.payload;
+        const { name, value } = el.target;
         console.log(name);
         console.log(value);
+        console.log(state.tours);
         return {
           id,
           tours: [...state.tours, { id: id, [name]: value }],
