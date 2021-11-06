@@ -30,7 +30,7 @@ const Bookings = (props) => {
         console.log(response);
         const nodes = [...response.data];
         console.log(nodes);
-        const optionsArray = nodes.map(item => {item[id], item[title]});
+        const optionsArray = nodes.map(item => {item['id'], item['title']});
         console.log(optionsArray);
         setOptions(optionsArray);
 
