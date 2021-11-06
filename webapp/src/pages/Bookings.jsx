@@ -38,7 +38,6 @@ const Bookings = (props) => {
       console.log(err);
     });
   }, []);
-
   /*
     const handleSubmit = (e) => {
       setStatus({ name: status.modalInputName });
@@ -56,7 +55,6 @@ const Bookings = (props) => {
       });
     }
   */
-
   const Tour = ({ id, title, onRemove }) => {
     console.log('1..tour..');
     console.log(title);
