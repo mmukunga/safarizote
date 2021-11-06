@@ -60,7 +60,7 @@ const Bookings = (props) => {
   const handleChange = el => {
     const { name, value } = el.target;
     console.log(el.target.nodeName);
-    if (el.target.nodeName === "select") {
+    if (el.target.nodeName === "SELECT") {
       dispatch({ type: 'ADD_TOUR', payload: el.target });
     } else {
       dispatch({ type: 'INIT_BOOKING', payload: el.target });
