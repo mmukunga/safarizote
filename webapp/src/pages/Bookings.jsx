@@ -88,6 +88,10 @@ const Bookings = (props) => {
       console.log(el.target);
       console.log(name);
       console.log(value);
+      const {options, value} = el.target;
+      console.log(options[value].innerHTML); 
+      const {options, selectedIndex} = el.target;
+      console.log(options[selectedIndex].innerHTML); 
       dispatch({ type: 'ADD_TOUR', payload: el.target });
     } else {
       dispatch({ type: 'INIT_BOOKING', payload: el.target });
