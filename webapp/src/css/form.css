@@ -37,7 +37,7 @@ label {
   padding: 12px 12px 12px 0;
   display: inline-block;
 
-  vertical-align: top;
+  vertical-align: text-top;
 }    
     
 input[type=submit], button {    
