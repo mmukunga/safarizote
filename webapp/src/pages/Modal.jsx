@@ -10,7 +10,7 @@ const Modal = (props) => props.isOpen ?
           <form onSubmit={props.handleSubmit}> 
             <div class="row">
               <div class="col-25">
-                <label for="name">Full Names</label>
+                <label for="name">Name</label>
               </div>
               <div class="col-75">
                 <input id='name' name="name" onChange={props.handleChange}/>
@@ -42,7 +42,7 @@ const Modal = (props) => props.isOpen ?
             </div>
             <div class="row">
               <div class="col-25">
-                <label for="adults">Number of Adults</label>
+                <label for="adults">Adults</label>
               </div>
               <div class="col-75">
                 <input id='adults' name="adults" onChange={props.handleChange}/>
@@ -50,7 +50,7 @@ const Modal = (props) => props.isOpen ?
             </div>
             <div class="row">
               <div class="col-25">
-                <label for="children">Number of Children</label>
+                <label for="children">Children</label>
               </div>
               <div class="col-75">
                 <input id='children' name="children" onChange={props.handleChange}/>
