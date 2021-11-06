@@ -32,7 +32,7 @@ const Bookings = (props) => {
         console.log(nodes);
         const optionsArray = nodes.map(({ id, title }) => [id, title]);
         console.log(optionsArray);
-        setOptions([...optionsArray]);
+        setOptions(optionsArray);
 
       }).catch(err => {
       console.log(err);
@@ -92,12 +92,13 @@ const Bookings = (props) => {
   }
 
   console.log(state);
+  console.log(options);
 
   return (
     <div>
       <h1>Hello!! {state.name}</h1>
       <input type="button" style={{border:'2px solid red'}} value="Start Booking" onClick={() => setIsOpen(true)}/>
-      <Modal isOpen={isOpen} toggle={toggle} handleChange={handleChange} handleSubmit={handleSubmit} options={options}/>
+      <Modal isOpen={isOpen} toggle={toggle} handleChange={handleChange} handleSubmit={handleSubmit} options={options && options}/>
 
       <label>Safari<input type="checkbox" id='safari' name="safari" onChange={handleBooking}/></label>
 
