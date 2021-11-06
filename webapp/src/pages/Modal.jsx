@@ -1,6 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+const options = [
+  {
+    nextId: 0,
+    title: "Masaai Mara",
+  },
+  {
+    nextId: 1,
+    title: "Kilimanjaro",
+  }
+];
+
 const Modal = (props) => props.isOpen ? 
    ReactDOM.createPortal(
       <div className="PopUp-Container">

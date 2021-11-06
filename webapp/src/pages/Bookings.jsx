@@ -11,17 +11,6 @@ const Bookings = (props) => {
     modalInputName: ''
   });
 
-  const options = [
-    {
-      nextId: 0,
-      title: "Masaai Mara",
-    },
-    {
-      nextId: 1,
-      title: "Kilimanjaro",
-    }
-  ];
-
   const toggle = () => {
     console.log(toggle)
     setIsOpen(!isOpen);
