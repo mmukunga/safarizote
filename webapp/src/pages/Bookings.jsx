@@ -74,7 +74,6 @@ const Bookings = (props) => {
       </div>
     );
   }
-  const el = {id: 1010, title: 'Masai Mara'};
   
   console.log(state);
   console.log(state.tours);

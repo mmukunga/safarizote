@@ -14,7 +14,7 @@ const initialState = {
     adults: '',
     children: '',
     message: '',
-    tours: [{id: 0, title:'Masaai Mara' }],
+    tours: [{id: 0, safariId:'0123210' }],
   };
 
   const bookingsReducer = (state, action) => {
