@@ -58,16 +58,76 @@ const initialState = {
 
 const Safaris = () => {
     const [name, setName] = React.useState('');
+    const [products, setProducts] = React.useState([]);
+    const [currentPage, setCurrentPage] = React.useState(1);
+    const [numberOfHits, setNumberOfHits] = React.useState([]);
+    const [pageSize, setPageSize] = React.useState(2);
+
     const [state, dispatch ] = React.useReducer(bookingsReducer, initialState);
     const providerState = { state, dispatch };
+    React.useEffect(() => {
+      axios.get('/api/safaris').then(response => {
+        setProducts(response.data);
+        const productsArray = products.map((safari) => [safari.hostname, safari.org]);
+        var result = [];
+        productsArray.reduce((res, value) => {
+          if (!res[value.hostname]) {
+            res[value.hostname] = { Hostname: value.hostname, Org: value.org, qty: 0 };
+            result.push(res[value.hostname])
+          }
+          res[value.hostname].qty += 1;
+          return res;
+        }, {});
 
-    return ( 
+      }).catch(err => {
+      console.log(err);
+    });
+  }, []);
+
+  var catalog = [];
+
+  const handleClickPage = (event) => {
+    setCurrentPage(event.target.id);
+  }
+
+  products.forEach((safari) => {
+      catalog.push({
+        id: safari.id,
+        title: safari.title,
+        summary: safari.summary,
+        details: safari.details + ' <p>USD ' + safari.price + '<p>',
+      });
+  });
+  
+  const indexOfLastItem = currentPage * pageSize;
+  const indexOfFirstItem = indexOfLastItem - pageSize;
+  const currentItems = catalog.slice(indexOfFirstItem, indexOfLastItem);
+
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(catalog.length / pageSize); i++) {
+    pageNumbers.push(i);
+  }
+  
+  const renderPageNumbers = pageNumbers.map(number => {
+    return (
+      <li className="CssLink"
+        key={number}
+        id={number}
+        onClick={handleClickPage}>
+        {number}
+      </li>
+    );
+  });
+
+  return ( 
     <Card className="InnerCard" fontColor="black">  
       <CustomContext.Provider value={providerState}>
-          <h2>Count {name}</h2>
-          (Count should be updated from child)
+      <ul id="page-numbers"> 
+         <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Our Safaris:</span></li> 
+             {renderPageNumbers}
+        </ul> 
           <Bookings/>
-          <ul>
+          <ul className="BookingDetails">
             <li>Name: {state.name}</li>
             <li>Email: {state.email}</li>
             <li>Phone: {state.phone}</li>
@@ -82,7 +142,7 @@ const Safaris = () => {
           ))}
       </CustomContext.Provider>
     </Card>
-    );
+  );
 }
 
 export default Safaris;

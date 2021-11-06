@@ -1,3 +1,15 @@
+
+ul.BookingDetails {
+  list-style-position: inside;
+  background: #3399ff;
+  padding: 20px;
+}
+
+ul.BookingDetails li {
+  background: #cce5ff;
+  margin: 5px;
+}
+
 .divsContainer {
   display: table;
   border-collapse: separate;
