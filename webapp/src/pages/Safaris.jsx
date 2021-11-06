@@ -5,7 +5,7 @@ import CustomContext from './CustomContext';
 import Bookings from './Bookings';
 
 const initialState = {
-    nextId: 0,
+    id: 0,
     name: '',
     email: '',
     phone: '',
@@ -14,7 +14,7 @@ const initialState = {
     adults: '',
     children: '',
     message: '',
-    tours: [{nextId: 0, title:'Masaai Mara' }],
+    tours: [{id: 0, title:'Masaai Mara' }],
   };
 
   const bookingsReducer = (state, action) => {
@@ -36,21 +36,21 @@ const initialState = {
       }
       case 'ADD_TOUR': {
         console.log(action);
-        const nextId = state.nextId + 1;
+        const id = state.id + 1;
         console.log(action.payload);
         const {name, value} = action.payload;
         console.log(name);
         console.log(value);
         return {
-          nextId,
-          tours: [...state.tours, { nextId: nextId, [name]: value }],
+          id,
+          tours: [...state.tours, { id: id, [name]: value }],
         };
       }
       case 'REMOVE_TOUR': {
-        const nextId = state.nextId;
-        const result = state.tours.filter((tour) => tour.nextId !== action.payload);
+        const id = state.id;
+        const result = state.tours.filter((tour) => tour.id !== action.payload);
         return {
-          nextId,
+          id,
           tours: [...result],
         };
       }
@@ -65,7 +65,6 @@ const Safaris = () => {
     const [currentPage, setCurrentPage] = React.useState(1);
     const [numberOfHits, setNumberOfHits] = React.useState([]);
     const [pageSize, setPageSize] = React.useState(2);
-
     const [state, dispatch ] = React.useReducer(bookingsReducer, initialState);
     const providerState = { state, dispatch };
     React.useEffect(() => {
@@ -144,7 +143,7 @@ const Safaris = () => {
             </ul>
           </div>
           {state.tours.map((tour, index) => (
-              <p>Hello, {tour.nextId} from {tour.title}!</p>
+              <p>Hello, {tour.id} from {tour.title}!</p>
           ))}
       </CustomContext.Provider>
     </Card>

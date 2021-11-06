@@ -1,17 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-const options = [
-  {
-    nextId: 0,
-    title: "Masaai Mara",
-  },
-  {
-    nextId: 1,
-    title: "Kilimanjaro",
-  }
-];
-
 const Modal = (props) => props.isOpen ? 
    ReactDOM.createPortal(
       <div className="PopUp-Container">
@@ -83,7 +72,7 @@ const Modal = (props) => props.isOpen ?
               <div class="col-75">
               <select id="safari" name="safari" onChange={props.handleChange}>
                   {options.map((option) => (
-                    <option value={option.nextId}>{option.title}</option>
+                    <option value={option.id}>{option.title}</option>
                   ))}
                 </select>
               </div>
