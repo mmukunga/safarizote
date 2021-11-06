@@ -88,7 +88,7 @@ const Bookings = (props) => {
     <div>
       <h1>Hello!! {state.name}</h1>
       <input type="button" style={{border:'2px solid red'}} value="Start Booking" onClick={() => setIsOpen(true)}/>
-      {isOpen && <Modal setIsOpen={setIsOpen} />}
+      <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
 
       <label>Safari<input type="checkbox" id='safari' name="safari" onChange={handleBooking}/></label>
 
