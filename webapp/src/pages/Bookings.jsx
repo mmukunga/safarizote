@@ -4,14 +4,12 @@ import Modal from "./Modal";
 
 const Bookings = (props) => {
   const {state, dispatch} = useCustomContext(); 
-
+  const [isOpen, setIsOpen] = React.useState(false);
   const [status, setStatus] = React.useState({
     modal: false,
     name: '',
     modalInputName: ''
   });
-
-  const [isOpen, setIsOpen] = React.useState(false);
 
   const options = [
     {
@@ -24,7 +22,8 @@ const Bookings = (props) => {
     }
   ];
 
-  const togglePopup = () => {
+  const toggle = () => {
+    console.log(toggle)
     setIsOpen(!isOpen);
   }
 
@@ -88,7 +87,7 @@ const Bookings = (props) => {
     <div>
       <h1>Hello!! {state.name}</h1>
       <input type="button" style={{border:'2px solid red'}} value="Start Booking" onClick={() => setIsOpen(true)}/>
-      <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
+      <Modal isOpen={isOpen} toggle={toggle} />
 
       <label>Safari<input type="checkbox" id='safari' name="safari" onChange={handleBooking}/></label>
 
