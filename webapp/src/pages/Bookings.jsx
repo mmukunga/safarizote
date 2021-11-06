@@ -2,7 +2,7 @@ import React from "react";
 import { useCustomContext } from './CustomContext';
 import Modal from "./Modal";
 
-const BookingForm = (props) => {
+const Bookings = (props) => {
   const {state, dispatch} = useCustomContext(); 
 
   const [status, setStatus] = React.useState({
@@ -12,7 +12,7 @@ const BookingForm = (props) => {
   });
 
   const [isOpen, setIsOpen] = React.useState(false);
- 
+
   const options = [
     {
       nextId: 0,
@@ -87,26 +87,10 @@ const BookingForm = (props) => {
   return (
     <div>
       <h1>Hello!! {state.name}</h1>
-      <input type="button" value="Click to Open Popup" onClick={togglePopup}/>
-    {isOpen && <Modal
-      content={
-      <>
-        <b>Design your Popup</b>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-           incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-           exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
-           irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
-           officia deserunt mollit anim id est laborum.
-        </p>
-        <button>Test button</button>
-      </>
-      }
-      handleClose={togglePopup}
-    />
-    }
+      <input type="button" style={{border:'2px solid red'}} value="Start Booking" onClick={() => setIsOpen(true)}/>
+      {isOpen && <Modal setIsOpen={setIsOpen} />}
 
-      <label>SAfarsi<input type="checkbox" id='safari' name="safari" onChange={handleBooking}/></label>
+      <label>Safari<input type="checkbox" id='safari' name="safari" onChange={handleBooking}/></label>
 
       <form onSubmit={handleSubmit}>        
         <div>
@@ -142,4 +126,4 @@ const BookingForm = (props) => {
   );
 }
 
-export default BookingForm;
+export default Bookings;
