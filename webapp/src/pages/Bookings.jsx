@@ -30,9 +30,17 @@ const Bookings = (props) => {
         console.log(response);
         const nodes = [...response.data];
         console.log(nodes);
-        const optionsArray = nodes.map(item => {item['id'], item['title']});
-        console.log(optionsArray);
-        setOptions(optionsArray);
+       
+        var array_nodes = [];
+        nodes.forEach(function(d) {
+            array_nodes.push({
+              'id': d['id'],
+              'title': d['title']
+            });
+          });
+
+        console.log(array_nodes);
+        setOptions(array_nodes);
 
       }).catch(err => {
       console.log(err);
