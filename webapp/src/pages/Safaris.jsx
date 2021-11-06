@@ -128,16 +128,18 @@ const Safaris = () => {
              {renderPageNumbers}
         </ul> 
           <Bookings/>
-          <ul className="BookingDetails">
-            <li>Name: {state.name}</li>
-            <li>Email: {state.email}</li>
-            <li>Phone: {state.phone}</li>
-            <li>Arrival Date: {state.date}</li>
-            <li>Address: {state.address}</li>
-            <li>Number of Adults: {state.adults}</li>
-            <li>Number of Children:{state.children}</li>
-            <li>Message: {state.message}</li>
-          </ul>
+          <div className="BookingInfo">
+            <ul className="BookingDetails">
+              <li>Name: {state.name}</li>
+              <li>Email: {state.email}</li>
+              <li>Phone: {state.phone}</li>
+              <li>Arrival Date: {state.date}</li>
+              <li>Address: {state.address}</li>
+              <li>Number of Adults: {state.adults}</li>
+              <li>Number of Children:{state.children}</li>
+              <li>Message: {state.message}</li>
+            </ul>
+          </div>
           {state.tours.map((tour, index) => (
               <p>Hello, {tour.nextId} from {tour.title}!</p>
           ))}

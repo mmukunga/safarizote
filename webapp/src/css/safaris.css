@@ -1,8 +1,14 @@
 
+div.BookingInfo {
+	text-align: center;
+}
+
 ul.BookingDetails {
   list-style-position: inside;
   background: #3399ff;
   padding: 20px;
+  display: inline-block; 
+	text-align: left; 
 }
 
 ul.BookingDetails li {
