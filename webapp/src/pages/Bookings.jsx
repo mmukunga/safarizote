@@ -85,6 +85,7 @@ const Bookings = (props) => {
     console.log(value);
     console.log(el.target.nodeName);
     if (el.target.nodeName === "SELECT") {
+      console.log(el.target);
       dispatch({ type: 'ADD_TOUR', payload: el.target });
     } else {
       dispatch({ type: 'INIT_BOOKING', payload: el.target });
