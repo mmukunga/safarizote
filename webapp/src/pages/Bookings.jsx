@@ -68,8 +68,10 @@ const Bookings = (props) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('Submit');
+    console.log('...Submited...');
+    toggle();
   }
+  
   console.log(state);
 
   return (
