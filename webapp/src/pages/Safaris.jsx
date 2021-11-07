@@ -4,6 +4,13 @@ import Card from './Card';
 import CustomContext from './CustomContext';
 import Bookings from './Bookings';
 
+import image01 from "../media/Big_Buck_Bunny.mp4";
+import image02 from "../media/kenya-safari.mp4";
+import image03 from "../media/kilimanjaro.mp4";
+import image04 from "../media/MOV_FILE.mov";
+import image05 from "../media/preview.mp4";
+import image06 from "../media/the_globe.mov";
+
 const initialState = {
     id: 0,
     name: '',
@@ -52,6 +59,40 @@ const initialState = {
         return state;
     }
   };
+
+  const Accordion = ({children, data, title, summary, video}) => {
+      console.log(data);
+      const VideoPlayer = ({video}) => {
+        const videoRef = React.useRef(null);
+      
+        function playVideo() {
+          videoRef.current.play();
+        }
+      
+        function pauseVideo() {
+          videoRef.current.pause();
+        }
+        
+        return (
+            <video ref={videoRef} controls  muted className="video-player">
+              {/* Of course it's the big buck bunny! */}
+              <source src={video} type="video/mp4"/>
+            </video>
+        );
+      };
+      
+      const summaryHTML = '<span className=\'Summary\'>' + summary + '<span>';
+      return (
+        <div className="SafariTours">
+          <div className="VideoPlayer">
+            <VideoPlayer video={video} className="video-player"/> 
+          </div>
+          <div dangerouslySetInnerHTML={{__html: summaryHTML}} /> 
+          <div className='clearfix'></div>
+        </div>
+      );
+  }
+
 
 const Safaris = () => {
     const [name, setName] = React.useState('');
@@ -114,6 +155,8 @@ const Safaris = () => {
       </li>
     );
   });
+  
+  const videos = [image01, image02, image03, image04, image05, image06];
 
   return ( 
       <CustomContext.Provider value={providerState}>
@@ -122,7 +165,17 @@ const Safaris = () => {
           <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Our Safaris:</span></li> 
               {renderPageNumbers}
           </ul> 
-            <Bookings/>
+            
+            <div className="divsContainer"> 
+              {currentItems && currentItems.map((card) =>{ return (
+                <Accordion data={card} title={card.title} summary={card.summary} video={videos[card.id]}>
+                  {card.details} 
+                </Accordion>
+              ); })}
+
+              <Bookings/> 
+               
+            </div>
             <div className="BookingInfo">
               <ul className="BookingDetails">
                 <li>Name: {state.name}</li>

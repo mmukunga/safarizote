@@ -29,31 +29,6 @@ const Bookings = (props) => {
       console.log(err);
     });
   }, []);
-  /*
-    const handleSubmit = (e) => {
-      setStatus({ name: status.modalInputName });
-      modalClose();
-    }
-
-    const modalOpen = () => {
-      setStatus({ modal: true });
-    }
-
-    const modalClose = () => {
-      setStatus({
-        modalInputName: "",
-        modal: false
-      });
-    }
-  */
-  const Tour = ({ id, safariId, onRemove }) => {
-    return (
-        <div style={{display:'flex', textAlign:'left', width:'100%', border:'2px solid red'}}>
-          <label for="safari" style={{width:'60%'}}>Tour: id-{id} SafariID-{safariId}</label>
-          <button style={{width:'10%'}} onClick={() => onRemove(id)}>X</button>
-        </div>
-    );
-  }
 
   const handleChange = el => {
     const { name, value } = el.target;
