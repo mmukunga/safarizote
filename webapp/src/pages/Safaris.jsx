@@ -177,6 +177,7 @@ const Safaris = () => {
                 ); 
               })}
             </div>
+              Booking Details
               <ul className="Booking">
                 <li>Name {state.name}</li>
                 <li>Email {state.email}</li>
