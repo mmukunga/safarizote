@@ -157,8 +157,6 @@ const Safaris = () => {
   });
   
   const videos = [image01, image02, image03, image04, image05, image06];
-  Math.floor(Math.random() * (max - min + 1)) + min;
-  var id = Math.floor(Math.random() * videos.length) + 0;
 
   return ( 
       <CustomContext.Provider value={providerState}>
