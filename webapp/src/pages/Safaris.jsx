@@ -96,6 +96,7 @@ const Safaris = () => {
     const providerState = { state, dispatch };
     React.useEffect(() => {
       axios.get('/api/safaris').then(response => {
+        console.log(response);
         setProducts(response.data);
         const productsArray = products.map((safari) => [safari.hostname, safari.org]);
         var result = [];
