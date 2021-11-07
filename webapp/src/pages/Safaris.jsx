@@ -21,7 +21,7 @@ const initialState = {
     adults: '',
     children: '',
     message: '',
-    tours: [{id: 0, safariId:'0123210' }],
+    tours: [],
   };
 
   const bookingsReducer = (state, action) => {
@@ -174,7 +174,6 @@ const Safaris = () => {
                 </Accordion>
               ); })}
             </div>
-            <div className="BookingInfo">
               <ul className="Booking">
                 <li>Name: {state.name}</li>
                 <li>Email: {state.email}</li>
@@ -185,7 +184,6 @@ const Safaris = () => {
                 <li>Number of Children:{state.children}</li>
                 <li>Message: {state.message}</li>
               </ul>
-            </div>
             {state.tours.map((tour, index) => (
               <div key={index}  className="dashboardmenu">
                 <label for='boxfield1' style={{padding:0}}>Safari {tour.id} Tour Id: {tour.safariId}
