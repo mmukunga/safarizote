@@ -21,13 +21,13 @@ const initialState = {
     switch (action.type) {
       case 'INIT_BOOKING': {
         if (action.payload.type === "checkbox") {
-          console.log('DISPATCH-CHECKBOX');
+          console.log(state);
           return {
             ...state,
           [action.payload.name]: action.payload.checked
           }
         }
-        console.log('DISPATCH-INPUT');
+        console.log(state);
         const {name, value} = action.payload;
         return {
           ...state,
@@ -36,19 +36,19 @@ const initialState = {
       }
       case 'ADD_TOUR': {
         const id = state.id + 1;
-        console.log('ADD-TOUR');
+        console.log(state);
         const { name, value } = action.payload;
         return {
-          id,
+          ...state,
           tours: [...state.tours, { id: id, [name]: value }],
         };
       }
       case 'REMOVE_TOUR': {
         const id = state.id;
-        console.log('REMOVE-TOUR');
+        console.log(state);
         const result = state.tours.filter((tour) => tour.id !== action.payload);
         return {
-          id,
+          ...state,
           tours: [...result],
         };
       }

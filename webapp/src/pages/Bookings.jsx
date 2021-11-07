@@ -69,6 +69,7 @@ const Bookings = (props) => {
 
   const handleChange = el => {
     const { name, value } = el.target;
+    console.log(state);
     if (el.target.nodeName === "SELECT") {
       console.log('ADD_TOUR');
       dispatch({ type: 'ADD_TOUR', payload: el.target });
@@ -81,7 +82,10 @@ const Bookings = (props) => {
   const handleSubmit = e => {
     e.preventDefault();
     toggle();
+    console.log(state);
   }
+
+  console.log(state);
 
   return (
     <div>
