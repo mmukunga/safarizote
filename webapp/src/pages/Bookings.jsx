@@ -7,11 +7,6 @@ const Bookings = (props) => {
   const {state, dispatch} = useCustomContext(); 
   const [options, setOptions] = React.useState([]);
   const [isOpen, setIsOpen] = React.useState(false);
-  const [status, setStatus] = React.useState({
-    modal: false,
-    name: '',
-    modalInputName: ''
-  });
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -90,14 +85,6 @@ const Bookings = (props) => {
       <h1>Hello!! {state.name}</h1>
       <input type="button" style={{border:'2px solid red'}} value="Start Booking" onClick={() => setIsOpen(true)}/>
       <Modal isOpen={isOpen} toggle={toggle} handleChange={handleChange} handleSubmit={handleSubmit} options={options && options}/>
-
-      <label>Safari<input type="checkbox" id='safari' name="safari" onChange={handleBooking}/></label>
-
-      {state.tours.map(({ id, safariId }) => (
-        <Tour key={id} safariId={safariId}
-          onRemove={() => dispatch({ type: 'REMOVE_TOUR', id })}
-        />
-      ))}
     </div>
   );
 }

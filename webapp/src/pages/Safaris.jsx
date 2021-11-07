@@ -136,7 +136,8 @@ const Safaris = () => {
               </ul>
             </div>
             {state.tours.map((tour, index) => (
-                <p key={index}>Safari {tour.id} Tour Id: {tour.safariId}</p>
+                <p key={index}>Safari {tour.id} Tour Id: {tour.safariId} 
+                 <button style={{width:'10%'}} onClick={() => dispatch({ type: 'REMOVE_TOUR', id })}>X</button></p>
             ))}
           </Card>  
       </CustomContext.Provider>   
