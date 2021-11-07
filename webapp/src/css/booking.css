@@ -12,20 +12,21 @@
   vertical-align: top;
 }
 
-
 ul.Booking {
   display: flex;
   padding-left: 0;
   list-style: none;
+  outline: 1px solid hotpink;
 }
+
 ul.Booking > li {
   padding-left: 1ch;
 }
-ul.Booking > li::before {
+
+ul.Booking > li:not(:first-child)::before {
   content: '•';
   margin-right: 1ch;
 }
-
 
 .input-container {
     display: flex;
