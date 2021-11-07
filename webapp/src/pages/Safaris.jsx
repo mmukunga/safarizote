@@ -175,7 +175,7 @@ const Safaris = () => {
               ); })}
             </div>
             <div className="BookingInfo">
-              <ul className="BookingDetails">
+              <ul className="Booking">
                 <li>Name: {state.name}</li>
                 <li>Email: {state.email}</li>
                 <li>Phone: {state.phone}</li>
