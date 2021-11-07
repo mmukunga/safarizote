@@ -50,8 +50,10 @@ const Bookings = (props) => {
 
   return (
     <div>
-      <span>Hello!! {state.name}</span>
-      <input type="button" style={{border:'2px solid red'}} value="Start Booking" onClick={() => setIsOpen(true)}/>
+      <div className="dashboardbox">
+        <span className='box-field'>Hello!! {state.name}</span>
+        <input type="button" className='box-field' style={{border:'2px solid red'}} value="Start Booking" onClick={() => setIsOpen(true)}/>
+      </div>
       <Modal isOpen={isOpen} toggle={toggle} handleChange={handleChange} handleSubmit={handleSubmit} options={options && options}/>
     </div>
   );
