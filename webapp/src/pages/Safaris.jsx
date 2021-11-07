@@ -157,6 +157,8 @@ const Safaris = () => {
   });
   
   const videos = [image01, image02, image03, image04, image05, image06];
+  Math.floor(Math.random() * (max - min + 1)) + min;
+  var id = Math.floor(Math.random() * videos.length) + 0;
 
   return ( 
       <CustomContext.Provider value={providerState}>
@@ -168,11 +170,14 @@ const Safaris = () => {
           </ul> 
             
             <div className="divsContainer"> 
-              {currentItems && currentItems.map((card) =>{ return (
-                <Accordion data={card} title={card.title} summary={card.summary} video={videos[card.id]}>
-                  {card.details} 
-                </Accordion>
-              ); })}
+              {currentItems && currentItems.map((card) => {
+                 var id = Math.floor(Math.random() * videos.length) + 0; 
+                 return (
+                  <Accordion data={card} title={card.title} summary={card.summary} video={videos[id]}>
+                    {card.details} 
+                  </Accordion>
+                ); 
+              })}
             </div>
               <ul className="Booking">
                 <li>Name {state.name}</li>
