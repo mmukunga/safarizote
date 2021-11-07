@@ -13,7 +13,6 @@
 }
 
 div.Booking {
-  display: flex;
   padding-left: 0;
   list-style: none;
   outline: 1px solid hotpink;
