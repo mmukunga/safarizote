@@ -121,27 +121,29 @@ const Safaris = () => {
 
   return ( 
       <CustomContext.Provider value={providerState}>
-      <ul id="page-numbers"> 
-         <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Our Safaris:</span></li> 
-             {renderPageNumbers}
-        </ul> 
-          <Bookings/>
-          <div className="BookingInfo">
-            <ul className="BookingDetails">
-              <li>Name: {state.name}</li>
-              <li>Email: {state.email}</li>
-              <li>Phone: {state.phone}</li>
-              <li>Arrival Date: {state.date}</li>
-              <li>Address: {state.address}</li>
-              <li>Number of Adults: {state.adults}</li>
-              <li>Number of Children:{state.children}</li>
-              <li>Message: {state.message}</li>
-            </ul>
-          </div>
-          {state.tours.map((tour, index) => (
-              <p>Hello, {tour.id} from {tour.title}!</p>
-          ))}
-      </CustomContext.Provider>
+        <Card className="InnerCard" fontColor="black">    
+        <ul id="page-numbers"> 
+          <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Our Safaris:</span></li> 
+              {renderPageNumbers}
+          </ul> 
+            <Bookings/>
+            <div className="BookingInfo">
+              <ul className="BookingDetails">
+                <li>Name: {state.name}</li>
+                <li>Email: {state.email}</li>
+                <li>Phone: {state.phone}</li>
+                <li>Arrival Date: {state.date}</li>
+                <li>Address: {state.address}</li>
+                <li>Number of Adults: {state.adults}</li>
+                <li>Number of Children:{state.children}</li>
+                <li>Message: {state.message}</li>
+              </ul>
+            </div>
+            {state.tours.map((tour, index) => (
+                <p>Hello, {tour.id} from {tour.title}!</p>
+            ))}
+          </Card>  
+      </CustomContext.Provider>   
   );
 }
 
