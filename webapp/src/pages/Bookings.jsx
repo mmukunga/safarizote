@@ -12,13 +12,6 @@ const Bookings = (props) => {
     setIsOpen(!isOpen);
   }
 
-  const handleBooking = (e) => {
-    const {name, value} = e.target;
-    setStatus({
-      [name]: value
-    });
-  }
-
   React.useEffect(() => {
       axios.get('/api/safaris').then(response => {
         const nodes = [...response.data];
