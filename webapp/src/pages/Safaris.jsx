@@ -162,6 +162,7 @@ const Safaris = () => {
       <CustomContext.Provider value={providerState}>
         <Card className="InnerCard" fontColor="black">    
         <ul id="page-numbers"> 
+          <li><Bookings/> </li>
           <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Our Safaris:</span></li> 
               {renderPageNumbers}
           </ul> 
@@ -172,10 +173,8 @@ const Safaris = () => {
                   {card.details} 
                 </Accordion>
               ); })}
-
-              <Bookings/> 
-               
             </div>
+
             <div className="BookingInfo">
               <ul className="BookingDetails">
                 <li>Name: {state.name}</li>
