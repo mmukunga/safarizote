@@ -20,7 +20,6 @@ const initialState = {
   const bookingsReducer = (state, action) => {
     switch (action.type) {
       case 'INIT_BOOKING': {
-        console.log(action);
         if (action.payload.type === "checkbox") {
           return {
             ...state,
@@ -28,20 +27,14 @@ const initialState = {
           }
         }
         const {name, value} = action.payload;
-        console.log(action.payload);
         return {
           ...state,
           [name]: value,
         };
       }
       case 'ADD_TOUR': {
-        console.log(action);
         const id = state.id + 1;
-        console.log(action.payload);
         const { name, value } = action.payload;
-        console.log(name);
-        console.log(value);
-        console.log(state.tours);
         return {
           id,
           tours: [...state.tours, { id: id, [name]: value }],
@@ -70,7 +63,6 @@ const Safaris = () => {
     const providerState = { state, dispatch };
     React.useEffect(() => {
       axios.get('/api/safaris').then(response => {
-        console.log(response);
         setProducts(response.data);
         const productsArray = products.map((safari) => [safari.hostname, safari.org]);
         var result = [];

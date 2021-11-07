@@ -14,7 +14,6 @@ const Bookings = (props) => {
   });
 
   const toggle = () => {
-    console.log(toggle)
     setIsOpen(!isOpen);
   }
 
@@ -27,10 +26,7 @@ const Bookings = (props) => {
 
   React.useEffect(() => {
       axios.get('/api/safaris').then(response => {
-        console.log(response);
         const nodes = [...response.data];
-        console.log(nodes);
-       
         var array_nodes = [];
         nodes.forEach(function(d) {
             array_nodes.push({
@@ -39,7 +35,6 @@ const Bookings = (props) => {
             });
           });
 
-        console.log(array_nodes);
         setOptions(array_nodes);
 
       }).catch(err => {
@@ -63,30 +58,18 @@ const Bookings = (props) => {
       });
     }
   */
-  const Tour = ({ id, title, onRemove }) => {
-    console.log('1..tour..');
-    console.log(title);
-    console.log('2..tour..');
+  const Tour = ({ id, safariId, onRemove }) => {
     return (
       <div>
-        Tour: id-{id} Title-{title}
+        Tour: id-{id} SafariID-{safariId}
         <button onClick={() => onRemove(id)}>X</button>
       </div>
     );
   }
-  
-  console.log(state);
-  console.log(state.tours);
 
   const handleChange = el => {
     const { name, value } = el.target;
-    console.log(name);
-    console.log(value);
-    console.log(el.target.nodeName);
     if (el.target.nodeName === "SELECT") {
-      console.log(el.target);
-      console.log(name);
-      console.log(value);
       dispatch({ type: 'ADD_TOUR', payload: el.target });
     } else {
       dispatch({ type: 'INIT_BOOKING', payload: el.target });
@@ -95,12 +78,8 @@ const Bookings = (props) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('...Submited...');
     toggle();
   }
-
-  console.log(state);
-  console.log(options);
 
   return (
     <div>
@@ -110,8 +89,8 @@ const Bookings = (props) => {
 
       <label>Safari<input type="checkbox" id='safari' name="safari" onChange={handleBooking}/></label>
 
-      {state.tours.map(({ id, title }) => (
-        <Tour key={id} title={title}
+      {state.tours.map(({ id, safariId }) => (
+        <Tour key={id} safariId={safariId}
           onRemove={() => dispatch({ type: 'REMOVE_TOUR', id })}
         />
       ))}
