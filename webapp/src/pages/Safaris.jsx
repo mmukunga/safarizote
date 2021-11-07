@@ -188,10 +188,11 @@ const Safaris = () => {
               </ul>
             </div>
             {state.tours.map((tour, index) => (
-                <div key={index} className="dashboardbox">
-                  <span className='box-field'>Safari {tour.id} Tour Id: {tour.safariId}</span> 
-                  <button className='box-field' onClick={() => dispatch({ type: 'REMOVE_TOUR', index })}>X</button>
-                 </div>
+              <div key={index}  className="dashboardmenu">
+                <label for='boxfield1' style={{padding:0}}>Safari {tour.id} Tour Id: {tour.safariId}
+                  <input type="button" name='boxfield1' style={{padding:0}} value="X" onClick={() => dispatch({ type: 'REMOVE_TOUR', index })}/>
+                </label> 
+              </div>
             ))}
           </Card>  
       </CustomContext.Provider>   
