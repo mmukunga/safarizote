@@ -60,13 +60,9 @@ const Bookings = (props) => {
   */
   const Tour = ({ id, safariId, onRemove }) => {
     return (
-        <div class="row">
-          <div class="col-25">
-            <label for="safari">Tour: id-{id} SafariID-{safariId}</label>
-          </div>
-          <div class="col-75">
-          <button onClick={() => onRemove(id)}>X</button>
-          </div>
+        <div style={{width:'100%', border:'2px solid red'}}>
+          <label for="safari" style={{width:'60%'}}>Tour: id-{id} SafariID-{safariId}</label>
+          <button style={{width:'10%'}} onClick={() => onRemove(id)}>X</button>
         </div>
     );
   }
