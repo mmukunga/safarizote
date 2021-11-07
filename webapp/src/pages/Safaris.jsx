@@ -174,7 +174,6 @@ const Safaris = () => {
                 </Accordion>
               ); })}
             </div>
-
             <div className="BookingInfo">
               <ul className="BookingDetails">
                 <li>Name: {state.name}</li>
