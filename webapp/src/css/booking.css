@@ -12,18 +12,19 @@
   vertical-align: top;
 }
 
-ul.Booking {
+div.Booking {
   display: flex;
   padding-left: 0;
   list-style: none;
   outline: 1px solid hotpink;
 }
 
-ul.Booking > li {
+div.Booking > div {
   padding-left: 1ch;
+  display:inline-block;
 }
 
-ul.Booking > li::before {
+div.Booking > div::before {
   content: ' ';
   margin-right: 1ch;
 }

@@ -179,16 +179,16 @@ const Safaris = () => {
             </div>
              <div className="BookingInfo">
               Booking Details
-              <ul className="Booking">
-                <li>Name {state.name}</li>
-                <li>Email {state.email}</li>
-                <li>Phone {state.phone}</li>
-                <li>Arrival Date {state.date}</li>
-                <li>Address {state.address}</li>
-                <li>Number of Adults {state.adults}</li>
-                <li>Number of Children {state.children}</li>
-                <li>Message {state.message}</li>
-              </ul>
+              <div className="Booking">
+                <div>Name {state.name}</div>
+                <div>Email {state.email}</div>
+                <div>Phone {state.phone}</div>
+                <div>Arrival Date {state.date}</div>
+                <div>Address {state.address}</div>
+                <div>Number of Adults {state.adults}</div>
+                <div>Number of Children {state.children}</div>
+                <div>Message {state.message}</div>
+              </div>
              </div> 
             {state.tours.map((tour, index) => (
               <div key={index} className="dashboardmenu">
