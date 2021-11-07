@@ -120,7 +120,6 @@ const Safaris = () => {
   });
 
   return ( 
-    <Card className="InnerCard" fontColor="black">  
       <CustomContext.Provider value={providerState}>
       <ul id="page-numbers"> 
          <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Our Safaris:</span></li> 
@@ -143,7 +142,6 @@ const Safaris = () => {
               <p>Hello, {tour.id} from {tour.title}!</p>
           ))}
       </CustomContext.Provider>
-    </Card>
   );
 }
 
