@@ -34,8 +34,7 @@ select,textarea {
 }
 
 label {
-  /*padding: 12px 12px 12px 0;*/
-  padding: 2px 2px 2px 0;
+  padding: 12px 12px 12px 0;
   display: inline-block;
   vertical-align: text-top;
 }    
