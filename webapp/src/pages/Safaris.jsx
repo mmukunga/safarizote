@@ -137,7 +137,7 @@ const Safaris = () => {
             </div>
             {state.tours.map((tour, index) => (
                 <div key={index}>
-                  <span style={{width='50%'}}>Safari {tour.id} Tour Id: {tour.safariId}</span> 
+                  <span style={{width: '50%'}}>Safari {tour.id} Tour Id: {tour.safariId}</span> 
                   <button style={{width:'10%'}} onClick={() => dispatch({ type: 'REMOVE_TOUR', index })}>X</button>
                  </div>
             ))}
