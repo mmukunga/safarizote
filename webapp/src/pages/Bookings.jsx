@@ -50,7 +50,7 @@ const Bookings = (props) => {
 
   return (
     <div>
-      <div className="dashboardbox">
+      <div className="dashboardmenu">
         <span className='box-field'>Hello!! {state.name}</span>
         <input type="button" className='box-field' style={{border:'2px solid red'}} value="Start Booking" onClick={() => setIsOpen(true)}/>
       </div>
