@@ -1,19 +1,4 @@
 
-div.BookingInfo {
-	text-align: left;
-}
-
-ul.BookingDetails {
-  list-style-position: inside;
-  border: 2px solid #3399ff;
-  display: inline-block; 
-	text-align: left; 
-}
-
-ul.BookingDetails li {
-  margin: 5px;
-}
-
 .divsContainer {
   display: table;
   border-collapse: separate;

@@ -13,14 +13,6 @@ import image06 from "../media/the_globe.mov";
 
 const initialState = {
     id: 0,
-    name: '',
-    email: '',
-    phone: '',
-    date: '',
-    address: '',
-    adults: '',
-    children: '',
-    message: '',
     tours: [],
   };
 
@@ -189,14 +181,14 @@ const Safaris = () => {
                 <div>Number of Children {state.children}</div>
                 <div>Message {state.message}</div>
               </div>
-             </div> 
-            {state.tours.map((tour, index) => (
+              {state.tours.map((tour, index) => (
               <div key={index} className="dashboardmenu">
                 <label for='boxfield1' style={{padding:0}}>Safari {tour.id} Tour Id: {tour.safariId}
                   <input type="button" name='boxfield1' style={{padding:0}} value="X" onClick={() => dispatch({ type: 'REMOVE_TOUR', index })}/>
                 </label> 
               </div>
             ))}
+             </div>   
           </Card>  
       </CustomContext.Provider>   
   );
