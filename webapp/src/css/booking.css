@@ -2,6 +2,10 @@
   width: 100%;
 }
 
+.dashboardmenu {
+  width: 400px;
+}
+
 .box-field {
   width: 50%;
   display: inline-block;
