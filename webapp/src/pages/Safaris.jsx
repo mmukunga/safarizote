@@ -178,8 +178,8 @@ const Safaris = () => {
                 <div>Phone {state.phone}</div>
                 <div>Arrival Date {state.date}</div>
                 <div>Address {state.address}</div>
-                <div>Number of Adults {state.adults}</div>
-                <div>Number of Children {state.children}</div>
+                <div>Adults {state.adults}</div>
+                <div>Children {state.children}</div>
                 <div>Message {state.message}</div>
               </div>
               {state.tours.map((tour, index) => (

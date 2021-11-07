@@ -15,6 +15,7 @@
 
 div.BookingInfo {
 	text-align: left;
+  outline: 1px solid hotpink;
 }
 
 ul.BookingDetails {
@@ -31,7 +32,7 @@ ul.BookingDetails li {
 div.Booking {
   padding-left: 0;
   list-style: none;
-  outline: 1px solid hotpink;
+  outline: 1px solid silver;
 }
 
 div.Booking > div {
