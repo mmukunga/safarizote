@@ -9,6 +9,7 @@
 .box-field {
   width: 50%;
   display: inline-block;
+  vertical-align: top;
 }
 
 .input-container {
