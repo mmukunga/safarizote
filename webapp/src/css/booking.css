@@ -23,8 +23,8 @@ ul.Booking > li {
   padding-left: 1ch;
 }
 
-ul.Booking > li:not(:first-child)::before {
-  content: '•';
+ul.Booking > li::before {
+  content: ' ';
   margin-right: 1ch;
 }
 

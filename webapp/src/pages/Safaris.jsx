@@ -175,14 +175,14 @@ const Safaris = () => {
               ); })}
             </div>
               <ul className="Booking">
-                <li>Name: {state.name}</li>
-                <li>Email: {state.email}</li>
-                <li>Phone: {state.phone}</li>
-                <li>Arrival Date: {state.date}</li>
-                <li>Address: {state.address}</li>
-                <li>Number of Adults: {state.adults}</li>
-                <li>Number of Children:{state.children}</li>
-                <li>Message: {state.message}</li>
+                <li>Name {state.name}</li>
+                <li>Email {state.email}</li>
+                <li>Phone {state.phone}</li>
+                <li>Arrival Date {state.date}</li>
+                <li>Address {state.address}</li>
+                <li>Number of Adults {state.adults}</li>
+                <li>Number of Children {state.children}</li>
+                <li>Message {state.message}</li>
               </ul>
             {state.tours.map((tour, index) => (
               <div key={index}  className="dashboardmenu">
