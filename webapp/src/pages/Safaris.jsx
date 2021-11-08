@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Form from "react-jsonschema-form";
 import axios from 'axios';
 import Card from './Card';
 import CustomContext from './CustomContext';
@@ -51,7 +52,7 @@ const initialState = {
         return state;
     }
   };
-
+  
   const Accordion = ({children, data, title, summary, video}) => {
       console.log(data);
       const VideoPlayer = ({video}) => {
@@ -85,6 +86,15 @@ const initialState = {
       );
   }
 
+  const schema = {
+    title: "Todo",
+    type: "object",
+    required: ["title"],
+    properties: {
+      title: {type: "string", title: "Title", default: "A new task"},
+      done:  {type: "boolean", title: "Done?", default: false}
+    }
+  };
 
 const Safaris = () => {
     const [name, setName] = React.useState('');
@@ -170,6 +180,12 @@ const Safaris = () => {
                 ); 
               })}
             </div>
+
+            <Form schema={schema}
+                  onChange={console.log("changed")}
+                  onSubmit={console.log("submitted")}
+                  onError={console.log("errors")}/>
+
              <div className="BookingInfo">
               Booking Details
               <div className="Booking">
