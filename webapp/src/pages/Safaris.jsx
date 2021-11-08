@@ -169,42 +169,42 @@ const Safaris = () => {
         <ul id="page-numbers"> 
           <li><Bookings/> </li>
           <li style={{paddingLeft:'1em',fontStyle: 'oblique'}}><span>Our Safaris:</span></li> 
-              {renderPageNumbers}
-          </ul> 
+          {renderPageNumbers}
+        </ul> 
             
-            <div className="divsContainer"> 
-              {currentItems && currentItems.map((card) => {
-                 var id = Math.floor(Math.random() * videos.length) + 0; 
-                 return (
-                  <Accordion data={card} title={card.title} summary={card.summary} video={videos[id]}>
-                    {card.details} 
-                  </Accordion>
-                ); 
-              })}
-            </div>
+        <div className="divsContainer"> 
+          {currentItems && currentItems.map((card) => {
+              var id = Math.floor(Math.random() * videos.length) + 0; 
+              return (
+              <Accordion data={card} title={card.title} summary={card.summary} video={videos[id]}>
+                {card.details} 
+              </Accordion>
+            ); 
+          })}
+        </div>
 
-             <div className="BookingInfo">
-              Booking Details
-              <div className="Booking">
-                <div>Name {state.name}</div>
-                <div>Email {state.email}</div>
-                <div>Phone {state.phone}</div>
-                <div>Arrival Date {state.date}</div>
-                <div>Address {state.address}</div>
-                <div>Adults {state.adults}</div>
-                <div>Children {state.children}</div>
-                <div>Message {state.message}</div>
-              </div>
-              {state.tours.map((tour, index) => (
-              <div key={index} className="dashboardmenu">
-                <label for='boxfield1' style={{padding:0}}>Safari {tour.id} Tour Id: {tour.safariId}
-                  <input type="button" name='boxfield1' style={{padding:0}} value="X" onClick={() => dispatch({ type: 'REMOVE_TOUR', index })}/>
-                </label> 
-              </div>
-            ))}
-             </div>   
-          </Card>  
-      </CustomContext.Provider>   
+        <div className="BookingInfo">
+        Booking Details
+        <div className="Booking">
+          <div>Name {state.name}</div>
+          <div>Email {state.email}</div>
+          <div>Phone {state.phone}</div>
+          <div>Arrival Date {state.date}</div>
+          <div>Address {state.address}</div>
+          <div>Adults {state.adults}</div>
+          <div>Children {state.children}</div>
+          <div>Message {state.message}</div>
+        </div>
+        {state.tours.map((tour, index) => (
+        <div key={index} className="dashboardmenu">
+          <label for='boxfield1' style={{padding:0}}>Safari {tour.id} Tour Id: {tour.safariId}
+            <input type="button" name='boxfield1' style={{padding:0}} value="X" onClick={() => dispatch({ type: 'REMOVE_TOUR', index })}/>
+          </label> 
+        </div>
+      ))}
+      </div>   
+    </Card>  
+  </CustomContext.Provider>   
   );
 }
 
