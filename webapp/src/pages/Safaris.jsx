@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Form from "react-jsonschema-form";
 import axios from 'axios';
 import Card from './Card';
 import CustomContext from './CustomContext';
@@ -86,16 +85,6 @@ const initialState = {
       );
   }
 
-  const schema = {
-    title: "Todo",
-    type: "object",
-    required: ["title"],
-    properties: {
-      title: {type: "string", title: "Title", default: "A new task"},
-      done:  {type: "boolean", title: "Done?", default: false}
-    }
-  };
-
 const Safaris = () => {
     const [name, setName] = React.useState('');
     const [products, setProducts] = React.useState([]);
@@ -181,6 +170,16 @@ const Safaris = () => {
               </Accordion>
             ); 
           })}
+        </div>
+        <div className="BookingInfo">
+          {state.tours.map((tour, index) => (
+            <div key={index} className="dashboardmenu">
+              <label for='boxfield1' style={{padding:0}}>Safari {tour.id} Tour Id: {tour.safariId}
+                <input type="button" name='boxfield1' style={{padding:0}} value="X" onClick={() => dispatch({ type: 'REMOVE_TOUR', index })}/>
+              </label> 
+            </div>
+            ))
+          }
         </div>
     </Card>  
   </CustomContext.Provider>   

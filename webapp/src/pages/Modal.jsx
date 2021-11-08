@@ -1,12 +1,29 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Form from "react-jsonschema-form";
+
+const schema = {
+  title: "Todo",
+  type: "object",
+  required: ["title"],
+  properties: {
+    title: {type: "string", title: "Title", default: "A new task"},
+    done:  {type: "boolean", title: "Done?", default: false}
+  }
+};
 
 const Modal = (props) => props.isOpen ? 
    ReactDOM.createPortal(
       <div className="PopUp-Container">
         <div className="PopUp-Content">
           <span className="close-icon" onClick={props.toggle}>x</span>
-          {props.content}          
+          {props.content} 
+
+          <Form schema={schema}
+                  onChange={console.log("changed")}
+                  onSubmit={console.log("submitted")}
+                  onError={console.log("errors")}/>
+
           <form onSubmit={props.handleSubmit}> 
             <div class="row">
               <div class="col-25">
