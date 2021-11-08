@@ -182,27 +182,6 @@ const Safaris = () => {
             ); 
           })}
         </div>
-
-        <div className="BookingInfo">
-        Booking Details
-        <div className="Booking">
-          <div>Name {state.name}</div>
-          <div>Email {state.email}</div>
-          <div>Phone {state.phone}</div>
-          <div>Arrival Date {state.date}</div>
-          <div>Address {state.address}</div>
-          <div>Adults {state.adults}</div>
-          <div>Children {state.children}</div>
-          <div>Message {state.message}</div>
-        </div>
-        {state.tours.map((tour, index) => (
-        <div key={index} className="dashboardmenu">
-          <label for='boxfield1' style={{padding:0}}>Safari {tour.id} Tour Id: {tour.safariId}
-            <input type="button" name='boxfield1' style={{padding:0}} value="X" onClick={() => dispatch({ type: 'REMOVE_TOUR', index })}/>
-          </label> 
-        </div>
-      ))}
-      </div>   
     </Card>  
   </CustomContext.Provider>   
   );
