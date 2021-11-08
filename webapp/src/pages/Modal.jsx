@@ -3,12 +3,19 @@ import ReactDOM from "react-dom";
 import Form from "react-jsonschema-form";
 
 const schema = {
-  title: "Todo",
+  title: "A booking information",
+  description: "A simple booking data.",
   type: "object",
-  required: ["title"],
+  required: ["title", "email"],
   properties: {
-    title: {type: "string", title: "Title", default: "A new task"},
-    done:  {type: "boolean", title: "Done?", default: false}
+    title: {type: "string", title: "Title", default: "A new booking"},
+    name: {type: "string", title: "Full name"},
+    email: {type: "string", title: "Email address"},
+    telephone: {type: "string", title: "Telephone", minLength: 10},
+    date: {type: "string", title: "Arrival Date"},
+    adults: {type: "string", title: "Number of adults"},
+    children: {type: "string", title: "Number of children"},
+    isGoing: {type: "boolean", title: "Going?", default: false}
   }
 };
 
