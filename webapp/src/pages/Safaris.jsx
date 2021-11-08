@@ -160,6 +160,8 @@ const Safaris = () => {
   });
   
   const videos = [image01, image02, image03, image04, image05, image06];
+  
+  /*const log = (type) => console.log(console, type);*/
 
   return ( 
       <CustomContext.Provider value={providerState}>
@@ -180,11 +182,6 @@ const Safaris = () => {
                 ); 
               })}
             </div>
-
-            <Form schema={schema}
-                  onChange={console.log("changed")}
-                  onSubmit={console.log("submitted")}
-                  onError={console.log("errors")}/>
 
              <div className="BookingInfo">
               Booking Details
