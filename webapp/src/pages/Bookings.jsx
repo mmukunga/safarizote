@@ -33,13 +33,13 @@ const Bookings = (props) => {
 
   const handleChange = el => {
     console.log(el.formData);
-    /*const { name, value } = el.target;
+    /*const { name, value } = el.target;*/
     console.log(state);
     if (el.target.nodeName === "SELECT") {
-      dispatch({ type: 'ADD_TOUR', payload: el.target });
+      dispatch({ type: 'ADD_TOUR', payload: el.formData });
     } else {
-      dispatch({ type: 'INIT_BOOKING', payload: el.target });
-    } */  
+      dispatch({ type: 'INIT_BOOKING', payload: el.formData });
+    }  
   }
 
   const handleSubmit = e => {

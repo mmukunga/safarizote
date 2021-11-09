@@ -19,17 +19,11 @@ const initialState = {
   const bookingsReducer = (state, action) => {
     switch (action.type) {
       case 'INIT_BOOKING': {
-        if (action.payload.type === "checkbox") {
+        const booking = action.payload;
           return {
             ...state,
-          [action.payload.name]: action.payload.checked
+            ...action.payload
           }
-        }
-        const {name, value} = action.payload;
-        return {
-          ...state,
-          [name]: value,
-        };
       }
       case 'ADD_TOUR': {
         const id = state.id + 1;
