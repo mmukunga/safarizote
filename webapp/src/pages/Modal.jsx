@@ -20,25 +20,30 @@ const schema = {
   }
 };
 
-const Modal = (props) => props.isOpen ? 
-   ReactDOM.createPortal(
-      <div className="PopUp-Container">
+const Modal = (props) => {
+  if (!props.isOpen) {
+      return null;
+  }
+}
+
+const modal = ({handleChange, handleSubmit, toggle, options}) => {
+ return( <div className="PopUp-Container">
         <div className="PopUp-Content">
-          <span className="close-icon" onClick={props.toggle}>x</span>
+          <span className="close-icon" onClick={toggle}>x</span>
           {props.content} 
 
           <Form schema={schema}
-                  onChange={props.handleChange}
-                  onSubmit={props.handleSubmit}
+                  onChange={handleChange}
+                  onSubmit={handleSubmit}
                   onError={console.log("errors")}/>
 
-          <form onSubmit={props.handleSubmit}> 
+          <form onSubmit={handleSubmit}> 
             <div className="row">
               <div className="col-25">
                 <label forHtml="name">Name</label>
               </div>
               <div className="col-75">
-                <input id='name' name="name" onChange={props.handleChange}/>
+                <input id='name' name="name" onChange={handleChange}/>
               </div>
             </div>
             <div className="row">
@@ -46,7 +51,7 @@ const Modal = (props) => props.isOpen ?
                 <label forHtml="email">Email</label>
               </div>
               <div className="col-75">
-              <input id='email' name="email" onChange={props.handleChange}/>
+              <input id='email' name="email" onChange={handleChange}/>
               </div>
             </div>
             <div className="row">
@@ -54,7 +59,7 @@ const Modal = (props) => props.isOpen ?
                 <label forHtml="date">Arrival Date</label>
               </div>
               <div className="col-75">
-              <input id='date' name="date" onChange={props.handleChange}/>
+              <input id='date' name="date" onChange={handleChange}/>
               </div>
             </div>
             <div className="row">
@@ -62,7 +67,7 @@ const Modal = (props) => props.isOpen ?
                 <label forHtml="address">Address</label>
               </div>
               <div className="col-75">
-              <input id='address' name="address" onChange={props.handleChange}/>
+              <input id='address' name="address" onChange={handleChange}/>
               </div>
             </div>
             <div className="row">
@@ -70,7 +75,7 @@ const Modal = (props) => props.isOpen ?
                 <label forHtml="adults">Adults</label>
               </div>
               <div className="col-75">
-                <input id='adults' name="adults" onChange={props.handleChange}/>
+                <input id='adults' name="adults" onChange={handleChange}/>
               </div>
             </div>
             <div className="row">
@@ -78,7 +83,7 @@ const Modal = (props) => props.isOpen ?
                 <label forHtml="children">Children</label>
               </div>
               <div className="col-75">
-                <input id='children' name="children" onChange={props.handleChange}/>
+                <input id='children' name="children" onChange={handleChange}/>
               </div>
             </div>
             <div className="row">
@@ -86,7 +91,7 @@ const Modal = (props) => props.isOpen ?
                 <label forHtml="isGoing">Is Going</label>
               </div>
               <div className="col-75">
-              <input type="checkbox" id='isGoing' name="isGoing" onChange={props.handleChange}/>
+              <input type="checkbox" id='isGoing' name="isGoing" onChange={handleChange}/>
               </div>
             </div>     
             <div className="row">
@@ -94,8 +99,8 @@ const Modal = (props) => props.isOpen ?
                 <label forHtml="safariId">Safari ID</label>
               </div>
               <div className="col-75">
-              <select id="safariId" name="safariId" onChange={props.handleChange}>
-                  {props.options.map((option) => (
+              <select id="safariId" name="safariId" onChange={handleChange}>
+                  {options.map((option) => (
                     <option value={option.id}>{option.title}</option>
                   ))}
                 </select>
@@ -106,7 +111,7 @@ const Modal = (props) => props.isOpen ?
                 <label forHtml="message">Message</label>
               </div>
               <div className="col-75">
-                <textarea id="message" name="message" onChange={props.handleChange} style={{height:"100px"}}></textarea>
+                <textarea id="message" name="message" onChange={handleChange} style={{height:"100px"}}></textarea>
               </div>
             </div>
             <div className="row">
@@ -114,8 +119,9 @@ const Modal = (props) => props.isOpen ?
             </div>
           </form>
         </div>
-      </div>
-    , document.body) 
-   : null;
+      </div>);
+}
+
+  return ReactDOM.createPortal(modal(props), document.body);
 
 export default Modal;
