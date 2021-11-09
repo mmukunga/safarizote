@@ -38,19 +38,23 @@ const Modal = (props) => {
   }
  
   const modal = ({handleChange, handleSubmit, toggle, options}) => {
+    const onChange = ({formData}) => {
+      console.log("Data submitted: ",  formData);
+      handleChange(formData);
+    }
     const onSubmit = ({formData}) => {
       console.log("Data submitted: ",  formData);
       handleSubmit(formData);
     }
     const onError = (errors) => console.log("I have", errors.length, "errors to fix");
-    
+
   return( <div className="PopUp-Container">
           <div className="PopUp-Content">
             <span className="close-icon" onClick={toggle}>x</span>
             {props.content} 
 
-            <Form schema={schema}  uiSchema={uiSchema}
-                    onChange={handleChange}
+            <Form schema={schema} uiSchema={uiSchema}
+                    onChange={onChange}
                     onSubmit={onSubmit}
                     onError={onError}/>
           </div>
