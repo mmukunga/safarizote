@@ -151,7 +151,7 @@ const Safaris = () => {
   const videos = [image01, image02, image03, image04, image05, image06];
   
   /*const log = (type) => console.log(console, type);*/
-
+   console.log(state && state.name);
   return ( 
       <CustomContext.Provider value={providerState}>
         <Card className="InnerCard" fontColor="black">    
@@ -171,6 +171,7 @@ const Safaris = () => {
             ); 
           })}
         </div>
+        
         <div className="BookingInfo">
           {state.tours.map((tour, index) => (
             <div key={index} className="dashboardmenu">

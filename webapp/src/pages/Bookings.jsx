@@ -32,13 +32,13 @@ const Bookings = (props) => {
 
   const handleChange = el => {
     console.log(el.target);
-/*    const { name, value } = el.target;
+    const { name, value } = el.target;
     console.log(state);
     if (el.target.nodeName === "SELECT") {
       dispatch({ type: 'ADD_TOUR', payload: el.target });
     } else {
       dispatch({ type: 'INIT_BOOKING', payload: el.target });
-    }    */
+    }   
   }
 
   const handleSubmit = e => {
