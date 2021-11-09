@@ -34,7 +34,7 @@ const Bookings = (props) => {
   const handleChange = el => {
     console.log(el.formData);
     console.log(state);
-    dispatch({ type: 'ADD_TOUR', payload: el.formData });
+    dispatch({ type: 'INIT_BOOKING', payload: el.formData });
   }
 
   const handleSubmit = e => {
