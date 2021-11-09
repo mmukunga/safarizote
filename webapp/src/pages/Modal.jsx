@@ -15,7 +15,8 @@ const schema = {
     date: {type: "string", title: "Arrival Date"},
     adults: {type: "string", title: "Number of adults"},
     children: {type: "string", title: "Number of children"},
-    isGoing: {type: "boolean", title: "Going?", default: false}
+    isGoing: {type: "boolean", title: "Going?", default: false},
+    message: {type: "string", title: "Please write us a message"}
   }
 };
 
@@ -27,8 +28,8 @@ const Modal = (props) => props.isOpen ?
           {props.content} 
 
           <Form schema={schema}
-                  onChange={console.log("changed")}
-                  onSubmit={console.log("submitted")}
+                  onChange={props.handleChange}
+                  onSubmit={props.handleSubmit}
                   onError={console.log("errors")}/>
 
           <form onSubmit={props.handleSubmit}> 
