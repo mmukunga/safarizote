@@ -20,9 +20,6 @@ const schema = {
 };
 
 const uiSchema = {
-  telephone: {
-    "ui:widget": "phoneNumberWidget"
-  },
   message: {
      "ui:widget": "textarea"
   },
