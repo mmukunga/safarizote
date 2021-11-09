@@ -33,67 +33,67 @@ const Modal = (props) => props.isOpen ?
                   onError={console.log("errors")}/>
 
           <form onSubmit={props.handleSubmit}> 
-            <div class="row">
-              <div class="col-25">
-                <label for="name">Name</label>
+            <div className="row">
+              <div className="col-25">
+                <label forHtml="name">Name</label>
               </div>
-              <div class="col-75">
+              <div className="col-75">
                 <input id='name' name="name" onChange={props.handleChange}/>
               </div>
             </div>
-            <div class="row">
-              <div class="col-25">
-                <label for="email">Email</label>
+            <div className="row">
+              <div className="col-25">
+                <label forHtml="email">Email</label>
               </div>
-              <div class="col-75">
+              <div className="col-75">
               <input id='email' name="email" onChange={props.handleChange}/>
               </div>
             </div>
-            <div class="row">
-              <div class="col-25">
-                <label for="date">Arrival Date</label>
+            <div className="row">
+              <div className="col-25">
+                <label forHtml="date">Arrival Date</label>
               </div>
-              <div class="col-75">
+              <div className="col-75">
               <input id='date' name="date" onChange={props.handleChange}/>
               </div>
             </div>
-            <div class="row">
-              <div class="col-25">
-                <label for="address">Address</label>
+            <div className="row">
+              <div className="col-25">
+                <label forHtml="address">Address</label>
               </div>
-              <div class="col-75">
+              <div className="col-75">
               <input id='address' name="address" onChange={props.handleChange}/>
               </div>
             </div>
-            <div class="row">
-              <div class="col-25">
-                <label for="adults">Adults</label>
+            <div className="row">
+              <div className="col-25">
+                <label forHtml="adults">Adults</label>
               </div>
-              <div class="col-75">
+              <div className="col-75">
                 <input id='adults' name="adults" onChange={props.handleChange}/>
               </div>
             </div>
-            <div class="row">
-              <div class="col-25">
-                <label for="children">Children</label>
+            <div className="row">
+              <div className="col-25">
+                <label forHtml="children">Children</label>
               </div>
-              <div class="col-75">
+              <div className="col-75">
                 <input id='children' name="children" onChange={props.handleChange}/>
               </div>
             </div>
-            <div class="row">
-              <div class="col-25">
-                <label for="isGoing">Is Going</label>
+            <div className="row">
+              <div className="col-25">
+                <label forHtml="isGoing">Is Going</label>
               </div>
-              <div class="col-75">
+              <div className="col-75">
               <input type="checkbox" id='isGoing' name="isGoing" onChange={props.handleChange}/>
               </div>
             </div>     
-            <div class="row">
-              <div class="col-25">
-                <label for="safariId">Safari ID</label>
+            <div className="row">
+              <div className="col-25">
+                <label forHtml="safariId">Safari ID</label>
               </div>
-              <div class="col-75">
+              <div className="col-75">
               <select id="safariId" name="safariId" onChange={props.handleChange}>
                   {props.options.map((option) => (
                     <option value={option.id}>{option.title}</option>
@@ -101,15 +101,15 @@ const Modal = (props) => props.isOpen ?
                 </select>
               </div>
             </div>
-            <div class="row">
-              <div class="col-25">
-                <label for="message">Message</label>
+            <div className="row">
+              <div className="col-25">
+                <label forHtml="message">Message</label>
               </div>
-              <div class="col-75">
+              <div className="col-75">
                 <textarea id="message" name="message" onChange={props.handleChange} style={{height:"100px"}}></textarea>
               </div>
             </div>
-            <div class="row">
+            <div className="row">
               <input type="submit" value="Submit"/>
             </div>
           </form>

@@ -78,13 +78,13 @@ function App() {
   return (
     <div className="App" style={imageStyles}>
       <header className="App-header"> 
-        <div class="TopMenu">
-          <div class="item left"><img src={logo} className="App-logo" alt="logo"/></div>
-          <div class="item divPad">
+        <div className="TopMenu">
+          <div className="item left"><img src={logo} className="App-logo" alt="logo"/></div>
+          <div className="item divPad">
             Africa Safari! <code>Like Masaai Mara</code>  
             <NavLink to={{pathname: "/email"}} className="Nav_link"> Learn more</NavLink>
           </div>
-          <div class="item right">
+          <div className="item right">
           <SwitchButton/>
            &nbsp;{UserService.isLoggedIn() != null ? 'Is Logged in!' : 'Please login!'}  
            &nbsp;<a href="" className="Nav_link LogOut" onClick={logout}></a> 

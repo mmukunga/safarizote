@@ -100,7 +100,7 @@ function BackUp() {
      <div className="gallery">
         {posts} 
      </div>
-     <div class="newsbrief"> </div>
+     <div className="newsbrief"> </div>
    </Card>
  );
 }

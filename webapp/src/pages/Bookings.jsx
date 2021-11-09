@@ -52,11 +52,10 @@ const Bookings = (props) => {
   return (
     <div>
       <div className="dashboardmenu">
-        <label for='boxfield' style={{padding:0}}>Hello!! {state.name}
+        <label forHtml='boxfield' style={{padding:0}}>Hello!! {state.name}
         <input type="button" name='boxfield' style={{padding:0, border:'2px solid red'}} value="Start Booking" onClick={() => setIsOpen(true)}/>
         </label>
       </div>
-      <Modal isOpen={isOpen} toggle={toggle} handleChange={handleChange} handleSubmit={handleSubmit} options={options && options}/>
     </div>
   );
 }

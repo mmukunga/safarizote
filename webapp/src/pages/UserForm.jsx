@@ -26,7 +26,7 @@ const UserForm =
             <form>    
                 <div className="row">    
                     <div className="col-25">    
-                        <label for="fname">First Name</label>    
+                        <label forHtml="fname">First Name</label>    
                     </div>    
                     <div className="col-75">    
                         <input type="text" 
@@ -37,7 +37,7 @@ const UserForm =
                 </div>    
                 <div className="row">    
                     <div className="col-25">    
-                        <label for="lname">Last Name</label>    
+                        <label forHtml="lname">Last Name</label>    
                     </div>    
                     <div className="col-75">    
                         <input type="text" 
@@ -48,7 +48,7 @@ const UserForm =
                 </div>    
                 <div className="row">    
                     <div className="col-25">    
-                        <label for="email">Mail Id</label>    
+                        <label forHtml="email">Mail Id</label>    
                     </div>    
                     <div className="col-75">    
                         <input type="email" 
@@ -59,7 +59,7 @@ const UserForm =
                 </div>    
                 <div className="row">    
                     <div className="col-25">    
-                        <label for="country">Country</label>    
+                        <label forHtml="country">Country</label>    
                     </div>    
                     <div className="col-75">    
                         <select id="country" name="country">    
@@ -76,7 +76,7 @@ const UserForm =
                 </div>    
                 <div className="row">    
                     <div className="col-25">    
-                        <label for="feed_back">Feed Back</label>    
+                        <label forHtml="feed_back">Feed Back</label>    
                     </div>    
                     <div className="col-75">    
                         <textarea id="subject" 

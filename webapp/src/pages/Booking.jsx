@@ -57,29 +57,29 @@ function Booking({ bookingsReducer, safariId, dispatch, showForm, parentCallback
     const modalCart = showForm && ( 
       <div className='overlay'>
         <div className='popUp'>  
-            <div class="pHeader">
-              <div class="pChild">
+            <div className="pHeader">
+              <div className="pChild">
                 <span className="SafariTitle">For enquiries - Please Send us an 
                 <NavLink to={{ pathname: "/email", state: { modal: true }, }} className="Nav_link urlStyle">E-Mail</NavLink></span>
               </div>
-              <div class="pCloseMe"><a href="#" onClick={handleShowForm}>&#x274C;</a></div>
+              <div className="pCloseMe"><a href="#" onClick={handleShowForm}>&#x274C;</a></div>
             </div>    
             <p id="formInstructions">Fields marked with an asterisk (*) are required.</p>    
-            <div class="popUp-content" style={{textAlign: 'center'}}>
+            <div className="popUp-content" style={{textAlign: 'center'}}>
               <form className="form-container" onSubmit={handleSubmit}>
-                <div class="row">
-                  <div class="col-25">
-                    <label class="required" style={{padding: '2px 2px 2px 0'}} for="name">Names</label>
+                <div className="row">
+                  <div className="col-25">
+                    <label className="required" style={{padding: '2px 2px 2px 0'}} for="name">Names</label>
                   </div>
-                  <div class="col-75">
+                  <div className="col-75">
                     <input type="text" id="name" name="name" style={{padding: '2px'}} onChange={handleChange} required aria-required="true" placeholder="Your names.."/>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-25">
+                <div className="row">
+                  <div className="col-25">
                     <label style={{padding: '2px 2px 2px 0'}} for="gender">Gender</label>
                   </div>
-                  <div class="col-75">
+                  <div className="col-75">
                     <select id="gender" name="gender" style={{padding: '2px'}}>
                       <option value="M">Male</option>
                       <option value="F">Female</option>
@@ -87,63 +87,63 @@ function Booking({ bookingsReducer, safariId, dispatch, showForm, parentCallback
                     </select>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-25">
-                    <label class="required" style={{padding: '2px 2px 2px 0'}} for="email">E-Mail</label>
+                <div className="row">
+                  <div className="col-25">
+                    <label className="required" style={{padding: '2px 2px 2px 0'}} for="email">E-Mail</label>
                   </div>
-                  <div class="col-75">
+                  <div className="col-75">
                     <input type="text" id="email" name="email" style={{padding: '2px'}} onChange={handleChange} required aria-required="true" placeholder="Your e-mail.."/>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-25">
+                <div className="row">
+                  <div className="col-25">
                     <label style={{padding: '2px 2px 2px 0'}} for="phone">Phone</label>
                   </div>
-                  <div class="col-75">
+                  <div className="col-75">
                     <input type="text" id="phone" name="phone" style={{padding: '2px'}} onChange={handleChange} placeholder="Your phone.."/>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-25">
+                <div className="row">
+                  <div className="col-25">
                     <label style={{padding: '2px 2px 2px 0'}} for="address">Address</label>
                   </div>
-                  <div class="col-75">
+                  <div className="col-75">
                     <input type="text" id="address" name="address" style={{padding: '2px'}} onChange={handleChange} placeholder="Your Address.."/>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-25">
-                    <label class="required" style={{padding: '2px 2px 2px 0'}} for="date">Arrival Date</label>
+                <div className="row">
+                  <div className="col-25">
+                    <label className="required" style={{padding: '2px 2px 2px 0'}} for="date">Arrival Date</label>
                   </div>
-                  <div class="col-75">
+                  <div className="col-75">
                   <DatePicker selected={startDate} className="cssDate" onChange={(date) => setStartDate(date)} required aria-required="true"/>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-25">
-                    <label class="required" style={{padding: '2px 2px 2px 0'}} for="adults">Adults</label>
+                <div className="row">
+                  <div className="col-25">
+                    <label className="required" style={{padding: '2px 2px 2px 0'}} for="adults">Adults</label>
                   </div>
-                  <div class="col-75">
+                  <div className="col-75">
                     <input type="text" id="adults" name="adults" style={{padding: '2px'}} onChange={handleChange} required aria-required="true" placeholder="Number Of Adults.."/>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-25">
+                <div className="row">
+                  <div className="col-25">
                     <label style={{padding: '2px 2px 2px 0'}} for="children">Children</label>
                   </div>
-                  <div class="col-75">
+                  <div className="col-75">
                     <input type="text" id="children" name="children" style={{padding: '2px'}} onChange={handleChange} placeholder="Number Of Children.."/>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-25">
+                <div className="row">
+                  <div className="col-25">
                     <label style={{padding: '2px 2px 2px 0'}} for="message">Message</label>
                   </div>
-                  <div class="col-75">
+                  <div className="col-75">
                     <textarea id="message" name="message" style={{padding: '2px'}} onChange={handleChange} placeholder="Write a message.."  style={{height:'150px'}}></textarea>
                   </div>
                 </div>
-                <div class="row">
+                <div className="row">
                   <input type="submit" value="Add To 🛒Cart"/>
                 </div>
               </form>

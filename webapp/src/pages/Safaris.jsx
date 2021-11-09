@@ -174,7 +174,7 @@ const Safaris = () => {
         <div className="BookingInfo">
           {state.tours.map((tour, index) => (
             <div key={index} className="dashboardmenu">
-              <label for='boxfield1' style={{padding:0}}>Safari {tour.id} Tour Id: {tour.safariId}
+              <label forHtml='boxfield1' style={{padding:0}}>Safari {tour.id} Tour Id: {tour.safariId}
                 <input type="button" name='boxfield1' style={{padding:0}} value="X" onClick={() => dispatch({ type: 'REMOVE_TOUR', index })}/>
               </label> 
             </div>
