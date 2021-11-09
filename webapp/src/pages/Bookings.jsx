@@ -32,7 +32,7 @@ const Bookings = (props) => {
   }, []);
 
   const handleChange = el => {
-    console.log(el);
+    console.log(el.formData);
     /*const { name, value } = el.target;
     console.log(state);
     if (el.target.nodeName === "SELECT") {

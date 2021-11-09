@@ -1,7 +1,8 @@
 import React from "react";
+import { useDispatch } from 'react-redux';
 import ReactDOM from "react-dom";
 import Form from "react-jsonschema-form";
-
+ 
 const schema = {
   type: "object",
   title: "A booking information",
@@ -33,6 +34,9 @@ const Modal = (props) => {
       return null;
   }
 
+
+  const onSubmit = ({formData}) => console.log("Data submitted: ",  formData);
+
   const modal = ({handleChange, handleSubmit, toggle, options}) => {
   return( <div className="PopUp-Container">
           <div className="PopUp-Content">
@@ -41,7 +45,7 @@ const Modal = (props) => {
 
             <Form schema={schema}  uiSchema={uiSchema}
                     onChange={handleChange}
-                    onSubmit={handleSubmit}
+                    onSubmit={onSubmit}
                     onError={console.log("errors")}/>
           </div>
         </div>);
