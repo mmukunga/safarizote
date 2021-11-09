@@ -10,7 +10,7 @@ const schema = {
   properties: {
     name: {type: "string", title: "Full name"},
     email: {type: "string", title: "Email address"},
-    telephone: {type: "string", title: "Telephone", minLength: 10},
+    telephone: {type: "string", title: "Phone Number", minLength: 10},
     date: {type: "string", title: "Arrival Date"},
     adults: {type: "string", title: "Number of adults"},
     children: {type: "string", title: "Number of children"},
