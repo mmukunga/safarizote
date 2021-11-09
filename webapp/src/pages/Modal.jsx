@@ -8,14 +8,14 @@ const schema = {
   description: "A simple booking data.",
   required: ["name", "email", "date"],
   properties: {
-    name: {type: "string", title: "Full name", pattern: "^[A-Z][a-z]*(\\s[A-Z][a-z]*)*$"},
-    email: {type: "string", title: "Email address"},
-    telephone: {type: "string", title: "Phone Number", minLength: 10},
-    date: {type: "string", title: "Arrival Date"},
-    adults: {type: "number", minimum: 0, title: "Number of adults"},
-    children: {type: "number", minimum: 0, title: "Number of children"},
+    name:    {type: "string", title: "Full name", pattern: "^[A-Z][a-z]*(\\s[A-Z][a-z]*)*$"},
+    email:   {type: "string", title: "Email address"},
+    phone:   {type: "string", title: "Phone Number", minLength: 10},
+    date:    {type: "string", title: "Arrival Date"},
+    adults:  {type: "number", minimum: 0, title: "Number of adults"},
+    children:{type: "number", minimum: 0, title: "Number of children"},
     isGoing: {type: "boolean", title: "Going?", default: false},
-    message: {type: "string", title: "Please write us a message"},
+    message: {type: "string",  title: "Please write us a message"},
     unit: {
       enum: ["kg", "lbs"],
       enumNames: ["KG","lbs"]
