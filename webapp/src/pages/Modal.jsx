@@ -36,12 +36,14 @@ const Modal = (props) => {
   if (!props.isOpen) {
       return null;
   }
-
-
-  const onSubmit = ({formData}) => console.log("Data submitted: ",  formData);
-  const onError = (errors) => console.log("I have", errors.length, "errors to fix");
-  
+ 
   const modal = ({handleChange, handleSubmit, toggle, options}) => {
+    const onSubmit = ({formData}) => {
+      console.log("Data submitted: ",  formData);
+      handleSubmit(formData);
+    }
+    const onError = (errors) => console.log("I have", errors.length, "errors to fix");
+    
   return( <div className="PopUp-Container">
           <div className="PopUp-Content">
             <span className="close-icon" onClick={toggle}>x</span>
