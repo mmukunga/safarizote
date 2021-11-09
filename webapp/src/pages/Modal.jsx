@@ -6,7 +6,7 @@ const schema = {
   type: "object",
   title: "A booking information",
   description: "A simple booking data.",
-  required: ["title", "name", "email"],
+  required: ["name", "email", "date"],
   properties: {
     name: {type: "string", title: "Full name"},
     email: {type: "string", title: "Email address"},
@@ -35,7 +35,8 @@ const Modal = (props) => {
 
 
   const onSubmit = ({formData}) => console.log("Data submitted: ",  formData);
-
+  const onError = (errors) => console.log("I have", errors.length, "errors to fix");
+  
   const modal = ({handleChange, handleSubmit, toggle, options}) => {
   return( <div className="PopUp-Container">
           <div className="PopUp-Content">
@@ -45,7 +46,7 @@ const Modal = (props) => {
             <Form schema={schema}  uiSchema={uiSchema}
                     onChange={handleChange}
                     onSubmit={onSubmit}
-                    onError={console.log("errors")}/>
+                    onError={onError}/>
           </div>
         </div>);
   }
