@@ -9,6 +9,7 @@ const Bookings = (props) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   const toggle = () => {
+    console.log('toggle');
     setIsOpen(!isOpen);
   }
 
@@ -31,7 +32,7 @@ const Bookings = (props) => {
   }, []);
 
   const handleChange = el => {
-    console.log(el.target);
+    console.log(el);
     /*const { name, value } = el.target;
     console.log(state);
     if (el.target.nodeName === "SELECT") {
@@ -53,7 +54,7 @@ const Bookings = (props) => {
     <div>
       <div className="dashboardmenu">
         <label forHtml='boxfield' style={{padding:0}}>Hello!! Start Booking
-        <input type="button" name='boxfield' style={{padding:0, border:'2px solid red'}} value="Start Booking" onClick={() => setIsOpen(true)}/>
+        <input type="button" name='boxfield' style={{padding:0, border:'2px solid red'}} onClick={() => setIsOpen(true)}/>
         </label>
         <Modal isOpen={isOpen} toggle={toggle} handleChange={handleChange} handleSubmit={handleSubmit} options={options && options}/>
       </div>
