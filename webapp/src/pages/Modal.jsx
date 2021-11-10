@@ -38,11 +38,14 @@ const Modal = (props) => {
   }
  
   const modal = ({handleChange, handleSubmit, toggle, options}) => {
-    const onChange = ({formData}) => {
+    const onChange = ({formData}, e) => {
+      console.log("Data Changed e: ",  e);
       console.log("Data Changed: ",  formData);
       handleChange(formData);
     }
-    const onSubmit = ({formData}) => {
+    const onSubmit = ({formData}, e) => {
+      console.log("Data submitted e: ",  e);
+      e.preventDefault();
       console.log("Data submitted: ",  formData);
       handleSubmit(formData);
     }
@@ -52,7 +55,6 @@ const Modal = (props) => {
           <div className="PopUp-Content">
             <span className="close-icon" onClick={toggle}>x</span>
             {props.content} 
-
             <Form schema={schema} uiSchema={uiSchema}
                     onChange={onChange}
                     onSubmit={onSubmit}

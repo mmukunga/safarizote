@@ -33,6 +33,7 @@ const Bookings = (props) => {
 
   const handleChange = el => {
     console.log(el);
+    console.log(el.formData);
     console.log(state);
     dispatch({ type: 'INIT_BOOKING', payload: el.formData });
   }
