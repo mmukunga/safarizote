@@ -34,7 +34,7 @@ const uiSchema = {
 
 const Modal = (props) => {
   const [formData, setFormData] = React.useState({});
-  
+
   if (!props.isOpen) {
       return null;
   }
@@ -42,9 +42,10 @@ const Modal = (props) => {
   const modal = ({handleChange, handleSubmit, toggle, options}) => {
     const onChange = ({formData}, e) => {
       console.log(formData);
+      console.log(e);
       setFormData({
         ...formData,
-        [e.params.name]: e.params.value,
+        ...e.formData,
       });
     }
   
