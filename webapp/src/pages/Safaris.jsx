@@ -63,7 +63,6 @@ const initialState = {
         console.log(data.title);
         dispatch({ type: 'ADD_TOUR', payload: data });
         setChecked(!checked);
-        console.log(state);
       };
 
       console.log(data);
