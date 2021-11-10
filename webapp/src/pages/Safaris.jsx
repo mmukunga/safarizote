@@ -27,7 +27,9 @@ const initialState = {
       }
       case 'ADD_TOUR': {
         const id = state.id + 1;
-        const { name, value } = action.payload;
+        const data  = action.payload;
+        const name  = data.title;
+        const value = data.id;
         return {
           ...state,
           tours: [...state.tours, { id: id, [name]: value }],
@@ -52,7 +54,10 @@ const initialState = {
         console.log('1.Added to Cart - ');
         console.log(e);
         console.log('2.Added to Cart - ');
-        console.log(`${data}`);
+        console.log(data);
+        console.log(data.id);
+        console.log(data.title);
+        dispatch({ type: 'ADD_TOUR', payload: data });
         setChecked(!checked);
       };
 
