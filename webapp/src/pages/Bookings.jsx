@@ -9,7 +9,6 @@ const Bookings = (props) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   const toggle = () => {
-    console.log('toggle');
     setIsOpen(!isOpen);
   }
 
@@ -32,9 +31,7 @@ const Bookings = (props) => {
   }, []);
 
   const handleSubmit = formData => {
-    console.log("Data submitted: ",  formData);
     toggle();
-    console.log(state);
     dispatch({ type: 'INIT_BOOKING', payload: formData });
   }
 

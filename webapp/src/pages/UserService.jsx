@@ -7,10 +7,10 @@ const isLoggedIn = () => {
 const loginUser = async (user) => {
   const {username, password} = user;
   const userAuth = { 
-    email: username,
-    password: password,
-    token: '',
-    dateCreated: new Date() 
+      email: username,
+      password: password,
+      token: '',
+      dateCreated: new Date() 
   };
   
   let isSignedUp = await axios.post('/api/login', userAuth).then((response) => {     

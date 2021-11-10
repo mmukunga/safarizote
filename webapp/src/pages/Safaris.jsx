@@ -30,6 +30,10 @@ const initialState = {
         const data  = action.payload;
         const name  = data.title;
         const value = data.id;
+        console.log(id);
+        console.log(data);
+        console.log(name);
+        console.log(value);
         return {
           ...state,
           tours: [...state.tours, { id: id, [name]: value }],
@@ -167,8 +171,6 @@ const Safaris = () => {
   });
   
   const videos = [image01, image02, image03, image04, image05, image06];
-  
-  /*const log = (type) => console.log(console, type);*/
 
    console.log(state);
 
