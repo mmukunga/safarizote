@@ -48,8 +48,9 @@ const initialState = {
   
   const Accordion = ({children, data, title, summary, video}) => {
       const [checked, setChecked] = React.useState(false);
-      const handleChange = () => {
-        console.log('Added to Cart - ' + `${data}`)
+      const handleChange = (e) => {
+        console.log('1.Added to Cart - ' + e);
+        console.log('2.Added to Cart - ' + `${data}`);
         setChecked(!checked);
       };
 
@@ -82,12 +83,12 @@ const initialState = {
           </div>
           <div dangerouslySetInnerHTML={{__html: summaryHTML}} /> 
           
-          <label>
+          <label style={{color:'red'}}>
              <input  type="checkbox" checked={checked}  onChange={handleChange}/>
              🛒 Safari - Add To Cart
           </label>
  
-          <p>Is "My Value" checked? {checked.toString()}</p>
+          Is "My Value" checked? {checked.toString()}
 
           <div className='clearfix'></div>
         </div>
