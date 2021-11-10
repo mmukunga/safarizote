@@ -41,17 +41,14 @@ const Modal = (props) => {
  
   const modal = ({handleSubmit, toggle, options}) => {
     const onChange = (props) => {
-      console.log(props.formData);
       setFormData({
         ...formData, 
         ...props.formData
       });
-      console.log(formData);
     }
 
     const onSubmit = ({formData},e) =>{
        e.preventDefault();
-       console.log("Data submitted: ",  formData);
        handleSubmit(formData);
     };
 

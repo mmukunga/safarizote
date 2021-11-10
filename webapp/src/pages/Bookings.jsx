@@ -32,7 +32,7 @@ const Bookings = (props) => {
   }, []);
 
   const handleSubmit = formData => {
-    console.log(formData);
+    console.log("Data submitted: ",  formData);
     toggle();
     console.log(state);
   }
