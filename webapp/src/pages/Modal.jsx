@@ -73,6 +73,7 @@ const Modal = (props) => {
             <span className="close-icon" onClick={toggle}>x</span>
             {props.content} 
             <Form schema={schema} uiSchema={uiSchema}
+                    formData={formData}
                     onChange={onChange}
                     onSubmit={onSubmit}
                     onError={onError}/>
