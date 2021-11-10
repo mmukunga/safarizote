@@ -33,13 +33,13 @@ const uiSchema = {
 };
 
 const Modal = (props) => {
+  const [formData, setFormData] = React.useState({});
+  
   if (!props.isOpen) {
       return null;
   }
  
   const modal = ({handleChange, handleSubmit, toggle, options}) => {
-    const [formData, setFormData] = React.useState({});
-
     const onChange = ({formData}, e) => {
       console.log(formData);
       setFormData({
