@@ -39,7 +39,7 @@ const Modal = (props) => {
       return null;
   }
  
-  const modal = ({handleChange, handleSubmit, toggle, options}) => {
+  const modal = ({handleSubmit, toggle, options}) => {
     const onChange = (props) => {
       console.log(props.formData);
       setFormData({
@@ -48,26 +48,12 @@ const Modal = (props) => {
       });
       console.log(formData);
     }
-  
-/*
-    const onChange = ({formData}, e) => {
-      console.log("Data Changed e: ",  e);
-      console.log("Data Changed: ",  e.formData);
-      setFormData({...formData, ...e.formData});
-      //handleChange(formData);
-    }
-*/
+
     const onSubmit = ({formData},e) =>{
        e.preventDefault();
-       console.log("Data submitted: ",  formData)
+       console.log("Data submitted: ",  formData);
+       handleSubmit(formData);
     };
-   /* 
-    const onSubmit = ({formData}, e) => {
-      console.log("Data submitted e: ",  e);
-      e.preventDefault();
-      console.log("Data submitted: ",  formData);
-      //handleSubmit(formData);
-    }*/
 
     const onError = (errors) => console.log("I have", errors.length, "errors to fix");
 

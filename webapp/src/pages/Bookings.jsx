@@ -31,15 +31,8 @@ const Bookings = (props) => {
     });
   }, []);
 
-  const handleChange = el => {
-    console.log(el);
-    console.log(el.formData);
-    console.log(state);
-    dispatch({ type: 'INIT_BOOKING', payload: el.formData });
-  }
-
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = formData => {
+    console.log(formData);
     toggle();
     console.log(state);
   }
@@ -52,7 +45,7 @@ const Bookings = (props) => {
         <label forHtml='boxfield' style={{padding:0}}>Hello!! Start Booking
         <input type="button" name='boxfield' style={{padding:0, border:'2px solid red'}} onClick={() => setIsOpen(true)}/>
         </label>
-        <Modal isOpen={isOpen} toggle={toggle} handleChange={handleChange} handleSubmit={handleSubmit} options={options && options}/>
+        <Modal isOpen={isOpen} toggle={toggle} handleSubmit={handleSubmit} options={options && options}/>
       </div>
     </div>
   );
