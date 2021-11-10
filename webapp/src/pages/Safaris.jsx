@@ -57,7 +57,7 @@ const initialState = {
         console.log(data);
         console.log(data.id);
         console.log(data.title);
-        dispatch({ type: 'ADD_TOUR', payload: data });
+        props.dispatch({ type: 'ADD_TOUR', payload: data });
         setChecked(!checked);
       };
 
