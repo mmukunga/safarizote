@@ -48,14 +48,14 @@ const Modal = (props) => {
       });
     }
   
-
+/*
     const onChange = ({formData}, e) => {
       console.log("Data Changed e: ",  e);
       console.log("Data Changed: ",  e.formData);
       setFormData({...formData, ...e.formData});
       //handleChange(formData);
     }
-
+*/
     const onSubmit = ({formData},e) =>{
        e.preventDefault();
        console.log("Data submitted: ",  formData)
