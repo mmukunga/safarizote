@@ -47,7 +47,14 @@ const initialState = {
   };
   
   const Accordion = ({children, data, title, summary, video}) => {
+      const [checked, setChecked] = React.useState(false);
+      const handleChange = () => {
+        console.log('Added to Cart - ' + `${data}`)
+        setChecked(!checked);
+      };
+
       console.log(data);
+
       const VideoPlayer = ({video}) => {
         const videoRef = React.useRef(null);
       
@@ -74,6 +81,14 @@ const initialState = {
             <VideoPlayer video={video} className="video-player"/> 
           </div>
           <div dangerouslySetInnerHTML={{__html: summaryHTML}} /> 
+          
+          <label>
+             <input  type="checkbox" checked={checked}  onChange={handleChange}/>
+             🛒 Safari - Add To Cart
+          </label>
+ 
+          <p>Is "My Value" checked? {checked.toString()}</p>
+
           <div className='clearfix'></div>
         </div>
       );
@@ -145,7 +160,7 @@ const Safaris = () => {
   const videos = [image01, image02, image03, image04, image05, image06];
   
   /*const log = (type) => console.log(console, type);*/
-  
+
    console.log(state);
 
   return ( 
