@@ -38,17 +38,36 @@ const Modal = (props) => {
   }
  
   const modal = ({handleChange, handleSubmit, toggle, options}) => {
+    const [formData, setFormData] = React.useState({});
+
+    const onChange = ({formData}, e) => {
+      console.log(formData);
+      setFormData({
+        ...formData,
+        [e.params.name]: e.params.value,
+      });
+    }
+  
+
     const onChange = ({formData}, e) => {
       console.log("Data Changed e: ",  e);
-      console.log("Data Changed: ",  formData);
-      handleChange(formData);
+      console.log("Data Changed: ",  e.formData);
+      setFormData({...formData, ...e.formData});
+      //handleChange(formData);
     }
+
+    const onSubmit = ({formData},e) =>{
+       e.preventDefault();
+       console.log("Data submitted: ",  formData)
+    };
+   /* 
     const onSubmit = ({formData}, e) => {
       console.log("Data submitted e: ",  e);
       e.preventDefault();
       console.log("Data submitted: ",  formData);
-      handleSubmit(formData);
-    }
+      //handleSubmit(formData);
+    }*/
+
     const onError = (errors) => console.log("I have", errors.length, "errors to fix");
 
   return( <div className="PopUp-Container">
