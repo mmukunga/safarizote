@@ -52,9 +52,8 @@ const initialState = {
     }
   };
   
-  const Accordion = ({children, data, title, summary, video}) => {
+  const Accordion = ({children, data, dispatch, title, summary, video}) => {
       const [checked, setChecked] = React.useState(false);
-      const [state, dispatch ] = React.useReducer(bookingsReducer, initialState);
       const handleChange = (e) => {
         console.log('1.Added to Cart - ');
         console.log(e);
@@ -64,6 +63,7 @@ const initialState = {
         console.log(data.title);
         dispatch({ type: 'ADD_TOUR', payload: data });
         setChecked(!checked);
+        console.log(state);
       };
 
       console.log(data);
@@ -187,7 +187,7 @@ const Safaris = () => {
           {currentItems && currentItems.map((card) => {
               var id = Math.floor(Math.random() * videos.length) + 0; 
               return (
-              <Accordion data={card} title={card.title} summary={card.summary} video={videos[id]}>
+              <Accordion data={card} dispatch={dispatch} title={card.title} summary={card.summary} video={videos[id]}>
                 {card.details} 
               </Accordion>
             ); 
