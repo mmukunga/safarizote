@@ -49,8 +49,10 @@ const initialState = {
   const Accordion = ({children, data, title, summary, video}) => {
       const [checked, setChecked] = React.useState(false);
       const handleChange = (e) => {
-        console.log('1.Added to Cart - ' + e);
-        console.log('2.Added to Cart - ' + `${data}`);
+        console.log('1.Added to Cart - ');
+        console.log(e);
+        console.log('2.Added to Cart - ');
+        console.log(`${data}`);
         setChecked(!checked);
       };
 
