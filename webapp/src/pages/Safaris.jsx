@@ -28,15 +28,9 @@ const initialState = {
       case 'ADD_TOUR': {
         const id = state.id + 1;
         const data  = action.payload;
-        const name  = data.title;
-        const value = data.id;
-        console.log(id);
-        console.log(data);
-        console.log(name);
-        console.log(value);
         return {
           ...state,
-          tours: [...state.tours, { id: id, [name]: value }],
+          tours: [...state.tours, { id: id, title: [data.title], safariId: data.id }],
         };
       }
       case 'REMOVE_TOUR': {
@@ -55,17 +49,9 @@ const initialState = {
   const Accordion = ({children, data, dispatch, title, summary, video}) => {
       const [checked, setChecked] = React.useState(false);
       const handleChange = (e) => {
-        console.log('1.Added to Cart - ');
-        console.log(e);
-        console.log('2.Added to Cart - ');
-        console.log(data);
-        console.log(data.id);
-        console.log(data.title);
         dispatch({ type: 'ADD_TOUR', payload: data });
         setChecked(!checked);
       };
-
-      console.log(data);
 
       const VideoPlayer = ({video}) => {
         const videoRef = React.useRef(null);
