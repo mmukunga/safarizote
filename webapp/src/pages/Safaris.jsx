@@ -50,6 +50,7 @@ const initialState = {
   
   const Accordion = ({children, data, title, summary, video}) => {
       const [checked, setChecked] = React.useState(false);
+      const [state, dispatch ] = React.useReducer(bookingsReducer, initialState);
       const handleChange = (e) => {
         console.log('1.Added to Cart - ');
         console.log(e);
@@ -57,7 +58,7 @@ const initialState = {
         console.log(data);
         console.log(data.id);
         console.log(data.title);
-        props.dispatch({ type: 'ADD_TOUR', payload: data });
+        dispatch({ type: 'ADD_TOUR', payload: data });
         setChecked(!checked);
       };
 
