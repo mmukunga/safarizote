@@ -40,10 +40,13 @@ const Modal = (props) => {
   }
  
   const modal = ({handleChange, handleSubmit, toggle, options}) => {
-    const onChange = ({newData}) => {
-      console.log(newData);
-      setFormData(newData);
+    const onChange = (props) => {
       console.log(formData);
+      setFormData(formData);
+      console.log({
+        ...formData, 
+        ...props.formData
+      });
     }
   
 /*
