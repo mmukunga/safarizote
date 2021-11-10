@@ -35,6 +35,7 @@ const Bookings = (props) => {
     console.log("Data submitted: ",  formData);
     toggle();
     console.log(state);
+    dispatch({ type: 'INIT_BOOKING', payload: formData });
   }
 
   console.log(state);

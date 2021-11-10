@@ -145,7 +145,9 @@ const Safaris = () => {
   const videos = [image01, image02, image03, image04, image05, image06];
   
   /*const log = (type) => console.log(console, type);*/
+  
    console.log(state);
+
   return ( 
       <CustomContext.Provider value={providerState}>
         <Card className="InnerCard" fontColor="black">    
