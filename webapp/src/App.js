@@ -1,6 +1,7 @@
 // src/App.js
 import React, { useContext } from 'react';
-import { Route, Switch, NavLink, withRouter, useHistory } from "react-router-dom";
+import { Route, Switch, NavLink, withRouter, useHistory, useLocation } from "react-router-dom";
+import ReactGA from 'react-ga';
 import {ThemeContext} from "./pages/ThemeContext";
 import SwitchButton from "./pages/Button";
 import logo from "./logo.svg";
@@ -21,7 +22,9 @@ import Private from './pages/Private';
 import UserService from './pages/UserService';
 
 function App() {
+  const [initialized, setInitialized] = useState(false);
   let history = useHistory();
+  const location = useLocation();
   const theme = useContext(ThemeContext);
   const darkMode = theme.state.darkMode;
 
@@ -53,6 +56,19 @@ function App() {
       backgroundImage: `url(${process.env.PUBLIC_URL + selectedImage})`,
       color: displayHome.color
   };
+
+  React.useEffect(() => {
+    if (!window.location.href.includes("localhost")) {
+      ReactGA.initialize("G-56H4WW2G1Y");
+      setInitialized(true);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    if (initialized) {
+      ReactGA.pageview(location.pathname + location.search);
+    }
+  }, [initialized, location]);
 
   const DropDown = props => {
     const {history} = props;
