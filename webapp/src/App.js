@@ -22,7 +22,7 @@ import Private from './pages/Private';
 import UserService from './pages/UserService';
 
 function App() {
-  const [initialized, setInitialized] = useState(false);
+  const [initialized, setInitialized] = React.useState(false);
   let history = useHistory();
   const location = useLocation();
   const theme = useContext(ThemeContext);
