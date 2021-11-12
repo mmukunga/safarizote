@@ -2,6 +2,7 @@ package com.example.safarizote.utils;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.util.Arrays;
 
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpRequestInitializer;
@@ -45,8 +46,9 @@ public class AnalyticsUtils implements IGAService{
                 .fromStream(new FileInputStream(KEY_FILE_LOCATION))
                 .createScoped(AnalyticsScopes.all());  */     
        
-                Resource resource = new ClassPathResource("credentials.json");
-      GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());   
+      //          Resource resource = new ClassPathResource("credentials.json");
+      //GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());  
+      GoogleCredentials credentials = GoogleCredentials.getApplicationDefault().createScoped(Arrays.asList("https://www.googleapis.com/auth/cloud-platform")); 
        HttpRequestInitializer requestInitializer = new HttpCredentialsAdapter(credentials); 
 
         // Analytics
