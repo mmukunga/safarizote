@@ -16,8 +16,6 @@ import com.google.api.services.analytics.model.Profiles;
 import com.google.api.services.analytics.model.Webproperties;
 import com.google.auth.http.HttpCredentialsAdapter;
 import com.google.auth.oauth2.GoogleCredentials;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 
 import org.springframework.stereotype.Service;
 /**
