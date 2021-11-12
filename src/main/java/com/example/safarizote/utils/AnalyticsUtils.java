@@ -31,9 +31,9 @@ public class AnalyticsUtils {
     public void run(String... args) throws Exception {
     try {
         Analytics analytics = initializeAnalytics();
-
+        System.out.println("1.First Profile Id!" );
         String profile = getFirstProfileId(analytics);
-        System.out.println("First Profile Id: " + profile);
+        System.out.println("2.First Profile Id: " + profile);
         printResults(getResults(analytics, profile));
     } catch (GeneralSecurityException e) {
         e.printStackTrace();
