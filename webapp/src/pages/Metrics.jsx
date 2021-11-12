@@ -5,6 +5,14 @@ import Card from './Card';
 const Metrics = () => {
    const [myData, setMyData] = useState([]);
    const [totalCount, setTotalCount] = useState(0);
+    
+   useEffect(() => {
+        axios.get('/api/healthCheck').then(response => {
+          console.log(response);
+      }).catch(err => {
+          console.log(err);
+      });
+    }, []);
 
     async function findDate(data) {
         const mediaTypes = data.map(dataItem => dataItem.hostname) 

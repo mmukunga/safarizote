@@ -17,29 +17,24 @@ import com.google.api.services.analytics.model.Webproperties;
 import com.google.auth.http.HttpCredentialsAdapter;
 import com.google.auth.oauth2.GoogleCredentials;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 /**
  * A simple example of how to access the Google Analytics API using a service
  * account.
  */
-@Component
-public class AnalyticsUtils {
+@Service("gaService")
+public class AnalyticsUtils implements IGAService{
     private static final String APPLICATION_NAME = "safarizote";
     private static final JsonFactory JSON_FACTORY = new JacksonFactory();
     //private static final String KEY_FILE_LOCATION = "credentials.json";
 
-    public void run(String... args) throws Exception {
-    try {
+    public GaData getGAData() throws Exception {
         Analytics analytics = initializeAnalytics();
         System.out.println("1.First Profile Id!" );
         String profile = getFirstProfileId(analytics);
         System.out.println("2.First Profile Id: " + profile);
         printResults(getResults(analytics, profile));
-    } catch (GeneralSecurityException e) {
-        e.printStackTrace();
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
+        return getResults(analytics, profile);
   }
 
     private static Analytics initializeAnalytics()
