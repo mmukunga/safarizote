@@ -1,6 +1,5 @@
 package com.example.safarizote.utils;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
@@ -16,6 +15,8 @@ import com.google.api.services.analytics.model.Profiles;
 import com.google.api.services.analytics.model.Webproperties;
 import com.google.auth.http.HttpCredentialsAdapter;
 import com.google.auth.oauth2.GoogleCredentials;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 import org.springframework.stereotype.Service;
 /**
@@ -43,9 +44,10 @@ public class AnalyticsUtils implements IGAService{
         /*GoogleCredential credential = GoogleCredential
                 .fromStream(new FileInputStream(KEY_FILE_LOCATION))
                 .createScoped(AnalyticsScopes.all());  */     
-
-       GoogleCredentials credential = GoogleCredentials.fromStream(new FileInputStream("credentials.json"));     
-       HttpRequestInitializer requestInitializer = new HttpCredentialsAdapter(credential); 
+       
+                Resource resource = new ClassPathResource("credentials.json");
+      GoogleCredentials credentials = GoogleCredentials.fromStream(resource.getInputStream());   
+       HttpRequestInitializer requestInitializer = new HttpCredentialsAdapter(credentials); 
 
         // Analytics
         return new Analytics
