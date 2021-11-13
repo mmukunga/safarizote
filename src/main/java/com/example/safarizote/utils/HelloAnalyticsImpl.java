@@ -12,11 +12,14 @@ import com.google.api.services.analytics.model.GaData;
 import com.google.api.services.analytics.model.Profiles;
 import com.google.api.services.analytics.model.Webproperties;
 
+import org.springframework.stereotype.Service;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
-public class HelloAnalytics implements IGAService {
+@Service("gaService")
+public class HelloAnalyticsImpl implements IHelloAnalytics { 
   private static final String APPLICATION_NAME = "GoogleAnalytics";
   private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
   private static final String KEY_FILE_LOCATION = "gaCredentials.json";

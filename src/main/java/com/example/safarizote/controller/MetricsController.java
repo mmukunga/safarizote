@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.safarizote.model.Metrics;
 import com.example.safarizote.repository.MetricsRepository;
-import com.example.safarizote.utils.HelloAnalytics;
+import com.example.safarizote.utils.IHelloAnalytics;
 
 @RestController
 public class MetricsController { 
@@ -21,7 +21,7 @@ public class MetricsController {
   private MetricsRepository repository;
   
   @Autowired
-	private HelloAnalytics gaService;
+	private IHelloAnalytics gaService;
 
   @GetMapping("/api/healthCheck")
   public ResponseEntity<String> healthCheck() throws Exception {
