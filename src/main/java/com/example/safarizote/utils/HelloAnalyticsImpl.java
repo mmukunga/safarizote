@@ -12,8 +12,14 @@ import com.google.api.services.analytics.model.GaData;
 import com.google.api.services.analytics.model.Profiles;
 import com.google.api.services.analytics.model.Webproperties;
 
+import org.apache.tomcat.util.descriptor.web.ResourceBase;
+
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -47,9 +53,12 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
   private static Analytics initializeAnalytic() throws GeneralSecurityException, IOException {
 
     HttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
+    // Getting ClassLoader obj
+    //ClassLoader classLoader = getClass().getClassLoader();
+    Resource resource = new ClassPathResource(KEY_FILE_LOCATION);
     GoogleCredential credential = GoogleCredential
-        .fromStream(new FileInputStream(KEY_FILE_LOCATION))
-        .createScoped(AnalyticsScopes.all());
+            .fromStream(resource.getInputStream())
+            .createScoped(AnalyticsScopes.all());
 
     // Construct the Analytics service object.
     return new Analytics.Builder(httpTransport, JSON_FACTORY, credential)
