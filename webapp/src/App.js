@@ -59,7 +59,7 @@ function App() {
 
   React.useEffect(() => {
     if (!window.location.href.includes("localhost")) {
-      ReactGA.initialize("G-N4QK0GCZMW");
+      ReactGA.initialize("UA-212865058-1");
       setInitialized(true);
     }
   }, []);
