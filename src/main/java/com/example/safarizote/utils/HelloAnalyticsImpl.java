@@ -60,8 +60,10 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
       System.err.println("No accounts found");
     } else {
       String firstAccountId = accounts.getItems().get(0).getId();
+      System.out.println("firstAccountId:= " + firstAccountId);
       Webproperties properties = analytics.management().webproperties()
           .list(firstAccountId).execute();
+      System.out.println("properties:= " + properties);    
       if (properties.getItems().isEmpty()) {
         System.err.println("No Webproperties found");
       } else {
