@@ -83,6 +83,23 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
         System.out.println("Property Updated: " + property.getUpdated());
       }
 
+      Webproperties properties2 = analytics.management().webproperties().list("~all").execute();
+      for (Webproperty property : properties2.getItems()) {
+        System.out.println("Account ID: " + property.getAccountId());
+        System.out.println("Property ID: " + property.getId());
+        System.out.println("Property Name: " + property.getName());
+        System.out.println("Property Profile Count: " + property.getProfileCount());
+        System.out.println("Property Industry Vertical: "
+            + property.getIndustryVertical());
+        System.out.println("Property Internal Id: "
+            + property.getInternalWebPropertyId());
+        System.out.println("Property Level: " + property.getLevel());
+        if (property.getWebsiteUrl() != null) {
+          System.out.println("Property URL: " + property.getWebsiteUrl());
+        }
+        System.out.println("Property Created: " + property.getCreated());
+        System.out.println("Property Updated: " + property.getUpdated());
+      }
 
       if (properties.getItems().isEmpty()) {
         System.err.println("No Webproperties found");
