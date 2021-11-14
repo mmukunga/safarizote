@@ -63,7 +63,7 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
       String firstAccountId = accounts.getItems().get(0).getId();
       System.out.println("firstAccountId:= " + firstAccountId);
       Webproperties properties = analytics.management().webproperties()
-          .list("212839620").execute();
+          .list(firstAccountId).execute();
       System.out.println("properties:= " + properties);
       
       for (Webproperty property : properties.getItems()) {
