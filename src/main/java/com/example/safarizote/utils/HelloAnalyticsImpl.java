@@ -126,6 +126,8 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
   }
 
   private static void printResults(GaData results) {
+    System.out.println(results);
+    System.out.println(results.getRows());
     if (results != null && !results.getRows().isEmpty()) {
       System.out.println("View (Profile) Name: "
         + results.getProfileInfo().getProfileName());
