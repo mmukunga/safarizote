@@ -23,9 +23,9 @@ import java.security.GeneralSecurityException;
 
 @Service("gaService")
 public class HelloAnalyticsImpl implements IHelloAnalytics { 
-  private static final String APPLICATION_NAME = "gaSafarizote";
+  private static final String APPLICATION_NAME = "GaSafarizote";
   private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
-  private static final String KEY_FILE_LOCATION = "gaSafarizote-2e51f4174cf8.json";
+  private static final String KEY_FILE_LOCATION = "authSafarizote-2e51f4174cf8.json";
   
     public GaData getGAData() throws Exception {
         System.out.println("1.gaService.getGAData()");
