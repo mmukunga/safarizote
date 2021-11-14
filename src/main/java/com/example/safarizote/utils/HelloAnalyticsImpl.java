@@ -11,6 +11,7 @@ import com.google.api.services.analytics.model.Accounts;
 import com.google.api.services.analytics.model.GaData;
 import com.google.api.services.analytics.model.Profiles;
 import com.google.api.services.analytics.model.Webproperties;
+import com.google.api.services.analytics.model.Webproperty;
 
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -63,7 +64,26 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
       System.out.println("firstAccountId:= " + firstAccountId);
       Webproperties properties = analytics.management().webproperties()
           .list(firstAccountId).execute();
-      System.out.println("properties:= " + properties);    
+      System.out.println("properties:= " + properties);
+      
+      for (Webproperty property : properties.getItems()) {
+        System.out.println("Account ID: " + property.getAccountId());
+        System.out.println("Property ID: " + property.getId());
+        System.out.println("Property Name: " + property.getName());
+        System.out.println("Property Profile Count: " + property.getProfileCount());
+        System.out.println("Property Industry Vertical: "
+            + property.getIndustryVertical());
+        System.out.println("Property Internal Id: "
+            + property.getInternalWebPropertyId());
+        System.out.println("Property Level: " + property.getLevel());
+        if (property.getWebsiteUrl() != null) {
+          System.out.println("Property URL: " + property.getWebsiteUrl());
+        }
+        System.out.println("Property Created: " + property.getCreated());
+        System.out.println("Property Updated: " + property.getUpdated());
+      }
+
+
       if (properties.getItems().isEmpty()) {
         System.err.println("No Webproperties found");
       } else {
