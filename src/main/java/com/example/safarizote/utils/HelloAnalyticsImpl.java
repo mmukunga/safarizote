@@ -5,7 +5,6 @@ import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.gson.GsonFactory;
-import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.analytics.Analytics;
 import com.google.api.services.analytics.AnalyticsScopes;
 import com.google.api.services.analytics.model.Accounts;
@@ -26,8 +25,9 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
   private static final String APPLICATION_NAME = "GaMajiMoto";
   private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
   private static final String KEY_FILE_LOCATION = "gcmajimoto-958d87dbada8.json";
-  
-  
+  private static final java.io.File DATA_STORE_DIR =
+            new java.io.File(System.getProperty("user.home"), ".store/reporting_sample");
+
     public GaData getGAData() throws Exception {
         Analytics analytics = initializeAnalytic();
         String profile = getFirstProfileId(analytics);
@@ -43,6 +43,9 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
     GoogleCredential credential = GoogleCredential
                 .fromStream(resource.getInputStream())
                 .createScoped(AnalyticsScopes.all());
+    
+    System.out.println("DATA_STORE_DIR:= " + DATA_STORE_DIR);
+
 
     return new Analytics.Builder(httpTransport, JSON_FACTORY, credential)
         .setApplicationName(APPLICATION_NAME).build();
@@ -56,8 +59,6 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
       System.err.println("No accounts found");
     } else {
       String firstAccountId = accounts.getItems().get(0).getId();
-      //Webproperties properties0 = analytics.management().webproperties()
-      //    .list(firstAccountId).execute();
       Webproperties properties = analytics.management().webproperties().list("~all").execute();
 
       if (properties.getItems().isEmpty()) {
