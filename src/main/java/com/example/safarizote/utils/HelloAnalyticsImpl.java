@@ -56,7 +56,8 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
                 .createScoped(AnalyticsScopes.all());
     
     GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(
-      JSON_FACTORY, new InputStreamReader(resource.getInputStream()));  
+      JSON_FACTORY, new InputStreamReader(HelloAnalyticsImpl.class
+      .getResourceAsStream(KEY_FILE_LOCATION)));  
     dataStoreFactory = new FileDataStoreFactory(DATA_STORE_DIR);
     GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
       httpTransport, JSON_FACTORY, clientSecrets,AnalyticsScopes.all()).setDataStoreFactory(
