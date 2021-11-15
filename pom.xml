@@ -115,6 +115,14 @@
 			<artifactId>google-api-services-analyticsreporting</artifactId>
 			<version>v4-rev152-1.25.0</version>
 		</dependency>
+        
+        <dependency>
+			<groupId>com.google.oauth-client</groupId>
+			<artifactId>google-oauth-client-jetty</artifactId>
+			<version>1.20.0</version>
+		</dependency>
+<!-- Thanks for using https://jar-download.com -->
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
