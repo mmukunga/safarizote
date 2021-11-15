@@ -1,10 +1,18 @@
 package com.example.safarizote.utils;
 
+import com.google.api.client.auth.oauth2.Credential;
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
+import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
+import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
+import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
+
+
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.gson.GsonFactory;
+import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.analytics.Analytics;
 import com.google.api.services.analytics.AnalyticsScopes;
 import com.google.api.services.analytics.model.Accounts;
@@ -18,6 +26,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
 
 @Service("gaService")
@@ -25,6 +34,10 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
   private static final String APPLICATION_NAME = "GaMajiMoto";
   private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
   private static final String KEY_FILE_LOCATION = "gcmajimoto-958d87dbada8.json";
+  
+
+  private static final java.io.File DATA_STORE_DIR = new java.io.File("d:\\Trash");//json file
+  private static FileDataStoreFactory dataStoreFactory;
   
     public GaData getGAData() throws Exception {
         Analytics analytics = initializeAnalytic();
@@ -42,6 +55,15 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
                 .fromStream(resource.getInputStream())
                 .createScoped(AnalyticsScopes.all());
     
+    GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(
+      JSON_FACTORY, new InputStreamReader(resource.getInputStream()));  
+    dataStoreFactory = new FileDataStoreFactory(DATA_STORE_DIR);
+    GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
+      httpTransport, JSON_FACTORY, clientSecrets,AnalyticsScopes.all()).setDataStoreFactory(
+      dataStoreFactory).build(); 
+    Credential c =  new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
+    System.out.println(c);
+
     return new Analytics.Builder(httpTransport, JSON_FACTORY, credential)
         .setApplicationName(APPLICATION_NAME).build();
   }
