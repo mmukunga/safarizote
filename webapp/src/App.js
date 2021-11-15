@@ -68,6 +68,10 @@ function App() {
     if (initialized) {
       console.log(location.pathname + location.search);
       ReactGA.pageview(location.pathname + location.search);
+      window.gtag("config", "GA_MEASUREMENT_ID", {
+        page_title: location.pathname,
+        page_path: location.pathname,
+        });
     }
   }, [initialized, location]);
 

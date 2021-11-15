@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.example.safarizote.model.Metrics;
 import com.example.safarizote.repository.MetricsRepository;
 import com.example.safarizote.utils.IHelloAnalytics;
+import com.google.api.services.analytics.model.GaData;
 
 @RestController
 public class MetricsController { 
@@ -24,16 +25,17 @@ public class MetricsController {
 	private IHelloAnalytics gaService;
 
   @GetMapping("/api/healthCheck")
-  public ResponseEntity<String> healthCheck() throws Exception {
+  public ResponseEntity<String> healthCheck() {
       String status = "healthCheck: OK!!";
-      System.out.println(gaService.getGAData());
       return ResponseEntity.ok().body(status);
   }
 
   @GetMapping("/api/allHits")
-  public ResponseEntity<List<Metrics>> findAll() {
-    List<Metrics> visits = repository.findAll();
-    return ResponseEntity.ok().body(visits);
+  public ResponseEntity<GaData> findAll() throws Exception {
+    //List<Metrics> visits = repository.findAll();
+    GaData allHits = gaService.getGAData();
+    System.out.println(allHits);
+    return ResponseEntity.ok().body(allHits);
   }
 
   @PostMapping("/api/saveVisit")

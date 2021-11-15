@@ -52,7 +52,6 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
         .setApplicationName(APPLICATION_NAME).build();
   }
 
-
   private static String getFirstProfileId(Analytics analytics) throws IOException {
     String profileId = null;
     Accounts accounts = analytics.management().accounts().list().execute();
