@@ -15,6 +15,7 @@ const Metrics = () => {
     }, []);
 
     async function findDate(data) {
+        /*
         const mediaTypes = data.map(dataItem => dataItem.hostname) 
         .filter((mediaType, index, array) => array.indexOf(mediaType) === index); 
         
@@ -23,17 +24,22 @@ const Metrics = () => {
             dateCreated: data.filter(item => item.hostname == dataItem)[0].dateCreated.split('.')[0],
             count: data.filter(item => item.hostname == dataItem).length
         }));
+
         
         return aggregatedData;
+        */
+       return new Date();
     }
 
     useEffect(() => {
        axios.get('/api/allHits').then(response => {
+          console.log(response);
           const fetchData = (data) => {
             findDate(data).then(resp => {
-              setMyData([ ...myData, ...resp ]);
-              const totalCount = resp.reduce((total, item) => total = total + item.count, 0);
-              setTotalCount(totalCount);
+              console.log(resp);
+              //setMyData([ ...myData, ...resp ]);
+              //const totalCount = resp.reduce((total, item) => total = total + item.count, 0);
+              //setTotalCount(totalCount);
             }).catch(err => {
                 console.error(err);
             })
