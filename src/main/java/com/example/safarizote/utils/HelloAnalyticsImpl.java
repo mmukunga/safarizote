@@ -44,8 +44,8 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
   //private static final String CLIENT_SECRET_JSON_RESOURCE = "gcmajimoto-958d87dbada8.json";
 
   // The directory where the user's credentials will be stored.
-  private static final File DATA_STORE_DIR = new File(
-      System.getProperty("user.home"), ".store/hello_analytics");
+  private static final File DATA_STORE_DIR =
+      new File(HelloAnalyticsImpl.class.getResource("/").getPath(), "credentials");
 
   private static final String APPLICATION_NAME = "GaMajiMoto";
   private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
