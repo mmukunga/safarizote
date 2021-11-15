@@ -20,8 +20,10 @@ import com.google.api.services.analytics.model.GaData;
 import com.google.api.services.analytics.model.Profiles;
 import com.google.api.services.analytics.model.Webproperties;
 
+import org.springframework.core.io.ClassPathResource;
+
 //import org.springframework.core.io.ClassPathResource;
-//import org.springframework.core.io.Resource;
+import org.springframework.core.io.Resource;
 
 import org.springframework.stereotype.Service;
 
@@ -34,12 +36,12 @@ import java.security.GeneralSecurityException;
 public class HelloAnalyticsImpl implements IHelloAnalytics { 
   //private static final String APPLICATION_NAME = "GaMajiMoto";
   //private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
-  //private static final String KEY_FILE_LOCATION = "gcmajimoto-958d87dbada8.json";
+  private static final String KEY_FILE_LOCATION = "gcmajimoto-958d87dbada8.json";
   //
   //
   // Path to client_secrets.json file downloaded from the Developer's Console.
   // The path is relative to HelloAnalytics.java.
-  private static final String CLIENT_SECRET_JSON_RESOURCE = "gcmajimoto-958d87dbada8.json";
+  //private static final String CLIENT_SECRET_JSON_RESOURCE = "gcmajimoto-958d87dbada8.json";
 
   // The directory where the user's credentials will be stored.
   private static final File DATA_STORE_DIR = new File(
@@ -61,7 +63,7 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
   private static Analytics initializeAnalytic() throws GeneralSecurityException, IOException {
     HttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
 
-    //Resource resource = new ClassPathResource(KEY_FILE_LOCATION);
+    Resource resource = new ClassPathResource(KEY_FILE_LOCATION);
     /*GoogleCredential credential = GoogleCredential
                 .fromStream(resource.getInputStream())
                 .createScoped(AnalyticsScopes.all());*/
@@ -70,10 +72,13 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
     dataStoreFactory = new FileDataStoreFactory(DATA_STORE_DIR);
 
     // Load client secrets.
-    GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY,
+    /*GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY,
         new InputStreamReader(HelloAnalyticsImpl.class
-            .getResourceAsStream(CLIENT_SECRET_JSON_RESOURCE)));
-
+            .getResourceAsStream(KEY_FILE_LOCATION)));*/
+    
+            GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY,
+            new InputStreamReader(resource.getInputStream()));
+                        
     // Set up authorization code flow for all auth scopes.
     GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow
         .Builder(httpTransport, JSON_FACTORY, clientSecrets,
