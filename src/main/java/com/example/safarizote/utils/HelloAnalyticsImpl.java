@@ -79,17 +79,21 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
                 .fromStream(resource.getInputStream())
                 .createScoped(AnalyticsScopes.all());
 
-    
-    System.out.println("DATA_STORE_DIR:= " + DATA_STORE_DIR);
+    System.out.println("1.DATA_STORE_DIR");
+    System.out.println("2.DATA_STORE_DIR:= " + DATA_STORE_DIR);
     httpTransport = GoogleNetHttpTransport.newTrustedTransport();
+    System.out.println("3.DATA_STORE_DIR");
     dataStoreFactory = new FileDataStoreFactory(DATA_STORE_DIR);
     System.out.println(HelloAnalyticsImpl.class.getClassLoader().getResourceAsStream(KEY_FILE_LOCATION));
+    System.out.println("4.DATA_STORE_DIR");
     // Load client secrets.
     GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY,
             new InputStreamReader(HelloAnalyticsImpl.class.getClassLoader().getResourceAsStream(KEY_FILE_LOCATION)));
+    System.out.println("5.DATA_STORE_DIR");        
     // Set up authorization code flow for all authorization scopes.
     GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(httpTransport, JSON_FACTORY,
             clientSecrets, AnalyticsReportingScopes.all()).setDataStoreFactory(dataStoreFactory).build();
+    System.out.println("6.DATA_STORE_DIR");        
     // Authorize.
     Credential credential2 = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
     // Construct the Analytics Reporting service object.
