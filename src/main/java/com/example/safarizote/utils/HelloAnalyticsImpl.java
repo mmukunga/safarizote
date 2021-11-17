@@ -45,7 +45,7 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
                 .createScoped(AnalyticsScopes.all());
     
     System.out.println("DATA_STORE_DIR:= " + DATA_STORE_DIR);
-
+    
 
     return new Analytics.Builder(httpTransport, JSON_FACTORY, credential)
         .setApplicationName(APPLICATION_NAME).build();
