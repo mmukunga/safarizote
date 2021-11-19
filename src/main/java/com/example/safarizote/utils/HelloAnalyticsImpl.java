@@ -21,6 +21,7 @@ import com.google.api.services.analytics.model.Accounts;
 import com.google.api.services.analytics.model.GaData;
 import com.google.api.services.analytics.model.Profiles;
 import com.google.api.services.analytics.model.Webproperties;
+import com.google.api.services.analyticsreporting.v4.AnalyticsReportingScopes;
 
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -30,10 +31,17 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.security.GeneralSecurityException;
 import java.util.Arrays;
+import java.util.Collections;
 
 import com.google.api.client.json.jackson2.JacksonFactory;
+
+
+import com.google.api.client.googleapis.json.GoogleJsonResponseException;
+import com.google.api.client.http.HttpHeaders;
+import com.google.common.collect.Lists;
 
 @Service("gaService")
 public class HelloAnalyticsImpl implements IHelloAnalytics {
@@ -69,13 +77,16 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
     System.out.println(HelloAnalyticsImpl.class.getClassLoader().getResourceAsStream(KEY_FILE_LOCATION));
     System.out.println("4.DATA_STORE_DIR dataStoreFactory:= " + dataStoreFactory);
     // Load client secrets.
+    JsonFactory JSON_FACTORY =JacksonFactory.getDefaultInstance();
+    GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY,
+        new InputStreamReader(HelloAnalyticsImpl.class.getResourceAsStream("/client_secrets.json")));
+    java.util.Collection<java.lang.String> scopes =  AnalyticsReportingScopes.all();             // View your Google Analytics data
+    //        File file = new File(TestCalendar2.class.getResource("/eb2e54acd629.p12").getFile());
+    GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
+      httpTransport, JSON_FACTORY, clientSecrets.getDetails().getClientId(), clientSecrets.getDetails().getClientSecret(), scopes).setDataStoreFactory(dataStoreFactory)
+      .build();
 
-    JsonFactory jsonFactory = new JacksonFactory();
-    NetHttpTransport transport = GoogleNetHttpTransport.newTrustedTransport();
-    GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(jsonFactory,
-        new InputStreamReader(HelloAnalyticsImpl.class.getResourceAsStream("/gcmajimoto-958d87dbada8.json")));
-    GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(transport, jsonFactory, clientSecrets,
-        Arrays.asList(SCOPES)).setDataStoreFactory(dataStoreFactory).setAccessType("offline").build();
+      
     System.out.println("5.DATA_STORE_DIR");
     Credential ct = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
     System.out.println("6.DATA_STORE_DIR:= " + ct);
