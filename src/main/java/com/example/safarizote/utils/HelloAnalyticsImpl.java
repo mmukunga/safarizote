@@ -50,7 +50,7 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
   private static final String KEY_FILE_LOCATION = "gcmajimoto-958d87dbada8.json";
   // private static final java.io.File DATA_STORE_DIR =
   // new java.io.File(System.getProperty("user.home"), ".store/reporting_sample");
-  private static final File DATA_STORE_DIR = new File("hello_analytics");
+  private static final File DATA_STORE_DIR = new File("/hello_analytics");
   private static FileDataStoreFactory dataStoreFactory;
   private static final String[] SCOPES = new String[] { "https://www.googleapis.com/auth/doubleclicksearch" };
 
@@ -79,7 +79,7 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
     // Load client secrets.
     JsonFactory JSON_FACTORY =JacksonFactory.getDefaultInstance();
     GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY,
-        new InputStreamReader(HelloAnalyticsImpl.class.getResourceAsStream("/client_secrets.json")));
+        new InputStreamReader(HelloAnalyticsImpl.class.getResourceAsStream("/gcmajimoto-958d87dbada8.json")));
     java.util.Collection<java.lang.String> scopes =  AnalyticsReportingScopes.all();             // View your Google Analytics data
     //        File file = new File(TestCalendar2.class.getResource("/eb2e54acd629.p12").getFile());
     GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
