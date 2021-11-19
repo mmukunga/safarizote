@@ -49,8 +49,9 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
   private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
   private static final String KEY_FILE_LOCATION = "gcmajimoto-958d87dbada8.json";
   // private static final java.io.File DATA_STORE_DIR =
-  // new java.io.File(System.getProperty("user.home"), ".store/reporting_sample");
-  private static final File DATA_STORE_DIR = new File("/hello_analytics");
+  // new java.io.File(System.getProperty("user.home"), ".store/reporting_sample");  
+
+  private static final File DATA_STORE_DIR = new File(new File(System.getProperty("java.io.tmpdir")), "hello_analytics");
   private static FileDataStoreFactory dataStoreFactory;
   private static final String[] SCOPES = new String[] { "https://www.googleapis.com/auth/doubleclicksearch" };
 
@@ -70,6 +71,12 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
         .createScoped(AnalyticsScopes.all());
 
     System.out.println("1.DATA_STORE_DIR");
+    if(DATA_STORE_DIR.exists()){
+      System.out.println("DATA_STORE_DIR EXISTS");
+    } else {
+      DATA_STORE_DIR.mkdirs();
+    }
+
     System.out.println("2.DATA_STORE_DIR:= " + DATA_STORE_DIR);
     httpTransport = GoogleNetHttpTransport.newTrustedTransport();
     System.out.println("3.DATA_STORE_DIR");
