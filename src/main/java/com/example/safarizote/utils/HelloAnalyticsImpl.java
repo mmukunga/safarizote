@@ -33,7 +33,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.security.GeneralSecurityException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 
 import com.google.api.client.json.jackson2.JacksonFactory;
@@ -87,13 +89,22 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
     JsonFactory JSON_FACTORY =JacksonFactory.getDefaultInstance();
     GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY,
         new InputStreamReader(HelloAnalyticsImpl.class.getResourceAsStream("/gcmajimoto-958d87dbada8.json")));
+    
+    System.out.println(clientSecrets.getDetails().getClientSecret());
+    System.out.println(clientSecrets.getDetails().getClientSecret());
+
     java.util.Collection<java.lang.String> scopes =  AnalyticsReportingScopes.all();             // View your Google Analytics data
     //        File file = new File(TestCalendar2.class.getResource("/eb2e54acd629.p12").getFile());
+    Collection<String> scopes2 = new ArrayList<String>();
     GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
-      httpTransport, JSON_FACTORY, clientSecrets.getDetails().getClientId(), clientSecrets.getDetails().getClientSecret(), scopes).setDataStoreFactory(dataStoreFactory)
-      .build();
+      new NetHttpTransport(), 
+      new JacksonFactory(),
+      "", 
+      "", 
+      scopes)
+      .setDataStoreFactory(dataStoreFactory)
+      .setAccessType("offline").build();
 
-      
     System.out.println("5.DATA_STORE_DIR");
     Credential ct = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
     System.out.println("6.DATA_STORE_DIR:= " + ct);
