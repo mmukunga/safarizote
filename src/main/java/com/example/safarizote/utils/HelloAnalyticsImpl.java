@@ -73,7 +73,7 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
     System.out.println("5.DATA_STORE_DIR");
     
     System.out.println(clientSecrets);
-    System.out.println("5.DATA_STORE_DIR:= " + clientSecrets.getDetails());
+    System.out.println("5.DATA_STORE_DIR:= " + clientSecrets.get("project_id"));
 
     Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
     System.out.println("6.credential:= " + credential);
