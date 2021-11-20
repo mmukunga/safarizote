@@ -90,8 +90,8 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
     GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY,
         new InputStreamReader(HelloAnalyticsImpl.class.getResourceAsStream("/gcmajimoto-958d87dbada8.json")));
     
-    System.out.println(clientSecrets.getDetails().getClientSecret());
-    System.out.println(clientSecrets.getDetails().getClientSecret());
+    //System.out.println(clientSecrets.getDetails().getClientSecret());
+    //System.out.println(clientSecrets.getDetails().getClientId());
 
     java.util.Collection<java.lang.String> scopes =  AnalyticsReportingScopes.all();             // View your Google Analytics data
     //        File file = new File(TestCalendar2.class.getResource("/eb2e54acd629.p12").getFile());
