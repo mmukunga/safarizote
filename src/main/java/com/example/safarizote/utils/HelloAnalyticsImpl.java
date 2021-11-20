@@ -32,8 +32,6 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
   private static final String APPLICATION_NAME = "GaMajiMoto";
   private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
   private static final String KEY_FILE_LOCATION = "gcmajimoto-958d87dbada8.json";
-  // private static final java.io.File DATA_STORE_DIR =
-  // new java.io.File(System.getProperty("user.home"), ".store/reporting_sample");  
 
   private static final File DATA_STORE_DIR = new File(new File(System.getProperty("java.io.tmpdir")), "hello_analytics");
   private static FileDataStoreFactory dataStoreFactory;
@@ -62,7 +60,6 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
         new InputStreamReader(HelloAnalyticsImpl.class.getClassLoader().getResourceAsStream("gcmajimoto-958d87dbada8.json")));
     
     //System.out.println(clientSecrets.getDetails().getClientSecret());
-    System.out.println(clientSecrets);
 
     GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
       httpTransport, 
@@ -74,8 +71,12 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
       .setAccessType("offline").build();
 
     System.out.println("5.DATA_STORE_DIR");
+    
+    System.out.println(clientSecrets);
+    System.out.println("5.DATA_STORE_DIR:= " + clientSecrets.getDetails());
+
     Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
-    System.out.println("6.DATA_STORE_DIR:= " + credential);
+    System.out.println("6.credential:= " + credential);
 
     return new Analytics.Builder(httpTransport, JSON_FACTORY, credential).setApplicationName(APPLICATION_NAME).build();
   }
