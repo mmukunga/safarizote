@@ -1,49 +1,31 @@
 package com.example.safarizote.utils;
 
-import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
-
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.auth.oauth2.Credential;
 
-import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 
 import com.google.api.client.http.HttpTransport;
 import com.google.api.services.analytics.Analytics;
-import com.google.api.services.analytics.AnalyticsScopes;
 import com.google.api.services.analytics.model.Accounts;
 import com.google.api.services.analytics.model.GaData;
 import com.google.api.services.analytics.model.Profiles;
 import com.google.api.services.analytics.model.Webproperties;
 import com.google.api.services.analyticsreporting.v4.AnalyticsReportingScopes;
 
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-
 import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import java.security.GeneralSecurityException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 
-import com.google.api.client.json.jackson2.JacksonFactory;
-
-
-import com.google.api.client.googleapis.json.GoogleJsonResponseException;
-import com.google.api.client.http.HttpHeaders;
-import com.google.common.collect.Lists;
 
 @Service("gaService")
 public class HelloAnalyticsImpl implements IHelloAnalytics {
@@ -55,7 +37,6 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
 
   private static final File DATA_STORE_DIR = new File(new File(System.getProperty("java.io.tmpdir")), "hello_analytics");
   private static FileDataStoreFactory dataStoreFactory;
-  private static final String[] SCOPES = new String[] { "https://www.googleapis.com/auth/doubleclicksearch" };
 
   public GaData getGAData() throws Exception {
     Analytics analytics = initializeAnalytic();
@@ -77,7 +58,6 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
     dataStoreFactory = new FileDataStoreFactory(DATA_STORE_DIR);
     System.out.println(HelloAnalyticsImpl.class.getClassLoader().getResourceAsStream(KEY_FILE_LOCATION));
     // Load client secrets.
-    JsonFactory JSON_FACTORY =JacksonFactory.getDefaultInstance();
     GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY,
         new InputStreamReader(HelloAnalyticsImpl.class.getClassLoader().getResourceAsStream("gcmajimoto-958d87dbada8.json")));
     
