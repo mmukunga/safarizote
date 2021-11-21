@@ -35,6 +35,8 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
 
   private static final File DATA_STORE_DIR = new File(new File(System.getProperty("java.io.tmpdir")), "hello_analytics");
   private static FileDataStoreFactory dataStoreFactory;
+  /** Global instance of the HTTP transport. */
+  private static HttpTransport httpTransport;
 
   public GaData getGAData() throws Exception {
     Analytics analytics = initializeAnalytic();
@@ -45,7 +47,17 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
   }
 
   private static Analytics initializeAnalytic() throws GeneralSecurityException, IOException {
-    HttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
+   // Authorization.
+   Credential credential = authorize();
+
+    System.out.println("6.credential:= " + credential);
+
+    return new Analytics.Builder(httpTransport, JSON_FACTORY, credential).setApplicationName(APPLICATION_NAME).build();
+  }
+
+  private static Credential authorize() throws GeneralSecurityException, IOException {
+    httpTransport = GoogleNetHttpTransport.newTrustedTransport();
+
     if(DATA_STORE_DIR.exists()){
       System.out.println("DATA_STORE_DIR EXISTS");
     } else {
@@ -58,8 +70,6 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
     // Load client secrets.
     GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY,
         new InputStreamReader(HelloAnalyticsImpl.class.getClassLoader().getResourceAsStream("gcmajimoto-958d87dbada8.json")));
-    
-    //System.out.println(clientSecrets.getDetails().getClientSecret());
 
     GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
       httpTransport, 
@@ -71,10 +81,8 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
       .setAccessType("offline").build();
     
     System.out.println("5.DATA_STORE_DIR:= " + clientSecrets.get("project_id"));
-    Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("mkunsim@gmail.com");
-    System.out.println("6.credential:= " + credential);
 
-    return new Analytics.Builder(httpTransport, JSON_FACTORY, credential).setApplicationName(APPLICATION_NAME).build();
+    return new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("mkunsim@gmail.com");
   }
 
   private static String getFirstProfileId(Analytics analytics) throws IOException {
