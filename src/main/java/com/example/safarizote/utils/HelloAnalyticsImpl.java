@@ -81,8 +81,11 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
       .setAccessType("offline").build();
     
     System.out.println("5.DATA_STORE_DIR:= " + clientSecrets.get("project_id"));
+    
+    String userId = "user-id";
+    Credential credential = flow.loadCredential(userId);
 
-    return new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("mkunsim@gmail.com");
+    return credential;
   }
 
   private static String getFirstProfileId(Analytics analytics) throws IOException {
