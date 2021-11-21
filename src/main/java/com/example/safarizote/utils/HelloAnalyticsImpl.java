@@ -69,12 +69,8 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
       AnalyticsReportingScopes.all())
       .setDataStoreFactory(dataStoreFactory)
       .setAccessType("offline").build();
-
-    System.out.println("5.DATA_STORE_DIR");
     
-    System.out.println(clientSecrets);
     System.out.println("5.DATA_STORE_DIR:= " + clientSecrets.get("project_id"));
-
     Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("gamajimoto@gcmajimoto.iam.gserviceaccount.com");
     System.out.println("6.credential:= " + credential);
 
