@@ -71,7 +71,7 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
       .setAccessType("offline").build();
     
     System.out.println("5.DATA_STORE_DIR:= " + clientSecrets.get("project_id"));
-    Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("gamajimoto@gcmajimoto.iam.gserviceaccount.com");
+    Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("mkunsim@gmail.com");
     System.out.println("6.credential:= " + credential);
 
     return new Analytics.Builder(httpTransport, JSON_FACTORY, credential).setApplicationName(APPLICATION_NAME).build();
