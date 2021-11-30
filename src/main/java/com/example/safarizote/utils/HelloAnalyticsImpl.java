@@ -89,28 +89,31 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
 
   private static String getFirstProfileId(Analytics analytics) throws IOException {
     String profileId = null;
+    System.out.println("1.profileId..");
     Accounts accounts = analytics.management().accounts().list().execute();
-
+    System.out.println("2.profileId..");
     if (accounts.getItems().isEmpty()) {
       System.err.println("No accounts found");
     } else {
       String firstAccountId = accounts.getItems().get(0).getId();
       Webproperties properties = analytics.management().webproperties().list("~all").execute();
-
+      System.out.println("3.profileId..");
       if (properties.getItems().isEmpty()) {
         System.err.println("No Webproperties found");
       } else {
         String firstWebpropertyId = properties.getItems().get(0).getId();
-
+        System.out.println("4.profileId..");
         Profiles profiles = analytics.management().profiles().list(firstAccountId, firstWebpropertyId).execute();
-
+        System.out.println("5.profileId..");
         if (profiles.getItems().isEmpty()) {
           System.err.println("No views (profiles) found");
         } else {
+          System.out.println("6.profileId..");
           profileId = profiles.getItems().get(0).getId();
         }
       }
     }
+    System.out.println("10.profileId..END OK!!");
     return profileId;
   }
 
