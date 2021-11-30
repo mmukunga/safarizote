@@ -1,6 +1,7 @@
 package com.example.safarizote.utils;
 
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
+
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.auth.oauth2.Credential;
@@ -80,7 +81,7 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
     
     System.out.println("5.DATA_STORE_DIR:= " + clientSecrets.get("project_id"));
     
-    String userId = "user-id";
+    String userId = "mkunsim@gmail.com";
     Credential credential = flow.loadCredential(userId);
 
     return credential;
