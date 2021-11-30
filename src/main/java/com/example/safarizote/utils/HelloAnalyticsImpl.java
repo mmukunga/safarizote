@@ -16,7 +16,6 @@ import com.google.api.services.analytics.model.Webproperties;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
-import java.io.IOException;
 
 
 /**
@@ -26,9 +25,9 @@ import java.io.IOException;
 public class HelloAnalyticsImpl {
 
 
-  private static final String APPLICATION_NAME = "Hello Analytics";
+  private static final String APPLICATION_NAME = "GaMajiMoto";
   private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
-  private static final String KEY_FILE_LOCATION = "<REPLACE_WITH_JSON_FILE>";
+  private static final String KEY_FILE_LOCATION = "gcmajimoto-958d87dbada8.json";
 
   public GaData getGAData() throws Exception {
     try {
