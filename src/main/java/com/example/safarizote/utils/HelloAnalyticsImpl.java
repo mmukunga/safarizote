@@ -81,7 +81,7 @@ public class HelloAnalyticsImpl implements IHelloAnalytics {
     
     System.out.println("5.DATA_STORE_DIR:= " + clientSecrets.get("project_id"));
     
-    String userId = "mkunsim@gmail.com";
+    String userId = "mmukunga@gmail.com";
     Credential credential = flow.loadCredential(userId);
 
     return credential;
