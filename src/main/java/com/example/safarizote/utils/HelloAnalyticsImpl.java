@@ -47,10 +47,11 @@ public class HelloAnalyticsImpl {
   private static NetHttpTransport httpTransport;
   private static FileDataStoreFactory dataStoreFactory;
 
-  public GetReportsResponse getData() {
+  public GetReportsResponse getGAData() {
     try {
       AnalyticsReporting service = initializeAnalyticsReporting();
       GetReportsResponse response = getReport(service);
+
       printResponse(response);     
       return response;
 

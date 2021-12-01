@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.safarizote.model.Metrics;
 import com.example.safarizote.repository.MetricsRepository;
-import com.example.safarizote.utils.IHelloAnalytics;
-import com.google.api.services.analytics.model.GaData;
+import com.example.safarizote.utils.HelloAnalyticsImpl;
+import com.google.api.services.analyticsreporting.v4.model.GetReportsResponse;
 
 @RestController
 public class MetricsController { 
@@ -22,7 +22,7 @@ public class MetricsController {
   private MetricsRepository repository;
   
   @Autowired
-	private IHelloAnalytics gaService;
+	private HelloAnalyticsImpl gaService;
 
   @GetMapping("/api/healthCheck")
   public ResponseEntity<String> healthCheck() {
@@ -31,9 +31,9 @@ public class MetricsController {
   }
 
   @GetMapping("/api/allHits")
-  public ResponseEntity<GaData> findAll() throws Exception {
+  public ResponseEntity<GetReportsResponse> findAll() throws Exception {
     //List<Metrics> visits = repository.findAll();
-    GaData allHits = gaService.getGAData();
+    GetReportsResponse allHits = gaService.getGAData();
     System.out.println(allHits);
     return ResponseEntity.ok().body(allHits);
   }
