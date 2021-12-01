@@ -32,7 +32,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class HelloAnalyticsImpl {
+public class GoogleAnalyticsImpl implements GoogleAnalytics {
   private static final String CLIENT_SECRET_JSON_RESOURCE = "gcmajimoto-958d87dbada8.json";
 
   // Replace with your view ID.
@@ -68,7 +68,7 @@ public class HelloAnalyticsImpl {
     dataStoreFactory = new FileDataStoreFactory(DATA_STORE_DIR);
 
     GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY,
-        new InputStreamReader(HelloAnalyticsImpl.class
+        new InputStreamReader(GoogleAnalyticsImpl.class
             .getResourceAsStream(CLIENT_SECRET_JSON_RESOURCE)));
 
     GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow
