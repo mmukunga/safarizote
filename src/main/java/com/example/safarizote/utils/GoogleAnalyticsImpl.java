@@ -79,8 +79,8 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
         new InputStreamReader(GoogleAnalyticsImpl.class
             .getResourceAsStream(CLIENT_SECRET_JSON_RESOURCE)));
 
-    String clientId = clientSecrets.getDetails().getClientId();
-    String clientSecret = clientSecrets.getDetails().getClientSecret();
+    String clientId = clientSecrets.get("client_id").toString();
+    String clientSecret = clientSecrets.get("private_key").toString();
 
     GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow
         .Builder(httpTransport, JSON_FACTORY, clientId, clientSecret,
