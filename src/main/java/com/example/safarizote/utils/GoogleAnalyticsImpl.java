@@ -5,7 +5,10 @@ import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInsta
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
+import com.google.api.client.googleapis.auth.oauth2.GoogleTokenResponse;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
+import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.gson.GsonFactory;
@@ -27,6 +30,7 @@ import com.google.api.services.analyticsreporting.v4.model.ReportRow;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
@@ -47,8 +51,8 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
 
   private static final String APPLICATION_NAME = "GaMajiMoto";
   private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
-  private static NetHttpTransport httpTransport;
-  private static FileDataStoreFactory dataStoreFactory;
+  //private static NetHttpTransport httpTransport;
+  //private static FileDataStoreFactory dataStoreFactory;
 
   public GetReportsResponse getGAData() {
     try {
@@ -68,8 +72,8 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
 
   private static AnalyticsReporting initializeAnalyticsReporting() throws GeneralSecurityException, IOException {
 
-    httpTransport = GoogleNetHttpTransport.newTrustedTransport();
-    dataStoreFactory = new FileDataStoreFactory(DATA_STORE_DIR);
+    //NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
+    //FileDataStoreFactory dataStoreFactory = new FileDataStoreFactory(DATA_STORE_DIR);
 
     System.out.println("Maji");
     java.io.InputStream is = GoogleAnalyticsImpl.class.getResourceAsStream(CLIENT_SECRET_JSON_RESOURCE);
@@ -83,17 +87,34 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
     String clientId = clientSecrets.get("client_id").toString();
     String clientSecret = clientSecrets.get("private_key").toString();
     System.out.println("2Moto");
+    /*
     GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow
         .Builder(httpTransport, JSON_FACTORY, clientId, clientSecret,
             AnalyticsReportingScopes.all()).setDataStoreFactory(dataStoreFactory)
         .build();
-        System.out.println("3Moto");
-    Credential credential = new AuthorizationCodeInstalledApp(flow,
-        new LocalServerReceiver()).authorize("user");
-        System.out.println("4Moto");
+    */
+   
+    System.out.println("3Moto");
+    //Credential credential0 = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
+    System.out.println("4Moto");
+
+    HttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
+    GoogleCredential credential = new GoogleCredential.Builder()
+        .setTransport(httpTransport)
+        .setJsonFactory(JSON_FACTORY)
+        .setClientSecrets(clientId, clientSecret)
+        .build();
+    
+    /*    
+    GoogleCredential credential1 = GoogleCredential
+        .fromStream(new FileInputStream(CLIENT_SECRET_JSON_RESOURCE))
+        .createScoped(AnalyticsReportingScopes.all());
+    */
+
     AnalyticsReporting  analyticReporting = new AnalyticsReporting.Builder(httpTransport, JSON_FACTORY, credential)
     .setApplicationName(APPLICATION_NAME).build();
     System.out.println("5Moto");
+
     return analyticReporting;
   }
 
