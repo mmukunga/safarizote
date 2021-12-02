@@ -69,6 +69,11 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
 
     httpTransport = GoogleNetHttpTransport.newTrustedTransport();
     dataStoreFactory = new FileDataStoreFactory(DATA_STORE_DIR);
+
+    System.out.println("Maji");
+    java.io.InputStream is = GoogleAnalyticsImpl.class.getResourceAsStream(CLIENT_SECRET_JSON_RESOURCE);
+    System.out.println(is);
+    System.out.println("Moto");
     
     GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY,
         new InputStreamReader(GoogleAnalyticsImpl.class
