@@ -36,7 +36,7 @@ import java.util.List;
 
 @Service("gaService")
 public class GoogleAnalyticsImpl implements GoogleAnalytics {
-  private static final String CLIENT_SECRET_JSON_RESOURCE = "gcmajimoto-958d87dbada8.json";
+  private static final String CLIENT_SECRET_JSON_RESOURCE = "/gcmajimoto-958d87dbada8.json";
 
   // Replace with your view ID.
   private static final String VIEW_ID = "256217453";
@@ -69,7 +69,7 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
 
     httpTransport = GoogleNetHttpTransport.newTrustedTransport();
     dataStoreFactory = new FileDataStoreFactory(DATA_STORE_DIR);
-
+    
     GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY,
         new InputStreamReader(GoogleAnalyticsImpl.class
             .getResourceAsStream(CLIENT_SECRET_JSON_RESOURCE)));
