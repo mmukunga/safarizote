@@ -74,13 +74,16 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
     java.io.InputStream is = GoogleAnalyticsImpl.class.getResourceAsStream(CLIENT_SECRET_JSON_RESOURCE);
     System.out.println(is);
     System.out.println("Moto");
-    
+
     GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY,
         new InputStreamReader(GoogleAnalyticsImpl.class
             .getResourceAsStream(CLIENT_SECRET_JSON_RESOURCE)));
 
+    String clientId = clientSecrets.getDetails().getClientId();
+    String clientSecret = clientSecrets.getDetails().getClientSecret();
+
     GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow
-        .Builder(httpTransport, JSON_FACTORY, clientSecrets,
+        .Builder(httpTransport, JSON_FACTORY, clientId, clientSecret,
             AnalyticsReportingScopes.all()).setDataStoreFactory(dataStoreFactory)
         .build();
 
