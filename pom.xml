@@ -102,7 +102,7 @@
 		<dependency>
 			<groupId>com.google.apis</groupId>
 			<artifactId>google-api-services-analyticsreporting</artifactId>
-			<version>v4-rev174-1.25.0</version>
+			<version>v4-rev146-1.18.0-rc</version>
 		</dependency>
         <dependency>
 			<groupId>com.google.oauth-client</groupId>
