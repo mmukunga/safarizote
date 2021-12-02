@@ -122,34 +122,35 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
     // Create the DateRange object.
     DateRange dateRange = new DateRange();
     dateRange.setStartDate("7DaysAgo");
-    dateRange.setEndDate("today");
+    dateRange.setEndDate("today");    
+    System.out.println("1.getReport");
 
     // Create the Metrics object.
     Metric sessions = new Metric()
         .setExpression("ga:sessions")
         .setAlias("sessions");
-
+        System.out.println("2.getReport");
     //Create the Dimensions object.
     Dimension browser = new Dimension()
         .setName("ga:browser");
-
+    System.out.println("3.getReport");
     // Create the ReportRequest object.
     ReportRequest request = new ReportRequest()
         .setViewId(VIEW_ID)
         .setDateRanges(Arrays.asList(dateRange))
         .setDimensions(Arrays.asList(browser))
         .setMetrics(Arrays.asList(sessions));
-
+    System.out.println("4.getReport");
     ArrayList<ReportRequest> requests = new ArrayList<ReportRequest>();
     requests.add(request);
-
+    System.out.println("5.getReport");
     // Create the GetReportsRequest object.
     GetReportsRequest getReport = new GetReportsRequest()
         .setReportRequests(requests);
-
+    System.out.println("6.getReport");
     // Call the batchGet method.
     GetReportsResponse response = service.reports().batchGet(getReport).execute();
-
+    System.out.println("7.getReport");
     // Return the response.
     return response;
   }
