@@ -74,7 +74,7 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
     System.out.println("Maji");
     java.io.InputStream is = GoogleAnalyticsImpl.class.getResourceAsStream(CLIENT_SECRET_JSON_RESOURCE);
     System.out.println(is);
-    System.out.println("Moto");
+    System.out.println("1Moto");
 
     GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY,
         new InputStreamReader(GoogleAnalyticsImpl.class
@@ -82,16 +82,19 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
 
     String clientId = clientSecrets.get("client_id").toString();
     String clientSecret = clientSecrets.get("private_key").toString();
-
+    System.out.println("2Moto");
     GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow
         .Builder(httpTransport, JSON_FACTORY, clientId, clientSecret,
             AnalyticsReportingScopes.all()).setDataStoreFactory(dataStoreFactory)
         .build();
-
+        System.out.println("3Moto");
     Credential credential = new AuthorizationCodeInstalledApp(flow,
         new LocalServerReceiver()).authorize("user");
-    return new AnalyticsReporting.Builder(httpTransport, JSON_FACTORY, credential)
-        .setApplicationName(APPLICATION_NAME).build();
+        System.out.println("4Moto");
+    AnalyticsReporting  analyticReporting = new AnalyticsReporting.Builder(httpTransport, JSON_FACTORY, credential)
+    .setApplicationName(APPLICATION_NAME).build();
+    System.out.println("5Moto");
+    return analyticReporting;
   }
 
   private static GetReportsResponse getReport(AnalyticsReporting service) throws IOException {
