@@ -99,6 +99,24 @@
 			<artifactId>spring-cloud-gcp-starter-storage</artifactId>
 			<version>1.2.8.RELEASE</version>
 		</dependency>
+
+        <dependency>
+            <groupId>com.google.http-client</groupId>
+            <artifactId>google-http-client</artifactId>
+            <version>1.25.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.http-client</groupId>
+            <artifactId>google-http-client-jackson2</artifactId>
+            <version>1.25.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-storage</artifactId>
+            <version>v1-rev158-1.25.0</version>
+        </dependency>
+
+
 		<dependency>
 			<groupId>com.google.apis</groupId>
 			<artifactId>google-api-services-analyticsreporting</artifactId>
