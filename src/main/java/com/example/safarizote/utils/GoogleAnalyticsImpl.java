@@ -135,25 +135,26 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
    * @param response the Analytics Reporting API V4 response.
    */
   private static void printResponse(GetReportsResponse response) {
-
+    System.out.println("1.printResponse..");
     for (Report report: response.getReports()) {
       ColumnHeader header = report.getColumnHeader();
       List<String> dimensionHeaders = header.getDimensions();
       List<MetricHeaderEntry> metricHeaders = header.getMetricHeader().getMetricHeaderEntries();
       List<ReportRow> rows = report.getData().getRows();
-
+      System.out.println("2.printResponse..");
       if (rows == null) {
          System.out.println("No data found for " + VIEW_ID);
          return;
       }
-
+      System.out.println("2.printResponse..");
       for (ReportRow row: rows) {
+        System.out.println("2.printResponse..");
         List<String> dimensions = row.getDimensions();
         List<DateRangeValues> metrics = row.getMetrics();
         for (int i = 0; i < dimensionHeaders.size() && i < dimensions.size(); i++) {
           System.out.println(dimensionHeaders.get(i) + ": " + dimensions.get(i));
         }
-
+        System.out.println("3.printResponse..");
         for (int j = 0; j < metrics.size(); j++) {
           System.out.print("Date Range (" + j + "): ");
           DateRangeValues values = metrics.get(j);
@@ -161,6 +162,7 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
             System.out.println(metricHeaders.get(k).getName() + ": " + values.getValues().get(k));
           }
         }
+        System.out.println("4.printResponse..");
       }
     }
   }
