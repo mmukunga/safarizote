@@ -54,8 +54,9 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
     try {
       AnalyticsReporting service = initializeAnalyticsReporting();
       GetReportsResponse response = getReport(service);
-
-      printResponse(response);     
+      System.out.println("Macharia");
+      printResponse(response);  
+      System.out.println("Mukunga");   
       return response;
 
     } catch (Exception e) {
