@@ -22,6 +22,7 @@ import com.google.api.services.analyticsreporting.v4.model.ReportRow;
 
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.InputStream;
@@ -37,6 +38,8 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
 
   // Replace with your view ID.
   private static final String VIEW_ID = "256217453";
+  private static final String KEY_FILE_LOCATION = "xxxx";
+  private static final String SERVICE_ACCOUNT_EMAIL = "xxxxxx";
 
   private static final String APPLICATION_NAME = "GaMajiMoto";
   private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
@@ -69,6 +72,7 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
     System.out.println("2Moto");
     String clientId = clientSecrets.get("client_id").toString();
     String clientSecret = clientSecrets.get("private_key").toString();
+    String serviceAccountEmail = clientSecrets.get("client_email").toString();
     System.out.println("3Moto");
     System.out.println("4Moto");
 
@@ -76,19 +80,21 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
 
 
     InputStream credentialsJSON = GoogleAnalyticsImpl.class.getClassLoader().getResourceAsStream("gcmajimoto-958d87dbada8.json");
-      //JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
-      //HttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
-      GoogleCredential cred = GoogleCredential.fromStream(credentialsJSON, httpTransport, JSON_FACTORY);
-      System.out.println(cred.getServiceAccountId());
+    //JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
+    //HttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
+    GoogleCredential cred = GoogleCredential.fromStream(credentialsJSON, httpTransport, JSON_FACTORY);
+    System.out.println(cred.getServiceAccountId());
 
     GoogleCredential credential = new GoogleCredential.Builder()
         .setTransport(httpTransport)
         .setJsonFactory(JSON_FACTORY)
+        .setServiceAccountId(SERVICE_ACCOUNT_EMAIL)
         .setClientSecrets(clientId, clientSecret)
-        .setServiceAccountScopes(Arrays.asList(AnalyticsReportingScopes.ANALYTICS_READONLY))
+        .setServiceAccountScopes(AnalyticsReportingScopes.all())
         .build();
+    System.out.println(credential.getServiceAccountId());        
 
-    AnalyticsReporting  analyticReporting = new AnalyticsReporting.Builder(httpTransport, JSON_FACTORY, cred)
+    AnalyticsReporting  analyticReporting = new AnalyticsReporting.Builder(httpTransport, JSON_FACTORY, credential)
     .setApplicationName(APPLICATION_NAME).build();
     System.out.println("5Moto");
 
