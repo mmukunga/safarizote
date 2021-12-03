@@ -82,7 +82,7 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
     GoogleCredential credential = new GoogleCredential.Builder()
         .setTransport(httpTransport)
         .setJsonFactory(JSON_FACTORY)
-        .setClientSecrets("client_id", "client_secret")
+        .setClientSecrets(clientId, clientSecret)
         .build();
     credential.setAccessToken("access_token");  
     System.out.println(credential.getServiceAccountId());        
