@@ -75,7 +75,6 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
         .setTransport(httpTransport)
         .setJsonFactory(JSON_FACTORY)
         .setClientSecrets(clientId, clientSecret)
-        .setServiceAccountScopes(Collections.singleton("https://www.googleapis.com/auth/analytics.readonly"))
         .build();
 
     AnalyticsReporting  analyticReporting = new AnalyticsReporting.Builder(httpTransport, JSON_FACTORY, credential)
