@@ -6,7 +6,6 @@ import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.analyticsreporting.v4.AnalyticsReporting;
-import com.google.api.services.analyticsreporting.v4.AnalyticsReportingScopes;
 import com.google.api.services.analyticsreporting.v4.model.ColumnHeader;
 import com.google.api.services.analyticsreporting.v4.model.DateRange;
 import com.google.api.services.analyticsreporting.v4.model.DateRangeValues;
@@ -26,6 +25,7 @@ import java.io.InputStream;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Service("gaService")
@@ -70,10 +70,9 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
 
     HttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
     System.out.println("4.Moto");
-
     InputStream credentialsJSON = GoogleAnalyticsImpl.class.getClassLoader().getResourceAsStream("gcmajimoto-958d87dbada8.json");
     GoogleCredential credential = GoogleCredential.fromStream(credentialsJSON, httpTransport, JSON_FACTORY);
-    credential.createScoped(AnalyticsReportingScopes.all());
+    credential.createScoped(Collections.singleton("https://www.googleapis.com/auth/analytics.readonly"));
     System.out.println(credential.getServiceAccountId());
 /*
     GoogleCredential cred = new GoogleCredential.Builder()
@@ -82,7 +81,7 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
         .setClientSecrets(clientId, clientSecret)
         .build(); */
 
-    credential.setAccessToken("access_token");  
+    //credential.setAccessToken("access_token");  
     System.out.println(credential.getServiceAccountId());        
 
     AnalyticsReporting  analyticReporting = new AnalyticsReporting.Builder(httpTransport, JSON_FACTORY, credential)
