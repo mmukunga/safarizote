@@ -76,16 +76,16 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
     InputStream credentialsJSON = GoogleAnalyticsImpl.class.getClassLoader().getResourceAsStream("gcmajimoto-958d87dbada8.json");
     //JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     //HttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
-    GoogleCredential cred = GoogleCredential.fromStream(credentialsJSON, httpTransport, JSON_FACTORY);
-    System.out.println(cred.getServiceAccountId());
+    GoogleCredential credential = GoogleCredential.fromStream(credentialsJSON, httpTransport, JSON_FACTORY);
+    System.out.println(credential.getServiceAccountId());
 
-    GoogleCredential credential = new GoogleCredential.Builder()
+    GoogleCredential cred = new GoogleCredential.Builder()
         .setTransport(httpTransport)
         .setJsonFactory(JSON_FACTORY)
         .setClientSecrets(clientId, clientSecret)
         .build();
     credential.setAccessToken("access_token");  
-    System.out.println(credential.getServiceAccountId());        
+    System.out.println(cred.getServiceAccountId());        
 
     AnalyticsReporting  analyticReporting = new AnalyticsReporting.Builder(httpTransport, JSON_FACTORY, credential)
     .setApplicationName(APPLICATION_NAME).build();
