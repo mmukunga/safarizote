@@ -77,6 +77,7 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
     //JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     //HttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
     GoogleCredential credential = GoogleCredential.fromStream(credentialsJSON, httpTransport, JSON_FACTORY);
+    credential.createScoped(AnalyticsReportingScopes.all());
     System.out.println(credential.getServiceAccountId());
 
     GoogleCredential cred = new GoogleCredential.Builder()
