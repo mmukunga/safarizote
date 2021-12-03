@@ -72,7 +72,9 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
     System.out.println("4.Moto");
     InputStream credentialsJSON = GoogleAnalyticsImpl.class.getClassLoader().getResourceAsStream("gcmajimoto-958d87dbada8.json");
     GoogleCredential credential = GoogleCredential.fromStream(credentialsJSON, httpTransport, JSON_FACTORY);
-    credential.createScoped(Collections.singleton("https://www.googleapis.com/auth/analytics.readonly"));
+    credential.createScoped(List.of(
+      "https://www.googleapis.com/auth/analytics",
+      "https://www.googleapis.com/auth/analytics.readonly"));
     System.out.println(credential.getServiceAccountId());
 /*
     GoogleCredential cred = new GoogleCredential.Builder()
@@ -82,7 +84,7 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
         .build(); */
 
     //credential.setAccessToken("access_token");  
-    System.out.println(credential.getServiceAccountId());        
+    System.out.println(credential.getServiceAccountScopes());        
 
     AnalyticsReporting  analyticReporting = new AnalyticsReporting.Builder(httpTransport, JSON_FACTORY, credential)
     .setApplicationName(APPLICATION_NAME).build();
