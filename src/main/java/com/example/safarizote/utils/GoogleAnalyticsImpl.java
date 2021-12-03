@@ -22,25 +22,19 @@ import com.google.api.services.analyticsreporting.v4.model.ReportRow;
 
 import org.springframework.stereotype.Service;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.InputStream;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 @Service("gaService")
 public class GoogleAnalyticsImpl implements GoogleAnalytics {
   private static final String CLIENT_SECRET_JSON_RESOURCE = "/gcmajimoto-958d87dbada8.json";
-
   // Replace with your view ID.
   private static final String VIEW_ID = "256217453";
-  private static final String KEY_FILE_LOCATION = "xxxx";
-  private static final String SERVICE_ACCOUNT_EMAIL = "xxxxxx";
-
   private static final String APPLICATION_NAME = "GaMajiMoto";
   private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
 
@@ -72,7 +66,7 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
     System.out.println("2Moto");
     String clientId = clientSecrets.get("client_id").toString();
     String clientSecret = clientSecrets.get("private_key").toString();
-    String serviceAccountEmail = clientSecrets.get("client_email").toString();
+    String clientEmail = clientSecrets.get("client_email").toString();
     System.out.println("3Moto");
     System.out.println("4Moto");
 
@@ -88,7 +82,7 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
     GoogleCredential credential = new GoogleCredential.Builder()
         .setTransport(httpTransport)
         .setJsonFactory(JSON_FACTORY)
-        .setServiceAccountId(SERVICE_ACCOUNT_EMAIL)
+        .setServiceAccountId(clientEmail)
         .setClientSecrets(clientId, clientSecret)
         .setServiceAccountScopes(AnalyticsReportingScopes.all())
         .build();
