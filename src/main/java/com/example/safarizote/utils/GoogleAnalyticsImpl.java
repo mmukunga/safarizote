@@ -7,6 +7,7 @@ import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.analyticsreporting.v4.AnalyticsReporting;
+import com.google.api.services.analyticsreporting.v4.AnalyticsReportingScopes;
 import com.google.api.services.analyticsreporting.v4.model.ColumnHeader;
 import com.google.api.services.analyticsreporting.v4.model.DateRange;
 import com.google.api.services.analyticsreporting.v4.model.DateRangeValues;
@@ -23,6 +24,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.InputStream;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -57,7 +59,7 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
 
   private static AnalyticsReporting initializeAnalyticsReporting() throws GeneralSecurityException, IOException {
     System.out.println("Maji");
-    java.io.InputStream is = GoogleAnalyticsImpl.class.getResourceAsStream(CLIENT_SECRET_JSON_RESOURCE);
+    InputStream is = GoogleAnalyticsImpl.class.getResourceAsStream(CLIENT_SECRET_JSON_RESOURCE);
     System.out.println(is);
     System.out.println("1Moto");
     GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY,
@@ -71,13 +73,22 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
     System.out.println("4Moto");
 
     HttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
+
+
+    InputStream credentialsJSON = GoogleAnalyticsImpl.class.getClassLoader().getResourceAsStream("gcmajimoto-958d87dbada8.json");
+      //JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
+      //HttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
+      GoogleCredential cred = GoogleCredential.fromStream(credentialsJSON, httpTransport, JSON_FACTORY);
+      System.out.println(cred.getServiceAccountId());
+
     GoogleCredential credential = new GoogleCredential.Builder()
         .setTransport(httpTransport)
         .setJsonFactory(JSON_FACTORY)
         .setClientSecrets(clientId, clientSecret)
+        .setServiceAccountScopes(Arrays.asList(AnalyticsReportingScopes.ANALYTICS_READONLY))
         .build();
 
-    AnalyticsReporting  analyticReporting = new AnalyticsReporting.Builder(httpTransport, JSON_FACTORY, credential)
+    AnalyticsReporting  analyticReporting = new AnalyticsReporting.Builder(httpTransport, JSON_FACTORY, cred)
     .setApplicationName(APPLICATION_NAME).build();
     System.out.println("5Moto");
 
