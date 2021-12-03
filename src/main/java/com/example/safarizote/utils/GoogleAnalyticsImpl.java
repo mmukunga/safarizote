@@ -53,45 +53,43 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
     return null;
   }
 
-
   private static AnalyticsReporting initializeAnalyticsReporting() throws GeneralSecurityException, IOException {
-    System.out.println("Maji");
+    System.out.println("0.Maji");
     InputStream is = GoogleAnalyticsImpl.class.getResourceAsStream(CLIENT_SECRET_JSON_RESOURCE);
     System.out.println(is);
-    System.out.println("1Moto");
+    System.out.println("1.Moto");
+    
+    /*
     GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY,
         new InputStreamReader(GoogleAnalyticsImpl.class
-            .getResourceAsStream(CLIENT_SECRET_JSON_RESOURCE)));
+            .getResourceAsStream(CLIENT_SECRET_JSON_RESOURCE))); 
+    */
     
-    System.out.println("2Moto");
-    String clientId = clientSecrets.get("client_id").toString();
-    String clientSecret = clientSecrets.get("private_key").toString();
-    String clientEmail = clientSecrets.get("client_email").toString();
-    System.out.println("3Moto");
-    System.out.println("4Moto");
+    System.out.println("2.Moto");
+    //String clientId = clientSecrets.get("client_id").toString();
+    //String clientSecret = clientSecrets.get("private_key").toString();
+    System.out.println("3.Moto");
 
     HttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
-
+    System.out.println("4.Moto");
 
     InputStream credentialsJSON = GoogleAnalyticsImpl.class.getClassLoader().getResourceAsStream("gcmajimoto-958d87dbada8.json");
-    //JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
-    //HttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
     GoogleCredential credential = GoogleCredential.fromStream(credentialsJSON, httpTransport, JSON_FACTORY);
     credential.createScoped(AnalyticsReportingScopes.all());
     System.out.println(credential.getServiceAccountId());
-
+/*
     GoogleCredential cred = new GoogleCredential.Builder()
         .setTransport(httpTransport)
         .setJsonFactory(JSON_FACTORY)
         .setClientSecrets(clientId, clientSecret)
-        .build();
+        .build(); */
+
     credential.setAccessToken("access_token");  
-    System.out.println(cred.getServiceAccountId());        
+    System.out.println(credential.getServiceAccountId());        
 
     AnalyticsReporting  analyticReporting = new AnalyticsReporting.Builder(httpTransport, JSON_FACTORY, credential)
     .setApplicationName(APPLICATION_NAME).build();
-    System.out.println("5Moto");
-
+    System.out.println("5.Moto");
     return analyticReporting;
   }
 
