@@ -1,6 +1,5 @@
 package com.example.safarizote.utils;
 
-import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpTransport;
@@ -23,7 +22,6 @@ import com.google.api.services.analyticsreporting.v4.model.ReportRow;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.InputStream;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
@@ -58,7 +56,7 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
     InputStream is = GoogleAnalyticsImpl.class.getResourceAsStream(CLIENT_SECRET_JSON_RESOURCE);
     System.out.println(is);
     System.out.println("1.Moto");
-    
+
     /*
     GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY,
         new InputStreamReader(GoogleAnalyticsImpl.class
