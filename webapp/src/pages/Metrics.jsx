@@ -37,8 +37,8 @@ const Metrics = () => {
     
     metricsData.map(metrics => {
         displayRow(metrics).then(response => {            
-            console.log(response.dimensions); 
-            console.log(response.metrics); 
+            console.log(response.columnHeader); 
+            console.log(response.data); 
         }).catch(err => {
             console.error(err);
         })
