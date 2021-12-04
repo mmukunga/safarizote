@@ -34,6 +34,14 @@ const Metrics = () => {
     useEffect(() => {
        axios.get('/api/allHits').then(response => {
           console.log(response);
+          console.log(response.data);
+          const { rows } = response.data.reports[0].data;
+
+          console.log(rows);
+          rows.map(row => {
+            console.log(row);             
+          });
+   
           const fetchData = (data) => {
             findDate(data).then(resp => {
               console.log(resp);
