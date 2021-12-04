@@ -116,6 +116,11 @@
             <version>v1-rev158-1.25.0</version>
         </dependency>
 
+        <dependency>
+			<groupId>com.google.analytics</groupId>
+			<artifactId>google-analytics-data</artifactId>
+			<version>0.10.2</version>
+		</dependency>
 
 		<dependency>
 			<groupId>com.google.apis</groupId>
