@@ -20,13 +20,15 @@ const Metrics = () => {
     }
 
     React.useEffect(() => {
-       axios.get('/api/allHits').then(result => {
-          console.log(result);
-          console.log(result.data);
-          const { data } = result.data;
-          if (result.data.data!=null && result.data.data!=undefined) {
-           setMetricsData(old => [...old, ...result.data.reports]);
+       axios.get('/api/allHits').then(response => {
+          console.log(response);
+          console.log(response.data);
+          const { rows } = response.data.reports;
+
+          if (response.data.reports!=null && response.data.reports!=undefined) {
+           setMetricsData(old => [...old, ...response.data.reports]);
           }
+
           rows.map(row => {
               displayRow(row).then(response => {            
                   console.log(response.dimensions); 
@@ -35,6 +37,7 @@ const Metrics = () => {
                   console.error(err);
               })
           });
+
       }).catch(err => {
           console.log(err);
       });
