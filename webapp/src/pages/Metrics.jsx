@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import Card from './Card';
 
@@ -26,7 +26,7 @@ const Metrics = () => {
           const { rows } = response.data.reports;
 
           if (response.data.reports!=null && response.data.reports!=undefined) {
-           setMetricsData(old => [...old, ...response.data.reports]);
+           setMetricsData(metricsData => [...metricsData, ...response.data.reports]);
           }
 
           rows.map(row => {
