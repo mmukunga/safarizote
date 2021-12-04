@@ -6,7 +6,6 @@ import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.analyticsreporting.v4.AnalyticsReporting;
-import com.google.api.services.analyticsreporting.v4.AnalyticsReportingScopes;
 import com.google.api.services.analyticsreporting.v4.model.ColumnHeader;
 import com.google.api.services.analyticsreporting.v4.model.DateRange;
 import com.google.api.services.analyticsreporting.v4.model.DateRangeValues;
@@ -26,7 +25,6 @@ import java.io.InputStream;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 @Service("gaService")
@@ -37,19 +35,15 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
   private static final String APPLICATION_NAME = "GaMajiMoto";
   private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
 
-  public GetReportsResponse getGAData() {
-    try {
+  public GetReportsResponse getGAData() throws Exception {
       AnalyticsReporting service = initializeAnalyticsReporting();
       GetReportsResponse response = getReport(service);
-      System.out.println("Macharia");
-      printResponse(response);  
-      System.out.println("Mukunga");   
-      return response;
 
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    return null;
+      System.out.println("getGAData() Start!");
+      printResponse(response);  
+      System.out.println("getGAData() End OK!!"); 
+
+      return response;
   }
 
   private static AnalyticsReporting initializeAnalyticsReporting() throws GeneralSecurityException, IOException {
@@ -57,35 +51,16 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
     InputStream is = GoogleAnalyticsImpl.class.getResourceAsStream(CLIENT_SECRET_JSON_RESOURCE);
     System.out.println(is);
     System.out.println("1.Moto");
-
-    /*
-    GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY,
-        new InputStreamReader(GoogleAnalyticsImpl.class
-            .getResourceAsStream(CLIENT_SECRET_JSON_RESOURCE))); 
-    */
-    
-    System.out.println("2.Moto");
-    //String clientId = clientSecrets.get("client_id").toString();
-    //String clientSecret = clientSecrets.get("private_key").toString();
-    System.out.println("3.Moto");
-
     HttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
-    System.out.println("4.Moto");
-    InputStream credentialsJSON = GoogleAnalyticsImpl.class.getClassLoader().getResourceAsStream("gcmajimoto-958d87dbada8.json");
+    System.out.println("2.Moto");
+    InputStream credentialsJSON = GoogleAnalyticsImpl.class.getClassLoader().getResourceAsStream("gcmajimoto-538e2637d707.json");
+    System.out.println("3.Moto");
     GoogleCredential credential = GoogleCredential.fromStream(credentialsJSON, httpTransport, JSON_FACTORY)
     .createScoped(Arrays.asList("https://www.googleapis.com/auth/analytics",
                       "https://www.googleapis.com/auth/analytics.readonly"));
+    System.out.println("4.Moto");
     System.out.println(credential.getServiceAccountId());
-/*
-    GoogleCredential cred = new GoogleCredential.Builder()
-        .setTransport(httpTransport)
-        .setJsonFactory(JSON_FACTORY)
-        .setClientSecrets(clientId, clientSecret)
-        .build(); */
-
-    //credential.setAccessToken("access_token");  
     System.out.println(credential.getServiceAccountScopes());        
-
     AnalyticsReporting  analyticReporting = new AnalyticsReporting.Builder(httpTransport, JSON_FACTORY, credential)
     .setApplicationName(APPLICATION_NAME).build();
     System.out.println("5.Moto");
