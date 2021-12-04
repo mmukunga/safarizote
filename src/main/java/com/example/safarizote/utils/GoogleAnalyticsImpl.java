@@ -38,32 +38,23 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
   public GetReportsResponse getGAData() throws Exception {
       AnalyticsReporting service = initializeAnalyticsReporting();
       GetReportsResponse response = getReport(service);
-
-      System.out.println("getGAData() Start!");
       printResponse(response);  
       System.out.println("getGAData() End OK!!"); 
-
       return response;
   }
 
   private static AnalyticsReporting initializeAnalyticsReporting() throws GeneralSecurityException, IOException {
-    //System.out.println("0.Maji");
-    //InputStream is = GoogleAnalyticsImpl.class.getResourceAsStream(CLIENT_SECRET_JSON_RESOURCE);
-    //System.out.println(is);
-    System.out.println("1.Moto");
     HttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
-    System.out.println("2.Moto");
+    List<String> SCOPES = Arrays.asList(
+      "https://www.googleapis.com/auth/analytics",
+      "https://www.googleapis.com/auth/analytics.readonly"
+    );
     InputStream credentialsJSON = GoogleAnalyticsImpl.class.getClassLoader().getResourceAsStream(CLIENT_SECRET_JSON_RESOURCE);
-    System.out.println("3.Moto");
-    GoogleCredential credential = GoogleCredential.fromStream(credentialsJSON, httpTransport, JSON_FACTORY)
-    .createScoped(Arrays.asList("https://www.googleapis.com/auth/analytics",
-                      "https://www.googleapis.com/auth/analytics.readonly"));
-    System.out.println("4.Moto");
+    GoogleCredential credential = GoogleCredential.fromStream(credentialsJSON, httpTransport, JSON_FACTORY).createScoped(SCOPES);
     System.out.println(credential.getServiceAccountId());
     System.out.println(credential.getServiceAccountScopes());        
     AnalyticsReporting  analyticReporting = new AnalyticsReporting.Builder(httpTransport, JSON_FACTORY, credential)
     .setApplicationName(APPLICATION_NAME).build();
-    System.out.println("5.Moto");
     return analyticReporting;
   }
 
@@ -71,35 +62,28 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
     // Create the DateRange object.
     DateRange dateRange = new DateRange();
     dateRange.setStartDate("7DaysAgo");
-    dateRange.setEndDate("today");    
-    System.out.println("1.getReport");
+    dateRange.setEndDate("today"); 
 
     // Create the Metrics object.
     Metric sessions = new Metric()
         .setExpression("ga:sessions")
         .setAlias("sessions");
-        System.out.println("2.getReport");
     //Create the Dimensions object.
     Dimension browser = new Dimension()
         .setName("ga:browser");
-    System.out.println("3.getReport");
     // Create the ReportRequest object.
     ReportRequest request = new ReportRequest()
         .setViewId(VIEW_ID)
         .setDateRanges(Arrays.asList(dateRange))
         .setDimensions(Arrays.asList(browser))
         .setMetrics(Arrays.asList(sessions));
-    System.out.println("4.getReport");
     ArrayList<ReportRequest> requests = new ArrayList<ReportRequest>();
     requests.add(request);
-    System.out.println("5.getReport");
     // Create the GetReportsRequest object.
     GetReportsRequest getReport = new GetReportsRequest()
         .setReportRequests(requests);
-    System.out.println("6.getReport");
     // Call the batchGet method.
     GetReportsResponse response = service.reports().batchGet(getReport).execute();
-    System.out.println("7.getReport");
     // Return the response.
     return response;
   }
@@ -109,35 +93,32 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
    *
    * @param response the Analytics Reporting API V4 response.
    */
-  private static void printResponse(GetReportsResponse response) {
-    System.out.println("1.printResponse..");
+  private static void printResponse(GetReportsResponse response) {   
     for (Report report: response.getReports()) {
       ColumnHeader header = report.getColumnHeader();
       List<String> dimensionHeaders = header.getDimensions();
       List<MetricHeaderEntry> metricHeaders = header.getMetricHeader().getMetricHeaderEntries();
       List<ReportRow> rows = report.getData().getRows();
-      System.out.println("2.printResponse..");
+      
       if (rows == null) {
          System.out.println("No data found for " + VIEW_ID);
          return;
       }
-      System.out.println("2.printResponse..");
-      for (ReportRow row: rows) {
-        System.out.println("2.printResponse..");
+      
+      for (ReportRow row: rows) {      
         List<String> dimensions = row.getDimensions();
         List<DateRangeValues> metrics = row.getMetrics();
         for (int i = 0; i < dimensionHeaders.size() && i < dimensions.size(); i++) {
           System.out.println(dimensionHeaders.get(i) + ": " + dimensions.get(i));
         }
-        System.out.println("3.printResponse..");
+       
         for (int j = 0; j < metrics.size(); j++) {
           System.out.print("Date Range (" + j + "): ");
           DateRangeValues values = metrics.get(j);
           for (int k = 0; k < values.getValues().size() && k < metricHeaders.size(); k++) {
             System.out.println(metricHeaders.get(k).getName() + ": " + values.getValues().get(k));
           }
-        }
-        System.out.println("4.printResponse..");
+        }    
       }
     }
   }

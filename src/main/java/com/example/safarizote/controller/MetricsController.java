@@ -33,10 +33,7 @@ public class MetricsController {
   @GetMapping("/api/allHits")
   public ResponseEntity<GetReportsResponse> findAll() throws Exception {
     //List<Metrics> visits = repository.findAll();
-    System.out.println("findAll()1");
     GetReportsResponse allHits = gaService.getGAData();
-    System.out.println(allHits);
-    System.out.println("findAll()2");
     System.out.println(allHits);
     return ResponseEntity.ok().body(allHits);
   }
@@ -44,7 +41,6 @@ public class MetricsController {
   @PostMapping("/api/saveVisit")
   public ResponseEntity<List<Metrics>> save(@RequestBody Metrics metrics) throws IOException {
     System.out.println(metrics);
-
     metrics.setDateCreated(Instant.now());
     if (!metrics.getHostname().contains("googlebot.com")){
       repository.save(metrics);
