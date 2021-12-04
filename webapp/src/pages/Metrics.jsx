@@ -36,9 +36,17 @@ const Metrics = () => {
     )
     
     metricsData.map(metrics => {
-        displayRow(metrics).then(response => {            
-            console.log(response.columnHeader); 
-            console.log(response.data); 
+        displayRow(metrics).then(response => {  
+          const { columnHeader } = response.data;          
+            console.log(columnHeader); 
+            const { data } = response.data;
+            console.log(data); 
+            console.log(data.maximums);
+            console.log(data.minimums);
+            console.log(data.rowCount);
+            console.log(data.rows);
+            console.log(data.totals);
+
         }).catch(err => {
             console.error(err);
         })
