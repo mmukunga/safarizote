@@ -3,8 +3,9 @@ import axios from 'axios';
 import Card from './Card';
 
 const Metrics = () => {
-   const [metrics, setMetrics] = useState([]);
+   const [metricsData, setMetricsData] = React.useState([]);
    const [totalCount, setTotalCount] = useState(0);
+   const [arr, setArr] = useState([]);
     
     React.useEffect(() => {
         axios.get('/api/healthCheck').then(response => {
@@ -19,12 +20,13 @@ const Metrics = () => {
     }
 
     React.useEffect(() => {
-       axios.get('/api/allHits').then(response => {
-          console.log(response);
-          console.log(response.data);
-          const { rows } = response.data.reports;
-          console.log(rows);
-          setMetrics(rows);
+       axios.get('/api/allHits').then(result => {
+          console.log(result);
+          console.log(result.data);
+          const { data } = result.data;
+          if (result.data.data!=null && result.data.data!=undefined) {
+           setMetricsData(old => [...old, ...result.data.reports]);
+          }
           rows.map(row => {
               displayRow(row).then(response => {            
                   console.log(response.dimensions); 
@@ -37,6 +39,10 @@ const Metrics = () => {
           console.log(err);
       });
     }, []);
+
+     metricsData.map((item) => 
+      console.log(item)
+    )
 
     return (
         <Card className="InnerCard" fontColor="black">
@@ -67,7 +73,7 @@ const Metrics = () => {
             <p style={{ margin: '10px', textAlign:'left'}}>Hits: { totalCount }</p>
 
 
-            {metrics && metrics.map((item,idx) => 
+            {metricsData && metricsData.map((item,idx) => 
               <div> Hits {item.values[0]}</div>
             )}
 
