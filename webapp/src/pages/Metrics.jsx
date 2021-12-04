@@ -4,6 +4,7 @@ import Card from './Card';
 
 const Metrics = () => {
    const [metricsData, setMetricsData] = React.useState([]);
+   const [metrics, setMetrics] = React.useState([]);
    const [totalCount, setTotalCount] = useState(0);
    const [arr, setArr] = useState([]);
     
@@ -27,6 +28,7 @@ const Metrics = () => {
 
           if (response.data.reports!=null && response.data.reports!=undefined) {
            setMetricsData(old => [...old, ...response.data.reports]);
+           setMetrics(old => [...old, ...response.data.reports]);
           }
 
           rows.map(row => {
@@ -74,12 +76,6 @@ const Metrics = () => {
                )}
             </table>
             <p style={{ margin: '10px', textAlign:'left'}}>Hits: { totalCount }</p>
-
-
-            {metricsData && metricsData.map((item,idx) => 
-              <div> Hits {item.values[0]}</div>
-            )}
-
 
         </Card>
     )
