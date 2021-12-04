@@ -32,7 +32,6 @@ public class MetricsController {
 
   @GetMapping("/api/allHits")
   public ResponseEntity<GetReportsResponse> findAll() throws Exception {
-    //List<Metrics> visits = repository.findAll();
     GetReportsResponse response = gaService.getGAData();
     System.out.println(response);
     return ResponseEntity.ok().body(response);

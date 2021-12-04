@@ -3,10 +3,10 @@ import axios from 'axios';
 import Card from './Card';
 
 const Metrics = () => {
-   const [myData, setMyData] = useState([]);
+   const [metrics, setMetrics] = useState([]);
    const [totalCount, setTotalCount] = useState(0);
     
-   useEffect(() => {
+    React.useEffect(() => {
         axios.get('/api/healthCheck').then(response => {
           console.log(response);
       }).catch(err => {
@@ -14,47 +14,26 @@ const Metrics = () => {
       });
     }, []);
 
-    async function findDate(data) {
-        /*
-        const mediaTypes = data.map(dataItem => dataItem.hostname) 
-        .filter((mediaType, index, array) => array.indexOf(mediaType) === index); 
-        
-        const aggregatedData = mediaTypes.map(dataItem => ({
-            type: dataItem,
-            dateCreated: data.filter(item => item.hostname == dataItem)[0].dateCreated.split('.')[0],
-            count: data.filter(item => item.hostname == dataItem).length
-        }));
-
-        
-        return aggregatedData;
-        */
-       return new Date();
+    async function displayRow(row) {
+       return row;
     }
 
-    useEffect(() => {
+    React.useEffect(() => {
        axios.get('/api/allHits').then(response => {
           console.log(response);
           console.log(response.data);
           const { rows } = response.data.reports[0].data;
-
           console.log(rows);
-          rows.map(row => {
-            console.log(row);             
+          var refMetrics = [...metrics, ...rows];
+          setMetrics(refMetrics);
+          refMetrics.map(row => {
+              console.log(row); 
+              displayRow(row).then(response => {
+                  console.log(response);
+              }).catch(err => {
+                  console.error(err);
+              })
           });
-   
-          const fetchData = (data) => {
-            findDate(data).then(resp => {
-              console.log(resp);
-              //setMyData([ ...myData, ...resp ]);
-              //const totalCount = resp.reduce((total, item) => total = total + item.count, 0);
-              //setTotalCount(totalCount);
-            }).catch(err => {
-                console.error(err);
-            })
-          }
-
-          fetchData(response.data);
-
       }).catch(err => {
           console.log(err);
       });
@@ -77,7 +56,7 @@ const Metrics = () => {
                 <th>Last Visited</th>
                 <th>HITS</th>
               </tr>        
-               {myData.map((item,idx) => 
+               {metrics.map((item,idx) => 
                  <tr key={idx}>
                    <td>{idx}</td>
                    <td>{item.type}</td>
@@ -87,6 +66,13 @@ const Metrics = () => {
                )}
             </table>
             <p style={{ margin: '10px', textAlign:'left'}}>Hits: { totalCount }</p>
+
+
+            {metrics && metrics.map((item,idx) => 
+              <div> Hits {item.values[0]}</div>
+            )}
+
+
         </Card>
     )
 }
