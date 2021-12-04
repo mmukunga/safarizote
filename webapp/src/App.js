@@ -59,7 +59,7 @@ function App() {
 
   React.useEffect(() => {
     if (!window.location.href.includes("localhost")) {
-      ReactGA.initialize("UA-212884600-1");
+      ReactGA.initialize("UA-212884600-2");
       setInitialized(true);
     }
   }, []);
@@ -68,7 +68,7 @@ function App() {
     if (initialized) {
       console.log(location.pathname + location.search);
       ReactGA.pageview(location.pathname + location.search);
-      window.gtag("config", "GA_MEASUREMENT_ID", {
+      window.gtag("config", "UA-212884600-2", {
         page_title: location.pathname,
         page_path: location.pathname,
         });
