@@ -22,14 +22,13 @@ const Metrics = () => {
        axios.get('/api/allHits').then(response => {
           console.log(response);
           console.log(response.data);
-          const { rows } = response.data.reports[0].data;
+          const { rows } = response.data.reports;
           console.log(rows);
-          var refMetrics = [...metrics, ...rows];
-          setMetrics(refMetrics);
-          refMetrics.map(row => {
-              console.log(row); 
-              displayRow(row).then(response => {
-                  console.log(response);
+          setMetrics(rows);
+          rows.map(row => {
+              displayRow(row).then(response => {            
+                  console.log(response.dimensions); 
+                  console.log(response.metrics); 
               }).catch(err => {
                   console.error(err);
               })
