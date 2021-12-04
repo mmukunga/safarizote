@@ -23,21 +23,9 @@ const Metrics = () => {
        axios.get('/api/allHits').then(response => {
           console.log(response);
           console.log(response.data);
-          const { rows } = response.data.reports;
-
           if (response.data.reports!=null && response.data.reports!=undefined) {
            setMetricsData(metricsData => [...metricsData, ...response.data.reports]);
           }
-
-          rows.map(row => {
-              displayRow(row).then(response => {            
-                  console.log(response.dimensions); 
-                  console.log(response.metrics); 
-              }).catch(err => {
-                  console.error(err);
-              })
-          });
-
       }).catch(err => {
           console.log(err);
       });
@@ -46,6 +34,16 @@ const Metrics = () => {
      metricsData.map((item) => 
       console.log(item)
     )
+    
+    metricsData.map(metrics => {
+        displayRow(metrics).then(response => {            
+            console.log(response.dimensions); 
+            console.log(response.metrics); 
+        }).catch(err => {
+            console.error(err);
+        })
+    });
+
 
     return (
         <Card className="InnerCard" fontColor="black">
