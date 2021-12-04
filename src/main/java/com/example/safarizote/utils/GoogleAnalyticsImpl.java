@@ -29,9 +29,9 @@ import java.util.List;
 
 @Service("gaService")
 public class GoogleAnalyticsImpl implements GoogleAnalytics {
-  private static final String CLIENT_SECRET_JSON_RESOURCE = "/gcmajimoto-958d87dbada8.json";
+  private static final String CLIENT_SECRET_JSON_RESOURCE = "/gcmajimoto-538e2637d707.json";
   // Replace with your view ID.
-  private static final String VIEW_ID = "256217453";
+  private static final String VIEW_ID = "256484158";
   private static final String APPLICATION_NAME = "GaMajiMoto";
   private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
 
@@ -47,13 +47,13 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
   }
 
   private static AnalyticsReporting initializeAnalyticsReporting() throws GeneralSecurityException, IOException {
-    System.out.println("0.Maji");
-    InputStream is = GoogleAnalyticsImpl.class.getResourceAsStream(CLIENT_SECRET_JSON_RESOURCE);
-    System.out.println(is);
+    //System.out.println("0.Maji");
+    //InputStream is = GoogleAnalyticsImpl.class.getResourceAsStream(CLIENT_SECRET_JSON_RESOURCE);
+    //System.out.println(is);
     System.out.println("1.Moto");
     HttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
     System.out.println("2.Moto");
-    InputStream credentialsJSON = GoogleAnalyticsImpl.class.getClassLoader().getResourceAsStream("gcmajimoto-538e2637d707.json");
+    InputStream credentialsJSON = GoogleAnalyticsImpl.class.getClassLoader().getResourceAsStream(CLIENT_SECRET_JSON_RESOURCE);
     System.out.println("3.Moto");
     GoogleCredential credential = GoogleCredential.fromStream(credentialsJSON, httpTransport, JSON_FACTORY)
     .createScoped(Arrays.asList("https://www.googleapis.com/auth/analytics",
