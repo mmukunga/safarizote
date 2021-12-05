@@ -68,7 +68,7 @@ const Metrics = () => {
                 <th>Last Visited</th>
                 <th>HITS</th>
               </tr>        
-               {metricsData.map((item,idx) => {
+               {metricsData.map((response,idx) => {
                  const { columnHeader, data } = response;          
                  console.log(columnHeader); 
                  const max = data.maximums;
