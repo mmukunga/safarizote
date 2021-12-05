@@ -7,7 +7,11 @@ const initialState = {
      rowCount: 0,
      totals: 0,
      dimensions: [],
-     metrics: []
+     metrics: [
+       {
+         values:[]
+       }
+     ]
 };
 
 
