@@ -79,15 +79,17 @@ const Metrics = () => {
                     console.log(subarray);
                     const { data } = subarray;
                     console.log(data);
-                    subarray.dimensions.map( item => {
+                    subarray.dimensions.map(item => {
                       console.log(item); 
                     }); 
-                    subarray.metrics.map( item => {
+                    subarray.metrics.map(item => {
                       console.log(item); 
+                      item.values.map(value => {
+                        console.log(value); 
+                      });
                     }); 
                  });
-                 console.log(data.totals);
-     
+                 console.log(data.totals);   
                     return <tr key={idx}>
                       <td>{idx}</td>
                       <td>{item.type}</td>
