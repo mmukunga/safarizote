@@ -95,7 +95,7 @@ const Metrics = () => {
                 <td>{state.metrics[0].values}</td>
               </tr>      
             </table>
-            <p style={{ margin: '10px', textAlign:'left'}}>Hits: { state.rowCount }</p>
+            <p style={{ margin: '10px', textAlign:'left'}}>Hits: { state.totals }</p>
         </Card>
     )
 }
