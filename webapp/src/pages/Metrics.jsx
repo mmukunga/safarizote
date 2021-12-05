@@ -75,8 +75,8 @@ const Metrics = () => {
                  const min = data.minimums;
                  const count = data.rowCount;
                  console.log(data.rows);
-                 data.rows.forEach(subarray => {
-                    subarray.forEach( item => {
+                 data.rows.map(subarray => {
+                    subarray.map( item => {
                       console.log(item); 
                     }); 
                  });
