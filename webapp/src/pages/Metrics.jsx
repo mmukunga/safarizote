@@ -7,7 +7,7 @@ const initialState = {
      rowCount: 0,
      totals: 0,
      dimensions: [],
-     metrics: [{ values:[]}]
+     metrics: []
 };
 
 const reducer = (state, action) => {
