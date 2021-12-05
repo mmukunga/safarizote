@@ -75,6 +75,11 @@ const Metrics = () => {
                  const min = data.minimums;
                  const count = data.rowCount;
                  console.log(data.rows);
+                 data.rows.forEach(subarray => {
+                    subarray.forEach( item => {
+                      console.log(item); 
+                    }); 
+                 });
                  console.log(data.totals);
      
                     return <tr key={idx}>
