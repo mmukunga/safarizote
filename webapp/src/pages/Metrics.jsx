@@ -33,7 +33,8 @@ const reducer = (state, action) => {
 const Metrics = () => {   
    const [state, dispatch] = useReducer(reducer, initialState);
    const [metricsData, setMetricsData] = React.useState([]);
-    
+   const [totalVisits, setTotalVisits] = React.useState(0);
+
     React.useEffect(() => {
         axios.get('/api/healthCheck').then(response => {
           console.log(response);
@@ -83,6 +84,7 @@ const Metrics = () => {
       console.log(state.totals[0]);
       const { values } = state.totals[0];
       console.log(values);
+      setTotalVisits(values);
     }
   
 
@@ -107,10 +109,10 @@ const Metrics = () => {
                 <td>{state.rows}</td>
                 <td>{state.rowCount}</td>
                 <td>{state.dimensions[0]}</td>
-                <td>metrics</td>
+                <td>{totalVisits}</td>
               </tr>      
             </table>
-            <p style={{ margin: '10px', textAlign:'left'}}>Hits: { 121212 }</p>
+            <p style={{ margin: '10px', textAlign:'left'}}>Hits: { totalVisits }</p>
         </Card>
     )
 }
