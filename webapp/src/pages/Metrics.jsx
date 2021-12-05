@@ -7,13 +7,8 @@ const initialState = {
      rowCount: 0,
      totals: 0,
      dimensions: [],
-     metrics: [
-       {
-         values:[]
-       }
-     ]
+     metrics: [{ values:[]}]
 };
-
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -33,8 +28,6 @@ const reducer = (state, action) => {
 const Metrics = () => {   
    const [state, dispatch] = useReducer(reducer, initialState);
    const [metricsData, setMetricsData] = React.useState([]);
-   const [totalCount, setTotalCount] = useState(0);
-   const [arr, setArr] = useState([]);
     
     React.useEffect(() => {
         axios.get('/api/healthCheck').then(response => {
@@ -50,8 +43,6 @@ const Metrics = () => {
 
     React.useEffect(() => {
        axios.get('/api/allHits').then(response => {
-          console.log(response);
-          console.log(response.data);
           if (response.data.reports!=null && response.data.reports!=undefined) {
            setMetricsData(metricsData => [...metricsData, ...response.data.reports]);
           }
@@ -59,31 +50,14 @@ const Metrics = () => {
           console.log(err);
       });
     }, []);
-
-     metricsData.map((item) => 
-      console.log(item)
-    )
     
     React.useEffect(() => {
       metricsData.map(metrics => {
         displayRow(metrics).then(response => {  
-          const { columnHeader, data } = response;      
-          console.log(columnHeader); 
-
+          const { columnHeader, data } = response;  
           data.rows.map(subarray => {
             dispatch({ type: 'DIMENSIONS', payload: subarray.dimensions });
-            console.log(subarray);
-            subarray.dimensions.map(item => {
-              console.log(item); 
-            });
-
             dispatch({ type: 'METRICS', payload: subarray.metrics });
-            subarray.metrics.map(item => {
-              console.log(item); 
-              item.values.map(value => {
-                console.log(value); 
-              });
-            }); 
           });
            
           dispatch({ type: 'ROWCOUNT', payload: data.rowCount })
@@ -121,7 +95,7 @@ const Metrics = () => {
                 <td>{state.metrics[0].values}</td>
               </tr>      
             </table>
-            <p style={{ margin: '10px', textAlign:'left'}}>Hits: { state.totalCount }</p>
+            <p style={{ margin: '10px', textAlign:'left'}}>Hits: { state.rowCount }</p>
         </Card>
     )
 }
