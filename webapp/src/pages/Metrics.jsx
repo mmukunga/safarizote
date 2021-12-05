@@ -78,6 +78,12 @@ const Metrics = () => {
     console.log(state);
     console.log(state.totals);
     console.log(state.totals[0]);
+    
+    if (state.totals[0] != 'undefined') {
+      console.log(state.totals[0].values);
+      console.log(state.totals[0].values[0]);
+    }
+  
 
     return (
         <Card className="InnerCard" fontColor="black">
