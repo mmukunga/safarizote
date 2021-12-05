@@ -5,7 +5,7 @@ import Card from './Card';
 
 const initialState = { 
      rowCount: 0,
-     totals: 0,
+     totals: [],
      dimensions: [],
      metrics: []
 };
