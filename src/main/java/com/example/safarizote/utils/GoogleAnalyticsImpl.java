@@ -68,9 +68,11 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
     Metric sessions = new Metric()
         .setExpression("ga:sessions")
         .setAlias("sessions");
+
     //Create the Dimensions object.
     Dimension browser = new Dimension()
         .setName("ga:browser");
+
     // Create the ReportRequest object.
     ReportRequest request = new ReportRequest()
         .setViewId(VIEW_ID)
@@ -79,9 +81,11 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
         .setMetrics(Arrays.asList(sessions));
     ArrayList<ReportRequest> requests = new ArrayList<ReportRequest>();
     requests.add(request);
+
     // Create the GetReportsRequest object.
     GetReportsRequest getReport = new GetReportsRequest()
         .setReportRequests(requests);
+        
     // Call the batchGet method.
     GetReportsResponse response = service.reports().batchGet(getReport).execute();
     // Return the response.
