@@ -66,10 +66,11 @@ const Metrics = () => {
             console.log(subarray.metrics);
             dispatch({ type: 'METRICS', payload: subarray.metrics });
           });
-           
-          dispatch({ type: 'ROWCOUNT', payload: data.rowCount })
-          dispatch({ type: 'TOTALS',   payload: data.totals }) 
-
+          console.log("1.a..");
+          dispatch({ type: 'ROWCOUNT', payload: data.rowCount });
+          console.log("2.b..");
+          dispatch({ type: 'TOTALS',   payload: data.totals }); 
+          console.log("2.c..");
         }).catch(err => {
           console.error(err);
         })
