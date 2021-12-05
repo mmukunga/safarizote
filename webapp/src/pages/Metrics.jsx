@@ -33,7 +33,7 @@ const reducer = (state, action) => {
 const Metrics = () => {   
    const [state, dispatch] = useReducer(reducer, initialState);
    const [metricsData, setMetricsData] = React.useState([]);
-   const [totalVisits, setTotalVisits] = React.useState(0);
+   const [hits, setHits] = React.useState('0');
 
     React.useEffect(() => {
         axios.get('/api/healthCheck').then(response => {
@@ -87,7 +87,8 @@ const Metrics = () => {
       setTotalVisits(values[0]);
     }
   
-
+    console.log(hits);
+    
     return (
         <Card className="InnerCard" fontColor="black">
             <h4 style={{ margin: '20px', fontStyle: 'bold', textAlign: 'left'}}>Safari Zote!</h4>
@@ -109,7 +110,7 @@ const Metrics = () => {
                 <td>{state.rows}</td>
                 <td>{state.rowCount}</td>
                 <td>{state.dimensions[0]}</td>
-                <td>{totalVisits}</td>
+                <td>{hits}</td>
               </tr>      
             </table>
             <p style={{ margin: '10px', textAlign:'left'}}>Hits: { totalVisits }</p>
