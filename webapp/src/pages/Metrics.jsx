@@ -92,7 +92,7 @@ const Metrics = () => {
     }, [metricsData]);
   
     console.log(state);
-    
+
     return (
         <Card className="InnerCard" fontColor="black">
             <h4 style={{ margin: '20px', fontStyle: 'bold', textAlign: 'left'}}>Safari Zote!</h4>
@@ -105,44 +105,19 @@ const Metrics = () => {
             </ul>
             <table className="Table">  
               <tr>
-                <th>ID</th>
-                <th>HOSTNAME</th>
-                <th>Last Visited</th>
-                <th>HITS</th>
-              </tr>        
-               {metricsData.map((item,idx) => {
-                 const { columnHeader, data } = item;          
-                 console.log(columnHeader); 
-                 const max = data.maximums;
-                 const min = data.minimums;
-                 const count = data.rowCount;
-                 console.log(data.rows);
-                 data.rows.map(subarray => {
-                    console.log(subarray);
-                    const { data } = subarray;
-                    console.log(data);
-                    subarray.dimensions.map(item => {
-                      console.log(item); 
-                    }); 
-                    subarray.metrics.map(item => {
-                      console.log(item); 
-                      item.values.map(value => {
-                        console.log(value); 
-                      });
-                    }); 
-                 });
-                 console.log(data.totals);   
-                    return <tr key={idx}>
-                      <td>{idx}</td>
-                      <td>{item.type}</td>
-                      <td>{item.dateCreated}</td>
-                      <td>{item.count}</td>
-                    </tr>
-                    }
-                )}
+                <th>ROWS</th>
+                <th>ROWCOUNT</th>
+                <th>DIMENSIONS</th>
+                <th>METRICS</th>
+              </tr>   
+              <tr>
+                <td>{state.rows}</td>
+                <td>{state.rowCount}</td>
+                <td>{state.dimensions[0]}</td>
+                <td>{state.metrics[0].values}</td>
+              </tr>      
             </table>
-            <p style={{ margin: '10px', textAlign:'left'}}>Hits: { totalCount }</p>
-
+            <p style={{ margin: '10px', textAlign:'left'}}>Hits: { state.totalCount }</p>
         </Card>
     )
 }
