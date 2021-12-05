@@ -67,7 +67,7 @@ const Metrics = () => {
           });
            
           dispatch({ type: 'ROWCOUNT', payload: data.rowCount })
-          dispatch({ type: 'TOTALS', payload: data.totals }) 
+          dispatch({ type: 'TOTALS',   payload: data.totals }) 
 
         }).catch(err => {
           console.error(err);
