@@ -76,6 +76,7 @@ const Metrics = () => {
                  const count = data.rowCount;
                  console.log(data.rows);
                  data.rows.map(subarray => {
+                    console.log(subarray);
                     subarray.map( item => {
                       console.log(item); 
                     }); 
