@@ -76,6 +76,8 @@ const Metrics = () => {
     }, [metricsData]);
   
     console.log(state);
+    console.log(state.totals);
+    console.log(state);
 
     return (
         <Card className="InnerCard" fontColor="black">
@@ -101,7 +103,7 @@ const Metrics = () => {
                 <td>metrics</td>
               </tr>      
             </table>
-            <p style={{ margin: '10px', textAlign:'left'}}>Hits: { state.totals && state.totals[0].values[0] }</p>
+            <p style={{ margin: '10px', textAlign:'left'}}>Hits: { 121212 }</p>
         </Card>
     )
 }
