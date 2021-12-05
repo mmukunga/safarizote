@@ -1,8 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import axios from 'axios';
 import Card from './Card';
 
-const Metrics = () => {
+
+const initialState = { 
+     rowCount: 0,
+     totals: 0,
+     dimensions: [],
+     metrics: []
+};
+
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'DIMENSIONS': 
+      return { ...state, dimensions: action.payload };
+    case "METRICS": 
+      return { ...state, metrics: action.payload };
+    case 'TOTALS': 
+      return { ...state, totals: action.payload };
+    case 'ROWCOUNT': 
+      return { ...state, rowCount: action.payload };    
+    default: 
+      return state;
+  }
+ }
+
+const Metrics = () => {   
+   const [state, dispatch] = useReducer(reducer, initialState);
    const [metricsData, setMetricsData] = React.useState([]);
    const [totalCount, setTotalCount] = useState(0);
    const [arr, setArr] = useState([]);
@@ -38,19 +63,17 @@ const Metrics = () => {
     React.useEffect(() => {
       metricsData.map(metrics => {
         displayRow(metrics).then(response => {  
-          const { columnHeader, data } = response;          
+          const { columnHeader, data } = response;      
           console.log(columnHeader); 
-          const max = data.maximums;
-          const min = data.minimums;
-          const count = data.rowCount;
-          console.log(data.rows);
+
           data.rows.map(subarray => {
+            dispatch({ type: 'DIMENSIONS', payload: subarray.dimensions });
             console.log(subarray);
-            const { data } = subarray;
-            console.log(data);
             subarray.dimensions.map(item => {
               console.log(item); 
-            }); 
+            });
+
+            dispatch({ type: 'METRICS', payload: subarray.metrics });
             subarray.metrics.map(item => {
               console.log(item); 
               item.values.map(value => {
@@ -58,12 +81,18 @@ const Metrics = () => {
               });
             }); 
           });
+           
+          dispatch({ type: 'ROWCOUNT', payload: data.rowCount })
+          dispatch({ type: 'TOTALS', payload: data.totals }) 
+
         }).catch(err => {
           console.error(err);
         })
       });
     }, [metricsData]);
   
+    console.log(state);
+    
     return (
         <Card className="InnerCard" fontColor="black">
             <h4 style={{ margin: '20px', fontStyle: 'bold', textAlign: 'left'}}>Safari Zote!</h4>
