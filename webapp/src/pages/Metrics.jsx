@@ -77,7 +77,7 @@ const Metrics = () => {
   
     console.log(state);
     console.log(state.totals);
-    console.log(state.totals[0] && state.totals[0].values);
+    console.log(state.totals[0]);
 
     return (
         <Card className="InnerCard" fontColor="black">
