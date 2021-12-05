@@ -7,15 +7,20 @@ const initialState = {
      rowCount: 0,
      totals: 0,
      dimensions: [],
-     metrics: []
+     metrics: [{ values: [] }]
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case 'DIMENSIONS': 
-      return { ...state, dimensions: action.payload };
-    case "METRICS": 
-      return { ...state, metrics: action.payload };
+      return { 
+        ...state, 
+        dimensions: action.payload };
+    case "METRICS":
+      return {
+        ...state,
+        metrics: action.payload
+      };
     case 'TOTALS': 
       return { ...state, totals: action.payload };
     case 'ROWCOUNT': 
