@@ -35,22 +35,35 @@ const Metrics = () => {
       console.log(item)
     )
     
-    metricsData.map(metrics => {
+    React.useEffect(() => {
+      metricsData.map(metrics => {
         displayRow(metrics).then(response => {  
           const { columnHeader, data } = response;          
-            console.log(columnHeader); 
-            console.log(data.maximums);
-            console.log(data.minimums);
-            console.log(data.rowCount);
-            console.log(data.rows);
-            console.log(data.totals);
-
+          console.log(columnHeader); 
+          const max = data.maximums;
+          const min = data.minimums;
+          const count = data.rowCount;
+          console.log(data.rows);
+          data.rows.map(subarray => {
+            console.log(subarray);
+            const { data } = subarray;
+            console.log(data);
+            subarray.dimensions.map(item => {
+              console.log(item); 
+            }); 
+            subarray.metrics.map(item => {
+              console.log(item); 
+              item.values.map(value => {
+                console.log(value); 
+              });
+            }); 
+          });
         }).catch(err => {
-            console.error(err);
+          console.error(err);
         })
-    });
-
-
+      });
+    }, [metricsData]);
+  
     return (
         <Card className="InnerCard" fontColor="black">
             <h4 style={{ margin: '20px', fontStyle: 'bold', textAlign: 'left'}}>Safari Zote!</h4>
