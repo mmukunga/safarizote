@@ -57,6 +57,7 @@ const Metrics = () => {
           const { columnHeader, data } = response;  
           data.rows.map(subarray => {
             dispatch({ type: 'DIMENSIONS', payload: subarray.dimensions });
+            console.log(subarray.metrics);
             dispatch({ type: 'METRICS', payload: subarray.metrics });
           });
            
@@ -92,7 +93,7 @@ const Metrics = () => {
                 <td>{state.rows}</td>
                 <td>{state.rowCount}</td>
                 <td>{state.dimensions[0]}</td>
-                <td>{state.metrics[0].values}</td>
+                <td>metrics</td>
               </tr>      
             </table>
             <p style={{ margin: '10px', textAlign:'left'}}>Hits: { state.totals }</p>
