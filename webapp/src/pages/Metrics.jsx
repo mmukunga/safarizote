@@ -88,7 +88,7 @@ const Metrics = () => {
     }
   
     console.log(hits);
-    
+
     return (
         <Card className="InnerCard" fontColor="black">
             <h4 style={{ margin: '20px', fontStyle: 'bold', textAlign: 'left'}}>Safari Zote!</h4>
@@ -113,7 +113,7 @@ const Metrics = () => {
                 <td>{hits}</td>
               </tr>      
             </table>
-            <p style={{ margin: '10px', textAlign:'left'}}>Hits: { totalVisits }</p>
+            <p style={{ margin: '10px', textAlign:'left'}}>Hits: { hits }</p>
         </Card>
     )
 }
