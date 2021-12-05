@@ -77,7 +77,9 @@ const Metrics = () => {
                  console.log(data.rows);
                  data.rows.map(subarray => {
                     console.log(subarray);
-                    subarray.map( item => {
+                    const { data } = subarray;
+                    console.log(data);
+                    data.map( item => {
                       console.log(item); 
                     }); 
                  });
