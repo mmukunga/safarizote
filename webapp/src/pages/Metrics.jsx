@@ -80,8 +80,7 @@ const Metrics = () => {
     console.log(state.totals[0]);
     
     if (state.totals[0] != 'undefined') {
-      console.log(state.totals[0].values);
-      console.log(state.totals[0].values[0]);
+      console.log(state.totals[0]);
     }
   
 
