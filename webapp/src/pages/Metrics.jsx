@@ -84,7 +84,7 @@ const Metrics = () => {
       console.log(state.totals[0]);
       const { values } = state.totals[0];
       console.log(values[0]);
-      setTotalVisits(values[0]);
+      setHits(values[0]);
     }
   
     console.log(hits);
