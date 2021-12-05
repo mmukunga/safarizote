@@ -37,10 +37,8 @@ const Metrics = () => {
     
     metricsData.map(metrics => {
         displayRow(metrics).then(response => {  
-          const { columnHeader } = response.data;          
+          const { columnHeader, data } = response;          
             console.log(columnHeader); 
-            const { data } = response.data;
-            console.log(data); 
             console.log(data.maximums);
             console.log(data.minimums);
             console.log(data.rowCount);
