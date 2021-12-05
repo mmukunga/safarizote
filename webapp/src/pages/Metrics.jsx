@@ -68,14 +68,23 @@ const Metrics = () => {
                 <th>Last Visited</th>
                 <th>HITS</th>
               </tr>        
-               {metricsData.map((item,idx) => 
-                 <tr key={idx}>
-                   <td>{idx}</td>
-                   <td>{item.type}</td>
-                   <td>{item.dateCreated}</td>
-                   <td>{item.count}</td>
-                 </tr>
-               )}
+               {metricsData.map((item,idx) => {
+                 const { columnHeader, data } = response;          
+                 console.log(columnHeader); 
+                 const max = data.maximums;
+                 const min = data.minimums;
+                 const count = data.rowCount;
+                 console.log(data.rows);
+                 console.log(data.totals);
+     
+                    return <tr key={idx}>
+                      <td>{idx}</td>
+                      <td>{item.type}</td>
+                      <td>{item.dateCreated}</td>
+                      <td>{item.count}</td>
+                    </tr>
+                    }
+                )}
             </table>
             <p style={{ margin: '10px', textAlign:'left'}}>Hits: { totalCount }</p>
 
