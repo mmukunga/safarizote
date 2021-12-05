@@ -68,8 +68,8 @@ const Metrics = () => {
                 <th>Last Visited</th>
                 <th>HITS</th>
               </tr>        
-               {metricsData.map((response,idx) => {
-                 const { columnHeader, data } = response;          
+               {metricsData.map((item,idx) => {
+                 const { columnHeader, data } = item;          
                  console.log(columnHeader); 
                  const max = data.maximums;
                  const min = data.minimums;
