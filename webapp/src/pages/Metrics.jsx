@@ -79,7 +79,10 @@ const Metrics = () => {
                     console.log(subarray);
                     const { data } = subarray;
                     console.log(data);
-                    data.map( item => {
+                    subarray.dimensions.map( item => {
+                      console.log(item); 
+                    }); 
+                    subarray.metrics.map( item => {
                       console.log(item); 
                     }); 
                  });
