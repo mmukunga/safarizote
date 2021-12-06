@@ -96,7 +96,7 @@ const Metrics = () => {
 
     if (state.totals.length !== 0) {
       console.log(state.totals);
-      const values = state.totals;
+      const values = [...state.totals[0].values];
       console.log(values);
       setMetrics(prevState => ({
         data: {
