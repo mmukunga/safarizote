@@ -63,21 +63,26 @@ const Metrics = () => {
     }, []);
     
     React.useEffect(() => {
-      metricsData.map(metrics => {
-        displayRow(metrics).then(response => {  
+      console.log("0.a1..");
+      metricsData.map(item => {
+        console.log(item);
+        displayRow(item).then(response => {  
           const { columnHeader, data } = response;  
+          console.log(columnHeader);
           data.rows.map(subarray => {
+            console.log("1.a1..");
             dispatch({ type: 'DIMENSIONS', payload: subarray.dimensions });
             console.log(subarray.metrics);
+            console.log("1.a2..");
             dispatch({ type: 'METRICS', payload: subarray.metrics });
           });
-          console.log("1.a..");
+          console.log("1.a3..");
           dispatch({ type: 'ROWCOUNT', payload: data.rowCount });
-          console.log("2.b..");
+          console.log("2.b4..");
           console.log(data.totals);
-          console.log("2.b..");
+          console.log("2.b5..");
           dispatch({ type: 'TOTALS',   payload: data.totals }); 
-          console.log("2.c..");
+          console.log("2.c6..");
         }).catch(err => {
           console.error(err);
         })
@@ -85,8 +90,6 @@ const Metrics = () => {
     }, [metricsData]);
   
     console.log(state);
-    console.log(state.totals);
-    console.log(state.totals[0]);
     
     if (state.totals.length !== 0) {
       console.log(state.totals);
