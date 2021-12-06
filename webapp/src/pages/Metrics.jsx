@@ -87,8 +87,7 @@ const Metrics = () => {
       const values = state.totals;
       console.log(values);
     }
-  
-    console.log(hits);
+
 
     return (
         <Card className="InnerCard" fontColor="black">
@@ -111,10 +110,10 @@ const Metrics = () => {
                 <td>{state.rows}</td>
                 <td>{state.rowCount}</td>
                 <td>{state.dimensions[0]}</td>
-                <td>{hits}</td>
+                <td>{23232}</td>
               </tr>      
             </table>
-            <p style={{ margin: '10px', textAlign:'left'}}>Hits: { hits }</p>
+            <p style={{ margin: '10px', textAlign:'left'}}>Hits: { 121212 }</p>
         </Card>
     )
 }
