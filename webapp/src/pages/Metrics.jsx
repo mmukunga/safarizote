@@ -83,11 +83,11 @@ const Metrics = () => {
     console.log(state.totals);
     console.log(state.totals[0]);
     
-    if (state.totals[0] !== undefined) {
-      console.log(state.totals[0]);
-      const { values } = state.totals[0];
-      console.log(values[0]);
-      setHits(values[0]);
+    if (state.totals !== undefined) {
+      console.log(state.totals);
+      const { values } = state.totals;
+      console.log(values);
+      setHits(values);
     }
   
     console.log(hits);
