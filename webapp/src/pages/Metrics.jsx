@@ -85,7 +85,7 @@ const Metrics = () => {
     
     if (state.totals.length !== 0) {
       console.log(state.totals);
-      const { values } = state.totals;
+      const values = state.totals;
       console.log(values);
       setHits(values);
     }
