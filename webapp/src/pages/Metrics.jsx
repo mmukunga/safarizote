@@ -22,6 +22,9 @@ const reducer = (state, action) => {
         metrics: action.payload
       };
     case 'TOTALS': 
+     console.log('1.adsdas..');
+     console.log(action.payload);
+     console.log('2.adsdas..');
       return { ...state, totals: action.payload };
     case 'ROWCOUNT': 
       return { ...state, rowCount: action.payload };    
@@ -90,7 +93,7 @@ const Metrics = () => {
     }, [metricsData]);
   
     console.log(state);
-    
+
     if (state.totals.length !== 0) {
       console.log(state.totals);
       const values = state.totals;
