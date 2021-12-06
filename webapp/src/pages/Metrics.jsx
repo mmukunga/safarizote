@@ -33,7 +33,7 @@ const reducer = (state, action) => {
 const Metrics = () => {   
    const [state, dispatch] = useReducer(reducer, initialState);
    const [metricsData, setMetricsData] = React.useState([]);
-   const [hits, setHits] = React.useState([]);
+   const [hits, setHits] = React.useState([{value: []}]);
 
     React.useEffect(() => {
         axios.get('/api/healthCheck').then(response => {
