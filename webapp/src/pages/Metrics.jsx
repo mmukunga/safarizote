@@ -33,6 +33,12 @@ const reducer = (state, action) => {
 const Metrics = () => {   
    const [state, dispatch] = useReducer(reducer, initialState);
    const [metricsData, setMetricsData] = React.useState([]);
+   const [metrics, setMetrics] = React.useState({
+        data: {
+            type: "FeatureCollection",
+            features: [1,2,3,4]
+        }
+    });
 
     React.useEffect(() => {
         axios.get('/api/healthCheck').then(response => {
@@ -86,8 +92,15 @@ const Metrics = () => {
       console.log(state.totals);
       const values = state.totals;
       console.log(values);
+      setMetrics(prevState => ({
+        data: {
+          ...prevState.data, 
+          features: [...prevState.data.features, 5]
+        }
+      }));
     }
 
+    console.log(metrics);
 
     return (
         <Card className="InnerCard" fontColor="black">
