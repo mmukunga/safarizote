@@ -34,7 +34,7 @@ import java.util.Set;
 public class GoogleAnalyticsImpl implements GoogleAnalytics {
   private static final String CLIENT_SECRET_JSON_RESOURCE = "/gcmajimoto-538e2637d707.json";
   // Replace with your view ID.
-  private static final String VIEW_ID = "256484158";
+  private static final String VIEW_ID = "ga:256484158";
   private static final String APPLICATION_NAME = "GaMajiMoto";
   private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
 
