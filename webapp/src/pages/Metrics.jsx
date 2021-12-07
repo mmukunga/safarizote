@@ -38,8 +38,13 @@ const Metrics = () => {
    const [metricsData, setMetricsData] = React.useState([]);
    const [metrics, setMetrics] = React.useState({
         data: {
-            type: "FeatureCollection",
+            rowCount: 1,
             features: [1,2,3,4],
+            dimensions: ['Chrome'],
+            metrics: [{
+              events: [2021],
+            },
+           ],
             totals: [{
               events: [2021],
             },
