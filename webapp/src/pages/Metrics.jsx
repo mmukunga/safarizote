@@ -39,7 +39,11 @@ const Metrics = () => {
    const [metrics, setMetrics] = React.useState({
         data: {
             type: "FeatureCollection",
-            totals: [1,2,3,4]
+            features: [1,2,3,4],
+            totals: [{
+              events: [2021],
+            },
+           ]
         }
     });
 
@@ -101,7 +105,17 @@ const Metrics = () => {
       setMetrics(prevState => ({
         data: {
           ...prevState.data, 
-          totals: [...prevState.data.totals, 5]
+          features: [...prevState.data.features, 5]
+        }
+      }));
+
+      setMetrics(prevState => ({
+        data: {
+          ...prevState.data, 
+          totals: data.totals.map((total) => ({
+            ...total,
+            events: [...total.events, 2022]
+          }))
         }
       }));
     }
@@ -132,7 +146,7 @@ const Metrics = () => {
                 <td>{23232}</td>
               </tr>      
             </table>
-            <p style={{ margin: '10px', textAlign:'left'}}>Hits: { 121212 }</p>
+            <p style={{ margin: '10px', textAlign:'left'}}>Hits: { metrics.data.totals.events[0] }</p>
         </Card>
     )
 }
