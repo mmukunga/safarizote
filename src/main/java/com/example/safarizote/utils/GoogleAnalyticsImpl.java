@@ -6,6 +6,7 @@ import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.analyticsreporting.v4.AnalyticsReporting;
+import com.google.api.services.analyticsreporting.v4.AnalyticsReportingScopes;
 import com.google.api.services.analyticsreporting.v4.model.ColumnHeader;
 import com.google.api.services.analyticsreporting.v4.model.DateRange;
 import com.google.api.services.analyticsreporting.v4.model.DateRangeValues;
@@ -25,7 +26,9 @@ import java.io.InputStream;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 @Service("gaService")
 public class GoogleAnalyticsImpl implements GoogleAnalytics {
@@ -48,12 +51,17 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
 
   private static AnalyticsReporting initializeAnalyticsReporting() throws GeneralSecurityException, IOException {
     HttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
-    List<String> SCOPES = Arrays.asList(
+    /*List<String> SCOPES = Arrays.asList(
       "https://www.googleapis.com/auth/analytics",
       "https://www.googleapis.com/auth/analytics.readonly"
-    );
+    );*/
+
+    //Set<String> SCOPES = Collections.singleton("https://www.googleapis.com/auth/analytics.readonly");
+    Set<String> scopes = AnalyticsReportingScopes.all(); 
+
     InputStream credentialsJSON = GoogleAnalyticsImpl.class.getClassLoader().getResourceAsStream(CLIENT_SECRET_JSON_RESOURCE);
-    GoogleCredential credential = GoogleCredential.fromStream(credentialsJSON, httpTransport, JSON_FACTORY).createScoped(SCOPES);
+    GoogleCredential credential = GoogleCredential.fromStream(credentialsJSON, httpTransport, JSON_FACTORY).createScoped(scopes);
+    String refreshToken = credential.getRefreshToken();
     System.out.println(credential.getServiceAccountId());
     System.out.println(credential.getServiceAccountScopes());        
     AnalyticsReporting  analyticReporting = new AnalyticsReporting.Builder(httpTransport, JSON_FACTORY, credential)
@@ -88,9 +96,10 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
     // Create the GetReportsRequest object.
     GetReportsRequest getReport = new GetReportsRequest()
         .setReportRequests(requests);
-        
+    System.out.println("1. getReport() ..");     
     // Call the batchGet method.
     GetReportsResponse response = service.reports().batchGet(getReport).execute();
+    System.out.println("2. getReport() End OK!!"); 
     // Return the response.
     return response;
   }
