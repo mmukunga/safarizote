@@ -36,10 +36,13 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
   private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
 
   public GetReportsResponse getGAData() throws Exception {
+      System.out.println("1. getGAData() Start..1"); 
       AnalyticsReporting service = initializeAnalyticsReporting();
+      System.out.println("2. getGAData() Start..2"); 
       GetReportsResponse response = getReport(service);
+      System.out.println("3. getGAData() Start..3"); 
       printResponse(response);  
-      System.out.println("getGAData() End OK!!"); 
+      System.out.println("4. getGAData() End OK!!"); 
       return response;
   }
 
