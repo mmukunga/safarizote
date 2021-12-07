@@ -112,7 +112,7 @@ const Metrics = () => {
       setMetrics(prevState => ({
         data: {
           ...prevState.data, 
-          totals: data.totals.map((total) => ({
+          totals: prevState.data.totals.map((total) => ({
             ...total,
             events: [...total.events, 2022]
           }))
