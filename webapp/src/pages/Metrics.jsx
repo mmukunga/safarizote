@@ -19,6 +19,7 @@ const Metrics = () => {
 
     React.useEffect(() => {
        axios.get('/api/allHits').then(response => {
+          console.log(response);
           if (response.data.reports!=null && response.data.reports!=undefined) {
            setMetricsData(metricsData => [...metricsData, ...response.data.reports]);
           }
