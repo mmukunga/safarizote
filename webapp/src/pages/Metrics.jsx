@@ -3,11 +3,20 @@ import axios from 'axios';
 import Card from './Card';
 
 
-const initialState = { 
-     rowCount: 0,
-     totals: [],
-     dimensions: [],
-     metrics: []
+const initialState = {
+  data: {
+      rowCount: 1,
+      features: [1,2,3,4],
+      dimensions: ['Chrome'],
+      metrics: [{
+        events: [2021],
+      },
+     ],
+      totals: [{
+        events: [2021],
+      },
+     ]
+  }
 };
 
 const reducer = (state, action) => {
@@ -120,6 +129,16 @@ const Metrics = () => {
           totals: prevState.data.totals.map((total) => ({
             ...total,
             events: [...total.events, 2022]
+          }))
+        }
+      }));
+
+      setMetrics(prevState => ({
+        data: {
+          ...prevState.data, 
+          dimensions: prevState.data.dimensions.map((dimension) => ({
+            ...dimension,
+            events: [...dimension, 'Firefox']
           }))
         }
       }));
