@@ -146,7 +146,7 @@ const Metrics = () => {
                 <td>{23232}</td>
               </tr>      
             </table>
-            <p style={{ margin: '10px', textAlign:'left'}}>Hits: { metrics.data.totals.events[0] }</p>
+            <p style={{ margin: '10px', textAlign:'left'}}>Hits: { 12212 }</p>
         </Card>
     )
 }
