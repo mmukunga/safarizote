@@ -39,7 +39,7 @@ const Metrics = () => {
    const [metrics, setMetrics] = React.useState({
         data: {
             type: "FeatureCollection",
-            features: [1,2,3,4]
+            totals: [1,2,3,4]
         }
     });
 
@@ -101,7 +101,7 @@ const Metrics = () => {
       setMetrics(prevState => ({
         data: {
           ...prevState.data, 
-          features: [...prevState.data.features, 5]
+          totals: [...prevState.data.totals, 5]
         }
       }));
     }
