@@ -58,7 +58,7 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
 
     //Set<String> SCOPES = Collections.singleton("https://www.googleapis.com/auth/analytics.readonly");
     Set<String> scopes = AnalyticsReportingScopes.all(); 
-
+    Set<String> SCOPES = Collections.singleton(AnalyticsReportingScopes.ANALYTICS_READONLY);
     InputStream credentialsJSON = GoogleAnalyticsImpl.class.getClassLoader().getResourceAsStream(CLIENT_SECRET_JSON_RESOURCE);
     GoogleCredential credential = GoogleCredential.fromStream(credentialsJSON, httpTransport, JSON_FACTORY).createScoped(scopes);
     String refreshToken = credential.getRefreshToken();
