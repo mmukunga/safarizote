@@ -3,6 +3,7 @@ package com.example.safarizote.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -44,6 +45,7 @@ public class MetricsController {
     session.setAttribute ("isRecorded", Boolean.TRUE);
     //Save a variable "isRecorded" in the session object and assign the value
     String ip = getIp (request);//User ip
+
     String browser = getBrowser (request);//User's browser
     String os = getSysInfo (request);//Users use the system
     String source = request.getHeader ("Referer");//Access source
@@ -111,7 +113,30 @@ public class MetricsController {
 
     public String getBrowser (HttpServletRequest httpRequest) {
       String agent = httpRequest.getHeader ("User-Agent");
-      return agent;
+      String browserVersion = "";           
+      if (agent.indexOf ("MSIE") > 0) {
+        //Read the User-Agent value from the request header
+          browserVersion = "IE";
+      } else if (agent.indexOf ("Firefox") > 0) {
+          browserVersion = "Firefox";
+      } else if (agent.indexOf ("Chrome") > 0) {
+          browserVersion = "Chrome";
+      } else if (agent.indexOf ("Safari") > 0) {
+          browserVersion = "Safari";
+      } else if (agent.indexOf ("Camino") > 0) {
+          browserVersion = "Camino";
+      } else if (agent. indexOf ("Konqueror") > 0) {
+          browserVersion = "Konqueror";
+      } else if (agent.indexOf ("QQBrowser") > 0) {
+          browserVersion = "QQBrowser ";           
+          if (" ".equals (browserVersion)) {
+          }
+          StringTokenizer st = new StringTokenizer (agent, "(;)");
+          while (st.hasMoreElements ()) {  
+            browserVersion = st.nextToken ();
+          }  
+      }
+      return browserVersion;
     }
 
     public String getSysInfo (HttpServletRequest httpRequest) {
