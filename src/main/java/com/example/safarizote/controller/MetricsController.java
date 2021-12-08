@@ -1,8 +1,13 @@
 package com.example.safarizote.controller;
 
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import java.time.Instant;
 import java.io.IOException;
+import java.net.InetAddress;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,16 +18,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.safarizote.model.Metrics;
 import com.example.safarizote.repository.MetricsRepository;
-import com.example.safarizote.utils.GoogleAnalytics;
-import com.google.api.services.analyticsreporting.v4.model.GetReportsResponse;
 
 @RestController
 public class MetricsController { 
   @Autowired
   private MetricsRepository repository;
-  
-  @Autowired
-	private GoogleAnalytics gaService;
 
   @GetMapping("/api/healthCheck")
   public ResponseEntity<String> healthCheck() {
@@ -31,10 +31,29 @@ public class MetricsController {
   }
 
   @GetMapping("/api/allHits")
-  public ResponseEntity<GetReportsResponse> findAll() throws Exception {
-    GetReportsResponse response = gaService.getGAData();
-    System.out.println(response);
-    return ResponseEntity.ok().body(response);
+  public ResponseEntity<String> findAll(HttpServletRequest request) throws Exception {
+    System.out.println("request = " + request);
+    HttpSession session = request.getSession (true);  
+    
+    InetAddress ip1 = InetAddress.getByName("www.javatpoint.com");
+		System.out.println("Host Name: "  + ip1.getHostName());
+		System.out.println("IP Address: " + ip1.getHostAddress());
+
+    session.setAttribute ("isRecorded", Boolean.TRUE);
+    //Save a variable "isRecorded" in the session object and assign the value
+    String ip = getIp (request);//User ip
+    String browser = getBrowser (request);//User's browser
+    String os = getSysInfo (request);//Users use the system
+    String source = request.getHeader ("Referer");//Access source
+    String url = request.getRequestURI ();//User's current access path
+       
+    System.out.println ("ip:" + ip);
+    System.out.println ("os:" + os.trim ());
+    System.out.println ("browser:" + browser.trim ());
+    System.out.println ("source:" + source);
+    System.out.println ("url:" + url);
+
+    return ResponseEntity.ok().body(request.toString());
   }
 
   @PostMapping("/api/saveVisit")
@@ -48,4 +67,48 @@ public class MetricsController {
     List<Metrics> visits = repository.findAll();
     return ResponseEntity.ok().body(visits);
   }
+
+  @GetMapping("/api/request")
+  public String getRequest(HttpServletRequest request) {
+      System.out.println("request = " + request);
+      HttpSession session = request.getSession (true);  
+      
+      
+      session.setAttribute ("isRecorded", Boolean.TRUE);
+      //Save a variable "isRecorded" in the session object and assign the value
+       String ip = getIp (request);//User ip
+       String browser = getBrowser (request);//User's browser
+       String os = getSysInfo (request);//Users use the system
+       String source = request.getHeader ("Referer");//Access source
+       String url = request.getRequestURI ();//User's current access path
+       
+
+       System.out.println ("ip:" + ip);
+        System.out.println ("os:" + os.trim ());
+        System.out.println ("browser:" + browser.trim ());
+        System.out.println ("source:" + source);
+        System.out.println ("url:" + url);
+
+      return request.toString();
+  }
+
+  public String getIp (HttpServletRequest httpRequest) {          
+    String ipAddress = httpRequest.getHeader("X-FORWARDED-FOR");  
+      if (ipAddress == null) {  
+          ipAddress = httpRequest.getRemoteAddr();  
+      }
+
+      return ipAddress;
+
+    }
+
+    public String getBrowser (HttpServletRequest httpRequest) {
+      String agent = httpRequest.getHeader ("User-Agent");
+      return agent;
+    }
+
+    public String getSysInfo (HttpServletRequest httpRequest) {
+      String agent = httpRequest.getHeader ("User-Agent");
+      return agent;
+    }
 }
