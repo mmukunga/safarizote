@@ -66,9 +66,9 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
     System.out.println("14. sdfdff ");
     GoogleCredential credential = GoogleCredential.fromStream(credentialsJSON, httpTransport, JSON_FACTORY).createScoped(scopes);
     System.out.println("15. sdfdff ");
-    if (!credential.refreshToken()) {
+    /*if (!credential.refreshToken()) {
       throw new RuntimeException("Failed OAuth to refresh the token");
-    }
+    }*/
     System.out.println("Refreshed: expires in: " + credential.getExpiresInSeconds());
     String accessToken = credential.getAccessToken();
     System.out.println("Access token: " + accessToken);
