@@ -1,6 +1,8 @@
 package com.example.safarizote.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -52,6 +54,11 @@ public class MetricsController {
     System.out.println ("browser:" + browser.trim ());
     System.out.println ("source:" + source);
     System.out.println ("url:" + url);
+
+    Map<String, Object> map = new HashMap<>();
+    InetAddress serverHost = InetAddress.getLocalHost();
+    map.put("hostName", serverHost.getHostName());
+    map.put("hostAddress", serverHost.getHostAddress());
 
     return ResponseEntity.ok().body(request.toString());
   }
