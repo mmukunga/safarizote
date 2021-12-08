@@ -57,13 +57,19 @@ public class GoogleAnalyticsImpl implements GoogleAnalytics {
     );*/
 
     //Set<String> SCOPES = Collections.singleton("https://www.googleapis.com/auth/analytics.readonly");
+    System.out.println("11. sdfdff ");
     Set<String> scopes = AnalyticsReportingScopes.all(); 
+    System.out.println("12. sdfdff ");
     Set<String> SCOPES = Collections.singleton(AnalyticsReportingScopes.ANALYTICS_READONLY);
+    System.out.println("13. sdfdff ");
     InputStream credentialsJSON = GoogleAnalyticsImpl.class.getClassLoader().getResourceAsStream(CLIENT_SECRET_JSON_RESOURCE);
+    System.out.println("14. sdfdff ");
     GoogleCredential credential = GoogleCredential.fromStream(credentialsJSON, httpTransport, JSON_FACTORY).createScoped(scopes);
+    System.out.println("15. sdfdff ");
     if (!credential.refreshToken()) {
       throw new RuntimeException("Failed OAuth to refresh the token");
     }
+    System.out.println("Refreshed: expires in: " + credential.getExpiresInSeconds());
     String accessToken = credential.getAccessToken();
     System.out.println("Access token: " + accessToken);
     credential.setAccessToken(accessToken);
