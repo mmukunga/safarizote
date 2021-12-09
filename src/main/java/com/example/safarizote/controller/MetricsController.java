@@ -100,7 +100,7 @@ public class MetricsController {
 
       return request.toString();
   }
-
+  
   public String getIp (HttpServletRequest httpRequest) {          
     String ipAddress = httpRequest.getHeader("X-FORWARDED-FOR");  
       if (ipAddress == null) {  
