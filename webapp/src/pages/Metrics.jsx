@@ -8,14 +8,12 @@ const Metrics = () => {
    const [metricsData, setMetricsData] = React.useState([]);
    const { latitude, longitude, error } = usePosition();
    const [userPos, setUserPos] = useState({lat: null, long: null});
-   
-   navigator.geolocation = geolocation;
 
     React.useEffect(() => {
         axios.get('/api/healthCheck').then(response => {
           console.log(response);
 
-          navigator.geolocation.getCurrentPosition((pos) => {
+          geolocation.getCurrentPosition((pos) => {
             let coords = pos.coords;
             console.log(coords.longitude + ' ' + coords.latitude);
           });
