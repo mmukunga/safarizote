@@ -42,8 +42,10 @@ const Metrics = () => {
     
     React.useEffect(() => {
       console.log(process.env.REACT_API_KEY);
+      const API_KEY =`${process.env.REACT_APP_API_KEY_YT}`;
+      console.log("API: ", API_KEY);
       const apiKey = process.env.REACT_API_KEY;
-      axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=10.7564668,59.947923&key=${apiKey}`).then(response => {
+      axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=10.7564668,59.947923&key=${API_KEY}`).then(response => {
           console.log(response);
       }).catch(err => {
           console.log(err);
