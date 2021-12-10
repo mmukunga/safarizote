@@ -33,6 +33,24 @@ const Metrics = () => {
     }
 
     React.useEffect(() => {
+        axios.get('https://ipinfo.io/json').then(response => {
+          console.log(response);
+      }).catch(err => {
+          console.log(err);
+      });
+    }, []);
+    
+    React.useEffect(() => {
+      console.log(process.env.REACT_API_KEY);
+      const apiKey = process.env.REACT_API_KEY;
+      axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=44.4647452,7.3553838&key=${apiKey}`).then(response => {
+          console.log(response);
+      }).catch(err => {
+          console.log(err);
+      });
+    }, []);
+
+    React.useEffect(() => {
        axios.get('/api/allHits').then(response => {
           console.log(response);
       }).catch(err => {
