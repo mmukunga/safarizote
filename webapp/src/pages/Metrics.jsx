@@ -12,15 +12,21 @@ const Metrics = () => {
     React.useEffect(() => {
         axios.get('/api/healthCheck').then(response => {
           console.log(response);
-
           geolocation.getCurrentPosition((pos) => {
             let coords = pos.coords;
-            console.log(coords.longitude + ' ' + coords.latitude);
+            let latlng = coords.longitude + ',' + coords.latitude;
+            const apiKey = process.env.REACT_APP_API_KEY;
+            axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latlng}&key=${apiKey}`).then(response => {
+                console.log(response);
+            }).catch(err => {
+                console.log(err);
+            });
+            console.log(coords.longitude + ' SFDFDFF ' + coords.latitude);
           });
 
           if (latitude && longitude && !error) {
             // Fetch weather data here.
-            console.log(longitude + ' ' + latitude);
+            console.log(longitude + 'XCVXCVV ' + latitude);
           }
 
       }).catch(err => {
@@ -31,27 +37,6 @@ const Metrics = () => {
     async function displayRow(row) {
        return row;
     }
-
-    React.useEffect(() => {
-        axios.get('https://ipinfo.io/json').then(response => {
-          console.log(response);
-      }).catch(err => {
-          console.log(err);
-      });
-    }, []);
-    
-    React.useEffect(() => {
-      console.log(process.env.REACT_APP_API_KEY);
-      const API_KEY =`${process.env.REACT_APP_API_KEY}`;
-      console.log("API: ", API_KEY);
-      const apiKey = process.env.REACT_APP_API_KEY;
-      console.log(apiKey);
-      axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=10.7564668,59.947923&key=${API_KEY}`).then(response => {
-          console.log(response);
-      }).catch(err => {
-          console.log(err);
-      });
-    }, []);
 
     React.useEffect(() => {
        axios.get('/api/allHits').then(response => {
