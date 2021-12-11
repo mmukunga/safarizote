@@ -4,13 +4,13 @@ import { usePosition } from 'use-position';
 import axios from 'axios';
 import {ThemeContext} from "./ThemeContext";
 import Card from './Card';
-const theme = React.useContext(ThemeContext);
 
 const Metrics = () => {   
    const [metricsData, setMetricsData] = React.useState([]);
    const { latitude, longitude, error } = usePosition();
    const [userPos, setUserPos] = useState({lat: null, long: null});
    const [ipInfo, setIpInfo] = React.useState({});
+   const theme = React.useContext(ThemeContext);
 
    const getData =  () => {
     return axios.get('https://geolocation-db.com/json/').then(response => {
