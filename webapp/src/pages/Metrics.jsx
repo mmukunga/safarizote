@@ -71,8 +71,8 @@ const Metrics = () => {
     }, []);
   
     console.log(metricsData);
-    console.log(ipInfo);
-    
+    console.log(ipInfo && ipInfo.ip);
+
     return (
         <Card className="InnerCard" fontColor="black">
             <h4 style={{ margin: '20px', fontStyle: 'bold', textAlign: 'left'}}>Safari Zote!</h4>
