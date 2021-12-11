@@ -7,18 +7,7 @@ const initialState = {
   count: 0,
   userId:'127.0.0.1',
   pageId: 'themeContext.jsx',
-  ipInfo: {
-    ip: "84.212.207.12",
-    hostname: "cm-84.212.207.12.get.no",
-    city: "Oslo",
-    region: "Oslo",
-    country: "NO",
-    loc: "59.9127,10.7461",
-    org: "AS41164 Telia Norge AS",
-    postal: "0001",
-    timezone: "Europe/Oslo",
-    readme : "https://ipinfo.io/missingauth"
-  },
+  ipInfo: {},
   dateVisited: new Date()
 };
 
