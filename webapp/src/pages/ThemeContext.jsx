@@ -4,6 +4,8 @@ export const ThemeContext = createContext();
 
 const initialState = {
   darkMode: false,
+  count: 0,
+  pageView: 'themeContext.jsx'
 };
 
 const themeReducer = (state, action) => {
@@ -12,6 +14,16 @@ const themeReducer = (state, action) => {
       return { darkMode: false };
     case "DARKMODE":
       return { darkMode: true };
+    case "INCREMENT":
+      return {
+        ...state,
+        count: state.count + 1,
+      };  
+    case "PAGEVIEW":
+      return {
+        ...state,
+        pageView: action.pageView,
+      };    
     default:
       return state;
   }

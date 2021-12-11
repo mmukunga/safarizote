@@ -25,7 +25,7 @@ function App() {
   const [initialized, setInitialized] = React.useState(false);
   let history = useHistory();
   const location = useLocation();
-  const theme = useContext(ThemeContext);
+  const theme = React.useContext(ThemeContext);
   const darkMode = theme.state.darkMode;
 
   const StylesDropDown = {
@@ -56,6 +56,12 @@ function App() {
       backgroundImage: `url(${process.env.PUBLIC_URL + selectedImage})`,
       color: displayHome.color
   };
+
+  React.useEffect(() => {
+    dispatch({type: 'INCREMENT'});
+    console.log('Location:= ' + location.pathname);
+    dispatch({ type: "PAGEVIEW", pageView: 'App.js' });
+ }, []);
 
   React.useEffect(() => {
     if (!window.location.href.includes("localhost")) {
@@ -95,6 +101,8 @@ function App() {
     history.replace('/');
   }
 
+  console.log(theme.state);
+  
   const AdminMenu = withRouter(DropDown);
   return (
     <div className="App" style={imageStyles}>
