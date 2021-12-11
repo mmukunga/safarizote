@@ -1,12 +1,13 @@
 import React, { createContext, useReducer } from "react";
+import {default as UUID} from "node-uuid";
 
 export const ThemeContext = createContext();
 
 const initialState = {
   darkMode: false,
   count: 0,
-  userId:'127.0.0.1',
-  pageId: 'themeContext.jsx',
+  clientId: UUID.v4(),
+  eventId: 'themeContext.jsx',
   ipInfo: {},
   dateVisited: new Date()
 };
@@ -22,12 +23,12 @@ const themeReducer = (state, action) => {
         ...state,
         count: state.count + 1,
       };  
-    case "PAGE_ID":
+    case "EVENT_TRACKER":
       return {
         ...state,
-        pageId: action.pageId,
+        eventId: action.eventId,
       };    
-    case "IP_INFO":
+    case "IP_TRACKER":
       return {
         ...state,
         ipInfo: action.payload,

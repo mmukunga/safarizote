@@ -21,7 +21,7 @@ const Metrics = () => {
             console.log(resp.data);
             console.log(resp.data.ip);
             setIpInfo(resp.data);
-            theme.dispatch({ type: "IP_INFO", payload: resp.data });
+            theme.dispatch({ type: "IP_TRACKER", payload: resp.data });
             return resp;
         }).catch(err => {
             console.log(err);

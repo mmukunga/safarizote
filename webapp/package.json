@@ -27,7 +27,8 @@
     "react-jsonschema-form": "^1.8.1",
     "react-ga": "^3.3.0",
     "@react-native-community/geolocation": "^2.0.2",
-    "use-position": "^1.0.0"
+    "use-position": "^1.0.0",
+    "node-uuid": "^1.4.8"
   },
   "scripts": {
     "start": "react-scripts start",

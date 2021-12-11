@@ -60,7 +60,7 @@ function App() {
   React.useEffect(() => {
     theme.dispatch({type: 'INCREMENT'});
     console.log('Location:= ' + location.pathname);
-    theme.dispatch({ type: "PAGE_ID", pageId: 'App.js' });
+    theme.dispatch({ type: "EVENT_TRACKER", eventId: 'App.js' });
  }, []);
 
   React.useEffect(() => {
