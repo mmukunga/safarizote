@@ -13,7 +13,7 @@ const Metrics = () => {
     const res = await axios.get('https://geolocation-db.com/json/');
     console.log(res.data);
     console.log(res.data.IPv4);
-    const res2 = await axios.get(`http://ipinfo.io/${res.data.IPv4}/json`);
+    const res2 = await axios.get(`https://ipinfo.io/${res.data.IPv4}/json`);
     console.log(res2.data);
     console.log(res2.data.IPv4);
   }
