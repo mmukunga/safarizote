@@ -38,6 +38,11 @@ const themeReducer = (state, action) => {
         ...state,
         pageId: action.pageId,
       };    
+    case "IP_INFO":
+      return {
+        ...state,
+        ipInfo: action.payload,
+      };      
     default:
       return state;
   }

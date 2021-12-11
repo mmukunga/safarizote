@@ -3,6 +3,7 @@ import geolocation from '@react-native-community/geolocation';
 import { usePosition } from 'use-position';
 import axios from 'axios';
 import Card from './Card';
+const theme = React.useContext(ThemeContext);
 
 const Metrics = () => {   
    const [metricsData, setMetricsData] = React.useState([]);
@@ -19,6 +20,7 @@ const Metrics = () => {
             console.log(resp.data);
             console.log(resp.data.ip);
             setIpInfo(resp.data);
+            theme.dispatch({ type: "IP_INFO", payload: resp.data });
             return resp;
         }).catch(err => {
             console.log(err);
@@ -71,7 +73,7 @@ const Metrics = () => {
     }, []);
   
     console.log(metricsData);
-    console.log(ipInfo && ipInfo.ip);
+    console.log(theme.state && theme.state);
 
     return (
         <Card className="InnerCard" fontColor="black">
