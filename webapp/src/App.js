@@ -58,9 +58,9 @@ function App() {
   };
 
   React.useEffect(() => {
-    dispatch({type: 'INCREMENT'});
+    theme.dispatch({type: 'INCREMENT'});
     console.log('Location:= ' + location.pathname);
-    dispatch({ type: "PAGEVIEW", pageView: 'App.js' });
+    theme.dispatch({ type: "PAGEVIEW", pageView: 'App.js' });
  }, []);
 
   React.useEffect(() => {
