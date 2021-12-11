@@ -8,13 +8,26 @@ const Metrics = () => {
    const [metricsData, setMetricsData] = React.useState([]);
    const { latitude, longitude, error } = usePosition();
    const [userPos, setUserPos] = useState({lat: null, long: null});
+    
+   const getData = async () => {
+    const res = await axios.get('https://geolocation-db.com/json/')
+    console.log(res.data);
+    console.log(res.data.IPv4)
+  }
+  
+  useEffect( () => {
+    if (latitude && longitude && !error) {
+    console.log(longitude + 'XCVXCVV ' + latitude);
+    } 
+
+    getData();
+
+  }, [])
+
 
     React.useEffect(() => {
         axios.get('/api/healthCheck').then(response => {
           console.log(response);
-          const res = axios.get('https://geolocation-db.com/json/');
-          console.log(res.data);
-          console.log(res.data.IPv4);
           geolocation.getCurrentPosition((pos) => {
               console.log(pos);
             let coords = pos.coords;
@@ -27,12 +40,6 @@ const Metrics = () => {
             });
             console.log(coords.longitude + ' SFDFDFF ' + coords.latitude);
           });
-
-          if (latitude && longitude && !error) {
-            // Fetch weather data here.
-            console.log(longitude + 'XCVXCVV ' + latitude);
-          }
-
       }).catch(err => {
           console.log(err);
       });
