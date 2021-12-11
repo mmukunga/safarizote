@@ -1,7 +1,6 @@
 // src/App.js
 import React, { useContext } from 'react';
 import { Route, Switch, NavLink, withRouter, useHistory, useLocation } from "react-router-dom";
-import ReactGA from 'react-ga';
 import {ThemeContext} from "./pages/ThemeContext";
 import SwitchButton from "./pages/Button";
 import logo from "./logo.svg";
@@ -62,24 +61,6 @@ function App() {
     console.log('Location:= ' + location.pathname);
     theme.dispatch({ type: "EVENT_TRACKER", eventId: 'App.js' });
  }, []);
-
-  React.useEffect(() => {
-    if (!window.location.href.includes("localhost")) {
-      ReactGA.initialize("UA-212884600-2");
-      setInitialized(true);
-    }
-  }, []);
-
-  React.useEffect(() => {
-    if (initialized) {
-      console.log(location.pathname + location.search);
-      ReactGA.pageview(location.pathname + location.search);
-      window.gtag("config", "UA-212884600-2", {
-        page_title: location.pathname,
-        page_path: location.pathname,
-        });
-    }
-  }, [initialized, location]);
 
   const DropDown = props => {
     const {history} = props;
