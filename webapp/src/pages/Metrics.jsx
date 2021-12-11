@@ -16,10 +16,10 @@ const Metrics = () => {
         console.log(response.data);
         setIpInfo(response.data);
         console.log(response.data.IPv4);
-        return axios.get(`https://ipinfo.io/${response.data.IPv4}/json`).then(response => {
-            console.log(response.data);
-            console.log(response.data.IPv4);
-            return response;
+        return axios.get(`https://ipinfo.io/${response.data.IPv4}/json`).then(resp => {
+            console.log(resp.data);
+            console.log(resp.data.IPv4);
+            return resp;
         }).catch(err => {
             console.log(err);
         }); 
