@@ -10,15 +10,22 @@ const Metrics = () => {
    const [userPos, setUserPos] = useState({lat: null, long: null});
    const [ipInfo, setIpInfo] = React.useState({});
 
-   const getData = async () => {
-    const res = await axios.get('https://geolocation-db.com/json/');
-    console.log(res.data);
-    setIpInfo(res.data);
-    console.log(res.data.IPv4);
-    console.log(ipInfo);
-    const res2 = await axios.get(`https://ipinfo.io/${res.data.IPv4}/json`);
-    console.log(res2.data);
-    console.log(res2.data.IPv4);
+   const getData =  () => {
+    return axios.get('https://geolocation-db.com/json/').then(response => {
+        console.log(response);
+        console.log(response.data);
+        setIpInfo(response.data);
+        console.log(response.data.IPv4);
+        return axios.get(`https://ipinfo.io/${response.data.IPv4}/json`).then(response => {
+            console.log(response.data);
+            console.log(response.data.IPv4);
+            return response;
+        }).catch(err => {
+            console.log(err);
+        }); 
+    }).catch(err => {
+        console.log(err);
+    });
   }
   
   useEffect( () => {
