@@ -5,7 +5,13 @@ export const ThemeContext = createContext();
 const initialState = {
   darkMode: false,
   count: 0,
-  pageView: 'themeContext.jsx'
+  userId:'127.0.0.1',
+  pageId: 'themeContext.jsx',
+  location: {
+    lat: 10.7694488,
+    lng: 59.9619667,
+  },
+  dateVisited: new Date()
 };
 
 const themeReducer = (state, action) => {
@@ -19,10 +25,10 @@ const themeReducer = (state, action) => {
         ...state,
         count: state.count + 1,
       };  
-    case "PAGEVIEW":
+    case "PAGE_ID":
       return {
         ...state,
-        pageView: action.pageView,
+        pageId: action.pageId,
       };    
     default:
       return state;

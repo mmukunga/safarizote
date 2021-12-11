@@ -13,6 +13,7 @@ const Metrics = () => {
         axios.get('/api/healthCheck').then(response => {
           console.log(response);
           geolocation.getCurrentPosition((pos) => {
+              console.log(pos);
             let coords = pos.coords;
             let latlng = coords.longitude + ',' + coords.latitude;
             const apiKey = process.env.REACT_APP_API_KEY;
