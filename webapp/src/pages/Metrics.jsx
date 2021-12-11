@@ -14,11 +14,11 @@ const Metrics = () => {
     return axios.get('https://geolocation-db.com/json/').then(response => {
         console.log(response);
         console.log(response.data);
-        setIpInfo(response.data);
         console.log(response.data.IPv4);
         return axios.get(`https://ipinfo.io/${response.data.IPv4}/json`).then(resp => {
             console.log(resp.data);
-            console.log(resp.data.IPv4);
+            console.log(resp.data.ip);
+            setIpInfo(resp.data);
             return resp;
         }).catch(err => {
             console.log(err);
@@ -71,7 +71,8 @@ const Metrics = () => {
     }, []);
   
     console.log(metricsData);
-
+    console.log(ipInfo);
+    
     return (
         <Card className="InnerCard" fontColor="black">
             <h4 style={{ margin: '20px', fontStyle: 'bold', textAlign: 'left'}}>Safari Zote!</h4>
