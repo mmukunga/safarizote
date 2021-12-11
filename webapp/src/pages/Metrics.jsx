@@ -12,6 +12,9 @@ const Metrics = () => {
     React.useEffect(() => {
         axios.get('/api/healthCheck').then(response => {
           console.log(response);
+          const res = await axios.get('https://geolocation-db.com/json/')
+          console.log(res.data);
+          console.log(res.data.IPv4);
           geolocation.getCurrentPosition((pos) => {
               console.log(pos);
             let coords = pos.coords;
