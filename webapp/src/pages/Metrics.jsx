@@ -8,11 +8,14 @@ const Metrics = () => {
    const [metricsData, setMetricsData] = React.useState([]);
    const { latitude, longitude, error } = usePosition();
    const [userPos, setUserPos] = useState({lat: null, long: null});
-    
+   const [ipInfo, setIpInfo] = React.useState({});
+
    const getData = async () => {
     const res = await axios.get('https://geolocation-db.com/json/');
     console.log(res.data);
+    setIpInfo(() => {res.data});
     console.log(res.data.IPv4);
+    console.log(ipInfo);
     const res2 = await axios.get(`https://ipinfo.io/${res.data.IPv4}/json`);
     console.log(res2.data);
     console.log(res2.data.IPv4);
