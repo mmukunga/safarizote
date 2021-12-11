@@ -2,6 +2,7 @@ import React, { useState, useEffect, useReducer } from 'react';
 import geolocation from '@react-native-community/geolocation';
 import { usePosition } from 'use-position';
 import axios from 'axios';
+import {ThemeContext} from "./pages/ThemeContext";
 import Card from './Card';
 const theme = React.useContext(ThemeContext);
 
