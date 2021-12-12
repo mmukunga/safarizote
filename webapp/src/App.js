@@ -57,10 +57,33 @@ function App() {
   };
 
   React.useEffect(() => {
+    trackPageView();
+    theme.dispatch({ type: "EVENT_TRACKER", trackingId: location.pathname });
+    return () => {
+      trackPageView();
+    };
+ }, [location]);
+
+  React.useEffect(() => {
     theme.dispatch({type: 'INCREMENT'});
     console.log('Location:= ' + location.pathname);
-    theme.dispatch({ type: "EVENT_TRACKER", eventId: 'App.js' });
+    theme.dispatch({ type: "EVENT_TRACKER", trackingId: 'App.js' });
  }, []);
+
+  React.useEffect(() => {
+    trackPageView(); // Track first pageview on initial site load
+    history.listen(trackPageView); // Track all subsequent pageviews
+  }, [history]);
+
+  
+  const trackPageView = () => {
+    console.log(`${window.location.pathname}` + ' ' + window.location.toString());
+    return history.listen((location) => { 
+      window._mfq.push(['newPageView', location.pathname]); 
+   }) 
+  }
+
+  console.log(history);
 
   const DropDown = props => {
     const {history} = props;
@@ -127,4 +150,4 @@ function App() {
   );
 }
 
-export default App;
+export default withRouter(App);

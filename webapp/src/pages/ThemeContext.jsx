@@ -7,7 +7,7 @@ const initialState = {
   darkMode: false,
   count: 0,
   clientId: UUID.v4(),
-  eventId: 'themeContext.jsx',
+  trackingId: 'location.pathname',
   ipInfo: {},
   dateVisited: new Date()
 };
@@ -26,7 +26,7 @@ const themeReducer = (state, action) => {
     case "EVENT_TRACKER":
       return {
         ...state,
-        eventId: action.eventId,
+        trackingId: action.trackingId,
       };    
     case "IP_TRACKER":
       return {
