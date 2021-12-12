@@ -79,7 +79,7 @@ function App() {
   const trackPageView = () => {
     console.log(`${window.location.pathname}` + ' ' + window.location.toString());
     return history.listen((location) => { 
-      window._mfq.push(['newPageView', location.pathname]); 
+      window._mfq.push(['newPageView', location]); 
    }) 
   }
 
