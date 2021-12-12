@@ -22,7 +22,7 @@ import UserService from './pages/UserService';
 
 function App() {
   const [initialized, setInitialized] = React.useState(false);
-  let history = useHistory();
+  const history = useHistory();
   const location = useLocation();
   const theme = React.useContext(ThemeContext);
   const darkMode = theme.state.darkMode;
@@ -59,31 +59,12 @@ function App() {
   React.useEffect(() => {
     trackPageView();
     theme.dispatch({ type: "EVENT_TRACKER", trackingId: location.pathname });
-    return () => {
-      trackPageView();
-    };
- }, [location]);
+    console.log('trackingId:= ' + location.pathname);
+  }, [location]);
 
   React.useEffect(() => {
     theme.dispatch({type: 'INCREMENT'});
-    console.log('Location:= ' + location.pathname);
-    theme.dispatch({ type: "EVENT_TRACKER", trackingId: 'App.js' });
- }, []);
-
-  React.useEffect(() => {
-    trackPageView(); // Track first pageview on initial site load
-    history.listen(trackPageView); // Track all subsequent pageviews
-  }, [history]);
-
-  
-  const trackPageView = () => {
-    console.log(`${window.location.pathname}` + ' ' + window.location.toString());
-    return history.listen((location) => { 
-      history.push(['newPageView', location]); 
-   }) 
-  }
-
-  console.log(history);
+  }, []);
 
   const DropDown = props => {
     const {history} = props;
@@ -106,6 +87,7 @@ function App() {
   }
 
   console.log(theme.state);
+  console.log(history);
   
   const AdminMenu = withRouter(DropDown);
   return (
