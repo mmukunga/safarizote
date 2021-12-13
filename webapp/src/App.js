@@ -75,15 +75,15 @@ function App() {
 
   const DropDown = props => {
     console.log(props);
-    //const {history} = props;
-    console.log(history);
+    //const { history } = props;
+    //console.log(history);
     const onChange = (e) => {
        console.log(e);
        console.log(e.target);
        console.log(e.target.value);
-       //history.replace(`${e.target.value}`);
-       history.push(`${e.target.value}`);
+       props.history.replace(`${e.target.value}`);
     }
+
     return (
       <select onChange={onChange} style={StylesDropDown}>
         <option value="/tipping">Tipping</option>
