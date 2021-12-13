@@ -2,7 +2,7 @@
 import React, { useContext } from 'react';
 import { Route, Switch, NavLink, withRouter, useHistory, useLocation } from "react-router-dom";
 //import { useHistory } from "react-router-dom";
-import createHistory from 'history/createBrowserHistory';
+//import createHistory from 'history/createBrowserHistory';
 import {ThemeContext} from "./pages/ThemeContext";
 import SwitchButton from "./pages/Button";
 import logo from "./logo.svg";
