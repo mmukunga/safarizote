@@ -86,7 +86,7 @@ function App() {
     }
 
     useEffect(() => {
-       props.history.replace(`${e.target.value}`);
+       props.history.replace(value);
     }, [value])
 
 
