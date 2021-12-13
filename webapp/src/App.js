@@ -1,7 +1,7 @@
 // src/App.js
 import React, { useContext } from 'react';
-import { Route, Switch, NavLink, withRouter, useLocation } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { Route, Switch, NavLink, withRouter, useHistory, useLocation } from "react-router-dom";
+//import { useHistory } from "react-router-dom";
 import createHistory from 'history/createBrowserHistory';
 import {ThemeContext} from "./pages/ThemeContext";
 import SwitchButton from "./pages/Button";
@@ -24,7 +24,7 @@ import UserService from './pages/UserService';
 
 function App() {
   const [initialized, setInitialized] = React.useState(false);
-  let history = useHistory();
+  const history = useHistory();   
   const location = useLocation();
   const theme = React.useContext(ThemeContext);
   const darkMode = theme.state.darkMode;
@@ -75,7 +75,7 @@ function App() {
 
   const DropDown = props => {
     console.log(props);
-    const {history} = props;
+    //const {history} = props;
     console.log(history);
     const onChange = (e) => {
        console.log(e);
