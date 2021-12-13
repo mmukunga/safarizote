@@ -24,7 +24,7 @@ import UserService from './pages/UserService';
 
 function App() {
   const [initialized, setInitialized] = React.useState(false);
-  const history = createBrowserHistory();   
+  const history = useHistory();   
   const location = useLocation();
   const theme = React.useContext(ThemeContext);
   const darkMode = theme.state.darkMode;
@@ -96,7 +96,7 @@ function App() {
 
   const logout = () => {
     UserService.logOut();
-    //history.replace('/');
+    history.replace('/');
   }
 
   //console.log(theme.state);
