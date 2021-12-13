@@ -79,7 +79,7 @@ function App() {
        console.log(e);
        console.log(e.target);
        console.log(e.target.value);
-       history.replace(`${e.target.value}`);
+       //history.replace(`${e.target.value}`);
     }
     return (
       <select onChange={onChange} style={StylesDropDown}>
