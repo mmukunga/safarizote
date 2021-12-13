@@ -67,7 +67,7 @@ function App() {
     counter= counter +1;
     console.log(location.pathname);
     console.log('trackingId:= ' + location.pathname + ' ' + counter);
-  }, [location]);
+  }, []);
 
   React.useEffect(() => {
     theme.dispatch({type: 'INCREMENT'});
