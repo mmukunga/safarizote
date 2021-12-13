@@ -22,7 +22,7 @@ import UserService from './pages/UserService';
 
 function App() {
   const [initialized, setInitialized] = React.useState(false);
-  //const history = useHistory();
+  const history = useHistory();
   const location = useLocation();
   const theme = React.useContext(ThemeContext);
   const darkMode = theme.state.darkMode;
@@ -61,7 +61,7 @@ function App() {
     console.log(location.pathname);
     const { pathname } = location;
     console.log(pathname);
-    //theme.dispatch({ type: "EVENT_TRACKER", trackingId: pathname });
+    theme.dispatch({ type: "EVENT_TRACKER", trackingId: pathname });
     counter= counter +1;
     console.log(location.pathname);
     console.log('trackingId:= ' + location.pathname + ' ' + counter);
@@ -79,7 +79,7 @@ function App() {
        console.log(e);
        console.log(e.target);
        console.log(e.target.value);
-       //history.replace(`${e.target.value}`);
+       history.replace(`${e.target.value}`);
     }
     return (
       <select onChange={onChange} style={StylesDropDown}>
