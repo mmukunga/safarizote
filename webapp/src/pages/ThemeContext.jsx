@@ -13,6 +13,8 @@ const initialState = {
 };
 
 const themeReducer = (state, action) => {
+  console.log(action);
+  console.log(action.trackingId);
   switch (action.type) {
     case "LIGHTMODE":
       return { darkMode: false };

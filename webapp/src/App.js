@@ -61,7 +61,7 @@ function App() {
     console.log(location.pathname);
     const { pathname } = location;
     console.log(pathname);
-    theme.dispatch({ type: "EVENT_TRACKER", trackingId: pathname });
+    //theme.dispatch({ type: "EVENT_TRACKER", trackingId: pathname });
     console.log(location.pathname);
     console.log('trackingId:= ' + location.pathname);
   }, [location]);
