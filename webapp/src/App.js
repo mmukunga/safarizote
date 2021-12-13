@@ -74,6 +74,7 @@ function App() {
   }, []);
 
   const DropDown = props => {
+    const [value, setValue] = useState("");
     console.log(props);
     //const { history } = props;
     //console.log(history);
@@ -81,8 +82,13 @@ function App() {
        console.log(e);
        console.log(e.target);
        console.log(e.target.value);
-       //props.history.replace(`${e.target.value}`);
+       setValue(e.target.value);
     }
+
+    useEffect(() => {
+       props.history.replace(`${e.target.value}`);
+    }, [value])
+
 
     return (
       <select onChange={onChange} style={StylesDropDown}>
