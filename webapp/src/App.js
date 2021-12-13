@@ -55,15 +55,16 @@ function App() {
       backgroundImage: `url(${process.env.PUBLIC_URL + selectedImage})`,
       color: displayHome.color
   };
-
+  let counter = 0;
   React.useEffect(() => {
     console.log(location);
     console.log(location.pathname);
     const { pathname } = location;
     console.log(pathname);
     //theme.dispatch({ type: "EVENT_TRACKER", trackingId: pathname });
+    counter= counter +1;
     console.log(location.pathname);
-    console.log('trackingId:= ' + location.pathname);
+    console.log('trackingId:= ' + location.pathname + ' ' + counter);
   }, [location]);
 
   React.useEffect(() => {
