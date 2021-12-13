@@ -58,6 +58,7 @@ function App() {
 
   React.useEffect(() => {
     console.log(location);
+    console.log(location.pathname);
     theme.dispatch({ type: "EVENT_TRACKER", trackingId: location.pathname });
     console.log(location.pathname);
     console.log('trackingId:= ' + location.pathname);
