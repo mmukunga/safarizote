@@ -74,7 +74,7 @@ function App() {
   }, []);
 
   const DropDown = props => {
-    const [value, setValue] = useState("");
+    const [value, setValue] = React.useState("");
     console.log(props);
     //const { history } = props;
     //console.log(history);
@@ -85,7 +85,7 @@ function App() {
        setValue(e.target.value);
     }
 
-    useEffect(() => {
+    React.useEffect(() => {
        props.history.replace(value);
     }, [value])
 
