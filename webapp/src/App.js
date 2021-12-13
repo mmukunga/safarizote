@@ -94,9 +94,9 @@ function App() {
     );
   }
 
-  const logout = () => {
+  const logout = (props) => {
     UserService.logOut();
-    history.replace('/');
+    props.history.replace('/');
   }
 
   //console.log(theme.state);
