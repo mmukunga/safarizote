@@ -1,6 +1,8 @@
 // src/App.js
 import React, { useContext } from 'react';
-import { Route, Switch, NavLink, withRouter, useHistory, useLocation } from "react-router-dom";
+import { Route, Switch, NavLink, withRouter, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import createHistory from 'history/createBrowserHistory';
 import {ThemeContext} from "./pages/ThemeContext";
 import SwitchButton from "./pages/Button";
 import logo from "./logo.svg";
@@ -22,7 +24,7 @@ import UserService from './pages/UserService';
 
 function App() {
   const [initialized, setInitialized] = React.useState(false);
-  const history = useHistory();
+  let history = useHistory();
   const location = useLocation();
   const theme = React.useContext(ThemeContext);
   const darkMode = theme.state.darkMode;
@@ -80,6 +82,7 @@ function App() {
        console.log(e.target);
        console.log(e.target.value);
        //history.replace(`${e.target.value}`);
+       history.push(`${e.target.value}`);
     }
     return (
       <select onChange={onChange} style={StylesDropDown}>
