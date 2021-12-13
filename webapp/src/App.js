@@ -81,7 +81,7 @@ function App() {
        console.log(e);
        console.log(e.target);
        console.log(e.target.value);
-       props.history.replace(`${e.target.value}`);
+       //props.history.replace(`${e.target.value}`);
     }
 
     return (
