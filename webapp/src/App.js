@@ -2,7 +2,7 @@
 import React, { useContext } from 'react';
 import { Route, Switch, NavLink, withRouter, useHistory, useLocation } from "react-router-dom";
 //import { useHistory } from "react-router-dom";
-//import createHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 import {ThemeContext} from "./pages/ThemeContext";
 import SwitchButton from "./pages/Button";
 import logo from "./logo.svg";
@@ -24,7 +24,7 @@ import UserService from './pages/UserService';
 
 function App() {
   const [initialized, setInitialized] = React.useState(false);
-  const history = useHistory();   
+  const history = createBrowserHistory();   
   const location = useLocation();
   const theme = React.useContext(ThemeContext);
   const darkMode = theme.state.darkMode;
