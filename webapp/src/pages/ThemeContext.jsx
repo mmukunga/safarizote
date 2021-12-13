@@ -24,6 +24,8 @@ const themeReducer = (state, action) => {
         count: state.count + 1,
       };  
     case "EVENT_TRACKER":
+      console.log(action);
+      console.log(action.trackingId);
       return {
         ...state,
         trackingIds: [...state.trackingIds, action.trackingId],
