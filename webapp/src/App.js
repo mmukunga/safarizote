@@ -1,8 +1,6 @@
 // src/App.js
 import React, { useContext } from 'react';
 import { Route, Switch, NavLink, withRouter, useHistory, useLocation } from "react-router-dom";
-//import { useHistory } from "react-router-dom";
-import { createBrowserHistory } from 'history';
 import {ThemeContext} from "./pages/ThemeContext";
 import SwitchButton from "./pages/Button";
 import logo from "./logo.svg";
@@ -24,6 +22,7 @@ import UserService from './pages/UserService';
 
 function App() {
   const [initialized, setInitialized] = React.useState(false);
+  const [value, setValue] = React.useState("");
   const history = useHistory();   
   const location = useLocation();
   const theme = React.useContext(ThemeContext);
@@ -63,11 +62,11 @@ function App() {
     console.log(location.pathname);
     const { pathname } = location;
     console.log(pathname);
-    //theme.dispatch({ type: "EVENT_TRACKER", trackingId: pathname });
+    theme.dispatch({ type: "EVENT_TRACKER", trackingId: pathname });
     counter= counter +1;
     console.log(location.pathname);
     console.log('trackingId:= ' + location.pathname + ' ' + counter);
-  }, []);
+  }, [location]);
 
   React.useEffect(() => {
     theme.dispatch({type: 'INCREMENT'});
@@ -87,7 +86,7 @@ function App() {
 
     React.useEffect(() => {
        props.history.replace(value);
-    }, [value])
+    }, [props.value])
 
 
     return (
@@ -132,7 +131,7 @@ function App() {
         <NavLink to={'/email'} className="Nav_link">Email</NavLink>
         <NavLink to={'/weather'} className="Nav_link">Weather</NavLink>
         <NavLink to={'/aboutUs'} className="Nav_link">About&nbsp;Us</NavLink>
-        <DropDown history={history} />
+        <DropDown history={history} setValue={setValue}/>
         <NavLink to={'/signIn'} className="Nav_link">LogIn</NavLink>
         <Switch>
           <Route path='/' exact component={Safaris}/>
