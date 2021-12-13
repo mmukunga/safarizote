@@ -96,7 +96,7 @@ function App() {
     history.replace('/');
   }
 
-  console.log(theme.state);
+  //console.log(theme.state);
   console.log(history);
   
   const AdminMenu = withRouter(DropDown);
