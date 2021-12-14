@@ -66,7 +66,7 @@ function App() {
     counter= counter +1;
     console.log(location.pathname);
     console.log('trackingId:= ' + location.pathname + ' ' + counter);
-  }, [location]);
+  }, [location.pathname]);
 
   React.useEffect(() => {
     theme.dispatch({type: 'INCREMENT'});
@@ -84,11 +84,11 @@ function App() {
        console.log(e.currentTarget.value);
       setAuthedItem(e.currentTarget.value);
     }
-   
+   /*
     React.useEffect(() => {
        props.history.replace(value);
     }, [authedItem])
-
+     */
 
     return (
       <select name="authedItem" onChange={(evt) => handleChange(evt)} style={StylesDropDown}>
