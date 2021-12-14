@@ -77,20 +77,21 @@ function App() {
     console.log(props);
     //const { history } = props;
     //console.log(history);
-    const onChange = (e) => {
-       console.log(e);
+    function handleChange(e) {
+      onsole.log(e);
        console.log(e.target);
        console.log(e.target.value);
-       setAuthedItem(e.target.value);
+       console.log(e.currentTarget.value);
+      setAuthedItem(e.currentTarget.value);
     }
-
+   
     React.useEffect(() => {
        props.history.replace(value);
     }, [authedItem])
 
 
     return (
-      <select name="authedItem" onChange={onChange} style={StylesDropDown}>
+      <select name="authedItem" onChange={(evt) => handleChange(evt)} style={StylesDropDown}>
         <option value="/tipping">Tipping</option>
         <option value="/shopping">Shopping</option>
         <option value="/stock">Stock Market</option>
