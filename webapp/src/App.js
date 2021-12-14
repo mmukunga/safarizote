@@ -78,7 +78,7 @@ function App() {
     //const { history } = props;
     //console.log(history);
     function handleChange(e) {
-      onsole.log(e);
+      console.log(e);
        console.log(e.target);
        console.log(e.target.value);
        console.log(e.currentTarget.value);
