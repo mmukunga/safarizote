@@ -73,7 +73,7 @@ function App() {
   }, []);
 
   const DropDown = props => {
-    const [value, setValue] = React.useState("");
+    const [authedItem, setAuthedItem] = React.useState("");
     console.log(props);
     //const { history } = props;
     //console.log(history);
@@ -81,16 +81,16 @@ function App() {
        console.log(e);
        console.log(e.target);
        console.log(e.target.value);
-       setValue(e.target.value);
+       setAuthedItem(e.target.value);
     }
 
     React.useEffect(() => {
        props.history.replace(value);
-    }, [props.value])
+    }, [authedItem])
 
 
     return (
-      <select onChange={onChange} style={StylesDropDown}>
+      <select name="authedItem" onChange={onChange} style={StylesDropDown}>
         <option value="/tipping">Tipping</option>
         <option value="/shopping">Shopping</option>
         <option value="/stock">Stock Market</option>
