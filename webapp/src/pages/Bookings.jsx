@@ -32,7 +32,7 @@ const Bookings = (props) => {
 
   const handleSubmit = formData => {
     toggle();
-    dispatch({ type: 'INIT_BOOKING', payload: formData });
+    //dispatch({ type: 'INIT_BOOKING', payload: formData });
   }
 
   //console.log(state);
