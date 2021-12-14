@@ -4,7 +4,7 @@ import { useCustomContext } from './CustomContext';
 import Modal from "./Modal";
 
 const Bookings = (props) => {
-  const {state, dispatch} = useCustomContext(); 
+  //const {state, dispatch} = useCustomContext(); 
   const [options, setOptions] = React.useState([]);
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -35,7 +35,7 @@ const Bookings = (props) => {
     dispatch({ type: 'INIT_BOOKING', payload: formData });
   }
 
-  console.log(state);
+  //console.log(state);
 
   return (
     <div>
