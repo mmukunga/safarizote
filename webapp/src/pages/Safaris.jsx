@@ -99,7 +99,6 @@ const Safaris = () => {
     const [numberOfHits, setNumberOfHits] = React.useState([]);
     const [pageSize, setPageSize] = React.useState(2);
     const [state, dispatch ] = React.useReducer(bookingsReducer, initialState);
-    const providerState = { state, dispatch };
     React.useEffect(() => {
       axios.get('/api/safaris').then(response => {
         console.log(response);
@@ -160,7 +159,6 @@ const Safaris = () => {
    console.log(state);
 
   return ( 
-      <CustomContext.Provider value={providerState}>
         <Card className="InnerCard" fontColor="black">    
         <ul id="page-numbers"> 
           <li><Bookings/> </li>
@@ -190,7 +188,6 @@ const Safaris = () => {
           }
         </div>
     </Card>  
-  </CustomContext.Provider>   
   );
 }
 
