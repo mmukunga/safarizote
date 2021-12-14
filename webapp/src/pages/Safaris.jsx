@@ -98,7 +98,7 @@ const Safaris = () => {
     const [currentPage, setCurrentPage] = React.useState(1);
     const [numberOfHits, setNumberOfHits] = React.useState([]);
     const [pageSize, setPageSize] = React.useState(2);
-    const [state, dispatch ] = React.useReducer(bookingsReducer, initialState);
+    const [safaris, dispatch ] = React.useReducer(bookingsReducer, initialState);
     React.useEffect(() => {
       axios.get('/api/safaris').then(response => {
         console.log(response);
@@ -156,7 +156,7 @@ const Safaris = () => {
   
   const videos = [image01, image02, image03, image04, image05, image06];
 
-   console.log(state);
+   console.log(safaris);
 
   return ( 
         <Card className="InnerCard" fontColor="black">    
@@ -178,7 +178,7 @@ const Safaris = () => {
         </div>
         
         <div className="BookingInfo">
-          {state.tours.map((tour, index) => (
+          {safaris.tours.map((tour, index) => (
             <div key={index} className="dashboardmenu">
               <label forHtml='boxfield1' style={{padding:0}}>Safari {tour.id} Tour Id: {tour.safariId}
                 <input type="button" name='boxfield1' style={{padding:0}} value="X" onClick={() => dispatch({ type: 'REMOVE_TOUR', index })}/>
