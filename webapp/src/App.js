@@ -83,7 +83,9 @@ function App() {
        console.log(e.target.value);
        console.log(e.currentTarget.value);
       setAuthedItem(e.currentTarget.value);
+      history.replace(`${e.target.value}`)
     }
+    
    /*
     React.useEffect(() => {
        props.history.replace(value);
@@ -100,15 +102,15 @@ function App() {
     );
   }
 
-  const logout = (props) => {
+  const logout = () => {
     UserService.logOut();
-    props.history.replace('/');
+    history.replace('/');
   }
 
   //console.log(theme.state);
   //console.log(history);
   
-  //const AdminMenu = withRouter(DropDown);
+  const AdminMenu = withRouter(DropDown);
   return (
     <div className="App" style={imageStyles}>
       <header className="App-header"> 
@@ -132,7 +134,7 @@ function App() {
         <NavLink to={'/email'} className="Nav_link">Email</NavLink>
         <NavLink to={'/weather'} className="Nav_link">Weather</NavLink>
         <NavLink to={'/aboutUs'} className="Nav_link">About&nbsp;Us</NavLink>
-        <DropDown history={history} setValue={setValue}/>
+        <AdminMenu/>
         <NavLink to={'/signIn'} className="Nav_link">LogIn</NavLink>
         <Switch>
           <Route path='/' exact component={Safaris}/>
