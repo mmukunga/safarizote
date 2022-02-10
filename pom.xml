@@ -129,7 +129,7 @@
 					</execution>
 				</executions>
 			</plugin>
-            <!--Include frontend build files in spring boot jar-->
+            <!--Include frontend build files in spring boot jar -->
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<version>3.0.0</version>
