@@ -105,11 +105,10 @@
 							<goal>install-node-and-npm</goal>
 						</goals>
 						<configuration>
-							<nodeVersion>v14.8.0</nodeVersion>
-							<npmVersion>6.14.8</npmVersion>
+							<nodeVersion>v10.15.3</nodeVersion>
+                            <npmVersion>6.14.8</npmVersion>
 						</configuration>
 					</execution>
-
 					<execution>
 						<id>npm install</id>
 						<goals>
@@ -118,7 +117,7 @@
 						<configuration>
 							<arguments>install</arguments>
 						</configuration>
-					</execution>			
+					</execution>
 					<execution>
 						<id>npm run build</id>
 						<goals>
@@ -132,17 +131,14 @@
 			</plugin>
             <!--Include frontend build files in spring boot jar-->
 			<plugin>
-			    <groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<version>3.0.0</version>
+				<inherited>false</inherited>
 				<executions>
 					<execution>
-						<?m2e execute onConfiguration,onIncremental?>
-						<id>copy-resources</id>
+						<?m2e execute onConfiguration?>
+					    <id>copy-resources</id>
 						<phase>generate-resources</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
 						<configuration>
 							<target>
 								<copy todir="${project.build.directory}/classes/public">
@@ -150,6 +146,9 @@
 								</copy>
 							</target>
 						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>
