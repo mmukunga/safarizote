@@ -1,9 +1,0 @@
-
-[
-  { "subject": "Dan Johnson", "userEmail": "mkunsim@gmail.com", "phone": "212 212 212", "message": "21 Jump street", "date": "2022-01-22"},     
-  { "subject": "Safari to Masaai Mara", "phone": "212 212 212", "userEmail": "mkunsim@gmail.com", "message": "21 Jump street", "date": "2022-01-22"},      
-  { "subject": "The Great Rift Valley", "userEmail": "maji@gmail.com", "phone": "212 212 213","message": "Grefsen Platåen", "date": "2022-01-22"},                        
-  { "subject": "Kenya Beach", "userEmail": "moto@hotmail.com", "phone": "212 212 214", "message": "Maridalsveien", "date": "2022-01-22"},           
-  { "subject": "3 Days Safari to Masaai Mara", "userEmail": "kazi@online.no", "phone": "212 212 215", "message": "Number 10", "date": "2022-01-22"},             
-  { "subject": "Nairobi by Night", "userEmail": "sverige@kora.se", "phone": "212 212 216", "message": "Downings Street", "date": "2022-01-22"}
-]               
