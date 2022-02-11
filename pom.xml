@@ -85,7 +85,7 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
-					<mainClass>com.example.demo.DemoApplication</mainClass>
+					<mainClass>com.example.safarizote.DemoApplication</mainClass>
 				</configuration>
 			</plugin>
 
