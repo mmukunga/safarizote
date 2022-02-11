@@ -17,8 +17,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
@@ -37,8 +35,6 @@ public class BackUp {
 
     @ManyToOne
     @JsonBackReference
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
     @JoinColumn(name = "parent_id")
     BackUp parent;
 

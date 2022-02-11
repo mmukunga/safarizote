@@ -12,10 +12,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.ToString;
 
 @Data
 @Entity
@@ -32,8 +30,6 @@ public class Folder {
 
     @ManyToOne
     @JsonBackReference
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
     @JoinColumn(name = "parent_id")
     Folder parent;
     @NonNull

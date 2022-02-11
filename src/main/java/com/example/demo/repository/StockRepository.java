@@ -7,6 +7,6 @@ import com.example.demo.model.Stock;
 
 @Repository
 public interface StockRepository extends JpaRepository<Stock, Long> {
-    @Query(value = "SELECT coalesce(max(id), 0) FROM Stock")
+    @Query(value = "SELECT max(id) FROM Stock")
     public Long getMaxId();
 }

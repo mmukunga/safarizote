@@ -45,7 +45,7 @@ public class StockController {
         try {
 
            Long maxId = repository.getMaxId();   
-           Stock lastStock = repository.getById(maxId);
+           Stock lastStock = repository.getOne(maxId);
 
            String timestamp  = lastStock.getTimestamp();
            long fiveMinutes = 15 * 60 * 1000;
