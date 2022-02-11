@@ -1,0 +1,13 @@
+
+.table {
+    margin: 0 auto;
+}
+
+table {
+    border-collapse: collapse;
+    background-color:#FFFFFF;
+  }
+
+table, th, td {
+    border: 1px solid black;
+  }

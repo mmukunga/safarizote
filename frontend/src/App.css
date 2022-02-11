@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 10vmin;
   pointer-events: none;
 }
 
@@ -15,7 +15,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,6 +27,25 @@
 .App-link {
   color: #61dafb;
 }
+
+.App-content {
+  border: 2px solid #00578a
+}
+
+@import url("./css/card.css");
+@import url("./css/cart.css");
+@import url("./css/navbar.css");
+@import url("./css/navigation.css");
+@import url("./css/cssform.css");
+@import url("./css/ratings.css");
+@import url("./css/safari.css"); 
+@import url("./css/safaris.css");
+@import url("./css/shopping.css"); 
+@import url("./css/shoppings.css");
+@import url("./css/styles.css");
+@import url("./css/table.css");
+@import url("./css/tipping.css");
+@import url("./css/weather.css");
 
 @keyframes App-logo-spin {
   from {

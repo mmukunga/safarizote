@@ -1,0 +1,84 @@
+.main{
+    width: 50%;
+    border: 2px solid#eee;
+    margin: 0 auto;
+    border-radius: 20px;
+    background-color: #01579b;
+}
+
+.top{
+    background-color: #424242;
+    color: whitesmoke;
+    padding: 10px;
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header{
+    background-color: #424242;
+    color: whitesmoke;
+    margin: 10px 0px 0px 10px;
+    font-size: 25px;
+    border-radius: 20px 20px 0 0;
+}
+
+.day{
+    padding: 5px;
+    color: whitesmoke;
+    /*font-size: 24px;*/
+}
+
+.temp{
+    padding: 5px;
+    color: whitesmoke;
+    /*font-size: 18px;*/
+}
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+}
+
+.sunrise-sunset{
+    padding: 5px;
+    color: whitesmoke;
+    /*font-size: 16px;*/
+}
+
+.description{
+    padding: 5px;
+    color: whitesmoke;
+    /*font-size: 24px;*/
+}
+
+.button{
+    width: 35px;
+    height: 35px;
+    display: block;
+    margin: 10px auto;
+    padding: .5rem;
+    font-size: 1em;
+    background: darkcyan;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    margin: 5px auto;
+}
+
+.forecast {
+    margin: 0;
+    padding: .3rem;
+    border: 2px solid#eee;
+    /*font: 1rem 'Fira Sans', sans-serif;*/
+}
+
+.forecast > h1,
+.day-forecast {
+    display: inline-block;
+    margin: .5rem;
+    max-width: 250px;
+    padding: .3rem;
+    /*font-size: 1.2rem;*/
+    border: 2px solid#eee;
+}
