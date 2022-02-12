@@ -7,25 +7,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.example.demo.model.Statistics;
-import com.example.demo.repository.StatisticsRepository;
+import com.example.demo.model.Analytics;
+import com.example.demo.repository.AnalyticsRepository;
 
 @Component
-public class StatisticsLoader implements CommandLineRunner {
-    private static final Logger logger = LoggerFactory.getLogger(StatisticsLoader.class);
+public class AnalyticsLoader implements CommandLineRunner {
+    private static final Logger logger = LoggerFactory.getLogger(AnalyticsLoader.class);
 
     @Autowired
-    private StatisticsRepository repository;
+    private AnalyticsRepository repository;
 
     @Override
     public void run(String... args) throws Exception {
-        logger.info("StatisticsLoader has started");
+        logger.info("AnalyticsLoader has started");
         if (repository.count() > 0) {
-            logger.info("StatisticsLoader has ENDED!!");
+            logger.info("AnalyticsLoader has ENDED!!");
             return;
         }
 
-        repository.save(Statistics.builder()
+        repository.save(Analytics.builder()
                 .pageview("/")
                 .city("Oslo")
                 .countryName("Norway")
@@ -39,7 +39,7 @@ public class StatisticsLoader implements CommandLineRunner {
                 .dateCreated(Instant.now())
                 .build());
 
-        repository.save(Statistics.builder()
+        repository.save(Analytics.builder()
                 .pageview("/contactUs")
                 .city("Oslo")
                 .countryName("Norway")
@@ -51,8 +51,8 @@ public class StatisticsLoader implements CommandLineRunner {
                 .state("Oslo County")
                 .quantity(10)
                 .dateCreated(Instant.now())
-                .build());  
-        repository.save(Statistics.builder()
+                .build());
+        repository.save(Analytics.builder()
                 .pageview("/safaris")
                 .city("Drammen")
                 .countryName("Norway")
@@ -65,7 +65,7 @@ public class StatisticsLoader implements CommandLineRunner {
                 .quantity(8)
                 .dateCreated(Instant.now())
                 .build());
-        repository.save(Statistics.builder()
+        repository.save(Analytics.builder()
                 .pageview("/shoppings")
                 .city("Oslo")
                 .countryName("Norway")

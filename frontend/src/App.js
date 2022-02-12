@@ -32,7 +32,7 @@ function usePageViews() {
       const headers = {
         'Content-Type': 'application/json'
       };
-      axios.post('/api/saveStatistics', analytics, headers).then(() => {});
+      axios.post('/api/saveAnalytics', analytics, headers).then(() => {});
     });  
   }, [location]);
 }

@@ -26,7 +26,7 @@ const About = () => {
     React.useEffect(() => {
       const getDataset = async () => {
         try {
-          const response = await axios.get('/api/getStatistics');
+          const response = await axios.get('/api/getAnalytics');
           var labels = getColumn(response.data, 0);
           var data   = getColumn(response.data, 1);
           setChartData({

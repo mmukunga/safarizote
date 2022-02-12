@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Builder
-public class Statistics {
+public class Analytics {
     @Id @GeneratedValue Long id;
     String pageview;
     String iPv4;
