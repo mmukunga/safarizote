@@ -36,7 +36,7 @@ public class ShoppingLoader implements CommandLineRunner {
          return;
       }
 
-      String fileName = "json" + File.separator + "shoppings.json";
+      String fileName = "shoppings.json";
       ClassLoader classLoader = getClass().getClassLoader();
       URL resource = classLoader.getResource(fileName);
       if (resource == null) {

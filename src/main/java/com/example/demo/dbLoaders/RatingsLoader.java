@@ -35,7 +35,7 @@ public class RatingsLoader implements CommandLineRunner {
                         return;
                 }
 
-                String fileName = "json" + File.separator + "ratings.json";
+                String fileName = "ratings.json";
                 ClassLoader classLoader = getClass().getClassLoader();
                 URL resource = classLoader.getResource(fileName);
                 if (resource == null) {

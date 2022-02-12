@@ -35,7 +35,7 @@ public class BackUpLoader implements CommandLineRunner {
             return;
         }
 
-        String fileName = "json" + File.separator + "backUps.json";
+        String fileName = "backUps.json";
         ClassLoader classLoader = getClass().getClassLoader();
         URL resource = classLoader.getResource(fileName);
 

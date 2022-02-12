@@ -34,7 +34,7 @@ public class FamilieAlbumLoader implements CommandLineRunner {
             return;
         }
 
-        String fileName = "json"+ File.separator +"familieAlbum.json";
+        String fileName = "familieAlbum.json";
         ClassLoader classLoader = getClass().getClassLoader();
         URL resource = classLoader.getResource(fileName);
 
@@ -56,21 +56,23 @@ public class FamilieAlbumLoader implements CommandLineRunner {
 
             JsonParser springParser = JsonParserFactory.getJsonParser();
             List<Object> list = springParser.parseList(sb.toString());
-            for (Object obj: list) {
+            for (Object obj : list) {
                 String folder = obj.toString();
                 String[] foldersList = folder.split(",");
                 for (int i = 0; i < foldersList.length; i++) {
                     FamilieAlbum fa = FamilieAlbum.builder()
-                        .folder(foldersList[i])
-                        .dateCreated(Instant.now())
-                        .build();
-                        repository.save(fa);
+                            .folder(foldersList[i])
+                            .dateCreated(Instant.now())
+                            .build();
+                    repository.save(fa);
                 }
             }
         }
 
-        /**repository.findAll().forEach((FamilieAlbum) -> {
-            logger.info("{}", FamilieAlbum);
-        });**/
+        /**
+         * repository.findAll().forEach((FamilieAlbum) -> {
+         * logger.info("{}", FamilieAlbum);
+         * });
+         **/
     }
 }

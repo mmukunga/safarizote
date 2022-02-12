@@ -34,7 +34,7 @@ public class ContactUsLoader implements CommandLineRunner {
       return;
     }
 
-    String fileName = "json" + File.separator + "emails.json";
+    String fileName = "emails.json";
     ClassLoader classLoader = getClass().getClassLoader();
     URL resource = classLoader.getResource(fileName);
     if (resource == null) {

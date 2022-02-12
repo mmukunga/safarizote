@@ -36,7 +36,7 @@ public class SafariLoader implements CommandLineRunner {
                         return;
                 }
 
-                String fileName = "json" + File.separator + "safaris.json";
+                String fileName = "safaris.json";
                 ClassLoader classLoader = getClass().getClassLoader();
                 URL resource = classLoader.getResource(fileName);
                 if (resource == null) {
