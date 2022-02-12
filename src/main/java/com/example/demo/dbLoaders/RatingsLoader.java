@@ -18,6 +18,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 @Component
 @Transactional
@@ -34,44 +36,39 @@ public class RatingsLoader implements CommandLineRunner {
                 if (repository.count() > 0) {
                         return;
                 }
+              
+                StringBuilder sb = new StringBuilder();
+                //File file = new File(resource.toURI());
+                InputStream inputStream = this.getClass().getResourceAsStream("/ratings.json");
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader fileReader = new BufferedReader(inputStreamReader);
 
-                String fileName = "ratings.json";
-                ClassLoader classLoader = getClass().getClassLoader();
-                URL resource = classLoader.getResource(fileName);
-                if (resource == null) {
-                        throw new IllegalArgumentException("file not found! " + fileName);
-                } else {
-                        StringBuilder sb = new StringBuilder();
-
-                        File file = new File(resource.toURI());
-                        FileReader fileReader = new FileReader(file);
-                        BufferedReader in = new BufferedReader(fileReader);
-                        String line = in.readLine();
-                        while (line != null) {
-                                sb.append(line);
-                                sb.append(System.lineSeparator());
-                                line = in.readLine();
-                        }
-                        fileReader.close();
-
-                        JsonParser springParser = JsonParserFactory.getJsonParser();
-                        List<Object> list = springParser.parseList(sb.toString());
-                        for (Object o : list) {
-                                if (o instanceof Map) {
-                                        @SuppressWarnings("unchecked")
-                                        Map<String, Object> map = (Map<String, Object>) o;
-                                        String name = (String) map.get("name");
-                                        String description = (String) map.get("description");
-                                        Integer rating = (Integer) map.get("rating");
-
-                                        repository.save(Rating.builder().name(name)
-                                                        .description(description)
-                                                        .rating(rating)
-                                                        .dateCreated(Instant.now()).build());
-                                }
-                        }
+                //FileReader fileReader = new FileReader(file);
+                BufferedReader in = new BufferedReader(fileReader);
+                String line = in.readLine();
+                while (line != null) {
+                        sb.append(line);
+                        sb.append(System.lineSeparator());
+                        line = in.readLine();
                 }
+                fileReader.close();
 
+                JsonParser springParser = JsonParserFactory.getJsonParser();
+                List<Object> list = springParser.parseList(sb.toString());
+                for (Object o : list) {
+                        if (o instanceof Map) {
+                                @SuppressWarnings("unchecked")
+                                Map<String, Object> map = (Map<String, Object>) o;
+                                String name = (String) map.get("name");
+                                String description = (String) map.get("description");
+                                Integer rating = (Integer) map.get("rating");
+
+                                repository.save(Rating.builder().name(name)
+                                                .description(description)
+                                                .rating(rating)
+                                                .dateCreated(Instant.now()).build());
+                        }
+                }              
                 // repository.findAll().forEach(System.out::println);
         }
 }
