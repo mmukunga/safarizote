@@ -26,6 +26,6 @@ public class Event {
     Instant date;
  
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="user")
-    UserAuth user;
+    @JoinColumn(name="userAuth")
+    UserAuth userAuth;
 }

@@ -23,6 +23,6 @@ public class Customer {
     String email;
     String phone;
     String message;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "userAuth")
     Set<Event> events;
 }
