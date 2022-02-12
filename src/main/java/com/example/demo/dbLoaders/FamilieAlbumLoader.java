@@ -13,9 +13,8 @@ import com.example.demo.model.FamilieAlbum;
 import com.example.demo.repository.FamilieAlbumRepository;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.net.URL;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.time.Instant;
 
 import org.springframework.boot.json.JsonParser;
@@ -34,40 +33,34 @@ public class FamilieAlbumLoader implements CommandLineRunner {
             return;
         }
 
-        String fileName = "familieAlbum.json";
-        ClassLoader classLoader = getClass().getClassLoader();
-        URL resource = classLoader.getResource(fileName);
+        StringBuilder sb = new StringBuilder();
+        //File file = new File(resource.toURI());
+        InputStream inputStream = this.getClass().getResourceAsStream("/familieAlbum.json");
+        InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+        BufferedReader fileReader = new BufferedReader(inputStreamReader);
+        BufferedReader in = new BufferedReader(fileReader);
+        String line = in.readLine();
+        while (line != null) {
+            sb.append(line);
+            sb.append(System.lineSeparator());
+            line = in.readLine();
+        }
+        fileReader.close();
 
-        if (resource == null) {
-            throw new IllegalArgumentException("file not found! " + fileName);
-        } else {
-            StringBuilder sb = new StringBuilder();
-
-            File file = new File(resource.toURI());
-            FileReader fileReader = new FileReader(file);
-            BufferedReader in = new BufferedReader(fileReader);
-            String line = in.readLine();
-            while (line != null) {
-                sb.append(line);
-                sb.append(System.lineSeparator());
-                line = in.readLine();
-            }
-            fileReader.close();
-
-            JsonParser springParser = JsonParserFactory.getJsonParser();
-            List<Object> list = springParser.parseList(sb.toString());
-            for (Object obj : list) {
-                String folder = obj.toString();
-                String[] foldersList = folder.split(",");
-                for (int i = 0; i < foldersList.length; i++) {
-                    FamilieAlbum fa = FamilieAlbum.builder()
-                            .folder(foldersList[i])
-                            .dateCreated(Instant.now())
-                            .build();
-                    repository.save(fa);
-                }
+        JsonParser springParser = JsonParserFactory.getJsonParser();
+        List<Object> list = springParser.parseList(sb.toString());
+        for (Object obj : list) {
+            String folder = obj.toString();
+            String[] foldersList = folder.split(",");
+            for (int i = 0; i < foldersList.length; i++) {
+                FamilieAlbum fa = FamilieAlbum.builder()
+                        .folder(foldersList[i])
+                        .dateCreated(Instant.now())
+                        .build();
+                repository.save(fa);
             }
         }
+     
 
         /**
          * repository.findAll().forEach((FamilieAlbum) -> {

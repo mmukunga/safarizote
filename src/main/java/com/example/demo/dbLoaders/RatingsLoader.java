@@ -7,7 +7,6 @@ import com.example.demo.model.Rating;
 import com.example.demo.repository.RatingsRepository;
 
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.time.Instant;
 import java.util.List;
 import java.util.Map;
@@ -15,8 +14,6 @@ import org.springframework.boot.json.JsonParser;
 import org.springframework.boot.json.JsonParserFactory;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
