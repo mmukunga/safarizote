@@ -30,58 +30,58 @@ public class SafariLoader implements CommandLineRunner {
 
         @Override
         public void run(String... args) throws Exception {
-           logger.info("Application has started");
-           // repository.deleteAll();
-           if (repository.count() > 0) {
-                   return;
-           }
-                
-           String fileName = "json/safaris.json";
-           ClassLoader classLoader = getClass().getClassLoader();
-           URL resource = classLoader.getResource(fileName);
-           if (resource == null) {
-               throw new IllegalArgumentException("file not found! " + fileName);
-           } else {
-               StringBuilder sb = new StringBuilder();
+                logger.info("Application has started");
+                // repository.deleteAll();
+                if (repository.count() > 0) {
+                        return;
+                }
 
-               File file = new File(resource.toURI());
-               FileReader fileReader = new FileReader(file);
-               BufferedReader in = new BufferedReader(fileReader);
-               String line = in.readLine();
-               while (line != null) {
-                  sb.append(line);
-                  sb.append(System.lineSeparator());  
-	          line = in.readLine();
-	        }
-                fileReader.close();
+                String fileName = "json" + File.separator + "safaris.json";
+                ClassLoader classLoader = getClass().getClassLoader();
+                URL resource = classLoader.getResource(fileName);
+                if (resource == null) {
+                        throw new IllegalArgumentException("file not found! " + fileName);
+                } else {
+                        StringBuilder sb = new StringBuilder();
 
-                  JsonParser springParser = JsonParserFactory.getJsonParser();
-                  List<Object> list = springParser.parseList(sb.toString());
-                  for (Object o: list) {
-                     if (o instanceof Map) {
-                        @SuppressWarnings("unchecked")
-                        Map<String, Object> map = (Map<String, Object>) o;
-                        String title = (String) map.get("title");
-                        String strPrice = map.get("price").toString();
-                        BigDecimal bigDecimal=new BigDecimal(strPrice);
-                        String summary = (String) map.get("summary");
-                        String description = (String) map.get("description");
-                        String image = (String) map.get("image");
-                        
-                        repository.save(Safari.builder().title(title)
-                                .price(bigDecimal)
-                                .summary(summary)
-                                .description(description)
-                                .image(image)
-                                .dateCreated(Instant.now()).build());
+                        File file = new File(resource.toURI());
+                        FileReader fileReader = new FileReader(file);
+                        BufferedReader in = new BufferedReader(fileReader);
+                        String line = in.readLine();
+                        while (line != null) {
+                                sb.append(line);
+                                sb.append(System.lineSeparator());
+                                line = in.readLine();
+                        }
+                        fileReader.close();
+
+                        JsonParser springParser = JsonParserFactory.getJsonParser();
+                        List<Object> list = springParser.parseList(sb.toString());
+                        for (Object o : list) {
+                                if (o instanceof Map) {
+                                        @SuppressWarnings("unchecked")
+                                        Map<String, Object> map = (Map<String, Object>) o;
+                                        String title = (String) map.get("title");
+                                        String strPrice = map.get("price").toString();
+                                        BigDecimal bigDecimal = new BigDecimal(strPrice);
+                                        String summary = (String) map.get("summary");
+                                        String description = (String) map.get("description");
+                                        String image = (String) map.get("image");
+
+                                        repository.save(Safari.builder().title(title)
+                                                        .price(bigDecimal)
+                                                        .summary(summary)
+                                                        .description(description)
+                                                        .image(image)
+                                                        .dateCreated(Instant.now()).build());
+                                }
                         }
                 }
-        }
-/*
-                repository.findAll().forEach((Safari) -> {
-                        logger.info("{}", Safari);
-                });
-*/
+                /*
+                 * repository.findAll().forEach((Safari) -> {
+                 * logger.info("{}", Safari);
+                 * });
+                 */
         }
 
 }

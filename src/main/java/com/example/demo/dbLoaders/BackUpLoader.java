@@ -35,7 +35,7 @@ public class BackUpLoader implements CommandLineRunner {
             return;
         }
 
-        String fileName = "json/backUps.json";
+        String fileName = "json" + File.separator + "backUps.json";
         ClassLoader classLoader = getClass().getClassLoader();
         URL resource = classLoader.getResource(fileName);
 
@@ -57,7 +57,7 @@ public class BackUpLoader implements CommandLineRunner {
 
             JsonParser springParser = JsonParserFactory.getJsonParser();
             List<Object> list = springParser.parseList(sb.toString());
-            for (Object o: list) {
+            for (Object o : list) {
                 if (o instanceof Map) {
                     @SuppressWarnings("unchecked")
                     Map<String, Object> map = (Map<String, Object>) o;

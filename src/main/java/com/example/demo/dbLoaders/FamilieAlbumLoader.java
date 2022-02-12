@@ -34,7 +34,7 @@ public class FamilieAlbumLoader implements CommandLineRunner {
             return;
         }
 
-        String fileName = "json/familieAlbum.json";
+        String fileName = "json"+ File.separator +"familieAlbum.json";
         ClassLoader classLoader = getClass().getClassLoader();
         URL resource = classLoader.getResource(fileName);
 
