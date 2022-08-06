@@ -45,6 +45,10 @@ const AboutUs = () => {
     const currentUser = localStorage.getItem("currentUser");
     const user = localStorage.getItem('user');
 
+    console.log('1.user..');
+    console.log(user);
+    console.log('2.user..');
+
     return (
         <Card title="About Us" className="Card">
             <Fragment>
