@@ -1,6 +1,5 @@
 package com.safari.springboot.safarizote.model;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,9 +23,9 @@ import lombok.NoArgsConstructor;
 public class Token {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id; 
+    private Long id;
     @Column(name = "label")
-    private String label;    
+    private String label;
     @Column(name = "symbol")
     private String value;
     @Column(name = "icon")

@@ -1,6 +1,5 @@
 package com.safari.springboot.safarizote.model;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,15 +19,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-@Table(name="ratings")
+@Table(name = "ratings")
 public class Rating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column(name = "stars")
-    private int stars; 
+    private int stars;
     @Column(name = "description")
     private String description;
     @Column(name = "count")
-    private int count;    
+    private int count;
 }

@@ -48,7 +48,8 @@ public class AnalyticsRepositoryTests {
 
     @Test
     public void createNewAnalytics() throws ParseException {
-    	Analytics analytics = Analytics.builder().iPv4("84.212.199.3")
+    	Analytics analytics = Analytics.builder()
+        .iPv4("84.212.199.3")
         .city("Oslo")
         .countryCode("NO")
         .countryName("Norway")

@@ -3,6 +3,7 @@ package com.safari.springboot.safarizote.controller;
 import com.safari.springboot.safarizote.model.Analytics;
 import com.safari.springboot.safarizote.repository.AnalyticsRepository;
 
+import java.time.Instant;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,18 @@ public class AnalyticsController {
 
     @RequestMapping(value = "/api/saveAnalytics", method = RequestMethod.POST)
     public ResponseEntity<List<Analytics>> saveAnalytics(@RequestBody Analytics analytics) throws Exception {
+        System.out.println("1.analytics. Start");
+        System.out.println(analytics);
+        System.out.println("2.analytics");
+        
+        Instant now = Instant.now();
+        System.out.println(now);
+        System.out.println("3.analytics");
+
         Analytics temp = repository.save(analytics);
         System.out.println(temp);
         List<Analytics> list = repository.findAll();
+        System.out.println("4.analytics OK!");
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 }

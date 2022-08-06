@@ -23,13 +23,13 @@ import lombok.NoArgsConstructor;
 public class Safari {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column(name = "title")
     private String title;
     @Column(columnDefinition = "TEXT", name = "description")
     private String description;
     @Column(name = "image")
-    private String image; 
+    private String image;
     @Column(name = "price")
-    private Double price; 
+    private Double price;
 }

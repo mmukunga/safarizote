@@ -21,28 +21,30 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-@Table(name = "analytics")
+@Table(name="analytics")
 public class Analytics {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    @Column(name = "iPv4")
-    private String iPv4;
-    @Column(name = "city")
-    private String city;
+    private Long id;
     @Column(name = "country_code")
     private String countryCode;
     @Column(name = "country_name")
     private String countryName;
+    @Column(name = "city")
+    private String city;
+    @Column(name = "postal")
+    private String postal;
     @Column(name = "latitude")
     private String latitude;
     @Column(name = "longitude")
     private String longitude;
-    @Column(name = "postal")
-    private String postal;
+    @Column(name = "i_pv4")
+    private String iPv4;
     @Column(name = "state")
     private String state;
     @Column(name = "date_created")
     private Instant dateCreated;
+
+    //{"country_code":"NO","country_name":"Norway","city":"Oslo","postal":"0171","latitude":59.9127,"longitude":10.7461,"IPv4":"84.212.199.3","state":"Oslo County"}
 
 }

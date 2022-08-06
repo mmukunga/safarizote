@@ -23,9 +23,8 @@ import lombok.NoArgsConstructor;
 public class Weather {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column(name = "apikey")
-    private String apiKey; 
-    
+    private String apiKey;
 
 }

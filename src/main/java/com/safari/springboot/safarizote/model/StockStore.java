@@ -26,7 +26,7 @@ import lombok.NoArgsConstructor;
 public class StockStore {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column(name = "symbol")
     private String symbol;
     @Lob

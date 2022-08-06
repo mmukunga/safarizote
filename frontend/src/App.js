@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import moment from 'moment';
 import { Routes, Route} from "react-router-dom";
 import { AuthProvider } from './pages/AuthProvider';
 import { SafariContextProvider } from "./pages/SafariContext";
@@ -32,7 +33,7 @@ const App = () => {
     const getData = async()=>{
       axios.get('https://geolocation-db.com/json/').then((response) => {
         console.log(response);
-        const analytics = { ...response.data };
+        const analytics = { ...response.data, dateCreated: moment() };
         axios.post('/api/saveAnalytics', analytics)
              .then(response => localStorage.setItem('user', response));
       });
