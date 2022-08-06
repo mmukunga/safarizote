@@ -33,7 +33,19 @@ const App = () => {
     const getData = async()=>{
       axios.get('https://geolocation-db.com/json/').then((response) => {
         console.log(response);
-        const analytics = { ...response.data, dateCreated: moment() };
+        const data = { ...response.data };
+        const analytics = {
+                ipv4: data.IPv4,
+                city: data.city,
+                countryCode: data.country_code,
+                countryName: data.country_name,
+                latitude: data.latitude,
+                longitude: data.longitude,
+                postal: data.postal,
+                state: data.state,
+                dateCreated: moment()
+        };
+
         axios.post('/api/saveAnalytics', analytics)
              .then(response => localStorage.setItem('user', response));
       });

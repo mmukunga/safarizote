@@ -43,7 +43,7 @@ const AboutUs = () => {
     }
 
     const currentUser = localStorage.getItem("currentUser");
-    const user = localStorage.getItem(user);
+    const user = localStorage.getItem('user');
 
     return (
         <Card title="About Us" className="Card">
