@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AnalyticsRepository extends JpaRepository<Analytics, Long>{
-   @Query(value = "SELECT max(id) FROM analytics")
+   @Query(value = "SELECT max(id) FROM Analytics")
     public Long getMaxId();
     public List<Analytics> findByIPv4(String iPv4);
 }
