@@ -1,0 +1,49 @@
+
+.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.nav li {
+  display: inline-block;
+  min-width: 1em;
+  margin: 0 0.5em;
+}
+
+.nav a {
+  text-decoration: none;
+  display: block;
+  font-family: Arial;
+  padding: .5em 0;
+}
+
+a.link,
+a.prev,
+a.next {
+  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 5px;
+  color: #4fc3f7;
+}
+
+a.link:hover {
+  color: #c69f73;
+}
+
+a.link.active {
+  color: #f00;
+  pointer-events: none;
+}
+
+.v-effect-link a:hover {
+  color: #c69f73;
+}
+
+.prev.disabled,
+.next.disabled {
+  pointer-events: none;
+  box-shadow: none;
+  color: #ccc;
+}

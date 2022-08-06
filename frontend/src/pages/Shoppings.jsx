@@ -1,102 +1,135 @@
-import React, { useState, useEffect } from 'react';
+import React from "react";
+import {ErrorContext} from "./ErrorProvider";
+import { useForm } from "react-hook-form";
 import axios from 'axios';
-import Shopping from './Shopping';
-import Card from './Card';
+import { Label, Submit, Button, Select, InputWrapper } from "./Components";
+import { SmartForm } from './SmartForm';
+import Card from "./Card";
+import Emoji from "./Emoji";
 
-const Shoppings = () => {
-  const [error, setError] = useState(null);
-  const [shoppings, setShoppings] = useState([]);
-  const [shopping, setShopping] = React.useState({});
-  const [formStatus, setFormStatus] = React.useState('');
+const  Shoppings = () => {
+  const defaultValues = {
+    product:'',
+    shop:'',
+    price:'',
+    quantity:''    
+  } 
+  const [state, setState] = React.useState("");
+  const [products, setProducts] = React.useState([]);
+  const [indexes, setIndexes] = React.useState([]);
+  const [counter, setCounter] = React.useState(0);
+  const [shop, setShop] = React.useState("Joka");
+  const { errorMsg, handleError } = React.useContext(ErrorContext);
 
-  const httpClient = axios.create({baseURL: '/api', timeout: 1000});
-  const getShoppings = () => httpClient.get('/shoppings');
+  const options = [
+      {label: 'Joka', value: 'Joka'},
+      {label: 'IKEA Furuset', value: 'IKEA'},
+      {label: 'Rema 1000', value: 'Rema 1000'},
+      {label: 'NordBy Senter', value: 'NordBy'}
+  ];
 
+  const addShopping = () => {
+    setIndexes(prevIndexes => [...prevIndexes, counter]);
+    setCounter(prevCounter => prevCounter + 1);
+  };
 
-  const handleChange = e => {
-    const { name, value } = e.target;
-    setShopping(prevState => ({ ...prevState, [name]: value }));
-};
+  const removeShopping = index => () => {
+    setIndexes(prevIndexes => [...prevIndexes.filter(item => item !== index)]);
+    setCounter(prevCounter => prevCounter - 1);
+  };
 
-const handleSubmit = e => {
-  e.preventDefault();
-  setShoppings(prevState => ([...prevState, shopping]));
-  
-  const formData = new FormData();
-  Object.entries(shopping).forEach(([key, value]) => {
-      formData.append(key, value);
-  });
+  const clearShoppings = () => {
+    setIndexes([]);
+  };
 
-  axios.post('/api/shoppings', formData)
-       .then(function (response) {
-      setFormStatus(response.data.statusText);
-      if (response.status===200) {
-        setFormStatus("Your Message has been Sent.");
-      } else {
-        setFormStatus("ERROR");
-      }
-      setShopping({
-          product: "",
-          shop: "",
-          price: ""
-      });
-  }).catch(function (error) {
-      console.log(error);
-  });
-
-};
-
-  useEffect(() => {
-    getShoppings().then(response => {
-      setShoppings(response.data);
-    });
+  React.useEffect(() => {
+    axios.get('/api/products')
+        .then(response => setProducts(response.data))
+        .catch(error => {
+            setState('Error');
+            error.httpUrl = '/api/products';
+            handleError(error);
+        });
   }, []);
 
-  return (
-    <Card className="Shoppings" styleProps={{width:'98%'}} title="Shopping">
-     <div className='container'>
-           <form onSubmit={handleSubmit}>
-              <div className="row">
-                <div className="col-25">
-                  <label htmlFor="product">Product</label>
-                </div>
-                <div className="col-75">
-                   <input type="text" id="product" name="product" onChange={handleChange}/>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-25">
-                  <label htmlFor="shop">Shop</label>
-                </div>
-                <div className="col-75">
-                    <select id="shop" name="shop" onChange={handleChange}>
-                      <option value="JOKA FRYSJA">Joka</option>
-                      <option value="IKEA Furuset">IKEA Furuset</option>
-                      <option value="ICA">ICA</option>
-                      <option value="REMA 1000">REMA 1000</option>
-                    </select>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-25">
-                  <label htmlFor="price">Price</label>
-                </div>
-                <div className="col-75">
-                  <input type="text" id="price" name="price" onChange={handleChange}/>
-                </div>
-              </div>
-              <div className="row">
-                  <input type="submit" data-testid="Add To List" value="Add To List"/>
-              </div>
-            </form>
-        <h2 className="shoppinglist">Shopping List</h2>
-        {error && <h4 className="error">{error}</h4>}
-        {shoppings && shoppings.map((shopping, idx) => (
-          <Shopping shopping={shopping} key={idx} />
-        ))}
-      </div>
-    </Card>
-  );
-};
+  const post = async (url, data) => {
+    console.log(data);
+    const newList = data.shoppings.map((item) => {
+      return {...item, shop: shop }; 
+    });
+    return await axios.post(url,  JSON.stringify(newList), {
+      headers: { 'Content-Type': 'application/json; charset=UTF-8' }
+    });
+  }
 
-export default Shoppings;
+  const onSubmit = async (data) => {
+    post("/api/saveProducts", data).then((response) => {
+      response.status === 200 ? setState("Success") : setState("Error");
+      setProducts(response.data);
+    }).catch(error => {
+      setState('Error');
+      //error.httpUrl = '/api/saveProducts';
+      //error.status = 4001;
+      //handleError(error);
+      console.log(error);
+    });
+  };
+  const hasLabel = {label: false};
+  return (
+    <Card className="Card"  title='Shopping'>
+      <div className='shoppings'> 
+      <SmartForm defaultValues={defaultValues} onSubmit={onSubmit}>
+      <Select name="shop" options={options} />  
+      <div className="table"> 
+        <div className="th">
+            <div className="td"><Label id="product" label="product">Product</Label></div>
+            <div className="td"><Label id="price" label="price">Price</Label></div>
+            <div className="td"><Label id="quantity" label="quantity">Quantity</Label></div>
+            <div className="td"><Button className="btn" onClick={addShopping}><Emoji label='Add'/></Button></div>
+          </div>   
+          {indexes.map(index => {
+            const fieldName = `shoppings[${index}]`;
+            return (
+              <div key={index} className="tr">     
+              <div className="td"><InputWrapper type="text" labelObj={hasLabel} id={`${fieldName}.product`} name={`${fieldName}.product`}/></div>
+              <div className="td"><InputWrapper type="text" labelObj={hasLabel} id={`${fieldName}.price`} name={`${fieldName}.price`}/></div>
+              <div className="td"><InputWrapper type="text" labelObj={hasLabel} id={`${fieldName}.quantity`} name={`${fieldName}.quantity`}/></div>
+              <div className="td"><Button onClick={removeShopping(index)}><Emoji label='Remove'/></Button></div>            
+              </div>
+            );
+          })}
+          
+        <div className="tr">
+          <div className="td"></div>
+          <div className="td"><Button className="btn" onClick={clearShoppings}><Emoji label='Delete'/> Clear All</Button></div>
+          <div className="td"><Submit type="submit" name="Submit"><Emoji label='Send'/>Submit</Submit></div>
+          <div className="td"></div>
+        </div>
+      </div>
+      </SmartForm>
+
+      <div className="table">
+        <div className="th">
+            <div className="td">Item</div>
+            <div className="td">Shop</div>
+            <div className="td">Price</div>
+            <div className="td">Qty</div>
+        </div>
+          {products.map((item)=> {
+            return (
+              <div key={item.id} className="tr">
+                <div className="td">{item.product}</div> 
+                <div className="td">{item.shop}</div>
+                <div className="td">{item.price}</div>
+                <div className="td">{item.quantity}</div>
+              </div>
+              );
+          })}
+      </div>
+      <span className='app-status'>Shop: {shop} {state}</span>
+    </div>  
+    </Card>  
+  );
+}
+
+export default Shoppings;      

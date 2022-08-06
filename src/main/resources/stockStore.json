@@ -1,0 +1,7 @@
+[
+{"code":"KIT.OL","timestamp":1653488700,"gmtoffset":0,"open":18,"high":18.84,"low":18,"close":18.48,"volume":490954,"previousClose":18.56,"change":-0.08,"change_p":-0.431},
+{"code":"TIETO.OL","timestamp":1653488700,"gmtoffset":0,"open":237,"high":237,"low":237,"close":238.6,"volume":188,"previousClose":238.2,"change":0.4,"change_p":0.1679},
+{"code":"SAS.CO","timestamp":1653563940,"gmtoffset":0,"open":0.6,"high":0.62,"low":0.59,"close":0.6,"volume":6369004,"previousClose":0.6,"change":0,"change_p":0},
+{"code":"NEL.OL","timestamp":1653488820,"gmtoffset":0,"open":13.555,"high":13.65,"low":13.155,"close":13.23,"volume":4417531,"previousClose":13.615,"change":-0.385,"change_p":-2.8278},
+{"code":"XXL.OL","timestamp":1653488700,"gmtoffset":0,"open":9.5,"high":9.585,"low":9.26,"close":9.52,"volume":607140,"previousClose":9.44,"change":0.08,"change_p":0.8475}
+]

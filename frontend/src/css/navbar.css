@@ -1,9 +1,57 @@
 
-.Main {
-    border: 2px solid green;
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 15px;
+  padding: 0.2rem calc((4vw - 10px) / 2);
 }
 
-.NavBar {
-    border: 2px solid #00578a;
-    margin: 5px;
+a.navlink {
+  color: #fff;
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+  text-decoration: none;
+  padding: 10px;
+  margin: 5px;
+  width: calc((100vw - 10px) / 8);
+  cursor: pointer;
+  background-color:  #093e61;
+  border-radius: 5px;
+}
+
+a.navlink:hover {
+    color: black;
+  }
+
+a.navlink.active{
+  background-color: #6f2c3f;
+  color: #fff;
+}
+
+.themeButton {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 1rem;
+  margin-right: 5px;
+  white-space: nowrap;
+  cursor: pointer;
+  background-color: #093e61;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar {
+    flex-direction: row;
+  }
+
+  a.navlink  {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    margin-top: 0;
+  }
 }

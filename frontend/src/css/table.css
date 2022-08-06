@@ -1,13 +1,44 @@
-
 .table {
-    margin: 0 auto;
+  display: table;
+  width: 100%;
+  border: 1px solid white;
+  border-collapse: collapse; 
 }
 
-table {
-    border-collapse: collapse;
-    background-color:#FFFFFF;
-  }
+.th {
+  background: rgb(65, 64, 64);
+}
 
-table, th, td {
-    border: 1px solid black;
+.th,
+.tr{
+  display: table-row;
+}
+
+.td {
+  display: table-cell;
+  vertical-align: middle;
+  border: 2px double #2565ae;
+}
+
+.tr .td:first-child,
+.tr .td:last-child {
+  color: #ffeecc;
+  font-weight: normal;
+}
+
+.tr:nth-child(even) {
+  border: 2px solid #D5F3FE;
+}
+
+.table-caption { 
+  display: table-caption; 
+  caption-side: bottom; 
+}
+
+
+@media screen and (max-width: 600px) {
+  .table, .th, .tr, .td {
+    display: block;
+    width:100%;
   }
+}

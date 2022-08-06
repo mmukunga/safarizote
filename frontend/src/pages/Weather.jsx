@@ -1,146 +1,169 @@
-import React, { useState } from 'react'
-import Card from './Card';
-import axios from 'axios';
-import WeatherCard from './WeatherCard';
-import Forecast from './Forecast';
+import React, {useContext} from "react";
+import axios from "axios";
+import moment from 'moment';
+import countryList from 'react-select-country-list';
+import {City}  from 'country-state-city';
+import {Submit, SelectWrapper}  from "./Components";
+import { SmartForm } from './SmartForm';
+import Card from "./Card";
+import {ErrorContext} from "./ErrorProvider";
 
-const initialState = {iso2:'KE', city:'Nairobi'};
+const defaultValues = {
+  country: 'KE',
+  city: 'Nairobi'
+};
 
-function Weather({ setPhotos }) {
-    const [weather, setWeather] = useState([]);
-    const [forecast, setForecast] = useState([]);
-    const [countries, setCountries] = useState([]);
-    const [cities, setCities] = useState([]);
-    const [formData, setFormData] = useState(initialState);
-    const [search, setSearch] = useState("");
-    const [query, setQuery]   = useState("Nairobi,KE");
 
-    const getWeather = async () => {
-      if (query !== "") {
-        axios.post('/api/weather', query).then(response => {
-          const { data } = response;
-          setWeather(data);
-          console.log(data.weather[0].icon);
-          axios.post('/api/forecast', query).then(resp => {
-            const { data } = resp;
-            setForecast(data);
-          }).catch(err => {
-            console.log(err);
-          });
-        }).catch(err => {
-            console.log('error in catch', err);
-        });
-      }
-    };
+const countryFields = [
+  "nativeName",
+  "population",
+  "region",
+  "subregion",
+  "capital",
+  "topLevelDomain",
+  "currencies",
+  "languages",
+  "borders",
+  "name",
+  "flag",
+];
 
-    React.useEffect(() => {
-      getWeather();
-    }, []);
 
-    React.useEffect(() => {
-      getWeather();
-    }, [query]);
+const Weather = () => {
+  const [status, setStatus] = React.useState('');
+  const [weatherData, setWeatherData] = React.useState({current:{}, forecast:{}});
+  const [imageIcon, setImageIcon] = React.useState('');
+  const countries = React.useMemo(() => countryList().getData(), []);
+  const [cities, setCities] = React.useState([]);
+  const [state, setState] = React.useState('KE');
+  const [flag, setFlag] = React.useState();
+  const { errorMsg, handleError } = useContext(ErrorContext);
 
-    const updateSearch = (e) => {
-      setFormData({
-        ...formData, 
-        city: e.target.value
-      });
-      getSearch(e).then(async (res) => {
-        setQuery(res);
-        setSearch("");
-      });
-    };
+  const kelvinToCelcius = (k) => {
+    return (k - 273.15).toFixed(2);
+  };
 
-    const getSearch = async (e) => {
-      return new Promise((resolve, reject) => {
-        setSearch(e.target.value + ',' + formData.iso2);
-        resolve(e.target.value + ',' + formData.iso2);
-      });
+  const createQueryString = (query, params) => {
+    const joinedParams = params.join(",");
+    return `?${query}=${joinedParams}`;
+  }
+
+  const getCountry = async (code, fields) => {
+    const apiNameEndpoint = `${process.env.REACT_APP_COUNTRY_URL}/v2/alpha/${code}`;
+    if (!fields) return axios.get(apiNameEndpoint);
+    const queryString = createQueryString("fields", fields);
+    return axios.get(apiNameEndpoint + queryString);
+  }
+
+  const getFlag = async (id, fields) => {
+    try {
+      const { data } = await getCountry(id, fields);
+      const { name, flag, borders } = data;
+      setFlag(() => flag);
+    } catch (ex) {
+     console.log(ex);
     }
+  }
 
+  React.useEffect(() => {
+    getFlag(state, countryFields);
+  }, [state]);
 
-    React.useEffect(() => {
-      axios.get('/api/countries').then(response => {
-        setCountries(response.data);
-        }).finally(() => {
-          console.log('error.message');
-        })
-    }, []);
-    
-    React.useEffect(() => {
-        const options = {
-          headers: {
-              'Content-Type': 'application/json; charset = UTF-8',
-          }
-        };
-        
-        axios.post('/api/cities', formData.iso2, options).then(response => {
-          setCities(response.data);
-          }).finally(() => {
-            console.log('error.message');
-          })
-    }, [formData.iso2]);
-
-    function handleChange(evt) {
-      evt.preventDefault();
-      const {name, value} = evt.target;
-      if (name === "country" ) { 
-          const country = countries.find(country => country.name === evt.target.value);
-          setFormData({
-            ...formData,
-            iso2: country.iso2
-          });
-      } else {           
-        setFormData({
-          ...formData,
-          [evt.target.name]: value
-        });
-      }    
+  const getWeatherData = async (apiUrl, data) => {
+    try {
+      const response = await axios.post(apiUrl, data);
+      if(response.status !== 200) { throw new Error(); }
+      return response.data;
+    } catch (ex) {
+      console.log(ex);
+      return ex;
     }
+  }
+
+  const getCurrent = async (data) => {
+    return getWeatherData('/api/current', data).then((response) =>{
+      setWeatherData((prev) => ({ ...prev, current: response.weather }));
+      setImageIcon(response.weather[0].icon);
+      return 'Weather OK!';
+    }).catch(error => {
+      return error;
+    });
+  };
+
+  const getForecast = async (data) => {
+    getWeatherData('/api/forecast', data).then((response) =>{
+      setWeatherData((prev) => ({ ...prev, forecast: response }));
+      setImageIcon(response.data.weather[0].icon);
+    }).catch(error => {
+      return error;
+    });
+  };
+
+  const onSubmit = data => {
+    getCurrent(data).then((response) =>{
+      setStatus((prev) => ({...prev, response}));
+      getForecast(data).then((response) =>{
+        setStatus((prev) => ({...prev, response}));
+      });
+    }).catch(error => {
+      return error;
+    });  
+  };
+  
+
+  React.useEffect(() => {
+    const Cities = City.getAllCities();
+    const nodes = Cities.filter((city) => city.countryCode == state);
+    var cities = [];
+
+    nodes.forEach((d) => {
+      cities.push({
+          value: d.name,
+          label: d.name
+        });
+      });
+    setCities(cities);
+  }, [state]);  
+
+   const hasLabel = {label: false};
 
   return (
-    <Card className="Weather" styleProps={{width: '98%'}} title="Weather Report">
-        Welcome to the Weather page
-        <div className="container">
-            <form>
-            <div className="row">
-                <div className="col-25">
-                    <label htmlFor="country">Country</label>
-                </div>
-                <div className="col-75">
-                    <select id="country" name="country"  onChange={handleChange}>
-                      <option value="">Select one...</option>
-                      {countries && countries.map((text,i) => (
-                          <option key={i} value={text.name}>{text.name}</option>
-                      ))}
-                    </select>
-                </div>
+    <Card title="Weather" className="Card">
+      <SmartForm defaultValues={defaultValues} postData={setState} onSubmit={onSubmit}>
+          <SelectWrapper name="country" labelObj={hasLabel} options={countries}/>
+          <SelectWrapper name="city" labelObj={hasLabel} options={cities}/>
+          <Submit name="Submit" type="submit">Submit</Submit>
+      </SmartForm>
+      {status.response}
+      <Card title="Current" className="Card">
+        <img src={flag} alt="" className="country-flag"/>
+        <p className="header">{weatherData.current.name}</p>      
+        <p><img src={imageIcon=='' ? null :`http://openweathermap.org/img/w/${imageIcon}.png`} alt='Loading..'/> </p>  
+        <p className="day">Day: {moment().format('dddd')}</p>            
+        <p className="temp">Temprature: {weatherData.current.main && weatherData.current.main.temp} &deg;C</p> 
+        <p>Day:  {moment().format('dddd')}</p>
+        <p>Date: {moment().format('LL')}</p>         
+      </Card>
+      <Card title="Forecast"  className="Card">
+        {(weatherData.forecast.list != null)?
+            <div className="flex-container">
+                {weatherData.forecast.list.map((item, idx) =>  
+                  <div key={idx} className="flex-child">        
+                    <Card title="" className="Card">
+                      <span className="cssDate">{(new Date((item.dt)*1000)).toISOString()}</span>
+                      <img src={`http://openweathermap.org/img/w/${item.weather[0].icon}.png`} alt=''/>
+                      <p>Forecast: {kelvinToCelcius(item.temp.day)}°C<br/>
+                        Min: {kelvinToCelcius(item.temp.min)}°C Max :{kelvinToCelcius(item.temp.max)}°C</p>
+                    </Card>
+                  </div>
+                )}
             </div>
-            <div className="row">
-                <div className="col-25">
-                    <label htmlFor="city">City</label>
-                </div>
-                <div className="col-75">
-                <select id="city" name="city"  onChange={updateSearch}>
-                    <option value="">
-                        Select one...
-                    </option>
-                    {cities && cities.map((text,i) => (
-                        <option key={i} value={text.name}>
-                            {text.name}
-                        </option>
-                    ))}
-                    </select>
-                </div>
-            </div>          
-            </form>
-            {weather.length!=0? <WeatherCard data={weather} /> : 'Loading...'}
-            {forecast.length!=0? <Forecast data={forecast} query={query} /> : 'Loading...'}
-        </div>
-      
+          :
+          <strong>No Forecast!😞</strong>
+          }
+      </Card>
     </Card>
-    );
+  );
 }
 
 export default Weather;

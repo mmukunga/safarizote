@@ -1,113 +1,76 @@
-import React, { useState } from "react";
+import React, {useContext, useState, Fragment} from "react";
 import axios from 'axios';
+import { v4 as uuid } from 'uuid';
+import { useFetch } from "./useFetch";
+import { StarRating } from "./StarRating";
+import {ErrorContext} from "./ErrorProvider";
 import Card from './Card';
-import StarRating from './StarRating';
-import BarChart from "./BarChart";
 
-const About = () => {
-    const [ratinglist, setRatinglist] = React.useState([]);
-    const [userRating, setUserRating] = useState({ rating: 0 });
-    const [chartData, setChartData] = useState({ 
-      name: "Bar Chart",
-      labels: ['A', 'B', 'C', 'D'],
-      values: [1, 2, 3, 4] 
-    });
+const AboutUs = () => {
+    const [status, setStatus] = React.useState('');
+    const [posts, setPosts] = React.useState([]);
+    const [info, setInfo] = React.useState({});
+    const unique_id = uuid();
+    const small_id = unique_id.slice(0,8);
+    const { data, loading } = useFetch('/api/ratings');
+    const { errorMsg, handleError } = useContext(ErrorContext);
 
+    const error = errorMsg ? <div>{errorMsg}</div> : "";
+    React.useEffect(() => { 
+        const fetchData = async () => {
+            try {
+              const response = await axios.get('/api/ratings');
+              setPosts(response.data);
+              setStatus('');
+            } catch(error){
+              error.httpUrl='/api/ratings';  
+              handleError(error);
+            }
+        };
 
-    const getColumn = (matrix, col) => {
-      var column = [];
-      for (var i = 0; i < matrix.length; i++){
-         column.push(matrix[i][col]);
-      }
-      return column; 
-   }
-
-
-    React.useEffect(() => {
-      const getDataset = async () => {
-        try {
-          const response = await axios.get('/api/getAnalytics');
-          var labels = getColumn(response.data, 0);
-          var data   = getColumn(response.data, 1);
-          setChartData({
-            ...chartData,
-            labels: labels,
-            values: data
-          });
-        } catch (error) {
-          console.error(error);
+        if(status.length === 0) {
+            if(posts.length === 0) {
+                fetchData();
+            }
+        } else {               
+            fetchData();
         }
-      }
-  
-      getDataset();
-    }, []);
 
-    React.useEffect(() => {
-      const fetchRatings = async () => {
-        try {
-          const {data: response} = await axios.get('/api/ratings');
-          setRatinglist(response.data);
-        } catch (error) {
-          console.error(error);
-        }
-      }
-  
-      fetchRatings();
-    }, []);
+    }, [status]);
 
-    const handleRating = rating => {
-      setUserRating(prevState => ({
-          ...prevState,
-          rating: rating
-      }));
-    };
+    if (loading) {
+        return <h1>Loading...</h1>;
+    }
 
-    const saveRating = (e) => {
-      e.preventDefault();
-      const formData = new FormData();
-      formData.append('rating', userRating.rating);
-      axios.post('/api/saveRating', formData).then((response) => {
-        setRatinglist(response.data);
-      });
-    };
+    if (typeof error === 'string' && error !== '') {
+        return <h1>{error.message}</h1>;
+    }
 
     return (
-    <Card className="AboutUs" styleProps={{width: '98%'}} title="About Us">
-      <div className="container">
-        <strong>Welcome to the About page </strong>
-        <p className="second">
-          <b>Hi! I'm Simon!</b> <br/>I'm a freelance consultant with a wealth of experience in the IT-industry.<br/> 
-          I spent the last years as a frontend consultant, providing advice and help, coaching and 
-          training on JavaScript and React. Let's get in touch! <br/><i>Simon Mukunga</i>
-        </p>
-        <p>{ratinglist}</p>
-        <form>
-          <div className="row"  style={{border:'2px solid silver', margin:' 0 auto', padding:'5px'}}>
-            <div className="col-25">
-                <label htmlFor="rating">Star Us?😀</label>
-            </div>
-            <div className="col-75">
-              <StarRating totalStars={5} starsSelected={userRating.rating} onClick={handleRating}/>                
-              <input type="submit" onClick={saveRating} value="Submit Rating"/>
-            </div>
-          </div>
-        </form>
-        
-        <BarChart data={chartData} />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </div>
-    </Card>
+        <Card title="About Us" className="Card">
+            <Fragment>
+            <div className="table">
+                <div className="th">
+                    <div className="td">Description</div>
+                    <div className="td">Stars</div>
+                    <div className="td">Count</div>
+                </div>
+                {posts.map((item)=> {
+                    return (
+                    <div key={item.id} className="tr">
+                      <div className="td">{item.description}</div>
+                      <div className="td">{item.id}</div> 
+                      <div className="td">{item.count}</div>
+                    </div>
+                    );
+                })}
+                <div className="table-caption">
+                    <StarRating ratings={data} setStatus={setStatus}/> 
+                </div>  
+            </div>        
+            </Fragment>
+        </Card>
     );
 };
 
-export default About;
+export default AboutUs;

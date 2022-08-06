@@ -1,0 +1,28 @@
+  
+  .Login {
+    clear: both; 
+    width: 100%;
+    border: 2px double #2565ae;
+    overflow: auto;
+  }
+  
+  .loginButton {
+    background-color: #046DAA;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .buttonText {
+    color: #4285f4;
+    margin-left: 2px;
+  }
+  
+  .icon {
+    width: 25px;
+  }
+
+  .authStatus {
+    color: red;
+  }

@@ -1,21 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter} from "react-router-dom";
 import './index.css';
 import App from './App';
-import { ThemeProvider } from './pages/Theme';
-import { BrowserRouter } from 'react-router-dom';
+import {ErrorProvider} from './pages/ErrorProvider';
 import reportWebVitals from './reportWebVitals';
-import { CartProvider } from "./pages/CartContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider>
     <BrowserRouter>
-    <CartProvider>
-      <App />
-    </CartProvider>  
+    <ErrorProvider>
+        <App />
+    </ErrorProvider>    
     </BrowserRouter>
-    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

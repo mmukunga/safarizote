@@ -1,33 +1,69 @@
-
 import React from "react";
+import { useForm } from "react-hook-form";
 
-const StarRating = (props) => {
-    let { totalStars, starsSelected, onClick } = props; 
-    
-    const Star = ({ index, selected = false, onClick = f => f }) => {
-        return ( <div data-testid={"star"+index} className={selected ? "star selected" : "star"} onClick={onClick}/> );
-      };
+const StarRating = ({ratings, setStatus }) => {
+  const { watch, handleSubmit, formState: { errors }, setValue } = useForm({
+    mode: "onSubmit",
+    defaultValues: {
+      quantity: 0
+    }
+  });
 
-    const handleClick = (n) => {
-        onClick(n);
+  const quantity = watch("quantity");
+
+  const enable = (id) => {
+    if (id <= quantity) {
+      return true;
+    }
+    return false;
+  };
+
+  const handleClick = event => {
+    setValue("quantity", event.currentTarget.id);
+  };
+
+  function post(url, data) {
+    return fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify(data),
+    });
+  }
+  
+  const onSubmit = (data) => {
+    const rt = ratings.find(r => r.stars === parseInt(quantity));
+    const rating = {
+       id: rt.id,
+       stars: rt.stars, 
+       description: rt.description, 
+       count: rt.count+1
     };
     
-    return (
-        <div className="star-rating">
-        {[...Array(totalStars)].map((n, i) => {  
-            return (<Star
-            key={i}
-            index={i}
-            selected={i < starsSelected}
-            onClick={() => handleClick(i + 1)}
-            />)
-            })}
-            <p data-testid="results">
-            {starsSelected} of {totalStars} stars
-            </p>
-        </div>
-    );
-};
-    
+    post("/api/saveRating", rating).then((resp) => {
+      setStatus('Changed');
+      resp.status === 200 ? setStatus("Success") : setStatus("Error");
+    });
+  };
 
-export default StarRating;  
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="StarsDiv">
+        <div className="block box">
+          <div id="1" onClick={handleClick} className={enable(1) ? "redStar" : "star"}/> &nbsp;
+          <div id="2" onClick={handleClick} className={enable(2) ? "redStar" : "star"}/> &nbsp;
+          <div id="3" onClick={handleClick} className={enable(3) ? "redStar" : "star"}/> &nbsp;
+          <div id="4" onClick={handleClick} className={enable(4) ? "redStar" : "star"}/> &nbsp;
+          <div id="5" onClick={handleClick} className={enable(5) ? "redStar" : "star"}/>
+        </div>
+        <div className="block rightbox">
+            <input type="submit" />
+        </div>
+      </div>
+      <span>Selected: {quantity} of {5} stars </span>
+    </form>
+  );  
+};
+
+export { StarRating };

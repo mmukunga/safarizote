@@ -1,57 +1,38 @@
 
- .AboutUs {
-    margin: 10px;
-    border:2px solid blue;
-    text-align: center;
- }
+.cssDate {
+  font-size:12px; 
+  border: 1 px solid red;
+}
 
- .tContainer{
-    margin: 10px;
-    border:2px solid green;
- }
+.ErrorLog {
+  border: 4px solid lightsalmon;
+}
 
- .Login {
-    display: flex;
-    padding: 40px;
-    justify-content: center;
-    background-color: #f7f8fa;
-    background: linear-gradient(90deg, #ffffff 0%, #ffffff 20%, #f7f8fa 98.27%);
-  }
+.ErrorLog p {
+  text-align: left;
+}
 
-  img {
-    max-width: 98%;
-    height: auto;
-    margin: 2px;
-  }
+span.imgDiv {
+  display:inline-block;
+}
 
-  .container {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-    margin: 5px;
-   }
+.country-flag {
+  display: inline-block; 
+  width: 10px;
+  height: 10px;  
+}
 
-   .second {
-   
-      text-align: left;
-      padding: 20px;
-      margin: 0 auto; 
-   }
+span.emoji {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 2px;
+  text-align: center;
+  vertical-align: middle;
+}
 
-
-   .cartButton {
-      background-color: #4CAF50; 
-      border: none;
-      color: white;
-      margin: 4px 2px;
-      padding: 5px 5px;
-      cursor: pointer;
-    }
-
-    .wrapper {
-      padding: 5px 20px;
-  }
-  
-   .wrapper fieldset {
-         margin: 20px 0;
-   }
+span.emoji img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}

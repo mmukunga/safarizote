@@ -1,7 +1,11 @@
-.safarilist {
-    color: darkblue;
-  }
-  
-  .error {
-    color: brown;
-  }
+.shoppings {
+   width: 100%;
+   border: 15px solid green;
+   padding: 10px;
+   margin:  4px;
+}
+
+.app-status {
+   border: 1px dotted silver;
+   width: 100%;
+}

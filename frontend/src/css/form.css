@@ -1,0 +1,114 @@
+
+  .container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+  
+  .errorMsg {
+    max-width: 350px;
+    color: #f21e08;
+    padding: 2px 0;
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  form {
+    margin: 0 auto;
+    width: 100%;
+    border: 4px inset silver;
+    border-radius: 5px;
+    text-align: left;
+  }
+
+  input[type=text],
+  input[type=email],
+  input[type=phone],
+  input[type=password],
+  select, textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    resize: vertical;
+  }
+  
+  input[type=checkbox] {
+    background-color: #a04549;
+  }
+
+  label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+    color: white;
+  }
+  
+  input[type=submit], button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    float: right;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+  .col-25 {
+    float: left;
+    width: 25%;
+    border: 2px inset silver;
+    margin-top: 6px;
+  }
+  
+  .col-75 {
+    float: left;
+    width: 75%;
+    border: 2px inset silver;
+    margin-top: 6px;
+  }
+
+  .wrapIcon {
+    align-items: center;
+    display: flex;
+    border: 2px solid lightgreen;
+  }
+
+.row {
+  display: flex;
+  border: 1px solid silver;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+ .button-row {
+  justify-content: flex-end;
+ }
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  div.navform form select {
+    background-color: #093e61;
+    color:white;
+  }
+
+  .cartRow {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid #ff1100;
+    clear: both;
+  }
+
+  @media screen and (max-width: 700px) {
+    .col-25, .col-75, .btn, 
+    input[type=submit], button {
+      width: 100%;
+      margin-top: 0;
+    }
+  }

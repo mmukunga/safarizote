@@ -1,0 +1,72 @@
+
+
+  .StarsDiv {
+    display: flex;
+    margin: 1px;
+    padding:1px;
+    border: 1px solid lightcyan;
+  }
+
+  .block {
+    flex: 1;
+    margin: 0 auto;
+    border:1px solid lightcyan;
+    text-align: center;
+  }
+
+  div.block > span {
+    border: 1px solid red;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+  }
+
+  .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .rightbox {
+    display: flex;
+    justify-content: end;
+  }
+
+
+  .star {
+    cursor: pointer;
+    width: 2em;
+    height: 2em;
+    background-color: grey;
+    clip-path: polygon(
+      50% 0%,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%
+    );
+  }
+
+  .redStar{
+    cursor: pointer;
+    width: 2em;
+    height: 2em;
+    background-color: red;
+    clip-path: polygon(
+      50% 0%,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%
+    );
+  }

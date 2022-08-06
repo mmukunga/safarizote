@@ -1,56 +1,56 @@
-import React from 'react';
+import React from "react";
+import { makeStyles } from '@material-ui/core';
 import { NavLink } from "react-router-dom";
-import { useNavigate } from 'react-router-dom'
-import { useAuth } from './AuthContext';
-import { ThemeContext } from './Theme';
+import { SafariContext } from "./SafariContext";
+import { ThemeContext }  from './ThemeProvider';
+import { ThemeButton } from './Components';
+import  ProtectedLink from './ProtectedLink';
+import Emoji from "./Emoji";
 
-const NavBar= () => {
-  const { authed, logout } = useAuth();
-  const navigate = useNavigate();
-  const { theme, dark } = React.useContext(ThemeContext);
-  const handleLogout = () => {
-    logout();
-    navigate("/");
-  };
-  
-  const handleChange = (e) => {
-    navigate(`${e.target.value}`);
-  }
+const Navbar = () => {
+    const context = React.useContext(SafariContext);
+    const { theme, toggleTheme } = React.useContext(ThemeContext);
+    const cartItemNumber = context.cart.reduce((count, curItem) => {
+      return count + curItem.quantity;
+    }, 0);
 
-  const ThemeButton = () => {
-    const { theme, toggle } = React.useContext(ThemeContext);
-    return <NavLink
-        to="#"
-        style={{
-          backgroundColor: theme.backgroundColor,
-          color: theme.color,
-          border: '1px solid #ccc',
-          borderRadius: '4px',
-          transition: 'all 0.25s linear'
-        }}
-        onClick={toggle}>{!dark ? 'Dark' : 'Light'}</NavLink>;
-  };
+    const checked = React.useState(theme === "dark" ? true : false);
+    
+    const data = [
+      { name: "/", label: 'Safaris'},
+      { name: "/contactUs", label: 'Contact Us'},
+      { name: "/aboutUs", label: 'About Us'},
+      { name: "/cart", label: `Cart (${cartItemNumber})`},
+      { name: "/weather", label: 'Weather'},
+      { name: "/login", label: 'Login'},
+    ];
+    
+    const color = theme === "light" ? "#333" : "#FFF";
+    const backgroundColor = theme === "light" ? "#FFF" : "#333";
 
-  return (
-  <div className="NavBar">  
-    <ul  className="navbar" style={{ backgroundColor: theme.backgroundColor, color: theme.color }}>
-      <li><NavLink to="/" className='link'>Safaris</NavLink></li>
-      <li><NavLink to="/aboutUs" className='link'>AboutUs</NavLink></li>
-      <li><NavLink to="/weather" className='link'>Weather</NavLink></li>
-      <li><NavLink to="/contactUs" className='link'>ContactUs</NavLink></li>
-      <li>
-          <select onChange={handleChange}>
-            <option value="/tipping">Tipping</option>
-            <option value="/stock">Stock Exchange</option>
-            <option value="/shoppings">Shoppings</option>
-            <option value="/familieAlbum">FamilieAlbum</option>
-          </select>
-        </li>
-      <li>{authed? <button onClick={handleLogout}>Logout</button> 
-                : <NavLink to="/signIn" className='link'>Login</NavLink>}</li>
-      <li><ThemeButton/></li>           
-    </ul>
-  </div>
-  );
-}
-export default NavBar;
+    const useStyles = makeStyles({
+      root: {
+         color: color,
+         background: backgroundColor,
+         whiteSpace: 'nowrap'
+      }
+    });
+
+    const classes = useStyles();
+    const emojiLabel = (label) => {return(label.includes('Cart')? 'Cart': label)};
+    return (
+        <header className="App-header"> 
+        <div className={`navbar ${classes.root}`}>
+            {data.map((item) => (
+              <NavLink key={item.name} to={item.name} className="navlink">
+                <Emoji label={emojiLabel(item.label)}/> {item.label}
+              </NavLink>
+            ))}  
+          <ProtectedLink />
+          <ThemeButton checked={checked} toggleTheme={toggleTheme}/>
+        </div>
+      </header>
+    );
+};
+
+export default Navbar;

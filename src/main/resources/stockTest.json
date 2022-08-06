@@ -1,0 +1,8 @@
+[
+{"code":"TEL.OL","timestamp":"NA","gmtoffset":0,"open":"NA","high":"NA","low":"NA","close":"NA","volume":"NA","previousClose":"NA","change":"NA","change_p":"NA"},
+{"code":"KIT.OL","timestamp":1651760700,"gmtoffset":0,"open":18,"high":18.34,"low":17.86,"close":18.04,"volume":303794,"previousClose":18,"change":0.04,"change_p":0.2222},
+{"code":"TIETO.OL","timestamp":1651760340,"gmtoffset":0,"open":239.2,"high":239.2,"low":227,"close":227,"volume":1734,"previousClose":239.6,"change":-12.6,"change_p":-5.2588},
+{"code":"SAS.CO","timestamp":1651763100,"gmtoffset":0,"open":0.71,"high":0.74,"low":0.69,"close":0.69,"volume":7728069,"previousClose":0.71,"change":-0.02,"change_p":-2.8169},
+{"code":"NEL.OL","timestamp":1651760940,"gmtoffset":0,"open":14.1,"high":14.16,"low":13.21,"close":13.31,"volume":4510574,"previousClose":13.55,"change":-0.24,"change_p":-1.7712},
+{"code":"XXL.OL","timestamp":1651760700,"gmtoffset":0,"open":10.4,"high":10.4,"low":10.06,"close":10.1,"volume":459210,"previousClose":10.09,"change":0.01,"change_p":0.0991}
+]

@@ -1,9 +1,0 @@
-
-
-[
-{ "name": "Poor", "description": "Ass hole", "rating": 1, "dateCreated": "2022-01-23T21:34:33.616Z"},
-{ "name": "Fair", "description": "Pull Socks", "rating": 2, "dateCreated": "2022-01-23T21:34:33.616Z"},
-{ "name": "Good", "description": "Kan du better", "rating": 3, "dateCreated": "2022-01-23T21:34:33.616Z"},
-{ "name": "Very Good", "description": "Keep Up", "rating" :4, "dateCreated": "2022-01-23T21:34:33.616Z"},
-{ "name": "Excellent", "description": "Best Ever", "rating": 5, "dateCreated": "2022-01-23T21:34:33.616Z"}
-]

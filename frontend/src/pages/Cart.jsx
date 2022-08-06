@@ -1,37 +1,35 @@
-import React, { useContext } from "react";
-import Card from './Card';
-import { useCart } from "./CartContext";
+import React, { useContext, useEffect } from "react";
+import {SafariContext} from "./SafariContext";
+import Card from "./Card";
+import { Button } from './Components';
 
-export default function Cart() {
-  const { cart, removeItem } = useCart();
-  const totalPrice = cart && cart.items.reduce((acc, curr) => acc + curr.price, 0);
+const Cart = props => {
+  const context = useContext(SafariContext);
 
-  function formatPrice(price) {
-    return `$${price.toFixed(2)}`;
-  }
-  
-  const deleteItem = (item) => {
-    removeItem(item);
-  };
- 
+  useEffect(() => {
+    /*console.log(context);*/
+  }, [context]);
+
   return (
-    <Card className="Safaris" styleProps={{width:'98%'}} title="Safari Tours">
-    <div className="container">
-      <span>items in cart: {cart.items.length} </span>
-      <span>total price: {formatPrice(totalPrice)}</span>
-      {
-      cart.items.map((el, idx) => (
-        <div key={idx} className="row cart-row">
-          <div className="col-75">
-            {`${el.title}`} {`${el.quantiy}`} {`kr.${el.price}`}
-          </div>
-          <div className="col-25">
-              <input type="submit" value="remove" onClick={() => deleteItem(el)}/>
-          </div>
+    <React.Fragment>
+      <Card className="Card">
+        {context.cart.length <= 0 && <p>No Item in the Cart!</p>}
+        <div className="table">
+          {context.cart.map(cartItem => {
+            const data = `${cartItem.title} Price: ${cartItem.price} Quantity: ${cartItem.quantity}`;
+            return (
+              <div className="tr cartRow" key={cartItem.id}>                                  
+                  {<div dangerouslySetInnerHTML={{__html: data}} className="td"/>}
+                  <Button label="Send" className="td btn" handleClick={context.removeFromCart.bind(this,cartItem.id)}>
+                    Remove from Cart
+                  </Button>
+              </div>
+            )}
+          )}
         </div>
-      ))
-      }
-    </div>
-    </Card>
+      </Card>
+    </React.Fragment>
   );
-}
+};
+
+export default Cart

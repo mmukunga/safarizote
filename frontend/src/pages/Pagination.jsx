@@ -1,84 +1,67 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import Card from './Card';
 
-function Pagination({ data, addToCart, removeFromCart, RenderComponent, pageLimit, dataLimit }) {
-    const [pages] = useState(Math.round(data.length / dataLimit));
-    const [currentPage, setCurrentPage] = useState(1);
-  
-    React.useEffect(() => {
-        window.scrollTo({ behavior: 'smooth', top: '0px' });
-      }, [currentPage]);
+const Pagination = ({ context, RenderComponent, title, pageLimit, dataLimit })=> {
+    const data = context.data;
+    const addToCart = context.addToCart;
+    const [pages] = React.useState(Math.round(data.length / dataLimit));
+    const [currentPage, setCurrentPage] = React.useState(1);
 
-    function goToNextPage() {
-      setCurrentPage((page) => page + 1);
+    const nextPage = () => {
+        setCurrentPage((page) => page + 1);
     }
   
-    function goToPreviousPage() {
-      setCurrentPage((page) => page - 1);
+    const previousPage = () => {
+        setCurrentPage((page) => page - 1);
     }
   
-    function changePage(event) {
-      const pageNumber = Number(event.target.textContent);
-      setCurrentPage(pageNumber);
+    const changePage = (event) => {
+        const pageNumber = Number(event.target.textContent);
+        setCurrentPage(pageNumber);
+    }
+  
+    const getData = () => {
+        const startIndex = currentPage * dataLimit - dataLimit;
+        const endIndex = startIndex + dataLimit;
+        return data.slice(startIndex, endIndex);
     }
 
-    const getPaginatedData = () => {
-      const startIndex = currentPage * dataLimit - dataLimit;
-      const endIndex = startIndex + dataLimit;
-      return data.slice(startIndex, endIndex);
+    const getPageItems = () => {
+        let start = Math.floor((currentPage - 1) / pageLimit) * pageLimit;
+        return new Array(pageLimit).fill().map((_, idx) => start + idx + 1);
     };
-  
-    const getPaginationGroup = () => {
-      let start = Math.floor((currentPage - 1) / pageLimit) * pageLimit;
-      return new Array(pageLimit).fill().map((_, idx) => start + idx + 1);
-    };
-  
+
     return (
-        <div className="Pagination">
-      
-          {/* show the posts, 10 posts at a time */}
-          <div className="posts">
-            {getPaginatedData().map((d, idx) => (
-              <RenderComponent key={idx} data={d} 
-                    addToCart={addToCart}
-                    removeFromCart={removeFromCart} />
-            ))}
-          </div>
-      
-          {/* show the pagiantion
-              it consists of next and previous buttons
-              along with page numbers, in our case, 5 page
-              numbers at a time
-          */}
-          <div className="pagination">
-            {/* previous button */}
-            <button
-              onClick={goToPreviousPage}
-              className={`prev ${currentPage === 1 ? 'disabled' : ''}`}
+        <Card title="Safaris" className="Card">
+          <ul className="nav">
+            <li><a href="#"
+              onClick={previousPage}
+              className={`prev ${currentPage <= 1 ? 'disabled' : ''}`}
             >
-              prev
-            </button>
-      
-            {/* show page numbers */}
-            {getPaginationGroup().map((item, index) => (
-              <button
-                key={index}
+              « Prev
+            </a></li>     
+            {getPageItems().map((item, idx) => (
+              <li key={idx}><a href="#"
                 onClick={changePage}
-                className={`paginationItem ${currentPage === item ? 'active' : null}`}
+                className={`link ${currentPage === item ? 'active' : ''}`}
               >
-                <span>{item}</span>
-              </button>
-            ))}
-      
-            {/* next button */}
-            <button
-              onClick={goToNextPage}
-              className={`next ${currentPage === pages ? 'disabled' : ''}`}
+                {item}
+              </a></li>
+            ))}  
+            <li><a href="#"
+              onClick={nextPage}
+              className={`next ${currentPage >= pages ? 'disabled' : ''}`}
             >
-              next
-            </button>
-          </div>
-        </div>
-      );
+              Next »
+            </a></li>
+          </ul>                
+          <div className="Row">
+            {getData().map((item, idx) => (
+              <RenderComponent key={idx} data={item} addToCart={addToCart}/>
+            ))}
+          </div>        
+      </Card>
+    );
   }
 
   export default Pagination;

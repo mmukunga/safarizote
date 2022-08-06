@@ -1,14 +1,17 @@
-import React from 'react';
-import { useStyles } from './CardStyles';
+import React from 'react'
 
-const Card = (props) => {
-  const classes = useStyles(props.styleProps);
+const Card = ({ title, image, className, children }) => {
+  const classes = `${className}`;
   return (
-    <div data-testid="card-item" className={`card ${classes.root}`}>
-      <h3>{props.title}</h3>
-      {props.children}
+    <div className={classes}>
+        { image 
+          ? <img src={`${image}`} className="textWrap" alt={title}/>
+          : null
+        }
+        {title? <div dangerouslySetInnerHTML={{ __html: title }} className="title"/> : null} 
+        {children}
     </div>
   )
 }
 
-export default Card;
+export default Card

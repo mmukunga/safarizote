@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  height: 10vmin;
+  height: 40vmin;
   pointer-events: none;
 }
 
@@ -20,32 +20,17 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: calc(10px + 1vmin);
+  flex: 1 1 20rem;
+  border-radius: 10px;
+  margin: 10px 20px;
+  box-shadow: 0 0 15px rgb(0 0 0 / 40%);
+  padding: 10px 20px;
 }
 
 .App-link {
   color: #61dafb;
 }
-
-.App-content {
-  border: 2px solid #00578a
-}
-
-@import url("./css/card.css");
-@import url("./css/cart.css");
-@import url("./css/navbar.css");
-@import url("./css/navigation.css");
-@import url("./css/cssform.css");
-@import url("./css/ratings.css");
-@import url("./css/safari.css"); 
-@import url("./css/safaris.css");
-@import url("./css/shopping.css"); 
-@import url("./css/shoppings.css");
-@import url("./css/styles.css");
-@import url("./css/table.css");
-@import url("./css/tipping.css");
-@import url("./css/weather.css");
 
 @keyframes App-logo-spin {
   from {
@@ -55,3 +40,18 @@
     transform: rotate(360deg);
   }
 }
+
+@import url("./css/album.css");
+@import url("./css/card.css");
+@import url("./css/errorLog.css");
+@import url("./css/form.css");
+@import url("./css/login.css");
+@import url("./css/navbar.css");
+@import url("./css/pagination.css");
+@import url("./css/theme.css");
+@import url("./css/shoppings.css");
+@import url("./css/spinner.css");
+@import url("./css/stars.css");
+@import url("./css/styles.css");
+@import url("./css/table.css");
+@import url("./css/weather.css");
