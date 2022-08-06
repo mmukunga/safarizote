@@ -9,7 +9,7 @@ import  {SmartForm} from './SmartForm';
      const navigate = useNavigate();
 
      const secureOptions = [
-        {id:0, value: '/vanila', label: '--Select--', icon: '🤔' },
+        {id:0, value: '/vanila', label: '-Select One-', icon: '🤔' },
         {id:1, value: '/tipping', label: 'Tipping', icon: '🎲' },
         {id:2, value: '/shoppings', label: 'Shopping', icon: '🛍️' },
         {id:3, value: '/stocks', label: 'Stock Market', icon: '📈' },

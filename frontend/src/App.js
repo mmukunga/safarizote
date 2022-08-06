@@ -31,12 +31,12 @@ const App = () => {
   React.useEffect(() => {
     const getData = async()=>{
       axios.get('https://geolocation-db.com/json/').then((response) => {
-        const res = response.data;
-        console.log(res);
-        localStorage.setItem('user', res);
+        console.log(response);
+        const analytics = { ...response.data };
+        axios.post('/api/saveAnalytics', analytics)
+             .then(response => localStorage.setItem('user', response));
       });
     }
-
     onAuthStateChanged(auth, (user) => {
       getData();    
       setCurrentUser(user);
