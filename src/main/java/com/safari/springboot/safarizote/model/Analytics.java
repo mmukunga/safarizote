@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,7 +22,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-@Table(name="analytics")
+@Table(name="analytics",uniqueConstraints=@UniqueConstraint(columnNames={"ipv4"}))
 public class Analytics {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
