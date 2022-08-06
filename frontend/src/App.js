@@ -29,19 +29,18 @@ const App = () => {
   const [timeActive, setTimeActive] = React.useState(false);
 
   React.useEffect(() => {
-
     const getData = async()=>{
-        const res = await axios.get('https://geolocation-db.com/json/');
+      axios.get('https://geolocation-db.com/json/').then((response) => {
+        const res = response.data;
         console.log(res.data);
-        return res.data;
+        localStorage.setItem('ip', res.IPv4);
+      });
     }
 
     onAuthStateChanged(auth, (user) => {
-      const repData = getData();
-      console.log(repData);
-      localStorage.setItem('ip', repData.IPv4);
-      setCurrentUser(user)
-     })
+      getData();    
+      setCurrentUser(user);
+    });
   }, []);
 
     return (
