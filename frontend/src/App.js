@@ -32,8 +32,8 @@ const App = () => {
     const getData = async()=>{
       axios.get('https://geolocation-db.com/json/').then((response) => {
         const res = response.data;
-        console.log(res.data);
-        localStorage.setItem('ip', res.IPv4);
+        console.log(res);
+        localStorage.setItem('user', res);
       });
     }
 

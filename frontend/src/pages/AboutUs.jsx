@@ -43,13 +43,12 @@ const AboutUs = () => {
     }
 
     const currentUser = localStorage.getItem("currentUser");
-    const ip = localStorage.getItem("ip");
+    const user = localStorage.getItem(user);
 
     return (
         <Card title="About Us" className="Card">
             <Fragment>
-            <h4>Your IP Address is</h4>
-            <p>{currentUser} {ip}</p>    
+            <p>Your IP Address is: {currentUser} {user.ip}</p>    
             <div className="table">
                 <div className="th">
                     <div className="td">Description</div>
