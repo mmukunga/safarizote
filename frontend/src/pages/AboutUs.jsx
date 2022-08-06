@@ -48,7 +48,7 @@ const AboutUs = () => {
     return (
         <Card title="About Us" className="Card">
             <Fragment>
-            <p>Your IP Address is: {currentUser} {user.ipv4}</p>    
+            <p>Your IP Address is: {currentUser} {user && user.ipv4}</p>    
             <div className="table">
                 <div className="th">
                     <div className="td">Description</div>
