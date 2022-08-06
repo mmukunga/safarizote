@@ -12,5 +12,5 @@ import org.springframework.stereotype.Repository;
 public interface AnalyticsRepository extends JpaRepository<Analytics, Long>{
    @Query(value = "SELECT max(id) FROM Analytics")
     public Long getMaxId();
-    public List<Analytics> findByIPv4(String iPv4);
+    public List<Analytics> findByIpv4(String ipv4);
 }

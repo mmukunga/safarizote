@@ -38,8 +38,8 @@ public class Analytics {
     private String latitude;
     @Column(name = "longitude")
     private String longitude;
-    @Column(name = "i_pv4")
-    private String iPv4;
+    @Column(name = "ipv4")
+    private String ipv4;
     @Column(name = "state")
     private String state;
     @Column(name = "date_created")

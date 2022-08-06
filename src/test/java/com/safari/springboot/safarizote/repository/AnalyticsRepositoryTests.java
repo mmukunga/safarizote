@@ -27,30 +27,30 @@ public class AnalyticsRepositoryTests {
     public void findByIdShouldReturnAnalytics() {
        Optional<Analytics> analytics = repository.findById(1L);
        assertThat(analytics).isPresent();
-       assertThat(analytics.get().getIPv4()).isEqualTo("84.212.199.3");
+       assertThat(analytics.get().getIpv4()).isEqualTo("84.212.199.3");
     }
 
     @Test
-    public void findByIPv4ShouldReturnAnalytics() {      
-       List<Analytics> analytics = repository.findByIPv4("84.212.199.3");
+    public void findByIpv4ShouldReturnAnalytics() {      
+       List<Analytics> analytics = repository.findByIpv4("84.212.199.3");
        assertThat(analytics).hasSize(1);
        assertThat(analytics.get(0).getId()).isNotNull();
     }
 
     @Test
     public void deleteUser() {
-		List<Analytics> analytics = repository.findByIPv4("84.212.199.3");
+		List<Analytics> analytics = repository.findByIpv4("84.212.199.3");
 		assertThat(analytics).hasSize(1);
     	repository.deleteById((long) 7);
-    	analytics = repository.findByIPv4("84.212.199.3");
+    	analytics = repository.findByIpv4("84.212.199.3");
     	assertThat(analytics).hasSize(0);
     }
 
     @Test
     public void createNewAnalytics() throws ParseException {
     	Analytics analytics = Analytics.builder()
-        .iPv4("84.212.199.3")
-        .city("Oslo")
+        .ipv4("84.212.199.3")
+        .city("Oslo County")
         .countryCode("NO")
         .countryName("Norway")
         .dateCreated(Instant.now())
