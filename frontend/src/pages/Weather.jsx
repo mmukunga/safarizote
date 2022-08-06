@@ -6,7 +6,7 @@ import {City}  from 'country-state-city';
 import {Submit, SelectWrapper}  from "./Components";
 import { SmartForm } from './SmartForm';
 import Card from "./Card";
-import {ErrorContext} from "./ErrorProvider";
+import {LoggerContext} from "./LoggerProvider";
 
 const defaultValues = {
   country: 'KE',
@@ -37,7 +37,7 @@ const Weather = () => {
   const [cities, setCities] = React.useState([]);
   const [state, setState] = React.useState('KE');
   const [flag, setFlag] = React.useState();
-  const { errorMsg, handleError } = useContext(ErrorContext);
+  const { log, persistLog } = useContext(LoggerContext);
 
   const kelvinToCelcius = (k) => {
     return (k - 273.15).toFixed(2);

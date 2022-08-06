@@ -1,21 +1,17 @@
-import React, {useContext, useState, Fragment} from "react";
+import React, {useContext, Fragment} from "react";
 import axios from 'axios';
-import { v4 as uuid } from 'uuid';
 import { useFetch } from "./useFetch";
 import { StarRating } from "./StarRating";
-import {ErrorContext} from "./ErrorProvider";
+import {LoggerContext} from "./LoggerProvider";
 import Card from './Card';
 
 const AboutUs = () => {
     const [status, setStatus] = React.useState('');
     const [posts, setPosts] = React.useState([]);
-    const [info, setInfo] = React.useState({});
-    const unique_id = uuid();
-    const small_id = unique_id.slice(0,8);
     const { data, loading } = useFetch('/api/ratings');
-    const { errorMsg, handleError } = useContext(ErrorContext);
+    const { log, persistLog } = useContext(LoggerContext);
 
-    const error = errorMsg ? <div>{errorMsg}</div> : "";
+    const error = log ? <div>{log}</div> : "";
     React.useEffect(() => { 
         const fetchData = async () => {
             try {
@@ -24,7 +20,7 @@ const AboutUs = () => {
               setStatus('');
             } catch(error){
               error.httpUrl='/api/ratings';  
-              handleError(error);
+              persistLog(error);
             }
         };
 
@@ -46,9 +42,14 @@ const AboutUs = () => {
         return <h1>{error.message}</h1>;
     }
 
+    const currentUser = localStorage.getItem("currentUser");
+    const ip = localStorage.getItem("ip");
+
     return (
         <Card title="About Us" className="Card">
             <Fragment>
+            <h4>Your IP Address is</h4>
+            <p>{currentUser} {ip}</p>    
             <div className="table">
                 <div className="th">
                     <div className="td">Description</div>

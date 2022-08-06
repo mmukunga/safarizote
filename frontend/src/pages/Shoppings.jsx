@@ -1,5 +1,5 @@
 import React from "react";
-import {ErrorContext} from "./ErrorProvider";
+import {LoggerContext} from "./LoggerProvider";
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { Label, Submit, Button, Select, InputWrapper } from "./Components";
@@ -19,7 +19,7 @@ const  Shoppings = () => {
   const [indexes, setIndexes] = React.useState([]);
   const [counter, setCounter] = React.useState(0);
   const [shop, setShop] = React.useState("Joka");
-  const { errorMsg, handleError } = React.useContext(ErrorContext);
+  const { log, persistLog } = React.useContext(LoggerContext);
 
   const options = [
       {label: 'Joka', value: 'Joka'},
@@ -48,7 +48,7 @@ const  Shoppings = () => {
         .catch(error => {
             setState('Error');
             error.httpUrl = '/api/products';
-            handleError(error);
+            persistLog(error);
         });
   }, []);
 
@@ -70,7 +70,7 @@ const  Shoppings = () => {
       setState('Error');
       //error.httpUrl = '/api/saveProducts';
       //error.status = 4001;
-      //handleError(error);
+      //persistLog(error);
       console.log(error);
     });
   };

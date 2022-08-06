@@ -18,7 +18,7 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.safari.springboot.safarizote.model.ErrorLog;
+import com.safari.springboot.safarizote.model.AppLogger;
 import com.safari.springboot.safarizote.repository.AppLogRepository;
 
 import java.lang.reflect.Type;
@@ -29,13 +29,13 @@ public class ErrorLogController {
   private AppLogRepository repository;
 
   @RequestMapping(value = "/api/viewErrors", method = RequestMethod.GET)
-  public ResponseEntity<List<ErrorLog>> viewErrors() throws Exception {
-    List<ErrorLog> list = repository.findAll();
+  public ResponseEntity<List<AppLogger>> viewErrors() throws Exception {
+    List<AppLogger> list = repository.findAll();
     return new ResponseEntity<>(list, HttpStatus.OK);
   }
 
   @RequestMapping(value = "/api/saveError", method = RequestMethod.POST)
-  public ResponseEntity<ErrorLog> saveError(@RequestBody String log) throws Exception {
+  public ResponseEntity<AppLogger> saveError(@RequestBody String log) throws Exception {
     System.out.println(log);
 
     JsonObject jsonObj = (JsonObject) new Gson().fromJson(log, JsonObject.class);
@@ -47,16 +47,16 @@ public class ErrorLogController {
       }
     }).create();
 
-    ErrorLog logItem = gson.fromJson(jsonObj, ErrorLog.class);
-    ErrorLog dbLog = repository.save(logItem);
+    AppLogger logItem = gson.fromJson(jsonObj, AppLogger.class);
+    AppLogger dbLog = repository.save(logItem);
 
     return new ResponseEntity<>(dbLog, HttpStatus.OK);
   }
 
   @RequestMapping(value = "/api/deleteAll", method = RequestMethod.POST)
-  public ResponseEntity<List<ErrorLog>> deleteAll() throws Exception {
+  public ResponseEntity<List<AppLogger>> deleteAll() throws Exception {
     repository.deleteAll();
-    List<ErrorLog> list = repository.findAll();
+    List<AppLogger> list = repository.findAll();
     System.out.println("Logs Deleted OK!");
     return new ResponseEntity<>(list, HttpStatus.OK);
   }

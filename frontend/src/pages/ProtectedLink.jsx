@@ -3,13 +3,13 @@ import {useNavigate} from 'react-router-dom';
 import {Select} from "./Components";
 import  {SmartForm} from './SmartForm';
 
-   const defaultValues = {id:0, value: '¤', label: '--Select--', icon: '👀' };
+   const defaultValues = {id:0, value: '¤', label: '--Select--', icon: '🥺' };
 
    const ProtectedLink = () => {
      const navigate = useNavigate();
 
      const secureOptions = [
-        {id:0, value: '/vanila', label: '--Select--', icon: '👀' },
+        {id:0, value: '/vanila', label: '--Select--', icon: '🤔' },
         {id:1, value: '/tipping', label: 'Tipping', icon: '🎲' },
         {id:2, value: '/shoppings', label: 'Shopping', icon: '🛍️' },
         {id:3, value: '/stocks', label: 'Stock Market', icon: '📈' },

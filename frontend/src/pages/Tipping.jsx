@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import {ErrorContext} from "./ErrorProvider";
+import {LoggerContext} from "./LoggerProvider";
 import Card from "./Card";
 import axios from 'axios';
 
@@ -9,14 +9,14 @@ const max = 35; //exclusive
 const Tipping = () => {
   const [status, setStatus] = useState({});
   const [kuppong, setKuppong] = useState();
-  const { errorMsg, handleError } = useContext(ErrorContext);
+  const { log, persistLog } = useContext(LoggerContext);
 
   const lagKuppong = (e) => {
     axios.get('/api/lagKuppong').then(response => {
        setKuppong(response.data.Maji);
     }).catch(error => {  
       error.httpUrl='/api/lagKuppong';  
-      handleError(error);
+      persistLog(error);
   });
  };
 
@@ -25,7 +25,7 @@ const Tipping = () => {
        setKuppong(response.data.Maji);
     }).catch(error => {     
       error.httpUrl='/api/lagKuppong';  
-      handleError(error);
+      persistLog(error);
     });
   }, []); 
 

@@ -1,12 +1,12 @@
 import React, { useEffect, useState} from 'react';
 import axios from 'axios';
 import Card from './Card';
-import {ErrorContext} from "./ErrorProvider";
+import {LoggerContext} from "./LoggerProvider";
 
-const ErrorLog = () => {
+const AppLogger = () => {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true);
-  const { errorMsg, handleError } = React.useContext(ErrorContext);
+  const { logData, persistLog } = React.useContext(LoggerContext);
 
   useEffect(() => {
     const fetchData = async () =>{
@@ -17,21 +17,21 @@ const ErrorLog = () => {
       }).catch( (error) => {
         setLoading(false);
         error.httpUrl='/api/viewErrors';  
-        handleError(error);
+        persistLog(error);
       });
     }
     fetchData();
  }, []);
  
  const deleteAll = async (id) => {
-  try {
-    const res = await axios.post('/api/deleteAll');
-    setData(res.data);
-  } catch (error) {
-    error.httpUrl='/api/deleteAll';  
-    handleError(error);
+    try {
+      const res = await axios.post('/api/deleteAll');
+      setData(res.data);
+    } catch (error) {
+      error.httpUrl='/api/deleteAll';  
+      persistLog(error);
+    }
   }
-}
 
   return ( 
      <Card title="Error Logs" className="Card">
@@ -40,7 +40,7 @@ const ErrorLog = () => {
         {!loading && (
         <div >
         {data && data.map((x, idx) => (
-        <Card key={idx} className="Card ErrorLog" title={x.name}>
+        <Card key={idx} className="Card AppLogger" title={x.name}>
             <p>Id: {x.id}</p>
             <p>Status: {x.status}</p>
             <p>Status Text: {x.statusText}</p>
@@ -55,4 +55,4 @@ const ErrorLog = () => {
   );
 };
 
-export default ErrorLog;
+export default AppLogger;

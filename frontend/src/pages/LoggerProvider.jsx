@@ -12,14 +12,13 @@ const customJSON = err => ({
   timestamp: moment()
 });
 
-
 const url = "/api/logger";
-const ErrorContext = React.createContext();
+const LoggerContext = React.createContext();
 
-const ErrorProvider = (props) => {
-  const [errorMsg, setError] = React.useState(defaultMessage);
+const LoggerProvider = (props) => {
+  const [log, setError] = React.useState(defaultMessage);
 
-  const handleError = (error) => {
+  const persistLog = (error) => {
     setError(error.message);
     fetch('/api/saveError', {
         headers: {
@@ -32,10 +31,10 @@ const ErrorProvider = (props) => {
 }
 
   return (
-    <ErrorContext.Provider value={{ errorMsg, handleError }}>
+    <LoggerContext.Provider value={{ log, persistLog }}>
       {props.children}
-    </ErrorContext.Provider>
+    </LoggerContext.Provider>
   )
 }
 
-export {ErrorContext, ErrorProvider}
+export {LoggerContext, LoggerProvider}

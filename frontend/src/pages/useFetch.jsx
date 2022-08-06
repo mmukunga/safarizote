@@ -1,11 +1,11 @@
 import React from "react";
 import axios from 'axios';
-import {ErrorContext} from "./ErrorProvider";
+import {LoggerContext} from "./LoggerProvider";
 
 export const useFetch = (url) => {
     const [data, setData] = React.useState([]);
     const [loading, setLoading] = React.useState(false);
-    const { handleError } = React.useContext(ErrorContext);
+    const { persistLog } = React.useContext(LoggerContext);
     React.useEffect(() => {
         setLoading(true);
         axios.get(url).then((response) => {
@@ -13,10 +13,10 @@ export const useFetch = (url) => {
           setLoading(false);
         }).catch((e) => {
           e.httpUrl = url;
-          handleError(e);
+          persistLog(e);
           setLoading(false);
         });
-    }, [url, handleError]);
+    }, [url, persistLog]);
 
     return { data, loading };
 };

@@ -18,7 +18,7 @@ import StockList from './pages/StockList';
 import BackUp from './pages/BackUp';
 import Weather from './pages/Weather';
 import Login from './pages/Login';
-import ErrorLog from './pages/ErrorLog';
+import AppLogger from './pages/AppLogger';
 import Register from './pages/Register';
 import {ProtectedRoute} from './pages/ProtectedRoute';
 
@@ -28,8 +28,17 @@ const App = () => {
   const [timeActive, setTimeActive] = React.useState(false);
 
   React.useEffect(() => {
-    const currentUser = localStorage.getItem("currentUser");
+
+    const getData = async()=>{
+        const res = await axios.get('https://geolocation-db.com/json/');
+        console.log(res.data);
+        return res.data;
+    }
+
     onAuthStateChanged(auth, (user) => {
+      const repData = getData();
+      console.log(repData);
+      localStorage.setItem('ip', repData.IPv4);
       setCurrentUser(user)
      })
   }, []);
@@ -47,7 +56,7 @@ const App = () => {
                   <Route path="/tipping" element={ <ProtectedRoute><Tipping/></ProtectedRoute>} />
                   <Route path="/backUps" element={ <ProtectedRoute><BackUp/></ProtectedRoute>} />
                   <Route path="/stocks" element={ <ProtectedRoute><StockList/></ProtectedRoute>} />
-                  <Route path="/errorLog" element={ <ProtectedRoute><ErrorLog/></ProtectedRoute>} />
+                  <Route path="/errorLog" element={ <ProtectedRoute><AppLogger/></ProtectedRoute>} />
                   <Route path="/cart" element={<Cart cartItems={cartItems}/>} />
                   <Route path="/weather" element={<Weather/>} />
                   <Route path="/login" element={<Login/>} />

@@ -1,7 +1,7 @@
 import React from "react";
 import { Submit, SelectWrapper } from "./Components";
 import { SmartForm } from './SmartForm';
-import {ErrorContext} from "./ErrorProvider";
+import {LoggerContext} from "./LoggerProvider";
 import Card from "./Card";
 import axios from 'axios';
 import Pagination from './Pagination';
@@ -17,8 +17,7 @@ const BackUp = () => {
   const [offset, setOffset] = React.useState(1);
   const [pageCount, setPageCount] = React.useState(0);
   const [isLoading, setIsLoading] = React.useState(true);
-  const { errorMsg, handleError } = React.useContext(ErrorContext);
-  const [state, setState] = React.useState(defaultValues);
+  const { log, persistLog } = React.useContext(LoggerContext);
 
   const addToCart = (newCart) => {
     console.log(newCart);
@@ -42,13 +41,13 @@ const BackUp = () => {
         }).catch( (error) => {
           setIsLoading(false);
           error = {...error, httpUrl: '/api/listFolders'};  
-          handleError(error);
+          persistLog(error);
         });         
     }
     
     fetchData();
     
-  }, [handleError]);
+  }, [persistLog]);
   
   function post(url, data) {
     return axios.post(url, {

@@ -3,13 +3,13 @@ import {signInWithEmailAndPassword,
         sendEmailVerification,
         createUserWithEmailAndPassword} from 'firebase/auth';
 import {useNavigate, useLocation} from 'react-router-dom';
-import {ErrorContext} from "./ErrorProvider";
+import {LoggerContext} from "./LoggerProvider";
 
 const AuthContext = React.createContext()
 
 export const AuthProvider = ({children}) => {
   const [token, setToken] = React.useState(null);
-  const { errorMsg, handleError } = useContext(ErrorContext);
+  const { log, persistLog } = useContext(LoggerContext);
 
   let navigate = useNavigate();
   let location = useLocation();
@@ -31,11 +31,11 @@ export const AuthProvider = ({children}) => {
         }).catch((err) => {
           localStorage.setItem("currentUser", null);
           err.httpUrl='/api/login';  
-          handleError(err);
+          persistLog(err);
         });
     }).catch(err => {
       err.httpUrl='/api/createUser';  
-      handleError(err);
+      persistLog(err);
     });  
   }
 
@@ -49,7 +49,7 @@ export const AuthProvider = ({children}) => {
           navigate('/login');
         }).catch((err) => {
           err.httpUrl='/api/createUser';  
-          handleError(err);
+          persistLog(err);
         });
       } else {
         setToken(auth.currentUser);
@@ -61,7 +61,7 @@ export const AuthProvider = ({children}) => {
       err.response = response;
       err.httpUrl='/api/login';
       localStorage.setItem("currentUser", null);
-      handleError(err);
+      persistLog(err);
     })
   }
 
@@ -70,7 +70,7 @@ export const AuthProvider = ({children}) => {
     onLogin:  login,
     onLogout: logout,
     onRegister: register,
-    errorMsg,
+    log,
   };
 
   return (
