@@ -16,6 +16,7 @@ export const SafariContextProvider = ({ children }) => {
     fetchSafaris().then((response) => {
       setSafaris(response.data);
       console.log(safaris);
+      console.log(response.data);
     });
   }, []);
 
