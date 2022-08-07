@@ -59,7 +59,10 @@ const App = () => {
              .then(response => localStorage.setItem('user', JSON.stringify(response)));
       });
     }
-    findByIPv4();
+    if (geoData != {}) {
+      findByIPv4();
+    }
+
   }, [geoData]);
 
     return (
