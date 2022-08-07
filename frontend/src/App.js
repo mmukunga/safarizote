@@ -28,7 +28,7 @@ const App = () => {
   const [cartItems, setCartItems] = React.useState([]);
   const [currentUser, setCurrentUser] = React.useState(null);
   const [timeActive, setTimeActive] = React.useState(false);
-  const [geoData, setGeoData] = React.useState({});
+  const [geoData, setGeoData] = React.useState(null);
   
   React.useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -48,6 +48,7 @@ const App = () => {
 
   React.useEffect(() => {
     const findByIPv4 = async()=>{
+      console.log(geoData);
       axios.post('/api/findByIPv4', {ipv4: geoData.IPv4}).then(response => {
         console.log(response);
         const analytics = {
@@ -59,7 +60,7 @@ const App = () => {
              .then(response => localStorage.setItem('user', JSON.stringify(response)));
       });
     }
-    if (geoData != {}) {
+    if (geoData != null) {
       findByIPv4();
     }
 
