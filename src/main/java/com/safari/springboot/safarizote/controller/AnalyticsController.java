@@ -43,7 +43,7 @@ public class AnalyticsController {
         System.out.println("1.saveAnalytics. Start");
         System.out.println(map);
         Analytics analytics = Analytics.builder()
-            .id(Long.parseLong(map.get("id")))
+            .id(map.get("id")!= null?Long.parseLong(map.get("id")):null)
             .ipv4(map.get("IPv4"))
             .countryName(map.get("country_name"))
             .countryCode(map.get("country_code"))
