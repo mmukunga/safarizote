@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -27,7 +28,7 @@ public class AnalyticsController {
     }
 
     @RequestMapping(value = "/api/findByIPv4", method = RequestMethod.POST)
-    public ResponseEntity<List<Analytics>> findByIPv4(@RequestBody String ipv4) {
+    public ResponseEntity<List<Analytics>> findByIPv4(@RequestParam String ipv4) {
         System.out.println("1.findByIPv4. Start");
         System.out.println(ipv4);
         List<Analytics> analytics = repository.findByIpv4(ipv4);
