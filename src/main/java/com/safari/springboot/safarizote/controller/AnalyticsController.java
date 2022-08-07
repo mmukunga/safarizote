@@ -6,6 +6,7 @@ import com.safari.springboot.safarizote.repository.AnalyticsRepository;
 import java.time.Instant;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -30,16 +31,16 @@ public class AnalyticsController {
     }
 
     @RequestMapping(value = "/api/findByIPv4", method = RequestMethod.POST)
-    public ResponseEntity<List<Analytics>> findByIPv4(@RequestBody String ipv4) throws ParseException {
+    public ResponseEntity<Analytics> findByIPv4(@RequestBody String ipv4) throws ParseException {
         System.out.println("1.findByIPv4. Start");
         System.out.println(ipv4);
         JSONParser parser = new JSONParser();
         JSONObject json = (JSONObject) parser.parse(ipv4);
-        List<Analytics> analytics = repository.findByIpv4(json.get("ipv4").toString());
+        Optional<Analytics> analytics = repository.findByIpv4(json.get("ipv4").toString());
         System.out.println("2.findByIPv4");
         System.out.println(analytics);
         System.out.println("3.findByIPv4");
-        return new ResponseEntity<>(analytics, HttpStatus.OK);
+        return new ResponseEntity<>(analytics.get(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/api/saveAnalytics", method = RequestMethod.POST)

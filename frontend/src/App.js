@@ -51,9 +51,11 @@ const App = () => {
       console.log(geoData);
       axios.post('/api/findByIPv4', {ipv4: geoData.IPv4}).then(response => {
         console.log(response);
+        const id = response.data && response.data!=null? response.data.id: null;
+        const visits = response.data!=null? response.data.visits+1: null;
         const analytics = {
-               id: response.data[0].id,
-               visits: response.data[0].visits+1,
+               id: response.data.id,
+               visits: response.data.visits+1,
                ...geoData
         };
         axios.post('/api/saveAnalytics', analytics)
