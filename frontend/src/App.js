@@ -44,7 +44,7 @@ const App = () => {
           postal: data.postal,
           state: data.state
         };
-        axios.post('/api/findByIPv4', {ipv4: analytics.ipv4})
+        axios.post('/api/findByIPv4', analytics.ipv4)
              .then(response => {
               console.log(response);
               if (response.data && response.data[0].ipv4 == analytics.ipv4) {

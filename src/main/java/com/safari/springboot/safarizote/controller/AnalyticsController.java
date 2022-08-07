@@ -27,10 +27,12 @@ public class AnalyticsController {
 
     @RequestMapping(value = "/api/findByIPv4", method = RequestMethod.POST)
     public ResponseEntity<List<Analytics>> findByIPv4(@RequestBody String ipv4) {
-        List<Analytics> analytics = repository.findByIpv4(ipv4);
         System.out.println("1.findByIPv4. Start");
-        System.out.println(analytics);
+        System.out.println(ipv4);
+        List<Analytics> analytics = repository.findByIpv4(ipv4);
         System.out.println("2.findByIPv4");
+        System.out.println(analytics);
+        System.out.println("3.findByIPv4");
         return new ResponseEntity<>(analytics, HttpStatus.OK);
     }
 
@@ -39,11 +41,9 @@ public class AnalyticsController {
         System.out.println("1.saveAnalytics. Start");
         System.out.println(analytics);
         System.out.println("2.saveAnalytics");
-
         Instant now = Instant.now();
         System.out.println(now);
         System.out.println("3.saveAnalytics");
-
         Analytics temp = repository.save(analytics);
         System.out.println(temp);
         List<Analytics> list = repository.findAll();
