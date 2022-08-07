@@ -28,6 +28,40 @@ const App = () => {
   const [cartItems, setCartItems] = React.useState([]);
   const [currentUser, setCurrentUser] = React.useState(null);
   const [timeActive, setTimeActive] = React.useState(false);
+  const [geoData, setGeoData] = useState({});
+  
+  React.useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+    });
+  }, []);
+
+  React.useEffect(() => {
+    const fetchGeoData = async()=>{
+      axios.get('https://geolocation-db.com/json/').then((response) => {
+        console.log(response);
+        setGeoData(response.data);
+      });
+    };
+    fetchGeoData();  
+  }, []);
+
+  React.useEffect(() => {
+    const findByIPv4 = async()=>{
+      axios.post('/api/findByIPv4', geoData.IPv4).then(response => {
+        console.log(response);
+        const analytics = {
+               id: response.data[0].id,
+               ...prevState
+        };
+        axios.post('/api/saveAnalytics', analytics)
+             .then(response => localStorage.setItem('user', response));
+      });
+    }
+    findByIPv4();
+  }, [geoData]);
+
+
 
   React.useEffect(() => {
     const getData = async()=>{
