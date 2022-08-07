@@ -17,6 +17,11 @@ public class SafarisBuilder implements CommandLineRunner {
     @Override
     public void run(String...args) throws Exception {
         Random rand = new Random();
+		
+		System.out.println("Application has started");
+        if (repository.count() > 0) {
+            return;
+        }
         this.repository.save( Safari.builder()
 			.title("<span>Three Days Masaai Mara.</span>")
 			.description("The Masai Mara reserve will tickle your thrill spot with Kenyaâ€™s richest concentration of wildlife. The lush golden grassland plains are filled with plentiful zebras, lions and wild beasts, with a real-life alacrity of on-camera safari expeditions.This acacia land brings you goosebumps with the cheerful sight of the five giants, the elephants, rhinos, lions, leopards and the wild buffaloes. Feel the intriguing sense of nomadic life with captivating day-time activities and splendid overnight stays at camps or lodges on this trip to Masai Mara.")

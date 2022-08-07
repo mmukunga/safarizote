@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-@Table(name = "safaris")
+@Table(name = "contacts")
 public class ContactUs {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
