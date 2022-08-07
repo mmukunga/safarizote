@@ -34,22 +34,28 @@ const App = () => {
       axios.get('https://geolocation-db.com/json/').then((response) => {
         console.log(response);
         const data = { ...response.data };
-        const analytics = {
-                ipv4: data.IPv4,
-                city: data.city,
-                countryCode: data.country_code,
-                countryName: data.country_name,
-                latitude: data.latitude,
-                longitude: data.longitude,
-                postal: data.postal,
-                state: data.state,
-                dateCreated: moment()
+        let analytics = {
+          ipv4: data.IPv4,
+          city: data.city,
+          countryCode: data.country_code,
+          countryName: data.country_name,
+          latitude: data.latitude,
+          longitude: data.longitude,
+          postal: data.postal,
+          state: data.state,
+          dateCreated: moment()
         };
-
-        axios.post('/api/saveAnalytics', analytics)
+        axios.post('/api/findAnalyticsByIp', {ipv4: analytics.ipv4})
+             .then(response => {
+              if (response.data && response.data.ipv4 == analytics.ipv4) {
+                 analytics = {...response.data, ...analytics};  
+              }
+              axios.post('/api/saveAnalytics', analytics)
              .then(response => localStorage.setItem('user', response));
+        });
       });
     }
+    
     onAuthStateChanged(auth, (user) => {
       getData();    
       setCurrentUser(user);

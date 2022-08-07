@@ -19,10 +19,16 @@ public class AnalyticsController {
     @Autowired
     private AnalyticsRepository repository;
 
-    @RequestMapping(value = "/api/fetchAnalytics", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/fetchAnalytics", method = RequestMethod.GET)
     public ResponseEntity<List<Analytics>> fetchAnalytics() {
         List<Analytics> list = repository.findAll();
         return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/api/findAnalyticsByIp", method = RequestMethod.POST)
+    public ResponseEntity<List<Analytics>> findAnalyticsByIp(@RequestBody String ipv4) {
+        List<Analytics> analytics = repository.findByIpv4(ipv4);
+        return new ResponseEntity<>(analytics, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/api/saveAnalytics", method = RequestMethod.POST)
