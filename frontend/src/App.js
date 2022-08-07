@@ -33,22 +33,21 @@ const App = () => {
     const getData = async()=>{
       axios.get('https://geolocation-db.com/json/').then((response) => {
         console.log(response);
-        const data = { ...response.data };
-        let analytics = {
-          ipv4: data.IPv4,
-          city: data.city,
-          countryCode: data.country_code,
-          countryName: data.country_name,
-          latitude: data.latitude,
-          longitude: data.longitude,
-          postal: data.postal,
-          state: data.state
-        };
-        axios.post('/api/findByIPv4', analytics.ipv4)
-             .then(response => {
-              console.log(response);
-              if (response.data && response.data[0].ipv4 == analytics.ipv4) {
-                 analytics = { id: response.data[0].id, ...analytics, dateCreated: moment() };  
+        axios.post('/api/findByIPv4', response.data.IPv4)
+             .then(resp => {
+              console.log(resp);
+              let analytics = {
+                ipv4: response.data.IPv4,
+                city: response.data.city,
+                countryCode: response.data.country_code,
+                countryName: response.data.country_name,
+                latitude:  response.data.latitude,
+                longitude: response.data.longitude,
+                postal: response.data.postal,
+                state:  response.data.state
+              };
+              if (resp.data && resp.data[0].ipv4) {
+                 analytics = { id: resp.data[0].id, ...analytics, dateCreated: moment() };  
               }
               axios.post('/api/saveAnalytics', analytics)
                  .then(response => localStorage.setItem('user', response));
