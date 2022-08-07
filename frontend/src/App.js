@@ -28,7 +28,7 @@ const App = () => {
   const [cartItems, setCartItems] = React.useState([]);
   const [currentUser, setCurrentUser] = React.useState(null);
   const [timeActive, setTimeActive] = React.useState(false);
-  const [geoData, setGeoData] = useState({});
+  const [geoData, setGeoData] = React.useState({});
   
   React.useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -52,7 +52,7 @@ const App = () => {
         console.log(response);
         const analytics = {
                id: response.data[0].id,
-               ...prevState
+               ...geoData
         };
         axios.post('/api/saveAnalytics', analytics)
              .then(response => localStorage.setItem('user', response));
