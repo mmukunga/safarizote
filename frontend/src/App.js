@@ -40,7 +40,7 @@ const App = () => {
     const fetchGeoData = async()=>{
       axios.get('https://geolocation-db.com/json/').then((response) => {
         console.log(response);
-        setGeoData(response.data[0]);
+        setGeoData(response.data);
       });
     };
     fetchGeoData();  
