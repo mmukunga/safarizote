@@ -33,29 +33,21 @@ public class AnalyticsController {
 
     @RequestMapping(value = "/api/findByIPv4", method = RequestMethod.POST)
     public ResponseEntity<Analytics> findByIPv4(@RequestBody String ipv4) throws ParseException {
-        System.out.println("1.findByIPv4. Start");
-        System.out.println(ipv4);
         JSONParser parser = new JSONParser();
         JSONObject json = (JSONObject) parser.parse(ipv4);
-        System.out.println(json.get("ipv4").toString());
         Optional<Analytics> analytics = repository.findByIpv4(json.get("ipv4").toString());
-        System.out.println("2.findByIPv4");
-        System.out.println(analytics);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json; charset=utf-8");
 
         if(analytics.isEmpty()) {
            return new ResponseEntity<>(null, headers, HttpStatus.OK);
         }
-        System.out.println("3.findByIPv4");
 
         return new ResponseEntity<>(analytics.get(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/api/saveAnalytics", method = RequestMethod.POST)
     public ResponseEntity<Analytics> saveAnalytics(@RequestBody Map<String, String> map) throws Exception {
-        System.out.println("1.saveAnalytics. Start");
-        System.out.println(map);
         Analytics analytics = Analytics.builder()
             .id(map.get("id")!= null?Long.parseLong(map.get("id")):null)
             .ipv4(map.get("IPv4"))
@@ -69,14 +61,7 @@ public class AnalyticsController {
             .visits(map.get("visits")!= null?Integer.parseInt(map.get("id")):1)
             .dateCreated(Instant.now())
             .build();
-        System.out.println(analytics);
-        System.out.println("2.saveAnalytics");
-        Instant now = Instant.now();
-        System.out.println(now);
-        System.out.println("3.saveAnalytics");
         Analytics temp = repository.save(analytics);
-        System.out.println(temp);
-        System.out.println("4.analytics OK!");
         return new ResponseEntity<>(temp, HttpStatus.OK);
     }
 }

@@ -10,6 +10,24 @@ const AboutUs = () => {
     const [posts, setPosts] = React.useState([]);
     const { data, loading } = useFetch('/api/ratings');
     const { log, persistLog } = useContext(LoggerContext);
+    const [ analytics, setAnalytics] = React.useState([]);
+    
+
+    React.useEffect(() => { 
+        const fetchAnalytics = async () => {
+            try {
+              const response = await axios.get('/api/fetchAnalytics');
+              setAnalytics(response.data);
+            } catch(error){
+              error.httpUrl='/api/fetchAnalytics';  
+              persistLog(error);
+            }
+        };
+
+        fetchAnalytics();
+
+    }, []);
+
 
     const error = log ? <div>{log}</div> : "";
     React.useEffect(() => { 
@@ -44,17 +62,10 @@ const AboutUs = () => {
 
     const currentUser = localStorage.getItem("currentUser");
     const user = JSON.parse(localStorage.getItem('user'));
-
-    console.log('1.user..');
-    console.log(user);
-    console.log('2.user..');
-
+    
     return (
         <Card title="About Us" className="Card">
-            <Fragment>
-            <p>Your City:{user.data.city}, 
-                    Country:{user.data.country}, 
-                    And IP Address is:{user.data.ipv4}</p>    
+            <Fragment>    
             <div className="table">
                 <div className="th">
                     <div className="td">Description</div>
@@ -73,7 +84,27 @@ const AboutUs = () => {
                 <div className="table-caption">
                     <StarRating ratings={data} setStatus={setStatus}/> 
                 </div>  
-            </div>        
+            </div> 
+            <hr/>                       
+            <h4>Analytics</h4>
+            <div className="table">
+                <div className="th">
+                    <div className="td">IPv4</div>
+                    <div className="td">City</div>
+                    <div className="td">Country</div>
+                    <div className="td">Count</div>
+                </div>
+                {analytics.map((item)=> {
+                    return (
+                    <div key={item.id} className="tr">
+                      <div className="td">{item.ipv4}</div>  
+                      <div className="td">{item.city}</div>
+                      <div className="td">{item.country}</div> 
+                      <div className="td">{item.count}</div>
+                    </div>
+                    );
+                })}
+            </div>              
             </Fragment>
         </Card>
     );

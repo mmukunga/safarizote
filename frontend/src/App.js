@@ -39,7 +39,6 @@ const App = () => {
   React.useEffect(() => {
     const fetchGeoData = async()=>{
       axios.get('https://geolocation-db.com/json/').then((response) => {
-        console.log(response);
         setGeoData(response.data);
       });
     };
@@ -48,9 +47,7 @@ const App = () => {
 
   React.useEffect(() => {
     const findByIPv4 = async()=>{
-      console.log(geoData);
       axios.post('/api/findByIPv4', {ipv4: geoData.IPv4}).then(response => {
-        console.log(response);
         const id = response.data && response.data!=null? response.data.id: null;
         const visits = response.data!=null? response.data.visits+1: null;
         const analytics = {
