@@ -48,7 +48,7 @@ const App = () => {
 
   React.useEffect(() => {
     const findByIPv4 = async()=>{
-      axios.post('/api/findByIPv4?ipv4=', geoData.IPv4).then(response => {
+      axios.get('/api/findByIPv4', {params: {ipv4: geoData.IPv4}} ).then(response => {
         console.log(response);
         const analytics = {
                id: response.data[0].id,

@@ -27,8 +27,8 @@ public class AnalyticsController {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/api/findByIPv4", method = RequestMethod.POST)
-    public ResponseEntity<List<Analytics>> findByIPv4(@RequestParam String ipv4) {
+    @RequestMapping(value = "/api/findByIPv4", method = RequestMethod.GET)
+    public ResponseEntity<List<Analytics>> findByIPv4(@RequestParam("ipv4") String ipv4) {
         System.out.println("1.findByIPv4. Start");
         System.out.println(ipv4);
         List<Analytics> analytics = repository.findByIpv4(ipv4);
