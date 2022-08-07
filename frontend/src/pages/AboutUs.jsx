@@ -52,7 +52,9 @@ const AboutUs = () => {
     return (
         <Card title="About Us" className="Card">
             <Fragment>
-            <p>Your IP Address is: {currentUser} {user.data.ipv4} {`${user.data.ipv4}`}</p>    
+            <p>Your City:{user.data.city}, 
+                    Country:{user.data.country}, 
+                    And IP Address is:{user.data.ipv4}</p>    
             <div className="table">
                 <div className="th">
                     <div className="td">Description</div>
