@@ -44,11 +44,12 @@ const App = () => {
                 latitude:  response.data.latitude,
                 longitude: response.data.longitude,
                 postal: response.data.postal,
-                state:  response.data.state
+                state:  response.data.state,
+                dateCreated: moment()
               };
-              if (resp.data && resp.data[0].ipv4) {
-                 analytics = { id: resp.data[0].id, ...analytics, dateCreated: moment() };  
-              }
+              if (resp.data && resp.data.length > 0 ) {
+                 analytics = { id: resp.data[0].id, ...analytics,  };  
+              } 
               axios.post('/api/saveAnalytics', analytics)
                  .then(response => localStorage.setItem('user', response));
               });
