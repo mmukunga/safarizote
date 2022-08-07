@@ -56,6 +56,7 @@ public class AnalyticsController {
             .latitude(map.get("latitude"))
             .longitude(map.get("longitude"))
             .state(map.get("state"))
+            .visits(map.get("visits")!= null?Integer.parseInt(map.get("id")):1)
             .dateCreated(Instant.now())
             .build();
         System.out.println(analytics);

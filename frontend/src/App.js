@@ -52,6 +52,7 @@ const App = () => {
         console.log(response);
         const analytics = {
                id: response.data[0].id,
+               visits: response.data[0].visits+1,
                ...geoData
         };
         axios.post('/api/saveAnalytics', analytics)

@@ -43,6 +43,8 @@ public class Analytics {
     private String ipv4;
     @Column(name = "state")
     private String state;
+    @Column(name = "visits")
+    private Integer visits;
     @Column(name = "date_created")
     private Instant dateCreated;
 
