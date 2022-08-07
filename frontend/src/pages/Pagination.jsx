@@ -28,6 +28,10 @@ const Pagination = ({ context, RenderComponent, title, pageLimit, dataLimit })=>
 
     const getPageItems = () => {
         let start = Math.floor((currentPage - 1) / pageLimit) * pageLimit;
+        console.log(start);
+        console.log(pageLimit);
+        const myList = new Array(pageLimit).fill(null).map((v, i) => start + i + 1);
+        console.log(myList);
         return new Array(pageLimit).fill().map((_, idx) => start + idx + 1);
     };
 
