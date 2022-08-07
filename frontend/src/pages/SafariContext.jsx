@@ -14,7 +14,8 @@ export const SafariContextProvider = ({ children }) => {
 
   React.useEffect(() => {
     fetchSafaris().then((response) => {
-      setSafaris(response.data)
+      setSafaris(response.data);
+      console.log(safaris);
     });
   }, []);
 
