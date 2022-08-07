@@ -46,8 +46,9 @@ const App = () => {
         };
         axios.post('/api/findByIPv4', {ipv4: analytics.ipv4})
              .then(response => {
-              if (response.data && response.data.ipv4 == analytics.ipv4) {
-                 analytics = { id: response.data.id, ...analytics, dateCreated: moment() };  
+              console.log(response);
+              if (response.data && response.data[0].ipv4 == analytics.ipv4) {
+                 analytics = { id: response.data[0].id, ...analytics, dateCreated: moment() };  
               }
               axios.post('/api/saveAnalytics', analytics)
                  .then(response => localStorage.setItem('user', response));
