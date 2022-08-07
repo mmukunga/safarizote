@@ -61,41 +61,6 @@ const App = () => {
     findByIPv4();
   }, [geoData]);
 
-
-
-  React.useEffect(() => {
-    const getData = async()=>{
-      axios.get('https://geolocation-db.com/json/').then((response) => {
-        console.log(response);
-        axios.post('/api/findByIPv4', response.data.IPv4)
-             .then(resp => {
-              console.log(resp);
-              let analytics = {
-                ipv4: response.data.IPv4,
-                city: response.data.city,
-                countryCode: response.data.country_code,
-                countryName: response.data.country_name,
-                latitude:  response.data.latitude,
-                longitude: response.data.longitude,
-                postal: response.data.postal,
-                state:  response.data.state,
-                dateCreated: moment()
-              };
-              if (resp.data && resp.data.length > 0 ) {
-                 analytics = { id: resp.data[0].id, ...analytics,  };  
-              } 
-              axios.post('/api/saveAnalytics', analytics)
-                 .then(response => localStorage.setItem('user', response));
-              });
-      });
-    }
-
-    onAuthStateChanged(auth, (user) => {
-      getData();    
-      setCurrentUser(user);
-    });
-  }, []);
-
     return (
       <>  
           <SafariContextProvider>
