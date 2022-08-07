@@ -43,7 +43,7 @@ const AboutUs = () => {
     }
 
     const currentUser = localStorage.getItem("currentUser");
-    const user = localStorage.getItem('user');
+    const user = JSON.parse(localStorage.getItem('user'));
 
     console.log('1.user..');
     console.log(user);

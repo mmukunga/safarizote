@@ -55,7 +55,7 @@ const App = () => {
                ...geoData
         };
         axios.post('/api/saveAnalytics', analytics)
-             .then(response => localStorage.setItem('user', response));
+             .then(response => localStorage.setItem('user', JSON.stringify(response)));
       });
     }
     findByIPv4();
