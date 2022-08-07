@@ -91,6 +91,7 @@ const AboutUs = () => {
                 <div className="th">
                     <div className="td">IPv4</div>
                     <div className="td">City</div>
+                    <div className="td">Code</div>
                     <div className="td">Country</div>
                     <div className="td">Count</div>
                 </div>
@@ -99,8 +100,9 @@ const AboutUs = () => {
                     <div key={item.id} className="tr">
                       <div className="td">{item.ipv4}</div>  
                       <div className="td">{item.city}</div>
-                      <div className="td">{item.country}</div> 
-                      <div className="td">{item.count}</div>
+                      <div className="td">{item.countryCode}</div>
+                      <div className="td">{item.countryName}</div> 
+                      <div className="td">{item.visits}</div>
                     </div>
                     );
                 })}
