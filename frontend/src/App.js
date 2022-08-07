@@ -42,20 +42,19 @@ const App = () => {
           latitude: data.latitude,
           longitude: data.longitude,
           postal: data.postal,
-          state: data.state,
-          dateCreated: moment()
+          state: data.state
         };
-        axios.post('/api/findAnalyticsByIp', {ipv4: analytics.ipv4})
+        axios.post('/api/findByIPv4', {ipv4: analytics.ipv4})
              .then(response => {
               if (response.data && response.data.ipv4 == analytics.ipv4) {
-                 analytics = {...response.data, ...analytics};  
+                 analytics = { id: response.data.id, ...analytics, dateCreated: moment() };  
               }
               axios.post('/api/saveAnalytics', analytics)
-             .then(response => localStorage.setItem('user', response));
-        });
+                 .then(response => localStorage.setItem('user', response));
+              });
       });
     }
-    
+
     onAuthStateChanged(auth, (user) => {
       getData();    
       setCurrentUser(user);

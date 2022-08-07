@@ -25,8 +25,8 @@ public class AnalyticsController {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/api/findAnalyticsByIp", method = RequestMethod.POST)
-    public ResponseEntity<List<Analytics>> findAnalyticsByIp(@RequestBody String ipv4) {
+    @RequestMapping(value = "/api/findByIPv4", method = RequestMethod.POST)
+    public ResponseEntity<List<Analytics>> findByIPv4(@RequestBody String ipv4) {
         List<Analytics> analytics = repository.findByIpv4(ipv4);
         return new ResponseEntity<>(analytics, HttpStatus.OK);
     }
@@ -36,7 +36,7 @@ public class AnalyticsController {
         System.out.println("1.analytics. Start");
         System.out.println(analytics);
         System.out.println("2.analytics");
-        
+
         Instant now = Instant.now();
         System.out.println(now);
         System.out.println("3.analytics");
