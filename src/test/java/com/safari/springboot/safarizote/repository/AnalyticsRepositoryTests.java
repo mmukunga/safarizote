@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.text.ParseException;
 import java.time.Instant;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -32,18 +31,18 @@ public class AnalyticsRepositoryTests {
 
     @Test
     public void findByIpv4ShouldReturnAnalytics() {      
-       List<Analytics> analytics = repository.findByIpv4("84.212.199.3");
-       assertThat(analytics).hasSize(1);
-       assertThat(analytics.get(0).getId()).isNotNull();
+       Optional<Analytics> analytics = repository.findByIpv4("84.212.199.3");
+       assertThat(analytics).isPresent();
+       assertThat(analytics.get().getId()).isNotNull();
     }
 
     @Test
     public void deleteUser() {
-		List<Analytics> analytics = repository.findByIpv4("84.212.199.3");
-		assertThat(analytics).hasSize(1);
+		Optional<Analytics> analytics = repository.findByIpv4("84.212.199.3");
+		assertThat(analytics).isPresent();
     	repository.deleteById((long) 7);
     	analytics = repository.findByIpv4("84.212.199.3");
-    	assertThat(analytics).hasSize(0);
+    	assertThat(analytics).isEmpty();
     }
 
     @Test
