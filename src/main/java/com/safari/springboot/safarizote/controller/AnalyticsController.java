@@ -12,6 +12,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,10 +37,18 @@ public class AnalyticsController {
         System.out.println(ipv4);
         JSONParser parser = new JSONParser();
         JSONObject json = (JSONObject) parser.parse(ipv4);
+        System.out.println(json.get("ipv4").toString());
         Optional<Analytics> analytics = repository.findByIpv4(json.get("ipv4").toString());
         System.out.println("2.findByIPv4");
         System.out.println(analytics);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json; charset=utf-8");
+
+        if(analytics.isEmpty()) {
+           return new ResponseEntity<>(null, headers, HttpStatus.OK);
+        }
         System.out.println("3.findByIPv4");
+
         return new ResponseEntity<>(analytics.get(), HttpStatus.OK);
     }
 
