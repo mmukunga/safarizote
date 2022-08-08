@@ -93,7 +93,7 @@ const AboutUs = () => {
                     <div className="td">City</div>
                     <div className="td">Code</div>
                     <div className="td">Country</div>
-                    <div className="td">Count</div>
+                    <div className="td">Visits</div>
                 </div>
                 {analytics.map((item)=> {
                     return (
