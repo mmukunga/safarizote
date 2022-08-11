@@ -85,7 +85,7 @@ const  Shoppings = () => {
             <div className="td"><Label id="product" label="product">Product</Label></div>
             <div className="td"><Label id="price" label="price">Price</Label></div>
             <div className="td"><Label id="quantity" label="quantity">Quantity</Label></div>
-            <div className="td"><Button className="btn" onClick={addShopping}><Emoji label='Add'/></Button></div>
+            <div className="td btn"><Button onClick={addShopping}><Emoji label='Add'/></Button></div>
           </div>   
           {indexes.map(index => {
             const fieldName = `shoppings[${index}]`;
@@ -98,14 +98,11 @@ const  Shoppings = () => {
               </div>
             );
           })}
-          
-        <div className="tr">
-          <div className="td"></div>
-          <div className="td"><Button className="btn" onClick={clearShoppings}><Emoji label='Delete'/> Clear All</Button></div>
-          <div className="td"><Submit type="submit" name="Submit"><Emoji label='Send'/>Submit</Submit></div>
-          <div className="td"></div>
-        </div>
-      </div>
+          <div className="table-caption">
+            <Button onClick={clearShoppings}><Emoji label='Litter'/>Reset</Button>
+            <Submit name="Submit" type="submit"><Emoji label='Send'/>Submit</Submit>
+          </div>
+        </div> 
       </SmartForm>
 
       <div className="table">

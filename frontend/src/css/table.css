@@ -2,7 +2,7 @@
   display: table;
   width: 100%;
   border: 1px solid white;
-  border-collapse: collapse; 
+  border-collapse: collapse;
 }
 
 .th {
@@ -10,7 +10,7 @@
 }
 
 .th,
-.tr{
+.tr {
   display: table-row;
 }
 
@@ -33,11 +33,12 @@
 .table-caption { 
   display: table-caption; 
   caption-side: bottom; 
+  border: 1px solid lightgray;
+  text-align: right;
 }
 
-
 @media screen and (max-width: 600px) {
-  .table, .th, .tr, .td {
+  .table, .th, .tr, .td, .table-caption {
     display: block;
     width:100%;
   }

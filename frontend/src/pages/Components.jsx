@@ -1,81 +1,65 @@
 import React, { memo } from "react";
+import { makeStyles } from '@material-ui/core';
 import { useFormContext } from "react-hook-form";
 import Emoji from "./Emoji";
-
-export const Input = memo (
-  ({type, name, register, formState: { isDirty } }) => (
-    <div className="row">
-      <input type={type} {...register(name)} />
-    </div>
-  ), (prevProps, nextProps) =>
-    prevProps.formState.isDirty === nextProps.formState.isDirty
-);
 
 export const Label = ({ id, label }) => {
   const labelUpper = label ? id?.charAt(0).toUpperCase() + id?.slice(1): id;
   return (<label htmlFor={id}>{labelUpper}</label>);
 };
 
+export const Input = memo (({type, name, register, formState: { isDirty } }) => (
+    <div className="row">
+      <input type={type} {...register(name)} aria-label={name} />
+    </div>
+  ), (prevProps, nextProps) =>
+    prevProps.formState.isDirty === nextProps.formState.isDirty
+);
+
+export const Button = ({ type='button', onClick, children }) => {
+  return (
+    <button type={type} onClick={onClick}>
+      {children}
+    </button>
+  );
+};
+
+export const Submit = ({ type='submit', children }) => {
+  return (
+      <button type={type}>
+        {children}
+      </button>
+  );
+};
+
 export const Select = props => {
   const { register } = useFormContext(); 
-  const myImage = 'https://github.githubassets.com/images/icons/emoji/unicode/1f34b.png?v8';
   return (
   <select {...register(props.name)} aria-label={props.name}>
     {props.options && props.options.map( (option, idx) =>
-      <option key={idx} value={option.value}  style={{ backgroundImage: `url(${myImage})` }}>{option.icon} {option.label}</option> )
-    }
-  </select>
-  );
-}
-
-export const SelectHOC = props => {
-  const { register } = useFormContext(); 
-  return (
-  <select {...register(props.name)}>
-    {props.options.map( (option, idx) =>
-      <option key={idx} value={option.value}>{option.label}</option> )
+      <option key={idx} value={option.value}>{option.icon} {option.label}</option> )
     }
   </select>
   );
 }
 
 export const TextArea = ({ register, name, rule, ...rest }) => {
-  return (    
-    <textarea 
-      {...register(name)}
-      {...rest}></textarea>
+  return (  
+    <textarea
+      placeholder="Message"
+      required
+      name={name}
+      {...register(name, {
+        required: "Message is Required",
+        minLength: {
+          value: 3,
+          message: "Should be greater than 3 characters"
+        }
+      })}
+      {...rest}
+    ></textarea>
   );
 };
-
-export const Submit = ({children }) => {
-  return (
-    <div className="row button-row">
-      <button type="submit" style={{
-        display: 'flex',
-        alignItems: 'center',
-        border:'1px solid silver',
-        flexWrap: 'wrap',
-    }}>
-        {children}
-      </button>
-    </div>
-  )
-}
-
-export const Button = ({ children, onClick}) => {
-  return (
-    <div className="row">
-      <button type="button" onClick={onClick} style={{
-        display: 'flex',
-        alignItems: 'center',
-        border:'1px solid red',
-        flexWrap: 'wrap',
-    }}>
-        {children}
-      </button>
-    </div>
-  )
-}
 
 export const ThemeButton = ({ checked, toggleTheme }) => {
   return (
@@ -143,4 +127,3 @@ const ComplexSelect = memo (
   (prevProps, nextProps) =>
     prevProps.formState.isDirty === nextProps.formState.isDirty
 );
-

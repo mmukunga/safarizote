@@ -2,12 +2,13 @@ import React from "react";
 import Card from "./Card";
 import { TextArea, Submit, InputWrapper } from "./Components";
 import { SmartForm } from './SmartForm';
+import Emoji from "./Emoji";
 
 const defaultValues = {
-  name:  'Maji Moto',
-  email: 'mkunsim@gmail.com',
-  phone: '+47 999 11 098',
-  message: 'Jambo Kenya. 11. mar. 2020 — Velger å selge Gucci beltet mitt som jeg aldri har brukt Jeg kjøpte det oktober 2019 på Gucci-butikken her i Oslo✨ Beltet er 105cm langt ...'
+  name:  'Abc Def',
+  email: 'abc@efg.hig',
+  phone: '+00 123 45 678',
+  message: 'Lorem ipsum ...'
 };
 
 const ContactUs = () => {
@@ -31,11 +32,11 @@ const ContactUs = () => {
   return ( 
   <Card className="Card" title="" >
     <SmartForm defaultValues={defaultValues} onSubmit={onSubmit}>
-        <InputWrapper type="text" labelObj={hasLabel} id="name" name="name" />
+        <InputWrapper type="text"  labelObj={hasLabel} id="name"  name="name" />
         <InputWrapper type="email" labelObj={hasLabel} id="email" name="email"/>
         <InputWrapper type="phone" labelObj={hasLabel} id="phone" name="phone"/>
         <TextArea id="message" name="message"/>
-        <Submit type="submit" name="Submit">Submit</Submit>
+        <Submit name="Submit" type="submit"><Emoji label='Send'/>Submit</Submit>
     </SmartForm>
   </Card>)
 };

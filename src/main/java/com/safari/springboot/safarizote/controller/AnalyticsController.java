@@ -4,6 +4,7 @@ import com.safari.springboot.safarizote.model.Analytics;
 import com.safari.springboot.safarizote.repository.AnalyticsRepository;
 
 import java.time.Instant;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -12,6 +13,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,11 +25,26 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AnalyticsController {
+    @Value("${app.name}")
+    private String appName;
+    @Autowired
+	private Environment environment;
     @Autowired
     private AnalyticsRepository repository;
 
     @RequestMapping(value = "/api/fetchAnalytics", method = RequestMethod.GET)
     public ResponseEntity<List<Analytics>> fetchAnalytics() {
+        String globalProp = environment.getProperty("app.description");
+		String dbUrl = environment.getProperty("spring.datasource.url");
+        
+        Map<String, String> appProperties = new HashMap<>();
+		appProperties.put("app", globalProp);
+		appProperties.put("appDb", dbUrl);
+        
+        for (Map.Entry<String, String> set : appProperties.entrySet()) {
+            System.out.println(set.getKey() + " = " + set.getValue());
+        }
+
         List<Analytics> list = repository.findAll();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }

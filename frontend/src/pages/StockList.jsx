@@ -61,6 +61,15 @@ const StockList = () => {
     });
   };
 
+  const numberFormat = (value) =>
+  new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+  }).format(value);
+
+  const numberFormatNOK = (value) =>
+  new Intl.NumberFormat('nb-NO').format(value);
+
   const Spinner = () => <div className="loader"></div>;
   const hasLabel = {label: false};
   return (
@@ -88,7 +97,7 @@ const StockList = () => {
               <div className="td">{item.close}</div>
               <div className="td">{item.change}</div>
               <div className="td">{moment.unix(item.timestamp).format()}</div>
-              <div className="td">{item.volume}</div>
+              <div className="td">{numberFormatNOK(item.volume)}</div>
               <div style={{clear: 'both'}}></div>
             </div>
             );

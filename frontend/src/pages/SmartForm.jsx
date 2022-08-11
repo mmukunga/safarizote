@@ -31,6 +31,7 @@ export const SmartForm = ({ defaultValues, postData = () => {}, children, onSubm
  
     return (
       <FormProvider {...methods} >
+      <div className="container">
       <form onSubmit={handleSubmit(onSubmit)}>
         {Array.isArray(children)
           ? children.map((child) => {
@@ -48,6 +49,7 @@ export const SmartForm = ({ defaultValues, postData = () => {}, children, onSubm
             })
           : children}  
       </form>
+      </div>  
       </FormProvider>
     );
   }

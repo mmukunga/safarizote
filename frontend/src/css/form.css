@@ -1,8 +1,7 @@
 
   .container {
     border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
+    border: 2px solid silver;
   }
   
   .log {
@@ -16,7 +15,6 @@
   form {
     margin: 0 auto;
     width: 100%;
-    border: 4px inset silver;
     border-radius: 5px;
     text-align: left;
   }
@@ -42,13 +40,12 @@
     color: white;
   }
   
-  input[type=submit], button {
+  input[type=submit] {
     background-color: #04AA6D;
     color: white;
     padding: 12px 20px;
     border: none;
     cursor: pointer;
-    float: right;
   }
   
   input[type=submit]:hover {
@@ -75,24 +72,6 @@
     border: 2px solid lightgreen;
   }
 
-.row {
-  display: flex;
-  border: 1px solid silver;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-}
-
- .button-row {
-  justify-content: flex-end;
- }
-
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
   div.navform form select {
     background-color: #093e61;
     color:white;
@@ -105,8 +84,31 @@
     clear: both;
   }
 
-  @media screen and (max-width: 700px) {
-    .col-25, .col-75, .btn, 
+  .column {
+    border: 2px solid lightcoral;
+    margin: 2px;
+  }
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btn {
+    text-align: center;
+  }
+
+  @media screen and (max-width: 600px) {
+    .col-25, .col-75, 
     input[type=submit], button {
       width: 100%;
       margin-top: 0;

@@ -4,6 +4,7 @@ import { auth } from './firebase';
 import { useAuth } from './AuthProvider';
 import { Submit, InputWrapper } from "./Components";
 import { SmartForm } from './SmartForm';
+import Emoji from "./Emoji";
 import Card from './Card';
 
 const Login = () => {
@@ -27,7 +28,7 @@ const Login = () => {
     <SmartForm defaultValues={defaultValues} onSubmit={onSubmit}>
           <InputWrapper type="email" labelObj={hasLabel} id="email" name="email"/>
           <InputWrapper type="password" labelObj={hasLabel} id="password" name="password"/>
-          <Submit name="Submit" type="submit">Submit</Submit>
+          <Submit name="Submit" type="submit"><Emoji label='Send'/>Submit</Submit>
     </SmartForm>
     <div>{error && error.name && <span>This field is required</span>}</div>  
     <div className="Info">

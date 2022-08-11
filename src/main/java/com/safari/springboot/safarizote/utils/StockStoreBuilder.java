@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.time.Instant;
-import java.util.List;
 
 import com.safari.springboot.safarizote.model.StockStore;
 import com.safari.springboot.safarizote.repository.StockStoreRepository;
@@ -31,7 +30,6 @@ public class StockStoreBuilder implements CommandLineRunner {
         String line;
 
         while ((line = br.readLine()) != null) {
-            System.out.println(line);
             out.append(line);
         }
         ioStream.close();
@@ -42,10 +40,5 @@ public class StockStoreBuilder implements CommandLineRunner {
             .jsonFile(json)
             .dateCreated(Instant.now())
             .build());
-
-        List<StockStore> crunchifyList = repository.findAll();
-        crunchifyList.forEach((temp) -> {
-            System.out.println(temp);
-        });
     }
 }

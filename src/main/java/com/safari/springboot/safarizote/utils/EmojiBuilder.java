@@ -32,7 +32,7 @@ public class EmojiBuilder implements CommandLineRunner {
       list.add(Emoji.builder()
       .name("Name").label("information_desk_person").svgUrl("").build());
       list.add(Emoji.builder()
-      .name("Email").label("email").svgUrl("").build());
+      .name("Email").label("envelope_with_arrow").svgUrl("").build());
       list.add(Emoji.builder()
       .name("Phone").label("phone").svgUrl("").build());
       list.add(Emoji.builder()
@@ -60,7 +60,11 @@ public class EmojiBuilder implements CommandLineRunner {
       list.add(Emoji.builder()
       .name("Errors").label(" warning").svgUrl("").build());
       list.add(Emoji.builder()
+      .name("Send").label("large_orange_diamond").svgUrl("").build());
+      list.add(Emoji.builder()
       .name("Add").label("heavy_plus_sign").svgUrl("").build());
+      list.add(Emoji.builder()
+      .name("Litter").label("put_litter_in_its_place").svgUrl("").build());
       list.add(Emoji.builder()
       .name("Remove").label("heavy_minus_sign").svgUrl("").build());
       list.add(Emoji.builder()

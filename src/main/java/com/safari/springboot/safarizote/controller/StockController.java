@@ -38,9 +38,8 @@ public class StockController {
 
         List<Token> options = new ArrayList<>();
         options.add(Token.builder().id(longId.longValue()).label("Norwegian Air Shuttle").value("NAS.OL").icon("📈").build()); 
-        options.add(Token.builder().id(getId()).label("Apple MAC USA").value("AAPL.US").icon("📢").build()); 
-        options.add(Token.builder().id(getId()).label("Telenor ASA Oslo").value("TEL.OL").icon("💵").build()); 
-        options.add(Token.builder().id(getId()).label("Vanilla").value("vanilla").icon("💲").build()); 
+        options.add(Token.builder().id(getId()).label("Apple MAC USA").value("AAPL.US").icon("💲").build()); 
+        options.add(Token.builder().id(getId()).label("Telenor ASA Oslo").value("TEL.OL").icon("💵").build());
         options.add(Token.builder().id(getId()).label("Scandinavian Airline Services").value("SAS").icon("💱").build()); 
         options.add(Token.builder().id(getId()).label("XXL").value("XXL").icon("📉").build()); 
         options.add(Token.builder().id(getId()).label("Kitron").value("KIT").icon("💰").build()); 

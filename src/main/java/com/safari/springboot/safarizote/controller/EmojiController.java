@@ -31,6 +31,7 @@ public class EmojiController {
 
     @RequestMapping(value="/api/findEmoji", method=RequestMethod.GET)
     public ResponseEntity<Emoji> findEmoji(@RequestParam(name="name") String name) {
+      System.out.println("Name: " +  name);
       List<Emoji> emoji = repository.findByName(name);
       HttpHeaders headers = new HttpHeaders(); 
       return new ResponseEntity<>(emoji.get(0), headers, HttpStatus.OK);
@@ -43,7 +44,7 @@ public class EmojiController {
       return new ResponseEntity<>(list, headers, HttpStatus.OK);
     }
  
-    @RequestMapping(value="/api/saveEmojis", method=RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/api/saveEmojis", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity< List<Emoji>> saveEmojis(@RequestBody Emoji[] emojis) {  
       List<Emoji> list = Arrays.asList(emojis);
 

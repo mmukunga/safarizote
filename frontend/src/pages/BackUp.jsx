@@ -6,6 +6,7 @@ import Card from "./Card";
 import axios from 'axios';
 import Pagination from './Pagination';
 import GcsPhoto from './GcsPhoto';
+import Emoji from "./Emoji";
 
 let defaultValues = { folder: '2012 MtKenya/' };
 
@@ -84,7 +85,7 @@ const BackUp = () => {
         <strong>Selected Album: {'folder'} PageCount: {pageCount} </strong>        
         <SmartForm defaultValues={defaultValues} onSubmit={onSubmit}>
             <SelectWrapper name="folder" labelObj={hasLabel} options={options}/>
-            <Submit name="Submit" type="submit">Submit</Submit>
+            <div className="row"><Submit name="Submit" type="submit"><Emoji label='Send'/>Submit</Submit></div>
         </SmartForm>
         {isLoading ? (
           <div className="pos-center">
