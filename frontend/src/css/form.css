@@ -26,6 +26,7 @@
   select, textarea {
     width: 100%;
     padding: 12px;
+    border: 2px inset silver;
     border-radius: 5px;
     resize: vertical;
   }
@@ -55,14 +56,12 @@
   .col-25 {
     float: left;
     width: 25%;
-    border: 2px inset silver;
     margin-top: 6px;
   }
   
   .col-75 {
     float: left;
     width: 75%;
-    border: 2px inset silver;
     margin-top: 6px;
   }
 
@@ -104,7 +103,7 @@
   }
   
   .btn {
-    text-align: center;
+    text-align: right;
   }
 
   @media screen and (max-width: 600px) {

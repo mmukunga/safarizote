@@ -1,5 +1,4 @@
 import React, { memo } from "react";
-import { makeStyles } from '@material-ui/core';
 import { useFormContext } from "react-hook-form";
 import Emoji from "./Emoji";
 
@@ -101,7 +100,7 @@ const ComplexInput = memo(
       <label htmlFor={name}><Emoji label={label}/>{label}</label>
       </div>
       <div className="col-75">
-      <input type={type} {...register(name)} />
+      <input type={type} {...register(name)} aria-label={name} />
       </div>
     </div>
   )},

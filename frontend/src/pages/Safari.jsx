@@ -8,7 +8,7 @@ return (
   <Card key={data.id} image={data.image} title={data.title} className="Card">
       {parse(data.description)}
       <a href="#" onClick={addToCart.bind(this, data)} className="priceOffer">
-        {`USD$`} {data.price} {`pp.`} Add to Cart
+        Add to Cart {`$`}{data.price} {`pp.`}
       </a>
   </Card>
 );

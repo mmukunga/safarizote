@@ -45,7 +45,7 @@ const Safaris = () => {
 
     if ( loading ) {
       fetchData();
-      setLoading(!loading);
+      setLoading((loading) => !loading);
     }
   }, []);
 

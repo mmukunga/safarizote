@@ -36,3 +36,9 @@ span.emoji img {
   height:100%;
   object-fit:cover;
 }
+
+.registration {
+  background: silver;
+  border: 2px solid red;
+  width: 100%;
+}

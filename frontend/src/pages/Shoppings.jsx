@@ -94,7 +94,7 @@ const  Shoppings = () => {
               <div className="td"><InputWrapper type="text" labelObj={hasLabel} id={`${fieldName}.product`} name={`${fieldName}.product`}/></div>
               <div className="td"><InputWrapper type="text" labelObj={hasLabel} id={`${fieldName}.price`} name={`${fieldName}.price`}/></div>
               <div className="td"><InputWrapper type="text" labelObj={hasLabel} id={`${fieldName}.quantity`} name={`${fieldName}.quantity`}/></div>
-              <div className="td"><Button onClick={removeShopping(index)}><Emoji label='Remove'/></Button></div>            
+              <div className="td btn"><Button onClick={removeShopping(index)}><Emoji label='Remove'/></Button></div>            
               </div>
             );
           })}

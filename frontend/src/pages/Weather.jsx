@@ -4,6 +4,7 @@ import moment from 'moment';
 import countryList from 'react-select-country-list';
 import {City}  from 'country-state-city';
 import {Submit, SelectWrapper}  from "./Components";
+import Emoji from "./Emoji";
 import { SmartForm } from './SmartForm';
 import Card from "./Card";
 import {LoggerContext} from "./LoggerProvider";
@@ -113,7 +114,7 @@ const Weather = () => {
 
   React.useEffect(() => {
     const Cities = City.getAllCities();
-    const nodes = Cities.filter((city) => city.countryCode == state);
+    const nodes = Cities.filter((city) => city.countryCode === state);
     var cities = [];
 
     nodes.forEach((d) => {
@@ -132,13 +133,13 @@ const Weather = () => {
       <SmartForm defaultValues={defaultValues} postData={setState} onSubmit={onSubmit}>
           <SelectWrapper name="country" labelObj={hasLabel} options={countries}/>
           <SelectWrapper name="city" labelObj={hasLabel} options={cities}/>
-          <Submit name="Submit" type="submit">Submit</Submit>
+          <div className="btn"><Submit name="Submit" type="submit"><Emoji label='Send'/>Submit</Submit></div>   
       </SmartForm>
       {status.response}
       <Card title="Current" className="Card">
         <img src={flag} alt="" className="country-flag"/>
         <p className="header">{weatherData.current.name}</p>      
-        <p><img src={imageIcon=='' ? null :`http://openweathermap.org/img/w/${imageIcon}.png`} alt='Loading..'/> </p>  
+        <p><img src={imageIcon === '' ? null :`http://openweathermap.org/img/w/${imageIcon}.png`} alt='Loading..'/> </p>  
         <p className="day">Day: {moment().format('dddd')}</p>            
         <p className="temp">Temprature: {weatherData.current.main && weatherData.current.main.temp} &deg;C</p> 
         <p>Day:  {moment().format('dddd')}</p>

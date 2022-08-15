@@ -37,7 +37,7 @@ const Register = () => {
          <Submit type="submit" name="Submit">Register</Submit>
        </SmartForm>
        <div>{errors && errors.name && <span>This field is required</span>}</div>  
-       <div className="Info">
+       <div className="registration">
           Registered already?  
           <Link to='/login' className='Link'>Login</Link>
         </div>

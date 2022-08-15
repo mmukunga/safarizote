@@ -31,7 +31,6 @@ public class EmojiController {
 
     @RequestMapping(value="/api/findEmoji", method=RequestMethod.GET)
     public ResponseEntity<Emoji> findEmoji(@RequestParam(name="name") String name) {
-      System.out.println("Name: " +  name);
       List<Emoji> emoji = repository.findByName(name);
       HttpHeaders headers = new HttpHeaders(); 
       return new ResponseEntity<>(emoji.get(0), headers, HttpStatus.OK);

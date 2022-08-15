@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios';
 import moment from 'moment';
 import { SelectWrapper, Submit } from "./Components";
+import Emoji from "./Emoji";
 import { SmartForm } from './SmartForm';
 import Card from "./Card";
 
@@ -10,7 +11,7 @@ const defaultValues = {
 };
 
 const StockList = () => {
-  const [state, setState] = useState("Pristine");
+  const [state, setState] = useState("Karibu");
   const [options, setOptions] = useState([]);
   const [stocks, setStocks] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -62,21 +63,20 @@ const StockList = () => {
   };
 
   const numberFormat = (value) =>
-  new Intl.NumberFormat('en-IN', {
-    style: 'currency',
-    currency: 'INR',
+    new Intl.NumberFormat('nb-NO', {
+      style: 'currency',
+      currency: 'Kr',
   }).format(value);
-
-  const numberFormatNOK = (value) =>
-  new Intl.NumberFormat('nb-NO').format(value);
 
   const Spinner = () => <div className="loader"></div>;
   const hasLabel = {label: false};
+  console.log(loading);
+
   return (
     <Card title="StockList" className="Card">
      <SmartForm defaultValues={defaultValues} onSubmit={onSubmit}>
           <SelectWrapper name="symbol" labelObj={hasLabel} options={options}/>
-          <Submit name="Submit" type="submit">Submit</Submit>
+          <div className="btn"><Submit name="Submit" type="submit"><Emoji label='Send'/>Submit</Submit></div>   
      </SmartForm>    
      { stocks? (
      <div id="Output" className="table">
@@ -97,7 +97,7 @@ const StockList = () => {
               <div className="td">{item.close}</div>
               <div className="td">{item.change}</div>
               <div className="td">{moment.unix(item.timestamp).format()}</div>
-              <div className="td">{numberFormatNOK(item.volume)}</div>
+              <div className="td">{numberFormat(item.volume)}</div>
               <div style={{clear: 'both'}}></div>
             </div>
             );

@@ -12,7 +12,7 @@ const defaultValues = {
 };
 
 const ContactUs = () => {
-  const [state, setState] = React.useState("Pristine");
+  const [state, setState] = React.useState("Karibu");
   function post(url, data) {
     return fetch(url, {
       method: "POST",
@@ -29,6 +29,7 @@ const ContactUs = () => {
     });
   };
   const hasLabel = {labeled: true, error: false};
+  console.log(state);
   return ( 
   <Card className="Card" title="" >
     <SmartForm defaultValues={defaultValues} onSubmit={onSubmit}>
@@ -36,7 +37,7 @@ const ContactUs = () => {
         <InputWrapper type="email" labelObj={hasLabel} id="email" name="email"/>
         <InputWrapper type="phone" labelObj={hasLabel} id="phone" name="phone"/>
         <TextArea id="message" name="message"/>
-        <Submit name="Submit" type="submit"><Emoji label='Send'/>Submit</Submit>
+        <div className="btn"><Submit name="Submit" type="submit"><Emoji label='Send'/>Submit</Submit></div>
     </SmartForm>
   </Card>)
 };

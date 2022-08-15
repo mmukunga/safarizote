@@ -13,7 +13,11 @@ public class ShoppingBuilder implements CommandLineRunner {
     private ShoppingRepository repository;
 
     @Override
-    public void run(String... args) throws Exception {        
+    public void run(String... args) throws Exception {   
+          
+      if (!repository.findAll().isEmpty()){
+        return;
+      }     
         this.repository.save( Shopping.builder()
         .quantity(5)
         .product("Milk")

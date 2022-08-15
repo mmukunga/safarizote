@@ -28,10 +28,10 @@ const Login = () => {
     <SmartForm defaultValues={defaultValues} onSubmit={onSubmit}>
           <InputWrapper type="email" labelObj={hasLabel} id="email" name="email"/>
           <InputWrapper type="password" labelObj={hasLabel} id="password" name="password"/>
-          <Submit name="Submit" type="submit"><Emoji label='Send'/>Submit</Submit>
+          <div className="btn"><Submit name="Submit" type="submit"><Emoji label='Send'/>Submit</Submit></div>   
     </SmartForm>
     <div>{error && error.name && <span>This field is required</span>}</div>  
-    <div className="Info">
+    <div className="registration">
     <Link to='/register' className='link'>Register here!</Link>
     </div>
   </Card>  

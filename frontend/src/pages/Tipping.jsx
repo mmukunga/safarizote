@@ -3,11 +3,7 @@ import {LoggerContext} from "./LoggerProvider";
 import Card from "./Card";
 import axios from 'axios';
 
-const min = 1;  //inclusive
-const max = 35; //exclusive
-
 const Tipping = () => {
-  const [status, setStatus] = useState({});
   const [kuppong, setKuppong] = useState();
   const { log, persistLog } = useContext(LoggerContext);
 

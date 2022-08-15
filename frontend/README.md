@@ -1,4 +1,5 @@
 
+#Git CheckIn Projects
 git status
 git add .
 git commit -m "first commit"
@@ -9,4 +10,9 @@ git push -u origin main
 
 heroku logs --tail --app safarizote
 
-mvnw spring-boot:run -Dspring-boot.run.profiles=dev
+
+cd .\frontend\
+npm run start
+
+./mvnw spring-boot:run "-Dspring-boot.run.profiles=dev" #Powershell
+  mvnw spring-boot:run -Dspring-boot.run.profiles=dev   #CMD
