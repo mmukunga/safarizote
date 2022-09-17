@@ -27,4 +27,5 @@ public class Emoji {
     private String label;
     @Column(name = "svg_url")
     private String svgUrl;
+    private byte[] image;
 }

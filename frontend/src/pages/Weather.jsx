@@ -1,19 +1,18 @@
-import React, {useContext} from "react";
-import axios from "axios";
+import React, {useContext} from 'react';
+import axios from 'axios';
 import moment from 'moment';
 import countryList from 'react-select-country-list';
-import {City}  from 'country-state-city';
-import {Submit, SelectWrapper}  from "./Components";
+import { City } from 'country-state-city';
+import {Submit, SelectWrapper} from "./Components";
 import Emoji from "./Emoji";
 import { SmartForm } from './SmartForm';
 import Card from "./Card";
-import {LoggerContext} from "./LoggerProvider";
+import { LogContext } from "./LogContext";
 
 const defaultValues = {
   country: 'KE',
   city: 'Nairobi'
 };
-
 
 const countryFields = [
   "nativeName",
@@ -29,7 +28,6 @@ const countryFields = [
   "flag",
 ];
 
-
 const Weather = () => {
   const [status, setStatus] = React.useState('');
   const [weatherData, setWeatherData] = React.useState({current:{}, forecast:{}});
@@ -38,7 +36,9 @@ const Weather = () => {
   const [cities, setCities] = React.useState([]);
   const [state, setState] = React.useState('KE');
   const [flag, setFlag] = React.useState();
-  const { log, persistLog } = useContext(LoggerContext);
+  const context = React.useContext(LogContext);
+  const log = context.log;
+  const persistLog =  context.persistLog;
 
   const kelvinToCelcius = (k) => {
     return (k - 273.15).toFixed(2);
@@ -48,6 +48,20 @@ const Weather = () => {
     const joinedParams = params.join(",");
     return `?${query}=${joinedParams}`;
   }
+
+
+  React.useEffect(() => {
+    const data = {...defaultValues};
+    getCurrent(data).then((response) =>{
+      setStatus((prev) => ({...prev, response}));
+      getForecast(data).then((response) =>{
+        setStatus((prev) => ({...prev, response}));
+      });
+    }).catch(error => {
+      return error;
+    });  
+  }, []);
+
 
   const getCountry = async (code, fields) => {
     const apiNameEndpoint = `${process.env.REACT_APP_COUNTRY_URL}/v2/alpha/${code}`;
@@ -83,6 +97,7 @@ const Weather = () => {
 
   const getCurrent = async (data) => {
     return getWeatherData('/api/current', data).then((response) =>{
+      console.log(response);
       setWeatherData((prev) => ({ ...prev, current: response.weather }));
       setImageIcon(response.weather[0].icon);
       return 'Weather OK!';
@@ -93,6 +108,7 @@ const Weather = () => {
 
   const getForecast = async (data) => {
     getWeatherData('/api/forecast', data).then((response) =>{
+      console.log(response);
       setWeatherData((prev) => ({ ...prev, forecast: response }));
       setImageIcon(response.data.weather[0].icon);
     }).catch(error => {

@@ -1,10 +1,10 @@
 import React from 'react';
 import Card from './Card';
 
-const Pagination = ({ context, RenderComponent, title, pageLimit, dataLimit })=> {
+const Pagination = ({ context, RenderComponent, title, imageUrls, pageLimit, dataLimit })=> {
     const data = context.data;
     const addToCart = context.addToCart;
-    const [pages] = React.useState(Math.round(data.length / dataLimit));
+    //const [pages] = React.useState(Math.round(data.length / dataLimit));
     const [currentPage, setCurrentPage] = React.useState(1);
 
     const nextPage = () => {
@@ -50,14 +50,14 @@ const Pagination = ({ context, RenderComponent, title, pageLimit, dataLimit })=>
             ))}  
             <li><a href="#"
               onClick={nextPage}
-              className={`next ${currentPage >= pages ? 'disabled' : ''}`}
+              className={`next ${currentPage >= pageLimit ? 'disabled' : ''}`}
             >
               Next »
             </a></li>
-          </ul>                
+          </ul>               
           <div className="Row">
-            {getData().map((item, idx) => (
-              <RenderComponent key={idx} data={item} addToCart={addToCart}/>
+            {getData().map((item) => (
+              <RenderComponent key={item.id} data={item} addToCart={addToCart}/>
             ))}
           </div>        
       </Card>

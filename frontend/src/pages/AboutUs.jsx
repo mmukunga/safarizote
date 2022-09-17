@@ -2,25 +2,27 @@ import React, {useContext, Fragment} from "react";
 import axios from 'axios';
 import { useFetch } from "./useFetch";
 import { StarRating } from "./StarRating";
-import {LoggerContext} from "./LoggerProvider";
+import {LogContext} from "./LogContext";
 import Card from './Card';
+import Emoji from "./Emoji";
 
 const AboutUs = () => {
     const [status, setStatus] = React.useState('');
     const [posts, setPosts] = React.useState([]);
     const { data, loading } = useFetch('/api/ratings');
-    const { log, persistLog } = useContext(LoggerContext);
+    const context = React.useContext(LogContext);
+    const log = context.log;
+    const persistLog =  context.persistLog;
     const [ analytics, setAnalytics] = React.useState([]);
     
-
     React.useEffect(() => { 
         const fetchAnalytics = async () => {
             try {
               const response = await axios.get('/api/fetchAnalytics');
               setAnalytics(response.data);
             } catch(error){
-              error.httpUrl='/api/fetchAnalytics';  
-              persistLog(error);
+              const path='/api/fetchAnalytics';  
+              persistLog(error, path);
             }
         };
 
@@ -37,8 +39,8 @@ const AboutUs = () => {
               setPosts(response.data);
               setStatus('');
             } catch(error){
-              error.httpUrl='/api/ratings';  
-              persistLog(error);
+              const path='/api/ratings';  
+              persistLog(error, path);
             }
         };
 
@@ -59,13 +61,10 @@ const AboutUs = () => {
     if (typeof error === 'string' && error !== '') {
         return <h1>{error.message}</h1>;
     }
-
-    const currentUser = localStorage.getItem("currentUser");
-    const user = JSON.parse(localStorage.getItem('user'));
     
     return (
         <Card title="About Us" className="Card">
-            <Fragment>    
+            <Fragment> 
             <div className="table">
                 <div className="th">
                     <div className="td">Description</div>
@@ -84,8 +83,7 @@ const AboutUs = () => {
                 <div className="table-caption">
                     <StarRating ratings={data} setStatus={setStatus}/> 
                 </div>  
-            </div> 
-            <hr/>                       
+            </div>                      
             <h4>Analytics</h4>
             <div className="table">
                 <div className="th">
@@ -105,7 +103,7 @@ const AboutUs = () => {
                       <div className="td">{item.visits}</div>
                     </div>
                     );
-                })}
+                })}            
             </div>              
             </Fragment>
         </Card>

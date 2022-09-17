@@ -7,25 +7,24 @@
   padding: 0.2rem calc((4vw - 10px) / 2);
 }
 
-a.navlink {
+.navlink {
   color: #fff;
   display: flex;
   white-space: nowrap;
   align-items: center;
   text-decoration: none;
-  padding: 10px;
   margin: 5px;
-  width: calc((100vw - 10px) / 8);
+  width: calc((100vw - 10px) / 10);
   cursor: pointer;
   background-color:  #093e61;
   border-radius: 5px;
 }
 
-a.navlink:hover {
+.navlink:hover {
     color: black;
   }
 
-a.navlink.active{
+.navlink.active{
   background-color: #6f2c3f;
   color: #fff;
 }
@@ -47,7 +46,7 @@ a.navlink.active{
     flex-direction: row;
   }
 
-  a.navlink  {
+  .navlink  {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;

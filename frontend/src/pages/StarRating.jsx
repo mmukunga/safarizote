@@ -26,7 +26,7 @@ const StarRating = ({ratings, setStatus }) => {
     return fetch(url, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json; charset=UTF-8",
+        "Content-Type": "application/json;charset=utf-8",
       },
       body: JSON.stringify(data),
     });

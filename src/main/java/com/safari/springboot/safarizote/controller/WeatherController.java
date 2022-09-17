@@ -58,7 +58,7 @@ public class WeatherController {
         
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
         urlConnection.setRequestMethod("GET");
-        urlConnection.setRequestProperty("Content-type", "application/json");
+        urlConnection.setRequestProperty("Content-type", "application/json;charset=utf-8");
         BufferedReader bufferedReader;
         Integer responseStatus = urlConnection.getResponseCode(); 
 

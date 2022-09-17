@@ -72,7 +72,7 @@ public class StockController {
         repeatCallers.addAll(stockList);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Type", "application/json; charset=utf-8");
+        headers.add("Content-Type", "application/json;charset=utf-8");
         if (!repeatCallers.contains(fromNumber)) {
             repeatCallers.add(fromNumber);
             System.out.println("Welcome to stonksbot \uD83D\uDCC8. Text me a valid ticker symbol and I'll give you quote data.");

@@ -1,0 +1,46 @@
+
+.coffee {
+  display: table;
+  border: 5px solid tomato;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: green;
+  text-decoration: none;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.table-wrap {
+  display: table;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.table-wrap > * {
+  display: table-cell;
+  text-align: left; 
+  vertical-align: middle; 
+  border:2px solid lightcyan;
+  margin: 0px 2px;
+  color: white;
+}
+
+.table-wrap img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+}
+
+.cartLink {border:2px solid red;}
+
+@media (max-width: 600px) {
+  .table-wrap, .table-wrap > * {
+    display: inline-block;
+  }
+
+  .coffee, .coffee > * {
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+  }
+}

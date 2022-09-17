@@ -1,19 +1,21 @@
 import React from "react";
 import axios from 'axios';
-import {LoggerContext} from "./LoggerProvider";
+import {LogContext} from "./LogContext";
 
 export const useFetch = (url) => {
     const [data, setData] = React.useState([]);
     const [loading, setLoading] = React.useState(false);
-    const { persistLog } = React.useContext(LoggerContext);
+    const context = React.useContext(LogContext);
+    const log = context.log;
+    const persistLog =  context.persistLog;
     React.useEffect(() => {
         setLoading(true);
         axios.get(url).then((response) => {
           setData(response.data);
           setLoading(false);
         }).catch((e) => {
-          e.httpUrl = url;
-          persistLog(e);
+          const path = url;
+          persistLog(e, path);
           setLoading(false);
         });
     }, [url, persistLog]);

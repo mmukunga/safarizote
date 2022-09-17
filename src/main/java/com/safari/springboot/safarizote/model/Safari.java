@@ -24,11 +24,13 @@ public class Safari {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "name")
+    private String name;
     @Column(name = "title")
     private String title;
-    @Column(columnDefinition = "TEXT", name = "description")
+    @Column(columnDefinition = "TEXT")
     private String description;
-    @Column(name = "image")
+    @Column(columnDefinition = "TEXT")
     private String image;
     @Column(name = "price")
     private Double price;

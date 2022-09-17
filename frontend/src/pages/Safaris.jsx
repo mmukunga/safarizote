@@ -15,7 +15,7 @@ const Safaris = () => {
       return {...item, label: 'fieldName' }; 
     });
     return await axios.post(url,  JSON.stringify(newList), {
-      headers: { 'Content-Type': 'application/json; charset=UTF-8' }
+      headers: { "Content-Type": "application/json;charset=utf-8" }
     });
   }
 

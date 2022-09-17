@@ -40,7 +40,7 @@ const StockList = () => {
     console.log(data);
     return axios.post(url, data, {
       headers: {
-        "Content-Type": "application/json; charset=UTF-8",
+        "Content-Type": "application/json;charset=utf-8",
       },  
     });
   }
@@ -57,6 +57,7 @@ const StockList = () => {
     const API_URL = "/api/stockMarket?"+params;
     post(API_URL, token).then((resp) => {
       resp.status === 200 ? setState("Success") : setState("Error");
+      console.log(resp);
       setStocks(resp.data);
       setLoading(false);
     });
@@ -65,11 +66,12 @@ const StockList = () => {
   const numberFormat = (value) =>
     new Intl.NumberFormat('nb-NO', {
       style: 'currency',
-      currency: 'Kr',
+      currency: 'NOK',
   }).format(value);
 
   const Spinner = () => <div className="loader"></div>;
   const hasLabel = {label: false};
+
   console.log(loading);
 
   return (

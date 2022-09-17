@@ -1,4 +1,7 @@
 import React, { useContext, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import {SafariContext} from "./SafariContext";
@@ -27,36 +30,39 @@ const Cart = props => {
   return (
     <React.Fragment>
       <Card className="Card">
-        {context.cart.length <= 0 && <p>No Item in the Cart!</p>}
-        <div className="table">
-            <div className="th">
-              <div className="td">title</div>
-              <div className="td">price</div>
-              <div className="td">quantity</div>
-              <div className="td">+/-</div>
-            </div>
-          {context.cart.map(cartItem => {
-            const data = `${cartItem.title} Price: ${cartItem.price} Quantity: ${cartItem.quantity}`;
-            return (
-              <div key={cartItem.id} className="tr cartRow">
-                <div className="td">{<div dangerouslySetInnerHTML={{__html: `${cartItem.title}`}}/>}</div>  
-                <div className="td">{cartItem.price}</div>
-                <div className="td">{cartItem.quantity}</div>
-                <div className="td">
-                  <Button label="Send" className="btn" handleClick={context.removeFromCart.bind(this,cartItem.id)}>
-                    {<Emoji label="Remove"/>}
-                  </Button></div>
-              </div>              
+        {context.cart.length > 0? (
+          <div className="table">
+              <div className="th">
+                <div className="td">title</div>
+                <div className="td">price</div>
+                <div className="td">quantity</div>
+                <div className="td">+/-</div>
+              </div>
+            {context.cart.map(cartItem => {
+              const data = `${cartItem.title} Price: ${cartItem.price} Quantity: ${cartItem.quantity}`;
+              return (
+                <div key={cartItem.id} className="tr cartRow">
+                  <div className="td">{<div dangerouslySetInnerHTML={{__html: `${cartItem.title}`}}/>}</div>  
+                  <div className="td">{cartItem.price}</div>
+                  <div className="td">{cartItem.quantity}</div>
+                  <div className="td">
+                    <Button label="Send" className="btn" handleClick={context.removeFromCart.bind(this, cartItem.id)}>
+                      {<Emoji label="Remove" />}
+                    </Button></div>
+                </div>              
+              )}
             )}
-          )}
-        </div>
-        <div className="stripe-info">
-          <div className="stripe-test">ACC: 4242 4242 4242 4242 - Exp: 01/28 - CVV: 123 ZIP: 90210</div>
-          <div className="stripe-email">Make Stripe Payment @ Maji Moto</div>
-        </div>
-        <Elements stripe={stripePromise}>
-          <PaymentForm totalSum={totalSum} quantity={quantity}/> 
-        </Elements>  
+            <Elements stripe={stripePromise}>
+              <PaymentForm totalSum={totalSum} quantity={quantity}/> 
+            </Elements>  
+          </div>
+        ) : (           
+          <Link to='/stripes' className="cartLink">
+             <Emoji label="Coffee"/> 
+          </Link>          
+        )
+        }
+
         <p style={{ color: "red", textAlign:'left' }}>{error.message}</p>
       </Card>
     </React.Fragment>

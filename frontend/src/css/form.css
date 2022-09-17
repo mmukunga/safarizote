@@ -1,8 +1,4 @@
 
-  .container {
-    border-radius: 5px;
-    border: 2px solid silver;
-  }
   
   .log {
     max-width: 350px;
@@ -12,11 +8,8 @@
     font-weight: 300;
   }
 
-  form {
-    margin: 0 auto;
-    width: 100%;
-    border-radius: 5px;
-    text-align: left;
+  .price {
+    color: #ffcba4;
   }
 
   input[type=text],
@@ -26,13 +19,32 @@
   select, textarea {
     width: 100%;
     padding: 12px;
-    border: 2px inset silver;
+    border: 1px inset #2565ae;
     border-radius: 5px;
     resize: vertical;
   }
   
+  select[aria-label="secure"] {
+    background: #093e61;
+    padding: 8px 0px;
+    color:white;
+    width: calc((100vw - 10px) / 10);
+    min-width: 100px;
+    display: flex;
+    white-space: nowrap;
+  }
+
+  select[aria-label="secure"]:focus {
+    min-width: 150px;
+    width: auto;
+}
+
   input[type=checkbox] {
     background-color: #a04549;
+  }
+
+  textarea {
+    min-height: 100px;
   }
 
   label {
@@ -68,12 +80,7 @@
   .wrapIcon {
     align-items: center;
     display: flex;
-    border: 2px solid lightgreen;
-  }
-
-  div.navform form select {
-    background-color: #093e61;
-    color:white;
+    border: 1px solid #2565ae;
   }
 
   .cartRow {
@@ -84,7 +91,7 @@
   }
 
   .column {
-    border: 2px solid lightcoral;
+    border: 1px solid lightcoral;
     margin: 2px;
   }
 
@@ -107,7 +114,7 @@
   }
 
   @media screen and (max-width: 600px) {
-    .col-25, .col-75, 
+    .col-25, .col-75, select,
     input[type=submit], button {
       width: 100%;
       margin-top: 0;

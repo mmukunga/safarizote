@@ -46,7 +46,7 @@ public class StockClient {
             + "&fmt=" + fmt + "&s=" + additionals);
             try {
             HttpURLConnection connection = (HttpURLConnection) url.openConnection(); 
-            connection.setRequestProperty("accept", "application/json");
+            connection.setRequestProperty("accept", "application/json;charset=utf-8");
             responseStream = connection.getInputStream();  
             } catch (IOException e) { 
                 Optional<StockStore> stock = repository.findBySymbol("KIT"); 

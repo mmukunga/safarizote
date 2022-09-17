@@ -8,7 +8,6 @@ import {
 } from "@stripe/react-stripe-js";
 
 const PaymentForm = ({totalSum, quantity}) => {
-  const [payment, setPayment] = React.useState(false);  
   const stripe   = useStripe();
   const elements = useElements();
 
@@ -59,11 +58,14 @@ const PaymentForm = ({totalSum, quantity}) => {
       },
     },
   };
-    
   return (
     <form onSubmit={handleSubmit} className='StripeElement'>
+    <div className="stripe-info">
+      {/* ACC: 4242 4242 4242 4242 - Exp: 01/28 - CVV: 123 ZIP: 90210 */}
+    <div className="stripe-email">Make Stripe Payment @ Maji Moto</div>
+    </div>
       <div className="product-info">
-        { totalSum != 0 ? `Qty: ${quantity} &nbsp; Price: ${totalSum}` : '' }
+        { totalSum != 0 ? `Qty: ${quantity} Price: ${totalSum}` : '' }
       </div>
       <CardElement options={CARD_OPTIONS}/> 
       <button disabled={!stripe} className="btn-pay">PAY NOW</button>

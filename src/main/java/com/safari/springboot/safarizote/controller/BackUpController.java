@@ -75,8 +75,14 @@ public class BackUpController {
   
 @RequestMapping(value="/api/findAlbum", method=RequestMethod.POST)
 public ResponseEntity<List<GcsFolder>> findAlbum(@RequestBody(required = false) String folder) throws IOException {
+    System.out.println("1.folder");
+    System.out.println(folder);
+    System.out.println("2.folder");
     JSONObject jsonObj = new JSONObject(folder);
     String body = jsonObj.getString("body");
+    System.out.println("11.body");
+    System.out.println(body);
+    System.out.println("12.body");
     JSONObject jsonBody = new JSONObject(body);
     JSONObject jsonFolder = jsonBody.getJSONObject("data");
 

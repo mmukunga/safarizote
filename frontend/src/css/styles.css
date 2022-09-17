@@ -4,41 +4,46 @@
   border: 1 px solid red;
 }
 
-.AppLogger {
-  border: 4px solid lightsalmon;
-}
-
-.AppLogger p {
-  text-align: left;
-}
-
-span.imgDiv {
-  display:inline-block;
-}
-
 .country-flag {
   display: inline-block; 
   width: 10px;
   height: 10px;  
 }
 
-span.emoji {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  margin-right: 2px;
-  text-align: center;
-  vertical-align: middle;
-}
-
-span.emoji img {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
 .registration {
-  background: silver;
-  border: 2px solid red;
+  border: 1px solid #2565ae;;
+  color: lightskyblue;
+  border-radius: 5px;
   width: 100%;
+}
+
+ol.logs {
+  border: 1px solid darkcyan;
+  border-radius: 5px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ol.logs > li {
+  display: inline-block;
+  border: 1px solid #2565ae;;
+}
+
+ol.logs > li:first-child {
+  margin-left:0
+}
+
+div.stack {
+  border: 1px solid #2565ae;;
+  border-radius: 5px;
+}
+
+.fSize {
+  font-size: 2vw;
+}
+
+.img {
+  width: 50%;
+  height: auto;
 }

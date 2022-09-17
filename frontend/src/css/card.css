@@ -1,21 +1,15 @@
 /* https://www.youtube.com/watch?v=qPp6O4ycH5c */
-/* https://www.youtube.com/watch?v=qPp6O4ycH5c */
-
-.Container {
-  max-width: 100%;
-  margin: 0 auto;
-}
-
 .Card {
   flex: 1 1 20rem;
   flex-direction: column;
   background-color:  rgb(0, 87, 138);
   border-radius: 10px;
+  color: white;
   margin: 10px 20px;
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
   padding: 10px 20px;
   align-self: normal;
-  color: #fff;
+  font-size: clamp(16px, calc(16px + (28 - 16) * ((100vw - 360px) / 1560)), 28px);
 }
 
 .Card .title {
@@ -34,12 +28,11 @@
   display: inline-block;
   margin-left: 5px;
   color: greenyellow;
-  border-bottom: 2px outset lightcyan;
+  border-bottom: 2px outset #2565ae;
   border-radius: 2px;
   text-decoration: none;
   cursor: pointer;
 }
-
 
 .textWrap {
   float: right;
@@ -49,7 +42,6 @@
   text-align: center;
   background: #efefef
 }
-
 
 .Row {
   display: flex;

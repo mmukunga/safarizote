@@ -6,39 +6,42 @@ import com.stripe.model.Charge;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class PaymentController {
-        
-    private StripeClient stripeClient;
+    @Value("${stripe.public.key}")
+    private String stripePublicKey;
+    
     @Autowired
-    PaymentController(StripeClient stripeClient) {
-        this.stripeClient = stripeClient;
-    }
-
+    private StripeClient stripeClient;
+    
     @PostMapping("/api/payment/charge")
     public Charge chargeCard(@RequestBody Map<String, Object> payLoad) throws Exception {
             System.out.println("chargeCard amount: " + payLoad);
             String tokenId = payLoad.get("token").toString();
-            String price = payLoad.get("amount").toString();
+            String currency = payLoad.get("currency").toString();
+            String price = payLoad.get("price").toString();
             System.out.println("1.chargeCard tokenId: " + tokenId);
-            System.out.println("2.chargeCard price: " + price);
-
+            System.out.println("2.chargeCard currency: " + currency);
+            System.out.println("3.chargeCard price: " + price);
+            System.out.println("200ZZZ.stripePublicKey");
+            System.out.println(stripePublicKey);
             String token = (String)payLoad.get("token");
-            //Integer amount2 = Integer.parseInt(price);
+            
             Double amount = Double.parseDouble(price);
-            System.out.println("1.chargeCard token: "  + token);
-            System.out.println("2.chargeCard amount: " + amount);
+            System.out.println("4.chargeCard token: "  + token);
+            System.out.println("5.chargeCard amount: " + amount);
+            System.out.println("300 YYY.stripePublicKey");
+            System.out.println(stripePublicKey);
+
         return this.stripeClient.chargeNewCard(token, amount);
     }
 
+    
+    public void setStripePublicKey(String stripePublicKey) {
+        this.stripePublicKey = stripePublicKey;
+    }
 
-    /* @PostMapping("/api/payment/charge")
-    public Charge chargeCard(@RequestHeader(value="token") String token, 
-        @RequestHeader(value="currency") String currency,
-        @RequestHeader(value="amount") Double amount) throws Exception {
-            System.out.println("chargeCard amount: " + amount);
-        return this.stripeClient.chargeNewCard(token, amount);
-    }*/
 }

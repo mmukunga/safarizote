@@ -3,13 +3,15 @@ import {signInWithEmailAndPassword,
         sendEmailVerification,
         createUserWithEmailAndPassword} from 'firebase/auth';
 import {useNavigate, useLocation} from 'react-router-dom';
-import {LoggerContext} from "./LoggerProvider";
+import {LogContext} from "./LogContext";
 
 const AuthContext = React.createContext()
 
 export const AuthProvider = ({children}) => {
   const [token, setToken] = React.useState(null);
-  const { log, persistLog } = useContext(LoggerContext);
+  const context = React.useContext(LogContext);
+    const log = context.log;
+    const persistLog =  context.persistLog;
 
   let navigate = useNavigate();
   let location = useLocation();
@@ -21,48 +23,64 @@ export const AuthProvider = ({children}) => {
   };
 
   const register = async (e) => {
-    const {auth, email, password} = e;
-    createUserWithEmailAndPassword(auth, email, password)
+    console.log(e);
+    const {auth, data} = e;
+    console.log('..email..' + data.email);
+    console.log('..password..' + data.password);
+    createUserWithEmailAndPassword(auth, data.email, data.password)
     .then(() => {
         sendEmailVerification(auth.currentUser).then(() => {
           setToken(auth.currentUser);
           localStorage.setItem("currentUser", auth.currentUser);
+          localStorage.setItem("VerifyEmail", auth.currentUser);
           navigate('/login');
         }).catch((err) => {
+          console.log(err);
           localStorage.setItem("currentUser", null);
-          err.httpUrl='/api/login';  
-          persistLog(err);
+         const path='/api/login';  
+          persistLog(err, path);
         });
     }).catch(err => {
-      err.httpUrl='/api/createUser';  
-      persistLog(err);
+      console.log(err);
+      const path='/api/createUser';  
+      persistLog(err, path);
     });  
   }
 
   const login = async (e) => {
     console.log(e);
     const {auth, data} = e;
+    console.log(e);
+    
     signInWithEmailAndPassword(auth, data.email, data.password).then((response) => {
+      console.log(response);
       if(!auth.currentUser.emailVerified) {
+        console.log(auth.currentUser);
         sendEmailVerification(auth.currentUser).then((response) => {
           localStorage.setItem("currentUser", null);
           navigate('/login');
         }).catch((err) => {
-          err.httpUrl='/api/createUser';  
-          persistLog(err);
+          console.log('..signInWithEmailAndPassword..ERROR!!');
+          console.log(err);
+          const path='/api/createUser';  
+          persistLog(err, path);
         });
       } else {
+        console.log('..signedIn.. WOW!!😊');
         setToken(auth.currentUser);
         localStorage.setItem("currentUser", auth.currentUser);
         navigate(from);
       }
     }).catch((err) => {
+      console.log(err);
+      console.log('..NotSignedIn..😔');
       let response = { status: 404, statusText: 'Not Found' };
       err.response = response;
-      err.httpUrl='/api/login';
       localStorage.setItem("currentUser", null);
-      persistLog(err);
+      const path='/api/login';
+      persistLog(err, path);
     })
+   
   }
 
   const value = {

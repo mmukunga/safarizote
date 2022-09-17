@@ -1,15 +1,14 @@
 import React, { memo } from "react";
 import { useFormContext } from "react-hook-form";
-import Emoji from "./Emoji";
 
 export const Label = ({ id, label }) => {
   const labelUpper = label ? id?.charAt(0).toUpperCase() + id?.slice(1): id;
   return (<label htmlFor={id}>{labelUpper}</label>);
 };
 
-export const Input = memo (({type, name, register, formState: { isDirty } }) => (
+export const Input = memo (({type, name, register, formState: { isDirty }, value }) => (
     <div className="row">
-      <input type={type} {...register(name)} aria-label={name} />
+      <input type={type} {...register(name, {value: value})} aria-label={name} />
     </div>
   ), (prevProps, nextProps) =>
     prevProps.formState.isDirty === nextProps.formState.isDirty
@@ -31,12 +30,30 @@ export const Submit = ({ type='submit', children }) => {
   );
 };
 
+
+export const SelectAuth = props => { 
+  const [myVal, setMyVal] = React.useState('Default');
+  const handleChange = (e ) => {
+      console.log(e);
+      setMyVal(e.target.value);
+  }
+  console.log(myVal)
+  return (
+    <select name="selectAuth" onChange={handleChange}>
+      <option key={1} value={"value 1"}>something 1</option>
+      <option key={2} value={"value 2"}>something 2</option>
+  </select>
+  );
+}
+
+
 export const Select = props => {
   const { register } = useFormContext(); 
   return (
   <select {...register(props.name)} aria-label={props.name}>
-    {props.options && props.options.map( (option, idx) =>
-      <option key={idx} value={option.value}>{option.icon} {option.label}</option> )
+    <option value="">--Please Select--</option>
+    {props.options && props.options.map((option, idx) =>
+    <option key={idx} value={option.value}>{option.icon} {option.label}</option>)
     }
   </select>
   );
@@ -74,12 +91,12 @@ export const ThemeButton = ({ checked, toggleTheme }) => {
   );
 };
 
-export const InputWrapper = ({type, labelObj, name, children }) => {
+export const InputWrapper = ({type, labelObj, name, value, children }) => {
   const methods = useFormContext();
   if(labelObj.labeled) {
-    return (<ComplexInput type={type} name={name} {...methods}>{children}</ComplexInput>);
+    return (<ComplexInput type={type} name={name} value={value} {...methods}>{children}</ComplexInput>);
   } else {
-    return (<Input type={type} name={name} {...methods}>{children}</Input>);
+    return (<Input type={type} name={name} value={value} {...methods}>{children}</Input>);
   }
 };
 
@@ -92,15 +109,15 @@ export const SelectWrapper = ({labelObj, name,  options, children }) => {
 };
 
 const ComplexInput = memo(
-  ({type, name, register, formState: { isDirty } }) => {
+  ({type, name, register, formState: { isDirty }, value }) => {
     const label = name ? name?.charAt(0).toUpperCase() + name?.slice(1): name;
     return(
     <div className="row">
       <div className="col-25">
-      <label htmlFor={name}><Emoji label={label}/>{label}</label>
+      <label htmlFor={name}>{label}</label>
       </div>
       <div className="col-75">
-      <input type={type} {...register(name)} aria-label={name} />
+      <input type={type} {...register(name)} placeholder={`${value}`} aria-label={name} />
       </div>
     </div>
   )},
@@ -117,7 +134,7 @@ const ComplexSelect = memo (
       <div className="col-75">
         <select {...register(name)} {...rest}>
         {options.map(({value, label, icon},idx) => (
-          <option key={idx} value={value}>{label} <Emoji label={label}/></option>
+          <option key={idx} value={value}>{label}</option>
         ))}
         </select>
       </div>

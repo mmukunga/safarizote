@@ -1,18 +1,20 @@
 import React, { useState, useContext } from 'react';
-import {LoggerContext} from "./LoggerProvider";
+import {LogContext} from "./LogContext";
 import Card from "./Card";
 import axios from 'axios';
 
 const Tipping = () => {
   const [kuppong, setKuppong] = useState();
-  const { log, persistLog } = useContext(LoggerContext);
+  const context = React.useContext(LogContext);
+  const log = context.log;
+  const persistLog =  context.persistLog;
 
   const lagKuppong = (e) => {
     axios.get('/api/lagKuppong').then(response => {
        setKuppong(response.data.Maji);
     }).catch(error => {  
-      error.httpUrl='/api/lagKuppong';  
-      persistLog(error);
+      const path='/api/lagKuppong';  
+      persistLog(error, path)
   });
  };
 
@@ -20,8 +22,8 @@ const Tipping = () => {
     axios.get('/api/lagKuppong').then(response => {
        setKuppong(response.data.Maji);
     }).catch(error => {     
-      error.httpUrl='/api/lagKuppong';  
-      persistLog(error);
+      const path='/api/lagKuppong';  
+      persistLog(error, path);
     });
   }, []); 
 

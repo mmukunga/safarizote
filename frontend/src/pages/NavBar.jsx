@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { SafariContext } from "./SafariContext";
 import { ThemeContext }  from './ThemeProvider';
 import { ThemeButton } from './Components';
-import  ProtectedLink from './ProtectedLink';
+import  ProtectedViews from './ProtectedViews';
 import Emoji from "./Emoji";
 
 const Navbar = () => {
@@ -43,10 +43,10 @@ const Navbar = () => {
         <div className={`navbar ${classes.root}`}>
             {data.map((item) => (
               <NavLink key={item.name} to={item.name} className="navlink">
-                <Emoji label={emojiLabel(item.label)}/> {item.label}
+                <Emoji label={emojiLabel(item.label)}/>
               </NavLink>
-            ))}  
-          <ProtectedLink />
+            ))}       
+          <ProtectedViews />
           <ThemeButton checked={checked} toggleTheme={toggleTheme}/>
         </div>
       </header>

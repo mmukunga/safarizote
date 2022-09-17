@@ -43,11 +43,13 @@
 
 @import url("./css/album.css");
 @import url("./css/card.css");
+@import url("./css/emoji.css");
 @import url("./css/errorLog.css");
 @import url("./css/form.css");
 @import url("./css/login.css");
 @import url("./css/navbar.css");
 @import url("./css/pagination.css");
+@import url("./css/payments.css");
 @import url("./css/theme.css");
 @import url("./css/shoppings.css");
 @import url("./css/spinner.css");

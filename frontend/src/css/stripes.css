@@ -1,16 +1,20 @@
 
 .StripeElement {
-    margin: 15px auto;
-    color: #ffffff;
-    border: 1px solid silver;
-    border-radius: 2px;
+    color: white;
+    border: 1px solid #2565ae;;
+    border-radius: 5px;
+    background: lightgray;
     padding: 5px;
-    width: 100%;
   }
   
   .StripeElement--webkit-autofill {
     background-color: #fefde5 !important;
   }
+
+  .stripe-data {
+    color: white;
+  }
+  
   .btn-pay {
     display: block;
     width: 100%;

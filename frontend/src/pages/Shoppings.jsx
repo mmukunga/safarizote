@@ -1,5 +1,5 @@
 import React from "react";
-import {LoggerContext} from "./LoggerProvider";
+import {LogContext} from "./LogContext";
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { Label, Submit, Button, Select, InputWrapper } from "./Components";
@@ -19,7 +19,9 @@ const  Shoppings = () => {
   const [indexes, setIndexes] = React.useState([]);
   const [counter, setCounter] = React.useState(0);
   const [shop, setShop] = React.useState("Joka");
-  const { log, persistLog } = React.useContext(LoggerContext);
+  const context = React.useContext(LogContext);
+  const log = context.log;
+  const persistLog =  context.persistLog;
 
   const options = [
       {label: 'Joka', value: 'Joka'},
@@ -47,8 +49,8 @@ const  Shoppings = () => {
         .then(response => setProducts(response.data))
         .catch(error => {
             setState('Error');
-            error.httpUrl = '/api/products';
-            persistLog(error);
+            const path= '/api/products';
+            persistLog(error, path);
         });
   }, []);
 
@@ -58,7 +60,7 @@ const  Shoppings = () => {
       return {...item, shop: shop }; 
     });
     return await axios.post(url,  JSON.stringify(newList), {
-      headers: { 'Content-Type': 'application/json; charset=UTF-8' }
+      headers: { 'Content-Type': 'application/json;charset=utf-8' }
     });
   }
 
@@ -68,9 +70,6 @@ const  Shoppings = () => {
       setProducts(response.data);
     }).catch(error => {
       setState('Error');
-      //error.httpUrl = '/api/saveProducts';
-      //error.status = 4001;
-      //persistLog(error);
       console.log(error);
     });
   };

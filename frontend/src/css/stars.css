@@ -4,13 +4,12 @@
     display: flex;
     margin: 1px;
     padding:1px;
-    border: 1px solid lightcyan;
   }
 
   .block {
     flex: 1;
     margin: 0 auto;
-    border:1px solid lightcyan;
+    border:1px solid #2565ae;
     text-align: center;
   }
 

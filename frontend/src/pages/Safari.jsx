@@ -6,9 +6,9 @@ const Safari = (props) => {
   const { data, addToCart } = props;
 return (
   <Card key={data.id} image={data.image} title={data.title} className="Card">
-      {parse(data.description)}
+      {parse(data.description)} <span className="price">${data.price} {`per person.`}</span> 
       <a href="#" onClick={addToCart.bind(this, data)} className="priceOffer">
-        Add to Cart {`$`}{data.price} {`pp.`}
+        Add to Cart
       </a>
   </Card>
 );

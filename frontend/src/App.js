@@ -20,16 +20,21 @@ import StockList from './pages/StockList';
 import BackUp from './pages/BackUp';
 import Weather from './pages/Weather';
 import Login from './pages/Login';
-import AppLogger from './pages/AppLogger';
+import Logs from './pages/Logs';
 import Register from './pages/Register';
 import {ProtectedRoute} from './pages/ProtectedRoute';
+import StripeCard from './pages/StripeCard';
+import NotFound from './pages/NotFound';
+import {LogContext} from "./pages/LogContext";
+import TourCharges from './pages/TourCharges';
 
 const App = () => {
   const [cartItems, setCartItems] = React.useState([]);
   const [currentUser, setCurrentUser] = React.useState(null);
   const [timeActive, setTimeActive] = React.useState(false);
   const [geoData, setGeoData] = React.useState(null);
-  
+  const context = React.useContext(LogContext);
+
   React.useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
@@ -65,8 +70,7 @@ const App = () => {
 
   }, [geoData]);
 
-    return (
-      <>  
+    return ( 
           <SafariContextProvider>
           <AuthProvider value={{currentUser, timeActive, setTimeActive}}>
           <ThemeProvider><Navbar/></ThemeProvider>
@@ -74,19 +78,22 @@ const App = () => {
                   <Route path='/' element={<Safaris />} />
                   <Route path="/contactUs" element={<ContactUs/>} />
                   <Route path="/aboutUs" element={<AboutUs/>} />
+                  <Route path="/prices" element={ <ProtectedRoute><TourCharges/></ProtectedRoute>} />
                   <Route path="/shoppings" element={ <ProtectedRoute><Shopping/></ProtectedRoute>} />
                   <Route path="/tipping" element={ <ProtectedRoute><Tipping/></ProtectedRoute>} />
                   <Route path="/backUps" element={ <ProtectedRoute><BackUp/></ProtectedRoute>} />
                   <Route path="/stocks" element={ <ProtectedRoute><StockList/></ProtectedRoute>} />
-                  <Route path="/errorLog" element={ <ProtectedRoute><AppLogger/></ProtectedRoute>} />
+                  <Route path="/errorLog" element={ <ProtectedRoute><Logs/></ProtectedRoute>} />
                   <Route path="/cart" element={<Cart cartItems={cartItems}/>} />
                   <Route path="/weather" element={<Weather/>} />
                   <Route path="/login" element={<Login/>} />
                   <Route path="/register" element={<Register/>} />
+                  <Route path="/stripes" element={<StripeCard/>} />
+                  <Route path="/fetchLogs" element={<Logs/>} />
+                  <Route path="*" element={<NotFound/>} />
               </Routes>    
           </AuthProvider>  
           </SafariContextProvider>
-      </>
   )
 }
 

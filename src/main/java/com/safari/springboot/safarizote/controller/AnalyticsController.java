@@ -55,7 +55,7 @@ public class AnalyticsController {
         JSONObject json = (JSONObject) parser.parse(ipv4);
         Optional<Analytics> analytics = repository.findByIpv4(json.get("ipv4").toString());
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Type", "application/json; charset=utf-8");
+        headers.add("Content-Type", "application/json;charset=utf-8");
 
         if(analytics.isEmpty()) {
            return new ResponseEntity<>(null, headers, HttpStatus.OK);

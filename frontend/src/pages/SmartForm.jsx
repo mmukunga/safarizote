@@ -16,22 +16,20 @@ export const SmartForm = ({ defaultValues, postData = () => {}, children, onSubm
 
     React.useEffect(() => {
       if(!isSecured && isDirty) {
-        console.log('This field is dirty');
         return (<p>This field is dirty</p>)
       }
     }, [isSecured, isDirty]);
 
-    const authedUrl = useWatch({ control, name: 'authedUrl'});
+    const selectAuth = useWatch({ control, name: 'selectAuth'});
     React.useEffect(() => {
-      if(authedUrl !== undefined && authedUrl !== null) {
+      if(selectAuth !== undefined && selectAuth !== null) {
         setIsSecured(() => true);
-        onSubmit(authedUrl); 
+        onSubmit(selectAuth); 
       }
-    }, [authedUrl]);
- 
+    }, [selectAuth]);
+   
     return (
       <FormProvider {...methods} >
-      <div className="container">
       <form onSubmit={handleSubmit(onSubmit)}>
         {Array.isArray(children)
           ? children.map((child) => {
@@ -49,7 +47,6 @@ export const SmartForm = ({ defaultValues, postData = () => {}, children, onSubm
             })
           : children}  
       </form>
-      </div>  
       </FormProvider>
     );
   }

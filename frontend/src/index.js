@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter} from "react-router-dom";
 import './index.css';
 import App from './App';
-import {LoggerProvider} from './pages/LoggerProvider';
+import { LogContextProvider } from "./pages/LogContext";
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-    <LoggerProvider>
+    <LogContextProvider>
         <App />
-    </LoggerProvider>    
+    </LogContextProvider>    
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

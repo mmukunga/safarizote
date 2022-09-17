@@ -5,10 +5,10 @@ import { SmartForm } from './SmartForm';
 import Emoji from "./Emoji";
 
 const defaultValues = {
-  name:  'Abc Def',
-  email: 'abc@efg.hig',
-  phone: '+00 123 45 678',
-  message: 'Lorem ipsum ...'
+  name:  'Mkunsim',
+  email: 'abc@dfg.hio',
+  phone: '+01 2345 67 890',
+  message: 'Please write a message'
 };
 
 const ContactUs = () => {
@@ -17,7 +17,7 @@ const ContactUs = () => {
     return fetch(url, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json; charset=UTF-8",
+        "Content-Type": "application/json;charset=utf-8",
       },
       body: JSON.stringify(data),
     });
@@ -31,7 +31,7 @@ const ContactUs = () => {
   const hasLabel = {labeled: true, error: false};
   console.log(state);
   return ( 
-  <Card className="Card" title="" >
+  <Card className="Card" title="ContactUs" >
     <SmartForm defaultValues={defaultValues} onSubmit={onSubmit}>
         <InputWrapper type="text"  labelObj={hasLabel} id="name"  name="name" />
         <InputWrapper type="email" labelObj={hasLabel} id="email" name="email"/>
