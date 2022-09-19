@@ -28,9 +28,9 @@ const Tipping = () => {
   }, []); 
 
  const Row = (props) =>{
-   const { data } = props;
+   const {key, data } = props;
    return (
-    <div className='tr'>
+    <div  className={(key%2==0)?"tr":"tr odd"}>
         <div className='td'>{data.R[0]}</div>
         <div className='td'>{data.R[1]}</div>
         <div className='td'>{data.R[2]}</div>

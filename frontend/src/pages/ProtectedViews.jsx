@@ -1,10 +1,10 @@
 import React from 'react';
 import {useNavigate} from 'react-router-dom';
-import {SelectAuth} from "./Components";
 
    const defaultValues = { id: 0, value: '¤', label: '--Select--', icon: '🥺' };
 
    const ProtectedViews = () => {
+
      const navigate = useNavigate();
 
      const secureOptions = [
@@ -16,12 +16,12 @@ import {SelectAuth} from "./Components";
         {id:5, value: '/backUps', label: 'Dir BackUp', icon: '💾' },  
         {id:6, value: '/errorLog', label: 'Error Logs', icon: '⚠️' }  
       ];
-        
+
     const navigateTo = (data) => {
        console.log(data);
        navigate(`${data}`);
     }
-    
+
     const onSubmit = data => {
       console.log("onSubmit!!");
       console.log(data);

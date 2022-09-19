@@ -16,8 +16,3 @@ npm run start
 
 ./mvnw spring-boot:run "-Dspring-boot.run.profiles=dev" #Powershell
 mvnw spring-boot:run -Dspring-boot.run.profiles=dev   #CMD
-
-#Heroku
-1. http://heroku.com
-2. mmukunga@gmail.com Simsim001
-3. Mobile Authenticator Code

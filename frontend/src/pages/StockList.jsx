@@ -93,7 +93,7 @@ const StockList = () => {
       </div>
         {stocks.map((item)=> {
           return (
-            <div key={item.id} className="tr">
+            <div key={item.id}  className={(item.id%2==0)?"tr":"tr odd"}>
               <div className="td">{item.code}</div> 
               <div className="td">{item.open}</div>
               <div className="td">{item.close}</div>

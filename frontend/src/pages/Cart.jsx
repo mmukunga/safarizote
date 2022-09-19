@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import { makeStyles } from '@material-ui/core';
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -9,6 +10,7 @@ import Card from "./Card";
 import { Button } from './Components';
 import Emoji from "./Emoji";
 import PaymentForm from "./PaymentForm";
+import { red } from "@material-ui/core/colors";
 
 const Cart = props => {
   const context = useContext(SafariContext);
@@ -18,6 +20,18 @@ const Cart = props => {
   
   const pk_test = process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY;
   const [stripePromise, setStripePromise] = React.useState(() => loadStripe(pk_test));
+  
+
+  const useStyles = makeStyles({
+    root: {
+       whiteSpace: 'nowrap',
+       width: '200px',
+       border: '5px solid silver',
+       margin: '0  auto'
+    }
+  });
+
+  const classes = useStyles();
 
   console.log(props);
 
@@ -26,6 +40,9 @@ const Cart = props => {
     context.cart.map((cartItem) => {setTotalSum((total) =>total + cartItem.price)});
     context.cart.map((cartItem) => {setQuantity((qty) =>qty + cartItem.quantity)});
   }, [context]);
+
+
+  const needcup = true;
 
   return (
     <React.Fragment>
@@ -56,10 +73,14 @@ const Cart = props => {
               <PaymentForm totalSum={totalSum} quantity={quantity}/> 
             </Elements>  
           </div>
-        ) : (           
-          <Link to='/stripes' className="cartLink">
-             <Emoji label="Coffee"/> 
-          </Link>          
+        ) : (  
+          <div className={`navbar ${classes.root}`}>
+          { <Link to='/stripes'>
+              <Emoji label={"Coffee"} rel={true}/>
+            </Link> 
+          }   
+        </div>
+
         )
         }
 

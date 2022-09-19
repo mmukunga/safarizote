@@ -71,7 +71,7 @@ const CheckoutPage = () => {
       </ul>
       <form onSubmit={handleSubmit}>
         <CardElement options={CARD_ELEMENT_OPTIONS} />
-        <button type='submit' className="coffee" disabled={!stripe || !elements}>
+        <button type='submit' className="table-wrap" disabled={!stripe || !elements}>
           <Emoji label="Coffee"/>
         </button>
       </form>  

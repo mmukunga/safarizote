@@ -18,7 +18,7 @@
 .td {
   display: table-cell;
   vertical-align: top;
-  border: 1px double #2565ae;
+  /*border: 1px double #2565ae;*/
 }
 
 .tr .td:first-child,
@@ -28,12 +28,10 @@
 }
 
 .tr:nth-child(even) {
-  border: 1px solid #105c78;
   border-radius: 5px;
 }
 
 .tr:nth-child(odd) {
-  border: 1px solid #5592a8;
   border-radius: 5px;
 }
 
@@ -44,6 +42,11 @@
   border-radius: 5px;
   text-align: right;
 }
+
+.odd {
+  background: #105c78;
+}
+
 
 @media screen and (max-width: 600px) {
   .table, .th, .tr, .td, .table-caption {

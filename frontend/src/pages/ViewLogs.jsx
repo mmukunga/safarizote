@@ -2,8 +2,6 @@ import React, { useEffect, useState} from 'react';
 import axios from 'axios';
 import Card from './Card';
 import {LogContext} from "./LogContext";
-import Pagination from './Pagination';
-import LogCard from './LogPagination';
 
 const ViewLogs = () => {
   const [data, setData] = useState([])

@@ -73,7 +73,7 @@ const AboutUs = () => {
                 </div>
                 {posts.map((item)=> {
                     return (
-                    <div key={item.id} className="tr">
+                    <div key={item.id} className={(item.id%2==0)?"tr":"tr odd"}>
                       <div className="td">{item.description}</div>
                       <div className="td">{item.id}</div> 
                       <div className="td">{item.count}</div>
@@ -95,7 +95,7 @@ const AboutUs = () => {
                 </div>
                 {analytics.map((item)=> {
                     return (
-                    <div key={item.id} className="tr">
+                    <div key={item.id}  className={(item.id%2==0)?"tr":"tr odd"}>
                       <div className="td">{item.ipv4}</div>  
                       <div className="td">{item.city}</div>
                       <div className="td">{item.countryCode}</div>

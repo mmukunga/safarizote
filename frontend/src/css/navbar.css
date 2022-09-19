@@ -41,6 +41,19 @@
   background-color: #093e61;
 }
 
+.cartLink {
+  display: block;
+  border: 2px solid darkcyan;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.cartLink > * {
+  border: 2px solid darkgray;
+  white-space: nowrap;
+  padding: 5px;
+}
+
 @media screen and (max-width: 600px) {
   .navbar {
     flex-direction: row;

@@ -89,7 +89,7 @@ const  Shoppings = () => {
           {indexes.map(index => {
             const fieldName = `shoppings[${index}]`;
             return (
-              <div key={index} className="tr">     
+              <div key={index}  className={(index%2==0)?"tr":"tr odd"}>     
               <div className="td"><InputWrapper type="text" labelObj={hasLabel} id={`${fieldName}.product`} name={`${fieldName}.product`}/></div>
               <div className="td"><InputWrapper type="text" labelObj={hasLabel} id={`${fieldName}.price`} name={`${fieldName}.price`}/></div>
               <div className="td"><InputWrapper type="text" labelObj={hasLabel} id={`${fieldName}.quantity`} name={`${fieldName}.quantity`}/></div>
@@ -113,7 +113,7 @@ const  Shoppings = () => {
         </div>
           {products.map((item)=> {
             return (
-              <div key={item.id} className="tr">
+              <div key={item.id}  className={(item.id%2==0)?"tr":"tr odd"}>
                 <div className="td">{item.product}</div> 
                 <div className="td">{item.shop}</div>
                 <div className="td">{item.price}</div>
